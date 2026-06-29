@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, ShieldCheck, Milestone, Landmark, MessageSquare } from "lucide-react";
+import GlossaryTooltip from "./GlossaryTooltip";
 
 interface HeroProps {
   onScrollToSection: (sectionId: string) => void;
@@ -27,9 +28,9 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
           {/* Hero Text */}
           <div className="lg:col-span-7 space-y-8 text-left" id="hero-text-content">
             {/* Tagline */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase font-mono shadow-inner shadow-blue-500/5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase font-mono shadow-inner shadow-blue-500/5">
               <ShieldCheck className="w-4 h-4" />
-              GRC & ICOFR Specialization
+              GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Specialization
             </div>
 
             {/* Main Heading */}
@@ -43,7 +44,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
 
             {/* Description tailored for BUMN / Banking */}
             <p className="text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
-              <strong className="text-white font-semibold">Daya Solusi Integra (DSI)</strong> adalah konsultan IT & GRC spesialis yang merancang kerangka kerja <strong className="text-bumn-gold font-medium">ICOFR (Internal Control over Financial Reporting)</strong> terintegrasi. Kami memperkokoh kepatuhan regulasi, tata kelola korporasi sehat, dan mitigasi risiko operasional demi akuntabilitas prima <strong className="text-white font-medium">BUMN</strong> dan kepatuhan ketat <strong className="text-white font-medium">Sektor Perbankan</strong>.
+              <strong className="text-white font-semibold">Daya Solusi Integra (DSI)</strong> adalah konsultan IT & GRC spesialis yang merancang kerangka kerja <strong className="text-bumn-gold font-medium"><GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> (Internal Control over Financial Reporting)</strong> terintegrasi. Kami memperkokoh kepatuhan regulasi, tata kelola korporasi sehat, dan mitigasi risiko operasional demi akuntabilitas prima <strong className="text-white font-medium">BUMN</strong> dan kepatuhan ketat <strong className="text-white font-medium">Sektor Perbankan</strong>.
             </p>
 
             {/* CTAs */}
@@ -51,7 +52,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-primary-cta"
                 onClick={() => onScrollToSection("assessment")}
-                className="group flex items-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/10 cursor-pointer"
+                className="group flex items-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/10 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
               >
                 Uji Maturitas GRC Anda
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -60,7 +61,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-secondary-cta"
                 onClick={onOpenAdvisor}
-                className="flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200"
+                className="flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
               >
                 <MessageSquare className="w-4 h-4 text-bumn-gold" />
                 Konsultasi AI DSI
@@ -71,7 +72,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-slate-400 text-sm" id="hero-badges">
               <span className="flex items-center gap-2 font-medium text-slate-300">
                 <Milestone className="w-4 h-4 text-bumn-blue" />
-                Kementerian BUMN GCG
+                Kementerian BUMN <GlossaryTooltip acronym="GCG">GCG</GlossaryTooltip>
               </span>
               <span className="w-1.5 h-1.5 bg-slate-800 rounded-full hidden sm:inline" />
               <span className="flex items-center gap-2 font-medium text-slate-300">
@@ -81,7 +82,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <span className="w-1.5 h-1.5 bg-slate-800 rounded-full hidden sm:inline" />
               <span className="flex items-center gap-2 font-medium text-slate-300">
                 <ShieldCheck className="w-4 h-4 text-bumn-blue" />
-                Sertifikasi COSO / COBIT
+                Sertifikasi <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> / COBIT
               </span>
             </div>
           </div>
@@ -94,7 +95,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <div className="absolute -inset-0.5 rounded-2xl bg-blue-500/5 opacity-40 blur-2xl" />
               
               {/* Glass Interface Mockup */}
-              <div className="relative glass-panel rounded-2xl p-6 border border-slate-800 shadow-2xl space-y-6">
+              <div className="relative glass-panel rounded-2xl p-6 border border-slate-800 space-y-6">
                 
                 {/* Simulated Header */}
                 <div className="flex items-center justify-between border-b border-slate-800 pb-4">
@@ -122,28 +123,28 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
                   {/* Core pillars visualization (Clean text columns separated by vertical divider) */}
                   <div className="grid grid-cols-3 divide-x divide-slate-800/80 py-2">
                     <div className="text-left pr-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Entity Level</span>
-                      <span className="text-sm font-bold text-white mt-1 block">COSO Compliant</span>
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Level Entitas</span>
+                      <span className="text-sm font-bold text-white mt-1 block">Kepatuhan <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip></span>
                     </div>
                     <div className="text-left px-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">IT Controls</span>
-                      <span className="text-sm font-bold text-white mt-1 block">ITGC Orchestrated</span>
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Kontrol TI</span>
+                      <span className="text-sm font-bold text-white mt-1 block">Tata Kelola <GlossaryTooltip acronym="ITGC">ITGC</GlossaryTooltip></span>
                     </div>
                     <div className="text-left pl-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Audit Goal</span>
-                      <span className="text-sm font-bold text-bumn-gold mt-1 block">WTP Opinion</span>
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Target Audit</span>
+                      <span className="text-sm font-bold text-bumn-gold mt-1 block">Opini <GlossaryTooltip acronym="WTP">WTP</GlossaryTooltip></span>
                     </div>
                   </div>
 
-                  {/* Trust highlight block (Left-accented typography notification instead of card) */}
-                  <div className="border-l border-blue-500/30 pl-4 text-left flex gap-3">
+                  {/* Trust highlight block (Accented card instead of side-stripe) */}
+                  <div className="bg-blue-950/20 border border-blue-500/10 rounded-xl p-3.5 text-left flex gap-3">
                     <div className="text-blue-400 shrink-0 mt-0.5">
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-bumn-gold uppercase tracking-wider font-mono">Kepatuhan Regulasi Kritis</div>
                       <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                        Sistem audit komprehensif yang dioptimalkan sesuai ketentuan BPK, BPKP, OJK, dan auditor internal perbankan.
+                        Sistem audit komprehensif yang dioptimalkan sesuai ketentuan BPK, BPKP, <GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip>, dan auditor internal perbankan.
                       </p>
                     </div>
                   </div>
@@ -162,19 +163,36 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             { value: "WTP", label: "Target Opini Audit", desc: "Wajar Tanpa Pengecualian" },
             { value: "COSO", label: "Metodologi Standar", desc: "Kerangka Kerja Global" },
             { value: "15+", label: "Auditor Ahli Senior", desc: "Pengalaman di BUMN" }
-          ].map((stat, idx) => (
-            <div 
-              key={idx}
-              id={`stat-card-${idx}`} 
-              className="flex-1 px-6 first:pl-0 last:pr-0 flex items-start gap-4 text-left py-4 md:py-0"
-            >
-              <div className="text-3xl font-extrabold text-white font-display shrink-0 mt-1">{stat.value}</div>
-              <div>
-                <div className="text-xs font-semibold text-bumn-gold/90 tracking-wider uppercase font-mono">{stat.label}</div>
-                <div className="text-xs text-slate-400 mt-1 leading-normal">{stat.desc}</div>
+          ].map((stat, idx) => {
+            const getStyledValue = (val: string) => {
+              if (val === "WTP") return <GlossaryTooltip acronym="WTP">WTP</GlossaryTooltip>;
+              if (val === "COSO") return <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip>;
+              return val;
+            };
+            const getStyledDesc = (desc: string) => {
+              if (desc.includes("OJK")) {
+                return (
+                  <>
+                    Sesuai <GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip> & BUMN
+                  </>
+                );
+              }
+              return desc;
+            };
+            return (
+              <div 
+                key={idx}
+                id={`stat-card-${idx}`} 
+                className="flex-1 px-6 first:pl-0 last:pr-0 flex items-start gap-4 text-left py-4 md:py-0"
+              >
+                <div className="text-3xl font-extrabold text-white font-display shrink-0 mt-1">{getStyledValue(stat.value)}</div>
+                <div>
+                  <div className="text-xs font-semibold text-bumn-gold/90 tracking-wider uppercase font-mono">{stat.label}</div>
+                  <div className="text-xs text-slate-400 mt-1 leading-normal">{getStyledDesc(stat.desc)}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

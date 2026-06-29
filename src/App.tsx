@@ -117,22 +117,6 @@ export default function App() {
       {/* Corporate Footer */}
       <Footer />
 
-      {/* Floating AI Consultant trigger badge (only shown when drawer is closed) */}
-      {!isAdvisorOpen && (
-        <button
-          id="floating-ai-trigger"
-          onClick={() => setIsAdvisorOpen(true)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl shadow-lg shadow-blue-900/30 hover:scale-105 active:scale-95 transition-all duration-300 font-bold text-xs font-display tracking-wider cursor-pointer group"
-          title="Butuh konsultasi GRC? Tanya AI sekarang"
-        >
-          <div className="relative">
-            <MessageSquareCode className="w-5 h-5 text-white" />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-bumn-gold rounded-full animate-ping" />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-bumn-gold rounded-full" />
-          </div>
-          <span>Konsultasi AI DSI</span>
-        </button>
-      )}
 
       {/* Slide-over interactive AI Consultant Drawer */}
       <AiAdvisor 

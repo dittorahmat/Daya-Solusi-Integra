@@ -43,7 +43,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [selectedContext, setSelectedContext] = useState<"BUMN" | "Banking" | "General">("General");
-  
+  const drawerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -57,21 +57,56 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // Handle focus and escape key close
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isOpen]);
+
+  // Handle focus, escape key, and keyboard focus trapping
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
 
-      const handleEscape = (e: KeyboardEvent) => {
+      const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           onClose();
         }
+
+        if (e.key === "Tab" && drawerRef.current) {
+          const focusableElements = drawerRef.current.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          const focusable = Array.from(focusableElements) as HTMLElement[];
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
+            }
+          }
+        }
       };
-      window.addEventListener("keydown", handleEscape);
+
+      window.addEventListener("keydown", handleKeyDown);
       return () => {
-        window.removeEventListener("keydown", handleEscape);
+        window.removeEventListener("keydown", handleKeyDown);
       };
     }
   }, [isOpen, onClose]);
@@ -179,7 +214,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
       />
 
       {/* Slide-over panel */}
-      <div className="relative w-full max-w-xl bg-[#0b0f19] border-l border-slate-800 shadow-2xl h-full flex flex-col justify-between animate-in slide-in-from-right duration-300">
+      <div ref={drawerRef} className="relative w-full max-w-xl bg-[#0b0f19] border-l border-slate-800 h-full flex flex-col justify-between animate-in slide-in-from-right duration-300">
         
         {/* Drawer Header */}
         <div className="p-6 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between text-left">

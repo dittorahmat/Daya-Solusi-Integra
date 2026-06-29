@@ -19,31 +19,51 @@ import {
   RefreshCw
 } from "lucide-react";
 import Markdown from "react-markdown";
+import GlossaryTooltip from "./GlossaryTooltip";
 
 export default function Assessment({ onComplete }: { onComplete?: (company: string, sector: string) => void }) {
   // Step tracker: -1 = Info form, 0 to 9 = Questions, 10 = Results
-  const [currentStep, setCurrentStep] = useState<number>(-1);
-  const [companyName, setCompanyName] = useState<string>("");
-  const [sector, setSector] = useState<"BUMN" | "Banking">("BUMN");
-  const [validationError, setValidationError] = useState<string>("");
+  const [currentStep, setCurrentStep] = React.useState<number>(() => {
+    const saved = sessionStorage.getItem("dsi_assessment_step");
+    return saved !== null ? parseInt(saved, 10) : -1;
+  });
+  const [companyName, setCompanyName] = React.useState<string>(() => {
+    return sessionStorage.getItem("dsi_assessment_company") || "";
+  });
+  const [sector, setSector] = React.useState<"BUMN" | "Banking">(() => {
+    return (sessionStorage.getItem("dsi_assessment_sector") as "BUMN" | "Banking") || "BUMN";
+  });
+  const [validationError, setValidationError] = React.useState<string>("");
   
   // Record user selections: questionId -> score (1-4)
-  const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [isLoadingAiReport, setIsLoadingAiReport] = useState<boolean>(false);
-  const [aiReport, setAiReport] = useState<string>("");
-  const [reassuringMessage, setReassuringMessage] = useState<string>("");
+  const [answers, setAnswers] = React.useState<Record<string, number>>(() => {
+    const saved = sessionStorage.getItem("dsi_assessment_answers");
+    return saved ? JSON.parse(saved) : {};
+  });
+  const [isLoadingAiReport, setIsLoadingAiReport] = React.useState<boolean>(false);
+  const [aiReport, setAiReport] = React.useState<string>("");
+  const [reassuringMessage, setReassuringMessage] = React.useState<string>("");
+  const [activeResultsTab, setActiveResultsTab] = React.useState<"summary" | "report">("summary");
+  const [isCopied, setIsCopied] = React.useState<boolean>(false);
+
+  // Sync state changes with sessionStorage
+  React.useEffect(() => {
+    sessionStorage.setItem("dsi_assessment_step", currentStep.toString());
+  }, [currentStep]);
+
+  React.useEffect(() => {
+    sessionStorage.setItem("dsi_assessment_company", companyName);
+  }, [companyName]);
+
+  React.useEffect(() => {
+    sessionStorage.setItem("dsi_assessment_sector", sector);
+  }, [sector]);
+
+  React.useEffect(() => {
+    sessionStorage.setItem("dsi_assessment_answers", JSON.stringify(answers));
+  }, [answers]);
 
   const totalQuestions = assessmentQuestions.length;
-
-  const handleStart = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!companyName.trim()) {
-      setValidationError("Silakan masukkan nama organisasi/instansi Anda terlebih dahulu.");
-      return;
-    }
-    setValidationError("");
-    setCurrentStep(0);
-  };
 
   const handleSelectOption = (questionId: string, score: number) => {
     setAnswers((prev) => ({ ...prev, [questionId]: score }));
@@ -57,6 +77,38 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
         onComplete?.(companyName, sector);
       }
     }, 280);
+  };
+
+  // Keyboard shortcut listener (keys 1-4) for question selections
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (currentStep >= 0 && currentStep < totalQuestions) {
+        if (["1", "2", "3", "4"].includes(e.key)) {
+          const target = e.target as HTMLElement;
+          if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+            return;
+          }
+          e.preventDefault();
+          const score = parseInt(e.key, 10);
+          const questionId = assessmentQuestions[currentStep].id;
+          handleSelectOption(questionId, score);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [currentStep, totalQuestions]);
+
+  const handleStart = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!companyName.trim()) {
+      setValidationError("Silakan masukkan nama organisasi/instansi Anda terlebih dahulu.");
+      return;
+    }
+    setValidationError("");
+    setCurrentStep(0);
   };
 
   const handlePrev = () => {
@@ -175,10 +227,26 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
     }
   };
 
+  const handleCopy = async () => {
+    if (!aiReport) return;
+    try {
+      await navigator.clipboard.writeText(aiReport);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      console.error("Gagal menyalin teks: ", err);
+    }
+  };
+
   const handleReset = () => {
     setAnswers({});
     setCurrentStep(-1);
     setAiReport("");
+    setActiveResultsTab("summary");
+    sessionStorage.removeItem("dsi_assessment_step");
+    sessionStorage.removeItem("dsi_assessment_company");
+    sessionStorage.removeItem("dsi_assessment_sector");
+    sessionStorage.removeItem("dsi_assessment_answers");
   };
 
   const results = currentStep === totalQuestions ? calculateResults() : null;
@@ -195,11 +263,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
-            Alat Asesmen Interaktif
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            GRC & ICOFR Maturity Self-Assessment
+            GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Maturity Self-Assessment
           </h2>
           <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Evaluasi mandiri tingkat kematangan kontrol internal pelaporan keuangan Anda secara gratis. Dapatkan saran perbaikan instan berbasis AI.
@@ -207,7 +272,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
         </div>
 
         {/* Core Wizard Container */}
-        <div className="glass-panel rounded-2xl border border-slate-800/80 bg-slate-950/50 shadow-2xl overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
+        <div className="glass-panel rounded-2xl border border-slate-800/80 bg-slate-950/50 shadow-sm overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
           
           {/* STEP -1: Company Info Setup */}
           {currentStep === -1 && (
@@ -217,7 +282,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   Mulai Evaluasi Mandiri Organisasi Anda
                 </h3>
                 <p className="text-slate-400 font-light text-sm leading-relaxed max-w-xl">
-                  Harap lengkapi identitas dasar di bawah ini untuk memulai evaluasi 10 indikator kontrol internal pelaporan keuangan (ICOFR) berdasarkan COSO framework.
+                  Harap lengkapi identitas dasar di bawah ini untuk memulai evaluasi 10 indikator kontrol internal pelaporan keuangan (<GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>) berdasarkan <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> framework.
                 </p>
               </div>
 
@@ -246,6 +311,10 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       {validationError}
                     </p>
                   )}
+                  <p className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-2">
+                    <Shield className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
+                    Data diproses secara aman dalam memori & dilindungi standar NDA
+                  </p>
                 </div>
 
                 {/* Target Segment */}
@@ -326,7 +395,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
 
           {/* STEPS 0 to 9: Evaluation Questions */}
           {currentStep >= 0 && currentStep < totalQuestions && (
-            <div className="p-6 sm:p-10 space-y-8 flex flex-col justify-between h-full animate-in fade-in duration-300" id="step-question-form">
+            <div className="p-6 sm:p-10 space-y-6 flex flex-col justify-between h-full animate-in fade-in duration-300" id="step-question-form">
               {/* Top progress and category header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/60 pb-4 text-left">
                 <div className="space-y-1">
@@ -352,8 +421,33 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                 </div>
               </div>
 
+              {/* Horizontal Question Step Navigation */}
+              <div className="flex flex-wrap gap-1.5 items-center justify-start py-2 border-b border-slate-800/40" id="wizard-step-nav">
+                {Array.from({ length: totalQuestions }).map((_, idx) => {
+                  const isCompleted = answers[assessmentQuestions[idx].id] !== undefined;
+                  const isActive = currentStep === idx;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentStep(idx)}
+                      title={`Lompat ke Pertanyaan ${idx + 1}`}
+                      className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-all focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                        isActive
+                          ? "bg-bumn-blue text-white ring-1 ring-blue-400"
+                          : isCompleted
+                          ? "bg-blue-950/30 text-blue-400 border border-blue-900/40 hover:bg-blue-900/30"
+                          : "bg-slate-900 text-slate-500 border border-slate-800 hover:bg-slate-800 hover:text-slate-400"
+                      }`}
+                    >
+                      {idx + 1}
+                    </button>
+                  );
+                })}
+              </div>
+
               {/* Question Text */}
-              <div className="space-y-6 py-4 text-left">
+              <div className="space-y-6 py-2 text-left">
                 <h3 id="current-question-title" className="text-lg sm:text-xl font-bold text-white tracking-tight leading-relaxed">
                   {assessmentQuestions[currentStep].text}
                 </h3>
@@ -368,19 +462,19 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   {assessmentQuestions[currentStep].options.map((opt, idx) => {
                     const isSelected = answers[assessmentQuestions[currentStep].id] === opt.score;
                      const handleKeyDown = (e: React.KeyboardEvent) => {
-                      const totalOpts = assessmentQuestions[currentStep].options.length;
-                      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-                        e.preventDefault();
-                        const nextBtn = document.getElementById(`option-btn-${(idx + 1) % totalOpts}`);
-                        nextBtn?.focus();
-                      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-                        e.preventDefault();
-                        const prevBtn = document.getElementById(`option-btn-${(idx - 1 + totalOpts) % totalOpts}`);
-                        prevBtn?.focus();
-                      }
-                    };
-                    const isFocusable = isSelected || (answers[assessmentQuestions[currentStep].id] === undefined && idx === 0);
-                    return (
+                       const totalOpts = assessmentQuestions[currentStep].options.length;
+                       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+                         e.preventDefault();
+                         const nextBtn = document.getElementById(`option-btn-${(idx + 1) % totalOpts}`);
+                         nextBtn?.focus();
+                       } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+                         e.preventDefault();
+                         const prevBtn = document.getElementById(`option-btn-${(idx - 1 + totalOpts) % totalOpts}`);
+                         prevBtn?.focus();
+                       }
+                     };
+                     const isFocusable = isSelected || (answers[assessmentQuestions[currentStep].id] === undefined && idx === 0);
+                     return (
                       <button
                         key={idx}
                         id={`option-btn-${idx}`}
@@ -389,10 +483,10 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         tabIndex={isFocusable ? 0 : -1}
                         onKeyDown={handleKeyDown}
                         onClick={() => handleSelectOption(assessmentQuestions[currentStep].id, opt.score)}
-                        className={`w-full py-4 px-2 text-left text-sm transition-all flex items-start gap-4 focus:outline-none focus-visible:bg-slate-900/40 ${
+                        className={`w-full py-4 px-3 text-left text-sm transition-all flex items-start gap-4 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1220] ${
                           isSelected
-                            ? "text-white font-medium"
-                            : "text-slate-300 hover:text-white"
+                            ? "text-white font-medium bg-slate-900/40"
+                            : "text-slate-300 hover:text-white hover:bg-slate-900/20"
                         }`}
                       >
                         <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border text-[11px] font-bold ${
@@ -410,15 +504,27 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               </div>
 
               {/* Bottom navigation buttons */}
-              <div className="flex justify-between items-center pt-6 border-t border-slate-800/40">
-                <button
-                  id="prev-question-btn"
-                  onClick={handlePrev}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  Kembali
-                </button>
+              <div className="flex flex-wrap gap-3 items-center justify-between pt-6 border-t border-slate-800/40">
+                <div className="flex items-center gap-3">
+                  <button
+                    id="prev-question-btn"
+                    onClick={handlePrev}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Kembali
+                  </button>
+                  <button
+                    id="show-results-shortcut-btn"
+                    onClick={() => {
+                      setCurrentStep(totalQuestions);
+                      onComplete?.(companyName, sector);
+                    }}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-bumn-gold hover:text-white bg-slate-900 hover:bg-slate-800 border border-bumn-gold/30 hover:border-bumn-gold/60 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold/50"
+                  >
+                    Lihat Hasil Sekarang
+                  </button>
+                </div>
                 
                 <span className="text-xs text-slate-500 font-mono">
                   Sektor: {sector === "BUMN" ? "BUMN / BUMD" : "Perbankan / OJK"}
@@ -458,144 +564,194 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                 </div>
               </div>
 
-              {/* Maturity Level Display (Line Accent instead of Nested Card) */}
-              <div className="border-l-2 border-bumn-blue pl-6 py-2 text-left flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                <div className="bg-blue-950/50 text-blue-400 shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-900/30">
-                  Lvl {results.level}
-                </div>
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className="text-lg font-bold text-white">{results.levelLabel}</h4>
-                    <span className="text-[10px] uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">{results.levelDesc}</p>
-                </div>
+              {/* Tabs Navigation */}
+              <div className="flex border-b border-slate-800/60" id="results-tab-nav">
+                <button
+                  type="button"
+                  onClick={() => setActiveResultsTab("summary")}
+                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none ${
+                    activeResultsTab === "summary"
+                      ? "border-bumn-blue text-white"
+                      : "border-transparent text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  Ringkasan Skor
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveResultsTab("report");
+                    // Auto-generate if clicked and not yet generated/loading
+                    if (!aiReport && !isLoadingAiReport) {
+                      generateAiReport();
+                    }
+                  }}
+                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none flex items-center gap-2 ${
+                    activeResultsTab === "report"
+                      ? "border-bumn-blue text-white"
+                      : "border-transparent text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 text-bumn-gold" />
+                  Laporan Rekomendasi AI
+                  {aiReport && (
+                    <span className="w-1.5 h-1.5 bg-bumn-gold rounded-full" />
+                  )}
+                </button>
               </div>
 
-              {/* Category Scores breakdown (Flat list instead of Nested Cards) */}
-              <div className="space-y-6 text-left">
-                <h4 className="text-xs font-bold text-slate-300">
-                  Rincian Skor per Dimensi COSO Internal Control
-                </h4>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                  {[
-                    { key: "Control Environment", label: "Lingkungan Pengendalian", icon: Shield },
-                    { key: "Risk Assessment", label: "Penilaian Risiko", icon: Briefcase },
-                    { key: "Control Activities", label: "Aktivitas Pengendalian", icon: Cpu },
-                    { key: "Information & Communication", label: "Informasi & Komunikasi", icon: TrendingUp },
-                    { key: "Monitoring", label: "Aktivitas Pemantauan", icon: RefreshCw }
-                  ].map((dim, idx) => {
-                    const score = results.categoryAverages[dim.key] || 1;
-                    const pct = (score / 4) * 100;
-                    const Icon = dim.icon;
-                    return (
-                      <div key={idx} className="space-y-2 py-2">
-                        <div className="flex justify-between items-center gap-2">
-                          <div className="flex items-center gap-2 text-slate-400">
-                            <Icon className="w-4 h-4 text-bumn-gold" />
-                            <span className="text-xs text-slate-400 font-semibold uppercase font-mono tracking-wider">
-                              {dim.key === "Control Environment" ? "Environment" : dim.key.split(" ")[0]}
-                            </span>
-                          </div>
-                          <span className="text-xs font-mono font-bold text-white">
-                            {score.toFixed(1)}/4.0
-                          </span>
-                        </div>
-                        <div className="space-y-1">
-                          <span className="text-xs text-slate-500 font-medium block leading-tight truncate">
-                            {dim.label}
-                          </span>
-                          <div className="w-full bg-slate-900 h-1 rounded-full overflow-hidden">
-                            <div 
-                              className="bg-bumn-blue h-full rounded-full transition-all" 
-                              style={{ width: `${pct}%` }}
-                            />
-                          </div>
-                        </div>
+              {/* Tab 1: Summary */}
+              {activeResultsTab === "summary" && (
+                <div className="space-y-8 animate-in fade-in duration-300">
+                  {/* Maturity Level Display (Uniform Border instead of Left Stripe Accent) */}
+                  <div className="border border-slate-800/80 rounded-2xl p-6 text-left bg-slate-900/30 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                    <div className="bg-blue-950/50 text-blue-400 shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-900/30">
+                      Lvl {results.level}
+                    </div>
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h4 className="text-lg font-bold text-white">{results.levelLabel}</h4>
+                        <span className="text-[10px] uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
                       </div>
-                    );
-                  })}
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">{results.levelDesc}</p>
+                    </div>
+                  </div>
+
+                  {/* Category Scores breakdown (Flat list instead of Nested Cards) */}
+                  <div className="space-y-6 text-left">
+                    <h4 className="text-xs font-bold text-slate-300">
+                      Rincian Skor per Dimensi COSO Internal Control
+                    </h4>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                      {[
+                        { key: "Control Environment", label: "Lingkungan Pengendalian", short: "Lingkungan", icon: Shield },
+                        { key: "Risk Assessment", label: "Penilaian Risiko", short: "Risiko", icon: Briefcase },
+                        { key: "Control Activities", label: "Aktivitas Pengendalian", short: "Aktivitas", icon: Cpu },
+                        { key: "Information & Communication", label: "Informasi & Komunikasi", short: "Informasi", icon: TrendingUp },
+                        { key: "Monitoring", label: "Aktivitas Pemantauan", short: "Pemantauan", icon: RefreshCw }
+                      ].map((dim, idx) => {
+                        const score = results.categoryAverages[dim.key] || 1;
+                        const pct = (score / 4) * 100;
+                        const Icon = dim.icon;
+                        return (
+                          <div key={idx} className="space-y-2 py-2">
+                            <div className="flex justify-between items-center gap-2">
+                              <div className="flex items-center gap-2 text-slate-400">
+                                <Icon className="w-4 h-4 text-bumn-gold" />
+                                <span className="text-xs text-slate-400 font-semibold uppercase font-mono tracking-wider">
+                                  {dim.short}
+                                </span>
+                              </div>
+                              <span className="text-xs font-mono font-bold text-white">
+                                {score.toFixed(1)}/4.0
+                              </span>
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-xs text-slate-500 font-medium block leading-tight truncate">
+                                {dim.label}
+                              </span>
+                              <div className="w-full bg-slate-900 h-1 rounded-full overflow-hidden">
+                                <div 
+                                  className="bg-bumn-blue h-full rounded-full transition-all" 
+                                  style={{ width: `${pct}%` }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* AI Report Generation Section */}
-              <div className="pt-6 border-t border-slate-800/40 flex flex-col items-center justify-center space-y-6 text-center">
-                
-                {!aiReport && !isLoadingAiReport && (
-                  <div className="max-w-xl space-y-4">
-                    <p className="text-sm text-slate-400">
-                      Butuh rekomendasi formal komprehensif? Klik di bawah untuk meluncurkan analisis AI kustom yang diselaraskan dengan standar tata kelola Kementerian BUMN / Regulasi OJK Perbankan.
-                    </p>
-                    <button
-                      id="assess-ai-generate-btn"
-                      onClick={generateAiReport}
-                      className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
-                    >
-                      <Sparkles className="w-4 h-4 text-white" />
-                      Formulasikan Executive Report dengan AI
-                    </button>
-                  </div>
-                )}
-
-                {/* Loading state */}
-                {isLoadingAiReport && (
-                  <div className="p-8 space-y-4 flex flex-col items-center justify-center" id="ai-loading-state">
-                    <Loader2 className="w-8 h-8 text-bumn-gold animate-spin" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-bold text-white font-mono animate-pulse">
-                        Sedang Menganalisis...
+              {/* Tab 2: AI Report */}
+              {activeResultsTab === "report" && (
+                <div className="space-y-6 animate-in fade-in duration-300 text-center">
+                  {!aiReport && !isLoadingAiReport && (
+                    <div className="max-w-xl mx-auto py-8 space-y-4">
+                      <p className="text-sm text-slate-400">
+                        Butuh rekomendasi formal komprehensif? Klik di bawah untuk meluncurkan analisis AI kustom yang diselaraskan dengan standar tata kelola Kementerian BUMN / Regulasi OJK Perbankan.
                       </p>
-                      <p className="text-xs text-slate-500 font-light italic">
-                        {reassuringMessage}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* AI Executive Report Result (Borderless Container inside Wizard) */}
-                {aiReport && (
-                  <div className="w-full border-t border-slate-800 pt-8 text-left animate-in fade-in zoom-in-95 duration-500 relative" id="ai-report-display">
-                    
-                    {/* Header bar of report */}
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                      <div className="flex items-center gap-2 text-bumn-gold text-xs font-mono">
-                        <FileText className="w-4 h-4" />
-                        AI Generated Advisory Report
-                      </div>
-                      <span className="text-xs text-slate-500 font-mono bg-slate-800 px-2 py-0.5 rounded">DSI Expert Suite</span>
-                    </div>
-
-                    {/* Markdown rendering with elegant custom typography styles */}
-                    <div className="prose prose-invert prose-blue max-w-none text-xs sm:text-sm text-slate-300 leading-relaxed font-light space-y-4">
-                      <Markdown>{aiReport}</Markdown>
-                    </div>
-
-                    {/* Report action footer */}
-                    <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap gap-4 justify-between items-center">
-                      <span className="text-xs text-slate-500 font-mono italic">
-                        Didesain untuk kebutuhan Direksi & Komite Audit. PT Daya Solusi Integra.
-                      </span>
                       <button
-                        onClick={() => window.print()}
-                        className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
+                        id="assess-ai-generate-btn"
+                        onClick={generateAiReport}
+                        className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                       >
-                        Cetak Laporan
+                        <Sparkles className="w-4 h-4 text-white" />
+                        Formulasikan Executive Report dengan AI
                       </button>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Restart option */}
-                <div className="pt-4">
-                  <button
-                    id="restart-assessment-btn"
-                    onClick={handleReset}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
-                  >
-                    <RotateCcw className="w-4.5 h-4.5" />
-                    Reset & Ulangi Asesmen
-                  </button>
+                  {/* Loading state */}
+                  {isLoadingAiReport && (
+                    <div className="p-8 space-y-4 flex flex-col items-center justify-center" id="ai-loading-state">
+                      <Loader2 className="w-8 h-8 text-bumn-gold animate-spin" />
+                      <div className="space-y-1">
+                        <p className="text-sm font-bold text-white font-mono animate-pulse">
+                          Sedang Menganalisis...
+                        </p>
+                        <p className="text-xs text-slate-500 font-light italic">
+                          {reassuringMessage}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* AI Executive Report Result */}
+                  {aiReport && (
+                    <div className="w-full text-left animate-in fade-in zoom-in-95 duration-500 relative" id="ai-report-display">
+                      
+                      {/* Header bar of report */}
+                      <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                        <div className="flex items-center gap-2 text-bumn-gold text-xs font-mono">
+                          <FileText className="w-4 h-4" />
+                          AI Generated Advisory Report
+                        </div>
+                        <span className="text-xs text-slate-500 font-mono bg-slate-800 px-2 py-0.5 rounded">DSI Expert Suite</span>
+                      </div>
+
+                      {/* Markdown rendering */}
+                      <div className="prose prose-invert prose-blue max-w-none text-xs sm:text-sm text-slate-300 leading-relaxed font-light space-y-4">
+                        <Markdown>{aiReport}</Markdown>
+                      </div>
+
+                      {/* Report action footer */}
+                      <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap gap-4 justify-between items-center">
+                        <span className="text-xs text-slate-500 font-mono italic">
+                          Didesain untuk kebutuhan Direksi & Komite Audit. PT Daya Solusi Integra.
+                        </span>
+                        <div className="flex gap-2.5">
+                          <button
+                            onClick={handleCopy}
+                            className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
+                          >
+                            {isCopied ? "Tersalin!" : "Salin Laporan"}
+                          </button>
+                          <button
+                            onClick={() => window.print()}
+                            className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
+                          >
+                            Cetak Laporan
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
+              )}
+
+              {/* Restart option */}
+              <div className="pt-4 border-t border-slate-900 flex justify-center">
+                <button
+                  id="restart-assessment-btn"
+                  onClick={handleReset}
+                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                >
+                  <RotateCcw className="w-4.5 h-4.5" />
+                  Reset & Ulangi Asesmen
+                </button>
               </div>
 
             </div>

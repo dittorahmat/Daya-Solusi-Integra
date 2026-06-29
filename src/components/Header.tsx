@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Shield, Menu, X, ArrowRight, MessageSquareCode } from "lucide-react";
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
 export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileDrawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,56 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isMobileMenuOpen]);
+
+  // Trap keyboard focus in mobile drawer
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setIsMobileMenuOpen(false);
+        }
+
+        if (e.key === "Tab" && mobileDrawerRef.current) {
+          const focusableElements = mobileDrawerRef.current.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          const focusable = Array.from(focusableElements) as HTMLElement[];
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isMobileMenuOpen]);
 
   const navItems = [
     { id: "hero", label: "Beranda" },
@@ -56,7 +107,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
           {/* Logo & Brand */}
           <button 
             onClick={() => handleNavClick("hero")}
-            className="flex items-center gap-3 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-xl p-1 text-left"
+            className="flex items-center gap-3 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] rounded-xl p-1 text-left"
             id="dsi-logo-container"
           >
             <div className="bg-gradient-to-tr from-bumn-blue to-blue-700 p-2.5 rounded-xl shadow-lg shadow-blue-950/30 group-hover:scale-105 transition-transform duration-300">
@@ -79,7 +130,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                 key={item.id}
                 id={`nav-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
                   activeTab === item.id
                     ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
                     : "text-slate-300 hover:text-white hover:bg-slate-800/40"
@@ -95,7 +146,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="header-ai-chat-btn"
               onClick={onOpenAdvisor}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
               <MessageSquareCode className="w-4 h-4" />
               AI GRC Consultant
@@ -103,7 +154,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="header-cta-btn"
               onClick={() => handleNavClick("assessment")}
-              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
               Coba Asesmen
               <ArrowRight className="w-4 h-4" />
@@ -115,7 +166,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -126,6 +177,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
         <div 
+          ref={mobileDrawerRef}
           className="md:hidden absolute top-full left-0 right-0 bg-[#0d1322] border-b border-slate-800 shadow-2xl animate-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-80px)] overflow-y-auto" 
           id="mobile-drawer"
         >

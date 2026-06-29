@@ -9,8 +9,10 @@ import {
   Send, 
   Sparkles, 
   ShieldAlert, 
-  Building 
+  Building,
+  ArrowRight
 } from "lucide-react";
+import GlossaryTooltip from "./GlossaryTooltip";
 
 export default function Contact({ prefill }: { prefill?: { company: string; sector: string } | null }) {
   const [form, setForm] = useState<InquiryForm>({
@@ -23,8 +25,12 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
     message: ""
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [warnings, setWarnings] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [step, setStep] = useState<1 | 2>(1);
 
   // Pre-fill form when assessment prefill data arrives
   React.useEffect(() => {
@@ -34,11 +40,106 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
         company: prefill.company || prev.company,
         sector: (prefill.sector as any) || prev.sector,
       }));
+      // Validate pre-filled company name
+      if (prefill.company) {
+        validateField("company", prefill.company);
+      }
     }
   }, [prefill]);
 
+  const validateEmail = (val: string) => {
+    if (!val) return { error: "Surel resmi wajib diisi.", warning: "" };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(val)) return { error: "Format surel tidak valid.", warning: "" };
+    const personalDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
+    const domain = val.split("@")[1]?.toLowerCase();
+    if (personalDomains.includes(domain)) {
+      return { error: "", warning: "Kami menyarankan surel korporasi demi keamanan data, namun Anda tetap dapat melanjutkan." };
+    }
+    return { error: "", warning: "" };
+  };
+
+  const validatePhone = (val: string) => {
+    if (!val) return "No. telepon wajib diisi.";
+    const phoneRegex = /^[0-9+()-\s]{9,15}$/;
+    if (!phoneRegex.test(val)) return "No. telepon tidak valid (9-15 digit angka).";
+    return "";
+  };
+
+  const validateName = (val: string) => {
+    if (!val.trim()) return "Nama lengkap wajib diisi.";
+    if (val.trim().length < 3) return "Nama lengkap minimal 3 karakter.";
+    return "";
+  };
+
+  const validateCompany = (val: string) => {
+    if (!val.trim()) return "Nama perusahaan wajib diisi.";
+    if (val.trim().length < 3) return "Nama perusahaan/organisasi minimal 3 karakter.";
+    return "";
+  };
+
+  const validateMessage = (val: string) => {
+    if (!val.trim()) return "Pesan wajib diisi.";
+    if (val.trim().length < 10) return "Silakan berikan deskripsi kebutuhan minimal 10 karakter.";
+    return "";
+  };
+
+  const validateField = (name: string, value: string) => {
+    let err = "";
+    let warn = "";
+    if (name === "name") err = validateName(value);
+    else if (name === "company") err = validateCompany(value);
+    else if (name === "email") {
+      const res = validateEmail(value);
+      err = res.error;
+      warn = res.warning;
+    }
+    else if (name === "phone") err = validatePhone(value);
+    else if (name === "message") err = validateMessage(value);
+
+    setErrors((prev) => ({ ...prev, [name]: err }));
+    setWarnings((prev) => ({ ...prev, [name]: warn }));
+  };
+
+  const handleChange = (name: string, value: string) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      validateField(name, value);
+    }
+  };
+
+  const handleBlur = (name: string, value: string) => {
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    validateField(name, value);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const emailValidation = validateEmail(form.email);
+    const newErrors = {
+      name: validateName(form.name),
+      company: validateCompany(form.company),
+      email: emailValidation.error,
+      phone: validatePhone(form.phone),
+      message: validateMessage(form.message)
+    };
+
+    setErrors(newErrors);
+    setWarnings({
+      email: emailValidation.warning
+    });
+    setTouched({
+      name: true,
+      company: true,
+      email: true,
+      phone: true,
+      message: true
+    });
+
+    const hasErrors = Object.values(newErrors).some((err) => err !== "");
+    if (hasErrors) return;
+
     setIsSubmitting(true);
     
     // Simulate API intake network request
@@ -58,7 +159,11 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
       service: "ICOFR Framework",
       message: ""
     });
+    setErrors({});
+    setWarnings({});
+    setTouched({});
     setIsSubmitted(false);
+    setStep(1);
   };
 
   return (
@@ -72,11 +177,8 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
-            Konsultasi Langsung
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Mulai Transformasi GRC & ICOFR Hari Ini
+            Mulai Transformasi GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Hari Ini
           </h2>
           <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Diskusikan kebutuhan tata kelola, audit internal, atau persiapan asersi manajemen Anda bersama tim auditor senior Daya Solusi Integra.
@@ -91,7 +193,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
             <div className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white font-display">PT Daya Solusi Integra</h3>
               <p className="text-slate-400 text-sm font-light leading-relaxed">
-                Mitra tepercaya BUMN dan industri perbankan dalam membangun integritas laporan keuangan, keandalan ITGC, dan sistem kepatuhan GRC terintegrasi.
+                Mitra tepercaya BUMN dan industri perbankan dalam membangun integritas laporan keuangan, keandalan <GlossaryTooltip acronym="ITGC">ITGC</GlossaryTooltip>, dan sistem kepatuhan GRC terintegrasi.
               </p>
             </div>
 
@@ -106,8 +208,9 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Kantor Pusat</h4>
                   <p className="text-sm text-slate-200 mt-1 leading-relaxed">
-                    Sudirman Plaza, Plaza Marein Lantai 17<br />
-                    Jl. Jend. Sudirman Kav. 76-78, Jakarta Selatan<br />
+                    Indonesia Stock Exchange Tower 1<br />
+                    Level 3. Unit 304
+                    Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan<br />
                     DKI Jakarta 12910
                   </p>
                 </div>
@@ -121,8 +224,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Telepon & Hubungan Klien</h4>
                   <p className="text-sm text-slate-200 mt-1">
-                    +62 21 5082 9201 (Office)<br />
-                    +62 811 1290 9283 (Corporate Whatsapp)
+                    +62 852 8599 5234 (Corporate Whatsapp)
                   </p>
                 </div>
               </div>
@@ -135,7 +237,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Surel Resmi</h4>
                   <p className="text-sm text-slate-200 mt-1 hover:text-blue-400 transition-colors">
-                    info@dayasolusiintegra.co.id
+                    marketing@dsintegra.co.id
                   </p>
                 </div>
               </div>
@@ -170,138 +272,221 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
 
           {/* Form Column (7 cols) */}
           <div className="lg:col-span-7" id="contact-form-block">
-            <div className="glass-panel rounded-2xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative min-h-[500px]">
+            <div className="glass-panel rounded-2xl p-6 sm:p-10 border border-slate-800 relative min-h-[500px]">
               
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6 text-left animate-in fade-in duration-300" id="inquiry-form-element">
                   
-                   {/* Row 1: Name & Company */}
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="user-name" className="text-xs font-semibold text-slate-300">Nama Lengkap</label>
-                      <input
-                        type="text"
-                        id="user-name"
-                        required
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="Contoh: Budi Santoso, M.B.A."
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="user-company" className="text-xs font-semibold text-slate-300">Nama Perusahaan / Organisasi</label>
-                      <input
-                        type="text"
-                        id="user-company"
-                        required
-                        value={form.company}
-                        onChange={(e) => setForm({ ...form, company: e.target.value })}
-                        placeholder="Contoh: PT Kereta Api Indonesia"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      />
-                    </div>
+                  {/* Step Indicators */}
+                  <div className="flex items-center gap-4 mb-6 border-b border-slate-800 pb-4">
+                    <span className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border ${
+                      step === 1 
+                        ? "bg-blue-950/40 text-blue-400 border-blue-500/20" 
+                        : "bg-slate-900 text-slate-500 border-slate-800"
+                    }`}>
+                      Langkah 1: Identitas Organisasi
+                    </span>
+                    <span className="text-slate-600 text-xs font-mono">➔</span>
+                    <span className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border ${
+                      step === 2 
+                        ? "bg-blue-950/40 text-blue-400 border-blue-500/20" 
+                        : "bg-slate-900 text-slate-500 border-slate-800"
+                    }`}>
+                      Langkah 2: Kontak & Pesan
+                    </span>
                   </div>
 
-                   {/* Row 2: Email & Phone */}
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="user-email" className="text-xs font-semibold text-slate-300">Surel Resmi / Korporasi</label>
-                      <input
-                        type="email"
-                        id="user-email"
-                        required
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="Contoh: budi.s@perusahaan.co.id"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="user-phone" className="text-xs font-semibold text-slate-300">No. Telepon Aktif / HP</label>
-                      <input
-                        type="tel"
-                        id="user-phone"
-                        required
-                        value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        placeholder="Contoh: 081234567890"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      />
-                    </div>
-                  </div>
+                  {step === 1 ? (
+                    <div className="space-y-6 animate-in fade-in duration-200">
+                      {/* Step 1 Fields: Company, Sector, Service */}
+                      <div className="space-y-2">
+                        <label htmlFor="user-company" className="text-xs font-semibold text-slate-300">Nama Perusahaan / Organisasi</label>
+                        <input
+                          type="text"
+                          id="user-company"
+                          required
+                          value={form.company}
+                          onChange={(e) => handleChange("company", e.target.value)}
+                          onBlur={(e) => handleBlur("company", e.target.value)}
+                          placeholder="Contoh: PT Kereta Api Indonesia"
+                          className={`w-full bg-slate-900 border hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors ${
+                            errors.company && touched.company ? "border-rose-500" : "border-slate-800"
+                          }`}
+                        />
+                        {errors.company && touched.company && (
+                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.company}</p>
+                        )}
+                      </div>
 
-                   {/* Row 3: Sector & Service Type */}
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="user-sector" className="text-xs font-semibold text-slate-300">Sektor Operasional</label>
-                      <select
-                        id="user-sector"
-                        value={form.sector}
-                        onChange={(e) => setForm({ ...form, sector: e.target.value as any })}
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      >
-                        <option value="BUMN">BUMN / BUMD</option>
-                        <option value="Banking">Perbankan / Jasa Keuangan</option>
-                        <option value="Swasta">Sektor Swasta / Korporasi</option>
-                        <option value="Lainnya">Kementerian / Lembaga Pemerintah</option>
-                      </select>
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="user-service" className="text-xs font-semibold text-slate-300">Layanan yang Dibutuhkan</label>
-                      <select
-                        id="user-service"
-                        value={form.service}
-                        onChange={(e) => setForm({ ...form, service: e.target.value as any })}
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                      >
-                        <option value="ICOFR Framework">Implementasi & Desain ICOFR</option>
-                        <option value="GRC Implementation">Enterprise GRC Consulting</option>
-                        <option value="IT General Controls (ITGC)">Audit ITGC & IT GRC</option>
-                        <option value="Audit Readiness">Pre-Audit Readiness & WTP Assist</option>
-                        <option value="Custom Consultation">Konsultasi Kustom GRC</option>
-                      </select>
-                    </div>
-                  </div>
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label htmlFor="user-sector" className="text-xs font-semibold text-slate-300">Sektor Operasional</label>
+                          <select
+                            id="user-sector"
+                            value={form.sector}
+                            onChange={(e) => setForm({ ...form, sector: e.target.value as any })}
+                            className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                          >
+                            <option value="BUMN">BUMN / BUMD</option>
+                            <option value="Banking">Perbankan / Jasa Keuangan</option>
+                            <option value="Swasta">Sektor Swasta / Korporasi</option>
+                            <option value="Lainnya">Kementerian / Lembaga Pemerintah</option>
+                          </select>
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="user-service" className="text-xs font-semibold text-slate-300">Layanan yang Dibutuhkan</label>
+                          <select
+                            id="user-service"
+                            value={form.service}
+                            onChange={(e) => setForm({ ...form, service: e.target.value as any })}
+                            className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                          >
+                            <option value="ICOFR Framework">Implementasi & Desain ICOFR</option>
+                            <option value="GRC Implementation">Enterprise GRC Consulting</option>
+                            <option value="IT General Controls (ITGC)">Audit ITGC & IT GRC</option>
+                            <option value="Audit Readiness">Pre-Audit Readiness & WTP Assist</option>
+                            <option value="Custom Consultation">Konsultasi Kustom GRC</option>
+                          </select>
+                        </div>
+                      </div>
 
-                  {/* Message */}
-                  <div className="space-y-2">
-                    <label htmlFor="user-message" className="text-xs font-semibold text-slate-300">Pesan Diskusi / Kebutuhan Kustom</label>
-                    <textarea
-                      id="user-message"
-                      rows={4}
-                      required
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Jelaskan secara singkat mengenai tantangan kontrol keuangan atau kesiapan audit yang sedang dialami organisasi Anda..."
-                      className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors resize-none"
-                    />
-                  </div>
+                      <div className="pt-4">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const errComp = validateCompany(form.company);
+                            setErrors((prev) => ({ ...prev, company: errComp }));
+                            setTouched((prev) => ({ ...prev, company: true }));
+                            if (!errComp) {
+                              setStep(2);
+                            }
+                          }}
+                          className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none"
+                        >
+                          Selanjutnya
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6 animate-in fade-in duration-200">
+                      {/* Step 2 Fields: Name, Email, Phone, Message */}
+                      <div className="space-y-2">
+                        <label htmlFor="user-name" className="text-xs font-semibold text-slate-300">Nama Lengkap</label>
+                        <input
+                          type="text"
+                          id="user-name"
+                          required
+                          value={form.name}
+                          onChange={(e) => handleChange("name", e.target.value)}
+                          onBlur={(e) => handleBlur("name", e.target.value)}
+                          placeholder="Contoh: Budi Santoso, M.B.A."
+                          className={`w-full bg-slate-900 border hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors ${
+                            errors.name && touched.name ? "border-rose-500" : "border-slate-800"
+                          }`}
+                        />
+                        {errors.name && touched.name && (
+                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.name}</p>
+                        )}
+                      </div>
 
-                  {/* Submit Button */}
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      id="submit-inquiry-btn"
-                      disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg disabled:opacity-50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                          </svg>
-                          Mengirim Pengajuan...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          Kirim Pengajuan Diskusi
-                        </>
-                      )}
-                    </button>
-                  </div>
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label htmlFor="user-email" className="text-xs font-semibold text-slate-300">Surel Resmi / Korporasi</label>
+                          <input
+                            type="email"
+                            id="user-email"
+                            required
+                            value={form.email}
+                            onChange={(e) => handleChange("email", e.target.value)}
+                            onBlur={(e) => handleBlur("email", e.target.value)}
+                            placeholder="Contoh: budi.s@perusahaan.co.id"
+                            className={`w-full bg-slate-900 border hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors ${
+                              errors.email && touched.email 
+                                ? "border-rose-500" 
+                                : !errors.email && warnings.email && touched.email 
+                                ? "border-amber-500/80 focus:border-amber-500 focus:ring-amber-500" 
+                                : "border-slate-800"
+                            }`}
+                          />
+                          {errors.email && touched.email && (
+                            <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.email}</p>
+                          )}
+                          {!errors.email && warnings.email && touched.email && (
+                            <p className="text-[11px] text-amber-500 mt-1 font-medium animate-in fade-in duration-150">{warnings.email}</p>
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="user-phone" className="text-xs font-semibold text-slate-300">No. Telepon Aktif / HP</label>
+                          <input
+                            type="tel"
+                            id="user-phone"
+                            required
+                            value={form.phone}
+                            onChange={(e) => handleChange("phone", e.target.value)}
+                            onBlur={(e) => handleBlur("phone", e.target.value)}
+                            placeholder="Contoh: 081234567890"
+                            className={`w-full bg-slate-900 border hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors ${
+                              errors.phone && touched.phone ? "border-rose-500" : "border-slate-800"
+                            }`}
+                          />
+                          {errors.phone && touched.phone && (
+                            <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.phone}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="user-message" className="text-xs font-semibold text-slate-300">Pesan Diskusi / Kebutuhan Kustom</label>
+                        <textarea
+                          id="user-message"
+                          rows={4}
+                          required
+                          value={form.message}
+                          onChange={(e) => handleChange("message", e.target.value)}
+                          onBlur={(e) => handleBlur("message", e.target.value)}
+                          placeholder="Jelaskan secara singkat mengenai tantangan kontrol keuangan atau kesiapan audit yang sedang dialami organisasi Anda..."
+                          className={`w-full bg-slate-900 border hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors resize-none ${
+                            errors.message && touched.message ? "border-rose-500" : "border-slate-800"
+                          }`}
+                        />
+                        {errors.message && touched.message && (
+                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.message}</p>
+                        )}
+                      </div>
+
+                      <div className="flex gap-4 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => setStep(1)}
+                          className="flex items-center justify-center gap-1.5 px-4 py-3.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-all outline-none"
+                        >
+                          Kembali
+                        </button>
+                        <button
+                          type="submit"
+                          id="submit-inquiry-btn"
+                          disabled={isSubmitting}
+                          className="flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg disabled:opacity-50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                              </svg>
+                              Mengirim Pengajuan...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-4 h-4" />
+                              Kirim Pengajuan Diskusi
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                 </form>
               ) : (

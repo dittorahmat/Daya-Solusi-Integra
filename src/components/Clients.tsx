@@ -1,6 +1,7 @@
 import React from "react";
 import { clientSectors } from "../data";
 import { Building2, Landmark, HelpCircle, ArrowUpRight, ShieldAlert, BadgeCheck } from "lucide-react";
+import GlossaryTooltip from "./GlossaryTooltip";
 
 export default function Clients() {
   const renderIcon = (iconName: string) => {
@@ -25,9 +26,6 @@ export default function Clients() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
-            Fokus Sektor
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Fokus Industri & Solusi Spesifik Sektor
           </h2>
@@ -42,7 +40,7 @@ export default function Clients() {
             <div
               key={sector.name}
               id={`sector-card-${sector.sector.toLowerCase()}`}
-              className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-[#0f172a]/20 flex flex-col justify-between hover:border-slate-700/60 transition-colors"
+              className="rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-bumn-navy/40 hover:bg-bumn-navy/60 hover:border-slate-700/60 shadow-sm transition-colors flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Header Section */}
@@ -110,7 +108,7 @@ export default function Clients() {
                   Kesesuaian Regulasi Terjamin
                 </span>
                 <span className="text-xs font-bold text-blue-400 font-mono">
-                  {sector.sector === "BUMN" ? "Kementerian BUMN" : "OJK & Bank Indonesia"}
+                  {sector.sector === "BUMN" ? "Kementerian BUMN" : <><GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip> & Bank Indonesia</>}
                 </span>
               </div>
             </div>
@@ -121,11 +119,11 @@ export default function Clients() {
         <div className="mt-16 bg-slate-950/40 rounded-2xl py-6 px-8 border border-slate-800/60 flex flex-wrap justify-center items-center gap-x-12 gap-y-4" id="regulatory-strip">
           <span className="text-xs font-mono text-slate-500">Standar Pengendalian Eksternal:</span>
           <div className="flex flex-wrap gap-6 sm:gap-10 text-xs text-slate-400 font-mono font-semibold">
-            <span className="hover:text-white transition-colors">COSO INTERNAL CONTROL</span>
+            <span className="hover:text-white transition-colors"><GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> INTERNAL CONTROL</span>
             <span className="hover:text-white transition-colors">COBIT 2019</span>
             <span className="hover:text-white transition-colors">ISO 31000 RISK MGT</span>
             <span className="hover:text-white transition-colors">ISO 27001 SECURE</span>
-            <span className="hover:text-white transition-colors">SOX SECTION 404 (ICOFR)</span>
+            <span className="hover:text-white transition-colors">SOX SECTION 404 (<GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>)</span>
           </div>
         </div>
 

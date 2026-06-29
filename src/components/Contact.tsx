@@ -12,7 +12,7 @@ import {
   Building 
 } from "lucide-react";
 
-export default function Contact() {
+export default function Contact({ prefill }: { prefill?: { company: string; sector: string } | null }) {
   const [form, setForm] = useState<InquiryForm>({
     name: "",
     company: "",
@@ -25,6 +25,17 @@ export default function Contact() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Pre-fill form when assessment prefill data arrives
+  React.useEffect(() => {
+    if (prefill) {
+      setForm((prev) => ({
+        ...prev,
+        company: prefill.company || prev.company,
+        sector: (prefill.sector as any) || prev.sector,
+      }));
+    }
+  }, [prefill]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,13 +72,13 @@ export default function Contact() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-widest uppercase font-mono">
-            Hubungi Konsultan Kami
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
+            Konsultasi Langsung
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Mulai Transformasi GRC & ICOFR Hari Ini
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed">
+          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Diskusikan kebutuhan tata kelola, audit internal, atau persiapan asersi manajemen Anda bersama tim auditor senior Daya Solusi Integra.
           </p>
         </div>
@@ -93,7 +104,7 @@ export default function Contact() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Kantor Pusat</h4>
+                  <h4 className="text-xs font-bold text-slate-400">Kantor Pusat</h4>
                   <p className="text-sm text-slate-200 mt-1 leading-relaxed">
                     Sudirman Plaza, Plaza Marein Lantai 17<br />
                     Jl. Jend. Sudirman Kav. 76-78, Jakarta Selatan<br />
@@ -108,7 +119,7 @@ export default function Contact() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Telepon & Hubungan Klien</h4>
+                  <h4 className="text-xs font-bold text-slate-400">Telepon & Hubungan Klien</h4>
                   <p className="text-sm text-slate-200 mt-1">
                     +62 21 5082 9201 (Office)<br />
                     +62 811 1290 9283 (Corporate Whatsapp)
@@ -122,7 +133,7 @@ export default function Contact() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Surel Resmi</h4>
+                  <h4 className="text-xs font-bold text-slate-400">Surel Resmi</h4>
                   <p className="text-sm text-slate-200 mt-1 hover:text-blue-400 transition-colors">
                     info@dayasolusiintegra.co.id
                   </p>
@@ -135,7 +146,7 @@ export default function Contact() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Jam Operasional</h4>
+                  <h4 className="text-xs font-bold text-slate-400">Jam Operasional</h4>
                   <p className="text-sm text-slate-200 mt-1">
                     Senin - Jumat: 08:30 - 17:30 WIB<br />
                     Sabtu, Minggu & Hari Libur Nasional: Tutup
@@ -147,7 +158,7 @@ export default function Contact() {
 
             {/* Quick Callout badge */}
             <div className="bg-blue-950/25 border border-blue-500/10 p-5 rounded-2xl text-left" id="privacy-callout">
-              <h4 className="text-xs font-bold text-bumn-gold uppercase tracking-widest font-mono flex items-center gap-1.5 mb-1.5">
+              <h4 className="text-xs font-bold text-bumn-gold flex items-center gap-1.5 mb-1.5">
                 <Sparkles className="w-4 h-4" />
                 Kerahasiaan Data Klien
               </h4>
@@ -159,15 +170,15 @@ export default function Contact() {
 
           {/* Form Column (7 cols) */}
           <div className="lg:col-span-7" id="contact-form-block">
-            <div className="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative min-h-[500px]">
+            <div className="glass-panel rounded-2xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative min-h-[500px]">
               
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6 text-left animate-in fade-in duration-300" id="inquiry-form-element">
                   
-                  {/* Row 1: Name & Company */}
+                   {/* Row 1: Name & Company */}
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="user-name" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Nama Lengkap</label>
+                      <label htmlFor="user-name" className="text-xs font-semibold text-slate-300">Nama Lengkap</label>
                       <input
                         type="text"
                         id="user-name"
@@ -175,11 +186,11 @@ export default function Contact() {
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="Contoh: Budi Santoso, M.B.A."
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="user-company" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Nama Perusahaan / Organisasi</label>
+                      <label htmlFor="user-company" className="text-xs font-semibold text-slate-300">Nama Perusahaan / Organisasi</label>
                       <input
                         type="text"
                         id="user-company"
@@ -187,15 +198,15 @@ export default function Contact() {
                         value={form.company}
                         onChange={(e) => setForm({ ...form, company: e.target.value })}
                         placeholder="Contoh: PT Kereta Api Indonesia"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       />
                     </div>
                   </div>
 
-                  {/* Row 2: Email & Phone */}
+                   {/* Row 2: Email & Phone */}
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="user-email" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Surel Resmi / Korporasi</label>
+                      <label htmlFor="user-email" className="text-xs font-semibold text-slate-300">Surel Resmi / Korporasi</label>
                       <input
                         type="email"
                         id="user-email"
@@ -203,11 +214,11 @@ export default function Contact() {
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="Contoh: budi.s@perusahaan.co.id"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="user-phone" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">No. Telepon Aktif / HP</label>
+                      <label htmlFor="user-phone" className="text-xs font-semibold text-slate-300">No. Telepon Aktif / HP</label>
                       <input
                         type="tel"
                         id="user-phone"
@@ -215,20 +226,20 @@ export default function Contact() {
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder="Contoh: 081234567890"
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       />
                     </div>
                   </div>
 
-                  {/* Row 3: Sector & Service Type */}
+                   {/* Row 3: Sector & Service Type */}
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="user-sector" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Sektor Operasional</label>
+                      <label htmlFor="user-sector" className="text-xs font-semibold text-slate-300">Sektor Operasional</label>
                       <select
                         id="user-sector"
                         value={form.sector}
                         onChange={(e) => setForm({ ...form, sector: e.target.value as any })}
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       >
                         <option value="BUMN">BUMN / BUMD</option>
                         <option value="Banking">Perbankan / Jasa Keuangan</option>
@@ -237,12 +248,12 @@ export default function Contact() {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="user-service" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Layanan yang Dibutuhkan</label>
+                      <label htmlFor="user-service" className="text-xs font-semibold text-slate-300">Layanan yang Dibutuhkan</label>
                       <select
                         id="user-service"
                         value={form.service}
                         onChange={(e) => setForm({ ...form, service: e.target.value as any })}
-                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                        className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                       >
                         <option value="ICOFR Framework">Implementasi & Desain ICOFR</option>
                         <option value="GRC Implementation">Enterprise GRC Consulting</option>
@@ -255,7 +266,7 @@ export default function Contact() {
 
                   {/* Message */}
                   <div className="space-y-2">
-                    <label htmlFor="user-message" className="text-xs font-semibold text-slate-300 font-mono uppercase tracking-wider">Pesan Diskusi / Kebutuhan Kustom</label>
+                    <label htmlFor="user-message" className="text-xs font-semibold text-slate-300">Pesan Diskusi / Kebutuhan Kustom</label>
                     <textarea
                       id="user-message"
                       rows={4}
@@ -263,7 +274,7 @@ export default function Contact() {
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       placeholder="Jelaskan secara singkat mengenai tantangan kontrol keuangan atau kesiapan audit yang sedang dialami organisasi Anda..."
-                      className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors resize-none"
+                      className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors resize-none"
                     />
                   </div>
 
@@ -273,7 +284,7 @@ export default function Contact() {
                       type="submit"
                       id="submit-inquiry-btn"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg disabled:opacity-50 cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg disabled:opacity-50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                     >
                       {isSubmitting ? (
                         <>

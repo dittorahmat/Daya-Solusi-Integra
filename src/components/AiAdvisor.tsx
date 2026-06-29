@@ -17,26 +17,64 @@ interface AiAdvisorProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: "welcome",
-      sender: "bot",
-      text: "Selamat datang di Layanan Konsultasi Cerdas **Daya Solusi Integra**. Saya adalah **DSI Expert Advisor**, spesialis kecerdasan buatan Anda untuk tata kelola GRC, IT General Controls (ITGC), dan kerangka kerja ICOFR.\n\nApakah Anda berasal dari **BUMN** atau **Sektor Perbankan**? Silakan tanyakan hal-hal terkait kepatuhan regulasi, sanksi audit, segregation of duties (SoD), atau tantangan kepatuhan organisasi Anda.",
-      timestamp: new Date()
+  const [messages, setMessages] = useState<ChatMessage[]>(() => {
+    const saved = sessionStorage.getItem("dsi_advisor_chat");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return parsed.map((m: any) => ({
+          ...m,
+          timestamp: new Date(m.timestamp)
+        }));
+      } catch (e) {
+        console.error("Failed to parse saved chat messages", e);
+      }
     }
-  ]);
+    return [
+      {
+        id: "welcome",
+        sender: "bot",
+        text: "Selamat datang di Layanan Konsultasi Cerdas **Daya Solusi Integra**. Saya adalah **DSI Expert Advisor**, spesialis kecerdasan buatan Anda untuk tata kelola GRC, IT General Controls (ITGC), dan kerangka kerja ICOFR.\n\nApakah Anda berasal dari **BUMN** atau **Sektor Perbankan**? Silakan tanyakan hal-hal terkait kepatuhan regulasi, sanksi audit, segregation of duties (SoD), atau tantangan kepatuhan organisasi Anda.",
+        timestamp: new Date()
+      }
+    ];
+  });
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [selectedContext, setSelectedContext] = useState<"BUMN" | "Banking" | "General">("General");
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Sync messages to sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem("dsi_advisor_chat", JSON.stringify(messages));
+  }, [messages]);
 
   // Auto scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
+
+  // Handle focus and escape key close
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      };
+      window.addEventListener("keydown", handleEscape);
+      return () => {
+        window.removeEventListener("keydown", handleEscape);
+      };
+    }
+  }, [isOpen, onClose]);
 
   const handleSendMessage = async (textToSend?: string) => {
     const text = textToSend || inputValue;
@@ -150,15 +188,16 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-display font-bold text-lg text-white">DSI Expert Advisor</h3>
-              <p className="text-[10px] text-bumn-gold font-mono tracking-widest uppercase">GRC & ICOFR AI Consultant</p>
+              <h3 className="font-bold text-lg text-white">DSI Expert Advisor</h3>
+              <p className="text-xs text-bumn-gold font-mono tracking-widest uppercase">GRC & ICOFR AI Consultant</p>
             </div>
           </div>
           
           <button 
             id="close-advisor-btn"
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none transition-colors"
+            aria-label="Tutup Konsultasi AI"
+            className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -176,7 +215,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <button
                 key={ctx.id}
                 onClick={() => setSelectedContext(ctx.id as any)}
-                className={`px-3 py-1 text-[10px] font-bold rounded-full border transition-all ${
+                className={`px-3 py-1 text-[10px] font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
                   selectedContext === ctx.id
                     ? "border-blue-500/50 bg-blue-950/40 text-blue-300"
                     : "border-slate-800 bg-slate-900/30 text-slate-400 hover:border-slate-700"
@@ -260,7 +299,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                   <button
                     key={index}
                     onClick={() => handleSendMessage(query.text)}
-                    className="w-full text-left p-3 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/20 hover:bg-slate-900/50 text-slate-300 hover:text-white transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none"
+                    className="w-full text-left p-3 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/20 hover:bg-slate-900/50 text-slate-300 hover:text-white transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     <span className="flex items-center gap-2">
                       <Icon className="w-4 h-4 text-bumn-gold shrink-0" />
@@ -277,6 +316,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
         {/* Text Input area */}
         <div className="p-4 sm:p-6 bg-slate-950/60 border-t border-slate-800 flex items-center gap-3">
           <input
+            ref={inputRef}
             type="text"
             id="advisor-text-input"
             value={inputValue}
@@ -285,14 +325,14 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               if (e.key === "Enter" && !isTyping) handleSendMessage();
             }}
             placeholder="Tulis pesan atau pertanyaan kepatuhan..."
-            className="flex-1 bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors"
+            className="flex-1 bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors"
             disabled={isTyping}
           />
           <button
             id="send-advisor-msg-btn"
             onClick={() => handleSendMessage()}
             disabled={isTyping || !inputValue.trim()}
-            className="p-3 rounded-xl bg-bumn-blue hover:bg-blue-600 text-white font-bold disabled:opacity-40 transition-colors shrink-0"
+            className="p-3 rounded-xl bg-bumn-blue hover:bg-blue-600 text-white font-bold disabled:opacity-40 transition-colors shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
           >
             <Send className="w-4.5 h-4.5" />
           </button>

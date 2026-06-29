@@ -54,9 +54,9 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo & Brand */}
-          <div 
+          <button 
             onClick={() => handleNavClick("hero")}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-xl p-1 text-left"
             id="dsi-logo-container"
           >
             <div className="bg-gradient-to-tr from-bumn-blue to-blue-700 p-2.5 rounded-xl shadow-lg shadow-blue-950/30 group-hover:scale-105 transition-transform duration-300">
@@ -70,7 +70,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                 IT & GRC Consulting
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 bg-slate-900/50 border border-slate-800/80 px-2 py-1.5 rounded-full" id="desktop-navbar">
@@ -79,7 +79,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                 key={item.id}
                 id={`nav-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
                   activeTab === item.id
                     ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
                     : "text-slate-300 hover:text-white hover:bg-slate-800/40"
@@ -95,7 +95,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="header-ai-chat-btn"
               onClick={onOpenAdvisor}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
             >
               <MessageSquareCode className="w-4 h-4" />
               AI GRC Consultant
@@ -103,7 +103,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="header-cta-btn"
               onClick={() => handleNavClick("assessment")}
-              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5"
+              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
             >
               Coba Asesmen
               <ArrowRight className="w-4 h-4" />
@@ -115,7 +115,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none"
+              className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -125,14 +125,17 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#0d1322] border-b border-slate-800 shadow-2xl animate-in slide-in-from-top-4 duration-200" id="mobile-drawer">
+        <div 
+          className="md:hidden absolute top-full left-0 right-0 bg-[#0d1322] border-b border-slate-800 shadow-2xl animate-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-80px)] overflow-y-auto" 
+          id="mobile-drawer"
+        >
           <div className="px-4 pt-3 pb-6 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 id={`mobile-nav-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
                   activeTab === item.id
                     ? "bg-bumn-blue text-white font-semibold"
                     : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
@@ -148,7 +151,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   setIsMobileMenuOpen(false);
                   onOpenAdvisor();
                 }}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
                 <MessageSquareCode className="w-4 h-4" />
                 AI Consultant GRC
@@ -156,7 +159,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
               <button
                 id="mobile-assessment-btn"
                 onClick={() => handleNavClick("assessment")}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
                 Mulai Asesmen Mandiri
                 <ArrowRight className="w-4 h-4" />

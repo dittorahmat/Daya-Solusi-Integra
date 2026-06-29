@@ -33,9 +33,9 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] font-display">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] font-display" style={{ textWrap: "balance" }}>
               Tata Kelola Andal, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-bumn-gold">
+              <span className="text-bumn-gold">
                 Pengendalian Finansial
               </span> <br />
               Tanpa Celah.
@@ -91,10 +91,10 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             <div className="relative mx-auto max-w-[420px] lg:max-w-none">
               
               {/* Outer decorative glowing ring */}
-              <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-tr from-bumn-blue to-bumn-gold opacity-25 blur-xl animate-pulse" />
+              <div className="absolute -inset-0.5 rounded-2xl bg-blue-500/5 opacity-40 blur-2xl" />
               
               {/* Glass Interface Mockup */}
-              <div className="relative glass-panel rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6">
+              <div className="relative glass-panel rounded-2xl p-6 border border-slate-800 shadow-2xl space-y-6">
                 
                 {/* Simulated Header */}
                 <div className="flex items-center justify-between border-b border-slate-800 pb-4">
@@ -103,52 +103,49 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
                     <span className="w-3.5 h-3.5 bg-amber-500 rounded-full inline-block" />
                     <span className="w-3.5 h-3.5 bg-blue-500 rounded-full inline-block" />
                   </div>
-                  <span className="font-mono text-[10px] text-slate-500">DSI-ICOFR_FRAMEWORK.V2</span>
+                  <span className="font-mono text-xs text-slate-500">DSI-ICOFR_FRAMEWORK.V2</span>
                 </div>
 
                 {/* Simulated Chart/State Box */}
-                <div className="space-y-4">
-                  <div className="bg-slate-950/80 rounded-xl p-4 border border-slate-800/60">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs text-slate-400 font-medium">Internal Audit Readiness</span>
+                <div className="space-y-6">
+                  {/* Readiness Progress Bar (Borderless) */}
+                  <div className="py-2">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs text-slate-400 font-semibold">Internal Audit Readiness</span>
                       <span className="text-xs text-bumn-gold font-mono font-bold">98.4%</span>
                     </div>
-                    <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
                       <div className="bg-gradient-to-r from-bumn-blue to-bumn-gold h-full w-[98.4%] rounded-full" />
                     </div>
                   </div>
 
-                  {/* Core pillars visualization */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/40 text-left">
-                      <span className="text-[10px] uppercase text-slate-500 tracking-wider block font-mono">Entity Level</span>
-                      <span className="text-sm font-semibold text-white mt-1 block">COSO Compliant</span>
+                  {/* Core pillars visualization (Clean text columns separated by vertical divider) */}
+                  <div className="grid grid-cols-3 divide-x divide-slate-800/80 py-2">
+                    <div className="text-left pr-4">
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Entity Level</span>
+                      <span className="text-sm font-bold text-white mt-1 block">COSO Compliant</span>
                     </div>
-                    <div className="bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/40 text-left">
-                      <span className="text-[10px] uppercase text-slate-500 tracking-wider block font-mono">IT Controls</span>
-                      <span className="text-sm font-semibold text-white mt-1 block">ITGC Orchestrated</span>
+                    <div className="text-left px-4">
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">IT Controls</span>
+                      <span className="text-sm font-bold text-white mt-1 block">ITGC Orchestrated</span>
+                    </div>
+                    <div className="text-left pl-4">
+                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Audit Goal</span>
+                      <span className="text-sm font-bold text-bumn-gold mt-1 block">WTP Opinion</span>
                     </div>
                   </div>
 
-                  {/* Trust highlight block */}
-                  <div className="bg-blue-950/20 rounded-xl p-4 border border-blue-500/20 text-left flex gap-3.5">
-                    <div className="bg-blue-500/20 p-2.5 rounded-lg text-blue-400 h-10 w-10 flex items-center justify-center shrink-0">
-                      <ShieldCheck className="w-5 h-5" />
+                  {/* Trust highlight block (Left-accented typography notification instead of card) */}
+                  <div className="border-l border-blue-500/30 pl-4 text-left flex gap-3">
+                    <div className="text-blue-400 shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-bumn-gold">Targeting BUMN & Banking</h4>
-                      <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+                      <div className="text-xs font-bold text-bumn-gold uppercase tracking-wider font-mono">Kepatuhan Regulasi Kritis</div>
+                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                         Sistem audit komprehensif yang dioptimalkan sesuai ketentuan BPK, BPKP, OJK, dan auditor internal perbankan.
                       </p>
                     </div>
-                  </div>
-                </div>
-
-                {/* Score badge overlay */}
-                <div className="absolute -bottom-6 -left-6 bg-[#0d1527] border border-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-                  <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-bumn-blue to-bumn-gold font-display">WTP</div>
-                  <div className="text-[10px] text-slate-400 font-medium uppercase leading-tight tracking-wider text-left">
-                    Opini Wajar Tanpa<br />Pengecualian (WTP)
                   </div>
                 </div>
 
@@ -158,22 +155,24 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
 
         </div>
 
-        {/* Dynamic Statistics Grid */}
-        <div className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" id="hero-stats">
+        {/* Dynamic Statistics Strip */}
+        <div className="mt-20 border border-slate-800/80 bg-slate-900/10 rounded-2xl p-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-800/80 items-stretch gap-6 md:gap-0" id="hero-stats">
           {[
-            { value: "100%", label: "Kepatuhan Regulasi", desc: "Sesuai regulasi OJK & BUMN" },
+            { value: "100%", label: "Kepatuhan Regulasi", desc: "Sesuai OJK & BUMN" },
             { value: "WTP", label: "Target Opini Audit", desc: "Wajar Tanpa Pengecualian" },
             { value: "COSO", label: "Metodologi Standar", desc: "Kerangka Kerja Global" },
-            { value: "15+", label: "Auditor Ahli Senior", desc: "Berpengalaman di BUMN & Bank" }
+            { value: "15+", label: "Auditor Ahli Senior", desc: "Pengalaman di BUMN" }
           ].map((stat, idx) => (
             <div 
               key={idx}
               id={`stat-card-${idx}`} 
-              className="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/60 transition-colors text-left"
+              className="flex-1 px-6 first:pl-0 last:pr-0 flex items-start gap-4 text-left py-4 md:py-0"
             >
-              <div className="text-2xl sm:text-3xl font-bold text-white font-display mb-1">{stat.value}</div>
-              <div className="text-xs font-semibold text-bumn-gold uppercase tracking-wider mb-0.5">{stat.label}</div>
-              <div className="text-[11px] text-slate-500 leading-normal">{stat.desc}</div>
+              <div className="text-3xl font-extrabold text-white font-display shrink-0 mt-1">{stat.value}</div>
+              <div>
+                <div className="text-xs font-semibold text-bumn-gold/90 tracking-wider uppercase font-mono">{stat.label}</div>
+                <div className="text-xs text-slate-400 mt-1 leading-normal">{stat.desc}</div>
+              </div>
             </div>
           ))}
         </div>

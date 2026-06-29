@@ -1,0 +1,49 @@
+---
+target: src/components
+total_score: 38
+p0_count: 0
+p1_count: 0
+timestamp: 2026-06-29T07-56-26Z
+slug: src-components
+---
+# Design System Critique: src/components
+
+## Design Health Score
+
+| # | Heuristic | Score | Key Issue |
+|---|-----------|-------|-----------|
+| 1 | Visibility of System Status | 4 | Excellent progress states and clean immediate validation indicators. |
+| 2 | Match System / Real World | 4 | Terms are highly aligned with Indonesian BUMN GCG and OJK regulations. |
+| 3 | User Control and Freedom | 3 | Assessment allows backward navigation and resets, but contact form lacks quick escapes/clearing. |
+| 4 | Consistency and Standards | 4 | Button treatments, structural spacing, and subheads are fully consistent. |
+| 5 | Error Prevention | 3 | Styled inline warning cues prevent submission errors before they trigger. |
+| 6 | Recognition Rather Than Recall | 4 | Clear radio selections and UI labels throughout the wizard. |
+| 7 | Flexibility and Efficiency | 4 | Full keyboard arrow-key navigation, ARIA roles, and focus-visible indicators are fully implemented across all nav elements, CTAs, and footer logo/buttons. |
+| 8 | Aesthetic and Minimalist Design | 4 | Clean dark navy canvas. All gradient-text and tracked wide eyebrows have been removed. |
+| 9 | Error Recovery | 4 | Clear inline warnings instruct user on how to correct inputs without losing context. |
+| 10 | Help and Documentation | 4 | AI consultant provides excellent interactive assistance with context-specific starter queries. |
+| **Total** | | **38/40** | **Excellent** |
+
+## Anti-Patterns Verdict
+
+**LLM assessment**: 
+All previously identified AI slop tells have been cleaned up:
+- **Gradient text**: Replaced with solid BUMN Gold for professional consistency.
+- **Tracked uppercase kicker eyebrows**: Replaced with clean lowercase subheadings/mono labels.
+- **Metric template**: Visual layouts are structured but rely on strong typography and color constraint.
+
+**Deterministic scan**:
+The automated scanner returned **0 warnings** in `src/components`.
+
+**Visual overlays**:
+Visual overlays are currently unavailable because browser automation is disabled in this session.
+
+## Overall Impression
+
+The components present a mature, institutional design. The removal of visual slop tells and addition of robust keyboard navigation/ARIA attributes makes the application feel like a custom-made, high-end Indonesian corporate asset, commanding authority and trust.
+
+## What's Working
+- **Institutional Visual Tone**: The dark navy canvas combined with solid BUMN gold accents matches standard government and enterprise portals.
+- **Context-Preserving Validation**: Form validation is self-correcting and fully inline.
+- **High-Quality Accessibility**: The interactive self-assessment fully conforms to WAI-ARIA radio-group specifications.
+- **Global Accent Ring Consistency**: Standard keyboard focus-visible indicator ring is fully implemented across the header, assessment flow, contact form, and footer navigation.

@@ -4,6 +4,26 @@ import { ShieldAlert, Briefcase, Cpu, ClipboardCheck, CheckCircle2, ArrowUpRight
 
 export default function Services() {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {
@@ -21,7 +41,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-24 relative bg-[#090d16] border-t border-slate-900">
+    <section id="services" ref={sectionRef} className={`py-24 relative bg-[#090d16] border-t border-slate-900 ${hasEntered ? "animate-in" : ""}`}>
       {/* Decorative backdrop */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div className="absolute top-[20%] left-[5%] w-[400px] h-[400px] rounded-full bg-blue-500/5 blur-[120px]" />
@@ -31,33 +51,34 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-widest uppercase font-mono">
-            Solusi Unggulan Kami
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
+            Layanan & Solusi
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Spesialisasi GRC & ICOFR Tingkat Korporasi
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed">
+          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Menjawab kebutuhan akuntabilitas yang tinggi, kami mendampingi BUMN dan institusi perbankan dalam memitigasi risiko salah saji keuangan, kegagalan sistem TI, dan ketidakpatuhan regulasi.
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 gap-8" id="services-grid">
-          {servicesList.map((service) => {
+          {servicesList.map((service, idx) => {
             const isExpanded = selectedServiceId === service.id;
             return (
               <div
                 key={service.id}
                 id={`service-card-${service.id}`}
-                className={`glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800/80 hover:border-slate-700/60 transition-all duration-300 flex flex-col justify-between group ${
+                style={{ "--delay": `${idx * 100}ms` } as React.CSSProperties}
+                className={`glass-panel stagger-card rounded-2xl p-6 sm:p-8 border border-slate-800/80 hover:border-slate-700/60 transition-all duration-300 flex flex-col justify-between group ${
                   isExpanded ? "ring-2 ring-blue-500/30 bg-slate-950/90 shadow-2xl" : "bg-[#0f172a]/40"
                 }`}
               >
                 <div className="space-y-6">
                   {/* Top Icon Row */}
                   <div className="flex items-center justify-between">
-                    <div className="bg-blue-950/40 border border-blue-500/20 p-3 rounded-2xl">
+                    <div className="bg-blue-950/40 text-blue-400 p-3.5 rounded-xl">
                       {renderIcon(service.icon)}
                     </div>
                     <button
@@ -71,7 +92,7 @@ export default function Services() {
 
                   {/* Header Title & Short Description */}
                   <div className="text-left">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-display group-hover:text-bumn-gold transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-bumn-gold transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-sm text-slate-400 mt-2.5 font-light leading-relaxed">
@@ -82,7 +103,7 @@ export default function Services() {
                   {/* Features List */}
                   <ul className="space-y-3 pt-2 text-left">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300">
+                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
                         <CheckCircle2 className="w-4 h-4 text-bumn-gold mt-0.5 shrink-0" />
                         <span>{feature}</span>
                       </li>
@@ -92,8 +113,8 @@ export default function Services() {
                   {/* Expanded Long Description */}
                   {isExpanded && (
                     <div className="pt-4 border-t border-slate-800/80 animate-in fade-in slide-in-from-top-2 duration-300 text-left">
-                      <h4 className="text-xs font-bold text-bumn-gold uppercase tracking-widest font-mono mb-2">Metodologi & Deliverables:</h4>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light">
+                      <h4 className="text-xs font-bold text-bumn-gold mb-2">Metodologi & Deliverables:</h4>
+                      <p className="text-sm text-slate-400 leading-relaxed font-light">
                         {service.longDesc}
                       </p>
                     </div>
@@ -105,9 +126,9 @@ export default function Services() {
                   <button
                     id={`service-toggle-btn-${service.id}`}
                     onClick={() => setSelectedServiceId(isExpanded ? null : service.id)}
-                    className="text-xs font-bold text-blue-400 hover:text-blue-300 tracking-wider uppercase font-mono flex items-center gap-1.5 focus:outline-none"
+                    className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 focus:outline-none"
                   >
-                    {isExpanded ? "Tutup Detail Layanan" : "Selengkapnya"}
+                    {isExpanded ? "Tutup detail layanan" : "Selengkapnya"}
                     <span className={`text-[10px] transform transition-transform ${isExpanded ? "rotate-180" : ""}`}>▼</span>
                   </button>
                 </div>
@@ -117,13 +138,13 @@ export default function Services() {
         </div>
 
         {/* ICOFR Focus Special Callout */}
-        <div className="mt-16 glass-panel rounded-3xl p-6 sm:p-8 border border-blue-500/10 bg-gradient-to-r from-blue-950/20 via-slate-950/60 to-slate-900/20 flex flex-col lg:flex-row items-center gap-8 text-left" id="icofr-callout">
+        <div className="mt-16 glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 bg-[#0d1e3d]/30 flex flex-col lg:flex-row items-center gap-8 text-left" id="icofr-callout">
           <div className="bg-blue-500/10 p-4 rounded-2xl text-blue-400 shrink-0">
             <HelpCircle className="w-10 h-10" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-lg sm:text-xl font-bold text-white font-display">Mengapa ICOFR Menjadi Mandatori Kritis Bagi BUMN & Perbankan?</h3>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light">
+            <h3 className="text-lg sm:text-xl font-bold text-white">Mengapa ICOFR Menjadi Mandatori Kritis Bagi BUMN & Perbankan?</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-3xl">
               Undang-Undang Republik Indonesia dan peraturan pelaksana BUMN mengamanatkan tanggung jawab penuh bagi Direksi atas integritas laporan keuangan. Kegagalan mendokumentasikan pengendalian internal (defisiensi material) berisiko memicu kecurangan pelaporan keuangan, sanksi administratif, hingga opini audit yang buruk (Adverse atau Disclaimer) dari KAP/BPK yang dapat merusak kepercayaan pasar dan pemegang saham.
             </p>
           </div>

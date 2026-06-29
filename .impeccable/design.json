@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-29T14:34:30Z",
+  "title": "Design System: Daya Solusi Integra",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "BUMN Blue", "canonical": "#0b4596", "tonalRamp": ["#031024", "#051f47", "#082e6b", "#0b4596", "#2c6ac2", "#5d91db", "#9dbbeb", "#dbe6f7"] },
+      "secondary": { "role": "accent", "displayName": "BUMN Gold", "canonical": "#cca43b", "tonalRamp": ["#30260c", "#5e4b16", "#8f7222", "#cca43b", "#dbba63", "#e6cf91", "#f0e3bf", "#faf6eb"] },
+      "neutral-bg": { "role": "neutral", "displayName": "Ink Navy", "canonical": "#0b0f19", "tonalRamp": ["#020305", "#05070c", "#0b0f19", "#151d30", "#243252", "#3a4f7d", "#6477a3", "#a8b5d1"] },
+      "neutral-dark": { "role": "neutral", "displayName": "Deep Navy", "canonical": "#0d1e3d", "tonalRamp": ["#03070f", "#070f1f", "#0d1e3d", "#1a3973", "#2e5ba8", "#5a85d4", "#99b5eb", "#dbebff"] },
+      "neutral-light": { "role": "neutral", "displayName": "Off-White Slate", "canonical": "#f3f4f6", "tonalRamp": ["#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#e2e8f0", "#f1f5f9", "#f8fafc"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only." },
+      "body": { "displayName": "Body", "purpose": "Standard prose and text." }
+    },
+    "shadows": [
+      { "name": "ambient-glow", "value": "0 10px 30px -10px rgba(0, 0, 0, 0.7)", "purpose": "Used on glass card hover states." },
+      { "name": "focus-glow", "value": "0 0 0 2px rgba(11, 69, 150, 0.4)", "purpose": "Used for accessibility focus rings." }
+    ],
+    "motion": [
+      { "name": "transition-standard", "value": "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default transition speed and timing." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary call-to-action button for initiating assessments or main conversions.",
+      "html": "<button class=\"ds-btn-primary\">Asesmen Sekarang</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0b4596 0%, #1d4ed8 100%); color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; padding: 14px 24px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); } .ds-btn-primary:hover { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); } .ds-btn-primary:active { transform: translateY(0); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(11, 69, 150, 0.4); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary buttons for actions such as opening the AI drawer or navigating sections.",
+      "html": "<button class=\"ds-btn-secondary\">Konsultasi AI</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; background-color: #0f172a; color: #e2e8f0; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; padding: 14px 24px; border: 1px solid #1e293b; border-radius: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-secondary:hover { background-color: #1e293b; color: #ffffff; border-color: #334155; } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(11, 69, 150, 0.4); }"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "Premium glass container card for presenting service features, stats, or control frameworks.",
+      "html": "<div class=\"ds-card-glass\"><h4 class=\"ds-card-title\">Entity Level Control</h4><p class=\"ds-card-desc\">Sistem pengendalian menyeluruh tingkat entitas sesuai kerangka kerja COSO.</p></div>",
+      "css": ".ds-card-glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; font-family: 'Inter', sans-serif; color: #f3f4f6; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card-glass:hover { background: rgba(15, 23, 42, 0.85); border-color: rgba(11, 69, 150, 0.3); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7); transform: translateY(-2px); } .ds-card-title { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin: 0 0 8px 0; color: #ffffff; } .ds-card-desc { font-size: 14px; line-height: 1.5; color: #94a3b8; margin: 0; }"
+    },
+    {
+      "name": "Interactive Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Standard input field layout with hover/focus state feedback.",
+      "html": "<div class=\"ds-field-group\"><label class=\"ds-field-label\">Nama Perusahaan</label><input type=\"text\" class=\"ds-input-field\" placeholder=\"PT Daya Solusi Integra\" /></div>",
+      "css": ".ds-field-group { display: flex; flex-direction: column; gap: 6px; font-family: 'Inter', sans-serif; width: 100%; max-width: 320px; } .ds-field-label { font-size: 12px; font-weight: 500; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; } .ds-input-field { background-color: rgba(2, 3, 5, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 16px; color: #f3f4f6; font-size: 14px; outline: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-input-field::placeholder { color: #475569; } .ds-input-field:focus { border-color: #0b4596; box-shadow: 0 0 0 2px rgba(11, 69, 150, 0.2); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sovereign Lighthouse",
+    "overview": "\"The Sovereign Lighthouse\" represents structured corporate authority, utilizing a deep navy canvas, stark white typography, and gold accentuation to guide Indonesian enterprises through GRC and regulatory compliance. The design system is constructed to evoke immediate trust and stability, critical for State-Owned Enterprises (BUMN) and financial sector institutions. By combining deep, stable background tones with highly precise, glowing interactive structures, the system mirrors the absolute clarity and assurance required in governance.",
+    "keyCharacteristics": [
+      "Sovereign Dark Canvas: A stable, high-contrast dark color palette optimized for reading corporate assessments and consulting data.",
+      "Structured Geometry: Rectilinear layouts, thin boundaries, and intentional border radiuses (12px–16px) that convey governance and control.",
+      "Executive Focus: Every accent color, transition, and hover state is deliberate, ensuring the user's attention is guided directly to key assessments and actionable items."
+    ],
+    "rules": [
+      {
+        "name": "The 10% Accent Rule",
+        "body": "The secondary accent (BUMN Gold) must cover no more than 10% of any single viewport surface. Its role is strictly to guide the eye to achievements, scores, or active interactive highlights.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Fad-Neutrals Rule",
+        "body": "Backgrounds must never transition into warm neutral creams or warm grays. The canvas must remain anchored in clean, cool deep navy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Balancer Rule",
+        "body": "All h1, h2, and h3 headings must utilize text-wrap: balance to prevent awkward line breaks on medium viewports.",
+        "section": "typography"
+      },
+      {
+        "name": "The Prose Cap Rule",
+        "body": "Any paragraph of text must have a max-width of max-w-2xl or 75ch to prevent layout-induced cognitive strain during reading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Rest Rule",
+        "body": "Interactive elements (cards, inputs, and buttons) must remain flat and shadowless at rest. Elevation changes and ambient shadows are applied only dynamically in response to hover or focus states.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain a minimum of 4.5:1 color contrast for all body and label text, and 7:1 for headers.",
+      "Do wrap long headers in text-wrap: balance to prevent awkward line wrapping.",
+      "Do use BUMN Gold (#cca43b) selectively to draw focus to achievements, scores, or primary calls to action.",
+      "Do respect the user's @media (prefers-reduced-motion: reduce) system setting by disabling scroll and transition animations."
+    ],
+    "donts": [
+      "Don't use standard SaaS clichés (no cream/sand warm-neutral backgrounds, no tiny tracked uppercase kicker eyebrows above every section).",
+      "Don't use amateurish styling (no sketch/doodle-style SVG illustrations, no over-rounded cards or side-stripe borders).",
+      "Don't use typical \"hacker/cyberpunk\" dark mode (no green-on-black or bright neon overrides that feel unprofessional to corporate clients).",
+      "Don't pair 1px borders with large drop shadows (shadows greater than 16px blur) on the same element. Pick either a clean border or a subtle shadow, never both.",
+      "Don't use gradient text containing three or more colors or generic rainbow profiles. Keep typography solid and readable.",
+      "Don't use side-stripe borders (e.g. border-left-4 as an accent) on cards or alerts."
+    ]
+  }
+}

@@ -18,7 +18,10 @@ export default function Footer() {
           
           {/* Logo block */}
           <div className="md:col-span-5 space-y-4 text-left">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={handleScrollToTop}>
+            <button 
+              className="flex items-center gap-3 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-xl p-1 text-left border-none bg-transparent"
+              onClick={handleScrollToTop}
+            >
               <div className="bg-blue-950/60 border border-blue-500/20 p-2 rounded-xl">
                 <Shield className="w-5 h-5 text-blue-400" />
               </div>
@@ -26,7 +29,7 @@ export default function Footer() {
                 <span className="font-display font-bold text-lg text-white leading-tight">Daya Solusi Integra</span>
                 <span className="text-[10px] uppercase tracking-widest text-bumn-gold font-mono -mt-0.5">IT & GRC Consulting</span>
               </div>
-            </div>
+            </button>
             <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-sm">
               Konsultan IT spesialis implementasi Governance, Risk, and Compliance (GRC) dan Internal Control over Financial Reporting (ICOFR) untuk BUMN dan Sektor Perbankan di Indonesia.
             </p>
@@ -59,7 +62,7 @@ export default function Footer() {
           <div className="md:col-span-2 flex justify-start md:justify-end items-start">
             <button
               onClick={handleScrollToTop}
-              className="p-3 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-white transition-colors focus:outline-none shadow-md"
+              className="p-3 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 shadow-md"
               title="Kembali ke atas"
             >
               <ArrowUp className="w-5 h-5" />

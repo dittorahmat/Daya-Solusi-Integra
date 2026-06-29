@@ -25,13 +25,13 @@ export default function Clients() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-widest uppercase font-mono">
-            Segmentasi Target Market
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
+            Fokus Sektor
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             Fokus Industri & Solusi Spesifik Sektor
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed">
+          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Daya Solusi Integra hadir dengan pemahaman regulatori mendalam untuk mengawal kepatuhan dan integritas laporan keuangan pada dua pilar strategis ekonomi Indonesia.
           </p>
         </div>
@@ -42,19 +42,19 @@ export default function Clients() {
             <div
               key={sector.name}
               id={`sector-card-${sector.sector.toLowerCase()}`}
-              className="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800/80 bg-[#0f172a]/20 flex flex-col justify-between hover:border-slate-700/60 transition-colors"
+              className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-[#0f172a]/20 flex flex-col justify-between hover:border-slate-700/60 transition-colors"
             >
               <div className="space-y-6">
                 {/* Header Section */}
                 <div className="flex items-center gap-4 text-left">
-                  <div className="bg-gradient-to-tr from-blue-950/50 to-slate-950/50 border border-blue-500/20 p-4 rounded-2xl shadow-inner shadow-blue-500/5">
+                  <div className="bg-blue-950/40 text-blue-400 p-3.5 rounded-xl shrink-0">
                     {renderIcon(sector.logo)}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight font-display">
+                    <h3 className="text-2xl font-bold text-white tracking-tight">
                       {sector.name}
                     </h3>
-                    <span className="text-[10px] uppercase tracking-widest text-bumn-gold font-mono font-bold">
+                    <span className="text-xs uppercase tracking-widest text-bumn-gold font-mono font-bold">
                       Fokus Utama DSI
                     </span>
                   </div>
@@ -70,13 +70,13 @@ export default function Clients() {
                   
                   {/* Challenges List */}
                   <div className="space-y-3.5 text-left">
-                    <h4 className="text-xs font-bold text-red-400 uppercase tracking-widest font-mono flex items-center gap-2">
+                    <h4 className="text-xs font-bold text-red-400 flex items-center gap-2">
                       <ShieldAlert className="w-4 h-4 shrink-0" />
                       Tantangan Utama
                     </h4>
                     <ul className="space-y-2">
                       {sector.challenges.map((challenge, idx) => (
-                        <li key={idx} className="text-xs text-slate-400 leading-relaxed font-light flex items-start gap-2">
+                        <li key={idx} className="text-sm text-slate-400 leading-relaxed font-light flex items-start gap-2">
                           <span className="text-red-500 font-bold mt-0.5">•</span>
                           <span>{challenge}</span>
                         </li>
@@ -86,13 +86,13 @@ export default function Clients() {
 
                   {/* Solutions List */}
                   <div className="space-y-3.5 text-left">
-                    <h4 className="text-xs font-bold text-bumn-gold uppercase tracking-widest font-mono flex items-center gap-2">
+                    <h4 className="text-xs font-bold text-bumn-gold flex items-center gap-2">
                       <BadgeCheck className="w-4 h-4 shrink-0" />
                       Solusi DSI
                     </h4>
                     <ul className="space-y-2">
                       {sector.solutions.map((sol, idx) => (
-                        <li key={idx} className="text-xs text-slate-300 leading-relaxed font-medium flex items-start gap-2">
+                        <li key={idx} className="text-sm text-slate-300 leading-relaxed font-medium flex items-start gap-2">
                           <span className="text-bumn-gold font-bold mt-0.5">✓</span>
                           <span>{sol}</span>
                         </li>
@@ -106,7 +106,7 @@ export default function Clients() {
 
               {/* Bottom tag */}
               <div className="pt-6 border-t border-slate-800/40 mt-6 flex justify-between items-center text-left">
-                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                <span className="text-xs font-mono text-slate-500">
                   Kesesuaian Regulasi Terjamin
                 </span>
                 <span className="text-xs font-bold text-blue-400 font-mono">
@@ -119,7 +119,7 @@ export default function Clients() {
 
         {/* Dynamic regulatory standards log strip */}
         <div className="mt-16 bg-slate-950/40 rounded-2xl py-6 px-8 border border-slate-800/60 flex flex-wrap justify-center items-center gap-x-12 gap-y-4" id="regulatory-strip">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Standar Pengendalian Eksternal:</span>
+          <span className="text-xs font-mono text-slate-500">Standar Pengendalian Eksternal:</span>
           <div className="flex flex-wrap gap-6 sm:gap-10 text-xs text-slate-400 font-mono font-semibold">
             <span className="hover:text-white transition-colors">COSO INTERNAL CONTROL</span>
             <span className="hover:text-white transition-colors">COBIT 2019</span>

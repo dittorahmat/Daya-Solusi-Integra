@@ -12,6 +12,22 @@ import { MessageSquareCode, Sparkles } from "lucide-react";
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>("hero");
   const [isAdvisorOpen, setIsAdvisorOpen] = useState<boolean>(false);
+  // Lifted from Assessment: pre-fill Contact form after wizard completes
+  const [assessmentPrefill, setAssessmentPrefill] = useState<{ company: string; sector: string } | null>(null);
+
+  // Set up global shortcut to toggle AI Advisor (Ctrl + /)
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "/") {
+        e.preventDefault();
+        setIsAdvisorOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleGlobalKeyDown);
+    };
+  }, []);
 
   // Set up an intersection observer to dynamically highlight the active navbar tab on scroll
   useEffect(() => {
@@ -62,8 +78,8 @@ export default function App() {
       
       {/* Background ambient lighting */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-emerald-500/5 blur-[200px]" />
-        <div className="absolute top-[30vh] left-0 w-[40vw] h-[40vw] bg-teal-500/5 blur-[180px]" />
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-blue-600/5 blur-[200px]" />
+        <div className="absolute top-[30vh] left-0 w-[40vw] h-[40vw] bg-bumn-blue/5 blur-[180px]" />
       </div>
 
       {/* Corporate Header */}
@@ -89,10 +105,12 @@ export default function App() {
         <Clients />
 
         {/* Interactive Self Assessment Tool */}
-        <Assessment />
+        <Assessment
+          onComplete={(company, sector) => setAssessmentPrefill({ company, sector })}
+        />
 
         {/* Consultation and Lead Intake Form */}
-        <Contact />
+        <Contact prefill={assessmentPrefill} />
 
       </main>
 
@@ -104,13 +122,13 @@ export default function App() {
         <button
           id="floating-ai-trigger"
           onClick={() => setIsAdvisorOpen(true)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 rounded-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 font-bold text-xs font-display tracking-wider cursor-pointer group"
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl shadow-lg shadow-blue-900/30 hover:scale-105 active:scale-95 transition-all duration-300 font-bold text-xs font-display tracking-wider cursor-pointer group"
           title="Butuh konsultasi GRC? Tanya AI sekarang"
         >
           <div className="relative">
-            <MessageSquareCode className="w-5 h-5 text-slate-950" />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full animate-ping" />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full" />
+            <MessageSquareCode className="w-5 h-5 text-white" />
+            <span className="absolute top-0 right-0 w-2 h-2 bg-bumn-gold rounded-full animate-ping" />
+            <span className="absolute top-0 right-0 w-2 h-2 bg-bumn-gold rounded-full" />
           </div>
           <span>Konsultasi AI DSI</span>
         </button>

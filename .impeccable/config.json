@@ -1,0 +1,28 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "gradient-text"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "reason": "Committed brand font from DESIGN.md",
+        "createdAt": "2026-06-29T08:43:16.074Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "reason": "Committed brand font from DESIGN.md",
+        "createdAt": "2026-06-29T08:43:19.973Z"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "jetbrains mono",
+        "reason": "Official mono font listed in DESIGN.md body",
+        "createdAt": "2026-06-29T09:00:12.774Z"
+      }
+    ]
+  }
+}

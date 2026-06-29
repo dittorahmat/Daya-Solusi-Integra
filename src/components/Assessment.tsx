@@ -20,11 +20,12 @@ import {
 } from "lucide-react";
 import Markdown from "react-markdown";
 
-export default function Assessment() {
+export default function Assessment({ onComplete }: { onComplete?: (company: string, sector: string) => void }) {
   // Step tracker: -1 = Info form, 0 to 9 = Questions, 10 = Results
   const [currentStep, setCurrentStep] = useState<number>(-1);
   const [companyName, setCompanyName] = useState<string>("");
   const [sector, setSector] = useState<"BUMN" | "Banking">("BUMN");
+  const [validationError, setValidationError] = useState<string>("");
   
   // Record user selections: questionId -> score (1-4)
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -37,9 +38,10 @@ export default function Assessment() {
   const handleStart = (e: React.FormEvent) => {
     e.preventDefault();
     if (!companyName.trim()) {
-      alert("Silakan masukkan nama organisasi/instansi Anda terlebih dahulu.");
+      setValidationError("Silakan masukkan nama organisasi/instansi Anda terlebih dahulu.");
       return;
     }
+    setValidationError("");
     setCurrentStep(0);
   };
 
@@ -52,6 +54,7 @@ export default function Assessment() {
         setCurrentStep((prev) => prev + 1);
       } else {
         setCurrentStep(totalQuestions); // Show results
+        onComplete?.(companyName, sector);
       }
     }, 280);
   };
@@ -192,28 +195,28 @@ export default function Assessment() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-widest uppercase font-mono">
-            Interactive Tool
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold font-mono">
+            Alat Asesmen Interaktif
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
             GRC & ICOFR Maturity Self-Assessment
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed">
+          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
             Evaluasi mandiri tingkat kematangan kontrol internal pelaporan keuangan Anda secara gratis. Dapatkan saran perbaikan instan berbasis AI.
           </p>
         </div>
 
         {/* Core Wizard Container */}
-        <div className="glass-panel rounded-3xl border border-slate-800/80 bg-slate-950/50 shadow-2xl overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
+        <div className="glass-panel rounded-2xl border border-slate-800/80 bg-slate-950/50 shadow-2xl overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
           
           {/* STEP -1: Company Info Setup */}
           {currentStep === -1 && (
             <div className="p-6 sm:p-10 space-y-8 animate-in fade-in duration-300 text-left" id="step-info-form">
               <div className="space-y-3">
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-display">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   Mulai Evaluasi Mandiri Organisasi Anda
                 </h3>
-                <p className="text-slate-400 font-light text-sm leading-relaxed">
+                <p className="text-slate-400 font-light text-sm leading-relaxed max-w-xl">
                   Harap lengkapi identitas dasar di bawah ini untuk memulai evaluasi 10 indikator kontrol internal pelaporan keuangan (ICOFR) berdasarkan COSO framework.
                 </p>
               </div>
@@ -221,7 +224,7 @@ export default function Assessment() {
               <form onSubmit={handleStart} className="space-y-6 max-w-xl">
                 {/* Company Name */}
                 <div className="space-y-2">
-                  <label htmlFor="comp-name" className="block text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">
+                  <label htmlFor="comp-name" className="block text-xs font-semibold text-slate-300">
                     Nama Organisasi / Perusahaan BUMN / Bank
                   </label>
                   <input
@@ -229,32 +232,52 @@ export default function Assessment() {
                     id="comp-name"
                     required
                     value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
+                    onChange={(e) => {
+                      setCompanyName(e.target.value);
+                      if (e.target.value.trim()) {
+                        setValidationError("");
+                      }
+                    }}
                     placeholder="Contoh: PT Bank Pembangunan Daerah..."
-                    className="w-full bg-slate-900/80 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                    className="w-full bg-slate-900/80 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
                   />
+                  {validationError && (
+                    <p className="text-xs text-rose-500 font-medium mt-1.5 animate-in fade-in duration-200" id="comp-name-error">
+                      {validationError}
+                    </p>
+                  )}
                 </div>
 
                 {/* Target Segment */}
-                <div className="space-y-2">
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">
+                <div className="space-y-3">
+                  <label className="block text-xs font-semibold text-slate-300">
                     Sektor Operasional Utama
                   </label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="flex p-1 bg-slate-900/80 border border-slate-800 rounded-2xl max-w-md w-full" id="sector-segment-control">
                     <button
                       type="button"
                       id="sector-bumn-btn"
                       onClick={() => setSector("BUMN")}
-                      className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all ${
+                      tabIndex={sector === "BUMN" ? 0 : -1}
+                      onKeyDown={(e) => {
+                        if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+                          e.preventDefault();
+                          setSector("Banking");
+                          setTimeout(() => {
+                            document.getElementById("sector-banking-btn")?.focus();
+                          }, 0);
+                        }
+                      }}
+                      className={`flex-1 flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
                         sector === "BUMN"
-                          ? "border-blue-500 bg-blue-950/20 text-white font-semibold shadow-md shadow-blue-500/5"
-                          : "border-slate-800 bg-slate-900/40 text-slate-400 hover:border-slate-700"
+                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-bold"
+                          : "text-slate-400 hover:text-white hover:bg-slate-800/20"
                       }`}
                     >
-                      <Building2 className={`w-5 h-5 ${sector === "BUMN" ? "text-blue-400" : "text-slate-500"}`} />
-                      <div className="flex flex-col">
-                        <span className="text-sm">BUMN / BUMD</span>
-                        <span className="text-[10px] opacity-60 font-light mt-0.5">Kementerian & SPI</span>
+                      <Building2 className={`w-4 h-4 ${sector === "BUMN" ? "text-white" : "text-slate-500"}`} />
+                      <div className="flex flex-col text-left">
+                        <span className="text-xs sm:text-sm font-bold leading-tight">BUMN / BUMD</span>
+                        <span className="text-[10px] opacity-75 font-mono leading-none mt-0.5">Kementerian & SPI</span>
                       </div>
                     </button>
 
@@ -262,16 +285,26 @@ export default function Assessment() {
                       type="button"
                       id="sector-banking-btn"
                       onClick={() => setSector("Banking")}
-                      className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all ${
+                      tabIndex={sector === "Banking" ? 0 : -1}
+                      onKeyDown={(e) => {
+                        if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+                          e.preventDefault();
+                          setSector("BUMN");
+                          setTimeout(() => {
+                            document.getElementById("sector-bumn-btn")?.focus();
+                          }, 0);
+                        }
+                      }}
+                      className={`flex-1 flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold/50 ${
                         sector === "Banking"
-                          ? "border-bumn-gold bg-slate-900/60 text-white font-semibold shadow-md shadow-bumn-gold/5"
-                          : "border-slate-800 bg-slate-900/40 text-slate-400 hover:border-slate-700"
+                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-bold"
+                          : "text-slate-400 hover:text-white hover:bg-slate-800/20"
                       }`}
                     >
-                      <Landmark className={`w-5 h-5 ${sector === "Banking" ? "text-bumn-gold" : "text-slate-500"}`} />
-                      <div className="flex flex-col">
-                        <span className="text-sm">Perbankan / LKP</span>
-                        <span className="text-[10px] opacity-60 font-light mt-0.5">Regulasi OJK & BI</span>
+                      <Landmark className={`w-4 h-4 ${sector === "Banking" ? "text-white" : "text-slate-500"}`} />
+                      <div className="flex flex-col text-left">
+                        <span className="text-xs sm:text-sm font-bold leading-tight">Perbankan / OJK</span>
+                        <span className="text-[10px] opacity-75 font-mono leading-none mt-0.5">Regulasi OJK & BI</span>
                       </div>
                     </button>
                   </div>
@@ -281,7 +314,7 @@ export default function Assessment() {
                   <button
                     type="submit"
                     id="start-assessment-btn"
-                    className="flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     Mulai Evaluasi Mandiri
                     <ArrowRight className="w-4 h-4" />
@@ -321,23 +354,45 @@ export default function Assessment() {
 
               {/* Question Text */}
               <div className="space-y-6 py-4 text-left">
-                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-relaxed font-display">
+                <h3 id="current-question-title" className="text-lg sm:text-xl font-bold text-white tracking-tight leading-relaxed">
                   {assessmentQuestions[currentStep].text}
                 </h3>
 
-                {/* Options list */}
-                <div className="space-y-3" id="options-container">
+                 {/* Options list */}
+                <div 
+                  className="divide-y divide-slate-800/60 border-y border-slate-800/60 text-left" 
+                  id="options-container"
+                  role="radiogroup"
+                  aria-labelledby="current-question-title"
+                >
                   {assessmentQuestions[currentStep].options.map((opt, idx) => {
                     const isSelected = answers[assessmentQuestions[currentStep].id] === opt.score;
+                     const handleKeyDown = (e: React.KeyboardEvent) => {
+                      const totalOpts = assessmentQuestions[currentStep].options.length;
+                      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+                        e.preventDefault();
+                        const nextBtn = document.getElementById(`option-btn-${(idx + 1) % totalOpts}`);
+                        nextBtn?.focus();
+                      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+                        e.preventDefault();
+                        const prevBtn = document.getElementById(`option-btn-${(idx - 1 + totalOpts) % totalOpts}`);
+                        prevBtn?.focus();
+                      }
+                    };
+                    const isFocusable = isSelected || (answers[assessmentQuestions[currentStep].id] === undefined && idx === 0);
                     return (
                       <button
                         key={idx}
                         id={`option-btn-${idx}`}
+                        role="radio"
+                        aria-checked={isSelected}
+                        tabIndex={isFocusable ? 0 : -1}
+                        onKeyDown={handleKeyDown}
                         onClick={() => handleSelectOption(assessmentQuestions[currentStep].id, opt.score)}
-                        className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-start gap-4 focus:outline-none ${
+                        className={`w-full py-4 px-2 text-left text-sm transition-all flex items-start gap-4 focus:outline-none focus-visible:bg-slate-900/40 ${
                           isSelected
-                            ? "border-blue-500 bg-blue-950/20 text-white font-medium"
-                            : "border-slate-800 bg-slate-900/30 text-slate-300 hover:border-slate-700 hover:bg-slate-900/20"
+                            ? "text-white font-medium"
+                            : "text-slate-300 hover:text-white"
                         }`}
                       >
                         <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border text-[11px] font-bold ${
@@ -359,7 +414,7 @@ export default function Assessment() {
                 <button
                   id="prev-question-btn"
                   onClick={handlePrev}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl px-4 py-2.5 transition-colors focus:outline-none"
+                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Kembali
@@ -382,7 +437,7 @@ export default function Assessment() {
                   <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
                     Hasil Analisis Kematangan
                   </span>
-                  <h3 className="text-2xl font-bold text-white tracking-tight font-display">
+                  <h3 className="text-2xl font-bold text-white tracking-tight">
                     {companyName}
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -390,39 +445,39 @@ export default function Assessment() {
                   </p>
                 </div>
 
-                <div className="flex gap-4 items-center bg-slate-900/60 border border-slate-800 p-4 rounded-2xl">
-                  <div className="text-center">
+                <div className="flex gap-6 items-center py-2 px-4">
+                  <div className="text-left md:text-right">
                     <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Skor Total</span>
                     <span className="text-2xl sm:text-3xl font-extrabold text-white font-display">{results.totalScore} <span className="text-sm font-normal text-slate-500">/ {results.maxScore}</span></span>
                   </div>
                   <div className="w-px h-10 bg-slate-800" />
-                  <div className="text-center">
+                  <div className="text-left md:text-right">
                     <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Maturitas</span>
                     <span className="text-2xl sm:text-3xl font-extrabold text-bumn-gold font-display">{results.percentage}%</span>
                   </div>
                 </div>
               </div>
 
-              {/* Maturity Level Display */}
-              <div className="bg-gradient-to-tr from-blue-950/20 to-slate-900/40 border border-blue-500/10 rounded-2xl p-6 text-left flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                <div className="bg-blue-500/10 p-4 rounded-2xl text-blue-400 shrink-0 h-16 w-16 flex items-center justify-center font-display text-2xl font-black">
+              {/* Maturity Level Display (Line Accent instead of Nested Card) */}
+              <div className="border-l-2 border-bumn-blue pl-6 py-2 text-left flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                <div className="bg-blue-950/50 text-blue-400 shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-900/30">
                   Lvl {results.level}
                 </div>
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className="text-lg font-bold text-white font-display">{results.levelLabel}</h4>
+                    <h4 className="text-lg font-bold text-white">{results.levelLabel}</h4>
                     <span className="text-[10px] uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light">{results.levelDesc}</p>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">{results.levelDesc}</p>
                 </div>
               </div>
 
-              {/* Category Scores breakdown */}
-              <div className="space-y-4 text-left">
-                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest font-mono">
+              {/* Category Scores breakdown (Flat list instead of Nested Cards) */}
+              <div className="space-y-6 text-left">
+                <h4 className="text-xs font-bold text-slate-300">
                   Rincian Skor per Dimensi COSO Internal Control
                 </h4>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
                   {[
                     { key: "Control Environment", label: "Lingkungan Pengendalian", icon: Shield },
                     { key: "Risk Assessment", label: "Penilaian Risiko", icon: Briefcase },
@@ -434,22 +489,25 @@ export default function Assessment() {
                     const pct = (score / 4) * 100;
                     const Icon = dim.icon;
                     return (
-                      <div key={idx} className="bg-slate-900/30 border border-slate-800 p-4 rounded-xl space-y-3">
-                        <div className="flex justify-between items-start gap-2">
-                          <div className="p-2 bg-slate-800 rounded-lg text-slate-400">
-                            <Icon className="w-4 h-4" />
+                      <div key={idx} className="space-y-2 py-2">
+                        <div className="flex justify-between items-center gap-2">
+                          <div className="flex items-center gap-2 text-slate-400">
+                            <Icon className="w-4 h-4 text-bumn-gold" />
+                            <span className="text-xs text-slate-400 font-semibold uppercase font-mono tracking-wider">
+                              {dim.key === "Control Environment" ? "Environment" : dim.key.split(" ")[0]}
+                            </span>
                           </div>
-                          <span className="text-xs font-mono font-bold text-white bg-slate-800/80 px-2 py-0.5 rounded">
-                            {score.toFixed(1)} / 4.0
+                          <span className="text-xs font-mono font-bold text-white">
+                            {score.toFixed(1)}/4.0
                           </span>
                         </div>
                         <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 font-semibold block leading-tight truncate">
+                          <span className="text-xs text-slate-500 font-medium block leading-tight truncate">
                             {dim.label}
                           </span>
-                          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                          <div className="w-full bg-slate-900 h-1 rounded-full overflow-hidden">
                             <div 
-                              className="bg-bumn-gold h-full rounded-full transition-all" 
+                              className="bg-bumn-blue h-full rounded-full transition-all" 
                               style={{ width: `${pct}%` }}
                             />
                           </div>
@@ -471,7 +529,7 @@ export default function Assessment() {
                     <button
                       id="assess-ai-generate-btn"
                       onClick={generateAiReport}
-                      className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer font-display"
+                      className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                     >
                       <Sparkles className="w-4 h-4 text-white" />
                       Formulasikan Executive Report dengan AI
@@ -494,17 +552,17 @@ export default function Assessment() {
                   </div>
                 )}
 
-                {/* AI Executive Report Result */}
+                {/* AI Executive Report Result (Borderless Container inside Wizard) */}
                 {aiReport && (
-                  <div className="w-full bg-slate-900/20 border border-slate-800 rounded-2xl p-6 sm:p-8 text-left animate-in fade-in zoom-in-95 duration-500 relative" id="ai-report-display">
+                  <div className="w-full border-t border-slate-800 pt-8 text-left animate-in fade-in zoom-in-95 duration-500 relative" id="ai-report-display">
                     
                     {/* Header bar of report */}
                     <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
                       <div className="flex items-center gap-2 text-bumn-gold text-xs font-mono">
                         <FileText className="w-4 h-4" />
-                        AI GENERATED ADVISORY REPORT
+                        AI Generated Advisory Report
                       </div>
-                      <span className="text-[10px] text-slate-500 font-mono uppercase bg-slate-800 px-2 py-0.5 rounded">DSI Expert Suite</span>
+                      <span className="text-xs text-slate-500 font-mono bg-slate-800 px-2 py-0.5 rounded">DSI Expert Suite</span>
                     </div>
 
                     {/* Markdown rendering with elegant custom typography styles */}
@@ -514,7 +572,7 @@ export default function Assessment() {
 
                     {/* Report action footer */}
                     <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap gap-4 justify-between items-center">
-                      <span className="text-[10px] text-slate-500 font-mono italic">
+                      <span className="text-xs text-slate-500 font-mono italic">
                         Didesain untuk kebutuhan Direksi & Komite Audit. PT Daya Solusi Integra.
                       </span>
                       <button
@@ -532,7 +590,7 @@ export default function Assessment() {
                   <button
                     id="restart-assessment-btn"
                     onClick={handleReset}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors focus:outline-none"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     <RotateCcw className="w-4.5 h-4.5" />
                     Reset & Ulangi Asesmen

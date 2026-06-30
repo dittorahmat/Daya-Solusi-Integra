@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Shield, Menu, X, ArrowRight, MessageSquareCode } from "lucide-react";
+import { Menu, X, ArrowRight, MessageSquareCode } from "lucide-react";
+import logoImg from "../../assets/dsi-logo-removebg-preview.png";
 
 interface HeaderProps {
   activeTab: string;
@@ -107,20 +108,15 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
           {/* Logo & Brand */}
           <button 
             onClick={() => handleNavClick("hero")}
-            className="flex items-center gap-3 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] rounded-xl p-1 text-left"
+            className="flex items-center cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] rounded-xl p-1"
             id="dsi-logo-container"
+            aria-label="Daya Solusi Integra - Beranda"
           >
-            <div className="bg-gradient-to-tr from-bumn-blue to-blue-700 p-2.5 rounded-xl shadow-lg shadow-blue-950/30 group-hover:scale-105 transition-transform duration-300">
-              <Shield className="w-6 h-6 text-white" strokeWidth={2.5} />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-xl tracking-tight text-white group-hover:text-bumn-gold transition-colors">
-                Daya Solusi Integra
-              </span>
-              <span className="text-[10px] uppercase tracking-widest text-bumn-gold font-mono -mt-0.5">
-                IT & GRC Consulting
-              </span>
-            </div>
+            <img 
+              src={logoImg} 
+              alt="Daya Solusi Integra" 
+              className="h-20 w-auto object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105"
+            />
           </button>
 
           {/* Desktop Navigation Links */}

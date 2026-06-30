@@ -1,5 +1,6 @@
 import React from "react";
-import { Shield, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import logoImg from "../../assets/dsi-logo-removebg-preview.png";
 
 export default function Footer() {
   const handleScrollToTop = () => {
@@ -19,16 +20,15 @@ export default function Footer() {
           {/* Logo block */}
           <div className="md:col-span-5 space-y-4 text-left">
             <button 
-              className="flex items-center gap-3 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-xl p-1 text-left border-none bg-transparent"
+              className="flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-xl p-1 border-none bg-transparent"
               onClick={handleScrollToTop}
+              aria-label="Daya Solusi Integra - Kembali ke atas"
             >
-              <div className="bg-blue-950/60 border border-blue-500/20 p-2 rounded-xl">
-                <Shield className="w-5 h-5 text-blue-400" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-lg text-white leading-tight">Daya Solusi Integra</span>
-                <span className="text-[10px] uppercase tracking-widest text-bumn-gold font-mono -mt-0.5">IT & GRC Consulting</span>
-              </div>
+              <img 
+                src={logoImg} 
+                alt="Daya Solusi Integra" 
+                className="h-20 w-auto object-contain brightness-0 invert transition-transform duration-300 hover:scale-105"
+              />
             </button>
             <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-sm">
               Konsultan IT spesialis implementasi Governance, Risk, and Compliance (GRC) dan Internal Control over Financial Reporting (ICOFR) untuk BUMN dan Sektor Perbankan di Indonesia.

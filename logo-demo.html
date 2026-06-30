@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSI Logo Integration Demo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Design Tokens from DESIGN.md */
+    :root {
+      --ink-navy: #0b0f19;
+      --deep-navy: #0d1e3d;
+      --bumn-blue: #0b4596;
+      --bumn-gold: #cca43b;
+      --off-white: #f3f4f6;
+      --muted-slate: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--ink-navy);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted-slate);
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Grid Layout */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    /* Card design matching DSI design guidelines */
+    .card {
+      background-color: rgba(13, 30, 61, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 320px;
+    }
+
+    .card:hover {
+      border-color: rgba(11, 69, 150, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--bumn-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      background: rgba(204, 164, 59, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .badge.recommended {
+      color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Preview box containing the dark navy background simulating the website */
+    .preview-box {
+      background-color: var(--ink-navy);
+      width: 100%;
+      height: 120px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    .logo-img {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: all 0.3s;
+    }
+
+    /* Style variants */
+    .variant-original {
+      /* no filters */
+    }
+
+    .variant-invert {
+      filter: brightness(0) invert(1);
+    }
+
+    .variant-glow {
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
+    }
+
+    .capsule-white {
+      background-color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .capsule-white img {
+      max-height: 36px;
+    }
+
+    .capsule-glass {
+      background-color: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .capsule-glass img {
+      max-height: 36px;
+    }
+
+    /* Descriptions */
+    .description-block {
+      text-align: center;
+      width: 100%;
+    }
+
+    .variant-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .variant-desc {
+      font-size: 0.8rem;
+      color: var(--muted-slate);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    /* Footer back callout */
+    .action-panel {
+      background-color: rgba(11, 69, 150, 0.1);
+      border: 1px solid rgba(11, 69, 150, 0.2);
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .action-panel p {
+      font-size: 0.9rem;
+      color: var(--off-white);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--bumn-blue) 0%, #1d4ed8 100%);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>DSI Logo Integration Options</h1>
+      <p class="subtitle">Pratinjau visual logo asli Daya Solusi Integra terhadap latar belakang gelap website (Ink Navy) dengan berbagai teknik desain.</p>
+    </header>
+
+    <div class="demo-grid">
+      
+      <!-- Option 1: Original (Drowned) -->
+      <div class="card">
+        <span class="badge">Masalah</span>
+        <div class="preview-box">
+          <img src="assets/dsi-logo-removebg-preview.png" class="logo-img variant-original" alt="Original Logo">
+        </div>
+        <div class="description-block">
+          <h3 class="variant-title">Logo Asli (Tanpa Filter)</h3>
+          <p class="variant-desc">Warna biru tua/teal asli logo langsung tenggelam di atas latar belakang gelap, membuat bentuknya sulit dikenali oleh pengguna.</p>
+        </div>
+      </div>
+
+      <!-- Option 2: Inverted (Recommended) -->
+      <div class="card">
+        <span class="badge recommended">Rekomendasi (Solusi 1)</span>
+        <div class="preview-box">
+          <img src="assets/dsi-logo-removebg-preview.png" class="logo-img variant-invert" alt="Inverted Logo">
+        </div>
+        <div class="description-block">
+          <h3 class="variant-title">CSS Invert (Monokrom Putih)</h3>
+          <p class="variant-desc">Mengubah seluruh elemen gelap menjadi putih perak murni. Sangat kontras, modern, bersih, dan menyatu sempurna dengan dark mode.</p>
+        </div>
+      </div>
+
+      <!-- Option 3: Capsule White (Solusi 2) -->
+      <div class="card">
+        <span class="badge">Solusi 2</span>
+        <div class="preview-box">
+          <div class="capsule-white">
+            <img src="assets/dsi-logo-removebg-preview.png" alt="Capsule White Logo">
+          </div>
+        </div>
+        <div class="description-block">
+          <h3 class="variant-title">Capsule Putih Solid</h3>
+          <p class="variant-desc">Membungkus logo asli dalam wadah putih susu. Warna asli logo tetap terjaga 100%, tetapi menciptakan blok kotak/kapsul kontras di header.</p>
+        </div>
+      </div>
+
+      <!-- Option 4: Capsule Glass (Solusi 2 Alternatif) -->
+      <div class="card">
+        <span class="badge">Solusi 2 Alternatif</span>
+        <div class="preview-box">
+          <div class="capsule-glass">
+            <img src="assets/dsi-logo-removebg-preview.png" alt="Capsule Glass Logo">
+          </div>
+        </div>
+        <div class="description-block">
+          <h3 class="variant-title">Capsule Glassmorphism</h3>
+          <p class="variant-desc">Menggunakan wadah semi-transparan dengan efek blur kaca. Memberikan kontras sedang, mempertahankan warna asli logo, dan terlihat futuristik.</p>
+        </div>
+      </div>
+
+      <!-- Option 5: Glow Effect (Solusi 3) -->
+      <div class="card">
+        <span class="badge">Solusi 3</span>
+        <div class="preview-box">
+          <img src="assets/dsi-logo-removebg-preview.png" class="logo-img variant-glow" alt="Glow Logo">
+        </div>
+        <div class="description-block">
+          <h3 class="variant-title">Outer Glow (Cahaya Belakang)</h3>
+          <p class="variant-desc">Logo asli diberikan bayangan pendar cahaya putih tipis di sekelilingnya agar memisahkan bagian gelap logo dari latar belakang.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="action-panel">
+      <p>Silakan buka file ini langsung di browser Anda untuk membandingkan tampilannya secara real-time.</p>
+      <p style="font-size: 0.8rem; color: var(--muted-slate); margin-bottom: 1.5rem;">
+        File Path: <code>file:///C:/backup/Daya-Solusi-Integra/logo-demo.html</code>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

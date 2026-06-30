@@ -3,6 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -195,6 +196,78 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
   } catch (error: any) {
     console.error("Error calling Gemini API for assessment:", error);
     return res.status(500).json({ error: "Gagal menganalisis penilaian: " + error.message });
+  }
+});
+
+// API Endpoint 3: Contact Form submission emailed to marketing@dsintegra.co.id
+app.post("/api/contact", async (req, res) => {
+  try {
+    const { name, company, email, phone, sector, service, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "Nama, email, dan pesan wajib diisi." });
+    }
+
+    // Configure Nodemailer transporter sending through localhost SMTP on port 25
+    const transporter = nodemailer.createTransport({
+      host: "localhost",
+      port: 25,
+      secure: false,
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+
+    const mailOptions = {
+      from: `"DSI Web Contact" <no-reply@dsintegra.co.id>`,
+      to: "marketing@dsintegra.co.id",
+      subject: `Inquiry Baru Website: ${name} (${company})`,
+      text: `Anda mendapatkan pesan baru dari formulir kontak website dsintegra.co.id:\n\nNama: ${name}\nPerusahaan: ${company}\nSurel: ${email}\nNo. Telepon: ${phone || "-"}\nSektor: ${sector || "-"}\nLayanan: ${service || "-"}\n\nPesan:\n${message}`,
+      html: `
+        <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #0b3c5d; border-bottom: 2px solid #f5f5f5; padding-bottom: 10px; margin-top: 0;">Pengajuan Diskusi / Inquiry Baru</h2>
+          <p>Anda menerima formulir kontak baru dari website <strong>dsintegra.co.id</strong>:</p>
+          <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+            <tr style="background-color: #f9f9f9;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; width: 35%;">Nama Lengkap</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Perusahaan</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${company}</td>
+            </tr>
+            <tr style="background-color: #f9f9f9;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Surel Resmi</td>
+              <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">No. Telepon / HP</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${phone || "-"}</td>
+            </tr>
+            <tr style="background-color: #f9f9f9;">
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Sektor</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${sector || "-"}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Layanan Diminati</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${service || "-"}</td>
+            </tr>
+          </table>
+          <div style="background-color: #fcfcfc; border-left: 4px solid #0b3c5d; padding: 15px; margin-top: 15px;">
+            <strong style="display: block; margin-bottom: 5px; color: #555;">Pesan / Kebutuhan:</strong>
+            <p style="margin: 0; white-space: pre-wrap; font-style: italic;">${message}</p>
+          </div>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0 15px;" />
+          <p style="font-size: 11px; color: #999; margin: 0; text-align: center;">Email dikirim otomatis dari web server Daya Solusi Integra.</p>
+        </div>
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+    return res.json({ success: true, message: "Pesan berhasil dikirim ke tim marketing." });
+  } catch (error: any) {
+    console.error("Error sending contact email:", error);
+    return res.status(500).json({ error: "Gagal mengirim pesan: " + error.message });
   }
 });
 

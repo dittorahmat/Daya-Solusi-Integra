@@ -142,11 +142,30 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
 
     setIsSubmitting(true);
     
-    // Simulate API intake network request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || "Gagal mengirim pesan.");
+        }
+        return res.json();
+      })
+      .then(() => {
+        setIsSubmitted(true);
+      })
+      .catch((err) => {
+        console.error("Error submitting contact form:", err);
+        alert("Terjadi kesalahan: " + err.message);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const handleReset = () => {

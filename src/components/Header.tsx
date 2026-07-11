@@ -73,7 +73,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
 
   const navItems = [
     { id: "hero", label: "Beranda" },
-    { id: "services", label: "Layanan GRC & ICOFR" },
+    { id: "services", label: "Layanan TI & GRC" },
     { id: "clients", label: "Target Market & Sektor" },
     { id: "assessment", label: "Asesmen Mandiri" },
     { id: "contact", label: "Hubungi Kami" }
@@ -145,7 +145,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
               className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
               <MessageSquareCode className="w-4 h-4" />
-              AI GRC Consultant
+              AI IT & GRC Consultant
             </button>
             <button
               id="header-cta-btn"
@@ -202,7 +202,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                 className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
                 <MessageSquareCode className="w-4 h-4" />
-                AI Consultant GRC
+                AI IT & GRC Consultant
               </button>
               <button
                 id="mobile-assessment-btn"

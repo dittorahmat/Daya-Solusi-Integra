@@ -30,21 +30,21 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             {/* Tagline */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase font-mono shadow-inner shadow-blue-500/5">
               <ShieldCheck className="w-4 h-4" />
-              GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Specialization
+              IT Advisory & Enterprise GRC
             </div>
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] font-display" style={{ textWrap: "balance" }}>
-              Tata Kelola Andal, <br />
+              Konsultasi TI Strategis & <br />
               <span className="text-bumn-gold">
-                Pengendalian Finansial
+                Tata Kelola GRC Terintegrasi
               </span> <br />
               Tanpa Celah.
             </h1>
 
             {/* Description tailored for BUMN / Banking */}
             <p className="text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
-              <strong className="text-white font-semibold">Daya Solusi Integra (DSI)</strong> adalah konsultan IT & GRC spesialis yang merancang kerangka kerja <strong className="text-bumn-gold font-medium"><GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> (Internal Control over Financial Reporting)</strong> terintegrasi. Kami memperkokoh kepatuhan regulasi, tata kelola korporasi sehat, dan mitigasi risiko operasional demi akuntabilitas prima <strong className="text-white font-medium">BUMN</strong> dan kepatuhan ketat <strong className="text-white font-medium">Sektor Perbankan</strong>.
+              <strong className="text-white font-semibold">Daya Solusi Integra (DSI)</strong> adalah konsultan TI dan tata kelola independen yang merancang infrastruktur digital andal, menyelaraskan kerangka kerja <strong className="text-bumn-gold font-medium">GRC (Governance, Risk, and Compliance)</strong>, serta mengintegrasikan sistem pengendalian internal keuangan <strong className="text-white font-medium"><GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip></strong>. Kami memperkokoh kepatuhan regulasi dan keamanan sistem informasi untuk akuntabilitas tinggi <strong className="text-white font-medium">BUMN</strong> dan <strong className="text-white font-medium">Sektor Perbankan</strong>.
             </p>
 
             {/* CTAs */}

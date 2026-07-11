@@ -2,16 +2,16 @@ import { AssessmentQuestion, ClientProfile } from "./types";
 
 export const servicesList = [
   {
-    id: "icofr",
-    title: "Implementasi & Sertifikasi ICOFR",
-    shortDesc: "Kerangka pengendalian komprehensif atas pelaporan keuangan untuk kepatuhan BUMN dan audit perbankan.",
-    longDesc: "Daya Solusi Integra membantu organisasi merancang, menguji, dan meremediasi Internal Control over Financial Reporting (ICOFR) berdasarkan standar COSO. Kami fokus pada penyusunan Risk and Control Matrix (RCM), pemetaan transaksi signifikan, hingga kesiapan menghadapi audit eksternal secara seamless.",
-    icon: "ShieldAlert",
+    id: "itgc",
+    title: "IT Advisory & Governance (ITGC & COBIT)",
+    shortDesc: "Layanan konsultasi, tata kelola, dan audit teknologi informasi untuk memastikan keandalan sistem operasional dan keamanan siber.",
+    longDesc: "Daya Solusi Integra menyediakan konsultasi TI strategis untuk menyelaraskan infrastruktur teknologi dengan tujuan tata kelola bisnis. Kami memastikan IT General Controls (ITGC) Anda—termasuk Access Control, Change Management, System Operations, dan Program Development—memenuhi standar COBIT, ISO 27001, serta kepatuhan regulasi siber BUMN & OJK.",
+    icon: "Cpu",
     features: [
-      "Penyusunan Entity-Level & Transaction-Level Controls",
-      "Dokumentasi Process Flowchart & RCM (Risk and Control Matrix)",
-      "Pengujian Keandalan Operasional (Operating Effectiveness Testing)",
-      "Remediasi Defisiensi Kontrol sebelum Audit Final"
+      "Audit & Asesmen Tata Kelola TI berbasis COBIT",
+      "Penyusunan IT Security Policy & Manajemen Hak Akses (IAM)",
+      "Perancangan IT Disaster Recovery Plan & BCP",
+      "Audit Kontrol Aplikasi Otomatis (Application Controls)"
     ]
   },
   {
@@ -28,16 +28,16 @@ export const servicesList = [
     ]
   },
   {
-    id: "itgc",
-    title: "IT General Controls (ITGC) & IT GRC",
-    shortDesc: "Pengendalian umum teknologi informasi untuk menjaga integritas data keuangan dan sistem operasional.",
-    longDesc: "Di era digital, ICOFR tidak terpisahkan dari keandalan sistem IT. Kami memastikan ITGC Anda (Access Control, Change Management, System Operations, & Program Development) sesuai dengan standar COBIT dan regulasi keamanan informasi perbankan.",
-    icon: "Cpu",
+    id: "icofr",
+    title: "Implementasi & Sertifikasi ICOFR",
+    shortDesc: "Kerangka pengendalian komprehensif atas pelaporan keuangan untuk kepatuhan BUMN dan audit perbankan.",
+    longDesc: "Daya Solusi Integra membantu organisasi merancang, menguji, dan meremediasi Internal Control over Financial Reporting (ICOFR) berdasarkan standar COSO. Kami fokus pada penyusunan Risk and Control Matrix (RCM), pemetaan transaksi signifikan, hingga kesiapan menghadapi audit eksternal secara seamless.",
+    icon: "ShieldAlert",
     features: [
-      "Audit Hak Akses Sistem Keuangan & Core Banking",
-      "Tata Kelola Manajemen Perubahan Sistem (Change Management)",
-      "Kesiapan Manajemen Bencana & IT Disaster Recovery Plan",
-      "Penyelarasan Kontrol Otomatis (Application Controls)"
+      "Penyusunan Entity-Level & Transaction-Level Controls",
+      "Dokumentasi Process Flowchart & RCM (Risk and Control Matrix)",
+      "Pengujian Keandalan Operasional (Operating Effectiveness Testing)",
+      "Remediasi Defisiensi Kontrol sebelum Audit Final"
     ]
   },
   {

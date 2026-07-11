@@ -31,7 +31,7 @@ export default function Footer() {
               />
             </button>
             <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-sm">
-              Konsultan IT spesialis implementasi Governance, Risk, and Compliance (GRC) dan Internal Control over Financial Reporting (ICOFR) untuk BUMN dan Sektor Perbankan di Indonesia.
+              Konsultan TI dan manajemen risiko independen yang menyediakan solusi tata kelola TI, GRC (Governance, Risk, and Compliance), serta implementasi ICOFR untuk BUMN dan Sektor Perbankan.
             </p>
           </div>
 
@@ -39,11 +39,11 @@ export default function Footer() {
           <div className="md:col-span-3 space-y-4 text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Layanan Kami</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Implementasi ICOFR</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">IT Advisory & ITGC</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Audit ITGC & IT GRC</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Implementasi ICOFR</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition-colors">Pre-Audit Readiness (WTP)</a></li>
-              <li><a href="#assessment" className="hover:text-blue-400 transition-colors">Asesmen Kematangan GRC</a></li>
+              <li><a href="#assessment" className="hover:text-blue-400 transition-colors">Asesmen Kematangan TI & GRC</a></li>
             </ul>
           </div>
 

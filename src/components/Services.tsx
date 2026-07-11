@@ -53,10 +53,10 @@ export default function Services() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Spesialisasi GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Tingkat Korporasi
+            Layanan Strategis TI, GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>
           </h2>
           <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
-            Menjawab kebutuhan akuntabilitas yang tinggi, kami mendampingi BUMN dan institusi perbankan dalam memitigasi risiko salah saji keuangan, kegagalan sistem TI, dan ketidakpatuhan regulasi.
+            DSI membantu BUMN dan institusi perbankan mengoptimalkan infrastruktur TI, menyelaraskan kepatuhan GRC secara terintegrasi, dan memitigasi risiko operasional serta keuangan.
           </p>
         </div>
 

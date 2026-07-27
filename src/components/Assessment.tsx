@@ -65,18 +65,22 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
 
   const totalQuestions = assessmentQuestions.length;
 
+  const [selectedOptionId, setSelectedOptionId] = React.useState<number | null>(null);
+
   const handleSelectOption = (questionId: string, score: number) => {
     setAnswers((prev) => ({ ...prev, [questionId]: score }));
+    setSelectedOptionId(score);
     
-    // Auto-advance with a slight delay for better UX
+    // Auto-advance with a smooth delay for visual feedback
     setTimeout(() => {
+      setSelectedOptionId(null);
       if (currentStep < totalQuestions - 1) {
         setCurrentStep((prev) => prev + 1);
       } else {
         setCurrentStep(totalQuestions); // Show results
         onComplete?.(companyName, sector);
       }
-    }, 280);
+    }, 320);
   };
 
   // Keyboard shortcut listener (keys 1-4) for question selections
@@ -311,7 +315,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       {validationError}
                     </p>
                   )}
-                  <p className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-2">
+                  <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-2 font-mono">
                     <Shield className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
                     Data diproses secara aman dalam memori & dilindungi standar NDA
                   </p>
@@ -346,7 +350,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       <Building2 className={`w-4 h-4 ${sector === "BUMN" ? "text-white" : "text-slate-500"}`} />
                       <div className="flex flex-col text-left">
                         <span className="text-xs sm:text-sm font-bold leading-tight">BUMN / BUMD</span>
-                        <span className="text-[10px] opacity-75 font-mono leading-none mt-0.5">Kementerian & SPI</span>
+                        <span className="text-xs opacity-75 font-mono leading-none mt-0.5">Kementerian & SPI</span>
                       </div>
                     </button>
 
@@ -373,7 +377,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       <Landmark className={`w-4 h-4 ${sector === "Banking" ? "text-white" : "text-slate-500"}`} />
                       <div className="flex flex-col text-left">
                         <span className="text-xs sm:text-sm font-bold leading-tight">Perbankan / OJK</span>
-                        <span className="text-[10px] opacity-75 font-mono leading-none mt-0.5">Regulasi OJK & BI</span>
+                        <span className="text-xs opacity-75 font-mono leading-none mt-0.5">Regulasi OJK & BI</span>
                       </div>
                     </button>
                   </div>
@@ -399,7 +403,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               {/* Top progress and category header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/60 pb-4 text-left">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
+                  <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
                     {assessmentQuestions[currentStep].categoryIndo}
                   </span>
                   <p className="text-xs text-slate-500 font-mono">
@@ -453,12 +457,15 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                 </h3>
 
                  {/* Options list */}
-                <div 
-                  className="divide-y divide-slate-800/60 border-y border-slate-800/60 text-left" 
+                <fieldset 
+                  className="divide-y divide-slate-800/60 border-y border-slate-800/60 text-left border-0 p-0 m-0" 
                   id="options-container"
                   role="radiogroup"
                   aria-labelledby="current-question-title"
                 >
+                  <legend className="sr-only">
+                    {assessmentQuestions[currentStep].text}
+                  </legend>
                   {assessmentQuestions[currentStep].options.map((opt, idx) => {
                     const isSelected = answers[assessmentQuestions[currentStep].id] === opt.score;
                      const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -489,7 +496,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                             : "text-slate-300 hover:text-white hover:bg-slate-900/20"
                         }`}
                       >
-                        <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border text-[11px] font-bold ${
+                        <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border text-xs font-bold ${
                           isSelected 
                             ? "border-blue-400 bg-bumn-blue text-white" 
                             : "border-slate-700 bg-slate-800 text-slate-400"
@@ -500,7 +507,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       </button>
                     );
                   })}
-                </div>
+                </fieldset>
               </div>
 
               {/* Bottom navigation buttons */}
@@ -513,6 +520,24 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   >
                     <ChevronLeft className="w-4 h-4" />
                     Kembali
+                  </button>
+                  <button
+                    id="skip-question-btn"
+                    onClick={() => {
+                      const questionId = assessmentQuestions[currentStep].id;
+                      if (answers[questionId] === undefined) {
+                        setAnswers((prev) => ({ ...prev, [questionId]: 1 }));
+                      }
+                      if (currentStep < totalQuestions - 1) {
+                        setCurrentStep((prev) => prev + 1);
+                      } else {
+                        setCurrentStep(totalQuestions);
+                        onComplete?.(companyName, sector);
+                      }
+                    }}
+                    className="text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900/60 hover:bg-slate-800/60 border border-slate-800/80 rounded-xl px-3.5 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                  >
+                    Lewati Pertanyaan
                   </button>
                   <button
                     id="show-results-shortcut-btn"
@@ -540,7 +565,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               {/* Header results */}
               <div className="border-b border-slate-800/60 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
+                  <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
                     Hasil Analisis Kematangan
                   </span>
                   <h3 className="text-2xl font-bold text-white tracking-tight">
@@ -611,7 +636,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 flex-wrap">
                         <h4 className="text-lg font-bold text-white">{results.levelLabel}</h4>
-                        <span className="text-[10px] uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
+                        <span className="text-xs uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
                       </div>
                       <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">{results.levelDesc}</p>
                     </div>
@@ -730,7 +755,13 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                             {isCopied ? "Tersalin!" : "Salin Laporan"}
                           </button>
                           <button
-                            onClick={() => window.print()}
+                            onClick={async () => {
+                              if (!aiReport && !isLoadingAiReport) {
+                                setActiveResultsTab("report");
+                                await generateAiReport();
+                              }
+                              window.print();
+                            }}
                             className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
                           >
                             Cetak Laporan

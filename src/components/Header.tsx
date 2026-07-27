@@ -145,7 +145,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
               className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
               <MessageSquareCode className="w-4 h-4" />
-              AI IT & GRC Consultant
+              <span>AI IT & GRC Consultant</span>
+              <kbd className="inline-block font-mono text-xs bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-1">Ctrl+/</kbd>
             </button>
             <button
               id="header-cta-btn"

@@ -1,27 +1,54 @@
 # Product
 
-## Register
+<!-- impeccable:product-schema 1 -->
 
-brand
+## Platform
+
+web
 
 ## Users
-Indonesian enterprises, state-owned enterprises (BUMN), and compliance/risk managers looking to evaluate and mature their GRC (Governance, Risk, Compliance) frameworks.
+
+Indonesian State-Owned Enterprises (BUMN / BUMD), regulated commercial & regional banks (OJK/BI oversight), internal audit heads (SPI), IT Directors, and compliance/risk managers evaluated by BPK / BPKP auditors.
 
 ## Product Purpose
-A corporate/marketing showcase for Daya Solusi Integra (DSI) highlighting GRC services and interactive tools to drive lead generation.
 
-## Brand Personality
-Corporate-authoritative, highly professional, and trustworthy, yet modern and tech-forward (fitting state-owned/BUMN and large enterprise standards).
+An authoritative corporate web application and interactive compliance platform for Daya Solusi Integra (DSI) that showcases GRC, IT General Controls (ITGC), and ICOFR consulting services while delivering real-time value through an interactive COSO maturity assessment wizard and AI Executive Advisor, driving high-trust lead intake.
 
-## Anti-references
-- Standard SaaS clichés (no cream/sand warm-neutral backgrounds, no tiny tracked uppercase kicker eyebrows above every section).
-- Amateurish styling (no sketch/doodle-style SVG illustrations, no over-rounded cards or side-stripe borders).
-- Typical "hacker/cyberpunk" dark mode (no green-on-black or bright neon overrides that feel unprofessional to corporate clients).
+## Positioning
 
-## Design Principles
-1. **Professional Authority**: Build confidence using structured, authoritative layouts that convey compliance expertise and corporate trust.
-2. **Interactive Engagement**: Use the interactive self-assessment and AI advisor to demonstrate real value before asking for leads, making the transition to the contact form natural and high-converting.
-3. **Restrained Modernity**: Incorporate modern tech-forward touches (smooth transitions, clean geometry, subtle ambient light) without compromising the seriousness of GRC consulting.
+Indonesian enterprise GRC & ICOFR consultancy specializing in BUMN corporate governance (GCG) and banking regulatory compliance, delivering board-ready audit readiness scorecards without generic SaaS tropes or superficial advisory claims.
+
+## Operating Context
+
+Evaluated by BUMN Risk Committees, Audit Committees, and bank executives during compliance reviews, pre-audit readiness checks, and IT governance restructuring. Outputs must support executive printing (`@media print`) for physical board distribution and strict NDA privacy guarantees.
+
+## Capabilities and Constraints
+
+- **Capabilities:** Interactive 10-step COSO/ICOFR self-assessment with real-time scoring, auto pre-filling to lead intake forms, AI Executive Report generation (`/api/assess`), interactive GRC AI Consultant drawer (`/api/chat`), glossary tooltips, responsive mobile navigation drawer, and print-optimized Executive Scorecard.
+- **Technical Constraints:** Built with React 19, TypeScript, Vite, Tailwind CSS v4, Express Node backend server (`server.ts`), sessionStorage persistence, strict WCAG AA contrast (≥4.5:1), and `@media (prefers-reduced-motion)` support.
+
+## Brand Commitments
+
+- **Tone:** Sovereign, corporate-authoritative, trustworthy, tech-forward, and deeply professional.
+- **Palette:** BUMN Blue (`#0b4596`), BUMN Gold (`#cca43b`), Ink Navy (`#0b0f19`), Deep Navy (`#0d1e3d`), and Slate typography.
+- **Strict Visual Rules:** Strict 10% Accent Rule for BUMN Gold, no cream/sand backgrounds, no sketch/doodle SVGs, no side-stripe card borders, no cyberpunk/neon tones, and no unchosen kicker eyebrows.
+
+## Evidence on Hand
+
+- Verified COSO Internal Control 5-dimension assessment framework data (`src/data.ts`).
+- Official corporate logo asset (`assets/dsi-logo-removebg-preview.png`).
+- Board-ready print stylesheet (`@media print`) converting web UI into clean white-paper scorecards.
+
+## Product Principles
+
+1. **Sovereign Authority:** Build immediate trust with Indonesian state enterprises and financial institutions through authoritative, structured layouts that reflect deep regulatory expertise.
+2. **Interactive Value First:** Offer tangible utility through self-assessments and AI advisory before intake, leading naturally to high-converting consultation requests.
+3. **Restrained Modernity:** Embody a tech-forward dark interface with smooth micro-animations and ambient backlighting while maintaining corporate restraint.
+4. **Data Continuity & Utility:** Ensure seamlessly connected workflows (Assessment → AI Report → Contact Intake → Board Printout) with zero data loss or friction.
 
 ## Accessibility & Inclusion
-High-contrast text meeting WCAG AA standards (>= 4.5:1), supporting user preferences like reduced motion, and clear screen reader/focus support.
+
+- WCAG AA compliant contrast (≥4.5:1 body/placeholder, ≥7:1 headers).
+- Full keyboard navigation (numeric option keys `1`-`4`, `Ctrl + /`, `Esc` drawer dismissals, arrow key radiogroup controls).
+- Focus trapping in mobile menu & AI drawers with return-focus restoration.
+- `@media (prefers-reduced-motion: reduce)` support across all CSS transitions.

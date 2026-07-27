@@ -75,11 +75,11 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600 text-left" id="footer-bottom">
           <div className="space-y-1">
             <p>© {new Date().getFullYear()} PT Daya Solusi Integra. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
-            <p className="font-light text-[11px] text-slate-700">
+            <p className="font-light text-xs text-slate-700">
               COSO®, COBIT®, ISO®, dan standar terkait adalah merek dagang dari masing-masing pemilik lisensi internasional.
             </p>
           </div>
-          <div className="flex gap-6 text-[11px]">
+          <div className="flex gap-6 text-xs text-slate-500">
             <span className="hover:text-slate-400 cursor-pointer">Kebijakan Privasi</span>
             <span className="hover:text-slate-400 cursor-pointer">Sarat & Ketentuan Layanan</span>
             <span className="hover:text-slate-400 cursor-pointer">Pernyataan Independensi</span>

@@ -240,7 +240,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
 
         {/* Sector context selector */}
         <div className="px-6 py-3 bg-slate-950/20 border-b border-slate-800/60 flex items-center justify-between gap-4">
-          <span className="text-[10px] uppercase font-mono text-slate-500 font-bold">Fokus Kepatuhan:</span>
+          <span className="text-xs uppercase font-mono text-slate-500 font-bold">Fokus Kepatuhan:</span>
           <div className="flex gap-2" id="advisor-context-selector">
             {[
               { id: "General", label: "Umum GRC" },
@@ -250,7 +250,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <button
                 key={ctx.id}
                 onClick={() => setSelectedContext(ctx.id as any)}
-                className={`px-3 py-1 text-[10px] font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
+                className={`px-3 py-1 text-xs font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
                   selectedContext === ctx.id
                     ? "border-blue-500/50 bg-blue-950/40 text-blue-300"
                     : "border-slate-800 bg-slate-900/30 text-slate-400 hover:border-slate-700"
@@ -296,7 +296,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                     })}
                   </div>
                   
-                  <span className={`block text-[9px] mt-2 text-right ${isBot ? "text-slate-500" : "text-white/60"}`}>
+                  <span className={`block text-xs font-mono mt-2 text-right ${isBot ? "text-slate-500" : "text-white/60"}`}>
                     {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -323,7 +323,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
         {/* Suggested Starter Queries Panel (Show only if messages has only the first welcome msg) */}
         {messages.length === 1 && (
           <div className="p-6 bg-slate-950/30 border-t border-slate-800/40 text-left space-y-3" id="starter-queries">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1">
+            <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1">
               <HelpCircle className="w-3.5 h-3.5" />
               Pertanyaan yang Sering Diajukan:
             </span>

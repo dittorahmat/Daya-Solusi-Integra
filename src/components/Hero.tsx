@@ -64,7 +64,8 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
                 className="flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
               >
                 <MessageSquare className="w-4 h-4 text-bumn-gold" />
-                Konsultasi AI DSI
+                <span>Konsultasi AI DSI</span>
+                <kbd className="font-mono text-xs bg-slate-950 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-0.5">Ctrl+/</kbd>
               </button>
             </div>
 

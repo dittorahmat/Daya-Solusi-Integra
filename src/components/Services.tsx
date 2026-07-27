@@ -127,7 +127,7 @@ export default function Services() {
                     className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 focus:outline-none"
                   >
                     {isExpanded ? "Tutup detail layanan" : "Selengkapnya"}
-                    <span className={`text-[10px] transform transition-transform ${isExpanded ? "rotate-180" : ""}`}>▼</span>
+                    <span className={`text-xs transform transition-transform ${isExpanded ? "rotate-180" : ""}`}>▼</span>
                   </button>
                 </div>
               </div>

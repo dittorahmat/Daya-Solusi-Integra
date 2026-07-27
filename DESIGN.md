@@ -7,6 +7,9 @@ colors:
   neutral-bg: "#0b0f19"
   neutral-dark: "#0d1e3d"
   neutral-light: "#f3f4f6"
+  muted-slate: "#94a3b8"
+  slate-800: "#1e293b"
+  border-glass: "rgba(255, 255, 255, 0.08)"
 typography:
   display:
     fontFamily: "Space Grotesk, sans-serif"
@@ -14,12 +17,29 @@ typography:
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "-0.02em"
+  headline:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.875rem, 4vw, 2.25rem)"
+    fontWeight: 700
+    lineHeight: 1.2
+  title:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.25rem, 3vw, 1.5rem)"
+    fontWeight: 600
+    lineHeight: 1.3
   body:
     fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
+  label:
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 600
+    letterSpacing: "0.05em"
+mono:
+  fontFamily: "JetBrains Mono, ui-monospace, monospace"
 rounded:
   sm: "6px"
   md: "12px"
@@ -52,7 +72,7 @@ components:
 
 # Design System: Daya Solusi Integra
 
-## 1. Overview
+## Overview
 
 **Creative North Star: "The Sovereign Lighthouse"**
 
@@ -65,7 +85,7 @@ This visual system explicitly rejects consumer-SaaS aesthetics. It refuses warm,
 - **Structured Geometry**: Rectilinear layouts, thin boundaries, and intentional border radiuses (12px–16px) that convey governance and control.
 - **Executive Focus**: Every accent color, transition, and hover state is deliberate, ensuring the user's attention is guided directly to key assessments and actionable items.
 
-## 2. Colors
+## Colors
 
 The color palette is derived directly from Indonesian BUMN corporate branding, combining authority with modern compliance.
 
@@ -80,12 +100,13 @@ The color palette is derived directly from Indonesian BUMN corporate branding, c
 - **Deep Navy** (`#0d1e3d`): Used for container backgrounds, panel divisions, and secondary surfaces.
 - **Off-White Slate** (`#f3f4f6`): The primary typography color, ensuring a minimum contrast ratio of 7:1 against Ink Navy for maximum readability.
 - **Muted Slate** (`#94a3b8`): Used for body text, descriptive labels, and helper text. Always styled to maintain a minimum 4.5:1 contrast ratio.
+- **Glass Border** (`rgba(255, 255, 255, 0.08)`): Sub-pixel boundary stroke for floating cards and inputs.
 
 ### Named Rules
 **The 10% Accent Rule.** The secondary accent (BUMN Gold) must cover no more than 10% of any single viewport surface. Its role is strictly to guide the eye to achievements, scores, or active interactive highlights.
 **The No-Fad-Neutrals Rule.** Backgrounds must never transition into warm neutral creams or warm grays. The canvas must remain anchored in clean, cool deep navy.
 
-## 3. Typography
+## Typography
 
 **Display Font:** Space Grotesk (with sans-serif fallback)
 **Body Font:** Inter (with ui-sans-serif, system-ui, sans-serif fallbacks)
@@ -104,7 +125,11 @@ The color palette is derived directly from Indonesian BUMN corporate branding, c
 **The Balancer Rule.** All h1, h2, and h3 headings must utilize `text-wrap: balance` to prevent awkward line breaks on medium viewports.
 **The Prose Cap Rule.** Any paragraph of text must have a max-width of `max-w-2xl` or `75ch` to prevent layout-induced cognitive strain during reading.
 
-## 4. Elevation
+## Layout
+
+The system utilizes a 12-column responsive grid container (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`) with consistent 24px (`p-6`) to 32px (`p-8`) internal card padding. Sections are vertically spaced with generous 96px (`py-24`) separation to maintain an uncluttered executive atmosphere.
+
+## Elevation & Depth
 
 The system is flat-by-default, utilizing layered tonal surfaces and subtle glass panels with thin borders rather than deep or heavy drop shadows.
 
@@ -115,7 +140,11 @@ The system is flat-by-default, utilizing layered tonal surfaces and subtle glass
 ### Named Rules
 **The Flat-By-Rest Rule.** Interactive elements (cards, inputs, and buttons) must remain flat and shadowless at rest. Elevation changes and ambient shadows are applied only dynamically in response to hover or focus states.
 
-## 5. Components
+## Shapes
+
+Card radii stay strictly at 16px (`rounded-2xl`) or 24px (`rounded-3xl`), with button controls at 12px (`rounded-xl`). All structural containers feature a clean 1px thin border (`border-slate-800` or `rgba(255, 255, 255, 0.08)`). Side-stripe card borders and excessive doodle geometry are strictly forbidden.
+
+## Components
 
 ### Buttons
 - **Shape:** Rounded-xl (12px radius).
@@ -142,7 +171,7 @@ The system is flat-by-default, utilizing layered tonal surfaces and subtle glass
 - **Style:** Sticky top-bar header with `bg-[#0b0f19]/80` and `backdrop-blur-md` plus a bottom border `1px solid border-slate-800`.
 - **Desktop Links:** Enclosed in a capsule wrapper with background `slate-900/50`. Active item has background gradient from BUMN Blue to Royal Blue with white text.
 
-## 6. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do:
 - **Do** maintain a minimum of 4.5:1 color contrast for all body and label text, and 7:1 for headers.

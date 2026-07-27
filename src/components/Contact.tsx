@@ -31,6 +31,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [step, setStep] = useState<1 | 2>(1);
+  const companyInputRef = React.useRef<HTMLInputElement>(null);
 
   // Pre-fill form when assessment prefill data arrives
   React.useEffect(() => {
@@ -46,6 +47,16 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
       }
     }
   }, [prefill]);
+
+  // Restore focus to company input when returning to Step 1
+  React.useEffect(() => {
+    if (step === 1) {
+      const timer = setTimeout(() => {
+        companyInputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
 
   const validateEmail = (val: string) => {
     if (!val) return { error: "Surel resmi wajib diisi.", warning: "" };
@@ -283,7 +294,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                 <Sparkles className="w-4 h-4" />
                 Kerahasiaan Data Klien
               </h4>
-              <p className="text-[11px] text-slate-400 leading-relaxed font-light">
+              <p className="text-xs text-slate-400 leading-relaxed font-light">
                 Sebagai entitas audit dan konsultansi manajemen, kami mematuhi Non-Disclosure Agreement (NDA) yang sangat ketat untuk melidungi seluruh aset informasi keuangan, sistem TI, dan regulasi internal organisasi BUMN maupun Bank yang bekerjasama dengan kami.
               </p>
             </div>
@@ -321,6 +332,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                       <div className="space-y-2">
                         <label htmlFor="user-company" className="text-xs font-semibold text-slate-300">Nama Perusahaan / Organisasi</label>
                         <input
+                          ref={companyInputRef}
                           type="text"
                           id="user-company"
                           required
@@ -333,7 +345,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                           }`}
                         />
                         {errors.company && touched.company && (
-                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.company}</p>
+                          <p className="text-xs text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.company}</p>
                         )}
                       </div>
 
@@ -352,20 +364,42 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             <option value="Lainnya">Kementerian / Lembaga Pemerintah</option>
                           </select>
                         </div>
-                        <div className="space-y-2">
-                          <label htmlFor="user-service" className="text-xs font-semibold text-slate-300">Layanan yang Dibutuhkan</label>
-                          <select
-                            id="user-service"
-                            value={form.service}
-                            onChange={(e) => setForm({ ...form, service: e.target.value as any })}
-                            className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
-                          >
-                            <option value="ICOFR Framework">Implementasi & Desain ICOFR</option>
-                            <option value="GRC Implementation">Enterprise GRC Consulting</option>
-                            <option value="IT General Controls (ITGC)">Audit ITGC & IT GRC</option>
-                            <option value="Audit Readiness">Pre-Audit Readiness & WTP Assist</option>
-                            <option value="Custom Consultation">Konsultasi Kustom GRC</option>
-                          </select>
+                        <div className="space-y-3 sm:col-span-2">
+                          <label className="block text-xs font-semibold text-slate-300">
+                            Layanan yang Dibutuhkan
+                          </label>
+                          <div className="grid sm:grid-cols-2 gap-3" id="user-service-options">
+                            {[
+                              { id: "ICOFR Framework", title: "Implementasi & Desain ICOFR", desc: "Sistem pengendalian internal pelaporan keuangan" },
+                              { id: "GRC Implementation", title: "Enterprise GRC Consulting", desc: "Integrasi tata kelola, risiko & kepatuhan" },
+                              { id: "IT General Controls (ITGC)", title: "Audit ITGC & IT GRC", desc: "Keamanan TI, akses user & audit trail" },
+                              { id: "Audit Readiness", title: "Pre-Audit Readiness & WTP Assist", desc: "Pendampingan asersi & audit BPK / KAP" }
+                            ].map((item) => {
+                              const isSelected = form.service === item.id;
+                              return (
+                                <button
+                                  key={item.id}
+                                  type="button"
+                                  onClick={() => setForm({ ...form, service: item.id as any })}
+                                  className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
+                                    isSelected
+                                      ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
+                                      : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
+                                  }`}
+                                >
+                                  <div className="flex justify-between items-start mb-1">
+                                    <span className="text-xs font-bold text-white leading-tight">{item.title}</span>
+                                    <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
+                                      isSelected ? "border-blue-400 bg-bumn-blue" : "border-slate-700"
+                                    }`}>
+                                      {isSelected && <span className="w-1.5 h-1.5 bg-white rounded-full" />}
+                                    </span>
+                                  </div>
+                                  <p className="text-xs text-slate-400 leading-snug font-light">{item.desc}</p>
+                                </button>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
 
@@ -405,7 +439,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                           }`}
                         />
                         {errors.name && touched.name && (
-                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.name}</p>
+                          <p className="text-xs text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.name}</p>
                         )}
                       </div>
 
@@ -429,10 +463,10 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             }`}
                           />
                           {errors.email && touched.email && (
-                            <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.email}</p>
+                            <p className="text-xs text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.email}</p>
                           )}
                           {!errors.email && warnings.email && touched.email && (
-                            <p className="text-[11px] text-amber-500 mt-1 font-medium animate-in fade-in duration-150">{warnings.email}</p>
+                            <p className="text-xs text-amber-500 mt-1 font-medium animate-in fade-in duration-150">{warnings.email}</p>
                           )}
                         </div>
                         <div className="space-y-2">
@@ -450,7 +484,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             }`}
                           />
                           {errors.phone && touched.phone && (
-                            <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.phone}</p>
+                            <p className="text-xs text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.phone}</p>
                           )}
                         </div>
                       </div>
@@ -470,7 +504,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                           }`}
                         />
                         {errors.message && touched.message && (
-                          <p className="text-[11px] text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.message}</p>
+                          <p className="text-xs text-rose-500 mt-1 font-medium animate-in fade-in duration-150">{errors.message}</p>
                         )}
                       </div>
 

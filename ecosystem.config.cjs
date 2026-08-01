@@ -3,8 +3,8 @@ module.exports = {
     {
       name: 'dsi-portfolio',
       script: 'dist/server.cjs',
-      instances: 'max',       // Utilizes all CPU cores in cluster mode
-      exec_mode: 'cluster',   // Runs in cluster mode for zero-downtime reloads
+      instances: 1,
+      exec_mode: 'fork',
       watch: false,
       max_memory_restart: '1G',
       env_production: {

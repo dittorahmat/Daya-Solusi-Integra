@@ -364,42 +364,85 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             <option value="Lainnya">Kementerian / Lembaga Pemerintah</option>
                           </select>
                         </div>
-                        <div className="space-y-3 sm:col-span-2">
+                        <div className="space-y-4 sm:col-span-2">
                           <label className="block text-xs font-semibold text-slate-300">
                             Layanan yang Dibutuhkan
                           </label>
-                          <div className="grid sm:grid-cols-2 gap-3" id="user-service-options">
-                            {[
-                              { id: "ICOFR Framework", title: "Implementasi & Desain ICOFR", desc: "Sistem pengendalian internal pelaporan keuangan" },
-                              { id: "GRC Implementation", title: "Enterprise GRC Consulting", desc: "Integrasi tata kelola, risiko & kepatuhan" },
-                              { id: "IT General Controls (ITGC)", title: "Audit ITGC & IT GRC", desc: "Keamanan TI, akses user & audit trail" },
-                              { id: "Audit Readiness", title: "Pre-Audit Readiness & WTP Assist", desc: "Pendampingan asersi & audit BPK / KAP" }
-                            ].map((item) => {
-                              const isSelected = form.service === item.id;
-                              return (
-                                <button
-                                  key={item.id}
-                                  type="button"
-                                  onClick={() => setForm({ ...form, service: item.id as any })}
-                                  className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
-                                    isSelected
-                                      ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
-                                      : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
-                                  }`}
-                                >
-                                  <div className="flex justify-between items-start mb-1">
-                                    <span className="text-xs font-bold text-white leading-tight">{item.title}</span>
-                                    <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
-                                      isSelected ? "border-blue-400 bg-bumn-blue" : "border-slate-700"
-                                    }`}>
-                                      {isSelected && <span className="w-1.5 h-1.5 bg-white rounded-full" />}
-                                    </span>
-                                  </div>
-                                  <p className="text-xs text-slate-400 leading-snug font-light">{item.desc}</p>
-                                </button>
-                              );
-                            })}
+
+                          {/* Category 1: Tata Kelola & Kepatuhan */}
+                          <div className="space-y-2">
+                            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
+                              Tata Kelola, Risiko & Kepatuhan (GRC / ICOFR)
+                            </span>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              {[
+                                { id: "ICOFR Framework", title: "Implementasi & Desain ICOFR", desc: "Sistem pengendalian internal pelaporan keuangan" },
+                                { id: "GRC Implementation", title: "Enterprise GRC Consulting", desc: "Integrasi tata kelola, risiko & kepatuhan" },
+                                { id: "Audit Readiness", title: "Pre-Audit Readiness & WTP Assist", desc: "Pendampingan asersi & audit BPK / KAP" }
+                              ].map((item) => {
+                                const isSelected = form.service === item.id;
+                                return (
+                                  <button
+                                    key={item.id}
+                                    type="button"
+                                    onClick={() => setForm({ ...form, service: item.id as any })}
+                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
+                                      isSelected
+                                        ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
+                                        : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
+                                    }`}
+                                  >
+                                    <div className="flex justify-between items-start mb-1">
+                                      <span className="text-xs font-bold text-white leading-tight">{item.title}</span>
+                                      <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
+                                        isSelected ? "border-blue-400 bg-bumn-blue" : "border-slate-700"
+                                      }`}>
+                                        {isSelected && <span className="w-1.5 h-1.5 bg-white rounded-full" />}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-slate-400 leading-snug font-light">{item.desc}</p>
+                                  </button>
+                                );
+                              })}
+                            </div>
                           </div>
+
+                          {/* Category 2: Keamanan & Kontrol TI */}
+                          <div className="space-y-2 pt-1">
+                            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
+                              Keamanan & Audit Kontrol TI (ITGC / Cyber)
+                            </span>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              {[
+                                { id: "IT General Controls (ITGC)", title: "Audit ITGC & IT GRC", desc: "Keamanan TI, akses user & audit trail" }
+                              ].map((item) => {
+                                const isSelected = form.service === item.id;
+                                return (
+                                  <button
+                                    key={item.id}
+                                    type="button"
+                                    onClick={() => setForm({ ...form, service: item.id as any })}
+                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
+                                      isSelected
+                                        ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
+                                        : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
+                                    }`}
+                                  >
+                                    <div className="flex justify-between items-start mb-1">
+                                      <span className="text-xs font-bold text-white leading-tight">{item.title}</span>
+                                      <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
+                                        isSelected ? "border-blue-400 bg-bumn-blue" : "border-slate-700"
+                                      }`}>
+                                        {isSelected && <span className="w-1.5 h-1.5 bg-white rounded-full" />}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-slate-400 leading-snug font-light">{item.desc}</p>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+
                         </div>
                       </div>
 

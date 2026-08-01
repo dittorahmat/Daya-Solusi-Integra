@@ -193,25 +193,25 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                 {item.label}
               </button>
             ))}
-            <div className="pt-4 border-t border-slate-800/60 flex flex-col gap-3">
+            <div className="pt-3 border-t border-slate-800/60 flex flex-col gap-2.5">
               <button
                 id="mobile-ai-chat-btn"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onOpenAdvisor();
                 }}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
-                <MessageSquareCode className="w-4 h-4" />
+                <MessageSquareCode className="w-4 h-4 shrink-0" />
                 AI IT & GRC Consultant
               </button>
               <button
                 id="mobile-assessment-btn"
                 onClick={() => handleNavClick("assessment")}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-slate-950 bg-white hover:bg-bumn-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
                 Mulai Asesmen Mandiri
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </button>
             </div>
           </div>

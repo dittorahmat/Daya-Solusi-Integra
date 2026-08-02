@@ -13,6 +13,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.disable('x-powered-by');
+
 // Security Middlewares
 app.use(helmet({
   contentSecurityPolicy: false, // Vite inline scripts/HMR compatibility in dev mode
@@ -60,6 +62,29 @@ function sanitizeInput(str: any, maxLength = 2000): string {
   return str.trim().slice(0, maxLength);
 }
 
+// In-memory rate limiting for Gemini API endpoints
+const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per minute per IP
+
+const rateLimiter = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const clientIp = (req.headers['x-forwarded-for'] as string || req.ip || 'unknown').split(',')[0].trim();
+  const now = Date.now();
+
+  const record = ipRequestCounts.get(clientIp);
+  if (!record || now > record.resetTime) {
+    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return next();
+  }
+
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return res.status(429).json({ error: "Batas permintaan terlampaui. Silakan coba lagi dalam beberapa saat." });
+  }
+
+  record.count++;
+  return next();
+};
+
 // Initialize Gemini SDK with custom User-Agent for tracking
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({
@@ -77,7 +102,7 @@ const isGeminiConfigured = () => {
 };
 
 // API Endpoint 1: General Interactive GRC & ICOFR Consultant Chat
-app.post("/api/consultant", async (req, res) => {
+app.post("/api/consultant", rateLimiter, async (req, res) => {
   try {
     const { messages, sector } = req.body;
     
@@ -144,20 +169,24 @@ app.post("/api/consultant", async (req, res) => {
 });
 
 // API Endpoint 2: Advanced GRC & ICOFR Maturity Assessment Analysis
-app.post("/api/assess", async (req, res) => {
+app.post("/api/assess", rateLimiter, async (req, res) => {
   try {
-    const { categoryScores, totalScore, maxScore, sector, companyName } = req.body;
+    const { categoryScores, sector, companyName } = req.body;
 
-    if (!categoryScores || typeof categoryScores !== "object" || typeof totalScore !== "number" || typeof maxScore !== "number") {
+    if (!categoryScores || typeof categoryScores !== 'object') {
       return res.status(400).json({ error: "Data penilaian tidak valid." });
     }
 
     const cleanCompany = sanitizeInput(companyName, 200) || "Perusahaan Calon Mitra";
     const cleanSector = sanitizeInput(sector, 100) || "BUMN";
-    const safeTotalScore = Math.max(0, Math.min(totalScore, 100));
-    const safeMaxScore = Math.max(1, Math.min(maxScore, 100));
 
-    const percentage = ((safeTotalScore / safeMaxScore) * 100).toFixed(1);
+    // Server-side calculation & validation of maturity scores
+    const categoryValues = Object.values(categoryScores).map(v => Number(v) || 0);
+    const calculatedTotalScore = categoryValues.reduce((sum, val) => sum + val, 0);
+    const maxScore = Object.keys(categoryScores).length * 4 || 40;
+    const safeTotalScore = Math.max(0, Math.min(calculatedTotalScore, maxScore));
+
+    const percentage = maxScore > 0 ? ((safeTotalScore / maxScore) * 100).toFixed(1) : "0.0";
     
     let level = 1;
     let levelLabel = "Initial / Ad-hoc";
@@ -181,7 +210,7 @@ app.post("/api/assess", async (req, res) => {
 ### LAPORAN ANALISIS MATURITAS GRC & ICOFR (MOCK REPORT)
 **Klien:** ${cleanCompany}
 **Sektor Industri:** ${cleanSector}
-**Skor Kepatuhan:** ${safeTotalScore} / ${safeMaxScore} (${percentage}%)
+**Skor Kepatuhan:** ${safeTotalScore} / ${maxScore} (${percentage}%)
 **Tingkat Kematangan (Maturity Level):** Level ${level} - ${levelLabel}
 
 ---
@@ -228,7 +257,7 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
       Silakan buat laporan analisis maturitas GRC & ICOFR terperinci untuk:
       Nama Organisasi: ${cleanCompany}
       Sektor Industri: ${cleanSector}
-      Skor Total: ${safeTotalScore} dari maksimal ${safeMaxScore} (Maturitas: ${percentage}%)
+      Skor Total: ${safeTotalScore} dari maksimal ${maxScore} (Maturitas: ${percentage}%)
       Tingkat Kematangan Saat Ini: Level ${level} - ${levelLabel}
       Rincian Skor Rata-rata Kategori (Skala 1-4):
       - Lingkungan Pengendalian: ${Number(categoryScores["Control Environment"]) || 0}

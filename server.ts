@@ -10,7 +10,31 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+app.disable('x-powered-by');
 app.use(express.json());
+
+// In-memory rate limiting for Gemini API endpoints (H-01)
+const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per minute per IP
+
+const rateLimiter = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const clientIp = (req.headers['x-forwarded-for'] as string || req.ip || 'unknown').split(',')[0].trim();
+  const now = Date.now();
+
+  const record = ipRequestCounts.get(clientIp);
+  if (!record || now > record.resetTime) {
+    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return next();
+  }
+
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return res.status(429).json({ error: "Batas permintaan terlampaui. Silakan coba lagi dalam beberapa saat." });
+  }
+
+  record.count++;
+  return next();
+};
 
 // Initialize Gemini SDK with custom User-Agent for tracking
 const apiKey = process.env.GEMINI_API_KEY;
@@ -29,7 +53,7 @@ const isGeminiConfigured = () => {
 };
 
 // API Endpoint 1: General Interactive GRC & ICOFR Consultant Chat
-app.post("/api/consultant", async (req, res) => {
+app.post("/api/consultant", rateLimiter, async (req, res) => {
   try {
     const { messages, sector } = req.body;
     
@@ -94,15 +118,20 @@ app.post("/api/consultant", async (req, res) => {
 });
 
 // API Endpoint 2: Advanced GRC & ICOFR Maturity Assessment Analysis
-app.post("/api/assess", async (req, res) => {
+app.post("/api/assess", rateLimiter, async (req, res) => {
   try {
-    const { categoryScores, totalScore, maxScore, sector, companyName } = req.body;
+    const { categoryScores, sector, companyName } = req.body;
 
-    if (!categoryScores) {
+    if (!categoryScores || typeof categoryScores !== 'object') {
       return res.status(400).json({ error: "Data penilaian tidak lengkap." });
     }
 
-    const percentage = ((totalScore / maxScore) * 100).toFixed(1);
+    // L-01 Remediation: Server-side validation and recalculation of maturity scores
+    const categoryValues = Object.values(categoryScores).map(v => Number(v) || 0);
+    const totalScore = categoryValues.reduce((sum, val) => sum + val, 0);
+    const maxScore = Object.keys(categoryScores).length * 4 || 40;
+
+    const percentage = maxScore > 0 ? ((totalScore / maxScore) * 100).toFixed(1) : "0.0";
     
     let level = 1;
     let levelLabel = "Initial / Ad-hoc";

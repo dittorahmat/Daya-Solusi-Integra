@@ -4,18 +4,66 @@ import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import nodemailer from "nodemailer";
+import helmet from "helmet";
+import cors from "cors";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// Security Middlewares
+app.use(helmet({
+  contentSecurityPolicy: false, // Vite inline scripts/HMR compatibility in dev mode
+  crossOriginEmbedderPolicy: false
+}));
+
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(",") : true,
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+// Body parser limits to prevent DoS via payload amplification
+app.use(express.json({ limit: "100kb" }));
+
+// Rate Limiters
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Terlalu banyak permintaan dari IP ini, silakan coba lagi nanti." }
+});
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30, // Limit API invocations to 30 per 15 mins per IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Batas permintaan API terlampaui. Silakan tunggu beberapa saat." }
+});
+
+app.use("/api/", apiLimiter);
+app.use(generalLimiter);
+
+// Input Validation Helpers
+function isValidEmail(email: string): boolean {
+  if (typeof email !== "string" || email.length > 254) return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function sanitizeInput(str: any, maxLength = 2000): string {
+  if (typeof str !== "string") return "";
+  return str.trim().slice(0, maxLength);
+}
 
 // Initialize Gemini SDK with custom User-Agent for tracking
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({
-  apiKey: apiKey || "MOCK_KEY_FOR_DEV_IF_NONE",
+  apiKey: apiKey && apiKey !== "MY_GEMINI_API_KEY" ? apiKey : "MOCK_KEY_FOR_DEV_IF_NONE",
   httpOptions: {
     headers: {
       'User-Agent': 'aistudio-build',
@@ -33,17 +81,20 @@ app.post("/api/consultant", async (req, res) => {
   try {
     const { messages, sector } = req.body;
     
-    if (!messages || !Array.isArray(messages)) {
-      return res.status(400).json({ error: "Format input tidak valid. Memerlukan daftar pesan." });
+    if (!messages || !Array.isArray(messages) || messages.length === 0 || messages.length > 50) {
+      return res.status(400).json({ error: "Format input tidak valid. Memerlukan daftar pesan (maksimal 50 pesan)." });
     }
+
+    const cleanSector = sanitizeInput(sector, 100);
 
     if (!isGeminiConfigured()) {
       // Return a professional mock response if API Key is not set up yet
-      const lastMessage = messages[messages.length - 1]?.text?.toLowerCase() || "";
+      const rawLastMsg = messages[messages.length - 1]?.text;
+      const lastMessage = sanitizeInput(rawLastMsg, 1000).toLowerCase();
       let responseText = "Terima kasih atas pertanyaan Anda. Sebagai konsultan ahli dari **Daya Solusi Integra**, saya siap mendampingi organisasi Anda.\n\n";
       
       if (lastMessage.includes("icofr") || lastMessage.includes("internal control")) {
-        responseText += "Untuk implementasi **ICOFR (Internal Control over Financial Reporting)** di " + (sector || "BUMN") + ", langkah krusial awal adalah pemetaan risiko tingkat entitas (Entity-Level Controls) sesuai standar COSO, dilanjutkan dengan pendokumentasian proses bisnis signifikan dan rancangan ITGC (IT General Controls). Kami merekomendasikan melakukan gap analysis awal guna memitigasi risiko defisiensi material.";
+        responseText += "Untuk implementasi **ICOFR (Internal Control over Financial Reporting)** di " + (cleanSector || "BUMN") + ", langkah krusial awal adalah pemetaan risiko tingkat entitas (Entity-Level Controls) sesuai standar COSO, dilanjutkan dengan pendokumentasian proses bisnis signifikan dan rancangan ITGC (IT General Controls). Kami merekomendasikan melakukan gap analysis awal guna memitigasi risiko defisiensi material.";
       } else if (lastMessage.includes("bumn") || lastMessage.includes("menteri")) {
         responseText += "Implementasi GRC di lingkungan **BUMN** saat ini mengacu ketat pada arahan Kementerian BUMN terkait transparansi dan mitigasi risiko fraud. Kami merancang framework GRC terintegrasi yang menyelaraskan ISO 31000 (Manajemen Risiko), ISO 37001 (Sistem Manajemen Anti Penyuapan), dan tata kelola TI agar sesuai dengan tata kelola korporasi yang sehat (GCG).";
       } else if (lastMessage.includes("bank") || lastMessage.includes("ojk")) {
@@ -54,11 +105,11 @@ app.post("/api/consultant", async (req, res) => {
       return res.json({ text: responseText, source: "mock-advisor" });
     }
 
-    // Format historical messages for Gemini chat
-    const geminiContents = messages.map((m: any) => {
+    // Format historical messages for Gemini chat with strict sanitization
+    const geminiContents = messages.slice(-20).map((m: any) => {
       return {
         role: m.sender === "user" ? "user" : "model",
-        parts: [{ text: m.text }]
+        parts: [{ text: sanitizeInput(m.text, 2000) }]
       };
     });
 
@@ -76,7 +127,6 @@ app.post("/api/consultant", async (req, res) => {
       6. Buat respon Anda terstruktur rapi dengan poin-poin tebal (bullet points) agar mudah dibaca oleh eksekutif yang sibuk.
     `;
 
-    // Last message text to send in contents
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: geminiContents,
@@ -89,7 +139,7 @@ app.post("/api/consultant", async (req, res) => {
     return res.json({ text: response.text, source: "gemini-api" });
   } catch (error: any) {
     console.error("Error calling Gemini API for consultant:", error);
-    return res.status(500).json({ error: "Gagal memproses konsultasi: " + error.message });
+    return res.status(500).json({ error: "Gagal memproses permintaan konsultasi." });
   }
 });
 
@@ -98,24 +148,29 @@ app.post("/api/assess", async (req, res) => {
   try {
     const { categoryScores, totalScore, maxScore, sector, companyName } = req.body;
 
-    if (!categoryScores) {
-      return res.status(400).json({ error: "Data penilaian tidak lengkap." });
+    if (!categoryScores || typeof categoryScores !== "object" || typeof totalScore !== "number" || typeof maxScore !== "number") {
+      return res.status(400).json({ error: "Data penilaian tidak valid." });
     }
 
-    const percentage = ((totalScore / maxScore) * 100).toFixed(1);
+    const cleanCompany = sanitizeInput(companyName, 200) || "Perusahaan Calon Mitra";
+    const cleanSector = sanitizeInput(sector, 100) || "BUMN";
+    const safeTotalScore = Math.max(0, Math.min(totalScore, 100));
+    const safeMaxScore = Math.max(1, Math.min(maxScore, 100));
+
+    const percentage = ((safeTotalScore / safeMaxScore) * 100).toFixed(1);
     
     let level = 1;
     let levelLabel = "Initial / Ad-hoc";
-    if (totalScore >= 8 && totalScore <= 15) {
+    if (safeTotalScore >= 8 && safeTotalScore <= 15) {
       level = 2;
       levelLabel = "Repeatable but Informal";
-    } else if (totalScore >= 16 && totalScore <= 23) {
+    } else if (safeTotalScore >= 16 && safeTotalScore <= 23) {
       level = 3;
       levelLabel = "Defined & Documented";
-    } else if (totalScore >= 24 && totalScore <= 31) {
+    } else if (safeTotalScore >= 24 && safeTotalScore <= 31) {
       level = 4;
       levelLabel = "Managed & Measurable";
-    } else if (totalScore >= 32) {
+    } else if (safeTotalScore >= 32) {
       level = 5;
       levelLabel = "Optimized / Continuous Improvement";
     }
@@ -124,9 +179,9 @@ app.post("/api/assess", async (req, res) => {
       // Provide a structured professional mock analysis if API key is not configured
       const mockAnalysis = `
 ### LAPORAN ANALISIS MATURITAS GRC & ICOFR (MOCK REPORT)
-**Klien:** ${companyName || "Perusahaan Calon Mitra"}
-**Sektor Industri:** ${sector || "BUMN"}
-**Skor Kepatuhan:** ${totalScore} / ${maxScore} (${percentage}%)
+**Klien:** ${cleanCompany}
+**Sektor Industri:** ${cleanSector}
+**Skor Kepatuhan:** ${safeTotalScore} / ${safeMaxScore} (${percentage}%)
 **Tingkat Kematangan (Maturity Level):** Level ${level} - ${levelLabel}
 
 ---
@@ -135,11 +190,11 @@ app.post("/api/assess", async (req, res) => {
 Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengendalian internal atas pelaporan keuangan (ICOFR) organisasi Anda saat ini berada pada tingkatan **Level ${level} (${levelLabel})**. Ini mengindikasikan bahwa sebagian besar kontrol penting telah diidentifikasi, namun konsistensi operasional, dokumentasi formal, serta efektivitas pengujian berkala masih memerlukan penguatan strategis untuk memenuhi ekspektasi Auditor Eksternal, Regulator OJK, ataupun Kementerian BUMN.
 
 #### 2. Analisis Kesenjangan (Gap Analysis) per Kategori
-*   **Lingkungan Pengendalian (Skor: ${categoryScores["Control Environment"] || "Menengah"}):** Struktur tata kelola telah terbentuk, namun sosialisasi kode etik dan pembudayaan sadar risiko di lini operasional masih perlu ditingkatkan agar komitmen pencegahan fraud terdokumentasi dengan baik.
-*   **Penilaian Risiko (Skor: ${categoryScores["Risk Assessment"] || "Menengah"}):** Risiko bisnis dan risiko keuangan sudah diidentifikasi, namun belum diselaraskan secara komprehensif dengan matriks risiko TI dan penilaian risiko fraud (Fraud Risk Assessment) yang dinamis.
-*   **Aktivitas Pengendalian (Skor: ${categoryScores["Control Activities"] || "Menengah"}):** Pemisahan fungsi (SoD) pada transaksi kritikal telah berjalan, namun masih banyak bergantung pada kontrol manual (manual controls) yang rentan terhadap bypass manajemen, alih-alih kontrol otomatis sistem (system-automated controls).
-*   **Informasi & Komunikasi (Skor: ${categoryScores["Information & Communication"] || "Menengah"}):** Alur pelaporan keuangan tersedia, tetapi integrasi antara sistem operasional dengan buku besar (General Ledger) memerlukan rekonsiliasi manual yang masif, meningkatkan risiko human-error. Whistleblowing system juga membutuhkan independensi yang lebih kuat.
-*   **Pemantauan (Skor: ${categoryScores["Monitoring"] || "Menengah"}):** SPI telah melakukan audit rutin, namun pengujian keandalan rancangan (Design Effectiveness) dan keandalan operasional (Operating Effectiveness) ICOFR secara formal belum terdokumentasi secara berkala dan terstruktur.
+*   **Lingkungan Pengendalian:** Struktur tata kelola telah terbentuk, namun sosialisasi kode etik dan pembudayaan sadar risiko di lini operasional masih perlu ditingkatkan agar komitmen pencegahan fraud terdokumentasi dengan baik.
+*   **Penilaian Risiko:** Risiko bisnis dan risiko keuangan sudah diidentifikasi, namun belum diselaraskan secara komprehensif dengan matriks risiko TI dan penilaian risiko fraud (Fraud Risk Assessment) yang dinamis.
+*   **Aktivitas Pengendalian:** Pemisahan fungsi (SoD) pada transaksi kritikal telah berjalan, namun masih banyak bergantung pada kontrol manual (manual controls) yang rentan terhadap bypass manajemen, alih-alih kontrol otomatis sistem (system-automated controls).
+*   **Informasi & Komunikasi:** Alur pelaporan keuangan tersedia, tetapi integrasi antara sistem operasional dengan buku besar (General Ledger) memerlukan rekonsiliasi manual yang masif, meningkatkan risiko human-error. Whistleblowing system juga membutuhkan independensi yang lebih kuat.
+*   **Pemantauan:** SPI telah melakukan audit rutin, namun pengujian keandalan rancangan (Design Effectiveness) dan keandalan operasional (Operating Effectiveness) ICOFR secara formal belum terdokumentasi secara berkala dan terstruktur.
 
 #### 3. Roadmap Rekomendasi dari Daya Solusi Integra (DSI)
 1.  **Formalisasi & Standardisasi (Q1):** Menyusun matriks Kontrol & Risiko (Risk and Control Matrix - RCM) formal untuk siklus akuntansi signifikan.
@@ -171,16 +226,16 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
 
     const prompt = `
       Silakan buat laporan analisis maturitas GRC & ICOFR terperinci untuk:
-      Nama Organisasi: ${companyName || "Perusahaan Calon Mitra"}
-      Sektor Industri: ${sector || "BUMN"}
-      Skor Total: ${totalScore} dari maksimal ${maxScore} (Maturitas: ${percentage}%)
+      Nama Organisasi: ${cleanCompany}
+      Sektor Industri: ${cleanSector}
+      Skor Total: ${safeTotalScore} dari maksimal ${safeMaxScore} (Maturitas: ${percentage}%)
       Tingkat Kematangan Saat Ini: Level ${level} - ${levelLabel}
       Rincian Skor Rata-rata Kategori (Skala 1-4):
-      - Lingkungan Pengendalian: ${categoryScores["Control Environment"]}
-      - Penilaian Risiko: ${categoryScores["Risk Assessment"]}
-      - Aktivitas Pengendalian: ${categoryScores["Control Activities"]}
-      - Informasi & Komunikasi: ${categoryScores["Information & Communication"]}
-      - Pemantauan: ${categoryScores["Monitoring"]}
+      - Lingkungan Pengendalian: ${Number(categoryScores["Control Environment"]) || 0}
+      - Penilaian Risiko: ${Number(categoryScores["Risk Assessment"]) || 0}
+      - Aktivitas Pengendalian: ${Number(categoryScores["Control Activities"]) || 0}
+      - Informasi & Komunikasi: ${Number(categoryScores["Information & Communication"]) || 0}
+      - Pemantauan: ${Number(categoryScores["Monitoring"]) || 0}
     `;
 
     const response = await ai.models.generateContent({
@@ -195,7 +250,7 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
     return res.json({ text: response.text, source: "gemini-api" });
   } catch (error: any) {
     console.error("Error calling Gemini API for assessment:", error);
-    return res.status(500).json({ error: "Gagal menganalisis penilaian: " + error.message });
+    return res.status(500).json({ error: "Gagal menganalisis penilaian maturitas." });
   }
 });
 
@@ -204,25 +259,38 @@ app.post("/api/contact", async (req, res) => {
   try {
     const { name, company, email, phone, sector, service, message } = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: "Nama, email, dan pesan wajib diisi." });
+    const cleanName = sanitizeInput(name, 100);
+    const cleanCompany = sanitizeInput(company, 150);
+    const cleanEmail = sanitizeInput(email, 150);
+    const cleanPhone = sanitizeInput(phone, 30);
+    const cleanSector = sanitizeInput(sector, 50);
+    const cleanService = sanitizeInput(service, 100);
+    const cleanMessage = sanitizeInput(message, 3000);
+
+    if (!cleanName || !cleanEmail || !cleanMessage) {
+      return res.status(400).json({ error: "Nama, email, dan pesan wajib diisi secara valid." });
+    }
+
+    if (!isValidEmail(cleanEmail)) {
+      return res.status(400).json({ error: "Format alamat email tidak valid." });
     }
 
     // Configure Nodemailer transporter sending through localhost SMTP on port 25
     const transporter = nodemailer.createTransport({
-      host: "localhost",
-      port: 25,
-      secure: false,
+      host: process.env.SMTP_HOST || "localhost",
+      port: Number(process.env.SMTP_PORT) || 25,
+      secure: process.env.SMTP_SECURE === "true",
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: true
       }
     });
 
     const mailOptions = {
       from: `"DSI Web Contact" <no-reply@dsintegra.co.id>`,
-      to: "marketing@dsintegra.co.id",
-      subject: `Inquiry Baru Website: ${name} (${company})`,
-      text: `Anda mendapatkan pesan baru dari formulir kontak website dsintegra.co.id:\n\nNama: ${name}\nPerusahaan: ${company}\nSurel: ${email}\nNo. Telepon: ${phone || "-"}\nSektor: ${sector || "-"}\nLayanan: ${service || "-"}\n\nPesan:\n${message}`,
+      to: process.env.CONTACT_RECEIVER_EMAIL || "marketing@dsintegra.co.id",
+      replyTo: cleanEmail,
+      subject: `Inquiry Baru Website: ${cleanName} (${cleanCompany || "Individu"})`,
+      text: `Anda mendapatkan pesan baru dari formulir kontak website dsintegra.co.id:\n\nNama: ${cleanName}\nPerusahaan: ${cleanCompany}\nSurel: ${cleanEmail}\nNo. Telepon: ${cleanPhone || "-"}\nSektor: ${cleanSector || "-"}\nLayanan: ${cleanService || "-"}\n\nPesan:\n${cleanMessage}`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #0b3c5d; border-bottom: 2px solid #f5f5f5; padding-bottom: 10px; margin-top: 0;">Pengajuan Diskusi / Inquiry Baru</h2>
@@ -230,32 +298,32 @@ app.post("/api/contact", async (req, res) => {
           <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
             <tr style="background-color: #f9f9f9;">
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; width: 35%;">Nama Lengkap</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanName}</td>
             </tr>
             <tr>
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Perusahaan</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${company}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanCompany}</td>
             </tr>
             <tr style="background-color: #f9f9f9;">
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Surel Resmi</td>
-              <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanEmail}</td>
             </tr>
             <tr>
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">No. Telepon / HP</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${phone || "-"}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanPhone || "-"}</td>
             </tr>
             <tr style="background-color: #f9f9f9;">
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Sektor</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${sector || "-"}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanSector || "-"}</td>
             </tr>
             <tr>
               <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Layanan Diminati</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${service || "-"}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${cleanService || "-"}</td>
             </tr>
           </table>
           <div style="background-color: #fcfcfc; border-left: 4px solid #0b3c5d; padding: 15px; margin-top: 15px;">
             <strong style="display: block; margin-bottom: 5px; color: #555;">Pesan / Kebutuhan:</strong>
-            <p style="margin: 0; white-space: pre-wrap; font-style: italic;">${message}</p>
+            <p style="margin: 0; white-space: pre-wrap; font-style: italic;">${cleanMessage}</p>
           </div>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0 15px;" />
           <p style="font-size: 11px; color: #999; margin: 0; text-align: center;">Email dikirim otomatis dari web server Daya Solusi Integra.</p>
@@ -267,8 +335,13 @@ app.post("/api/contact", async (req, res) => {
     return res.json({ success: true, message: "Pesan berhasil dikirim ke tim marketing." });
   } catch (error: any) {
     console.error("Error sending contact email:", error);
-    return res.status(500).json({ error: "Gagal mengirim pesan: " + error.message });
+    return res.status(500).json({ error: "Gagal mengirim pesan kontak." });
   }
+});
+
+// Centralized 404 Handler for Unmatched API Endpoints
+app.use("/api/*", (req, res) => {
+  res.status(404).json({ error: "Endpoint API tidak ditemukan." });
 });
 
 // Configure Vite or Static Files
@@ -293,3 +366,4 @@ async function startServer() {
 }
 
 startServer();
+

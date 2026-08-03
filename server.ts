@@ -284,7 +284,7 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
 });
 
 // API Endpoint 3: Contact Form submission emailed to marketing@dsintegra.co.id
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", rateLimiter, async (req, res) => {
   try {
     const { name, company, email, phone, sector, service, message } = req.body;
 

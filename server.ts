@@ -180,10 +180,10 @@ app.post("/api/assess", rateLimiter, async (req, res) => {
     const cleanCompany = sanitizeInput(companyName, 200) || "Perusahaan Calon Mitra";
     const cleanSector = sanitizeInput(sector, 100) || "BUMN";
 
-    // Server-side calculation & validation of maturity scores
-    const categoryValues = Object.values(categoryScores).map(v => Number(v) || 0);
+    // Server-side calculation & validation of maturity scores (clamp each score to 1-4)
+    const categoryValues = Object.values(categoryScores).map(v => Math.max(1, Math.min(4, Number(v) || 1)));
     const calculatedTotalScore = categoryValues.reduce((sum, val) => sum + val, 0);
-    const maxScore = Object.keys(categoryScores).length * 4 || 40;
+    const maxScore = Object.keys(categoryScores).length * 4 || 20;
     const safeTotalScore = Math.max(0, Math.min(calculatedTotalScore, maxScore));
 
     const percentage = maxScore > 0 ? ((safeTotalScore / maxScore) * 100).toFixed(1) : "0.0";

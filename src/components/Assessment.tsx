@@ -503,7 +503,10 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         }`}>
                           {opt.score}
                         </span>
-                        <span className="leading-relaxed">{opt.text}</span>
+                        <span className="leading-relaxed flex-1">{opt.text}</span>
+                        <span className="hidden sm:inline-block font-mono text-[10px] text-slate-500 bg-slate-900 border border-slate-800 px-1.5 py-0.5 rounded opacity-60 group-hover:opacity-100 transition-opacity">
+                          [{opt.score}]
+                        </span>
                       </button>
                     );
                   })}
@@ -561,6 +564,28 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
           {/* STEP 10: Evaluation Results */}
           {currentStep === totalQuestions && results && (
             <div className="p-6 sm:p-10 space-y-8 animate-in fade-in duration-300" id="step-results">
+              
+              {/* Official Corporate Print-Only Header for Board Meetings */}
+              <div className="hidden print:block border-b-2 border-slate-900 pb-6 mb-6 text-left">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h1 className="text-xl font-bold text-black font-display uppercase tracking-wider">
+                      PT DAYA SOLUSI INTEGRA
+                    </h1>
+                    <p className="text-xs text-slate-700 font-mono">
+                      Laporan Hasil Evaluasi Kematangan GRC & ICOFR (COSO Framework)
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-mono font-bold text-red-700 border border-red-700 px-2 py-0.5 uppercase tracking-widest">
+                      RAHASIA / CONFIDENTIAL
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-mono mt-1">
+                      Dokumen Dewan Direksi & Komite Audit
+                    </p>
+                  </div>
+                </div>
+              </div>
               
               {/* Header results */}
               <div className="border-b border-slate-800/60 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">

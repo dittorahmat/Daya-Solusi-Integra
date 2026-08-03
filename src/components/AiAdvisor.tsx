@@ -250,7 +250,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <button
                 key={ctx.id}
                 onClick={() => setSelectedContext(ctx.id as any)}
-                className={`px-3 py-1 text-xs font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
+                className={`px-3.5 py-2 sm:py-1 text-xs font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 min-h-[44px] sm:min-h-0 flex items-center justify-center ${
                   selectedContext === ctx.id
                     ? "border-blue-500/50 bg-blue-950/40 text-blue-300"
                     : "border-slate-800 bg-slate-900/30 text-slate-400 hover:border-slate-700"

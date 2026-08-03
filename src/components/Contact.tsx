@@ -197,7 +197,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-[#090d16] border-t border-slate-900">
+    <section id="contact" className="py-24 relative bg-slate-950/90 border-t border-slate-900">
       {/* Decorative background flare */}
       <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
         <div className="absolute top-[40%] right-[10%] w-[350px] h-[350px] bg-blue-500/5 rounded-full blur-[120px]" />

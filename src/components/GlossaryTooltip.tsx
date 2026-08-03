@@ -55,10 +55,16 @@ export default function GlossaryTooltip({ acronym, children }: GlossaryTooltipPr
 
   if (!data) return <>{children || acronym}</>;
 
-  const handleToggle = (e: React.MouseEvent) => {
-    // Toggle on click for touch screens
-    setIsOpen((prev) => !prev);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setIsOpen((prev) => !prev);
+    } else if (e.key === "Escape" && isOpen) {
+      setIsOpen(false);
+    }
   };
+
+  const tooltipId = `glossary-tooltip-${acronym}`;
 
   return (
     <span 
@@ -66,22 +72,23 @@ export default function GlossaryTooltip({ acronym, children }: GlossaryTooltipPr
       className="relative inline-block group"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
-      onFocus={() => setIsOpen(true)}
-      onBlur={() => setIsOpen(false)}
-      onClick={handleToggle}
     >
-      <span 
-        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-white font-semibold cursor-help transition-all focus:outline-none focus:ring-1 focus:ring-bumn-blue rounded px-0.5"
-        tabIndex={0}
-        aria-haspopup="true"
+      <button
+        type="button"
+        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-white font-semibold cursor-help transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-1 focus-visible:ring-offset-[#0b0f19] rounded px-0.5"
+        onClick={() => setIsOpen((prev) => !prev)}
+        onKeyDown={handleKeyDown}
+        aria-expanded={isOpen}
+        aria-describedby={isOpen ? tooltipId : undefined}
         aria-label={`${acronym}: ${data.term}`}
       >
         {children || acronym}
-      </span>
+      </button>
       
       {/* Tooltip Overlay */}
       {isOpen && (
         <span 
+          id={tooltipId}
           role="tooltip"
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 max-w-[85vw] p-3.5 z-50 rounded-xl bg-[#0d1e3d] border border-blue-900/60 shadow-2xl text-left pointer-events-none animate-in fade-in zoom-in-95 duration-150 flex flex-col gap-1 sm:max-w-xs"
         >

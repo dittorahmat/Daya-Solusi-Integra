@@ -208,6 +208,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          answers,
           categoryScores: categoryAverages,
           totalScore,
           maxScore,

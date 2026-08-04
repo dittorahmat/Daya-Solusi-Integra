@@ -14,6 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 
 // Security Middlewares
 app.use(helmet({
@@ -47,6 +48,30 @@ const apiLimiter = rateLimit({
   message: { error: "Batas permintaan API terlampaui. Silakan tunggu beberapa saat." }
 });
 
+const consultantLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 3, // 3 requests per minute per IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Batas permintaan konsultan terlampaui. Silakan coba lagi dalam beberapa saat." }
+});
+
+const assessLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 3, // 3 requests per minute per IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Batas permintaan asesmen terlampaui. Silakan coba lagi dalam beberapa saat." }
+});
+
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // 3 contact submissions per 15 mins per IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Batas pengiriman pesan terlampaui. Silakan coba lagi dalam beberapa saat." }
+});
+
 app.use("/api/", apiLimiter);
 app.use(generalLimiter);
 
@@ -61,29 +86,6 @@ function sanitizeInput(str: any, maxLength = 2000): string {
   if (typeof str !== "string") return "";
   return str.trim().slice(0, maxLength);
 }
-
-// In-memory rate limiting for Gemini API endpoints
-const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per minute per IP
-
-const rateLimiter = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  const clientIp = (req.headers['x-forwarded-for'] as string || req.ip || 'unknown').split(',')[0].trim();
-  const now = Date.now();
-
-  const record = ipRequestCounts.get(clientIp);
-  if (!record || now > record.resetTime) {
-    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return next();
-  }
-
-  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
-    return res.status(429).json({ error: "Batas permintaan terlampaui. Silakan coba lagi dalam beberapa saat." });
-  }
-
-  record.count++;
-  return next();
-};
 
 // Initialize Gemini SDK with custom User-Agent for tracking
 const apiKey = process.env.GEMINI_API_KEY;
@@ -102,7 +104,7 @@ const isGeminiConfigured = () => {
 };
 
 // API Endpoint 1: General Interactive GRC & ICOFR Consultant Chat
-app.post("/api/consultant", rateLimiter, async (req, res) => {
+app.post("/api/consultant", consultantLimiter, async (req, res) => {
   try {
     const { messages, sector } = req.body;
     
@@ -168,38 +170,113 @@ app.post("/api/consultant", rateLimiter, async (req, res) => {
   }
 });
 
-// API Endpoint 2: Advanced GRC & ICOFR Maturity Assessment Analysis
-app.post("/api/assess", rateLimiter, async (req, res) => {
-  try {
-    const { categoryScores, sector, companyName } = req.body;
+// COSO Categories and Questions Mapping for Server-Side Validation
+const VALID_COSO_CATEGORIES = [
+  "Control Environment",
+  "Risk Assessment",
+  "Control Activities",
+  "Information & Communication",
+  "Monitoring"
+];
 
-    if (!categoryScores || typeof categoryScores !== 'object') {
-      return res.status(400).json({ error: "Data penilaian tidak valid." });
-    }
+const QUESTION_CATEGORY_MAP: Record<string, string> = {
+  q1: "Control Environment",
+  q2: "Control Environment",
+  q3: "Risk Assessment",
+  q4: "Risk Assessment",
+  q5: "Control Activities",
+  q6: "Control Activities",
+  q7: "Information & Communication",
+  q8: "Information & Communication",
+  q9: "Monitoring",
+  q10: "Monitoring"
+};
+
+// API Endpoint 2: Advanced GRC & ICOFR Maturity Assessment Analysis
+app.post("/api/assess", assessLimiter, async (req, res) => {
+  try {
+    const { answers, categoryScores, sector, companyName } = req.body;
 
     const cleanCompany = sanitizeInput(companyName, 200) || "Perusahaan Calon Mitra";
     const cleanSector = sanitizeInput(sector, 100) || "BUMN";
 
-    // Server-side calculation & validation of maturity scores (clamp each score to 1-4)
-    const categoryValues = Object.values(categoryScores).map(v => Math.max(1, Math.min(4, Number(v) || 1)));
-    const calculatedTotalScore = categoryValues.reduce((sum, val) => sum + val, 0);
-    const maxScore = Object.keys(categoryScores).length * 4 || 20;
-    const safeTotalScore = Math.max(0, Math.min(calculatedTotalScore, maxScore));
+    const verifiedCategoryScores: Record<string, number> = {
+      "Control Environment": 1,
+      "Risk Assessment": 1,
+      "Control Activities": 1,
+      "Information & Communication": 1,
+      "Monitoring": 1
+    };
 
-    const percentage = maxScore > 0 ? ((safeTotalScore / maxScore) * 100).toFixed(1) : "0.0";
-    
+    let calculatedTotalScore = 0;
+    const maxScore = 40; // 10 questions * 4 max score
+
+    if (answers && typeof answers === 'object' && Object.keys(answers).length > 0) {
+      // 1. Primary path: Calculate scores strictly from raw question answers (q1..q10)
+      const categoryTotals: Record<string, { sum: number; count: number }> = {
+        "Control Environment": { sum: 0, count: 0 },
+        "Risk Assessment": { sum: 0, count: 0 },
+        "Control Activities": { sum: 0, count: 0 },
+        "Information & Communication": { sum: 0, count: 0 },
+        "Monitoring": { sum: 0, count: 0 }
+      };
+
+      for (let i = 1; i <= 10; i++) {
+        const qId = `q${i}`;
+        const rawScore = Number(answers[qId]);
+        const score = (!isNaN(rawScore) && rawScore >= 1 && rawScore <= 4) ? Math.floor(rawScore) : 1;
+        const category = QUESTION_CATEGORY_MAP[qId];
+        categoryTotals[category].sum += score;
+        categoryTotals[category].count += 1;
+        calculatedTotalScore += score;
+      }
+
+      for (const cat of VALID_COSO_CATEGORIES) {
+        if (categoryTotals[cat].count > 0) {
+          verifiedCategoryScores[cat] = Number((categoryTotals[cat].sum / categoryTotals[cat].count).toFixed(1));
+        }
+      }
+    } else if (categoryScores && typeof categoryScores === 'object' && !Array.isArray(categoryScores)) {
+      // 2. Secondary path: Validate categoryScores object strictly against valid COSO categories
+      let validCount = 0;
+      let sumOfCategoryAverages = 0;
+
+      for (const cat of VALID_COSO_CATEGORIES) {
+        if (cat in categoryScores) {
+          const val = Number(categoryScores[cat]);
+          if (!isNaN(val) && val >= 1 && val <= 4) {
+            verifiedCategoryScores[cat] = val;
+            sumOfCategoryAverages += val;
+            validCount++;
+          }
+        }
+      }
+
+      if (validCount < 5) {
+        return res.status(400).json({ error: "Data penilaian tidak valid. Memerlukan skor valid untuk 5 dimensi COSO." });
+      }
+
+      // 5 categories * average * 2 = total score out of 40
+      calculatedTotalScore = Math.round(sumOfCategoryAverages * 2);
+    } else {
+      return res.status(400).json({ error: "Data penilaian tidak valid. Harap sertakan jawaban kuesioner." });
+    }
+
+    const safeTotalScore = Math.max(10, Math.min(calculatedTotalScore, maxScore));
+    const percentage = ((safeTotalScore / maxScore) * 100).toFixed(1);
+
     let level = 1;
     let levelLabel = "Initial / Ad-hoc";
-    if (safeTotalScore >= 8 && safeTotalScore <= 15) {
+    if (safeTotalScore >= 16 && safeTotalScore <= 23) {
       level = 2;
       levelLabel = "Repeatable but Informal";
-    } else if (safeTotalScore >= 16 && safeTotalScore <= 23) {
+    } else if (safeTotalScore >= 24 && safeTotalScore <= 31) {
       level = 3;
       levelLabel = "Defined & Documented";
-    } else if (safeTotalScore >= 24 && safeTotalScore <= 31) {
+    } else if (safeTotalScore >= 32 && safeTotalScore <= 37) {
       level = 4;
       levelLabel = "Managed & Measurable";
-    } else if (safeTotalScore >= 32) {
+    } else if (safeTotalScore >= 38) {
       level = 5;
       levelLabel = "Optimized / Continuous Improvement";
     }
@@ -260,31 +337,60 @@ Berdasarkan jawaban evaluasi mandiri, tata kelola GRC dan kerangka kerja pengend
       Skor Total: ${safeTotalScore} dari maksimal ${maxScore} (Maturitas: ${percentage}%)
       Tingkat Kematangan Saat Ini: Level ${level} - ${levelLabel}
       Rincian Skor Rata-rata Kategori (Skala 1-4):
-      - Lingkungan Pengendalian: ${Number(categoryScores["Control Environment"]) || 0}
-      - Penilaian Risiko: ${Number(categoryScores["Risk Assessment"]) || 0}
-      - Aktivitas Pengendalian: ${Number(categoryScores["Control Activities"]) || 0}
-      - Informasi & Komunikasi: ${Number(categoryScores["Information & Communication"]) || 0}
-      - Pemantauan: ${Number(categoryScores["Monitoring"]) || 0}
+      - Lingkungan Pengendalian: ${verifiedCategoryScores["Control Environment"]}
+      - Penilaian Risiko: ${verifiedCategoryScores["Risk Assessment"]}
+      - Aktivitas Pengendalian: ${verifiedCategoryScores["Control Activities"]}
+      - Informasi & Komunikasi: ${verifiedCategoryScores["Information & Communication"]}
+      - Pemantauan: ${verifiedCategoryScores["Monitoring"]}
     `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: prompt,
-      config: {
-        systemInstruction,
-        temperature: 0.6,
-      },
-    });
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+        config: {
+          systemInstruction,
+          temperature: 0.6,
+        },
+      });
 
-    return res.json({ text: response.text, source: "gemini-api" });
+      return res.json({ text: response.text, source: "gemini-api" });
+    } catch (apiErr: any) {
+      console.warn("Gemini API call failed, returning server-verified analysis report:", apiErr?.message);
+      const fallbackReport = `
+### LAPORAN ANALISIS MATURITAS GRC & ICOFR (SERVER VERIFIED)
+**Klien:** ${cleanCompany}
+**Sektor Industri:** ${cleanSector}
+**Skor Kepatuhan:** ${safeTotalScore} / ${maxScore} (${percentage}%)
+**Tingkat Kematangan (Maturity Level):** Level ${level} - ${levelLabel}
+
+---
+
+#### 1. Ringkasan Eksekutif
+Berdasarkan evaluasi mandiri terverifikasi server, tata kelola GRC dan kerangka kerja pengendalian internal atas pelaporan keuangan (ICOFR) organisasi Anda saat ini berada pada tingkatan **Level ${level} (${levelLabel})**.
+
+#### 2. Rincian Skor Terverifikasi Server per Dimensi COSO
+*   **Lingkungan Pengendalian:** ${verifiedCategoryScores["Control Environment"]}/4.0
+*   **Penilaian Risiko:** ${verifiedCategoryScores["Risk Assessment"]}/4.0
+*   **Aktivitas Pengendalian:** ${verifiedCategoryScores["Control Activities"]}/4.0
+*   **Informasi & Komunikasi:** ${verifiedCategoryScores["Information & Communication"]}/4.0
+*   **Pemantauan:** ${verifiedCategoryScores["Monitoring"]}/4.0
+
+#### 3. Rekomendasi Strategis dari Daya Solusi Integra (DSI)
+1. Formalisasi dan standardisasi Risk and Control Matrix (RCM) untuk siklus akuntansi utama.
+2. Penguatan IT General Controls (ITGC) dan audit hak akses pengguna.
+3. Otomatisasi pemantauan kontrol (Continuous Control Monitoring).
+      `;
+      return res.json({ text: fallbackReport, source: "verified-server-report" });
+    }
   } catch (error: any) {
-    console.error("Error calling Gemini API for assessment:", error);
+    console.error("Error in assessment endpoint:", error);
     return res.status(500).json({ error: "Gagal menganalisis penilaian maturitas." });
   }
 });
 
 // API Endpoint 3: Contact Form submission emailed to marketing@dsintegra.co.id
-app.post("/api/contact", rateLimiter, async (req, res) => {
+app.post("/api/contact", contactLimiter, async (req, res) => {
   try {
     const { name, company, email, phone, sector, service, message } = req.body;
 

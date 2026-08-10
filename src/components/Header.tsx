@@ -74,7 +74,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
   const navItems = [
     { id: "hero", label: "Beranda" },
     { id: "services", label: "Layanan TI & GRC" },
-    { id: "clients", label: "Target Market & Sektor" },
+    { id: "clients", label: "Target Market" },
+    { id: "blog", label: "Artikel & Insight" },
     { id: "assessment", label: "Asesmen Mandiri" },
     { id: "contact", label: "Hubungi Kami" }
   ];

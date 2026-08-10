@@ -8,6 +8,8 @@ import helmet from "helmet";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 
+import proxy from "express-http-proxy";
+
 dotenv.config();
 
 const app = express();
@@ -71,9 +73,6 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
   message: { error: "Batas pengiriman pesan terlampaui. Silakan coba lagi dalam beberapa saat." }
 });
-
-app.use("/api/", apiLimiter);
-app.use(generalLimiter);
 
 // Input Validation Helpers
 function isValidEmail(email: string): boolean {
@@ -475,7 +474,7 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 });
 
 // Centralized 404 Handler for Unmatched API Endpoints
-app.use("/api/*", (req, res) => {
+app.use("/api", (req, res) => {
   res.status(404).json({ error: "Endpoint API tidak ditemukan." });
 });
 

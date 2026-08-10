@@ -3,19 +3,29 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import Clients from "./components/Clients";
+import BlogPreviewSection from "./components/BlogPreviewSection";
+import BlogPage from "./components/BlogPage";
 import Assessment from "./components/Assessment";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AiAdvisor from "./components/AiAdvisor";
-import { MessageSquareCode, Sparkles } from "lucide-react";
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
   const [activeTab, setActiveTab] = useState<string>("hero");
   const [isAdvisorOpen, setIsAdvisorOpen] = useState<boolean>(false);
-  // Lifted from Assessment: pre-fill Contact form after wizard completes
   const [assessmentPrefill, setAssessmentPrefill] = useState<{ company: string; sector: string } | null>(null);
 
-  // Set up global shortcut to toggle AI Advisor (Ctrl + /)
+  // Handle browser back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Global shortcut (Ctrl + /) for AI Advisor
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "/") {
@@ -24,40 +34,19 @@ export default function App() {
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleGlobalKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
   }, []);
 
-  // Set up an intersection observer to dynamically highlight the active navbar tab on scroll
-  useEffect(() => {
-    const sections = ["hero", "services", "clients", "assessment", "contact"];
-    const observers = sections.map((id) => {
-      const el = document.getElementById(id);
-      if (!el) return null;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveTab(id);
-          }
-        },
-        {
-          rootMargin: "-40% 0px -40% 0px" // Trigger when section occupies the center of viewport
-        }
-      );
-      observer.observe(el);
-      return { observer, el };
-    });
-
-    return () => {
-      observers.forEach((obs) => {
-        if (obs) {
-          obs.observer.unobserve(obs.el);
-        }
-      });
-    };
-  }, []);
+  const navigateTo = (path: string) => {
+    window.history.pushState({}, "", path);
+    setCurrentPath(path);
+    if (path.startsWith("/#")) {
+      const sectionId = path.replace("/#", "");
+      handleScrollToSection(sectionId);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
 
   const handleScrollToSection = (sectionId: string) => {
     setActiveTab(sectionId);
@@ -73,6 +62,9 @@ export default function App() {
     }
   };
 
+  const isBlogPage = currentPath.startsWith("/blog");
+  const blogSlug = currentPath.startsWith("/blog/") ? currentPath.replace("/blog/", "") : null;
+
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
       
@@ -84,39 +76,62 @@ export default function App() {
 
       {/* Corporate Header */}
       <Header 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
+        activeTab={isBlogPage ? "blog" : activeTab} 
+        setActiveTab={(tab) => {
+          if (tab === "blog") {
+            navigateTo("/blog");
+          } else {
+            if (isBlogPage) {
+              navigateTo(`/#${tab}`);
+            } else {
+              handleScrollToSection(tab);
+            }
+          }
+        }} 
         onOpenAdvisor={() => setIsAdvisorOpen(true)} 
       />
 
       {/* Main Sections */}
       <main className="flex-1 relative z-10">
-        
-        {/* Hero Section */}
-        <Hero 
-          onScrollToSection={handleScrollToSection}
-          onOpenAdvisor={() => setIsAdvisorOpen(true)}
-        />
+        {isBlogPage ? (
+          /* DEDICATED BLOG ROUTE (/blog or /blog/:slug) */
+          <BlogPage 
+            currentSlug={blogSlug} 
+            onNavigate={navigateTo} 
+          />
+        ) : (
+          /* MAIN HOME LANDING PAGE ROUTE (/) */
+          <>
+            {/* Hero Section */}
+            <Hero 
+              onScrollToSection={handleScrollToSection}
+              onOpenAdvisor={() => setIsAdvisorOpen(true)}
+            />
 
-        {/* Services Showcase */}
-        <Services />
+            {/* Services Showcase */}
+            <Services />
 
-        {/* Target Markets Segment */}
-        <Clients />
+            {/* Target Markets Segment */}
+            <Clients />
 
-        {/* Interactive Self Assessment Tool */}
-        <Assessment
-          onComplete={(company, sector) => setAssessmentPrefill({ company, sector })}
-        />
+            {/* Compact Home Page Blog Preview Section */}
+            <BlogPreviewSection 
+              onNavigateToBlog={(slug) => navigateTo(slug ? `/blog/${slug}` : "/blog")}
+            />
 
-        {/* Consultation and Lead Intake Form */}
-        <Contact prefill={assessmentPrefill} />
+            {/* Interactive Self Assessment Tool */}
+            <Assessment
+              onComplete={(company, sector) => setAssessmentPrefill({ company, sector })}
+            />
 
+            {/* Consultation and Lead Intake Form */}
+            <Contact prefill={assessmentPrefill} />
+          </>
+        )}
       </main>
 
       {/* Corporate Footer */}
       <Footer />
-
 
       {/* Slide-over interactive AI Consultant Drawer */}
       <AiAdvisor 

@@ -407,7 +407,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
                     {assessmentQuestions[currentStep].categoryIndo}
                   </span>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <p className="text-xs text-slate-400 font-mono">
                     Dimensi {currentStep + 1} dari {totalQuestions}
                   </p>
                 </div>
@@ -420,14 +420,14 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       style={{ width: `${((currentStep + 1) / totalQuestions) * 100}%` }}
                     />
                   </div>
-                  <span className="text-xs font-mono text-slate-400 font-bold">
+                  <span className="text-xs font-mono text-slate-400 font-bold tabular-nums">
                     {Math.round(((currentStep + 1) / totalQuestions) * 100)}%
                   </span>
                 </div>
               </div>
 
               {/* Horizontal Question Step Navigation */}
-              <div className="flex flex-wrap gap-1.5 items-center justify-start py-2 border-b border-slate-800/40" id="wizard-step-nav">
+              <div className="flex flex-wrap gap-1.5 items-center justify-start py-2 border-b border-slate-800/40" id="wizard-step-nav" aria-label="Navigasi Pertanyaan Asesmen">
                 {Array.from({ length: totalQuestions }).map((_, idx) => {
                   const isCompleted = answers[assessmentQuestions[idx].id] !== undefined;
                   const isActive = currentStep === idx;
@@ -437,12 +437,14 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       type="button"
                       onClick={() => setCurrentStep(idx)}
                       title={`Lompat ke Pertanyaan ${idx + 1}`}
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-all focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      aria-label={`Pertanyaan ${idx + 1}: ${isCompleted ? "Sudah diisi" : "Belum diisi"}${isActive ? " (Aktif)" : ""}`}
+                      aria-current={isActive ? "step" : undefined}
+                      className={`w-8 h-8 sm:w-9 sm:h-9 min-w-[32px] min-h-[32px] rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1220] ${
                         isActive
-                          ? "bg-bumn-blue text-white ring-1 ring-blue-400"
+                          ? "bg-bumn-blue text-white ring-2 ring-bumn-blue ring-offset-2 ring-offset-[#0d1220]"
                           : isCompleted
                           ? "bg-blue-950/30 text-blue-400 border border-blue-900/40 hover:bg-blue-900/30"
-                          : "bg-slate-900 text-slate-500 border border-slate-800 hover:bg-slate-800 hover:text-slate-400"
+                          : "bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-slate-300"
                       }`}
                     >
                       {idx + 1}
@@ -539,9 +541,10 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         onComplete?.(companyName, sector);
                       }
                     }}
+                    title="Pertanyaan yang dilewati akan diberikan skor awal 1 (Initial / Ad-hoc)"
                     className="text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900/60 hover:bg-slate-800/60 border border-slate-800/80 rounded-xl px-3.5 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
-                    Lewati Pertanyaan
+                    Lewati (Skor Awal 1)
                   </button>
                   <button
                     id="show-results-shortcut-btn"
@@ -555,7 +558,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   </button>
                 </div>
                 
-                <span className="text-xs text-slate-500 font-mono">
+                <span className="text-xs text-slate-400 font-mono">
                   Sektor: {sector === "BUMN" ? "BUMN / BUMD" : "Perbankan / OJK"}
                 </span>
               </div>
@@ -597,30 +600,34 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   <h3 className="text-2xl font-bold text-white tracking-tight">
                     {companyName}
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-400">
                     Sektor: {sector === "BUMN" ? "Badan Usaha Milik Negara" : "Perbankan & Lembaga Keuangan"}
                   </p>
                 </div>
 
                 <div className="flex gap-6 items-center py-2 px-4">
                   <div className="text-left md:text-right">
-                    <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Skor Total</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-white font-display">{results.totalScore} <span className="text-sm font-normal text-slate-500">/ {results.maxScore}</span></span>
+                    <span className="text-xs text-slate-400 block uppercase font-mono tracking-wider">Skor Total</span>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-white font-display tabular-nums">{results.totalScore} <span className="text-sm font-normal text-slate-500">/ {results.maxScore}</span></span>
                   </div>
                   <div className="w-px h-10 bg-slate-800" />
                   <div className="text-left md:text-right">
-                    <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Maturitas</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-bumn-gold font-display">{results.percentage}%</span>
+                    <span className="text-xs text-slate-400 block uppercase font-mono tracking-wider">Maturitas</span>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-bumn-gold font-display tabular-nums">{results.percentage}%</span>
                   </div>
                 </div>
               </div>
 
               {/* Tabs Navigation */}
-              <div className="flex border-b border-slate-800/60" id="results-tab-nav">
+              <div className="flex border-b border-slate-800/60" id="results-tab-nav" role="tablist" aria-label="Navigasi Hasil Evaluasi">
                 <button
                   type="button"
+                  id="tab-summary"
+                  role="tab"
+                  aria-selected={activeResultsTab === "summary"}
+                  aria-controls="panel-summary"
                   onClick={() => setActiveResultsTab("summary")}
-                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none ${
+                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
                     activeResultsTab === "summary"
                       ? "border-bumn-blue text-white"
                       : "border-transparent text-slate-400 hover:text-slate-200"
@@ -630,6 +637,10 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                 </button>
                 <button
                   type="button"
+                  id="tab-report"
+                  role="tab"
+                  aria-selected={activeResultsTab === "report"}
+                  aria-controls="panel-report"
                   onClick={() => {
                     setActiveResultsTab("report");
                     // Auto-generate if clicked and not yet generated/loading
@@ -637,7 +648,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       generateAiReport();
                     }
                   }}
-                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none flex items-center gap-2 ${
+                  className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue flex items-center gap-2 ${
                     activeResultsTab === "report"
                       ? "border-bumn-blue text-white"
                       : "border-transparent text-slate-400 hover:text-slate-200"
@@ -653,7 +664,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
 
               {/* Tab 1: Summary */}
               {activeResultsTab === "summary" && (
-                <div className="space-y-8 animate-in fade-in duration-300">
+                <div id="panel-summary" role="tabpanel" aria-labelledby="tab-summary" className="space-y-8 animate-in fade-in duration-300">
                   {/* Maturity Level Display (Uniform Border instead of Left Stripe Accent) */}
                   <div className="border border-slate-800/80 rounded-2xl p-6 text-left bg-slate-900/30 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                     <div className="bg-blue-950/50 text-blue-400 shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-900/30">
@@ -673,7 +684,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                     <h4 className="text-xs font-bold text-slate-300">
                       Rincian Skor per Dimensi COSO Internal Control
                     </h4>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
                       {[
                         { key: "Control Environment", label: "Lingkungan Pengendalian", short: "Lingkungan", icon: Shield },
                         { key: "Risk Assessment", label: "Penilaian Risiko", short: "Risiko", icon: Briefcase },
@@ -718,7 +729,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
 
               {/* Tab 2: AI Report */}
               {activeResultsTab === "report" && (
-                <div className="space-y-6 animate-in fade-in duration-300 text-center">
+                <div id="panel-report" role="tabpanel" aria-labelledby="tab-report" className="space-y-6 animate-in fade-in duration-300 text-center">
                   {!aiReport && !isLoadingAiReport && (
                     <div className="max-w-xl mx-auto py-8 space-y-4">
                       <p className="text-sm text-slate-400">

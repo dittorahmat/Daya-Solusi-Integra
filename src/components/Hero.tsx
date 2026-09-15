@@ -1,5 +1,5 @@
-import React from "react";
-import { ArrowRight, ShieldCheck, Milestone, Landmark, MessageSquare } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, ShieldCheck, Milestone, Landmark, MessageSquare, Layers, FileCheck, CheckCircle2, ChevronRight, Lock } from "lucide-react";
 import GlossaryTooltip from "./GlossaryTooltip";
 
 interface HeroProps {
@@ -8,188 +8,221 @@ interface HeroProps {
 }
 
 export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
+  const [activePillar, setActivePillar] = useState<number>(0);
+
+  const pillars = [
+    {
+      code: "PILAR 01",
+      title: "Tata Kelola TI & ITGC",
+      standard: "COBIT 2019 / ISO 27001",
+      target: "Keandalan Kontrol Akses, Change Management & Keamanan Core Banking",
+      focus: "Mitigasi kerentanan sistem finansial & audit trail digital tanpa celah"
+    },
+    {
+      code: "PILAR 02",
+      title: "ICOFR & Audit Readiness",
+      standard: "COSO Internal Control",
+      target: "Sertifikasi Asersi Direksi & Validasi RCM (Risk & Control Matrix)",
+      focus: "Pencegahan salah saji material dalam pelaporan keuangan konsolidasi"
+    },
+    {
+      code: "PILAR 03",
+      title: "Enterprise GRC BUMN",
+      standard: "PER-5/MBU/09/2022 & POJK",
+      target: "Pemenuhan GCG Scorecard & Efektivitas Pengendalian Internal",
+      focus: "Kepatuhan multi-regulator: Kementerian BUMN, BPKP, BPK, dan OJK"
+    }
+  ];
+
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden bg-radial from-slate-900 via-[#0b0f19] to-[#05070c]"
+      className="relative min-h-screen pt-32 pb-20 flex items-center bg-[#080c15] border-b border-slate-900"
     >
-      {/* Abstract Grid and Light Glares Background */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[150px]" />
-        <div className="absolute top-[40%] -right-[10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[180px]" />
-        <div 
-          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px]" 
-        />
-      </div>
+      {/* Subtle technical background grid */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.03]" 
+        style={{
+          backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+          backgroundSize: "48px 48px"
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          {/* Hero Text */}
+          {/* Hero Editorial & Positioning Text */}
           <div className="lg:col-span-7 space-y-8 text-left" id="hero-text-content">
-            {/* Tagline */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-950/40 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase font-mono shadow-inner shadow-blue-500/5">
-              <ShieldCheck className="w-4 h-4" />
-              IT Advisory & Enterprise GRC
+            
+            {/* Regulatory Scope Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono tracking-wider uppercase">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span>Praktik Independen Konsultasi TI & GRC Korporasi</span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] font-display" style={{ textWrap: "balance" }}>
-              Konsultasi TI Strategis & <br />
+            {/* Main Heading - Clean editorial authority */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] font-display">
+              Menyelaraskan Tata Kelola TI &{" "}
               <span className="text-bumn-gold">
-                Tata Kelola GRC Terintegrasi
-              </span> <br />
-              Tanpa Celah.
+                Pengendalian Internal
+              </span>{" "}
+              di Sektor Terregulasi.
             </h1>
 
-            {/* Description tailored for BUMN / Banking */}
-            <p className="text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
-              <strong className="text-white font-semibold">Daya Solusi Integra (DSI)</strong> adalah konsultan TI dan tata kelola independen yang merancang infrastruktur digital andal, menyelaraskan kerangka kerja <strong className="text-bumn-gold font-medium">GRC (Governance, Risk, and Compliance)</strong>, serta mengintegrasikan sistem pengendalian internal keuangan <strong className="text-white font-medium"><GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip></strong>. Kami memperkokoh kepatuhan regulasi dan keamanan sistem informasi untuk akuntabilitas tinggi <strong className="text-white font-medium">BUMN</strong> dan <strong className="text-white font-medium">Sektor Perbankan</strong>.
+            {/* Clear, natural, professional description without excessive bolding */}
+            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Daya Solusi Integra mendampingi BUMN dan institusi jasa keuangan mengamankan infrastruktur TI, merancang kerangka <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> berbasis standar COSO, serta memitigasi risiko kepatuhan untuk memastikan akuntabilitas operasional dan kesiapan audit menyeluruh.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2" id="hero-actions">
+            {/* Primary & Secondary CTAs */}
+            <div className="flex flex-wrap items-center gap-4 pt-1" id="hero-actions">
               <button
                 id="hero-primary-cta"
                 onClick={() => onScrollToSection("assessment")}
-                className="group flex items-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/10 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-bumn-blue hover:bg-blue-600 rounded-xl transition-colors cursor-pointer border border-blue-400/20 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
               >
-                Uji Maturitas GRC Anda
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Mulai Uji Maturitas Mandiri
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
               
               <button
                 id="hero-secondary-cta"
                 onClick={onOpenAdvisor}
-                className="flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
               >
                 <MessageSquare className="w-4 h-4 text-bumn-gold" />
                 <span>Konsultasi AI DSI</span>
-                <kbd className="font-mono text-xs bg-slate-950 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-0.5">Ctrl+/</kbd>
+                <kbd className="font-mono text-[11px] bg-slate-950 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-1">Ctrl+/</kbd>
               </button>
             </div>
 
-            {/* Micro Badges for target markets */}
-            <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-slate-400 text-sm" id="hero-badges">
-              <span className="flex items-center gap-2 font-medium text-slate-300">
-                <Milestone className="w-4 h-4 text-bumn-blue" />
-                Kementerian BUMN <GlossaryTooltip acronym="GCG">GCG</GlossaryTooltip>
-              </span>
-              <span className="w-1.5 h-1.5 bg-slate-800 rounded-full hidden sm:inline" />
-              <span className="flex items-center gap-2 font-medium text-slate-300">
-                <Landmark className="w-4 h-4 text-bumn-gold" />
-                Standar POJK & SEOJK Banking
-              </span>
-              <span className="w-1.5 h-1.5 bg-slate-800 rounded-full hidden sm:inline" />
-              <span className="flex items-center gap-2 font-medium text-slate-300">
-                <ShieldCheck className="w-4 h-4 text-bumn-blue" />
-                Sertifikasi <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> / COBIT
-              </span>
+            {/* Authority Reference Matrix */}
+            <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-slate-400 text-xs sm:text-sm" id="hero-badges">
+              <div className="flex items-center gap-2 text-slate-300">
+                <Milestone className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>Pedoman GCG Kementerian BUMN</span>
+              </div>
+              <div className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
+              <div className="flex items-center gap-2 text-slate-300">
+                <Landmark className="w-4 h-4 text-bumn-gold shrink-0" />
+                <span>Ketentuan <GlossaryTooltip acronym="OJK">POJK & SEOJK</GlossaryTooltip> Banking</span>
+              </div>
+              <div className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
+              <div className="flex items-center gap-2 text-slate-300">
+                <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>Standar <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> & COBIT</span>
+              </div>
             </div>
           </div>
 
-          {/* Visual Showcase (Modern Glass UI Frame) */}
-          <div className="lg:col-span-5 relative" id="hero-visual-frame">
-            <div className="relative mx-auto max-w-[420px] lg:max-w-none">
+          {/* Interactive Governance & Advisory Dossier (Replaces AI slop macOS mockup) */}
+          <div className="lg:col-span-5" id="hero-visual-frame">
+            <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 shadow-xl text-left">
               
-              {/* Outer decorative glowing ring */}
-              <div className="absolute -inset-0.5 rounded-2xl bg-blue-500/5 opacity-40 blur-2xl" />
-              
-              {/* Glass Interface Mockup */}
-              <div className="relative glass-panel rounded-2xl p-6 border border-slate-800 space-y-6">
-                
-                {/* Simulated Header */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3.5 h-3.5 bg-rose-500 rounded-full inline-block" />
-                    <span className="w-3.5 h-3.5 bg-amber-500 rounded-full inline-block" />
-                    <span className="w-3.5 h-3.5 bg-blue-500 rounded-full inline-block" />
-                  </div>
-                  <span className="font-mono text-xs text-slate-500">DSI-ICOFR_FRAMEWORK.V2</span>
+              {/* Dossier Header */}
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-5">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-bumn-gold" />
+                  <span className="text-xs font-mono font-semibold tracking-wider text-slate-300 uppercase">
+                    Arsitektur Tata Kelola DSI
+                  </span>
                 </div>
-
-                {/* Simulated Chart/State Box */}
-                <div className="space-y-6">
-                  {/* Readiness Progress Bar (Borderless) */}
-                  <div className="py-2">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-xs text-slate-400 font-semibold">Internal Audit Readiness</span>
-                      <span className="text-xs text-bumn-gold font-mono font-bold">98.4%</span>
-                    </div>
-                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-bumn-blue to-bumn-gold h-full w-[98.4%] rounded-full" />
-                    </div>
-                  </div>
-
-                  {/* Core pillars visualization (Clean text columns separated by vertical divider) */}
-                  <div className="grid grid-cols-3 divide-x divide-slate-800/80 py-2">
-                    <div className="text-left pr-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Level Entitas</span>
-                      <span className="text-sm font-bold text-white mt-1 block">Kepatuhan <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip></span>
-                    </div>
-                    <div className="text-left px-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Kontrol TI</span>
-                      <span className="text-sm font-bold text-white mt-1 block">Tata Kelola <GlossaryTooltip acronym="ITGC">ITGC</GlossaryTooltip></span>
-                    </div>
-                    <div className="text-left pl-4">
-                      <span className="text-xs uppercase text-slate-500 tracking-wider block font-mono">Target Audit</span>
-                      <span className="text-sm font-bold text-bumn-gold mt-1 block">Opini <GlossaryTooltip acronym="WTP">WTP</GlossaryTooltip></span>
-                    </div>
-                  </div>
-
-                  {/* Trust highlight block (Accented card instead of side-stripe) */}
-                  <div className="bg-blue-950/20 border border-blue-500/10 rounded-xl p-3.5 text-left flex gap-3">
-                    <div className="text-blue-400 shrink-0 mt-0.5">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-bumn-gold uppercase tracking-wider font-mono">Kepatuhan Regulasi Kritis</div>
-                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                        Sistem audit komprehensif yang dioptimalkan sesuai ketentuan BPK, BPKP, <GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip>, dan auditor internal perbankan.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
+                <span className="text-[11px] font-mono text-slate-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
+                  Kerangka Terpadu
+                </span>
               </div>
+
+              {/* Interactive Pillar Selector Tabs */}
+              <div className="space-y-2 mb-5">
+                {pillars.map((pillar, idx) => {
+                  const isActive = activePillar === idx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setActivePillar(idx)}
+                      className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between ${
+                        isActive 
+                          ? "bg-slate-800/90 border-blue-500/40 text-white" 
+                          : "bg-slate-950/40 border-slate-800/60 text-slate-400 hover:text-slate-200 hover:bg-slate-900/50"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                          isActive ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" : "bg-slate-900 text-slate-400"
+                        }`}>
+                          {pillar.code}
+                        </span>
+                        <span className="text-sm font-semibold">{pillar.title}</span>
+                      </div>
+                      <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? "text-bumn-gold rotate-90" : "text-slate-600"}`} />
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Pillar Technical Card */}
+              <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-slate-300 uppercase">Standar Pengujian</span>
+                  <span className="text-xs font-mono font-bold text-bumn-gold">
+                    {pillars[activePillar].standard}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="text-xs font-semibold text-slate-200">Ruang Lingkup Validasi</div>
+                  <div className="text-xs text-slate-300 leading-relaxed">
+                    {pillars[activePillar].target}
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-800/80 flex items-start gap-2.5">
+                  <FileCheck className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    {pillars[activePillar].focus}
+                  </p>
+                </div>
+              </div>
+
+              {/* Trust & Methodology Footer */}
+              <div className="mt-5 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <span className="flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5 text-slate-300" />
+                  Kerahasiaan Data Terjamin
+                </span>
+                <span className="text-blue-400 hover:text-blue-300 cursor-pointer" onClick={() => onScrollToSection("services")}>
+                  Lihat Metodologi →
+                </span>
+              </div>
+
             </div>
           </div>
 
         </div>
 
-        {/* Dynamic Statistics Strip */}
-        <div className="mt-20 border border-slate-800/80 bg-slate-900/10 rounded-2xl p-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-800/80 items-stretch gap-6 md:gap-0" id="hero-stats">
+        {/* Dynamic Statistics Strip - Clean Technical Precision */}
+        <div className="mt-16 border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 divide-slate-800/80" id="hero-stats">
           {[
-            { value: "100%", label: "Kepatuhan Regulasi", desc: "Sesuai OJK & BUMN" },
-            { value: "WTP", label: "Target Opini Audit", desc: "Wajar Tanpa Pengecualian" },
-            { value: "COSO", label: "Metodologi Standar", desc: "Kerangka Kerja Global" },
-            { value: "15+", label: "Auditor Ahli Senior", desc: "Pengalaman di BUMN" }
+            { value: "100%", label: "Kepatuhan Regulasi", desc: "Kementerian BUMN, BPK & OJK" },
+            { value: "WTP", label: "Target Pelaporan", desc: "Opini Wajar Tanpa Pengecualian" },
+            { value: "COSO", label: "Metodologi Pengendalian", desc: "Entity & Transaction Level Control" },
+            { value: "15+", label: "Pengalaman Praktisi", desc: "Spesialisasi Sektor BUMN & Perbankan" }
           ].map((stat, idx) => {
             const getStyledValue = (val: string) => {
               if (val === "WTP") return <GlossaryTooltip acronym="WTP">WTP</GlossaryTooltip>;
               if (val === "COSO") return <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip>;
               return val;
             };
-            const getStyledDesc = (desc: string) => {
-              if (desc.includes("OJK")) {
-                return (
-                  <>
-                    Sesuai <GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip> & BUMN
-                  </>
-                );
-              }
-              return desc;
-            };
             return (
               <div 
-                key={idx}
+                key={idx} 
                 id={`stat-card-${idx}`} 
-                className="flex-1 px-6 first:pl-0 last:pr-0 flex items-start gap-4 text-left py-4 md:py-0"
+                className="flex items-start gap-4 text-left pt-4 sm:pt-0 first:pt-0"
               >
-                <div className="text-3xl font-extrabold text-white font-display shrink-0 mt-1">{getStyledValue(stat.value)}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-white font-display tabular-nums shrink-0">{getStyledValue(stat.value)}</div>
                 <div>
-                  <div className="text-xs font-semibold text-bumn-gold/90 tracking-wider uppercase font-mono">{stat.label}</div>
-                  <div className="text-xs text-slate-400 mt-1 leading-normal">{getStyledDesc(stat.desc)}</div>
+                  <div className="text-xs font-semibold text-bumn-gold font-mono uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-xs text-slate-400 mt-0.5 leading-normal">{stat.desc}</div>
                 </div>
               </div>
             );

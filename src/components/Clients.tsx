@@ -26,7 +26,7 @@ export default function Clients() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display [text-wrap:balance]">
             Fokus Industri & Solusi Spesifik Sektor
           </h2>
           <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
@@ -35,47 +35,47 @@ export default function Clients() {
         </div>
 
         {/* Sectors Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12" id="sectors-grid">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10" id="sectors-grid">
           {clientSectors.map((sector) => (
             <div
               key={sector.name}
               id={`sector-card-${sector.sector.toLowerCase()}`}
-              className="rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-bumn-navy/40 hover:bg-bumn-navy/60 hover:border-slate-700/60 shadow-sm transition-colors flex flex-col justify-between"
+              className="rounded-2xl p-6 sm:p-8 border border-slate-800 bg-slate-900/50 hover:border-slate-700/80 transition-colors flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Header Section */}
                 <div className="flex items-center gap-4 text-left">
-                  <div className="bg-blue-950/40 text-blue-400 p-3.5 rounded-xl shrink-0">
+                  <div className="bg-slate-950 text-blue-400 p-3.5 rounded-xl border border-slate-800 shrink-0">
                     {renderIcon(sector.logo)}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                       {sector.name}
                     </h3>
-                    <span className="text-xs uppercase tracking-widest text-bumn-gold font-mono font-bold">
-                      Fokus Utama DSI
+                    <span className="text-xs uppercase tracking-wider text-bumn-gold font-mono font-semibold">
+                      Spesialisasi Regulasi Mandatori
                     </span>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-slate-300 leading-relaxed font-light text-left">
+                <p className="text-sm text-slate-300 leading-relaxed font-normal text-left">
                   {sector.description}
                 </p>
 
                 {/* Challenges and Solutions Columns */}
-                <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-slate-800/60">
+                <div className="grid sm:grid-cols-2 gap-6 pt-5 border-t border-slate-800/80">
                   
                   {/* Challenges List */}
                   <div className="space-y-3.5 text-left">
-                    <h4 className="text-xs font-bold text-red-400 flex items-center gap-2">
-                      <ShieldAlert className="w-4 h-4 shrink-0" />
-                      Tantangan Utama
+                    <h4 className="text-xs font-mono uppercase tracking-wider font-semibold text-rose-400 flex items-center gap-2">
+                      <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
+                      Tantangan Kepatuhan
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {sector.challenges.map((challenge, idx) => (
-                        <li key={idx} className="text-sm text-slate-400 leading-relaxed font-light flex items-start gap-2">
-                          <span className="text-red-500 font-bold mt-0.5">•</span>
+                        <li key={idx} className="text-xs sm:text-sm text-slate-400 leading-relaxed flex items-start gap-2">
+                          <span className="text-rose-400 font-bold shrink-0">•</span>
                           <span>{challenge}</span>
                         </li>
                       ))}
@@ -84,20 +84,19 @@ export default function Clients() {
 
                   {/* Solutions List */}
                   <div className="space-y-3.5 text-left">
-                    <h4 className="text-xs font-bold text-bumn-gold flex items-center gap-2">
-                      <BadgeCheck className="w-4 h-4 shrink-0" />
-                      Solusi DSI
+                    <h4 className="text-xs font-mono uppercase tracking-wider font-semibold text-bumn-gold flex items-center gap-2">
+                      <BadgeCheck className="w-3.5 h-3.5 shrink-0" />
+                      Intervensi Konsultan
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {sector.solutions.map((sol, idx) => (
-                        <li key={idx} className="text-sm text-slate-300 leading-relaxed font-medium flex items-start gap-2">
-                          <span className="text-bumn-gold font-bold mt-0.5">✓</span>
+                        <li key={idx} className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal flex items-start gap-2">
+                          <span className="text-bumn-gold font-bold shrink-0">✓</span>
                           <span>{sol}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-
                 </div>
 
               </div>

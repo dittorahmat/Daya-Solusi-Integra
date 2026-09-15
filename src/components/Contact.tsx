@@ -30,6 +30,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
   const [step, setStep] = useState<1 | 2>(1);
   const companyInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -152,6 +153,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
     if (hasErrors) return;
 
     setIsSubmitting(true);
+    setSubmitError("");
     
     fetch("/api/contact", {
       method: "POST",
@@ -172,7 +174,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
       })
       .catch((err) => {
         console.error("Error submitting contact form:", err);
-        alert("Terjadi kesalahan: " + err.message);
+        setSubmitError("Gagal mengirim pengajuan: " + err.message + ". Silakan hubungi kami langsung via WhatsApp atau surel resmi.");
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -192,6 +194,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
     setErrors({});
     setWarnings({});
     setTouched({});
+    setSubmitError("");
     setIsSubmitted(false);
     setStep(1);
   };
@@ -364,10 +367,10 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             <option value="Lainnya">Kementerian / Lembaga Pemerintah</option>
                           </select>
                         </div>
-                        <div className="space-y-4 sm:col-span-2">
-                          <label className="block text-xs font-semibold text-slate-300">
+                        <fieldset className="space-y-4 sm:col-span-2 border-0 p-0 m-0" role="radiogroup" aria-labelledby="service-selection-legend">
+                          <legend id="service-selection-legend" className="block text-xs font-semibold text-slate-300 mb-2">
                             Layanan yang Dibutuhkan
-                          </label>
+                          </legend>
 
                           {/* Category 1: Tata Kelola & Kepatuhan */}
                           <div className="space-y-2">
@@ -385,8 +388,10 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                                   <button
                                     key={item.id}
                                     type="button"
+                                    role="radio"
+                                    aria-checked={isSelected}
                                     onClick={() => setForm({ ...form, service: item.id as any })}
-                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
+                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                                       isSelected
                                         ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
                                         : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
@@ -421,8 +426,10 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                                   <button
                                     key={item.id}
                                     type="button"
+                                    role="radio"
+                                    aria-checked={isSelected}
                                     onClick={() => setForm({ ...form, service: item.id as any })}
-                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
+                                    className={`p-3.5 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                                       isSelected
                                         ? "bg-blue-950/40 border-bumn-blue ring-1 ring-bumn-blue/50 text-white"
                                         : "bg-slate-900/80 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200"
@@ -443,7 +450,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             </div>
                           </div>
 
-                        </div>
+                        </fieldset>
                       </div>
 
                       <div className="pt-4">
@@ -457,7 +464,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                               setStep(2);
                             }
                           }}
-                          className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none"
+                          className="w-full flex items-center justify-center gap-2 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                         >
                           Selanjutnya
                           <ArrowRight className="w-4 h-4" />
@@ -551,6 +558,12 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                         )}
                       </div>
 
+                      {submitError && (
+                        <div role="alert" className="p-4 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs leading-relaxed animate-in fade-in duration-150">
+                          {submitError}
+                        </div>
+                      )}
+
                       <div className="flex gap-4 pt-2">
                         <button
                           type="button"
@@ -596,8 +609,8 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                     <p className="text-sm text-slate-400 leading-relaxed font-light">
                       Terima kasih <strong className="text-bumn-gold">{form.name}</strong>, formulir diskusi strategis untuk <strong className="text-white">{form.company}</strong> telah tercatat pada sistem representatif kami.
                     </p>
-                    <p className="text-xs text-slate-500 leading-relaxed pt-2">
-                      Partner / Auditor Senior Daya Solusi Integra akan menghubungi Anda via surel (<span className="text-slate-400">{form.email}</span>) atau panggilan telepon dalam waktu maksimal 1x24 jam kerja untuk menjadwalkan sesi pendahuluan NDA.
+                    <p className="text-xs text-slate-400 leading-relaxed pt-2">
+                      Partner / Auditor Senior Daya Solusi Integra akan menghubungi Anda via surel (<span className="text-slate-300">{form.email}</span>) atau panggilan telepon dalam waktu maksimal 1x24 jam kerja untuk menjadwalkan sesi pendahuluan NDA.
                     </p>
                   </div>
                   <button

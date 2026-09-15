@@ -214,7 +214,13 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
       />
 
       {/* Slide-over panel */}
-      <div ref={drawerRef} className="relative w-full max-w-xl bg-[#0b0f19] border-l border-slate-800 h-full flex flex-col justify-between animate-in slide-in-from-right duration-300">
+      <div 
+        ref={drawerRef} 
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="advisor-title"
+        className="relative w-full max-w-xl bg-[#0b0f19] border-l border-slate-800 h-full flex flex-col justify-between animate-in slide-in-from-right duration-300"
+      >
         
         {/* Drawer Header */}
         <div className="p-6 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between text-left">
@@ -223,7 +229,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-white">DSI Expert Advisor</h3>
+              <h3 id="advisor-title" className="font-bold text-lg text-white">DSI Expert Advisor</h3>
               <p className="text-xs text-bumn-gold font-mono tracking-widest uppercase">GRC & ICOFR AI Consultant</p>
             </div>
           </div>

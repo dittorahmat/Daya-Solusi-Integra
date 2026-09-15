@@ -1,151 +1,233 @@
 import React, { useState } from "react";
 import { servicesList } from "../data";
-import { ShieldAlert, Briefcase, Cpu, ClipboardCheck, CheckCircle2, ArrowUpRight, HelpCircle } from "lucide-react";
+import { ShieldAlert, Briefcase, Cpu, ClipboardCheck, CheckCircle2, ChevronRight, Scale, BookOpen, Layers, Target } from "lucide-react";
 import GlossaryTooltip from "./GlossaryTooltip";
 
 export default function Services() {
-  const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
-  const [hasEntered, setHasEntered] = useState(false);
-  const sectionRef = React.useRef<HTMLDivElement>(null);
+  const [activeServiceId, setActiveServiceId] = useState<string>("icofr");
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHasEntered(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const renderIcon = (iconName: string) => {
+  const renderIcon = (iconName: string, className = "w-5 h-5") => {
     switch (iconName) {
       case "ShieldAlert":
-        return <ShieldAlert className="w-6 h-6 text-blue-400" />;
+        return <ShieldAlert className={className} />;
       case "Briefcase":
-        return <Briefcase className="w-6 h-6 text-blue-400" />;
+        return <Briefcase className={className} />;
       case "Cpu":
-        return <Cpu className="w-6 h-6 text-blue-400" />;
+        return <Cpu className={className} />;
       case "ClipboardCheck":
-        return <ClipboardCheck className="w-6 h-6 text-blue-400" />;
+        return <ClipboardCheck className={className} />;
       default:
-        return <ShieldAlert className="w-6 h-6 text-blue-400" />;
+        return <ShieldAlert className={className} />;
     }
   };
 
-  return (
-    <section id="services" ref={sectionRef} className={`py-24 relative bg-[#090d16] border-t border-slate-900 ${hasEntered ? "animate-in" : ""}`}>
-      {/* Decorative backdrop */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute top-[20%] left-[5%] w-[400px] h-[400px] rounded-full bg-blue-500/5 blur-[120px]" />
-      </div>
+  const activeService = servicesList.find((s) => s.id === activeServiceId) || servicesList[0];
 
+  // Specific regulatory framework mapping for each service to demonstrate deep competency
+  const serviceFrameworks: Record<string, { framework: string; standard: string; output: string }> = {
+    "itgc": {
+      framework: "COBIT 2019 & ISO/IEC 27001",
+      standard: "POJK No. 11/POJK.03/2022 & Surat Edaran BI",
+      output: "ITGC Audit Matrix, IAM Evaluation Report & BCP Readiness Document"
+    },
+    "grc": {
+      framework: "ISO 31000:2018 Risk Management & ISO 37001",
+      standard: "Peraturan Menteri BUMN No. PER-5/MBU/09/2022",
+      output: "GCG Assessment Scorecard, Fraud Risk Matrix & Whistleblowing Charter"
+    },
+    "icofr": {
+      framework: "COSO Internal Control - Integrated Framework (2013)",
+      standard: "Surat Edaran KBUMN & Asersi Direksi Akuntabilitas Keuangan",
+      output: "RCM (Risk & Control Matrix), Entity-Level Checklist & Operating Test Results"
+    },
+    "audit-ready": {
+      framework: "Standar Pemeriksaan Keuangan Negara (SPKN) & ISA",
+      standard: "Kriteria Audit BPK, BPKP, & KAP Tier-1",
+      output: "Audit Gap Matrix, Prioritized Remediation Roadmap & Mock Audit Opinion"
+    }
+  };
+
+  const currentMeta = serviceFrameworks[activeService.id] || serviceFrameworks["icofr"];
+
+  return (
+    <section id="services" className="py-24 relative bg-[#080c15] border-t border-slate-900">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Layanan Strategis TI, GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>
+        <div className="text-left max-w-3xl mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono uppercase tracking-wider text-slate-400">
+            <Layers className="w-3.5 h-3.5 text-bumn-gold" />
+            <span>Katalog Kapabilitas Konsultansi</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display [text-wrap:balance]">
+            Spesialisasi Teknis TI, GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
-            DSI membantu BUMN dan institusi perbankan mengoptimalkan infrastruktur TI, menyelaraskan kepatuhan GRC secara terintegrasi, dan memitigasi risiko operasional serta keuangan.
+          <p className="text-slate-300 font-normal leading-relaxed text-sm sm:text-base">
+            Pendekatan berbasis bukti dan pengujian substantif untuk memenuhi standar audit negara dan regulator industri keuangan.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8" id="services-grid">
-          {servicesList.map((service, idx) => {
-            const isExpanded = selectedServiceId === service.id;
-            return (
-              <div
-                key={service.id}
-                id={`service-card-${service.id}`}
-                style={{ "--delay": `${idx * 100}ms` } as React.CSSProperties}
-                className={`stagger-card rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-bumn-navy/40 hover:bg-bumn-navy/60 hover:border-slate-700/60 shadow-sm transition-all duration-300 flex flex-col justify-between group ${
-                  isExpanded ? "ring-2 ring-blue-500/30 bg-slate-950/90" : ""
-                }`}
-              >
-                <div className="space-y-6">
-                  {/* Top Icon Row */}
-                  <div className="flex items-center justify-between">
-                    <div className="bg-blue-950/40 text-blue-400 p-3.5 rounded-xl">
+        {/* Master-Detail Interactive Capability Explorer */}
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left: Interactive Service Selector Column */}
+          <div className="lg:col-span-4 space-y-2.5">
+            {servicesList.map((service) => {
+              const isSelected = activeServiceId === service.id;
+              return (
+                <button
+                  key={service.id}
+                  onClick={() => setActiveServiceId(service.id)}
+                  className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${
+                    isSelected
+                      ? "bg-slate-900 border-blue-500/50 shadow-md text-white"
+                      : "bg-slate-950/60 border-slate-800/80 text-slate-400 hover:bg-slate-900/60 hover:text-slate-200"
+                  }`}
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className={`p-2.5 rounded-lg shrink-0 ${
+                      isSelected ? "bg-bumn-blue text-white" : "bg-slate-900 text-slate-400"
+                    }`}>
                       {renderIcon(service.icon)}
                     </div>
-                    <button
-                      onClick={() => setSelectedServiceId(isExpanded ? null : service.id)}
-                      className="text-slate-500 group-hover:text-blue-400 p-2 rounded-full hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-all"
-                      title="Klik untuk detail layanan"
-                    >
-                      <ArrowUpRight className="w-5 h-5" />
-                    </button>
-                  </div>
-
-                  {/* Header Title & Short Description */}
-                  <div className="text-left">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-bumn-gold transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-slate-400 mt-2.5 font-light leading-relaxed">
-                      {service.shortDesc}
-                    </p>
-                  </div>
-
-                  {/* Features List */}
-                  <ul className="space-y-3 pt-2 text-left">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-bumn-gold mt-0.5 shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Expanded Long Description */}
-                  {isExpanded && (
-                    <div className="pt-4 border-t border-slate-800/80 animate-in fade-in slide-in-from-top-2 duration-300 text-left">
-                      <h4 className="text-xs font-bold text-bumn-gold mb-2">Metodologi & Deliverables:</h4>
-                      <p className="text-sm text-slate-400 leading-relaxed font-light">
-                        {service.longDesc}
-                      </p>
+                    <div>
+                      <div className="text-xs font-mono uppercase tracking-wider text-slate-300">
+                        {service.id.toUpperCase()}
+                      </div>
+                      <div className="text-sm font-semibold tracking-tight mt-0.5">
+                        {service.title}
+                      </div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                  <ChevronRight className={`w-4 h-4 transition-transform shrink-0 ${
+                    isSelected ? "text-bumn-gold translate-x-1" : "text-slate-600"
+                  }`} />
+                </button>
+              );
+            })}
 
-                {/* Bottom Action Button */}
-                <div className="pt-6 border-t border-slate-800/40 mt-6 text-left">
-                  <button
-                    id={`service-toggle-btn-${service.id}`}
-                    onClick={() => setSelectedServiceId(isExpanded ? null : service.id)}
-                    className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 focus:outline-none"
-                  >
-                    {isExpanded ? "Tutup detail layanan" : "Selengkapnya"}
-                    <span className={`text-xs transform transition-transform ${isExpanded ? "rotate-180" : ""}`}>▼</span>
-                  </button>
+            {/* Quick Audit Lifecycle Flow */}
+            <div className="mt-8 p-5 bg-slate-950 border border-slate-800/80 rounded-xl text-left">
+              <div className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+                <Target className="w-3.5 h-3.5 text-bumn-gold" />
+                Siklus Konsultansi DSI
+              </div>
+              <div className="space-y-3 text-xs text-slate-300">
+                <div className="flex items-start gap-2.5">
+                  <span className="font-mono text-bumn-gold font-bold">01.</span>
+                  <div>
+                    <span className="font-semibold text-slate-200 block">Diagnostik & Gap Analysis</span>
+                    <span>Audit kesesuaian awal dengan regulasi dan standar</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="font-mono text-bumn-gold font-bold">02.</span>
+                  <div>
+                    <span className="font-semibold text-slate-200 block">Desain Kontrol & RCM</span>
+                    <span>Penyusunan matriks risiko dan rancangan mitigasi</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="font-mono text-bumn-gold font-bold">03.</span>
+                  <div>
+                    <span className="font-semibold text-slate-200 block">Pengujian & Remediasi</span>
+                    <span>Testing efektivitas dan asistensi perbaikan celah</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="font-mono text-bumn-gold font-bold">04.</span>
+                  <div>
+                    <span className="font-semibold text-slate-200 block">Audit Kesiapan Final</span>
+                    <span>Pendampingan asersi direksi dan kesiapan WTP</span>
+                  </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
 
-        {/* ICOFR Focus Special Callout */}
-        <div className="mt-16 bg-[#0d1e3d]/50 shadow-sm rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col lg:flex-row items-center gap-8 text-left" id="icofr-callout">
-          <div className="bg-blue-500/10 p-4 rounded-2xl text-blue-400 shrink-0">
-            <HelpCircle className="w-10 h-10" />
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-lg sm:text-xl font-bold text-white">Mengapa <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Menjadi Mandatori Kritis Bagi BUMN & Perbankan?</h3>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-3xl">
-              Undang-Undang Republik Indonesia dan peraturan pelaksana BUMN mengamanatkan tanggung jawab penuh bagi Direksi atas integritas laporan keuangan. Kegagalan mendokumentasikan pengendalian internal (defisiensi material) berisiko memicu kecurangan pelaporan keuangan, sanksi administratif, hingga opini audit yang buruk (Adverse atau Disclaimer) dari KAP/BPK yang dapat merusak kepercayaan pasar dan pemegang saham.
+          {/* Right: Detailed Capability Dossier */}
+          <div className="lg:col-span-8 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 text-left shadow-lg">
+            
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-5">
+              <div>
+                <span className="text-xs font-mono text-bumn-gold tracking-wider uppercase font-semibold">
+                  Spesifikasi Layanan
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
+                  {activeService.title}
+                </h3>
+              </div>
+              <div className="p-3 bg-blue-950/40 text-blue-400 border border-blue-500/20 rounded-xl">
+                {renderIcon(activeService.icon, "w-6 h-6")}
+              </div>
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed mt-5">
+              {activeService.longDesc}
             </p>
+
+            {/* Regulatory Alignment Box */}
+            <div className="grid sm:grid-cols-3 gap-4 my-6 p-4 bg-slate-950/80 border border-slate-800 rounded-xl">
+              <div>
+                <div className="text-[11px] font-mono text-slate-300 uppercase flex items-center gap-1.5">
+                  <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+                  Framework Acuan
+                </div>
+                <div className="text-xs font-semibold text-white mt-1.5">
+                  {currentMeta.framework}
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] font-mono text-slate-300 uppercase flex items-center gap-1.5">
+                  <Scale className="w-3.5 h-3.5 text-bumn-gold" />
+                  Rujukan Regulasi
+                </div>
+                <div className="text-xs font-semibold text-white mt-1.5">
+                  {currentMeta.standard}
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] font-mono text-slate-300 uppercase flex items-center gap-1.5">
+                  <ClipboardCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  Keluaran Kerja (Deliverable)
+                </div>
+                <div className="text-xs font-semibold text-white mt-1.5">
+                  {currentMeta.output}
+                </div>
+              </div>
+            </div>
+
+            {/* Deliverables / Scope Checklist */}
+            <div className="space-y-3 pt-2">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                Ruang Lingkup Pekerjaan & Luaran Teknis:
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {activeService.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-lg bg-slate-950/40 border border-slate-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-bumn-gold mt-0.5 shrink-0" />
+                    <span className="text-xs sm:text-sm text-slate-300 leading-snug">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Call to action within explorer */}
+            <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+              <span className="text-xs text-slate-300">
+                Konsultasikan kebutuhan spesifik entitas Anda bersama praktisi DSI.
+              </span>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-bumn-blue hover:bg-blue-600 px-4 py-2.5 rounded-lg border border-blue-400/20 transition-colors"
+              >
+                Diskusikan Kebutuhan Ini
+                <ChevronRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
           </div>
+
         </div>
 
       </div>

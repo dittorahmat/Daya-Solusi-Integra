@@ -5,7 +5,7 @@ export const servicesList = [
     id: "itgc",
     title: "IT Advisory & Governance (ITGC & COBIT)",
     shortDesc: "Layanan konsultasi, tata kelola, dan audit teknologi informasi untuk memastikan keandalan sistem operasional dan keamanan siber.",
-    longDesc: "Daya Solusi Integra menyediakan konsultasi TI strategis untuk menyelaraskan infrastruktur teknologi dengan tujuan tata kelola bisnis. Kami memastikan IT General Controls (ITGC) Anda—termasuk Access Control, Change Management, System Operations, dan Program Development—memenuhi standar COBIT, ISO 27001, serta kepatuhan regulasi siber BUMN & OJK.",
+    longDesc: "Daya Solusi Integra menyediakan konsultasi TI strategis untuk menyelaraskan infrastruktur teknologi dengan tujuan tata kelola bisnis. Kami memastikan IT General Controls (ITGC) Anda (termasuk Access Control, Change Management, System Operations, dan Program Development) memenuhi standar COBIT, ISO 27001, serta kepatuhan regulasi siber BUMN & OJK.",
     icon: "Cpu",
     features: [
       "Audit & Asesmen Tata Kelola TI berbasis COBIT",

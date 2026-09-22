@@ -55,10 +55,6 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-left max-w-3xl mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono uppercase tracking-wider text-slate-400">
-            <Layers className="w-3.5 h-3.5 text-bumn-gold" />
-            <span>Katalog Kapabilitas Konsultansi</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display [text-wrap:balance]">
             Spesialisasi Teknis TI, GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>
           </h2>

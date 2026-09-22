@@ -37,7 +37,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen pt-32 pb-20 flex items-center bg-[#080c15] border-b border-slate-900"
+      className="relative min-h-[100dvh] pt-32 pb-20 flex items-center bg-[#080c15] border-b border-slate-900"
     >
       {/* Subtle technical background grid */}
       <div 
@@ -79,7 +79,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-primary-cta"
                 onClick={() => onScrollToSection("assessment")}
-                className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-bumn-blue hover:bg-blue-600 rounded-xl transition-colors cursor-pointer border border-blue-400/20 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-bumn-blue hover:bg-blue-600 active:scale-[0.98] rounded-xl transition-all cursor-pointer border border-blue-400/20 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
               >
                 Mulai Uji Maturitas Mandiri
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -88,7 +88,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-secondary-cta"
                 onClick={onOpenAdvisor}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 active:scale-[0.98] border border-slate-800 rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
               >
                 <MessageSquare className="w-4 h-4 text-bumn-gold" />
                 <span>Konsultasi AI DSI</span>

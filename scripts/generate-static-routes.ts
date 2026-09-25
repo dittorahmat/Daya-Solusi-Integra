@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
+import { ROUTE_FAQS } from "../src/data/faqData.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -121,6 +122,29 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "priceCurrency": "IDR"
       }
     });
+
+    if (routePath === "/kalkulator-sampel-toe") {
+      graphs.push({
+        "@type": "Dataset",
+        "@id": "https://dsintegra.co.id/kalkulator-sampel-toe#dataset",
+        "name": "Matriks Ukuran Sampel Pengujian Kontrol Operasional (TOE) Tabel 22 Regulasi SK-5 BUMN",
+        "description": "Dataset normatif ukuran populasi kejadian kontrol dan batas sampel minimum pengujian efektivitas pengendalian internal atas pelaporan keuangan (ICOFR) BUMN.",
+        "url": "https://dsintegra.co.id/kalkulator-sampel-toe",
+        "creator": {
+          "@type": "Organization",
+          "name": "Daya Solusi Integra",
+          "url": "https://dsintegra.co.id/"
+        },
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "isAccessibleForFree": true,
+        "variableMeasured": [
+          "Frekuensi Pelaksanaan Kontrol",
+          "Populasi Keterjadian per Tahun Buku",
+          "Rentang Sampel Minimum TOE",
+          "Toleransi Tingkat Deviasi Pengendalian"
+        ]
+      });
+    }
   } else if (routePath.startsWith("/layanan/")) {
     graphs.push({
       "@type": "Service",
@@ -133,6 +157,23 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
       },
       "description": meta.description,
       "areaServed": "ID"
+    });
+  }
+
+  // 3. Skema FAQPage untuk rute yang memiliki kumpulan tanya-jawab resmi
+  const routeFaqs = ROUTE_FAQS[routePath];
+  if (routeFaqs && routeFaqs.length > 0) {
+    graphs.push({
+      "@type": "FAQPage",
+      "@id": `${meta.canonical}#faq`,
+      "mainEntity": routeFaqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
     });
   }
 

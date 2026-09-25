@@ -11,6 +11,8 @@ import {
   HelpCircle,
   Info
 } from "lucide-react";
+import FaqSection from "../FaqSection";
+import { ROUTE_FAQS } from "../../data/faqData";
 
 interface ToeCalculatorPageProps {
   onNavigate: (path: string) => void;
@@ -348,6 +350,14 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
             </table>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <FaqSection
+          items={ROUTE_FAQS["/kalkulator-sampel-toe"]}
+          badge="FAQ Sampling Audit & Tabel 22"
+          title="Pertanyaan Seputar Pengujian Sampel TOE"
+          subtitle="Panduan teknis bagi auditor internal dan konsultan mengenai ukuran sampel minimum, deviasi kontrol, dan pengujian sistem otomatis."
+        />
 
         {/* Bottom Lead Banner */}
         <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-8 text-center max-w-3xl mx-auto">

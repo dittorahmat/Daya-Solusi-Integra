@@ -13,6 +13,8 @@ import {
   ChevronRight 
 } from "lucide-react";
 import GlossaryTooltip from "../GlossaryTooltip";
+import FaqSection from "../FaqSection";
+import { ROUTE_FAQS } from "../../data/faqData";
 
 interface ServicePageProps {
   onNavigate: (path: string) => void;
@@ -143,6 +145,14 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
             ))}
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <FaqSection
+          items={ROUTE_FAQS["/layanan/icofr-bumn"]}
+          badge="FAQ Konsultasi & Regulasi SK-5"
+          title="Pertanyaan Seputar Layanan & Kepatuhan ICOFR"
+          subtitle="Jawaban terperinci mengenai kewajiban pelaporan, metodologi walkthrough TOD, pengujian TOE, dan sertifikasi asersi Direksi."
+        />
 
         {/* Bottom CTA Box */}
         <div className="p-8 sm:p-10 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-left">

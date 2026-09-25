@@ -1,6 +1,8 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import GrcIntegraPlatform from "../GrcIntegraPlatform";
+import FaqSection from "../FaqSection";
+import { ROUTE_FAQS } from "../../data/faqData";
 
 interface PlatformPageProps {
   onNavigate: (path: string) => void;
@@ -36,6 +38,16 @@ export default function PlatformProductPage({ onNavigate, onRequestDemo }: Platf
 
       {/* Reusable Core Interactive Platform Component */}
       <GrcIntegraPlatform onRequestDemo={onRequestDemo} />
+
+      {/* FAQ Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <FaqSection
+          items={ROUTE_FAQS["/platform/grc-integra"]}
+          badge="FAQ Platform & Integrasi Enterprise"
+          title="Pertanyaan Seputar Software GRC Integra"
+          subtitle="Informasi arsitektur deployment on-premise, integrasi sistem ERP SAP atau Oracle, keamanan data, dan migrasi RCM spreadsheet."
+        />
+      </div>
     </div>
   );
 }

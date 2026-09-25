@@ -2,19 +2,72 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# AI Search & LLM Engine Crawlers
+# -------------------------------------------------------------
+# OpenAI Crawlers (Search, User-Fetch & Training)
+# -------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+# -------------------------------------------------------------
+# Anthropic Claude Crawlers (Search, User-Fetch & Training)
+# -------------------------------------------------------------
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# -------------------------------------------------------------
+# Perplexity AI Crawlers (Search Indexing & Live User Fetch)
+# -------------------------------------------------------------
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# -------------------------------------------------------------
+# Google AI & LLM Systems
+# -------------------------------------------------------------
 User-agent: Google-Extended
 Allow: /
 
-# Standard Sitemaps & LLM Context
+User-agent: GoogleOther
+Allow: /
+
+# -------------------------------------------------------------
+# Apple Intelligence Crawlers
+# -------------------------------------------------------------
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# -------------------------------------------------------------
+# Meta AI Crawlers
+# -------------------------------------------------------------
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# -------------------------------------------------------------
+# Sitemaps & Machine-Readable Context Discovery
+# -------------------------------------------------------------
 Sitemap: https://dsintegra.co.id/sitemap.xml
 # LLMs Context Standard: https://dsintegra.co.id/llms.txt
+# LLMs Full Context: https://dsintegra.co.id/llms-full.txt

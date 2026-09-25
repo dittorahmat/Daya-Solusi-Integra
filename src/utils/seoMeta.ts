@@ -152,6 +152,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
     ogTitle: "Integrasi ISO 31000 & ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Strategi integrasi manajemen risiko dan pengendalian internal pelaporan keuangan."
+  },
+  "/blog/studi-kasus-icofr-holding-bumn-wtp": {
+    title: "Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP | Daya Solusi Integra",
+    description: "Transformasi tata kelola Holding BUMN dengan aset Rp 54T: eliminasi 42 defisiensi, akselerasi TOE 91%, kepatuhan ITGC SAP ERP, dan pencapaian opini WTP tanpa catatan.",
+    canonical: "https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    ogTitle: "Studi Kasus ICOFR BUMN Menuju Opini WTP | Daya Solusi Integra",
+    ogDescription: "Studi kasus pembuktian empiris transformasi kepatuhan SK-5/2024 dan eliminasi temuan material audit."
   }
 };
 

@@ -13,6 +13,7 @@ import {
   ChevronRight 
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
 
 export interface BlogPost {
   id: string;
@@ -189,8 +190,29 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
 
             {/* Article Main Content (Rendered Markdown) */}
             <div className="max-w-none mb-12">
-              <div className="text-base sm:text-lg leading-relaxed text-slate-200 font-medium mb-10 italic border-l-4 border-bumn-gold pl-5 py-3 bg-slate-900/60 rounded-r-xl border border-slate-800/80">
-                {activePost.excerpt}
+              {/* Executive Takeaways & AI Direct Answer Callout */}
+              <div className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-3">
+                  <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
+                  <span>Ringkasan Eksekutif & Jawaban Kunci</span>
+                </div>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal mb-5">
+                  {activePost.excerpt}
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 text-xs">
+                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Rujukan Regulasi</span>
+                    <span className="font-semibold text-white">SK-5 BUMN / COSO 2013</span>
+                  </div>
+                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Audiens Kunci</span>
+                    <span className="font-semibold text-white">Direksi, SPI & Lini 2</span>
+                  </div>
+                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Kesiapan Audit</span>
+                    <span className="font-semibold text-white">Standar BPKP, BPK & KAP</span>
+                  </div>
+                </div>
               </div>
               <ReactMarkdown
                 components={{
@@ -331,7 +353,7 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mb-12">
+            <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mb-8">
               <Tag className="w-4 h-4 text-slate-400 mr-1" />
               {activePost.tags.map((tag) => (
                 <span key={tag} className="px-3 py-1 bg-slate-900 text-slate-400 border border-slate-800 text-xs rounded-lg">
@@ -339,6 +361,14 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 </span>
               ))}
             </div>
+
+            {/* Contextual Related Entities & Interactive Tools Widget */}
+            <RelatedEntitiesWidget
+              postSlug={activePost.slug}
+              postCategory={activePost.category}
+              postTags={activePost.tags}
+              onNavigate={onNavigate}
+            />
 
             {/* Bottom Lead Intake CTA Box */}
             <div className="p-8 rounded-2xl bg-gradient-to-r from-bumn-blue/20 via-slate-900 to-amber-500/10 border border-bumn-blue/30 relative overflow-hidden shadow-xl">

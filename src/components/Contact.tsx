@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import GlossaryTooltip from "./GlossaryTooltip";
 
-export default function Contact({ prefill }: { prefill?: { company: string; sector: string } | null }) {
+export default function Contact({ prefill }: { prefill?: { company?: string; sector?: string; service?: string } | null }) {
   const [form, setForm] = useState<InquiryForm>({
     name: "",
     company: "",
@@ -41,6 +41,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
         ...prev,
         company: prefill.company || prev.company,
         sector: (prefill.sector as any) || prev.sector,
+        service: (prefill.service as any) || prev.service,
       }));
       // Validate pre-filled company name
       if (prefill.company) {
@@ -419,6 +420,7 @@ export default function Contact({ prefill }: { prefill?: { company: string; sect
                             </span>
                             <div className="grid sm:grid-cols-2 gap-3">
                               {[
+                                { id: "GRC Integra Demo", title: "Demo Platform GRC Integra", desc: "Software siklus ICOFR & kepatuhan SK-5 BUMN" },
                                 { id: "IT General Controls (ITGC)", title: "Audit ITGC & IT GRC", desc: "Keamanan TI, akses user & audit trail" }
                               ].map((item) => {
                                 const isSelected = form.service === item.id;

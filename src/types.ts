@@ -40,6 +40,6 @@ export interface InquiryForm {
   email: string;
   phone: string;
   sector: "BUMN" | "Banking" | "Swasta" | "Lainnya";
-  service: "GRC Implementation" | "ICOFR Framework" | "IT General Controls (ITGC)" | "Audit Readiness" | "Custom Consultation";
+  service: "GRC Implementation" | "ICOFR Framework" | "IT General Controls (ITGC)" | "Audit Readiness" | "Custom Consultation" | "GRC Integra Demo";
   message: string;
 }

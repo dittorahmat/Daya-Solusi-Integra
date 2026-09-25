@@ -14,18 +14,30 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://dayasolusiintegra.com/#platform</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://dayasolusiintegra.com/#assessment</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Knowledge Base & Blog -->
+  <!-- Knowledge Base & Pillar Articles -->
   <url>
     <loc>https://dayasolusiintegra.com/blog</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dayasolusiintegra.com/blog/panduan-sk5-icofr-grc-integra</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dayasolusiintegra.com/blog/efektivitas-icofr-bumn</loc>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import GrcIntegraPlatform from "./components/GrcIntegraPlatform";
 import Clients from "./components/Clients";
 import BlogPreviewSection from "./components/BlogPreviewSection";
 import BlogPage from "./components/BlogPage";
@@ -14,7 +15,7 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
   const [activeTab, setActiveTab] = useState<string>("hero");
   const [isAdvisorOpen, setIsAdvisorOpen] = useState<boolean>(false);
-  const [assessmentPrefill, setAssessmentPrefill] = useState<{ company: string; sector: string } | null>(null);
+  const [assessmentPrefill, setAssessmentPrefill] = useState<{ company: string; sector: string; service?: string } | null>(null);
 
   // Handle browser back/forward navigation
   useEffect(() => {
@@ -110,6 +111,14 @@ export default function App() {
 
             {/* Services Showcase */}
             <Services />
+
+            {/* Proprietary Digital Platform Showcase: GRC Integra */}
+            <GrcIntegraPlatform 
+              onRequestDemo={() => {
+                setAssessmentPrefill({ company: "", sector: "BUMN", service: "GRC Integra Demo" });
+                handleScrollToSection("contact");
+              }}
+            />
 
             {/* Target Markets Segment */}
             <Clients />

@@ -74,6 +74,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
   const navItems = [
     { id: "hero", label: "Beranda" },
     { id: "services", label: "Layanan TI & GRC" },
+    { id: "platform", label: "Platform GRC Integra" },
     { id: "clients", label: "Target Market" },
     { id: "blog", label: "Artikel & Insight" },
     { id: "assessment", label: "Asesmen Mandiri" },

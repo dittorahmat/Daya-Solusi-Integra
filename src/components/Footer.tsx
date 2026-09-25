@@ -39,6 +39,7 @@ export default function Footer() {
           <div className="md:col-span-3 space-y-4 text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Layanan Kami</h4>
             <ul className="space-y-2 text-xs">
+              <li><a href="#platform" className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition-colors">IT Advisory & ITGC</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition-colors">Implementasi ICOFR</a></li>

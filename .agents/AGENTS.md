@@ -26,17 +26,29 @@ This project has been set up with the Impeccable design system. Future developme
 - **Surel Resmi Marketing / Lead:** `marketing@dsintegra.co.id` / `no-reply@dsintegra.co.id`.
 - **Nama Produk Software:** `GRC Integra` (Platform Lifecycle ICOFR BUMN berbasis SK-5/DKU.MBU/11/2024).
 
-## Mandat Wajib Frontend: Skill `design-taste-frontend` (Anti-AI Slop)
-Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, refaktor, atau modifikasi komponen frontend** di repositori ini **WAJIB** merujuk dan mematuhi aturan skill [`design-taste-frontend`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/design-taste-frontend/SKILL.md) guna menjamin UI tidak terlihat seperti *AI-slop* / template generik:
-1. **Brief Inference & Dials Lock:** Sebelum mengubah kode UI, deklarasikan *Design Read* (B2B Regulated Corporate & GRC Platform) dan kalibrasi dial: `DESIGN_VARIANCE: 4`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 5`.
-2. **Larangan Keras AI Slop Tells (Section 9):**
-   - **Zero Em-Dash (`—` / `–`):** Dilarang keras menggunakan em-dash atau en-dash di seluruh teks UI, judul, pill, badge, maupun konten markdown.
-   - **No Fake OS Window Chrome:** Dilarang membuat tiruan window controls/traffic lights macOS palsu (tiga titik merah/kuning/hijau) di dalam card/preview.
-   - **No Tri-color Rainbow Gradients:** Dilarang menggunakan gradien teks multi-warna generik (misal: ungu-biru-emas sekaligus). Gunakan warna solid BUMN Blue (`#0b4596`) atau aksen BUMN Gold (`#cca43b`).
-   - **No Decorative Unmotivated Pulse Dots:** Dilarang meletakkan dot berkedip (`animate-pulse`) sebagai dekorasi murni tanpa ada status sistem nyata.
-   - **No Sparkles Chatbot Clichés:** Dilarang merepresentasikan asisten/konsultan dengan ikon sparkles generic AI atau gimmick kosmetik. Gunakan visual berwibawa berorientasi kepatuhan (*governance/shield*).
-   - **No Janky Scroll Listeners (Section 5.D):** Dilarang memakai `window.addEventListener("scroll", ...)` langsung. Wajib menggunakan `IntersectionObserver` atau Motion `useScroll()`.
-3. **Pre-Flight Verification (Section 14):** Jalankan seluruh checklist Pre-Flight Check sebelum menyelesaikan tugas dan pastikan `npm run lint` (`tsc --noEmit`) berhasil tanpa error.
+## Mandat Wajib Frontend: Skill `design-taste-frontend` (Anti-AI Slop Keras)
+Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, refaktor, atau modifikasi komponen frontend** di repositori ini **WAJIB** secara ketat mematuhi aturan skill [`design-taste-frontend`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/design-taste-frontend/SKILL.md). Pelanggaran terhadap poin-poin di bawah ini dianggap sebagai cacat kode (*code defect*):
+
+1. **Brief Inference & Dials Lock (Section 0 & 1):**
+   - Wajib mendeklarasikan *Design Read*: `B2B Regulated Corporate & GRC Platform` dengan audience Kementerian BUMN, Holding BUMN, dan Direksi Perbankan.
+   - Kunci dial tetap: `DESIGN_VARIANCE: 4`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 5`.
+
+2. **Daftar Larangan Mutlak AI Slop (Hard Bans & Section 9):**
+   - **Zero Em-Dash & En-Dash (`—` / `–`):** Dilarang keras menggunakan tanda pisah em-dash atau en-dash di seluruh teks UI, judul, paragraf, pill, badge, tombol, maupun konten markdown. Gunakan titik dua (`:`), tanda kurung `()`, atau titik koma (`;`).
+   - **Banned Sparkles & Chatbot Gimmicks:** Dilarang menggunakan ikon `Sparkles` atau visual "magic AI sparkles" generik di mana pun (header, platform, modal, badge). Gunakan visual otoritatif berbasis *governance/security* (`ShieldCheck`, `Award`, `FileCheck2`, `Layers`, `Lock`).
+   - **Banned Decorative Unmotivated Pulse Dots:** Dilarang meletakkan dot berkedip (`animate-pulse`) sebagai hiasan kosmetik murni tanpa ada status proses sistem riil di backend.
+   - **Banned Fake OS Window Chrome:** Dilarang membuat tiruan window controls/traffic lights macOS palsu (tiga titik merah-kuning-hijau) di dalam kartu preview atau bento grid.
+   - **Banned Tri-color Rainbow Gradients:** Dilarang memakai gradien teks multi-warna generik (misal: ungu-pink-oranye atau ungu-biru-emas sekaligus). Gunakan warna solid BUMN Blue (`#0b4596`) atau aksen BUMN Gold (`#cca43b`).
+   - **Banned Janky Scroll Listeners (Section 5.D):** Dilarang memakai `window.addEventListener("scroll", ...)` langsung. Wajib menggunakan `IntersectionObserver` atau Motion `useScroll()`.
+   - **Banned Cards-Inside-Cards Nesting:** Dilarang membuat kartu di dalam kartu bertingkat tiga yang membingungkan hierarki visual.
+   - **Banned Text Wrap on Primary CTA:** Teks tombol CTA tidak boleh terpotong atau wrap menjadi 2 baris pada tampilan desktop.
+   - **Banned Clogged Typography & Text Stacking:** Paragraf wajib memiliki line-height yang lega (`leading-[1.8]` sampai `leading-[1.9]`) dengan margin pemisah yang cukup (`mb-6` sampai `mb-8`). Heading wajib memiliki `scroll-mt` agar tidak tertutup header saat navigasi anchor.
+
+3. **Mandat Audit Pra-Penyelesaian (Pre-Flight Verification Checklist):**
+   Sebelum menyatakan pekerjaan selesai dan sebelum melakukan commit:
+   - Jalankan `Select-String -Path "src\**\*.tsx", "src\**\*.ts" -Pattern "Sparkles|animate-pulse|—|–"` dan pastikan **0 hasil**.
+   - Jalankan `npm run lint` (`tsc --noEmit`) dan pastikan **lulus tanpa error (Exit Code 0)**.
+   - Jalankan `npm run build` dan pastikan **bundler berhasil (Exit Code 0)**.
 
 ## Mandat Wajib Konten Artikel / Blog (Image Relevan & Optimasi SEO)
 Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntingan artikel/blog** di repositori ini (`src/content/blog/*.md`) **WAJIB** mematuhi ketentuan editorial, visual, dan teknis SEO berikut:

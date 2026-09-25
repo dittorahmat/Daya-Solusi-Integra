@@ -208,14 +208,52 @@ export default function Services() {
               </div>
             </div>
 
-            {/* Call to action within explorer */}
+            {/* Call to action within explorer with explicit Silo Page Link */}
             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-slate-300">
-                Konsultasikan kebutuhan spesifik entitas Anda bersama praktisi DSI.
-              </span>
+              <div className="space-y-1">
+                <span className="text-xs text-slate-300 block">
+                  Konsultasikan kebutuhan spesifik entitas Anda bersama praktisi DSI.
+                </span>
+                {activeService.id === "icofr" && (
+                  <a
+                    href="/layanan/icofr-bumn"
+                    className="inline-flex items-center gap-1.5 text-xs text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4"
+                  >
+                    <span>Buka Halaman Spesialisasi ICOFR BUMN SK-5</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {activeService.id === "itgc" && (
+                  <a
+                    href="/layanan/itgc-audit-readiness"
+                    className="inline-flex items-center gap-1.5 text-xs text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4"
+                  >
+                    <span>Buka Halaman Spesialisasi ITGC & Audit Kesiapan TI</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {activeService.id === "grc" && (
+                  <a
+                    href="/layanan/enterprise-grc"
+                    className="inline-flex items-center gap-1.5 text-xs text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4"
+                  >
+                    <span>Buka Halaman Spesialisasi Enterprise GRC & ISO 31000</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {activeService.id === "audit-ready" && (
+                  <a
+                    href="/asesmen-maturitas"
+                    className="inline-flex items-center gap-1.5 text-xs text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4"
+                  >
+                    <span>Uji Kesiapan Audit Lewat Asesmen Mandiri</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-bumn-blue hover:bg-blue-600 px-4 py-2.5 rounded-lg border border-blue-400/20 transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-bumn-blue hover:bg-blue-600 px-5 py-2.5 rounded-xl border border-blue-400/20 transition-colors shadow-md"
               >
                 Diskusikan Kebutuhan Ini
                 <ChevronRight className="w-3.5 h-3.5" />

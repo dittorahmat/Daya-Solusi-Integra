@@ -188,11 +188,144 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
             </div>
 
             {/* Article Main Content (Rendered Markdown) */}
-            <div className="prose prose-invert max-w-none prose-headings:font-display prose-headings:text-white prose-p:text-slate-300 prose-p:leading-relaxed prose-li:text-slate-300 prose-strong:text-bumn-gold prose-blockquote:border-l-bumn-blue prose-blockquote:bg-slate-900/40 prose-blockquote:p-4 prose-blockquote:rounded-r-xl mb-12">
-              <div className="text-lg leading-relaxed text-slate-200 font-medium mb-6 italic border-l-4 border-bumn-gold pl-4 py-1">
+            <div className="max-w-none mb-12">
+              <div className="text-base sm:text-lg leading-relaxed text-slate-200 font-medium mb-10 italic border-l-4 border-bumn-gold pl-5 py-3 bg-slate-900/60 rounded-r-xl border border-slate-800/80">
                 {activePost.excerpt}
               </div>
-              <ReactMarkdown>
+              <ReactMarkdown
+                components={{
+                  h2: ({ children, ...props }) => {
+                    const text = String(children);
+                    const isToc = text.toLowerCase().includes("daftar isi");
+                    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                    
+                    if (isToc) {
+                      return (
+                        <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#0d1627] border-2 border-bumn-blue/40 shadow-xl relative overflow-hidden">
+                          <div className="flex items-center gap-2.5 text-sm font-mono uppercase tracking-wider text-bumn-gold font-bold mb-1">
+                            <BookOpen className="w-4 h-4 text-bumn-gold" />
+                            <span>Daftar Isi Artikel</span>
+                          </div>
+                          <p className="text-xs text-slate-400 mb-4">Klik judul di bawah untuk langsung menuju topik pembahasan:</p>
+                          <div className="h-px w-full bg-slate-800 mb-2" />
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <h2 
+                        id={id} 
+                        className="text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center gap-2 scroll-mt-28" 
+                        {...props}
+                      >
+                        {children}
+                      </h2>
+                    );
+                  },
+                  h3: ({ children, ...props }) => (
+                    <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-100 mt-10 mb-4 tracking-tight scroll-mt-28" {...props}>
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children, ...props }) => (
+                    <p className="text-slate-300 text-base sm:text-lg leading-[1.9] mb-8 font-normal" {...props}>
+                      {children}
+                    </p>
+                  ),
+                  ul: ({ children, ...props }) => (
+                    <ul className="space-y-3.5 mb-8 pl-6 list-disc list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                      {children}
+                    </ul>
+                  ),
+                  ol: ({ children, ...props }) => (
+                    <ol className="space-y-3.5 mb-8 pl-6 list-decimal list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                      {children}
+                    </ol>
+                  ),
+                  li: ({ children, ...props }) => (
+                    <li className="pl-2 leading-relaxed" {...props}>
+                      {children}
+                    </li>
+                  ),
+                  a: ({ href, children, ...props }) => {
+                    const isAnchor = href?.startsWith('#');
+                    if (isAnchor) {
+                      return (
+                        <a
+                          href={href}
+                          className="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg bg-blue-950/40 hover:bg-blue-900/60 border border-blue-500/20 hover:border-blue-400/50 text-blue-300 hover:text-white text-sm font-semibold transition-all my-1 group"
+                          {...props}
+                        >
+                          <ChevronRight className="w-3.5 h-3.5 text-bumn-gold group-hover:translate-x-0.5 transition-transform shrink-0" />
+                          <span>{children}</span>
+                        </a>
+                      );
+                    }
+                    return (
+                      <a
+                        href={href}
+                        className="text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4 decoration-bumn-gold/50 hover:decoration-amber-300 transition-colors"
+                        {...props}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                  strong: ({ children, ...props }) => (
+                    <strong className="font-semibold text-white" {...props}>
+                      {children}
+                    </strong>
+                  ),
+                  hr: () => <hr className="my-10 border-slate-800/80" />,
+                  blockquote: ({ children, ...props }) => (
+                    <blockquote className="my-6 border-l-4 border-bumn-blue bg-slate-900/60 p-4 sm:p-5 rounded-r-xl text-slate-300 italic" {...props}>
+                      {children}
+                    </blockquote>
+                  ),
+                  table: ({ children, ...props }) => (
+                    <div className="overflow-x-auto my-8 rounded-xl border border-slate-800 shadow-xl bg-slate-950/60">
+                      <table className="w-full text-left text-sm text-slate-300 border-collapse" {...props}>
+                        {children}
+                      </table>
+                    </div>
+                  ),
+                  thead: ({ children, ...props }) => (
+                    <thead className="bg-slate-900/90 text-white font-semibold border-b border-slate-800 text-xs uppercase tracking-wider font-mono" {...props}>
+                      {children}
+                    </thead>
+                  ),
+                  tbody: ({ children, ...props }) => (
+                    <tbody className="divide-y divide-slate-800/60 font-sans" {...props}>
+                      {children}
+                    </tbody>
+                  ),
+                  tr: ({ children, ...props }) => (
+                    <tr className="hover:bg-slate-900/40 transition-colors" {...props}>
+                      {children}
+                    </tr>
+                  ),
+                  th: ({ children, ...props }) => (
+                    <th className="px-4 py-3.5" {...props}>
+                      {children}
+                    </th>
+                  ),
+                  td: ({ children, ...props }) => (
+                    <td className="px-4 py-3.5 align-top leading-relaxed" {...props}>
+                      {children}
+                    </td>
+                  ),
+                  pre: ({ children, ...props }) => (
+                    <div className="my-6 p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto text-xs font-mono text-slate-300">
+                      <pre {...props}>{children}</pre>
+                    </div>
+                  ),
+                  code: ({ children, ...props }) => (
+                    <code className="px-1.5 py-0.5 rounded bg-slate-800/80 text-bumn-gold font-mono text-xs" {...props}>
+                      {children}
+                    </code>
+                  )
+                }}
+              >
                 {activePost.content}
               </ReactMarkdown>
             </div>

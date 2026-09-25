@@ -321,15 +321,29 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <span className="text-white font-semibold text-sm block">Siap mentransformasi kepatuhan ICOFR organisasi Anda?</span>
-                <span className="text-xs text-slate-400">Dapatkan demo langsung dan uji coba alur kerja GRC Integra.</span>
+                <a 
+                  href="/platform/grc-integra"
+                  className="text-xs text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4 inline-flex items-center gap-1 mt-1"
+                >
+                  <span>Pelajari Arsitektur & Spesifikasi Lengkap GRC Integra</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
-              <button
-                onClick={onRequestDemo}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-[#0b4596] hover:from-blue-500 hover:to-blue-700 text-white font-semibold text-sm shadow-lg shadow-blue-900/40 hover:shadow-blue-800/60 transition-all cursor-pointer"
-              >
-                <span>Jadwalkan Live Demo GRC Integra</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href="/platform/grc-integra"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-sm transition-all"
+                >
+                  <span>Detail Fitur</span>
+                </a>
+                <button
+                  onClick={onRequestDemo}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-[#0b4596] hover:from-blue-500 hover:to-blue-700 text-white font-semibold text-sm shadow-lg shadow-blue-900/40 hover:shadow-blue-800/60 transition-all cursor-pointer"
+                >
+                  <span>Live Demo</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
           </div>

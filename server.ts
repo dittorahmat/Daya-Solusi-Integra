@@ -8,8 +8,6 @@ import helmet from "helmet";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 
-import proxy from "express-http-proxy";
-
 dotenv.config();
 
 const app = express();

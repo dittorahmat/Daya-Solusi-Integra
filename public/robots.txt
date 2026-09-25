@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://dayasolusiintegra.com/sitemap.xml
+Sitemap: https://dsintegra.co.id/sitemap.xml

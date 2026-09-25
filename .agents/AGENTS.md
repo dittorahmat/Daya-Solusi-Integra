@@ -20,6 +20,12 @@ This project has been set up with the Impeccable design system. Future developme
   - Avoid cyberpunk/hacker themes with green or purple neon.
   - Follow **The 10% Accent Rule** (BUMN Gold must cover <= 10% of any viewport).
 
+## Mandat Wajib Domain & Identitas Resmi (SEO & Brand)
+- **Domain Resmi Perusahaan:** `https://dsintegra.co.id` (Bukan `dayasolusiintegra.com` atau domain dummy lainnya).
+- **Semua URL SEO, Canonical, Sitemap, Robots.txt, dan Schema.org JSON-LD WAJIB menggunakan basis:** `https://dsintegra.co.id/`.
+- **Surel Resmi Marketing / Lead:** `marketing@dsintegra.co.id` / `no-reply@dsintegra.co.id`.
+- **Nama Produk Software:** `GRC Integra` (Platform Lifecycle ICOFR BUMN berbasis SK-5/DKU.MBU/11/2024).
+
 For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) and [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).
 
 ---

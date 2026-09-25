@@ -56,7 +56,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             
             {/* Regulatory Scope Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono tracking-wider uppercase">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
               <span>Praktik Independen Konsultasi TI & GRC Korporasi</span>
             </div>
 

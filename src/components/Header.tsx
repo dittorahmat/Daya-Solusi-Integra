@@ -14,11 +14,29 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
   const mobileDrawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: "-20px 0px 0px 0px" }
+    );
+
+    const sentinel = document.createElement("div");
+    sentinel.style.position = "absolute";
+    sentinel.style.top = "0";
+    sentinel.style.left = "0";
+    sentinel.style.width = "100%";
+    sentinel.style.height = "1px";
+    sentinel.style.pointerEvents = "none";
+    sentinel.setAttribute("aria-hidden", "true");
+    document.body.prepend(sentinel);
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+      sentinel.remove();
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -155,7 +173,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
               onClick={() => handleNavClick("assessment")}
               className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
             >
-              Coba Asesmen
+              Mulai Asesmen
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

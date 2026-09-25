@@ -26,7 +26,19 @@ This project has been set up with the Impeccable design system. Future developme
 - **Surel Resmi Marketing / Lead:** `marketing@dsintegra.co.id` / `no-reply@dsintegra.co.id`.
 - **Nama Produk Software:** `GRC Integra` (Platform Lifecycle ICOFR BUMN berbasis SK-5/DKU.MBU/11/2024).
 
-For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) and [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).
+## Mandat Wajib Frontend: Skill `design-taste-frontend` (Anti-AI Slop)
+Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, refaktor, atau modifikasi komponen frontend** di repositori ini **WAJIB** merujuk dan mematuhi aturan skill [`design-taste-frontend`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/design-taste-frontend/SKILL.md) guna menjamin UI tidak terlihat seperti *AI-slop* / template generik:
+1. **Brief Inference & Dials Lock:** Sebelum mengubah kode UI, deklarasikan *Design Read* (B2B Regulated Corporate & GRC Platform) dan kalibrasi dial: `DESIGN_VARIANCE: 4`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 5`.
+2. **Larangan Keras AI Slop Tells (Section 9):**
+   - **Zero Em-Dash (`—` / `–`):** Dilarang keras menggunakan em-dash atau en-dash di seluruh teks UI, judul, pill, badge, maupun konten markdown.
+   - **No Fake OS Window Chrome:** Dilarang membuat tiruan window controls/traffic lights macOS palsu (tiga titik merah/kuning/hijau) di dalam card/preview.
+   - **No Tri-color Rainbow Gradients:** Dilarang menggunakan gradien teks multi-warna generik (misal: ungu-biru-emas sekaligus). Gunakan warna solid BUMN Blue (`#0b4596`) atau aksen BUMN Gold (`#cca43b`).
+   - **No Decorative Unmotivated Pulse Dots:** Dilarang meletakkan dot berkedip (`animate-pulse`) sebagai dekorasi murni tanpa ada status sistem nyata.
+   - **No Sparkles Chatbot Clichés:** Dilarang merepresentasikan asisten/konsultan dengan ikon sparkles generic AI atau gimmick kosmetik. Gunakan visual berwibawa berorientasi kepatuhan (*governance/shield*).
+   - **No Janky Scroll Listeners (Section 5.D):** Dilarang memakai `window.addEventListener("scroll", ...)` langsung. Wajib menggunakan `IntersectionObserver` atau Motion `useScroll()`.
+3. **Pre-Flight Verification (Section 14):** Jalankan seluruh checklist Pre-Flight Check sebelum menyelesaikan tugas dan pastikan `npm run lint` (`tsc --noEmit`) berhasil tanpa error.
+
+For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) dan [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).
 
 ---
 

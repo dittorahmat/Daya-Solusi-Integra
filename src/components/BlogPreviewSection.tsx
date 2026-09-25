@@ -27,7 +27,7 @@ export default function BlogPreviewSection({ onNavigateToBlog }: BlogPreviewSect
               <span>Insight & Thought Leadership</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-              Artikel & Analisis <span className="text-gradient-gold">Regulasi GRC</span>
+              Artikel & Analisis <span className="text-bumn-gold">Regulasi GRC</span>
             </h2>
             <p className="text-slate-400 text-sm sm:text-base">
               Rangkuman panduan praktis dan analisis risiko terkini bagi jajaran manajemen BUMN & sektor finansial.

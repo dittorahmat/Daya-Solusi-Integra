@@ -225,12 +225,12 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
         {/* Drawer Header */}
         <div className="p-6 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between text-left">
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-tr from-bumn-blue to-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-950/30">
-              <Sparkles className="w-5 h-5 text-white" />
+            <div className="bg-bumn-blue p-2.5 rounded-xl border border-blue-400/30 text-white">
+              <ShieldCheck className="w-5 h-5 text-bumn-gold" />
             </div>
             <div>
-              <h3 id="advisor-title" className="font-bold text-lg text-white">DSI Expert Advisor</h3>
-              <p className="text-xs text-bumn-gold font-mono tracking-widest uppercase">GRC & ICOFR AI Consultant</p>
+              <h3 id="advisor-title" className="font-bold text-lg text-white">DSI Advisory Intelligence</h3>
+              <p className="text-xs text-bumn-gold font-mono tracking-widest uppercase">Konsultasi Tata Kelola TI & ICOFR</p>
             </div>
           </div>
           

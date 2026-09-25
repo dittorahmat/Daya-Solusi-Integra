@@ -245,7 +245,7 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 <span>Pusat Informasi & Insight GRC</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                Artikel, Edukasi & Regulasi <span className="text-gradient-gold">BUMN</span>
+                Artikel, Edukasi & Regulasi <span className="text-bumn-gold">BUMN</span>
               </h1>
               <p className="text-slate-400 text-base">
                 Kumpulan panduan teknis, analisis risiko, dan artikel tata kelola TI terkini yang ditulis oleh praktisi & konsultan ahli Daya Solusi Integra.

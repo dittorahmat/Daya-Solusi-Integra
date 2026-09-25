@@ -35,7 +35,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
             Enterprise Digital Architecture
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Memperkenalkan <span className="bg-gradient-to-r from-blue-400 via-blue-200 to-[#cca43b] bg-clip-text text-transparent">GRC Integra</span>
+            Memperkenalkan <span className="text-bumn-gold">GRC Integra</span>
           </h2>
           <p className="mt-4 text-lg text-slate-300">
             Platform siklus hidup ICOFR digital pertama yang dirancang 100% patuh terhadap mandat 
@@ -146,11 +146,9 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
           <div className="lg:col-span-8 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl relative">
             
             <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="ml-2 text-xs font-mono text-slate-400">grc-integra.dsintegra.co.id/workspace</span>
+              <div className="flex items-center gap-2.5">
+                <Database className="w-4 h-4 text-bumn-gold" />
+                <span className="text-xs font-mono font-medium text-slate-300">grc-integra.dsintegra.co.id/workspace</span>
               </div>
               <span className="text-[11px] font-semibold tracking-wide text-blue-400 bg-blue-950/80 px-2.5 py-1 rounded border border-blue-800/40">
                 SK-5 BUMN Compliant

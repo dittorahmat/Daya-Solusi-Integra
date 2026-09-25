@@ -39,12 +39,11 @@ export default function Footer() {
           <div className="md:col-span-3 space-y-4 text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Layanan Kami</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#platform" className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">IT Advisory & ITGC</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Implementasi ICOFR</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Pre-Audit Readiness (WTP)</a></li>
-              <li><a href="#assessment" className="hover:text-blue-400 transition-colors">Asesmen Kematangan TI & GRC</a></li>
+              <li><a href="/platform/grc-integra" className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
+              <li><a href="/layanan/icofr-bumn" className="hover:text-blue-400 transition-colors">Implementasi ICOFR BUMN</a></li>
+              <li><a href="/layanan/itgc-audit-readiness" className="hover:text-blue-400 transition-colors">ITGC & Kesiapan Audit</a></li>
+              <li><a href="/layanan/enterprise-grc" className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
+              <li><a href="/asesmen-maturitas" className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
             </ul>
           </div>
 

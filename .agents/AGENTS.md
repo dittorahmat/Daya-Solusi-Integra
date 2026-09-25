@@ -38,6 +38,23 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
    - **No Janky Scroll Listeners (Section 5.D):** Dilarang memakai `window.addEventListener("scroll", ...)` langsung. Wajib menggunakan `IntersectionObserver` atau Motion `useScroll()`.
 3. **Pre-Flight Verification (Section 14):** Jalankan seluruh checklist Pre-Flight Check sebelum menyelesaikan tugas dan pastikan `npm run lint` (`tsc --noEmit`) berhasil tanpa error.
 
+## Mandat Wajib Konten Artikel / Blog (Image Relevan & Optimasi SEO)
+Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntingan artikel/blog** di repositori ini (`src/content/blog/*.md`) **WAJIB** mematuhi ketentuan editorial, visual, dan teknis SEO berikut:
+1. **Wajib Gambar Relevan & Berkualitas Tinggi (`coverImage`):**
+   - Setiap artikel WAJIB memiliki properti `coverImage` pada frontmatter dengan gambar korporat beresolusi tinggi dan relevan langsung dengan tema artikel (misal: ruang dewan direksi, analitik data audit, pertemuan tata kelola B2B, atau ruang teknologi).
+   - Format URL gambar Unsplash wajib menyertakan parameter kompresi web modern: `?auto=format&fit=crop&w=1200&q=80`.
+   - Dilarang menggunakan gambar abstrak tanpa makna, meme, atau ilustrasi bergaya kartun/vektor kasual yang menurunkan wibawa BUMN.
+2. **Optimasi SEO On-Page (Exact-Match & Semantic Sitelinks):**
+   - **Target Keyword & Judul:** Judul artikel wajib memuat *target keyword* utama (misal: "Manfaat Aplikasi ICOFR", "Apa Itu ICOFR BUMN", "Tabel 22 Regulasi BUMN") di posisi awal secara alami.
+   - **Struktur H2 Ber-Anchor & Daftar Isi:** Bagian awal artikel setelah pendahuluan wajib menyertakan blok *Daftar Isi* (`## Daftar Isi`) dengan tautan anchor markdown ke setiap judul `## H2` guna memicu fitur *Google sitelinks* di halaman hasil pencarian (SERP).
+   - **Tabel Komparasi & Visual Data:** Setiap artikel pilar wajib menyertakan minimal 1 tabel perbandingan atau matriks terstruktur guna memperkuat *information gain* dan memicu Google Featured Snippet.
+   - **Internal Linking Otomatis:** Di bagian penutup artikel wajib disematkan tautan internal (*anchor text* bermakna) menuju halaman silo layanan (`/layanan/icofr-bumn`), platform produk (`/platform/grc-integra`), atau aset interaktif (`/asesmen-maturitas`).
+3. **Pendaftaran Wajib di Sitemap XML:**
+   - Setiap artikel baru WAJIB langsung didaftarkan ke `public/sitemap.xml` dengan basis URL resmi `https://dsintegra.co.id/blog/<slug>`, `priority` minimal `0.9`, dan `changefreq` `weekly`.
+4. **Larangan Keras Gaya Bahasa Slop:**
+   - Patuhi **Zero Em-Dash (`—` / `–`)**: Dilarang keras menggunakan tanda pisah em-dash atau en-dash di dalam berkas markdown artikel. Gunakan titik dua (`:`), tanda kurung, atau titik koma.
+   - Gunakan terminologi regulasi resmi Kementerian BUMN (`SK-5/DKU.MBU/11/2024`, `COSO Framework`, `Lini 1`, `Lini 2`, `Test of Design`, `Test of Operating Effectiveness`, `SPKN`).
+
 For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) dan [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).
 
 ---

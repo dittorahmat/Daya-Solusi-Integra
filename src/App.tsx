@@ -10,6 +10,11 @@ import Assessment from "./components/Assessment";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AiAdvisor from "./components/AiAdvisor";
+import IcofrBumnPage from "./components/pages/IcofrBumnPage";
+import ItgcAuditReadinessPage from "./components/pages/ItgcAuditReadinessPage";
+import EnterpriseGrcPage from "./components/pages/EnterpriseGrcPage";
+import PlatformProductPage from "./components/pages/PlatformProductPage";
+import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -65,6 +70,12 @@ export default function App() {
 
   const isBlogPage = currentPath.startsWith("/blog");
   const blogSlug = currentPath.startsWith("/blog/") ? currentPath.replace("/blog/", "") : null;
+  const isIcofrPage = currentPath === "/layanan/icofr-bumn";
+  const isItgcPage = currentPath === "/layanan/itgc-audit-readiness";
+  const isGrcPage = currentPath === "/layanan/enterprise-grc";
+  const isPlatformPage = currentPath === "/platform/grc-integra";
+  const isAssessmentPage = currentPath === "/asesmen-maturitas";
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -82,7 +93,7 @@ export default function App() {
           if (tab === "blog") {
             navigateTo("/blog");
           } else {
-            if (isBlogPage) {
+            if (isSubPage) {
               navigateTo(`/#${tab}`);
             } else {
               handleScrollToSection(tab);
@@ -99,6 +110,42 @@ export default function App() {
           <BlogPage 
             currentSlug={blogSlug} 
             onNavigate={navigateTo} 
+          />
+        ) : isIcofrPage ? (
+          /* DEDICATED ICOFR BUMN ROUTE (/layanan/icofr-bumn) */
+          <IcofrBumnPage 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
+          />
+        ) : isItgcPage ? (
+          /* DEDICATED ITGC AUDIT ROUTE (/layanan/itgc-audit-readiness) */
+          <ItgcAuditReadinessPage 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
+          />
+        ) : isGrcPage ? (
+          /* DEDICATED ENTERPRISE GRC ROUTE (/layanan/enterprise-grc) */
+          <EnterpriseGrcPage 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
+          />
+        ) : isPlatformPage ? (
+          /* DEDICATED GRC INTEGRA PLATFORM ROUTE (/platform/grc-integra) */
+          <PlatformProductPage 
+            onNavigate={navigateTo} 
+            onRequestDemo={() => {
+              setAssessmentPrefill({ company: "", sector: "BUMN", service: "GRC Integra Demo" });
+              navigateTo("/#contact");
+            }} 
+          />
+        ) : isAssessmentPage ? (
+          /* DEDICATED ASSESSMENT LANDING ROUTE (/asesmen-maturitas) */
+          <AssessmentLandingPage 
+            onNavigate={navigateTo} 
+            onComplete={(company, sector) => {
+              setAssessmentPrefill({ company, sector });
+              navigateTo("/#contact");
+            }} 
           />
         ) : (
           /* MAIN HOME LANDING PAGE ROUTE (/) */

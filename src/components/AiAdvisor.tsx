@@ -3,7 +3,6 @@ import { ChatMessage } from "../types";
 import { 
   X, 
   Send, 
-  Sparkles, 
   ShieldCheck, 
   MessageSquare, 
   HelpCircle, 

@@ -6,7 +6,6 @@ import {
   QrCode, 
   CheckCircle2, 
   ArrowRight, 
-  Sparkles, 
   ShieldCheck, 
   FileCheck2, 
   Database, 
@@ -31,7 +30,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4 shadow-inner">
-            <Sparkles className="w-3.5 h-3.5 text-[#cca43b]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#cca43b]" />
             Enterprise Digital Architecture
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">

@@ -6,7 +6,7 @@ import {
   CheckCircle2, 
   ChevronRight, 
   ChevronLeft, 
-  Sparkles, 
+  ShieldCheck, 
   RotateCcw, 
   ArrowRight, 
   FileText, 
@@ -654,8 +654,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       : "border-transparent text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  <Sparkles className="w-4 h-4 text-bumn-gold" />
-                  Laporan Rekomendasi AI
+                  <ShieldCheck className="w-4 h-4 text-bumn-gold" />
+                  Laporan Rekomendasi GRC
                   {aiReport && (
                     <span className="w-1.5 h-1.5 bg-bumn-gold rounded-full" />
                   )}
@@ -740,8 +740,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         onClick={generateAiReport}
                         className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                       >
-                        <Sparkles className="w-4 h-4 text-white" />
-                        Formulasikan Executive Report dengan AI
+                        <ShieldCheck className="w-4 h-4 text-white" />
+                        Formulasikan Executive Report dengan Analisis GRC
                       </button>
                     </div>
                   )}
@@ -751,7 +751,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                     <div className="p-8 space-y-4 flex flex-col items-center justify-center" id="ai-loading-state">
                       <Loader2 className="w-8 h-8 text-bumn-gold animate-spin" />
                       <div className="space-y-1">
-                        <p className="text-sm font-bold text-white font-mono animate-pulse">
+                        <p className="text-sm font-bold text-white font-mono">
                           Sedang Menganalisis...
                         </p>
                         <p className="text-xs text-slate-500 font-light italic">

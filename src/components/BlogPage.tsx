@@ -7,10 +7,10 @@ import {
   ArrowRight, 
   Search, 
   Tag, 
-  Sparkles, 
-  ArrowLeft,
-  ShieldCheck,
-  ChevronRight
+  Award, 
+  ArrowLeft, 
+  ShieldCheck, 
+  ChevronRight 
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
@@ -424,7 +424,7 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                   <div className="lg:col-span-7 space-y-4">
                     <div className="flex items-center gap-2">
                       <span className="px-3 py-1 bg-amber-500/20 text-bumn-gold border border-amber-500/30 text-xs font-semibold rounded-full flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" />
+                        <Award className="w-3 h-3 text-bumn-gold" />
                         Artikel Utama
                       </span>
                       <span className="text-xs text-slate-400">• {featuredPost.readTime}</span>

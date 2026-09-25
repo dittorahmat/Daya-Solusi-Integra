@@ -7,7 +7,7 @@ import {
   Clock, 
   CheckCircle, 
   Send, 
-  Sparkles, 
+  ShieldCheck, 
   ShieldAlert, 
   Building,
   ArrowRight
@@ -295,7 +295,7 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
             {/* Quick Callout badge */}
             <div className="bg-blue-950/25 border border-blue-500/10 p-5 rounded-2xl text-left" id="privacy-callout">
               <h4 className="text-xs font-bold text-bumn-gold flex items-center gap-1.5 mb-1.5">
-                <Sparkles className="w-4 h-4" />
+                <ShieldCheck className="w-4 h-4" />
                 Kerahasiaan Data Klien
               </h4>
               <p className="text-xs text-slate-400 leading-relaxed font-light">

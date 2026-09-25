@@ -17,11 +17,6 @@ export default function Clients() {
 
   return (
     <section id="clients" className="py-24 relative bg-[#0b0f19] border-t border-slate-900 overflow-hidden">
-      {/* Decorative vector lines */}
-      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-        <div className="absolute -bottom-[20%] right-[5%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px]" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

@@ -80,12 +80,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
       
-      {/* Background ambient lighting */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-blue-600/5 blur-[200px]" />
-        <div className="absolute top-[30vh] left-0 w-[40vw] h-[40vw] bg-bumn-blue/5 blur-[180px]" />
-      </div>
-
       {/* Corporate Header */}
       <Header 
         activeTab={isBlogPage ? "blog" : activeTab} 

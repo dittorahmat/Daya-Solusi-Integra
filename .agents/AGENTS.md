@@ -26,14 +26,22 @@ This project has been set up with the Impeccable design system. Future developme
 - **Surel Resmi Marketing / Lead:** `marketing@dsintegra.co.id` / `no-reply@dsintegra.co.id`.
 - **Nama Produk Software:** `GRC Integra` (Platform Lifecycle ICOFR BUMN berbasis SK-5/DKU.MBU/11/2024).
 
-## Mandat Wajib Frontend: Skill `design-taste-frontend` (Anti-AI Slop Keras)
-Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, refaktor, atau modifikasi komponen frontend** di repositori ini **WAJIB** secara ketat mematuhi aturan skill [`design-taste-frontend`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/design-taste-frontend/SKILL.md). Pelanggaran terhadap poin-poin di bawah ini dianggap sebagai cacat kode (*code defect*):
+## Mandat Wajib Frontend: Skill `design-taste-frontend` (Anti-AI Slop Keras & Layout Simpel)
+Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, refaktor, atau modifikasi komponen frontend** di repositori ini **WAJIB** secara ketat memanggil dan mematuhi aturan skill [`design-taste-frontend`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/design-taste-frontend/SKILL.md). Pelanggaran terhadap poin-poin di bawah ini dianggap sebagai cacat kode (*code defect*):
 
 1. **Brief Inference & Dials Lock (Section 0 & 1):**
    - Wajib mendeklarasikan *Design Read*: `B2B Regulated Corporate & GRC Platform` dengan audience Kementerian BUMN, Holding BUMN, dan Direksi Perbankan.
-   - Kunci dial tetap: `DESIGN_VARIANCE: 4`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 5`.
+   - Kunci dial tetap: `DESIGN_VARIANCE: 4`, `MOTION_INTENSITY: 3`, `VISUAL_DENSITY: 4` (mengutamakan ketenangan, tata letak yang lapang, hierarki jelas, dan otoritas regulasi).
 
-2. **Daftar Larangan Mutlak AI Slop (Hard Bans & Section 9):**
+2. **Prinsip Desain Simpel, Lapang & Tidak Sesak (Breathing Room Mandate):**
+   - **Banned Visual Clutter & Clogged Layouts:** Dilarang menumpuk banyak informasi, badge ganda, atau sub-elemen mikro di dalam satu kartu/viewport. Berikan ruang bernapas yang cukup antar section (`py-24` sampai `py-32`) dan ruang antar elemen (`gap-8` sampai `gap-16`).
+   - **Banned Ambient Floating Glow / Blur Blobs:** Dilarang meletakkan lingkaran gradien kabur (`blur-[150px]`, `blur-[200px]`, dsb.) di latar belakang karena merupakan indikator template AI slop sintetis. Gunakan kanvas solid *Ink Navy* (`#0b0f19`) yang bersih.
+   - **Banned Fake Glassmorphism:** Dilarang menggunakan efek kaca buram `backdrop-blur` tebal pada card container. Gunakan permukaan arsitektural solid (`#0f172a` / `#0d1527`) dengan border tegas dan tipis (`border-slate-800`).
+   - **Banned Hidden-by-Default Interactivity (No Unnecessary Tab Toggles):** Jangan menyembunyikan poin-poin kapabilitas utama di balik tab switcher yang rumit. Gunakan *Editorial Capability Ledger* atau grid datar (*flat architecture*) yang langsung dapat dibaca sekilas (*glanceable*).
+   - **Single Surface Grouping:** Hindari pengelompokan berlapis (hindari cards-inside-cards bertingkat). Gunakan garis pemisah tipis (`divide-y divide-slate-800/80` atau `border-t`) untuk mengelompokkan data.
+   - **Focused Action (1 Dominant CTA per Viewport):** Jangan membingungkan audiens eksekutif dengan terlalu banyak tombol aksi dengan niat sama (*no duplicate CTA intent*). Maksimal 1 aksi primer dan 1 aksi sekunder yang kontras dan jelas.
+
+3. **Daftar Larangan Mutlak AI Slop (Hard Bans & Section 9):**
    - **Zero Em-Dash & En-Dash (`—` / `–`):** Dilarang keras menggunakan tanda pisah em-dash atau en-dash di seluruh teks UI, judul, paragraf, pill, badge, tombol, maupun konten markdown. Gunakan titik dua (`:`), tanda kurung `()`, atau titik koma (`;`).
    - **Banned Sparkles & Chatbot Gimmicks:** Dilarang menggunakan ikon `Sparkles` atau visual "magic AI sparkles" generik di mana pun (header, platform, modal, badge). Gunakan visual otoritatif berbasis *governance/security* (`ShieldCheck`, `Award`, `FileCheck2`, `Layers`, `Lock`).
    - **Banned Decorative Unmotivated Pulse Dots:** Dilarang meletakkan dot berkedip (`animate-pulse`) sebagai hiasan kosmetik murni tanpa ada status proses sistem riil di backend.
@@ -44,7 +52,7 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
    - **Banned Text Wrap on Primary CTA:** Teks tombol CTA tidak boleh terpotong atau wrap menjadi 2 baris pada tampilan desktop.
    - **Banned Clogged Typography & Text Stacking:** Paragraf wajib memiliki line-height yang lega (`leading-[1.8]` sampai `leading-[1.9]`) dengan margin pemisah yang cukup (`mb-6` sampai `mb-8`). Heading wajib memiliki `scroll-mt` agar tidak tertutup header saat navigasi anchor.
 
-3. **Mandat Audit Pra-Penyelesaian (Pre-Flight Verification Checklist):**
+4. **Mandat Audit Pra-Penyelesaian (Pre-Flight Verification Checklist):**
    Sebelum menyatakan pekerjaan selesai dan sebelum melakukan commit:
    - Jalankan `Select-String -Path "src\**\*.tsx", "src\**\*.ts" -Pattern "Sparkles|animate-pulse|—|–"` dan pastikan **0 hasil**.
    - Jalankan `npm run lint` (`tsc --noEmit`) dan pastikan **lulus tanpa error (Exit Code 0)**.

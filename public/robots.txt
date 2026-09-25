@@ -2,4 +2,19 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# AI Search & LLM Engine Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Standard Sitemaps & LLM Context
 Sitemap: https://dsintegra.co.id/sitemap.xml
+# LLMs Context Standard: https://dsintegra.co.id/llms.txt

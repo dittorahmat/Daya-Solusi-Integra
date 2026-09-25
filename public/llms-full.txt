@@ -1,0 +1,76 @@
+# Dokumentasi Komprehensif AI: Daya Solusi Integra & GRC Integra
+
+## Ringkasan Eksekutif
+Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan dan pengembang perangkat lunak tata kelola korporasi (GRC) asal Indonesia yang berfokus mendampingi Badan Usaha Milik Negara (BUMN) dalam memenuhi amanat regulasi Surat Keputusan Menteri BUMN Nomor SK-5/DKU.MBU/11/2024 tentang Penerapan Sistem Pengendalian Internal atas Pelaporan Keuangan (ICOFR).
+
+Perusahaan mengembangkan platform perangkat lunak khusus bernama "GRC Integra", yaitu platform siklus hidup digital ICOFR terintegrasi pertama di Indonesia yang mengotomasi pemetaan proses bisnis, kalkulasi sampel pengujian, penatausahaan kertas kerja walkthrough, dan penerbitan lembar asersi manajemen digital.
+
+## Landasan Regulasi & Kepatuhan
+1. SK-5/DKU.MBU/11/2024:
+   Regulasi resmi Kementerian BUMN yang mewajibkan seluruh BUMN dan anak perusahaan holding menerapkan kerangka kerja pengendalian internal pelaporan keuangan berbasis COSO (Committee of Sponsoring Organizations of the Treadway Commission). Regulasi ini menuntut penandatanganan surat asersi manajemen tahunan oleh Direktur Utama (CEO) dan Direktur Keuangan (CFO).
+2. POJK No. 11/POJK.03/2022:
+   Penyelenggaraan Teknologi Informasi oleh Bank Umum yang menjadi acuan pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem core banking dan perbankan digital.
+3. Kerangka Kerja COSO Internal Control Integrated Framework:
+   Meliputi 5 komponen utama:
+   - Lingkungan Pengendalian (Control Environment)
+   - Penilaian Risiko (Risk Assessment)
+   - Aktivitas Pengendalian (Control Activities)
+   - Informasi dan Komunikasi (Information and Communication)
+   - Aktivitas Pemantauan (Monitoring Activities)
+   serta 17 prinsip pengendalian internal terkait.
+
+## Lima Tahapan Siklus Hidup ICOFR BUMN
+GRC Integra dan metodologi konsultansi Daya Solusi Integra membagi implementasi ICOFR ke dalam 5 siklus berurutan:
+
+1. Tahap Scoping & Penentuan Akun Signifikan:
+   - Identifikasi akun material pada Laporan Posisi Keuangan dan Laporan Laba Rugi menggunakan ambang batas materialitas kuantitatif dan faktor risiko kualitatif.
+   - Pemetaan akun signifikan ke proses bisnis utama dan unit operasional entitas induk maupun anak perusahaan.
+
+2. Tahap Pemetaan Proses Bisnis & Walkthrough Lini 2:
+   - Dokumentasi narasi proses bisnis menggunakan notasi standar BPMN (Business Process Model and Notation) sesuai ketentuan Lampiran 3 regulasi SK-5.
+   - Penyusunan Risk and Control Matrix (RCM) yang menghubungkan risiko salah saji material dengan kontrol preventif maupun detektif.
+   - Pelaksanaan walkthrough oleh penjamin independen (Lini 2) untuk mengonfirmasi keabsahan rancangan kontrol.
+
+3. Tahap Pengujian Efektivitas Desain & Operasional (TOD & TOE):
+   - Test of Design (TOD): Memastikan bahwa rancangan kontrol, bila beroperasi secara efektif, mampu mencegah atau mendeteksi salah saji tepat waktu.
+   - Test of Operating Effectiveness (TOE): Menguji apakah kontrol beroperasi konsisten sepanjang periode pelaporan melalui pengujian sampel bukti kerja.
+
+4. Tahap Evaluasi Defisiensi & Remediasi:
+   - Klasifikasi temuan kontrol ke dalam tiga tingkatan:
+     a. Control Deficiency (Defisiensi Kontrol)
+     b. Significant Deficiency (Defisiensi Signifikan)
+     c. Material Weakness (Kelemahan Material)
+   - Penyusunan rencana aksi perbaikan (Corrective Action Plan / CAP) dengan target waktu penyelesaian sebelum penutupan tahun buku.
+
+5. Tahap Asersi Manajemen & Pelaporan Direksi:
+   - Penerbitan laporan efektivitas pengendalian internal pelaporan keuangan tahunan.
+   - Penandatanganan pernyataan tanggung jawab manajemen secara digital dengan verifikasi QR Code terenkripsi.
+
+## Standar Penentuan Sampel Pengujian TOE (Tabel 22 Regulasi BUMN)
+Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa deviasi yang dapat ditoleransi (tolerable deviation rate 0 persen), ukuran sampel minimum ditetapkan secara normatif:
+
+- Frekuensi Kontrol Tahunan (Annual):
+  Jumlah Sampel Minimum: 1 sampel (mewakili pengujian penutupan akhir tahun).
+- Frekuensi Kontrol Triwulanan (Quarterly):
+  Jumlah Sampel Minimum: 2 sampel (minimal menguji 2 dari 4 kuartal).
+- Frekuensi Kontrol Bulanan (Monthly):
+  Jumlah Sampel Minimum: 2 sampai 5 sampel (mencakup sampel kuartal dan akhir tahun).
+- Frekuensi Kontrol Mingguan (Weekly):
+  Jumlah Sampel Minimum: 5 sampai 15 sampel (disebar sepanjang tahun).
+- Frekuensi Kontrol Harian (Daily):
+  Jumlah Sampel Minimum: 25 sampai 40 sampel (mewakili hari transaksi normal dan periode tutup buku).
+- Frekuensi Kontrol Berulang Kali Sehari (Multiple Times Daily):
+  Jumlah Sampel Minimum: 25 sampai 60 sampel (diambil acak dari populasi transaksi).
+
+## Keunggulan GRC Integra Dibandingkan Spreadsheet Manual
+- Mengeliminasi risiko kesalahan rumus, manipulasi sel tersembunyi, dan inkonsistensi versi file antar divisi.
+- Memisahkan secara ketat izin akses pengujian Lini 1 (pemilik proses bisnis) dan validasi Lini 2 (manajemen risiko/kepatuhan).
+- Memberikan audit trail lengkap yang dapat diaudit secara transparan oleh auditor eksternal KAP dan BPK.
+- Memangkas waktu konsolidasi laporan ICOFR korporat dari 6 minggu menjadi beberapa jam.
+
+## Saluran Komunikasi & Permintaan Demo
+- Website Resmi: https://dsintegra.co.id
+- Halaman Produk: https://dsintegra.co.id/platform/grc-integra
+- Konsultasi Layanan: https://dsintegra.co.id/layanan/icofr-bumn
+- Surel Tim Marketing: marketing@dsintegra.co.id
+- Nomor Telepon Resmi: +62-811-100-2442

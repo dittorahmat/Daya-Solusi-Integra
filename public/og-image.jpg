@@ -1,0 +1,77 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#0d1e3d" />
+      <stop offset="100%" stop-color="#080c16" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b4596" />
+      <stop offset="100%" stop-color="#cca43b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Grid Pattern Overlay -->
+  <g opacity="0.05" stroke="#ffffff" stroke-width="1">
+    <line x1="120" y1="0" x2="120" y2="630" />
+    <line x1="240" y1="0" x2="240" y2="630" />
+    <line x1="360" y1="0" x2="360" y2="630" />
+    <line x1="480" y1="0" x2="480" y2="630" />
+    <line x1="600" y1="0" x2="600" y2="630" />
+    <line x1="720" y1="0" x2="720" y2="630" />
+    <line x1="840" y1="0" x2="840" y2="630" />
+    <line x1="960" y1="0" x2="960" y2="630" />
+    <line x1="1080" y1="0" x2="1080" y2="630" />
+    <line x1="0" y1="126" x2="1200" y2="126" />
+    <line x1="0" y1="252" x2="1200" y2="252" />
+    <line x1="0" y1="378" x2="1200" y2="378" />
+    <line x1="0" y1="504" x2="1200" y2="504" />
+  </g>
+  
+  <!-- Outer Card Frame -->
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="none" stroke="#1e293b" stroke-width="2" />
+  <rect x="40" y="40" width="1120" height="6" fill="url(#accent)" rx="3" />
+
+  <!-- Badge Pill -->
+  <rect x="80" y="90" width="370" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="100" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#cca43b" letter-spacing="1.5">REGULASI SK-5/DKU.MBU/11/2024</text>
+
+  <!-- Main Headline -->
+  <text x="80" y="215" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">
+    Daya Solusi Integra
+  </text>
+  <text x="80" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#94a3b8">
+    Konsultan ICOFR &amp; Platform GRC Integra
+  </text>
+
+  <!-- Divider Line -->
+  <line x1="80" y1="325" x2="650" y2="325" stroke="#334155" stroke-width="2" />
+
+  <!-- Value Pillars -->
+  <text x="80" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#e2e8f0">
+    • Asersi Manajemen Direksi BUMN (CEO &amp; CFO) Terverifikasi Digital
+  </text>
+  <text x="80" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#e2e8f0">
+    • Pengujian Kontrol TOE Berbasis Tabel 22 Regulasi BUMN
+  </text>
+  <text x="80" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#e2e8f0">
+    • Audit Readiness ITGC, Evaluasi Hak Akses &amp; Segregasi Tugas (SoD)
+  </text>
+
+  <!-- Right Visual Shield Icon Graphic -->
+  <g transform="translate(850, 180)">
+    <polygon points="120,20 220,60 220,170 120,240 20,170 20,60" fill="#0f172a" stroke="#cca43b" stroke-width="4" />
+    <path d="M70,125 L105,160 L170,95" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Footer Brand -->
+  <text x="80" y="535" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#38bdf8">
+    https://dsintegra.co.id
+  </text>
+  <text x="1120" y="535" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#64748b">
+    Firma Konsultan Tata Kelola &amp; Pengendalian Internal BUMN
+  </text>
+</svg>

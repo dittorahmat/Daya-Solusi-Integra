@@ -44,6 +44,36 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Regulatory Glossary Directory -->
+  <url>
+    <loc>https://dsintegra.co.id/glosarium</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Interactive Regulatory Sampling Calculator (Table 22 SK-5 BUMN) -->
+  <url>
+    <loc>https://dsintegra.co.id/kalkulator-sampel-toe</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Legal, Privacy & Independence Pages (E-E-A-T Trust Architecture) -->
+  <url>
+    <loc>https://dsintegra.co.id/kebijakan-privasi</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/pernyataan-independensi</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Knowledge Base & Thought Leadership Articles -->
   <url>
     <loc>https://dsintegra.co.id/blog</loc>

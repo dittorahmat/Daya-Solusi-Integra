@@ -15,6 +15,11 @@ import ItgcAuditReadinessPage from "./components/pages/ItgcAuditReadinessPage";
 import EnterpriseGrcPage from "./components/pages/EnterpriseGrcPage";
 import PlatformProductPage from "./components/pages/PlatformProductPage";
 import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
+import GlossaryPage from "./components/pages/GlossaryPage";
+import ToeCalculatorPage from "./components/pages/ToeCalculatorPage";
+import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
+import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
+import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -30,6 +35,11 @@ export default function App() {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  // Synchronize document <title>, canonical, and meta tags with current route
+  useEffect(() => {
+    updateDocumentMeta(currentPath);
+  }, [currentPath]);
 
   // Global shortcut (Ctrl + /) for AI Advisor
   useEffect(() => {
@@ -75,17 +85,25 @@ export default function App() {
   const isGrcPage = currentPath === "/layanan/enterprise-grc";
   const isPlatformPage = currentPath === "/platform/grc-integra";
   const isAssessmentPage = currentPath === "/asesmen-maturitas";
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage;
+  const isGlossaryPage = currentPath === "/glosarium";
+  const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
+  const isPrivacyPage = currentPath === "/kebijakan-privasi";
+  const isIndependencePage = currentPath === "/pernyataan-independensi";
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage || isGlossaryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
       
       {/* Corporate Header */}
       <Header 
-        activeTab={isBlogPage ? "blog" : activeTab} 
+        activeTab={isBlogPage ? "blog" : isGlossaryPage ? "glosarium" : isToeCalculatorPage ? "kalkulator" : activeTab} 
         setActiveTab={(tab) => {
           if (tab === "blog") {
             navigateTo("/blog");
+          } else if (tab === "glosarium") {
+            navigateTo("/glosarium");
+          } else if (tab === "kalkulator") {
+            navigateTo("/kalkulator-sampel-toe");
           } else {
             if (isSubPage) {
               navigateTo(`/#${tab}`);
@@ -141,6 +159,31 @@ export default function App() {
               navigateTo("/#contact");
             }} 
           />
+        ) : isGlossaryPage ? (
+          /* DEDICATED REGULATORY GLOSSARY ROUTE (/glosarium) */
+          <GlossaryPage 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
+          />
+        ) : isToeCalculatorPage ? (
+          /* DEDICATED TOE SAMPLE CALCULATOR ROUTE (/kalkulator-sampel-toe) */
+          <ToeCalculatorPage 
+            onNavigate={navigateTo} 
+            onRequestDemo={() => {
+              setAssessmentPrefill({ company: "", sector: "BUMN", service: "GRC Integra Demo" });
+              navigateTo("/#contact");
+            }} 
+          />
+        ) : isPrivacyPage ? (
+          /* DEDICATED PRIVACY POLICY ROUTE (/kebijakan-privasi) */
+          <PrivacyPolicyPage 
+            onNavigate={navigateTo} 
+          />
+        ) : isIndependencePage ? (
+          /* DEDICATED INDEPENDENCE STATEMENT ROUTE (/pernyataan-independensi) */
+          <IndependenceStatementPage 
+            onNavigate={navigateTo} 
+          />
         ) : (
           /* MAIN HOME LANDING PAGE ROUTE (/) */
           <>
@@ -181,7 +224,7 @@ export default function App() {
       </main>
 
       {/* Corporate Footer */}
-      <Footer />
+      <Footer onNavigate={navigateTo} />
 
       {/* Slide-over interactive AI Consultant Drawer */}
       <AiAdvisor 

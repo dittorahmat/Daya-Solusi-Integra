@@ -93,6 +93,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
     { id: "hero", label: "Beranda" },
     { id: "services", label: "Layanan TI & GRC" },
     { id: "platform", label: "Platform GRC Integra" },
+    { id: "kalkulator", label: "Kalkulator Tabel 22" },
+    { id: "glosarium", label: "Glosarium" },
     { id: "clients", label: "Target Market" },
     { id: "blog", label: "Artikel & Insight" },
     { id: "assessment", label: "Asesmen Mandiri" },

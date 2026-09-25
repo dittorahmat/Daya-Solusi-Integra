@@ -2,12 +2,23 @@ import React from "react";
 import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import logoImg from "../../assets/dsi-logo-removebg-preview.png";
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: (path: string) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (onNavigate && path.startsWith("/")) {
+      e.preventDefault();
+      onNavigate(path);
+    }
   };
 
   return (
@@ -39,11 +50,13 @@ export default function Footer() {
           <div className="md:col-span-3 space-y-4 text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Layanan Kami</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="/platform/grc-integra" className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
-              <li><a href="/layanan/icofr-bumn" className="hover:text-blue-400 transition-colors">Implementasi ICOFR BUMN</a></li>
-              <li><a href="/layanan/itgc-audit-readiness" className="hover:text-blue-400 transition-colors">ITGC & Kesiapan Audit</a></li>
-              <li><a href="/layanan/enterprise-grc" className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
-              <li><a href="/asesmen-maturitas" className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
+              <li><a href="/platform/grc-integra" onClick={(e) => handleLinkClick(e, "/platform/grc-integra")} className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
+              <li><a href="/kalkulator-sampel-toe" onClick={(e) => handleLinkClick(e, "/kalkulator-sampel-toe")} className="hover:text-blue-400 transition-colors">Kalkulator Tabel 22 TOE</a></li>
+              <li><a href="/layanan/icofr-bumn" onClick={(e) => handleLinkClick(e, "/layanan/icofr-bumn")} className="hover:text-blue-400 transition-colors">Implementasi ICOFR BUMN</a></li>
+              <li><a href="/layanan/itgc-audit-readiness" onClick={(e) => handleLinkClick(e, "/layanan/itgc-audit-readiness")} className="hover:text-blue-400 transition-colors">ITGC & Kesiapan Audit</a></li>
+              <li><a href="/layanan/enterprise-grc" onClick={(e) => handleLinkClick(e, "/layanan/enterprise-grc")} className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
+              <li><a href="/glosarium" onClick={(e) => handleLinkClick(e, "/glosarium")} className="hover:text-blue-400 transition-colors">Glosarium ICOFR BUMN</a></li>
+              <li><a href="/asesmen-maturitas" onClick={(e) => handleLinkClick(e, "/asesmen-maturitas")} className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
             </ul>
           </div>
 
@@ -79,10 +92,21 @@ export default function Footer() {
               COSO®, COBIT®, ISO®, dan standar terkait adalah merek dagang dari masing-masing pemilik lisensi internasional.
             </p>
           </div>
-          <div className="flex gap-6 text-xs text-slate-500">
-            <span className="hover:text-slate-400 cursor-pointer">Kebijakan Privasi</span>
-            <span className="hover:text-slate-400 cursor-pointer">Sarat & Ketentuan Layanan</span>
-            <span className="hover:text-slate-400 cursor-pointer">Pernyataan Independensi</span>
+          <div className="flex flex-wrap gap-6 text-xs text-slate-500">
+            <a 
+              href="/kebijakan-privasi" 
+              onClick={(e) => handleLinkClick(e, "/kebijakan-privasi")}
+              className="hover:text-slate-300 transition-colors"
+            >
+              Kebijakan Privasi
+            </a>
+            <a 
+              href="/pernyataan-independensi" 
+              onClick={(e) => handleLinkClick(e, "/pernyataan-independensi")}
+              className="hover:text-slate-300 transition-colors"
+            >
+              Pernyataan Independensi
+            </a>
           </div>
         </div>
 

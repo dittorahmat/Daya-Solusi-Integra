@@ -1,0 +1,46 @@
+# Daya Solusi Integra
+
+> Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan spesialis tata kelola korporasi, implementasi ICOFR (Internal Control over Financial Reporting), evaluasi ITGC, dan penyedia platform software GRC Integra untuk kepatuhan regulasi Kementerian BUMN di Indonesia.
+
+## Entitas & Identitas Resmi
+- Nama Perusahaan: PT Daya Solusi Integra
+- Domain Resmi: https://dsintegra.co.id
+- Surel Resmi: marketing@dsintegra.co.id / no-reply@dsintegra.co.id
+- Telepon Resmi: +62-811-100-2442
+- Domisili: Jakarta Selatan, DKI Jakarta, Indonesia
+- Target Klien: Badan Usaha Milik Negara (BUMN), Anak Perusahaan Holding BUMN, Perbankan, dan Lembaga Jasa Keuangan Teratur
+
+## Produk Unggulan: GRC Integra
+GRC Integra adalah platform siklus hidup digital ICOFR terintegrasi pertama untuk BUMN sesuai regulasi SK-5/DKU.MBU/11/2024.
+Fitur utama platform:
+- Pemetaan Proses Bisnis BPMN: Visualisasi alur transaksi dengan notasi resmi Lampiran 3 regulasi BUMN.
+- Kalkulator Sampel Tabel 22: Penghitungan otomatis ukuran sampel pengujian TOE (Test of Operating Effectiveness) berbasis frekuensi kontrol.
+- Walkthrough dan Segregasi Tiga Lini: Pemisahan tegas antara pengujian kepatuhan Lini 1 dan validasi independen Lini 2.
+- Asersi Manajemen Ber-QR Code: Penerbitan lembar asersi Direksi (CEO & CFO) yang terverifikasi secara digital untuk audit KAP dan BPK.
+
+## Layanan Konsultasi & Implementasi
+- Implementasi ICOFR BUMN: Pendampingan scoping akun signifikan, penyusunan Risk and Control Matrix (RCM), pengujian kontrol (TOD & TOE), hingga penerbitan laporan asersi manajemen.
+  URL: https://dsintegra.co.id/layanan/icofr-bumn
+- Evaluasi & Audit Kesiapan ITGC: Audit kontrol umum teknologi informasi (hak akses, manajemen perubahan, operasi TI) berbasis POJK No. 11/POJK.03/2022 dan ISO 27001.
+  URL: https://dsintegra.co.id/layanan/itgc-audit-readiness
+- Enterprise GRC & Risk Assessment: Penguatan tata kelola terpadu dan pengukuran tingkat kematangan pengendalian internal berbasis kerangka kerja COSO.
+  URL: https://dsintegra.co.id/layanan/enterprise-grc
+
+## Panduan Teknis & Sumber Regulasi
+- Fitur Kunci Aplikasi ICOFR BUMN: https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn
+- Panduan SK-5 ICOFR GRC Integra: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
+- Panduan Sampel TOE Tabel 22 ICOFR BUMN: https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn
+- Manfaat Aplikasi ICOFR BUMN vs Spreadsheet: https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet
+- Apa Itu ICOFR BUMN, Fungsi & Regulasi SK-5: https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5
+
+## Asesmen Interaktif & Glosarium Regulasi
+- Evaluasi Mandiri Kematangan Pengendalian Internal: https://dsintegra.co.id/asesmen-maturitas
+- Glosarium & Kamus Kepatuhan ICOFR BUMN: https://dsintegra.co.id/glosarium
+- Kalkulator Ukuran Sampel TOE (Tabel 22 SK-5): https://dsintegra.co.id/kalkulator-sampel-toe
+
+## Kepatuhan Legal & Standar Etika (E-E-A-T)
+- Kebijakan Privasi & Tata Kelola Data (UU PDP No. 27/2022): https://dsintegra.co.id/kebijakan-privasi
+- Pernyataan Independensi & Integritas Konsultan: https://dsintegra.co.id/pernyataan-independensi
+
+## Dokumentasi Lengkap
+- Full Context AI: https://dsintegra.co.id/llms-full.txt

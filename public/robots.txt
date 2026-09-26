@@ -69,5 +69,6 @@ Allow: /
 # Sitemaps & Machine-Readable Context Discovery
 # -------------------------------------------------------------
 Sitemap: https://dsintegra.co.id/sitemap.xml
+# RSS 2.0 Syndication Feed: https://dsintegra.co.id/feed.xml
 # LLMs Context Standard: https://dsintegra.co.id/llms.txt
 # LLMs Full Context: https://dsintegra.co.id/llms-full.txt

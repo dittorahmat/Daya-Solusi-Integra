@@ -150,14 +150,19 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
                     </span>
                   </div>
 
-                  {/* Term Title & Acronym */}
-                  <h2 className="text-xl font-bold text-white mb-3">
-                    {item.term}
-                    {item.acronym && (
-                      <span className="ml-2 text-sm font-semibold text-[#cca43b] px-2 py-0.5 rounded bg-amber-950/40 border border-amber-800/40">
-                        {item.acronym}
-                      </span>
-                    )}
+                  {/* Term Title & Acronym with direct link */}
+                  <h2 className="text-xl font-bold text-white mb-3 flex items-center justify-between group">
+                    <button
+                      onClick={() => onNavigate(`/glosarium/${item.id}`)}
+                      className="text-left text-white hover:text-blue-400 transition-colors focus:outline-none flex-1"
+                    >
+                      {item.term}
+                      {item.acronym && (
+                        <span className="ml-2 text-sm font-semibold text-[#cca43b] px-2 py-0.5 rounded bg-amber-950/40 border border-amber-800/40 inline-block align-middle">
+                          {item.acronym}
+                        </span>
+                      )}
+                    </button>
                   </h2>
 
                   {/* Definition Body */}
@@ -177,18 +182,26 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
                   </div>
                 </div>
 
-                {/* Internal Linking Anchor */}
-                {item.relatedServiceUrl && (
-                  <div className="pt-3 border-t border-slate-800/60 mt-2">
+                {/* Footer of Card: Detail Link & Solution Link */}
+                <div className="pt-3 border-t border-slate-800/60 mt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <button
+                    onClick={() => onNavigate(`/glosarium/${item.id}`)}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors group"
+                  >
+                    <span>Pelajari Istilah Ini</span>
+                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+
+                  {item.relatedServiceUrl && (
                     <button
                       onClick={() => onNavigate(item.relatedServiceUrl!)}
-                      className="inline-flex items-center gap-1 text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors group"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors group"
                     >
-                      <span>Lihat Solusi Terkait: {item.relatedServiceLabel}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <span>Solusi: {item.relatedServiceLabel}</span>
+                      <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-slate-500" />
                     </button>
-                  </div>
-                )}
+                  )}
+                </div>
               </article>
             ))}
           </div>

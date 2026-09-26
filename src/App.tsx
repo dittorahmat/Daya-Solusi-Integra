@@ -16,6 +16,7 @@ import EnterpriseGrcPage from "./components/pages/EnterpriseGrcPage";
 import PlatformProductPage from "./components/pages/PlatformProductPage";
 import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
 import GlossaryPage from "./components/pages/GlossaryPage";
+import GlossaryDetailPage from "./components/pages/GlossaryDetailPage";
 import ToeCalculatorPage from "./components/pages/ToeCalculatorPage";
 import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
@@ -86,10 +87,12 @@ export default function App() {
   const isPlatformPage = currentPath === "/platform/grc-integra";
   const isAssessmentPage = currentPath === "/asesmen-maturitas";
   const isGlossaryPage = currentPath === "/glosarium";
+  const isGlossaryDetailPage = currentPath.startsWith("/glosarium/") && currentPath.length > "/glosarium/".length;
+  const glossarySlug = isGlossaryDetailPage ? currentPath.replace("/glosarium/", "") : null;
   const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
   const isPrivacyPage = currentPath === "/kebijakan-privasi";
   const isIndependencePage = currentPath === "/pernyataan-independensi";
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage || isGlossaryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -158,6 +161,13 @@ export default function App() {
               setAssessmentPrefill({ company, sector });
               navigateTo("/#contact");
             }} 
+          />
+        ) : isGlossaryDetailPage && glossarySlug ? (
+          /* DEDICATED GLOSSARY DETAIL ROUTE (/glosarium/:slug) */
+          <GlossaryDetailPage 
+            slug={glossarySlug} 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
           />
         ) : isGlossaryPage ? (
           /* DEDICATED REGULATORY GLOSSARY ROUTE (/glosarium) */

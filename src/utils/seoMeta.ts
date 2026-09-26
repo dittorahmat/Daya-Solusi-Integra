@@ -1,3 +1,5 @@
+import { GLOSSARY_ITEMS } from "../data/glossaryData";
+
 export interface RouteMeta {
   title: string;
   description: string;
@@ -160,6 +162,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
     ogTitle: "Studi Kasus ICOFR BUMN Menuju Opini WTP | Daya Solusi Integra",
     ogDescription: "Studi kasus pembuktian empiris transformasi kepatuhan SK-5/2024 dan eliminasi temuan material audit."
+  },
+  "/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn": {
+    title: "Perbandingan Software GRC: Platform SK-5 BUMN vs Modul ERP Global | Daya Solusi Integra",
+    description: "Evaluasi 5 dimensi antara platform GRC native SK-5 (GRC Integra) dengan modul ERP global (SAP/Oracle): kepatuhan, TCO lisensi rupiah, time-to-value, dan kesiapan audit BPK.",
+    canonical: "https://dsintegra.co.id/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    ogTitle: "Software GRC BUMN vs Modul ERP Global | Daya Solusi Integra",
+    ogDescription: "Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam memilih solusi kepatuhan ICOFR terbaik."
   }
 };
 
@@ -167,7 +177,28 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
  * Memperbarui tag <head> dokumen di runtime client-side secara aman dan reaktif.
  */
 export function updateDocumentMeta(pathname: string): void {
-  const meta = ROUTE_METADATA_MAP[pathname] || ROUTE_METADATA_MAP["/"];
+  let meta = ROUTE_METADATA_MAP[pathname];
+
+  // Resolver dinamis untuk rute glosarium individual: /glosarium/:slug
+  if (!meta && pathname.startsWith("/glosarium/")) {
+    const slug = pathname.replace("/glosarium/", "");
+    const item = GLOSSARY_ITEMS.find((g) => g.id === slug);
+    if (item) {
+      const termTitle = item.acronym ? `${item.term} (${item.acronym})` : item.term;
+      meta = {
+        title: `${termTitle}: Definisi & Kepatuhan Regulasi SK-5 BUMN | Daya Solusi Integra`,
+        description: `${item.definition} Pelajari amanat regulasi ${item.regulationRef} dan solusi kepatuhan pengendalian internal BUMN.`,
+        canonical: `https://dsintegra.co.id/glosarium/${item.id}`,
+        image: "https://dsintegra.co.id/og-image.jpg",
+        ogTitle: `${termTitle} - Glosarium Kepatuhan ICOFR BUMN`,
+        ogDescription: item.definition
+      };
+    }
+  }
+
+  if (!meta) {
+    meta = ROUTE_METADATA_MAP["/"];
+  }
 
   // Update Title
   document.title = meta.title;

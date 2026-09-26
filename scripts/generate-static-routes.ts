@@ -3,10 +3,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { ROUTE_FAQS } from "../src/data/faqData.js";
+import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distDir = path.resolve(__dirname, "../dist");
+const publicDir = path.resolve(__dirname, "../public");
+const blogContentDir = path.resolve(__dirname, "../src/content/blog");
 const templatePath = path.join(distDir, "index.html");
 
 if (!fs.existsSync(templatePath)) {
@@ -17,6 +20,163 @@ if (!fs.existsSync(templatePath)) {
 const templateHtml = fs.readFileSync(templatePath, "utf-8");
 
 console.log("Generating static route snapshots for SEO and Social Crawlers...");
+
+/**
+ * Helper untuk parsing sederhana front-matter markdown blog
+ */
+function parseBlogFrontMatter(rawContent: string): { data: Record<string, any>; body: string } {
+  const match = rawContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) return { data: {}, body: rawContent };
+
+  const frontMatterText = match[1];
+  const body = match[2];
+  const data: Record<string, any> = {};
+
+  frontMatterText.split("\n").forEach((line) => {
+    const colonIndex = line.indexOf(":");
+    if (colonIndex !== -1) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      data[key] = value;
+    }
+  });
+
+  return { data, body };
+}
+
+/**
+ * Helper konversi tanggal teks Indonesia/ISO ke format tanggal RFC-822 (standar RSS 2.0)
+ */
+function formatRfc822Date(dateStr?: string): string {
+  if (!dateStr) return new Date("2026-09-25T00:00:00Z").toUTCString();
+
+  // Handle format Indonesia seperti "25 September 2026"
+  const monthMap: Record<string, string> = {
+    januari: "01",
+    februari: "02",
+    maret: "03",
+    april: "04",
+    mei: "05",
+    juni: "06",
+    juli: "07",
+    agustus: "08",
+    september: "09",
+    oktober: "10",
+    november: "11",
+    desember: "12"
+  };
+
+  const idMatch = dateStr.trim().toLowerCase().match(/^(\d{1,2})\s+([a-z]+)\s+(\d{4})$/);
+  if (idMatch) {
+    const day = idMatch[1].padStart(2, "0");
+    const month = monthMap[idMatch[2]] || "09";
+    const year = idMatch[3];
+    const parsed = new Date(`${year}-${month}-${day}T07:00:00Z`);
+    if (!isNaN(parsed.getTime())) {
+      return parsed.toUTCString();
+    }
+  }
+
+  const parsed = new Date(dateStr);
+  if (!isNaN(parsed.getTime())) {
+    return parsed.toUTCString();
+  }
+
+  return new Date("2026-09-25T00:00:00Z").toUTCString();
+}
+
+/**
+ * Escape karakter khusus XML
+ */
+function escapeXml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+/**
+ * Membuat berkas RSS 2.0 Feed untuk sindikasi konten blog
+ */
+function generateRssFeed() {
+  if (!fs.existsSync(blogContentDir)) {
+    console.warn("Blog content directory not found, skipping RSS feed generation.");
+    return;
+  }
+
+  const files = fs.readdirSync(blogContentDir).filter((file) => file.endsWith(".md"));
+  const items: Array<{
+    title: string;
+    link: string;
+    description: string;
+    pubDate: string;
+    category: string;
+    author: string;
+  }> = [];
+
+  for (const file of files) {
+    const filePath = path.join(blogContentDir, file);
+    const rawContent = fs.readFileSync(filePath, "utf-8");
+    const { data } = parseBlogFrontMatter(rawContent);
+
+    const slug = data.slug || file.replace(".md", "");
+    const title = data.title || "Artikel GRC BUMN";
+    const description = data.excerpt || "Wawasan tata kelola, kepatuhan audit ICOFR, dan regulasi BUMN.";
+    const link = `https://dsintegra.co.id/blog/${slug}`;
+    const pubDate = formatRfc822Date(data.date);
+    const category = data.category || "Tata Kelola & GRC";
+    const author = data.author || "Daya Solusi Integra";
+
+    items.push({ title, link, description, pubDate, category, author });
+  }
+
+  // Susun XML RSS 2.0
+  const buildDate = new Date().toUTCString();
+  const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daya Solusi Integra : Knowledge Base GRC &amp; Regulasi ICOFR BUMN</title>
+    <link>https://dsintegra.co.id/blog</link>
+    <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
+    <language>id-ID</language>
+    <lastBuildDate>${buildDate}</lastBuildDate>
+    <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://dsintegra.co.id/og-image.jpg</url>
+      <title>Daya Solusi Integra</title>
+      <link>https://dsintegra.co.id/</link>
+    </image>
+${items
+  .map(
+    (item) => `    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${item.link}</link>
+      <guid isPermaLink="true">${item.link}</guid>
+      <description>${escapeXml(item.description)}</description>
+      <category>${escapeXml(item.category)}</category>
+      <author>marketing@dsintegra.co.id (${escapeXml(item.author)})</author>
+      <pubDate>${item.pubDate}</pubDate>
+    </item>`
+  )
+  .join("\n")}
+  </channel>
+</rss>
+`;
+
+  // Tulis ke dist/feed.xml dan public/feed.xml
+  const distFeedPath = path.join(distDir, "feed.xml");
+  const publicFeedPath = path.join(publicDir, "feed.xml");
+
+  fs.writeFileSync(distFeedPath, rssXml, "utf-8");
+  fs.writeFileSync(publicFeedPath, rssXml, "utf-8");
+
+  console.log(`Generated RSS 2.0 feed with ${items.length} items at dist/feed.xml and public/feed.xml.`);
+}
 
 /**
  * Membangun skema JSON-LD terisolasi dan spesifik per jenis rute
@@ -144,6 +304,55 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
           "Toleransi Tingkat Deviasi Pengendalian"
         ]
       });
+
+      graphs.push({
+        "@type": "HowTo",
+        "@id": "https://dsintegra.co.id/kalkulator-sampel-toe#howto",
+        "name": "Cara Menentukan Ukuran Sampel Pengujian Efektivitas Pengendalian (TOE) Sesuai Tabel 22 SK-5 BUMN",
+        "description": "Panduan langkah teknis penentuan sampel uji kepatuhan dan efektivitas kontrol ICOFR BUMN untuk Lini 1, Lini 2, dan auditor internal.",
+        "totalTime": "PT3M",
+        "estimatedCost": {
+          "@type": "MonetaryAmount",
+          "currency": "IDR",
+          "value": "0"
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Tentukan Frekuensi Pelaksanaan Kontrol",
+            "text": "Identifikasi frekuensi pelaksanaan kontrol dalam Risk and Control Matrix (RCM), apakah berjalan tahunan, kuartalan, bulanan, mingguan, harian, atau berkali-kali dalam sehari.",
+            "url": "https://dsintegra.co.id/kalkulator-sampel-toe"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Pilih Tingkat Signifikansi Risiko Kontrol",
+            "text": "Pilih tingkat signifikansi risiko pengendalian (Tinggi vs Rendah/Sedang). Kontrol dengan risiko kegagalan tinggi membutuhkan batas sampel atas guna memberikan keyakinan memadai.",
+            "url": "https://dsintegra.co.id/kalkulator-sampel-toe"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Dapatkan Rentang Sampel Minimum Normatif",
+            "text": "Kalkulator mengekstrak rentang ukuran sampel minimum yang dipersyaratkan Tabel 22 Regulasi SK-5/DKU.MBU/11/2024 beserta batas toleransi deviasi kontrol (0 toleransi untuk sampel representatif).",
+            "url": "https://dsintegra.co.id/kalkulator-sampel-toe"
+          }
+        ]
+      });
+    }
+  } else if (routePath.startsWith("/glosarium/")) {
+    const slug = routePath.replace("/glosarium/", "");
+    const item = GLOSSARY_ITEMS.find((g) => g.id === slug);
+    if (item) {
+      graphs.push({
+        "@type": "DefinedTerm",
+        "@id": `${meta.canonical}#term`,
+        "name": item.acronym ? `${item.term} (${item.acronym})` : item.term,
+        "description": item.definition,
+        "inDefinedTermSet": "https://dsintegra.co.id/glosarium",
+        "url": meta.canonical
+      });
     }
   } else if (routePath.startsWith("/layanan/")) {
     graphs.push({
@@ -187,7 +396,23 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
 
 let generatedCount = 0;
 
-for (const [routePath, meta] of Object.entries(ROUTE_METADATA_MAP)) {
+// Kumpulkan semua rute: halaman statis utama + halaman glosarium dinamis
+const allRoutes: Record<string, RouteMeta> = { ...ROUTE_METADATA_MAP };
+
+GLOSSARY_ITEMS.forEach((item) => {
+  const routeKey = `/glosarium/${item.id}`;
+  const termTitle = item.acronym ? `${item.term} (${item.acronym})` : item.term;
+  allRoutes[routeKey] = {
+    title: `${termTitle}: Definisi & Kepatuhan Regulasi SK-5 BUMN | Daya Solusi Integra`,
+    description: `${item.definition} Pelajari amanat regulasi ${item.regulationRef} dan solusi kepatuhan pengendalian internal BUMN.`,
+    canonical: `https://dsintegra.co.id/glosarium/${item.id}`,
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: `${termTitle} - Glosarium Kepatuhan ICOFR BUMN`,
+    ogDescription: item.definition
+  };
+});
+
+for (const [routePath, meta] of Object.entries(allRoutes)) {
   // Homepage sudah ditangani oleh dist/index.html bawaan
   if (routePath === "/") {
     continue;
@@ -284,3 +509,6 @@ for (const [routePath, meta] of Object.entries(ROUTE_METADATA_MAP)) {
 }
 
 console.log(`Successfully generated ${generatedCount} static prerendered HTML routes with custom social cards and clean JSON-LD.`);
+
+// Generate RSS 2.0 Feed untuk sindikasi konten blog
+generateRssFeed();

@@ -477,6 +477,16 @@ app.use("/api", (req, res) => {
   res.status(404).json({ error: "Endpoint API tidak ditemukan." });
 });
 
+// Trailing Slash 301 Permanent Redirect for SEO canonicalization
+app.use((req, res, next) => {
+  if (req.method === "GET" && req.path.length > 1 && req.path.endsWith("/")) {
+    const query = req.url.slice(req.path.length);
+    const cleanPath = req.path.replace(/\/+$/, "");
+    return res.redirect(301, cleanPath + query);
+  }
+  next();
+});
+
 // SEO Metadata configuration for sub-routes
 const routeSeoMeta: Record<string, { title: string; description: string; canonical: string }> = {
   "/layanan/icofr-bumn": {

@@ -147,5 +147,71 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       "question": "Bagaimana platform software GRC Integra mempermudah penatausahaan tindak lanjut defisiensi?",
       "answer": "GRC Integra menyediakan deficiency tracking dashboard otomatis dengan penugasan tiket perbaikan ke penanggung jawab (action owner), batas waktu SLA, repositori dokumen bukti tindak lanjut, dan jejak audit digital yang siap dikonfirmasi kepada auditor eksternal BPK/BPKP/KAP."
     }
+  ],
+  "/blog/manfaat-aplikasi-icofr-bumn-spreadsheet": [
+    {
+      "question": "Apa kelemahan paling krusial spreadsheet dibanding aplikasi ICOFR khusus?",
+      "answer": "Ketiadaan jejak audit digital (audit trail) tak terbantahkan, kerentanan rusaknya formula kalkulasi, serta risiko manipulasi data kontrol saat ratusan personil Lini 1 dan Lini 2 menyunting berkas Excel secara bersamaan."
+    },
+    {
+      "question": "Bagaimana aplikasi ICOFR GRC Integra mempercepat proses audit akhir tahun?",
+      "answer": "Platform menyediakan akses baca khusus bagi auditor eksternal (BPK, BPKP, KAP Tier-1) untuk memeriksa repositori eviden, alur proses bisnis BPMN, dan kertas kerja walkthrough secara mandiri, memangkas waktu klarifikasi hingga 70 persen."
+    },
+    {
+      "question": "Apakah aplikasi ICOFR menjamin kepatuhan regulasi SK-5/DKU.MBU/11/2024?",
+      "answer": "Ya. Seluruh modul dirancang presisi mengikuti ketentuan Surat Keputusan Menteri BUMN Nomor SK-5, mulai dari format RCM, kalkulator sampel normatif Tabel 22, hingga draf surat pernyataan asersi Direksi."
+    }
+  ],
+  "/blog/panduan-sk5-icofr-grc-integra": [
+    {
+      "question": "Apa sanksi atau risiko bagi BUMN yang tidak mematuhi mandat SK-5 ICOFR?",
+      "answer": "Potensi temuan pemeriksaan kepatuhan oleh BPKP dan BPK RI, penurunan skor penilaian GCG tahunan korporasi, serta risiko hukum pribadi bagi Direksi atas laporan keuangan yang tidak dilengkapi pembuktian sistem pengendalian memadai."
+    },
+    {
+      "question": "Kapan penentuan sampel pengujian operasional kontrol (TOE) harus diselesaikan?",
+      "answer": "Pengujian TOE dilakukan berkala sepanjang tahun buku dan dievaluasi penuh pada kuartal IV (Oktober s.d. Desember) sebelum penutupan buku guna memastikan tidak ada defisiensi material yang belum tereduksi."
+    },
+    {
+      "question": "Apakah seluruh anak perusahaan BUMN wajib menerapkan standar SK-5 yang sama?",
+      "answer": "Kewajiban berlaku bagi entitas anak yang masuk dalam batas materialitas scoping laporan keuangan konsolidasian induk holding BUMN."
+    }
+  ],
+  "/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5": [
+    {
+      "question": "Apa kepanjangan dan pengertian dasar dari ICOFR?",
+      "answer": "ICOFR adalah singkatan dari Internal Control over Financial Reporting, yaitu sistem dan prosedur pengendalian internal yang dirancang untuk memberikan keyakinan memadai bahwa laporan keuangan disajikan secara andal dan sesuai standar akuntansi yang berlaku."
+    },
+    {
+      "question": "Apa kaitan antara ICOFR dengan 5 komponen COSO Framework?",
+      "answer": "Regulasi SK-5 BUMN mengadopsi kerangka COSO 2013 secara utuh, mencakup Lingkungan Pengendalian, Penilaian Risiko, Aktivitas Pengendalian, Informasi & Komunikasi, serta Pemantauan."
+    },
+    {
+      "question": "Mengapa surat pernyataan asersi Direksi memerlukan pengujian kontrol berlapis?",
+      "answer": "Asersi Direksi merupakan pernyataan hukum formal tanggung jawab manajemen. Tanpa pengujian validasi independen Lini 2 dan SPI, pernyataan asersi rentan dibantah oleh auditor eksternal apabila ditemukan salah saji material."
+    }
+  ],
+  "/blog/panduan-sampel-toe-tabel-22-icofr-bumn": [
+    {
+      "question": "Berapa ukuran sampel normatif untuk kontrol yang berjalan harian?",
+      "answer": "Berdasarkan Tabel 22 SK-5 Kementerian BUMN, kontrol harian dengan populasi sekitar 250 transaksi per tahun buku memerlukan ukuran sampel acak antara 20 hingga 40 transaksi dengan toleransi penyimpangan nol (zero deviation)."
+    },
+    {
+      "question": "Apa yang harus dilakukan jika ditemukan satu kesalahan saat pengujian sampel TOE?",
+      "answer": "Satu penyimpangan dalam sampel representatif menandakan kontrol gagal beroperasi efektif, sehingga penguji wajib melakukan perluasan sampel atau mengklasifikasikan temuan tersebut sebagai defisiensi kontrol."
+    },
+    {
+      "question": "Apakah kontrol tahunan cukup diuji dengan 1 sampel?",
+      "answer": "Ya. Untuk kontrol dengan frekuensi pelaksanaan tahunan (misal rekonsiliasi aktuaris imbalan kerja akhir tahun), ukuran sampel normatif Tabel 22 adalah 1 keterjadian."
+    }
+  ],
+  "/blog/fitur-kunci-aplikasi-icofr-bumn": [
+    {
+      "question": "Mengapa modul editor BPMN penting dalam aplikasi ICOFR BUMN?",
+      "answer": "Lampiran 3 SK-5 mewajibkan dokumentasi proses bisnis divisualisasikan dengan notasi standar BPMN terintegrasi yang memetakan titik risiko salah saji dan titik kontrol kunci secara transparan."
+    },
+    {
+      "question": "Bagaimana asersi digital ber-QR Code melindungi keabsahan dokumen pelaporan?",
+      "answer": "QR Code terenkripsi memastikan dokumen laporan efektivitas ICOFR dan tanda tangan Direksi tidak dapat diubah (tamper-proof) dan dapat diverifikasi keasliannya secara langsung oleh regulator."
+    }
   ]
 };

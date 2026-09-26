@@ -12,12 +12,14 @@ import {
   ShieldCheck, 
   ChevronRight,
   ExternalLink,
-  CheckCircle2
+  CheckCircle2,
+  HelpCircle
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
 import Breadcrumbs from "./Breadcrumbs";
 import { getAuthorProfile } from "../data/authors";
+import { ROUTE_FAQS } from "../data/faqData";
 
 export interface BlogPost {
   id: string;
@@ -177,10 +179,35 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
         "keywords": activePost.tags.join(", ")
       };
 
+      // Injeksi skema FAQPage bila artikel memiliki entri tanya-jawab resmi (Google Rich Results)
+      const postFaqs = ROUTE_FAQS[`/blog/${activePost.slug}`];
+      let jsonLdPayload: any = articleSchema;
+
+      if (postFaqs && postFaqs.length > 0) {
+        jsonLdPayload = {
+          "@context": "https://schema.org",
+          "@graph": [
+            articleSchema,
+            {
+              "@type": "FAQPage",
+              "@id": `https://dsintegra.co.id/blog/${activePost.slug}#faq`,
+              "mainEntity": postFaqs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            }
+          ]
+        };
+      }
+
       const script = document.createElement("script");
       script.id = "article-schema-ld";
       script.type = "application/ld+json";
-      script.text = JSON.stringify(articleSchema);
+      script.text = JSON.stringify(jsonLdPayload);
       document.head.appendChild(script);
     } else {
       document.title = `Artikel & Insight GRC BUMN | Daya Solusi Integra`;
@@ -566,6 +593,42 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               postTags={activePost.tags}
               onNavigate={onNavigate}
             />
+
+            {/* On-Page Visual FAQs (Google Rich Snippets Alignment & High Information Gain) */}
+            {(() => {
+              const faqs = ROUTE_FAQS[`/blog/${activePost.slug}`];
+              if (!faqs || faqs.length === 0) return null;
+
+              return (
+                <section className="my-12 p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-slate-800">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-bumn-gold uppercase tracking-wider mb-2">
+                    <HelpCircle className="w-4 h-4 text-bumn-gold" />
+                    Tanya Jawab Regulasi &amp; Kepatuhan
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-6">
+                    Pertanyaan yang Sering Diajukan Seputar Topik Ini
+                  </h3>
+                  <div className="space-y-4">
+                    {faqs.map((faq, idx) => (
+                      <details
+                        key={idx}
+                        className="group bg-slate-900/80 border border-slate-800 rounded-xl p-4 sm:p-5 transition-all duration-200 open:border-bumn-blue/50 open:bg-slate-900"
+                      >
+                        <summary className="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4 text-sm sm:text-base">
+                          <span>{faq.question}</span>
+                          <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0">
+                            ▾
+                          </span>
+                        </summary>
+                        <p className="mt-3.5 text-sm sm:text-base text-slate-300 leading-relaxed pt-3 border-t border-slate-800/80">
+                          {faq.answer}
+                        </p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              );
+            })()}
 
             {/* Bottom Lead Intake CTA Box */}
             <div className="p-8 rounded-2xl bg-gradient-to-r from-bumn-blue/20 via-slate-900 to-amber-500/10 border border-bumn-blue/30 relative overflow-hidden shadow-xl">

@@ -114,7 +114,8 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
   });
 
   const featuredPost = LOADED_BLOG_POSTS.find(p => p.featured) || LOADED_BLOG_POSTS[0];
-  const activePost = currentSlug ? LOADED_BLOG_POSTS.find(p => p.slug === currentSlug) : null;
+  const cleanSlug = currentSlug ? currentSlug.replace(/^\/+|\/+$/g, "") : null;
+  const activePost = cleanSlug ? LOADED_BLOG_POSTS.find(p => p.slug === cleanSlug) : null;
 
   // Update page title and inject Article + Person Schema.org for SEO & E-E-A-T
   useEffect(() => {

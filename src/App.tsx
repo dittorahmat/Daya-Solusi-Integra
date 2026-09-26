@@ -46,10 +46,13 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  // Normalize path: strip trailing slashes except for root "/"
+  const normalizedPath = currentPath.length > 1 ? currentPath.replace(/\/+$/, "") : currentPath;
+
   // Synchronize document <title>, canonical, and meta tags with current route
   useEffect(() => {
-    updateDocumentMeta(currentPath);
-  }, [currentPath]);
+    updateDocumentMeta(normalizedPath);
+  }, [normalizedPath]);
 
   // Global shortcut (Ctrl + /) for AI Advisor
   useEffect(() => {
@@ -88,29 +91,35 @@ export default function App() {
     }
   };
 
-  const isBlogPage = currentPath.startsWith("/blog");
-  const blogSlug = currentPath.startsWith("/blog/") ? currentPath.replace("/blog/", "") : null;
-  const isIcofrPage = currentPath === "/layanan/icofr-bumn";
-  const isItgcPage = currentPath === "/layanan/itgc-audit-readiness";
-  const isGrcPage = currentPath === "/layanan/enterprise-grc";
-  const isPlatformPage = currentPath === "/platform/grc-integra";
-  const isBpmEditorPage = currentPath === "/platform/bpm-workflow-editor";
-  const isAssessmentPage = currentPath === "/asesmen-maturitas";
-  const isGlossaryPage = currentPath === "/glosarium";
-  const isGlossaryDetailPage = currentPath.startsWith("/glosarium/") && currentPath.length > "/glosarium/".length;
-  const glossarySlug = isGlossaryDetailPage ? currentPath.replace("/glosarium/", "") : null;
-  const isRegulatoryPage = currentPath === "/regulasi";
-  const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
-  const isPrivacyPage = currentPath === "/kebijakan-privasi";
-  const isIndependencePage = currentPath === "/pernyataan-independensi";
-  const isProcurementPage = currentPath === "/kualifikasi-vendor";
-  const isAuthorPage = currentPath === "/penulis/humbul-kristiawan" || currentPath === "/blog/penulis/humbul-kristiawan";
-  const isToolkitPage = currentPath === "/toolkit-regulasi";
-  const isKakPage = currentPath === "/panduan-kak-tor-icofr";
-  const isCaseStudiesPage = currentPath === "/studi-kasus";
-  const isAuditFindingsPage = currentPath === "/temuan-audit-icofr";
-  const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
-  const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
+  const isBlogPage = normalizedPath === "/blog" || normalizedPath.startsWith("/blog/");
+  const blogSlug = normalizedPath.startsWith("/blog/")
+    ? normalizedPath.replace(/^\/blog\//, "").replace(/\/+$/, "")
+    : null;
+  const isIcofrPage = normalizedPath === "/layanan/icofr-bumn";
+  const isItgcPage = normalizedPath === "/layanan/itgc-audit-readiness";
+  const isGrcPage = normalizedPath === "/layanan/enterprise-grc";
+  const isPlatformPage = normalizedPath === "/platform/grc-integra";
+  const isBpmEditorPage = normalizedPath === "/platform/bpm-workflow-editor";
+  const isAssessmentPage = normalizedPath === "/asesmen-maturitas";
+  const isGlossaryPage = normalizedPath === "/glosarium";
+  const isGlossaryDetailPage = normalizedPath.startsWith("/glosarium/") && normalizedPath.length > "/glosarium/".length;
+  const glossarySlug = isGlossaryDetailPage
+    ? normalizedPath.replace(/^\/glosarium\//, "").replace(/\/+$/, "")
+    : null;
+  const isRegulatoryPage = normalizedPath === "/regulasi";
+  const isToeCalculatorPage = normalizedPath === "/kalkulator-sampel-toe";
+  const isPrivacyPage = normalizedPath === "/kebijakan-privasi";
+  const isIndependencePage = normalizedPath === "/pernyataan-independensi";
+  const isProcurementPage = normalizedPath === "/kualifikasi-vendor";
+  const isAuthorPage = normalizedPath === "/penulis/humbul-kristiawan" || normalizedPath === "/blog/penulis/humbul-kristiawan";
+  const isToolkitPage = normalizedPath === "/toolkit-regulasi";
+  const isKakPage = normalizedPath === "/panduan-kak-tor-icofr";
+  const isCaseStudiesPage = normalizedPath === "/studi-kasus";
+  const isAuditFindingsPage = normalizedPath === "/temuan-audit-icofr";
+  const isSectorPage = normalizedPath.startsWith("/sektor-bumn/") && normalizedPath.length > "/sektor-bumn/".length;
+  const sectorSlug = isSectorPage
+    ? normalizedPath.replace(/^\/sektor-bumn\//, "").replace(/\/+$/, "")
+    : null;
   const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
 
   return (

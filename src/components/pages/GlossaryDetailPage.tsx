@@ -20,7 +20,8 @@ interface GlossaryDetailPageProps {
 }
 
 export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: GlossaryDetailPageProps) {
-  const item: GlossaryItem | undefined = GLOSSARY_ITEMS.find((g) => g.id === slug);
+  const cleanSlug = (slug || "").replace(/^\/+|\/+$/g, "").toLowerCase();
+  const item: GlossaryItem | undefined = GLOSSARY_ITEMS.find((g) => g.id.toLowerCase() === cleanSlug);
 
   if (!item) {
     return (

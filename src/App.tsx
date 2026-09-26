@@ -104,7 +104,7 @@ export default function App() {
   const isGlossaryPage = normalizedPath === "/glosarium";
   const isGlossaryDetailPage = normalizedPath.startsWith("/glosarium/") && normalizedPath.length > "/glosarium/".length;
   const glossarySlug = isGlossaryDetailPage
-    ? normalizedPath.replace(/^\/glosarium\//, "").replace(/\/+$/, "")
+    ? normalizedPath.replace(/^\/glosarium\//, "").replace(/^\/+|\/+$/g, "").toLowerCase()
     : null;
   const isRegulatoryPage = normalizedPath === "/regulasi";
   const isToeCalculatorPage = normalizedPath === "/kalkulator-sampel-toe";

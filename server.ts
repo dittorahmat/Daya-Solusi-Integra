@@ -487,40 +487,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// SEO Metadata configuration for sub-routes
-const routeSeoMeta: Record<string, { title: string; description: string; canonical: string }> = {
-  "/layanan/icofr-bumn": {
-    title: "Konsultan ICOFR BUMN & Evaluasi Pengendalian Internal SK-5 | Daya Solusi Integra",
-    description: "Pendampingan implementasi ICOFR, penyusunan RCM (Risk Control Matrix), pengujian kontrol TOD/TOE, dan sertifikasi asersi direksi sesuai SK-5/DKU.MBU/11/2024.",
-    canonical: "https://dsintegra.co.id/layanan/icofr-bumn"
-  },
-  "/layanan/itgc-audit-readiness": {
-    title: "Konsultan ITGC & Kesiapan Audit TI Perbankan & BUMN | Daya Solusi Integra",
-    description: "Jasa evaluasi IT General Controls (ITGC), audit hak akses user IAM, change management, dan kepatuhan POJK 11/2022 berbasis standar COBIT dan ISO 27001.",
-    canonical: "https://dsintegra.co.id/layanan/itgc-audit-readiness"
-  },
-  "/layanan/enterprise-grc": {
-    title: "Konsultan GRC BUMN, Skor GCG & ISO 31000 Terintegrasi | Daya Solusi Integra",
-    description: "Penyelarasan kerangka kerja Enterprise Governance, Risk, and Compliance (GRC), pengukuran GCG Scorecard BUMN, dan penerapan ISO 31000/ISO 37001.",
-    canonical: "https://dsintegra.co.id/layanan/enterprise-grc"
-  },
-  "/platform/grc-integra": {
-    title: "Software GRC Integra: Platform Siklus Hidup ICOFR BUMN SK-5 | Daya Solusi Integra",
-    description: "Software otomasi kepatuhan ICOFR pertama untuk BUMN. Visual BPM resmi Lampiran 3, kalkulator sampel Tabel 22, validasi Lini 2, dan asersi digital QR Code.",
-    canonical: "https://dsintegra.co.id/platform/grc-integra"
-  },
-  "/asesmen-maturitas": {
-    title: "Uji Mandiri Maturitas Pengendalian Internal COSO & GRC | Daya Solusi Integra",
-    description: "Asesmen mandiri tingkat kematangan pengendalian internal atas pelaporan keuangan berdasarkan 5 pilar dan 17 prinsip COSO. Gratis dengan laporan instan.",
-    canonical: "https://dsintegra.co.id/asesmen-maturitas"
-  },
-  "/blog": {
-    title: "Artikel & Wawasan Regulasi GRC BUMN Terkini | Daya Solusi Integra",
-    description: "Kumpulan panduan praktis, analisis regulasi BUMN SK-5, kepatuhan POJK perbankan, dan artikel tata kelola TI dari konsultan Daya Solusi Integra.",
-    canonical: "https://dsintegra.co.id/blog"
-  }
-};
-
 // Configure Vite or Static Files
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
@@ -530,25 +496,28 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.join(process.cwd(), "dist");
+
+    // Clean URL Static Prerender Interceptor:
+    // Directly serve prerendered HTML (e.g. dist/glosarium/elc/index.html) for requests
+    // without trailing slashes (status 200 OK) without triggering directory 301 loop.
+    app.use((req, res, next) => {
+      if (req.method === "GET") {
+        const cleanPath = req.path.replace(/\/+$/, "");
+        const candidateFile = path.join(distPath, cleanPath, "index.html");
+        if (fs.existsSync(candidateFile) && fs.statSync(candidateFile).isFile()) {
+          return res.sendFile(candidateFile);
+        }
+      }
+      next();
+    });
+
+    // Serve public static assets (CSS, JS bundles, images, etc.)
     app.use(express.static(distPath));
 
-    app.get('*', (req, res) => {
-      const indexPath = path.join(distPath, 'index.html');
-      const reqPath = req.path.replace(/\/+$/, '') || '/';
-      const meta = routeSeoMeta[reqPath];
-
-      if (meta && fs.existsSync(indexPath)) {
-        let html = fs.readFileSync(indexPath, 'utf-8');
-        html = html.replace(/<title>.*?<\/title>/, `<title>${meta.title}</title>`);
-        html = html.replace(/<meta name="title" content=".*?" \/>/, `<meta name="title" content="${meta.title}" />`);
-        html = html.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${meta.description}" />`);
-        html = html.replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${meta.title}" />`);
-        html = html.replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${meta.description}" />`);
-        html = html.replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="${meta.canonical}" />`);
-        return res.send(html);
-      }
-
+    // Fallback to primary SPA index.html for client-side dynamic routes
+    app.get("*", (req, res) => {
+      const indexPath = path.join(distPath, "index.html");
       res.sendFile(indexPath);
     });
   }

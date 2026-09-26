@@ -20,6 +20,7 @@ import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
 import Breadcrumbs from "./Breadcrumbs";
 import { getAuthorProfile } from "../data/authors";
 import { ROUTE_FAQS } from "../data/faqData";
+import { ROUTE_HOWTO } from "../data/howtoData";
 
 export interface BlogPost {
   id: string;
@@ -119,6 +120,54 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
   const cleanSlug = currentSlug ? currentSlug.replace(/^\/+|\/+$/g, "") : null;
   const activePost = cleanSlug ? LOADED_BLOG_POSTS.find(p => p.slug === cleanSlug) : null;
 
+  // Extract table of contents (H2 headings) from activePost content
+  const tableOfContents = React.useMemo(() => {
+    if (!activePost) return [];
+    const lines = activePost.content.split("\n");
+    const headings: { id: string; text: string }[] = [];
+    lines.forEach((line) => {
+      const match = line.match(/^##\s+(.+)$/);
+      if (match) {
+        const title = match[1].trim();
+        if (!title.toLowerCase().includes("daftar isi")) {
+          const id = title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+          headings.push({ id, text: title });
+        }
+      }
+    });
+    return headings;
+  }, [activePost]);
+
+  const [activeHeadingId, setActiveHeadingId] = useState<string>("");
+
+  // Setup scroll-spy using IntersectionObserver for TOC (Section 5.D compliant: no janky scroll listeners)
+  useEffect(() => {
+    if (!activePost || tableOfContents.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHeadingId(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-80px 0px -60% 0px",
+        threshold: 0.1
+      }
+    );
+
+    tableOfContents.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [activePost, tableOfContents]);
+
   // Update page title and inject Article + Person Schema.org for SEO & E-E-A-T
   useEffect(() => {
     const existingScript = document.getElementById("article-schema-ld");
@@ -179,30 +228,66 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
         "keywords": activePost.tags.join(", ")
       };
 
-      // Injeksi skema FAQPage bila artikel memiliki entri tanya-jawab resmi (Google Rich Results)
+      // Injeksi skema FAQPage & HowTo bila artikel memiliki entri data terkait (Google Rich Results)
       const postFaqs = ROUTE_FAQS[`/blog/${activePost.slug}`];
-      let jsonLdPayload: any = articleSchema;
+      const postHowto = ROUTE_HOWTO[`/blog/${activePost.slug}`];
+      const graphs: any[] = [articleSchema];
 
       if (postFaqs && postFaqs.length > 0) {
-        jsonLdPayload = {
-          "@context": "https://schema.org",
-          "@graph": [
-            articleSchema,
-            {
-              "@type": "FAQPage",
-              "@id": `https://dsintegra.co.id/blog/${activePost.slug}#faq`,
-              "mainEntity": postFaqs.map((faq) => ({
-                "@type": "Question",
-                "name": faq.question,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": faq.answer
-                }
-              }))
+        graphs.push({
+          "@type": "FAQPage",
+          "@id": `https://dsintegra.co.id/blog/${activePost.slug}#faq`,
+          "mainEntity": postFaqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
             }
-          ]
-        };
+          }))
+        });
       }
+
+      if (postHowto) {
+        const howToGraph: Record<string, any> = {
+          "@type": "HowTo",
+          "@id": `https://dsintegra.co.id/blog/${activePost.slug}#howto`,
+          "name": postHowto.name,
+          "description": postHowto.description,
+          "step": postHowto.steps.map((st) => ({
+            "@type": "HowToStep",
+            "position": st.position,
+            "name": st.name,
+            "text": st.text,
+            "url": st.url || `https://dsintegra.co.id/blog/${activePost.slug}#step-${st.position}`
+          }))
+        };
+
+        if (postHowto.totalTime) {
+          howToGraph.totalTime = postHowto.totalTime;
+        }
+        if (postHowto.tool && postHowto.tool.length > 0) {
+          howToGraph.tool = postHowto.tool.map((t) => ({
+            "@type": "HowToTool",
+            "name": t
+          }));
+        }
+        if (postHowto.supply && postHowto.supply.length > 0) {
+          howToGraph.supply = postHowto.supply.map((s) => ({
+            "@type": "HowToSupply",
+            "name": s
+          }));
+        }
+
+        graphs.push(howToGraph);
+      }
+
+      const jsonLdPayload = graphs.length > 1
+        ? {
+            "@context": "https://schema.org",
+            "@graph": graphs
+          }
+        : articleSchema;
 
       const script = document.createElement("script");
       script.id = "article-schema-ld";
@@ -236,7 +321,7 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
             PAGE VIEW 1: SINGLE ARTICLE PAGE (/blog/:slug)
         ------------------------------------------------------------- */}
         {activePost ? (
-          <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
+          <div className="max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
             {/* Breadcrumb Navigation */}
             <div className="mb-6">
               <Breadcrumbs
@@ -340,178 +425,226 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-40" />
             </div>
 
-            {/* Article Main Content (Rendered Markdown) */}
-            <div className="max-w-none mb-12">
-              {/* Executive Takeaways & AI Direct Answer Callout */}
-              <div className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-3">
-                  <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
-                  <span>Ringkasan Eksekutif & Jawaban Kunci</span>
+            {/* Article Main Grid: Content + Sticky TOC */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12">
+              {/* Left Column: Article Content */}
+              <div className="lg:col-span-8 min-w-0 max-w-none">
+                {/* Executive Takeaways & AI Direct Answer Callout */}
+                <div className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-3">
+                    <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
+                    <span>Ringkasan Eksekutif & Jawaban Kunci</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal mb-5">
+                    {activePost.excerpt}
+                  </p>
+                  <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 text-xs">
+                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Rujukan Regulasi</span>
+                      <span className="font-semibold text-white">SK-5 BUMN / COSO 2013</span>
+                    </div>
+                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Audiens Kunci</span>
+                      <span className="font-semibold text-white">Direksi, SPI & Lini 2</span>
+                    </div>
+                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
+                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Kesiapan Audit</span>
+                      <span className="font-semibold text-white">Standar BPKP, BPK & KAP</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal mb-5">
-                  {activePost.excerpt}
-                </p>
-                <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 text-xs">
-                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Rujukan Regulasi</span>
-                    <span className="font-semibold text-white">SK-5 BUMN / COSO 2013</span>
-                  </div>
-                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Audiens Kunci</span>
-                    <span className="font-semibold text-white">Direksi, SPI & Lini 2</span>
-                  </div>
-                  <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                    <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Kesiapan Audit</span>
-                    <span className="font-semibold text-white">Standar BPKP, BPK & KAP</span>
-                  </div>
-                </div>
-              </div>
-              <ReactMarkdown
-                components={{
-                  h2: ({ children, ...props }) => {
-                    const text = String(children);
-                    const isToc = text.toLowerCase().includes("daftar isi");
-                    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-                    
-                    if (isToc) {
-                      return (
-                        <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#0d1627] border-2 border-bumn-blue/40 shadow-xl relative overflow-hidden">
-                          <div className="flex items-center gap-2.5 text-sm font-mono uppercase tracking-wider text-bumn-gold font-bold mb-1">
-                            <BookOpen className="w-4 h-4 text-bumn-gold" />
-                            <span>Daftar Isi Artikel</span>
-                          </div>
-                          <p className="text-xs text-slate-400 mb-4">Klik judul di bawah untuk langsung menuju topik pembahasan:</p>
-                          <div className="h-px w-full bg-slate-800 mb-2" />
-                        </div>
-                      );
-                    }
 
-                    return (
-                      <h2 
-                        id={id} 
-                        className="text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center gap-2 scroll-mt-28" 
-                        {...props}
-                      >
+                <ReactMarkdown
+                  components={{
+                    h2: ({ children, ...props }) => {
+                      const text = String(children);
+                      const isToc = text.toLowerCase().includes("daftar isi");
+                      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                      
+                      if (isToc) {
+                        return (
+                          <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#0d1627] border-2 border-bumn-blue/40 shadow-xl relative overflow-hidden lg:hidden">
+                            <div className="flex items-center gap-2.5 text-sm font-mono uppercase tracking-wider text-bumn-gold font-bold mb-1">
+                              <BookOpen className="w-4 h-4 text-bumn-gold" />
+                              <span>Daftar Isi Artikel</span>
+                            </div>
+                            <p className="text-xs text-slate-400 mb-4">Klik judul di bawah untuk langsung menuju topik pembahasan:</p>
+                            <div className="h-px w-full bg-slate-800 mb-2" />
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <h2 
+                          id={id} 
+                          className="text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center gap-2 scroll-mt-28" 
+                          {...props}
+                        >
+                          {children}
+                        </h2>
+                      );
+                    },
+                    h3: ({ children, ...props }) => (
+                      <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-100 mt-10 mb-4 tracking-tight scroll-mt-28" {...props}>
                         {children}
-                      </h2>
-                    );
-                  },
-                  h3: ({ children, ...props }) => (
-                    <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-100 mt-10 mb-4 tracking-tight scroll-mt-28" {...props}>
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children, ...props }) => (
-                    <p className="text-slate-300 text-base sm:text-lg leading-[1.9] mb-8 font-normal" {...props}>
-                      {children}
-                    </p>
-                  ),
-                  ul: ({ children, ...props }) => (
-                    <ul className="space-y-3.5 mb-8 pl-6 list-disc list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
-                      {children}
-                    </ul>
-                  ),
-                  ol: ({ children, ...props }) => (
-                    <ol className="space-y-3.5 mb-8 pl-6 list-decimal list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
-                      {children}
-                    </ol>
-                  ),
-                  li: ({ children, ...props }) => (
-                    <li className="pl-2 leading-relaxed" {...props}>
-                      {children}
-                    </li>
-                  ),
-                  a: ({ href, children, ...props }) => {
-                    const isAnchor = href?.startsWith('#');
-                    if (isAnchor) {
+                      </h3>
+                    ),
+                    p: ({ children, ...props }) => (
+                      <p className="text-slate-300 text-base sm:text-lg leading-[1.9] mb-8 font-normal" {...props}>
+                        {children}
+                      </p>
+                    ),
+                    ul: ({ children, ...props }) => (
+                      <ul className="space-y-3.5 mb-8 pl-6 list-disc list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                        {children}
+                      </ul>
+                    ),
+                    ol: ({ children, ...props }) => (
+                      <ol className="space-y-3.5 mb-8 pl-6 list-decimal list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children, ...props }) => (
+                      <li className="pl-2 leading-relaxed" {...props}>
+                        {children}
+                      </li>
+                    ),
+                    a: ({ href, children, ...props }) => {
+                      const isAnchor = href?.startsWith('#');
+                      if (isAnchor) {
+                        return (
+                          <a
+                            href={href}
+                            className="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg bg-blue-950/40 hover:bg-blue-900/60 border border-blue-500/20 hover:border-blue-400/50 text-blue-300 hover:text-white text-sm font-semibold transition-all my-1 group"
+                            {...props}
+                          >
+                            <ChevronRight className="w-3.5 h-3.5 text-bumn-gold group-hover:translate-x-0.5 transition-transform shrink-0" />
+                            <span>{children}</span>
+                          </a>
+                        );
+                      }
                       return (
                         <a
                           href={href}
-                          className="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg bg-blue-950/40 hover:bg-blue-900/60 border border-blue-500/20 hover:border-blue-400/50 text-blue-300 hover:text-white text-sm font-semibold transition-all my-1 group"
+                          className="text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4 decoration-bumn-gold/50 hover:decoration-amber-300 transition-colors"
                           {...props}
                         >
-                          <ChevronRight className="w-3.5 h-3.5 text-bumn-gold group-hover:translate-x-0.5 transition-transform shrink-0" />
-                          <span>{children}</span>
+                          {children}
                         </a>
                       );
-                    }
-                    return (
-                      <a
-                        href={href}
-                        className="text-bumn-gold hover:text-amber-300 font-semibold underline underline-offset-4 decoration-bumn-gold/50 hover:decoration-amber-300 transition-colors"
-                        {...props}
-                      >
+                    },
+                    strong: ({ children, ...props }) => (
+                      <strong className="font-semibold text-white" {...props}>
                         {children}
-                      </a>
-                    );
-                  },
-                  strong: ({ children, ...props }) => (
-                    <strong className="font-semibold text-white" {...props}>
-                      {children}
-                    </strong>
-                  ),
-                  hr: () => <hr className="my-10 border-slate-800/80" />,
-                  blockquote: ({ children, ...props }) => (
-                    <blockquote className="my-6 border-l-4 border-bumn-blue bg-slate-900/60 p-4 sm:p-5 rounded-r-xl text-slate-300 italic" {...props}>
-                      {children}
-                    </blockquote>
-                  ),
-                  table: ({ children, ...props }) => (
-                    <div className="overflow-x-auto my-8 rounded-xl border border-slate-800 shadow-xl bg-slate-950/60">
-                      <table className="w-full text-left text-sm text-slate-300 border-collapse" {...props}>
+                      </strong>
+                    ),
+                    hr: () => <hr className="my-10 border-slate-800/80" />,
+                    blockquote: ({ children, ...props }) => (
+                      <blockquote className="my-6 border-l-4 border-bumn-blue bg-slate-900/60 p-4 sm:p-5 rounded-r-xl text-slate-300 italic" {...props}>
                         {children}
-                      </table>
-                    </div>
-                  ),
-                  thead: ({ children, ...props }) => (
-                    <thead className="bg-slate-900/90 text-white font-semibold border-b border-slate-800 text-xs uppercase tracking-wider font-mono" {...props}>
-                      {children}
-                    </thead>
-                  ),
-                  tbody: ({ children, ...props }) => (
-                    <tbody className="divide-y divide-slate-800/60 font-sans" {...props}>
-                      {children}
-                    </tbody>
-                  ),
-                  tr: ({ children, ...props }) => (
-                    <tr className="hover:bg-slate-900/40 transition-colors" {...props}>
-                      {children}
-                    </tr>
-                  ),
-                  th: ({ children, ...props }) => (
-                    <th className="px-4 py-3.5" {...props}>
-                      {children}
-                    </th>
-                  ),
-                  td: ({ children, ...props }) => (
-                    <td className="px-4 py-3.5 align-top leading-relaxed" {...props}>
-                      {children}
-                    </td>
-                  ),
-                  pre: ({ children, ...props }) => (
-                    <div className="my-6 p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto text-xs font-mono text-slate-300">
-                      <pre {...props}>{children}</pre>
-                    </div>
-                  ),
-                  code: ({ children, ...props }) => (
-                    <code className="px-1.5 py-0.5 rounded bg-slate-800/80 text-bumn-gold font-mono text-xs" {...props}>
-                      {children}
-                    </code>
-                  )
-                }}
-              >
-                {activePost.content}
-              </ReactMarkdown>
-            </div>
+                      </blockquote>
+                    ),
+                    table: ({ children, ...props }) => (
+                      <div className="overflow-x-auto my-8 rounded-xl border border-slate-800 shadow-xl bg-slate-950/60">
+                        <table className="w-full text-left text-sm text-slate-300 border-collapse" {...props}>
+                          {children}
+                        </table>
+                      </div>
+                    ),
+                    thead: ({ children, ...props }) => (
+                      <thead className="bg-slate-900/90 text-white font-semibold border-b border-slate-800 text-xs uppercase tracking-wider font-mono" {...props}>
+                        {children}
+                      </thead>
+                    ),
+                    tbody: ({ children, ...props }) => (
+                      <tbody className="divide-y divide-slate-800/60 font-sans" {...props}>
+                        {children}
+                      </tbody>
+                    ),
+                    tr: ({ children, ...props }) => (
+                      <tr className="hover:bg-slate-900/40 transition-colors" {...props}>
+                        {children}
+                      </tr>
+                    ),
+                    th: ({ children, ...props }) => (
+                      <th className="px-4 py-3.5" {...props}>
+                        {children}
+                      </th>
+                    ),
+                    td: ({ children, ...props }) => (
+                      <td className="px-4 py-3.5 align-top leading-relaxed" {...props}>
+                        {children}
+                      </td>
+                    ),
+                    pre: ({ children, ...props }) => (
+                      <div className="my-6 p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto text-xs font-mono text-slate-300">
+                        <pre {...props}>{children}</pre>
+                      </div>
+                    ),
+                    code: ({ children, ...props }) => (
+                      <code className="px-1.5 py-0.5 rounded bg-slate-800/80 text-bumn-gold font-mono text-xs" {...props}>
+                        {children}
+                      </code>
+                    )
+                  }}
+                >
+                  {activePost.content}
+                </ReactMarkdown>
 
-            {/* Tags */}
-            <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mb-8">
-              <Tag className="w-4 h-4 text-slate-400 mr-1" />
-              {activePost.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-slate-900 text-slate-400 border border-slate-800 text-xs rounded-lg">
-                  #{tag}
-                </span>
-              ))}
+                {/* Tags */}
+                <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mt-8 mb-4">
+                  <Tag className="w-4 h-4 text-slate-400 mr-1" />
+                  {activePost.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-slate-900 text-slate-400 border border-slate-800 text-xs rounded-lg">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Sticky Table of Contents (Desktop) */}
+              <div className="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
+                {tableOfContents.length > 0 && (
+                  <div className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 shadow-xl">
+                    <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-4 pb-3 border-b border-slate-800">
+                      <BookOpen className="w-4 h-4 text-bumn-gold" />
+                      <span>Daftar Isi Pembahasan</span>
+                    </div>
+                    <nav className="space-y-1.5">
+                      {tableOfContents.map((item, idx) => {
+                        const isActive = activeHeadingId === item.id;
+                        return (
+                          <a
+                            key={idx}
+                            href={`#${item.id}`}
+                            className={`group flex items-start gap-2.5 py-2 px-3 rounded-lg text-xs transition-colors ${
+                              isActive
+                                ? "bg-bumn-blue/20 text-white font-semibold border-l-2 border-bumn-gold"
+                                : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                            }`}
+                          >
+                            <span className="font-mono text-[10px] text-slate-500 group-hover:text-slate-400 mt-0.5">
+                              0{idx + 1}.
+                            </span>
+                            <span className="leading-snug line-clamp-2">{item.text}</span>
+                          </a>
+                        );
+                      })}
+                    </nav>
+                  </div>
+                )}
+
+                {/* Quick Regulatory Reference Badge */}
+                <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 space-y-2.5">
+                  <div className="flex items-center gap-2 text-white font-semibold">
+                    <Award className="w-4 h-4 text-bumn-gold" />
+                    <span>Rujukan Regulasi Resmi</span>
+                  </div>
+                  <p className="leading-relaxed text-[11px]">
+                    Seluruh panduan disusun berdasarkan SK-5/DKU.MBU/11/2024 dan standar COSO Internal Control 2013 untuk lingkungan BUMN.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Author Authority Bio Card (E-E-A-T Trust Engine) */}
@@ -593,6 +726,114 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               postTags={activePost.tags}
               onNavigate={onNavigate}
             />
+
+            {/* Sequential Navigation & Related Cluster Articles */}
+            {(() => {
+              const currentIndex = LOADED_BLOG_POSTS.findIndex((p) => p.slug === activePost.slug);
+              const prevPost = currentIndex > 0 ? LOADED_BLOG_POSTS[currentIndex - 1] : null;
+              const nextPost = currentIndex >= 0 && currentIndex < LOADED_BLOG_POSTS.length - 1 ? LOADED_BLOG_POSTS[currentIndex + 1] : null;
+
+              // Filter 2 related cluster articles
+              const relatedClusterPosts = LOADED_BLOG_POSTS
+                .filter((p) => p.slug !== activePost.slug && (p.category === activePost.category || p.tags.some((t) => activePost.tags.includes(t))))
+                .slice(0, 2);
+
+              return (
+                <div className="my-12 space-y-8">
+                  {/* Next / Previous Article Navigation Bar */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {prevPost ? (
+                      <button
+                        onClick={() => onNavigate(`/blog/${prevPost.slug}`)}
+                        className="group flex flex-col items-start p-5 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all text-left cursor-pointer"
+                      >
+                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-blue-400 mb-2">
+                          <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                          Artikel Sebelumnya
+                        </span>
+                        <span className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2">
+                          {prevPost.title}
+                        </span>
+                      </button>
+                    ) : (
+                      <div className="p-5 rounded-xl bg-slate-900/30 border border-slate-800/40 text-left opacity-40">
+                        <span className="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-1">
+                          Awal Katalog Artikel
+                        </span>
+                        <span className="text-xs text-slate-400">Ini adalah artikel pertama dalam katalog</span>
+                      </div>
+                    )}
+
+                    {nextPost ? (
+                      <button
+                        onClick={() => onNavigate(`/blog/${nextPost.slug}`)}
+                        className="group flex flex-col items-end p-5 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all text-right cursor-pointer"
+                      >
+                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-blue-400 mb-2">
+                          Artikel Selanjutnya
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                        <span className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2">
+                          {nextPost.title}
+                        </span>
+                      </button>
+                    ) : (
+                      <div className="p-5 rounded-xl bg-slate-900/30 border border-slate-800/40 text-right opacity-40">
+                        <span className="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-1">
+                          Akhir Katalog Artikel
+                        </span>
+                        <span className="text-xs text-slate-400">Ini adalah artikel penutup dalam katalog</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Related Cluster Articles Cards */}
+                  {relatedClusterPosts.length > 0 && (
+                    <div className="p-6 sm:p-7 rounded-2xl bg-[#0d1627] border border-slate-800 text-left">
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center gap-2 text-xs font-semibold text-bumn-gold uppercase tracking-wider">
+                          <BookOpen className="w-4 h-4 text-bumn-gold" />
+                          Artikel Terkait dalam Kluster Ini
+                        </div>
+                        <button
+                          onClick={() => onNavigate("/blog")}
+                          className="text-xs text-blue-400 hover:text-white transition-colors cursor-pointer"
+                        >
+                          Lihat Semua Artikel
+                        </button>
+                      </div>
+
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {relatedClusterPosts.map((related) => (
+                          <div
+                            key={related.slug}
+                            onClick={() => onNavigate(`/blog/${related.slug}`)}
+                            className="group p-4 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all cursor-pointer flex flex-col justify-between"
+                          >
+                            <div>
+                              <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                                <span className="text-blue-400 font-medium">{related.category}</span>
+                                <span>{related.readTime}</span>
+                              </div>
+                              <h4 className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2 mb-2">
+                                {related.title}
+                              </h4>
+                              <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                                {related.excerpt}
+                              </p>
+                            </div>
+                            <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 group-hover:text-blue-300">
+                              <span>Baca Pembahasan Lengkap</span>
+                              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* On-Page Visual FAQs (Google Rich Snippets Alignment & High Information Gain) */}
             {(() => {

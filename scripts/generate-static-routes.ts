@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { ROUTE_FAQS } from "../src/data/faqData.js";
+import { ROUTE_HOWTO } from "../src/data/howtoData.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
 import { REGULATION_ITEMS } from "../src/data/regulationData.js";
 import { SECTOR_DATA_MAP } from "../src/data/sectorsData.js";
@@ -586,6 +587,34 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "url": `https://dsintegra.co.id/regulasi#${reg.id}`
       });
     });
+  } else if (routePath === "/blog") {
+    // Daftar Artikel Blog: Gunakan ItemList Schema
+    const blogFiles = fs.existsSync(blogContentDir)
+      ? fs.readdirSync(blogContentDir).filter((file) => file.endsWith(".md"))
+      : [];
+
+    const itemListElements = blogFiles.map((file, idx) => {
+      const filePath = path.join(blogContentDir, file);
+      const rawContent = fs.readFileSync(filePath, "utf-8");
+      const { data } = parseBlogFrontMatter(rawContent);
+      const slug = data.slug || file.replace(".md", "");
+      const title = data.title || "Artikel GRC BUMN";
+      return {
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": title,
+        "url": `https://dsintegra.co.id/blog/${slug}`
+      };
+    });
+
+    graphs.push({
+      "@type": "ItemList",
+      "@id": "https://dsintegra.co.id/blog#itemlist",
+      "name": "Katalog Artikel & Wawasan Regulasi GRC BUMN",
+      "description": meta.description,
+      "numberOfItems": itemListElements.length,
+      "itemListElement": itemListElements
+    });
   } else if (routePath.startsWith("/layanan/")) {
     graphs.push({
       "@type": "Service",
@@ -652,6 +681,42 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         }
       }))
     });
+  }
+
+  // 4. Skema HowTo untuk artikel panduan langkah demi langkah
+  const routeHowto = ROUTE_HOWTO[routePath];
+  if (routeHowto) {
+    const howToGraph: Record<string, any> = {
+      "@type": "HowTo",
+      "@id": `${meta.canonical}#howto`,
+      "name": routeHowto.name,
+      "description": routeHowto.description,
+      "step": routeHowto.steps.map((st) => ({
+        "@type": "HowToStep",
+        "position": st.position,
+        "name": st.name,
+        "text": st.text,
+        "url": st.url || `${meta.canonical}#step-${st.position}`
+      }))
+    };
+
+    if (routeHowto.totalTime) {
+      howToGraph.totalTime = routeHowto.totalTime;
+    }
+    if (routeHowto.tool && routeHowto.tool.length > 0) {
+      howToGraph.tool = routeHowto.tool.map((t) => ({
+        "@type": "HowToTool",
+        "name": t
+      }));
+    }
+    if (routeHowto.supply && routeHowto.supply.length > 0) {
+      howToGraph.supply = routeHowto.supply.map((s) => ({
+        "@type": "HowToSupply",
+        "name": s
+      }));
+    }
+
+    graphs.push(howToGraph);
   }
 
   const jsonLdPayload = {

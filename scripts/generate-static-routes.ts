@@ -777,15 +777,15 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
         .join("\n      ");
 
       specificContent = `
-      <article>
+      <article itemscope itemtype="https://schema.org/TechArticle">
         <header>
-          <p>Kategori: ${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</p>
-          <p>Penulis: ${cleanProhibitedDashes(data.author || "Daya Solusi Integra")} | Tanggal: ${data.date || "2026-09-25"}</p>
+          <p>Kategori: <span itemprop="articleSection">${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</span></p>
+          <p>Penulis: <span itemprop="author">${cleanProhibitedDashes(data.author || "Daya Solusi Integra")}</span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time></p>
         </header>
-        <section class="article-lead">
-          <p><strong>Ringkasan Eksekutif:</strong> ${cleanProhibitedDashes(data.excerpt || pageDesc)}</p>
+        <section class="article-lead" itemprop="abstract">
+          <p><strong>Ringkasan Eksekutif &amp; Jawaban Kunci:</strong> ${cleanProhibitedDashes(data.excerpt || pageDesc)}</p>
         </section>
-        <section class="article-body">
+        <section class="article-body" itemprop="articleBody">
           ${paragraphs}
         </section>
         <footer>

@@ -13,7 +13,13 @@ import {
   ChevronRight,
   ExternalLink,
   CheckCircle2,
-  HelpCircle
+  HelpCircle,
+  Link2,
+  Check,
+  Download,
+  FileSpreadsheet,
+  ListOrdered,
+  X
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
@@ -139,6 +145,35 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
   }, [activePost]);
 
   const [activeHeadingId, setActiveHeadingId] = useState<string>("");
+  const [copiedHeadingId, setCopiedHeadingId] = useState<string | null>(null);
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState<boolean>(false);
+
+  // Close mobile TOC modal whenever active post changes
+  useEffect(() => {
+    setIsMobileTocOpen(false);
+  }, [activePost]);
+
+  const handleCopyAnchor = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = `${window.location.origin}/blog/${activePost?.slug}#${id}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopiedHeadingId(id);
+        setTimeout(() => setCopiedHeadingId(null), 2000);
+      });
+    } else {
+      // Fallback
+      const textArea = document.createElement("textarea");
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopiedHeadingId(id);
+      setTimeout(() => setCopiedHeadingId(null), 2000);
+    }
+  };
 
   // Setup scroll-spy using IntersectionObserver for TOC (Section 5.D compliant: no janky scroll listeners)
   useEffect(() => {
@@ -430,7 +465,10 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               {/* Left Column: Article Content */}
               <div className="lg:col-span-8 min-w-0 max-w-none">
                 {/* Executive Takeaways & AI Direct Answer Callout */}
-                <div className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg">
+                <div 
+                  itemProp="abstract"
+                  className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg"
+                >
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-3">
                     <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
                     <span>Ringkasan Eksekutif & Jawaban Kunci</span>
@@ -474,13 +512,32 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                         );
                       }
 
+                      const isCopied = copiedHeadingId === id;
+
                       return (
                         <h2 
                           id={id} 
-                          className="text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center gap-2 scroll-mt-28" 
+                          className="group text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center justify-between gap-3 scroll-mt-28" 
                           {...props}
                         >
-                          {children}
+                          <span className="flex-1">{children}</span>
+                          <button
+                            type="button"
+                            onClick={(e) => handleCopyAnchor(e, id)}
+                            className={`p-1.5 rounded-lg border transition-all cursor-pointer shrink-0 ${
+                              isCopied
+                                ? "bg-emerald-950/80 border-emerald-500/50 text-emerald-400 opacity-100"
+                                : "bg-slate-900/60 hover:bg-slate-800 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-bumn-gold opacity-0 group-hover:opacity-100 sm:opacity-50"
+                            }`}
+                            title={isCopied ? "Tautan bagian berhasil disalin!" : "Salin tautan ke bagian ini"}
+                            aria-label="Salin tautan ke bagian ini"
+                          >
+                            {isCopied ? (
+                              <Check className="w-4 h-4 text-emerald-400" />
+                            ) : (
+                              <Link2 className="w-4 h-4" />
+                            )}
+                          </button>
                         </h2>
                       );
                     },
@@ -592,13 +649,38 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 </ReactMarkdown>
 
                 {/* Tags */}
-                <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mt-8 mb-4">
+                <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mt-8 mb-6">
                   <Tag className="w-4 h-4 text-slate-400 mr-1" />
                   {activePost.tags.map((tag) => (
                     <span key={tag} className="px-3 py-1 bg-slate-900 text-slate-400 border border-slate-800 text-xs rounded-lg">
                       #{tag}
                     </span>
                   ))}
+                </div>
+
+                {/* Contextual Regulatory Toolkit & Working Paper Callout */}
+                <div className="p-6 rounded-2xl bg-[#0d1627] border border-blue-900/40 text-left my-8 shadow-xl relative overflow-hidden">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+                    <div className="space-y-2">
+                      <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold">
+                        <FileSpreadsheet className="w-4 h-4 text-bumn-gold" />
+                        <span>Kertas Kerja &amp; Toolkit Kepatuhan Terkait</span>
+                      </div>
+                      <h4 className="text-base font-bold text-white font-display">
+                        Butuh Template Excel RCM, Kertas Kerja TOE, atau Draf KAK BUMN?
+                      </h4>
+                      <p className="text-xs text-slate-300 leading-relaxed max-w-xl">
+                        Akses modul kertas kerja standar SK-5/DKU.MBU/11/2024, formula penentuan sampel Tabel 22, dan matriks kontrol risiko siap pakai untuk tim internal Anda.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => onNavigate("/toolkit-regulasi")}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-bumn-blue hover:bg-blue-600 text-white font-semibold text-xs transition-colors shrink-0 shadow-md cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Akses Kertas Kerja</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -895,6 +977,96 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 </button>
               </div>
             </div>
+
+            {/* Floating Mobile TOC Quick-Jump Button & Bottom-Sheet Modal */}
+            {tableOfContents.length > 0 && (
+              <>
+                {/* Floating Button (Mobile Only) */}
+                <div className="lg:hidden fixed bottom-6 right-6 z-40">
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileTocOpen(true)}
+                    className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/95 hover:bg-slate-800 text-white border border-slate-700/80 shadow-2xl backdrop-blur-md transition-all active:scale-95 cursor-pointer group"
+                    aria-label="Buka Daftar Isi Artikel"
+                  >
+                    <ListOrdered className="w-4 h-4 text-bumn-gold shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-xs font-semibold tracking-wide">Daftar Isi</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-bumn-gold shrink-0" />
+                  </button>
+                </div>
+
+                {/* Mobile TOC Bottom-Sheet Modal */}
+                {isMobileTocOpen && (
+                  <div className="lg:hidden fixed inset-0 z-50 flex flex-col justify-end">
+                    {/* Backdrop click to dismiss */}
+                    <div
+                      className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity"
+                      onClick={() => setIsMobileTocOpen(false)}
+                      aria-hidden="true"
+                    />
+
+                    {/* Bottom Sheet Container */}
+                    <div 
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="mobile-toc-heading"
+                      className="relative z-10 w-full max-h-[75vh] bg-[#0f172a] border-t border-slate-800 rounded-t-2xl p-6 shadow-2xl overflow-y-auto animate-in slide-in-from-bottom duration-200"
+                    >
+                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold">
+                          <BookOpen className="w-4 h-4 text-bumn-gold shrink-0" />
+                          <span id="mobile-toc-heading">Daftar Isi Pembahasan</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setIsMobileTocOpen(false)}
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                          aria-label="Tutup Daftar Isi"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+
+                      {/* Headings List */}
+                      <nav className="space-y-2 pb-6">
+                        {tableOfContents.map((item, idx) => {
+                          const isActive = activeHeadingId === item.id;
+                          return (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() => {
+                                setIsMobileTocOpen(false);
+                                const targetEl = document.getElementById(item.id);
+                                if (targetEl) {
+                                  targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                                }
+                              }}
+                              className={`w-full text-left flex items-start gap-3 py-2.5 px-3.5 rounded-xl text-xs transition-colors cursor-pointer ${
+                                isActive
+                                  ? "bg-bumn-blue/20 text-white font-semibold border-l-2 border-bumn-gold"
+                                  : "text-slate-300 hover:text-white hover:bg-slate-900/80"
+                              }`}
+                            >
+                              <span className="font-mono text-[10px] text-slate-500 mt-0.5 shrink-0">
+                                0{idx + 1}.
+                              </span>
+                              <span className="leading-snug">{item.text}</span>
+                            </button>
+                          );
+                        })}
+                      </nav>
+
+                      {/* Regulatory Notice in Drawer */}
+                      <div className="pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center gap-2">
+                        <Award className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
+                        <span>Kepatuhan SK-5/DKU.MBU/11/2024 & COSO Framework</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         ) : (
 

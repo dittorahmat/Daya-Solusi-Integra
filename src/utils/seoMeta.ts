@@ -123,6 +123,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Profil Pakar GRC: Humbul Kristiawan, CA, CIA, CICA | Daya Solusi Integra",
     ogDescription: "Rekam jejak 25+ tahun di bidang tata kelola korporasi, asersi ICOFR BUMN, dan audit kepatuhan regulasi Kementerian BUMN."
   },
+  "/toolkit-regulasi": {
+    title: "Template Kertas Kerja Kepatuhan ICOFR SK-5 BUMN & RCM Excel | Daya Solusi Integra",
+    description: "Katalog berkas kerja dan template resmi kepatuhan SK-5 BUMN: Template Risk & Control Matrix (RCM), Checklist ELC COSO, dan Kertas Kerja Pengujian TOE Tabel 22.",
+    canonical: "https://dsintegra.co.id/toolkit-regulasi",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Template Kertas Kerja Kepatuhan SK-5 BUMN | Daya Solusi Integra",
+    ogDescription: "Pratinjau struktur kolom RCM, checklist evaluasi pengendalian tingkat entitas (ELC), dan format kertas kerja pengujian kepatuhan ICOFR BUMN."
+  },
   "/sektor-bumn/perbankan": {
     title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
     description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",

@@ -266,6 +266,11 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "@type": "WebPage",
         "name": "Kualifikasi Vendor & Kesiapan Tender BUMN",
         "url": "https://dsintegra.co.id/kualifikasi-vendor"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Toolkit & Kertas Kerja Regulasi SK-5",
+        "url": "https://dsintegra.co.id/toolkit-regulasi"
       }
     ]
   });
@@ -331,6 +336,19 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
           "https://humbulkristiawan.com/about-humbul/",
           "https://humbulkristiawan.com/"
         ]
+      }
+    });
+  } else if (routePath === "/toolkit-regulasi") {
+    graphs.push({
+      "@type": "DataCatalog",
+      "@id": "https://dsintegra.co.id/toolkit-regulasi#catalog",
+      "name": "Katalog Toolkit & Kertas Kerja Regulasi SK-5 BUMN",
+      "url": "https://dsintegra.co.id/toolkit-regulasi",
+      "description": meta.description,
+      "publisher": {
+        "@type": "Organization",
+        "name": "PT Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/"
       }
     });
   } else if (routePath === "/platform/grc-integra") {
@@ -721,6 +739,25 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Penulis utama 12 kajian pilar kepatuhan SK-5/DKU.MBU/11/2024, evaluasi ITGC, dan metodologi audit pengendalian internal. <a href="/blog">Lihat seluruh publikasi artikel di Katalog Blog &amp; Wawasan</a>.</p>
       <p>Profil profesional eksternal: <a href="https://www.linkedin.com/in/humbul-kristiawan-b0621360/" target="_blank" rel="noopener">LinkedIn Resmi</a> | <a href="https://humbulkristiawan.com/about-humbul/" target="_blank" rel="noopener">Biografi Eksekutif</a></p>
     </article>
+    `;
+  } else if (routePath === "/toolkit-regulasi") {
+    specificContent = `
+    <section>
+      <h2>Katalog Toolkit &amp; Kertas Kerja Kepatuhan ICOFR SK-5 BUMN</h2>
+      <p>Standar kertas kerja kepatuhan pengendalian internal pelaporan keuangan SK-5/DKU.MBU/11/2024 dan kerangka kerja COSO untuk Satuan Pengawasan Intern (SPI), Risk Management, dan Akuntansi BUMN.</p>
+      
+      <h3>3 Artefak Utama Kertas Kerja:</h3>
+      <ul>
+        <li><strong>Template Risk &amp; Control Matrix (RCM) SK-5:</strong> Matriks pemetaan risiko akun material, asersi manajemen (E, C, V, R, P), frekuensi kontrol, tipe kontrol, dan prosedur pengujian TOD/TOE.</li>
+        <li><strong>Checklist Entity-Level Control (ELC) COSO:</strong> Kertas kerja evaluasi 5 komponen dan 17 prinsip pengendalian tingkat entitas.</li>
+        <li><strong>Kertas Kerja Pengujian TOE Tabel 22:</strong> Format dokumentasi sampel acak normatif berfrekuensi dengan aturan deviasi nol (zero deviation).</li>
+      </ul>
+
+      <h3>Risiko Pengelolaan Spreadsheet Manual vs Software GRC Integra:</h3>
+      <p>Pengelolaan manual rentan terhadap kegagalan kontrol versi (*versioning failure*), rumus rusak, dan ketiadaan jejak audit digital. Otomasi seluruh siklus ini dengan platform <a href="/platform/grc-integra">GRC Integra</a>.</p>
+      
+      <p>Permohonan paket lengkap file Excel resmi (XLSX) dapat diajukan melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
     `;
   } else if (routePath === "/kalkulator-sampel-toe") {
     specificContent = `

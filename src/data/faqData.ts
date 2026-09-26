@@ -83,5 +83,19 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       question: "Format ekspor apa saja yang didukung oleh editor alur proses ini?",
       answer: "Diagram alur proses yang telah selesai dirancang dapat diekspor secara fleksibel ke berbagai format dokumen siap cetak maupun presentasi, termasuk PDF Vektor beresolusi tinggi, gambar PNG/JPG, serta file pertukaran data standar."
     }
+  ],
+  "/toolkit-regulasi": [
+    {
+      question: "Apakah template Risk and Control Matrix (RCM) ini sudah sesuai dengan regulasi SK-5 Kementerian BUMN?",
+      answer: "Ya. Struktur kolom template RCM kami mengadopsi standar Lampiran SK-5/DKU.MBU/11/2024, mencakup pemetaan akun material, identifikasi risiko salah saji keuangan, asersi manajemen (E, C, V, R, P), tipe kontrol, frekuensi, dan metode pengujian Lini 2."
+    },
+    {
+      question: "Bagaimana cara mendapatkan paket lengkap file spreadsheet Excel (XLSX)?",
+      answer: "Anda cukup mengisi formulir permohonan resmi di halaman ini dengan menyertakan nama instansi BUMN dan surel dinas resmi. Tim kemitraan Daya Solusi Integra akan mengirimkan paket berkas spreadsheet kerja dalam waktu 1x24 jam kerja."
+    },
+    {
+      question: "Apa risiko utama mengelola kertas kerja ICOFR secara manual menggunakan Excel?",
+      answer: "Tantangan terbesar spreadsheet manual adalah tidak adanya jejak audit digital (audit trail), risiko benturan versi file antar-unit kerja (versioning failure), dan kerentanan rumus rusak saat konsolidasi di tingkat holding BUMN. Hal ini dapat diatasi secara permanen melalui platform GRC Integra."
+    }
   ]
 };

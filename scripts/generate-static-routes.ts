@@ -261,6 +261,11 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "@type": "WebPage",
         "name": "Wawasan & Panduan Regulasi BUMN",
         "url": "https://dsintegra.co.id/blog"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Kualifikasi Vendor & Kesiapan Tender BUMN",
+        "url": "https://dsintegra.co.id/kualifikasi-vendor"
       }
     ]
   });
@@ -638,6 +643,28 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <ul>
         ${listTerms}
       </ul>
+    </section>
+    `;
+  } else if (routePath === "/kualifikasi-vendor") {
+    specificContent = `
+    <section>
+      <h2>Kualifikasi Vendor &amp; Panduan Pengadaan Solusi GRC BUMN</h2>
+      <p>PT Daya Solusi Integra menyediakan profil kualifikasi resmi, legalitas korporasi, kesiapan arsitektur data on-premise, dan panduan Kerangka Acuan Kerja (KAK) pengadaan sistem serta konsultan pendampingan ICOFR berbasis SK-5/DKU.MBU/11/2024.</p>
+      
+      <h3>Klasifikasi Baku Lapangan Usaha Indonesia (KBLI):</h3>
+      <ul>
+        <li><strong>KBLI 70209:</strong> Aktivitas Konsultasi Manajemen Lainnya (Penyusunan RCM, ELC, Metodologi TOD/TOE, Asersi Direksi).</li>
+        <li><strong>KBLI 62019:</strong> Aktivitas Pemrograman Komputer Lainnya (Software GRC Integra, Otomasi Alur Kerja Kepatuhan).</li>
+        <li><strong>KBLI 62029:</strong> Aktivitas Konsultasi Komputer dan Manajemen Fasilitas Komputer Lainnya (Audit ITGC, Evaluasi Keamanan Sistem).</li>
+      </ul>
+
+      <h3>Kedaulatan Data &amp; Kepatuhan UU PDP:</h3>
+      <p>Mendukung opsi On-Premise penuh di server internal BUMN dan Private Cloud lokal di Indonesia. Menjamin kepatuhan penuh terhadap UU No. 27 Tahun 2022 tentang Perlindungan Data Pribadi.</p>
+
+      <h3>Panduan Kerangka Acuan Kerja (KAK / TOR):</h3>
+      <p>Menyediakan klausul teknis standar mencakup ruang lingkup kepatuhan SK-5, kualifikasi tenaga ahli bersertifikasi (CA, CIA, CICA, GRCP), Non-Disclosure Agreement (NDA), dan Service Level Agreement (SLA).</p>
+      
+      <p>Unduh profil perusahaan lengkap atau diskusikan draf KAK pengadaan melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
   } else if (routePath === "/kalkulator-sampel-toe") {

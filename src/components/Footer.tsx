@@ -59,6 +59,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li><a href="/regulasi" onClick={(e) => handleLinkClick(e, "/regulasi")} className="hover:text-blue-400 transition-colors">Pusat Regulasi BUMN</a></li>
               <li><a href="/glosarium" onClick={(e) => handleLinkClick(e, "/glosarium")} className="hover:text-blue-400 transition-colors">Glosarium ICOFR BUMN</a></li>
               <li><a href="/asesmen-maturitas" onClick={(e) => handleLinkClick(e, "/asesmen-maturitas")} className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
+              <li><a href="/kualifikasi-vendor" onClick={(e) => handleLinkClick(e, "/kualifikasi-vendor")} className="text-blue-400 hover:text-blue-300 font-medium transition-colors">Kualifikasi Vendor &amp; Tender</a></li>
             </ul>
           </div>
 

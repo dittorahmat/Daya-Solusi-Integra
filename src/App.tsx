@@ -23,6 +23,7 @@ import RegulatoryHubPage from "./components/pages/RegulatoryHubPage";
 import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
 import SectorDetailPage from "./components/pages/SectorDetailPage";
+import BumnProcurementPage from "./components/pages/BumnProcurementPage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -97,9 +98,10 @@ export default function App() {
   const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
   const isPrivacyPage = currentPath === "/kebijakan-privasi";
   const isIndependencePage = currentPath === "/pernyataan-independensi";
+  const isProcurementPage = currentPath === "/kualifikasi-vendor";
   const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -216,6 +218,11 @@ export default function App() {
         ) : isIndependencePage ? (
           /* DEDICATED INDEPENDENCE STATEMENT ROUTE (/pernyataan-independensi) */
           <IndependenceStatementPage 
+            onNavigate={navigateTo} 
+          />
+        ) : isProcurementPage ? (
+          /* DEDICATED BUMN PROCUREMENT & VENDOR READINESS ROUTE (/kualifikasi-vendor) */
+          <BumnProcurementPage 
             onNavigate={navigateTo} 
           />
         ) : isSectorPage && sectorSlug ? (

@@ -58,6 +58,14 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- BUMN Procurement & Vendor Readiness Hub -->
+  <url>
+    <loc>https://dsintegra.co.id/kualifikasi-vendor</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
   <!-- Dedicated Vertical Industry Silo Pages -->
   <url>
     <loc>https://dsintegra.co.id/sektor-bumn/perbankan</loc>

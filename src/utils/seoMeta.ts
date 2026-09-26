@@ -107,6 +107,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Pernyataan Independensi & Integritas Konsultan | Daya Solusi Integra",
     ogDescription: "Transparansi dan standar integritas profesional konsultan independen dalam implementasi tata kelola ICOFR BUMN."
   },
+  "/kualifikasi-vendor": {
+    title: "Kualifikasi Vendor & Kesiapan Tender Solusi GRC BUMN | Daya Solusi Integra",
+    description: "Informasi kualifikasi legalitas, KBLI 70209 & 62019/62029, arsitektur on-premise sesuai UU PDP, dan panduan KAK pengadaan sistem ICOFR SK-5 untuk panitia tender BUMN.",
+    canonical: "https://dsintegra.co.id/kualifikasi-vendor",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Kualifikasi Vendor & Pengadaan GRC BUMN | Daya Solusi Integra",
+    ogDescription: "Panduan pengadaan resmi sistem ICOFR BUMN: verifikasi KBLI, arsitektur data lokal on-premise, kualifikasi tenaga ahli CA/CIA, dan draf klausul KAK."
+  },
   "/sektor-bumn/perbankan": {
     title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
     description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",

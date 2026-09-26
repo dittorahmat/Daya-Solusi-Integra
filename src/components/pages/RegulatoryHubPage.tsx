@@ -11,7 +11,13 @@ import {
   CheckCircle2,
   HelpCircle
 } from "lucide-react";
-import { REGULATION_ITEMS, REGULATION_CATEGORIES, RegulationItem } from "../../data/regulationData";
+import { 
+  REGULATION_ITEMS, 
+  REGULATION_CATEGORIES, 
+  RegulationItem,
+  REGULATORY_COMPARISON_MATRIX,
+  RegulatoryComparisonRow
+} from "../../data/regulationData";
 import Breadcrumbs from "../Breadcrumbs";
 
 interface RegulatoryHubPageProps {
@@ -22,6 +28,12 @@ interface RegulatoryHubPageProps {
 export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: RegulatoryHubPageProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
+  const [matrixFilter, setMatrixFilter] = useState<string>("Semua");
+
+  const filteredMatrix = useMemo(() => {
+    if (matrixFilter === "Semua") return REGULATORY_COMPARISON_MATRIX;
+    return REGULATORY_COMPARISON_MATRIX.filter((item: RegulatoryComparisonRow) => item.categoryTag === matrixFilter);
+  }, [matrixFilter]);
 
   const filteredRegulations = useMemo(() => {
     return REGULATION_ITEMS.filter((item: RegulationItem) => {
@@ -99,6 +111,116 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
             </div>
           </div>
         </div>
+
+        {/* Cross-Regulatory Comparison Matrix Section (Featured Snippets & Direct Answers) */}
+        <section id="matriks-komparasi" className="mb-16 scroll-mt-24">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800/80">
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-2">
+                  <ShieldCheck className="w-4 h-4 text-bumn-gold" />
+                  <span>Matriks Komparasi Kepatuhan Lintas Regulator</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  Perbandingan Mandat Regulasi Pengendalian Internal: BUMN vs OJK vs BPK RI
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+                  Tabel pemetaan normatif kewajiban asersi direksi, standar ukuran sampel pengujian, dan implikasi audit bagi Holding BUMN, perbankan, dan anak perusahaan.
+                </p>
+              </div>
+
+              {/* Filter Pills */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 shrink-0">
+                {["Semua", "Holding BUMN", "Sektor Finansial & Bank", "Standar Audit Eksternal"].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setMatrixFilter(f)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border cursor-pointer ${
+                      matrixFilter === f
+                        ? "bg-bumn-blue/30 border-blue-500 text-blue-300"
+                        : "bg-[#0b0f19] border-slate-800 text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Semantic Table Wrapper with Horizontal Scrolling */}
+            <div className="overflow-x-auto pb-4">
+              <table className="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-[#0b0f19]/80 text-slate-300 font-mono uppercase text-[11px] tracking-wider">
+                    <th className="py-3.5 px-4 font-bold text-white min-w-[140px]">Regulasi</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[130px]">Penerbit</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[170px]">Subjek Entitas</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[160px]">Kerangka Acuan</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[200px]">Asersi Direksi</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[170px]">Metode & Sampel</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[210px]">Konsekuensi Audit</th>
+                    <th className="py-3.5 px-4 font-bold min-w-[140px] text-right">Solusi Platform</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {filteredMatrix.map((row) => (
+                    <tr key={row.id} className="hover:bg-slate-900/50 transition-colors">
+                      <td className="py-4 px-4 align-top">
+                        <span className="font-bold text-white block">{row.shortCode}</span>
+                        <span className="text-[11px] font-mono text-slate-400 block mt-0.5">{row.regulationTitle}</span>
+                        <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/80 text-blue-300 border border-blue-900/60">
+                          {row.categoryTag}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4 align-top font-semibold text-slate-200">
+                        {row.issuingBody}
+                      </td>
+                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                        {row.scopeEntities}
+                      </td>
+                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed font-mono text-[11px]">
+                        {row.framework}
+                      </td>
+                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                        <span className="text-bumn-gold font-semibold block mb-0.5">Kewajiban Formal:</span>
+                        {row.directorAssertionMandate}
+                      </td>
+                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                        <span className="text-slate-400 font-mono text-[11px] block mb-1">{row.testingFrequency}</span>
+                        <span className="text-[11px] text-blue-400">{row.samplingStandard}</span>
+                      </td>
+                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                        {row.auditConsequence}
+                      </td>
+                      <td className="py-4 px-4 align-top text-right">
+                        <button
+                          onClick={() => onNavigate(row.recommendedSolutionUrl)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900 border border-blue-800/80 text-blue-300 hover:text-white text-xs font-semibold transition-colors cursor-pointer"
+                        >
+                          <span>{row.recommendedSolutionLabel}</span>
+                          <ArrowUpRight className="w-3 h-3 shrink-0" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-400">
+              <span>* Geser horizontal untuk melihat seluruh parameter perbandingan.</span>
+              <div className="flex items-center gap-2">
+                <span>Butuh kalkulasi sampel pengujian TOE normatif?</span>
+                <button
+                  onClick={() => onNavigate("/kalkulator-sampel-toe")}
+                  className="text-blue-400 hover:text-blue-300 font-semibold underline cursor-pointer"
+                >
+                  Buka Kalkulator Tabel 22
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Regulation Directory Ledger */}
         <div className="space-y-12">

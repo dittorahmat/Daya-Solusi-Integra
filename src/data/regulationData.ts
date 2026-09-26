@@ -250,3 +250,83 @@ export const REGULATION_ITEMS: RegulationItem[] = [
     ]
   }
 ];
+
+export interface RegulatoryComparisonRow {
+  id: string;
+  shortCode: string;
+  regulationTitle: string;
+  issuingBody: string;
+  scopeEntities: string;
+  categoryTag: "Holding BUMN" | "Sektor Finansial & Bank" | "Standar Audit Eksternal" | "Tata Kelola Umum";
+  framework: string;
+  directorAssertionMandate: string;
+  testingFrequency: string;
+  samplingStandard: string;
+  auditConsequence: string;
+  recommendedSolutionUrl: string;
+  recommendedSolutionLabel: string;
+}
+
+export const REGULATORY_COMPARISON_MATRIX: RegulatoryComparisonRow[] = [
+  {
+    id: "sk-5-2024-matrix",
+    shortCode: "SK-5 BUMN",
+    regulationTitle: "SK-5/DKU.MBU/11/2024",
+    issuingBody: "Kementerian BUMN RI",
+    scopeEntities: "Seluruh BUMN (Persero & Perum), Holding BUMN, dan Anak Perusahaan BUMN",
+    categoryTag: "Holding BUMN",
+    framework: "COSO 2013 (5 Komponen & 17 Prinsip) + ITGC 4 Domain",
+    directorAssertionMandate: "Wajib: Ditandatangani Direktur Utama & Direktur Keuangan secara tahunan pada Laporan Tahunan",
+    testingFrequency: "Pengujian Desain (ToD) & Pengujian Efektivitas Operasional (ToE) Triwulanan dan Tahunan",
+    samplingStandard: "Normatif Tabel 22 Ukuran Sampel (Rentang 1 s.d. 60 sampel berdasar frekuensi kontrol)",
+    auditConsequence: "Defisiensi Material wajib dilaporkan ke Menteri BUMN; mempengaruhi keyakinan opini WTP auditor eksternal",
+    recommendedSolutionUrl: "/platform/grc-integra",
+    recommendedSolutionLabel: "Platform GRC Integra"
+  },
+  {
+    id: "per-2-2023-matrix",
+    shortCode: "PER-2 BUMN",
+    regulationTitle: "PER-2/MBU/03/2023",
+    issuingBody: "Kementerian BUMN RI",
+    scopeEntities: "Induk Holding BUMN dan Badan Usaha Milik Negara secara menyeluruh",
+    categoryTag: "Holding BUMN",
+    framework: "Three Lines Model IIA + ISO 31000 Risk Management Framework",
+    directorAssertionMandate: "Wajib: Evaluasi kematangan SPI dan pernyataan kepatuhan tata kelola di Annual Report",
+    testingFrequency: "Evaluasi maturitas SPI tahunan dan pemantauan profil risiko secara triwulanan",
+    samplingStandard: "Berdasarkan penilaian maturitas audit internal (skala 1 s.d. 5)",
+    auditConsequence: "Penilaian Key Performance Indicators (KPI) Direksi dan evaluasi Dewan Komisaris",
+    recommendedSolutionUrl: "/layanan/enterprise-grc",
+    recommendedSolutionLabel: "Konsultasi Enterprise GRC"
+  },
+  {
+    id: "pojk-17-2023-matrix",
+    shortCode: "POJK 17/2023",
+    regulationTitle: "POJK No. 17/2023 & POJK 11/2022",
+    issuingBody: "Otoritas Jasa Keuangan (OJK)",
+    scopeEntities: "Bank Himbara (BUMN), Bank Umum Swasta, dan Bank Pembangunan Daerah (BPD)",
+    categoryTag: "Sektor Finansial & Bank",
+    framework: "Basel Accord + Cobit IT Governance + Standar Kepatuhan OJK",
+    directorAssertionMandate: "Wajib: Self-assessment tata kelola semesteran & laporan kepatuhan komite audit ke OJK",
+    testingFrequency: "Audit operasional harian (dual control), pengujian ITGC berkala, dan review tahunan",
+    samplingStandard: "Metodologi audit internal perbankan berbasis risiko (Risk-Based Internal Audit)",
+    auditConsequence: "Sanksi administratif OJK, pembatasan ekspansi produk/kantor cabang, dan penurunan tingkat kesehatan bank",
+    recommendedSolutionUrl: "/sektor-bumn/perbankan",
+    recommendedSolutionLabel: "Solusi GRC Sektor Perbankan"
+  },
+  {
+    id: "spkn-bpk-matrix",
+    shortCode: "SPKN BPK",
+    regulationTitle: "Peraturan BPK No. 1/2017 (SPKN)",
+    issuingBody: "Badan Pemeriksa Keuangan (BPK RI)",
+    scopeEntities: "Kementerian, Lembaga Negara, BUMN, BUMD, dan Badan Pengelola Keuangan Negara",
+    categoryTag: "Standar Audit Eksternal",
+    framework: "Standar Pemeriksaan Keuangan Negara (SPKN) + INTOSAI Framework",
+    directorAssertionMandate: "Entitas wajib menyajikan Laporan Keuangan audited beserta sistem SPI yang dapat diuji",
+    testingFrequency: "Pemeriksaan Keuangan Tahunan (LKPP/LKBUMN) dan Pemeriksaan Dengan Tujuan Tertentu (PDTT)",
+    samplingStandard: "Sampling audit statistik BPK RI dan pengujian substansif transaksi",
+    auditConsequence: "Temuan dimuat di Laporan Hasil Pemeriksaan (LHP) BPK; kewajiban tindak lanjut maksimal 60 hari",
+    recommendedSolutionUrl: "/layanan/itgc-audit-readiness",
+    recommendedSolutionLabel: "Audit Readiness & SPKN"
+  }
+];
+

@@ -224,3 +224,31 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Studi Kasus
 - Ringkasan: Pelajari bagaimana sebuah Holding BUMN dengan aset di atas Rp 50 Triliun mengeliminasi 42 defisiensi pengendalian intern, memangkas siklus pengujian TOE hingga 90 persen, dan mempertahankan opini WTP melalui implementasi metodologi SK-5/2024.
 - Tautan: https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp
+
+## Kualifikasi Pengadaan Vendor & Kesiapan Tender BUMN
+- Halaman Resmi: https://dsintegra.co.id/kualifikasi-vendor
+- Klasifikasi Baku Lapangan Usaha Indonesia (KBLI):
+  * KBLI 70209 (Aktivitas Konsultasi Manajemen Lainnya) : Konsultasi penyusunan RCM, walkthrough TOD/TOE, dan pendampingan asersi Direksi.
+  * KBLI 62019 (Aktivitas Pemrograman Komputer Lainnya) : Pengembangan platform software GRC Integra dan modul otomasi alur kerja BPMN.
+  * KBLI 62029 (Aktivitas Konsultasi TI dan Manajemen Fasilitas Komputer Lainnya) : Evaluasi arsitektur ITGC, audit hak akses, dan manajemen perubahan sistem.
+- Kepatuhan Kedaulatan Data & UU PDP: Mendukung deployment on-premise di data center internal BUMN atau Government Private Cloud terisolasi guna memenuhi ketentuan UU No. 27/2022 (UU Perlindungan Data Pribadi).
+
+## Otoritas & Profil Pakar (E-E-A-T)
+- Profil Humbul Kristiawan, CA, CIA, CICA, GRCP: https://dsintegra.co.id/penulis/humbul-kristiawan
+- Jabatan: Principal Partner PT Daya Solusi Integra
+- Rekam Jejak: Mantan Equity Partner Deloitte South East Asia, 25+ tahun pengalaman dalam audit internal, implementasi SOX 404 / ICOFR, dan manajemen risiko terintegrasi.
+- Lisensi & Registrasi: Chartered Accountant (CA), Certified Internal Auditor (CIA), Certified Internal Control Auditor (CICA), Certified GRC Professional (GRCP), Register Akuntan Negara Kementerian Keuangan RI No. D-20.117.
+- Peran Komite Pengawasan Aktif: Anggota Komite Pemantau Risiko PT Pegadaian, Anggota Komite Audit PT Bank UOB Indonesia, Anggota Komite Tata Kelola Terintegrasi Bank bjb.
+
+## Toolkit & Template Kertas Kerja SK-5
+- Halaman Resmi: https://dsintegra.co.id/toolkit-regulasi
+- Format Berkas: Spreadsheet Excel Resmi (XLSX)
+- Cakupan Template:
+  1. Template Risk and Control Matrix (RCM) SK-5 : Pemetaan akun material, asersi manajemen (E, C, V, R, P), tipe kontrol, frekuensi, dan metode pengujian Lini 2.
+  2. Checklist Entity-Level Controls (ELC) COSO 2013 : Evaluasi 5 komponen dan 17 prinsip pengendalian tingkat entitas.
+  3. Format Kertas Kerja Pengujian TOE Tabel 22 : Penentuan ukuran sampel acak normatif dengan toleransi deviasi nol (zero deviation).
+
+## Direktori Studi Kasus & Benchmark Kinerja BUMN
+- Halaman Resmi: https://dsintegra.co.id/studi-kasus
+- Metrik Agregat: Eliminasi 42 defisiensi audit tuntas 100%, efisiensi durasi siklus pengujian TOE hingga 70%, penyelesaian asersi Direksi H-14 sebelum batas regulasi, dan 0 sanksi keterlambatan pelaporan.
+- Sektor Terlayani: Holding Multisektor BUMN (Aset > Rp 50 Triliun), Perbankan & Jasa Keuangan (Himbara & BPD Tier-1), serta Infrastruktur & Konstruksi Karya (PSAK 72 & Verifikasi Subkontraktor).

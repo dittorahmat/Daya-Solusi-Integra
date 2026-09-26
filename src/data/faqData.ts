@@ -97,5 +97,23 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       question: "Apa risiko utama mengelola kertas kerja ICOFR secara manual menggunakan Excel?",
       answer: "Tantangan terbesar spreadsheet manual adalah tidak adanya jejak audit digital (audit trail), risiko benturan versi file antar-unit kerja (versioning failure), dan kerentanan rumus rusak saat konsolidasi di tingkat holding BUMN. Hal ini dapat diatasi secara permanen melalui platform GRC Integra."
     }
+  ],
+  "/studi-kasus": [
+    {
+      "question": "Mengapa studi kasus yang disajikan menggunakan format profil anonim?",
+      "answer": "Seluruh pelaksanaan audit kepatuhan, pengujian pengendalian internal, dan pendampingan ICOFR BUMN terikat oleh perjanjian kerahasiaan data yang ketat (Non-Disclosure Agreement / NDA). Kami menyamarkan nama entitas klien namun mempertahankan 100% akurasi metodologi teknis, kompleksitas masalah, dan metrik hasil audit yang dicapai."
+    },
+    {
+      "question": "Bagaimana metodologi Daya Solusi Integra memangkas durasi pengujian TOE hingga 70 persen?",
+      "answer": "Efisiensi dicapai melalui standarisasi formula ukuran sampel normatif berbasis frekuensi Tabel 22 SK-5, eliminasi redundancy pengujian kontrol terotomatisasi (ITAC) berbasis Test of One, serta integrasi platform digital GRC Integra yang menggantikan pelaporan lembar kerja spreadsheet manual yang rentan deviasi."
+    },
+    {
+      "question": "Apakah hasil rekomendasi dan kertas kerja ICOFR diakui oleh auditor eksternal (BPK, BPKP, KAP)?",
+      "answer": "Ya. Kertas kerja pengujian (TOD walkthrough dan TOE sampling) serta deficiency sheet yang kami susun mengikuti Standar Pemeriksaan Keuangan Negara (SPKN) dan standar audit Institut Akuntan Publik Indonesia (IAPI), sehingga memudahkan proses konfirmasi dan meminimalisir sanggahan audit."
+    },
+    {
+      "question": "Bagaimana organisasi kami dapat meminta telaah awal atas defisiensi pengendalian internal saat ini?",
+      "answer": "Anda dapat menghubungi tim konsultan kami melalui email resmi marketing@dsintegra.co.id untuk menjadwalkan sesi pendahuluan (scoping review) secara daring maupun luring guna menelaah catatan audit tahun sebelumnya dan merumuskan rencana tindak lanjut perbaikan."
+    }
   ]
 };

@@ -82,6 +82,14 @@
     <priority>0.92</priority>
   </url>
 
+  <!-- Dedicated Case Studies & Benchmark Index Hub -->
+  <url>
+    <loc>https://dsintegra.co.id/studi-kasus</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
   <!-- Dedicated Vertical Industry Silo Pages -->
   <url>
     <loc>https://dsintegra.co.id/sektor-bumn/perbankan</loc>

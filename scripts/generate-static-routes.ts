@@ -759,6 +759,45 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Permohonan paket lengkap file Excel resmi (XLSX) dapat diajukan melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
+  } else if (routePath === "/studi-kasus") {
+    specificContent = `
+    <section>
+      <h2>Studi Kasus &amp; Benchmark Kinerja Implementasi ICOFR BUMN</h2>
+      <p>Pembuktian hasil nyata implementasi kerangka kerja ICOFR SK-5/DKU.MBU/11/2024 dan platform software GRC Integra di berbagai entitas BUMN, holding klaster, dan lembaga jasa keuangan nasional.</p>
+      
+      <h3>Agregat Benchmark Dampak Implementasi:</h3>
+      <ul>
+        <li><strong>100% Tuntas Defisiensi:</strong> Seluruh temuan defisiensi signifikan auditor eksternal terselesaikan sebelum periode tutup buku.</li>
+        <li><strong>70% Efisiensi Siklus TOE:</strong> Penghematan waktu pengujian kontrol Tabel 22 menggunakan kalkulator otomatis dan platform digital.</li>
+        <li><strong>H-14 Asersi Direksi:</strong> Penyelesaian pernyataan efektivitas pengendalian sebelum batas akhir regulasi Kementerian BUMN.</li>
+        <li><strong>0 Sanksi Keterlambatan:</strong> Kepatuhan penuh terhadap batas pelaporan PER-2/MBU/03/2023.</li>
+      </ul>
+
+      <h3>Daftar Studi Kasus Sektoral:</h3>
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>1. Holding BUMN Multisektor (Aset Konsolidasi &gt; Rp 50 Triliun)</h4>
+        <p><strong>Judul:</strong> Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan Auditor Eksternal</p>
+        <p><strong>Tantangan:</strong> Pemeriksaan BPKP dan KAP mengidentifikasi 42 defisiensi signifikan saldo antar-perusahaan (intercompany), pengujian TOE tidak seragam, dan keterlambatan asersi Lini 2 akibat spreadsheet manual.</p>
+        <p><strong>Solusi &amp; Hasil:</strong> Penyelarasan RCM 8 anak holding, otomatisasi sampel Tabel 22 SK-5, eliminasi 100% defisiensi, dan efisiensi waktu TOE dari 90 menjadi 24 hari. <a href="/blog/studi-kasus-icofr-holding-bumn-wtp">Baca kajian lengkap studi kasus holding</a>.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>2. Perbankan &amp; Lembaga Keuangan (Bank BUMN / BPD Tier-1)</h4>
+        <p><strong>Judul:</strong> Harmonisasi ITGC Core Banking dan Validasi CKPN PSAK 71 Berbasis POJK &amp; SK-5</p>
+        <p><strong>Tantangan:</strong> Kompleksitas integrasi core banking, modul treasury, dan perhitungan CKPN PSAK 71 dengan segregasi tugas (SoD) yang disorot auditor.</p>
+        <p><strong>Solusi &amp; Hasil:</strong> Pengujian otomatis ITGC hak akses dan change management, validasi parameter CKPN pada 100% populasi portofolio kredit, serta rekonsiliasi tuntas dalam 4 jam kerja.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>3. Infrastruktur &amp; Konstruksi Karya (BUMN Konstruksi Nasional)</h4>
+        <p><strong>Judul:</strong> Pengendalian Pengakuan Pendapatan PSAK 72 dan Verifikasi Tagihan Subkontraktor Proyek</p>
+        <p><strong>Tantangan:</strong> Potensi selisih progres akuntansi dan fisik lapangan, risiko keterlambatan sertifikasi owner, dan beban administrasi ratusan dokumen subkontraktor.</p>
+        <p><strong>Solusi &amp; Hasil:</strong> Matriks kontrol proyek BPMN 2.0 Lampiran 3 SK-5, batas toleransi deviasi estimasi biaya penyelesaian (EAC), dan deviasi fisik-buku ditekan hingga di bawah 1%.</p>
+      </article>
+
+      <p>Jadwalkan sesi evaluasi awal dengan konsultan Daya Solusi Integra melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
+    `;
   } else if (routePath === "/kalkulator-sampel-toe") {
     specificContent = `
     <section>
@@ -1167,6 +1206,12 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 - [Kalkulator Sampel Pengujian TOE](https://dsintegra.co.id/kalkulator-sampel-toe): Alat hitung interaktif penentuan ukuran sampel pengujian operasional kontrol berbasis frekuensi dan populasi normatif Tabel 22 SK-5 Kementerian BUMN.
 - [Asesmen Mandiri Kematangan COSO](https://dsintegra.co.id/asesmen-maturitas): Evaluasi interaktif kesiapan sistem pengendalian internal organisasi berdasarkan 5 pilar COSO dalam 3 menit.
 - [Glosarium Regulasi & Istilah ICOFR](https://dsintegra.co.id/glosarium): Kamus komprehensif terminologi tata kelola, audit, dan regulasi BUMN beserta rute individual per istilah.
+- [Toolkit & Template Kertas Kerja SK-5](https://dsintegra.co.id/toolkit-regulasi): Repositori kertas kerja resmi kepatuhan SK-5 BUMN mencakup pratinjau Template RCM, Checklist ELC COSO, dan Format Pengujian TOE Tabel 22.
+
+## Studi Kasus, Kualifikasi Vendor & Otoritas Pakar (E-E-A-T)
+- [Studi Kasus & Benchmark Kinerja ICOFR BUMN](https://dsintegra.co.id/studi-kasus): Direktori benchmark hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu TOE hingga 70 persen, dan asersi Direksi H-14 sebelum batas regulasi.
+- [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
+- [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 
 ## Panduan Teknis & Riset Regulasi (Knowledge Base)
 ${blogEntries.map((b) => `- [${b.title}](https://dsintegra.co.id/blog/${b.slug}): ${b.excerpt}`).join("\n")}
@@ -1258,6 +1303,34 @@ ${glossaryListFull}
 
 ## Artikel Riset & Panduan Teknis Kepatuhan
 ${blogListFull}
+
+## Kualifikasi Pengadaan Vendor & Kesiapan Tender BUMN
+- Halaman Resmi: https://dsintegra.co.id/kualifikasi-vendor
+- Klasifikasi Baku Lapangan Usaha Indonesia (KBLI):
+  * KBLI 70209 (Aktivitas Konsultasi Manajemen Lainnya) : Konsultasi penyusunan RCM, walkthrough TOD/TOE, dan pendampingan asersi Direksi.
+  * KBLI 62019 (Aktivitas Pemrograman Komputer Lainnya) : Pengembangan platform software GRC Integra dan modul otomasi alur kerja BPMN.
+  * KBLI 62029 (Aktivitas Konsultasi TI dan Manajemen Fasilitas Komputer Lainnya) : Evaluasi arsitektur ITGC, audit hak akses, dan manajemen perubahan sistem.
+- Kepatuhan Kedaulatan Data & UU PDP: Mendukung deployment on-premise di data center internal BUMN atau Government Private Cloud terisolasi guna memenuhi ketentuan UU No. 27/2022 (UU Perlindungan Data Pribadi).
+
+## Otoritas & Profil Pakar (E-E-A-T)
+- Profil Humbul Kristiawan, CA, CIA, CICA, GRCP: https://dsintegra.co.id/penulis/humbul-kristiawan
+- Jabatan: Principal Partner PT Daya Solusi Integra
+- Rekam Jejak: Mantan Equity Partner Deloitte South East Asia, 25+ tahun pengalaman dalam audit internal, implementasi SOX 404 / ICOFR, dan manajemen risiko terintegrasi.
+- Lisensi & Registrasi: Chartered Accountant (CA), Certified Internal Auditor (CIA), Certified Internal Control Auditor (CICA), Certified GRC Professional (GRCP), Register Akuntan Negara Kementerian Keuangan RI No. D-20.117.
+- Peran Komite Pengawasan Aktif: Anggota Komite Pemantau Risiko PT Pegadaian, Anggota Komite Audit PT Bank UOB Indonesia, Anggota Komite Tata Kelola Terintegrasi Bank bjb.
+
+## Toolkit & Template Kertas Kerja SK-5
+- Halaman Resmi: https://dsintegra.co.id/toolkit-regulasi
+- Format Berkas: Spreadsheet Excel Resmi (XLSX)
+- Cakupan Template:
+  1. Template Risk and Control Matrix (RCM) SK-5 : Pemetaan akun material, asersi manajemen (E, C, V, R, P), tipe kontrol, frekuensi, dan metode pengujian Lini 2.
+  2. Checklist Entity-Level Controls (ELC) COSO 2013 : Evaluasi 5 komponen dan 17 prinsip pengendalian tingkat entitas.
+  3. Format Kertas Kerja Pengujian TOE Tabel 22 : Penentuan ukuran sampel acak normatif dengan toleransi deviasi nol (zero deviation).
+
+## Direktori Studi Kasus & Benchmark Kinerja BUMN
+- Halaman Resmi: https://dsintegra.co.id/studi-kasus
+- Metrik Agregat: Eliminasi 42 defisiensi audit tuntas 100%, efisiensi durasi siklus pengujian TOE hingga 70%, penyelesaian asersi Direksi H-14 sebelum batas regulasi, dan 0 sanksi keterlambatan pelaporan.
+- Sektor Terlayani: Holding Multisektor BUMN (Aset > Rp 50 Triliun), Perbankan & Jasa Keuangan (Himbara & BPD Tier-1), serta Infrastruktur & Konstruksi Karya (PSAK 72 & Verifikasi Subkontraktor).
 `;
 
   // Tulis berkas ke dist dan public

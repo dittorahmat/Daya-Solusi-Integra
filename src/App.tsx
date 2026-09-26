@@ -26,6 +26,7 @@ import SectorDetailPage from "./components/pages/SectorDetailPage";
 import BumnProcurementPage from "./components/pages/BumnProcurementPage";
 import AuthorProfilePage from "./components/pages/AuthorProfilePage";
 import RegulatoryToolkitPage from "./components/pages/RegulatoryToolkitPage";
+import CaseStudiesPage from "./components/pages/CaseStudiesPage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -103,9 +104,10 @@ export default function App() {
   const isProcurementPage = currentPath === "/kualifikasi-vendor";
   const isAuthorPage = currentPath === "/penulis/humbul-kristiawan" || currentPath === "/blog/penulis/humbul-kristiawan";
   const isToolkitPage = currentPath === "/toolkit-regulasi";
+  const isCaseStudiesPage = currentPath === "/studi-kasus";
   const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isCaseStudiesPage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -239,6 +241,9 @@ export default function App() {
           <RegulatoryToolkitPage 
             onNavigate={navigateTo} 
           />
+        ) : isCaseStudiesPage ? (
+          /* DEDICATED CASE STUDIES & BENCHMARK INDEX ROUTE (/studi-kasus) */
+          <CaseStudiesPage onNavigate={navigateTo} />
         ) : isSectorPage && sectorSlug ? (
           /* DEDICATED BUMN SECTOR ROUTE (/sektor-bumn/:slug) */
           <SectorDetailPage 

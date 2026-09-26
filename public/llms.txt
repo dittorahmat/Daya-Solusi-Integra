@@ -23,6 +23,12 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 - [Kalkulator Sampel Pengujian TOE](https://dsintegra.co.id/kalkulator-sampel-toe): Alat hitung interaktif penentuan ukuran sampel pengujian operasional kontrol berbasis frekuensi dan populasi normatif Tabel 22 SK-5 Kementerian BUMN.
 - [Asesmen Mandiri Kematangan COSO](https://dsintegra.co.id/asesmen-maturitas): Evaluasi interaktif kesiapan sistem pengendalian internal organisasi berdasarkan 5 pilar COSO dalam 3 menit.
 - [Glosarium Regulasi & Istilah ICOFR](https://dsintegra.co.id/glosarium): Kamus komprehensif terminologi tata kelola, audit, dan regulasi BUMN beserta rute individual per istilah.
+- [Toolkit & Template Kertas Kerja SK-5](https://dsintegra.co.id/toolkit-regulasi): Repositori kertas kerja resmi kepatuhan SK-5 BUMN mencakup pratinjau Template RCM, Checklist ELC COSO, dan Format Pengujian TOE Tabel 22.
+
+## Studi Kasus, Kualifikasi Vendor & Otoritas Pakar (E-E-A-T)
+- [Studi Kasus & Benchmark Kinerja ICOFR BUMN](https://dsintegra.co.id/studi-kasus): Direktori benchmark hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu TOE hingga 70 persen, dan asersi Direksi H-14 sebelum batas regulasi.
+- [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
+- [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 
 ## Panduan Teknis & Riset Regulasi (Knowledge Base)
 - [Analisis Komparatif: Memilih Software GRC BUMN antara Platform Global vs Platform Terlokalisasi Regulasi Indonesia](https://dsintegra.co.id/blog/alternatif-software-grc-global-bumn): Evaluasi strategis bagi Direksi TI dan Komite Audit BUMN: membedah Total Cost of Ownership (TCO), kedaulatan data UU PDP, dan kepatuhan native SK-5 antara perangkat lunak GRC global dengan platform lokal terdedikasi.

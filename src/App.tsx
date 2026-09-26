@@ -27,6 +27,7 @@ import BumnProcurementPage from "./components/pages/BumnProcurementPage";
 import AuthorProfilePage from "./components/pages/AuthorProfilePage";
 import RegulatoryToolkitPage from "./components/pages/RegulatoryToolkitPage";
 import CaseStudiesPage from "./components/pages/CaseStudiesPage";
+import AuditFindingsPage from "./components/pages/AuditFindingsPage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -105,9 +106,10 @@ export default function App() {
   const isAuthorPage = currentPath === "/penulis/humbul-kristiawan" || currentPath === "/blog/penulis/humbul-kristiawan";
   const isToolkitPage = currentPath === "/toolkit-regulasi";
   const isCaseStudiesPage = currentPath === "/studi-kasus";
+  const isAuditFindingsPage = currentPath === "/temuan-audit-icofr";
   const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isCaseStudiesPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -244,6 +246,9 @@ export default function App() {
         ) : isCaseStudiesPage ? (
           /* DEDICATED CASE STUDIES & BENCHMARK INDEX ROUTE (/studi-kasus) */
           <CaseStudiesPage onNavigate={navigateTo} />
+        ) : isAuditFindingsPage ? (
+          /* DEDICATED AUDIT FINDINGS & CAP REMEDIATION ROUTE (/temuan-audit-icofr) */
+          <AuditFindingsPage onNavigate={navigateTo} />
         ) : isSectorPage && sectorSlug ? (
           /* DEDICATED BUMN SECTOR ROUTE (/sektor-bumn/:slug) */
           <SectorDetailPage 

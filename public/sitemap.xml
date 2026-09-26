@@ -90,6 +90,14 @@
     <priority>0.90</priority>
   </url>
 
+  <!-- BUMN Audit Findings & Deficiency Remediation Directory -->
+  <url>
+    <loc>https://dsintegra.co.id/temuan-audit-icofr</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
   <!-- Dedicated Vertical Industry Silo Pages -->
   <url>
     <loc>https://dsintegra.co.id/sektor-bumn/perbankan</loc>

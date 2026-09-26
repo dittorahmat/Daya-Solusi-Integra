@@ -115,5 +115,23 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       "question": "Bagaimana organisasi kami dapat meminta telaah awal atas defisiensi pengendalian internal saat ini?",
       "answer": "Anda dapat menghubungi tim konsultan kami melalui email resmi marketing@dsintegra.co.id untuk menjadwalkan sesi pendahuluan (scoping review) secara daring maupun luring guna menelaah catatan audit tahun sebelumnya dan merumuskan rencana tindak lanjut perbaikan."
     }
+  ],
+  "/temuan-audit-icofr": [
+    {
+      "question": "Apa perbedaan antara Material Weakness, Significant Deficiency, dan Control Deficiency?",
+      "answer": "Control Deficiency terjadi ketika rancangan atau pelaksanaan kontrol tidak mampu mencegah salah saji. Significant Deficiency adalah defisiensi yang cukup penting untuk diperhatikan oleh Komite Audit meskipun belum tergolong material. Material Weakness adalah kelemahan signifikan di mana terdapat kemungkinan wajar bahwa salah saji material pada laporan keuangan tidak dapat dicegah atau dideteksi tepat waktu."
+    },
+    {
+      "question": "Berapa lama batas waktu penyelesaian Corrective Action Plan (CAP) sebelum penutupan tahun buku?",
+      "answer": "Sesuai petunjuk teknis SK-5 Kementerian BUMN, seluruh Corrective Action Plan atas defisiensi signifikan harus telah diuji ulang efektivitasnya (re-tested) minimal 30 s.d. 60 hari sebelum penutupan tahun buku (cut-off 31 Desember) agar Direksi dapat menyatakan asersi pengendalian internal secara wajar."
+    },
+    {
+      "question": "Bagaimana pembagian peran antara Lini 1, Lini 2, dan Satuan Pengawasan Intern (SPI) dalam remediasi temuan?",
+      "answer": "Lini 1 (Pemilik Proses) bertindak sebagai eksekutor yang memperbaiki SOP dan kontrol harian; Lini 2 merancang matriks remediasi dan melakukan validasi pengujian ulang; sedangkan Lini 3 (SPI) melakukan audit kepatuhan independen atas ketuntasan penyelesaian rekomendasi tindak lanjut hasil pemeriksaan (TLHP)."
+    },
+    {
+      "question": "Bagaimana platform software GRC Integra mempermudah penatausahaan tindak lanjut defisiensi?",
+      "answer": "GRC Integra menyediakan deficiency tracking dashboard otomatis dengan penugasan tiket perbaikan ke penanggung jawab (action owner), batas waktu SLA, repositori dokumen bukti tindak lanjut, dan jejak audit digital yang siap dikonfirmasi kepada auditor eksternal BPK/BPKP/KAP."
+    }
   ]
 };

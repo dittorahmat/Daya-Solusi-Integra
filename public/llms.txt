@@ -27,6 +27,7 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 
 ## Studi Kasus, Kualifikasi Vendor & Otoritas Pakar (E-E-A-T)
 - [Studi Kasus & Benchmark Kinerja ICOFR BUMN](https://dsintegra.co.id/studi-kasus): Direktori benchmark hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu TOE hingga 70 persen, dan asersi Direksi H-14 sebelum batas regulasi.
+- [Katalog Temuan Defisiensi Audit ICOFR BUMN](https://dsintegra.co.id/temuan-audit-icofr): Direktori tipologi temuan audit pengendalian internal BUMN: risiko akun salah saji finansial, kelemahan ITGC/SoD, dan panduan Corrective Action Plan SK-5.
 - [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
 - [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 

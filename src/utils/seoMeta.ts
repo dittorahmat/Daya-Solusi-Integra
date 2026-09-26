@@ -139,6 +139,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Studi Kasus & Benchmark Kinerja ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Pelajari pembuktian audit nyata: eliminasi 42 temuan defisiensi holding BUMN, efisiensi waktu pengujian kontrol TOE, dan asersi Direksi tepat waktu."
   },
+  "/temuan-audit-icofr": {
+    title: "Katalog Temuan Defisiensi Audit ICOFR BUMN & Solusi CAP | Daya Solusi Integra",
+    description: "Direktori tipologi temuan audit pengendalian internal BUMN: risiko akun salah saji finansial, kelemahan ITGC/SoD, dan rekomendasi Corrective Action Plan SK-5/2024.",
+    canonical: "https://dsintegra.co.id/temuan-audit-icofr",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Katalog Temuan Defisiensi Audit ICOFR BUMN | Daya Solusi Integra",
+    ogDescription: "Panduan remediasi defisiensi audit BPKP/KAP untuk BUMN: telaah akar masalah intercompany, ITGC, PSAK 72, dan Corrective Action Plan sesuai regulasi SK-5."
+  },
   "/sektor-bumn/perbankan": {
     title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
     description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",

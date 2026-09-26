@@ -60,8 +60,8 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li><a href="/glosarium" onClick={(e) => handleLinkClick(e, "/glosarium")} className="hover:text-blue-400 transition-colors">Glosarium ICOFR BUMN</a></li>
               <li><a href="/asesmen-maturitas" onClick={(e) => handleLinkClick(e, "/asesmen-maturitas")} className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
               <li><a href="/kualifikasi-vendor" onClick={(e) => handleLinkClick(e, "/kualifikasi-vendor")} className="hover:text-blue-400 transition-colors">Kualifikasi Vendor &amp; Tender</a></li>
-              <li><a href="/toolkit-regulasi" onClick={(e) => handleLinkClick(e, "/toolkit-regulasi")} className="hover:text-blue-400 transition-colors">Toolkit &amp; Kertas Kerja SK-5</a></li>
-              <li><a href="/studi-kasus" onClick={(e) => handleLinkClick(e, "/studi-kasus")} className="text-amber-400 hover:text-amber-300 font-medium transition-colors">Studi Kasus &amp; Benchmark</a></li>
+              <li><a href="/studi-kasus" onClick={(e) => handleLinkClick(e, "/studi-kasus")} className="hover:text-blue-400 transition-colors">Studi Kasus &amp; Benchmark</a></li>
+              <li><a href="/temuan-audit-icofr" onClick={(e) => handleLinkClick(e, "/temuan-audit-icofr")} className="text-amber-400 hover:text-amber-300 font-medium transition-colors">Katalog Temuan Audit &amp; CAP</a></li>
             </ul>
           </div>
 

@@ -271,8 +271,43 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "@type": "WebPage",
         "name": "Toolkit & Kertas Kerja Regulasi SK-5",
         "url": "https://dsintegra.co.id/toolkit-regulasi"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Studi Kasus & Benchmark BUMN",
+        "url": "https://dsintegra.co.id/studi-kasus"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Katalog Temuan Audit & Defisiensi ICOFR",
+        "url": "https://dsintegra.co.id/temuan-audit-icofr"
       }
     ]
+  });
+
+  // 3. WebPage dengan SpeakableSpecification untuk Answer Engines (AEO)
+  graphs.push({
+    "@type": "WebPage",
+    "@id": `${meta.canonical}#webpage`,
+    "url": meta.canonical,
+    "name": meta.title,
+    "description": meta.description,
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://dsintegra.co.id/#website"
+    },
+    "breadcrumb": {
+      "@id": `${meta.canonical}#breadcrumb`
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        ".article-lead",
+        ".executive-summary",
+        "main p:first-of-type"
+      ]
+    }
   });
 
   // 3. Skema khusus berdasarkan tipe halaman
@@ -798,6 +833,51 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Jadwalkan sesi evaluasi awal dengan konsultan Daya Solusi Integra melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
+  } else if (routePath === "/temuan-audit-icofr") {
+    specificContent = `
+    <section>
+      <h2>Katalog Temuan Defisiensi Audit ICOFR BUMN &amp; Solusi CAP</h2>
+      <p>Panduan komprehensif akar masalah, risiko laporan keuangan, dan rekomendasi Corrective Action Plan (CAP) resmi berbasis regulasi SK-5/DKU.MBU/11/2024 dan kerangka COSO 2013 untuk Satuan Pengawasan Intern (SPI), Risk Management, dan Akuntansi BUMN.</p>
+      
+      <h3>Tipologi Temuan Defisiensi Pengendalian Signifikan:</h3>
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>1. Selisih Saldo Akun Antar-Perusahaan (Intercompany) Saat Penutupan Buku</h4>
+        <p><strong>Klasifikasi:</strong> Significant Deficiency | <strong>Rujukan:</strong> Lampiran 2 SK-5</p>
+        <p><strong>Akar Masalah:</strong> Ketiadaan jadwal rekonsiliasi periodik seragam antara holding dan anak perusahaan serta perbedaan cut-off transaksi.</p>
+        <p><strong>Rekomendasi CAP:</strong> Tetapkan cut-off rekonsiliasi bulanan dengan toleransi selisih nol sebelum tutup buku (H-5) dan gunakan repositori konfirmasi saldo terpusat pada platform GRC Integra.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>2. Konflik Segregasi Tugas (SoD) pada ERP &amp; Database Keuangan</h4>
+        <p><strong>Klasifikasi:</strong> Significant Deficiency | <strong>Rujukan:</strong> POJK 11/2022 &amp; Lampiran 5 SK-5 (ITGC)</p>
+        <p><strong>Akar Masalah:</strong> Pemberian hak akses superuser (SAP All) kepada staf operasional akuntansi dan ketiadaan review berkala log database.</p>
+        <p><strong>Rekomendasi CAP:</strong> Audit matriks peran pengguna (User Role Matrix), cabut akses maker-checker ganda, dan terapkan pemantauan log aktivitas database independen.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>3. Deviasi Pengakuan Pendapatan Konstruksi PSAK 72 Tanpa Opname Fisik</h4>
+        <p><strong>Klasifikasi:</strong> Significant Deficiency | <strong>Rujukan:</strong> PSAK 72 &amp; Lampiran 4 SK-5</p>
+        <p><strong>Akar Masalah:</strong> Estimasi total biaya penyelesaian proyek (EAC) tidak diperbarui kuartalan dan pengakuan progres tanpa validasi konsultan pengawas.</p>
+        <p><strong>Rekomendasi CAP:</strong> Verifikasi tiga pihak (Project Manager, Finance Lini 2, Pengawas) atas berita acara fisik sebelum pencatatan persentase progres pendapatan.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>4. Pengujian ITAC Mengandalkan Test of One Tanpa Bukti Kesiapan ITGC</h4>
+        <p><strong>Klasifikasi:</strong> Control Deficiency | <strong>Rujukan:</strong> Lampiran 6 SK-5 (IT Application Controls)</p>
+        <p><strong>Akar Masalah:</strong> Pengujian kontrol otomatis dilakukan dengan 1 sampel tanpa evaluasi change management dan kontrol akses sistem.</p>
+        <p><strong>Rekomendasi CAP:</strong> Selesaikan pengujian ITGC terlebih dahulu sebelum menetapkan strategi Test of One; jika ITGC belum teruji efektif, lakukan uji substantif.</p>
+      </article>
+
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h4>5. Penentuan Ukuran Sampel TOE di Bawah Batas Normatif Tabel 22</h4>
+        <p><strong>Klasifikasi:</strong> Control Deficiency | <strong>Rujukan:</strong> Tabel 22 SK-5 (Ketentuan Sampel TOE)</p>
+        <p><strong>Akar Masalah:</strong> Penguji kontrol mengambil sampel secara arbitrer tanpa justifikasi evaluasi risiko statistik audit SPKN.</p>
+        <p><strong>Rekomendasi CAP:</strong> Adopsi secara ketat formula Tabel 22 SK-5 (20 s.d. 40 sampel kontrol harian) menggunakan <a href="/kalkulator-sampel-toe">Kalkulator Sampel TOE Tabel 22</a>.</p>
+      </article>
+
+      <p>Konsultasikan penuntasan temuan audit defisiensi BUMN Anda dengan konsultan senior kami di <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
+    `;
   } else if (routePath === "/kalkulator-sampel-toe") {
     specificContent = `
     <section>
@@ -1210,6 +1290,7 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 
 ## Studi Kasus, Kualifikasi Vendor & Otoritas Pakar (E-E-A-T)
 - [Studi Kasus & Benchmark Kinerja ICOFR BUMN](https://dsintegra.co.id/studi-kasus): Direktori benchmark hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu TOE hingga 70 persen, dan asersi Direksi H-14 sebelum batas regulasi.
+- [Katalog Temuan Defisiensi Audit ICOFR BUMN](https://dsintegra.co.id/temuan-audit-icofr): Direktori tipologi temuan audit pengendalian internal BUMN: risiko akun salah saji finansial, kelemahan ITGC/SoD, dan panduan Corrective Action Plan SK-5.
 - [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
 - [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 
@@ -1331,6 +1412,15 @@ ${blogListFull}
 - Halaman Resmi: https://dsintegra.co.id/studi-kasus
 - Metrik Agregat: Eliminasi 42 defisiensi audit tuntas 100%, efisiensi durasi siklus pengujian TOE hingga 70%, penyelesaian asersi Direksi H-14 sebelum batas regulasi, dan 0 sanksi keterlambatan pelaporan.
 - Sektor Terlayani: Holding Multisektor BUMN (Aset > Rp 50 Triliun), Perbankan & Jasa Keuangan (Himbara & BPD Tier-1), serta Infrastruktur & Konstruksi Karya (PSAK 72 & Verifikasi Subkontraktor).
+
+## Katalog Temuan Defisiensi Audit ICOFR BUMN & Rekomendasi CAP
+- Halaman Resmi: https://dsintegra.co.id/temuan-audit-icofr
+- Tipologi Temuan Kunci:
+  1. Selisih Saldo Antar-Perusahaan (Intercompany) Saat Penutupan Buku : Rekomendasi cut-off rekonsiliasi bulanan H-5 dengan toleransi deviasi nol berbasis GRC Integra.
+  2. Konflik Segregasi Tugas (SoD) ERP & Database : Audit User Role Matrix, pencabutan akses maker-checker ganda, dan monitoring log database independen.
+  3. Deviasi Pengakuan Pendapatan Konstruksi PSAK 72 : Wajib verifikasi tiga pihak (PM, Finance Lini 2, Pengawas) atas opname fisik sebelum pengakuan progres.
+  4. Pengujian ITAC Tanpa Assurance ITGC : Uji kelayakan baseline ITGC (change management & akses) sebelum penetapan strategi Test of One.
+  5. Sampel TOE di Bawah Standar Normatif : Penerapan formula normatif Tabel 22 SK-5 (20 s.d. 40 sampel kontrol harian).
 `;
 
   // Tulis berkas ke dist dan public

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
+import Breadcrumbs from "./Breadcrumbs";
 
 export interface BlogPost {
   id: string;
@@ -137,6 +138,17 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
         ------------------------------------------------------------- */}
         {activePost ? (
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {/* Breadcrumb Navigation */}
+            <div className="mb-6">
+              <Breadcrumbs
+                items={[
+                  { label: "Blog & Wawasan", path: "/blog" },
+                  { label: activePost.title }
+                ]}
+                onNavigate={onNavigate}
+              />
+            </div>
+
             {/* Back Button */}
             <button
               onClick={() => onNavigate("/blog")}
@@ -401,6 +413,16 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               PAGE VIEW 2: BLOG CATALOG PAGE (/blog)
           ------------------------------------------------------------- */
           <div>
+            {/* Breadcrumb Navigation */}
+            <div className="mb-8">
+              <Breadcrumbs
+                items={[
+                  { label: "Blog & Wawasan" }
+                ]}
+                onNavigate={onNavigate}
+              />
+            </div>
+
             {/* Header Title */}
             <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bumn-blue/10 border border-bumn-blue/30 text-xs font-semibold text-blue-400 uppercase tracking-widest">

@@ -67,7 +67,7 @@ Berikut adalah matriks komparasi menyeluruh antara penggunaan spreadsheet tradis
 | **Kalkulasi Sampel TOE** | Manual, sering terjadi inkonsistensi formula | Kalkulator otomatis berbasis parameter Tabel 22 Regulasi BUMN |
 | **Validasi Lini 2 (Risk Mgmt)** | Campur aduk dalam lembar kerja yang sama | Pemisahan peran tegas (*role-based separation of duties*) |
 | **Manajemen Bukti / Eviden** | Folder terpisah, rentan tautan rusak (*broken links*) | *Centralized evidence locker* terpasang langsung pada kartu kontrol |
-| **Pemetaan Alur Proses (BPM)** | Dibuat terpisah di Visio/PowerPoint, tidak tersinkron | Editor BPM bawaan notasi resmi yang otomatis menyinkronkan RCM |
+| **Pemetaan Alur Proses (BPM)** | Dibuat terpisah di Visio/PowerPoint, tidak tersinkron | [Editor BPM bawaan berstandar Visio](/platform/bpm-workflow-editor) dengan fitur rekonstruksi otomatis dokumen SOP lama ke kanvas digital interaktif yang tersinkronisasi ke RCM |
 | **Waktu Rekapitulasi Laporan** | 3 hingga 6 minggu kerja intensif | Dihasilkan seketika (*instant generation*) dalam 1 klik |
 | **Dukungan Regulasi SK-5** | Disesuaikan mandiri tanpa jaminan kesesuaian | Dirancang 100 persen patuh amanat SK-5/DKU.MBU/11/2024 |
 

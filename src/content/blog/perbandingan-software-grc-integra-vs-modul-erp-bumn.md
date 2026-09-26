@@ -74,7 +74,7 @@ Pertimbangan finansial menjadi aspek vital bagi efisiensi anggaran BUMN:
 
 Tenggat waktu kepatuhan regulasi BUMN tidak dapat ditunda. BUMN yang menghadapi pemeriksaan interim oleh KAP atau evaluasi kinerja semesteran membutuhkan sistem yang dapat langsung difungsikan:
 - **Penerapan Cepat (Rapid Deployment)**: Karena arsitektur [GRC Integra](/platform/grc-integra) telah dirancang khusus untuk ekosistem tata kelola Indonesia, proses instalasi (baik *cloud private* maupun *on-premise* di pusat data BUMN) hanya membutuhkan hitungan hari.
-- **Migrasi Data Kertas Kerja yang Mudah**: Tim dapat mengimpor matriks kontrol (*Risk and Control Matrix* / RCM) dari lembar kerja spreadsheet lama ke dalam basis data sistem dalam tempo kurang dari 48 jam.
+- **Migrasi Data Kertas Kerja & SOP Instan**: Tim dapat mengimpor matriks kontrol (*Risk and Control Matrix* / RCM) dari lembar kerja spreadsheet lama ke dalam basis data sistem, serta mendigitalkan alur dokumen alir SOP eksisting menggunakan [BPM workflow editor standar Visio](/platform/bpm-workflow-editor) dengan fitur Smart Auto-Draw dalam tempo kurang dari 48 jam.
 
 Sebaliknya, proyek aktivasi modul GRC ERP global kerap mengalami keterlambatan (*project delay*) karena harus menunggu sinkronisasi konfigurasi basis, pengujian integrasi antarmuka (*interface testing*), dan penyesuaian hak akses keamanan yang rumit.
 

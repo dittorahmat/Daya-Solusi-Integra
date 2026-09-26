@@ -35,6 +35,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://dsintegra.co.id/platform/bpm-workflow-editor</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
 
   <!-- Linkable Asset / Interactive Assessment Tool -->
   <url>
@@ -256,5 +262,11 @@
     <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 </urlset>

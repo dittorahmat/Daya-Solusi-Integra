@@ -51,6 +51,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Layanan Kami</h4>
             <ul className="space-y-2 text-xs">
               <li><a href="/platform/grc-integra" onClick={(e) => handleLinkClick(e, "/platform/grc-integra")} className="text-[#cca43b] hover:text-amber-300 font-semibold transition-colors">Platform GRC Integra</a></li>
+              <li><a href="/platform/bpm-workflow-editor" onClick={(e) => handleLinkClick(e, "/platform/bpm-workflow-editor")} className="hover:text-blue-400 transition-colors">BPM Workflow Editor</a></li>
               <li><a href="/kalkulator-sampel-toe" onClick={(e) => handleLinkClick(e, "/kalkulator-sampel-toe")} className="hover:text-blue-400 transition-colors">Kalkulator Tabel 22 TOE</a></li>
               <li><a href="/layanan/icofr-bumn" onClick={(e) => handleLinkClick(e, "/layanan/icofr-bumn")} className="hover:text-blue-400 transition-colors">Implementasi ICOFR BUMN</a></li>
               <li><a href="/layanan/itgc-audit-readiness" onClick={(e) => handleLinkClick(e, "/layanan/itgc-audit-readiness")} className="hover:text-blue-400 transition-colors">ITGC & Kesiapan Audit</a></li>

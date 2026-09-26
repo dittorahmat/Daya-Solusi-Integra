@@ -93,6 +93,8 @@ const FREQUENCY_OPTIONS: FrequencyOption[] = [
   }
 ];
 
+import Breadcrumbs from "../Breadcrumbs";
+
 export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalculatorPageProps) {
   const [selectedFreqId, setSelectedFreqId] = useState<string>("monthly");
   const [controlType, setControlType] = useState<"manual" | "automated">("manual");
@@ -104,16 +106,14 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
-          <button 
-            onClick={() => onNavigate("/")} 
-            className="hover:text-slate-200 transition-colors focus:outline-none"
-          >
-            Beranda
-          </button>
-          <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-blue-400 font-medium">Kalkulator Sampel TOE (Tabel 22)</span>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Kalkulator Sampel TOE (Tabel 22)" }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Header Section */}
         <div className="max-w-4xl mb-12">

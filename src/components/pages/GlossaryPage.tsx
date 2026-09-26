@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { GLOSSARY_ITEMS, GLOSSARY_CATEGORIES, GlossaryItem } from "../../data/glossaryData";
 
+import Breadcrumbs from "../Breadcrumbs";
+
 interface GlossaryPageProps {
   onNavigate: (path: string) => void;
   onOpenAdvisor?: () => void;
@@ -38,16 +40,14 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
-          <button 
-            onClick={() => onNavigate("/")} 
-            className="hover:text-slate-200 transition-colors focus:outline-none"
-          >
-            Beranda
-          </button>
-          <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-blue-400 font-medium">Glosarium ICOFR BUMN</span>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Glosarium ICOFR BUMN" }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Editorial Header Section */}
         <div className="max-w-4xl mb-12">

@@ -10,11 +10,15 @@ import {
   Scale, 
   Lock, 
   BookOpen, 
-  ChevronRight 
+  ChevronRight,
+  Workflow,
+  FileUp
 } from "lucide-react";
 import GlossaryTooltip from "../GlossaryTooltip";
 import FaqSection from "../FaqSection";
 import { ROUTE_FAQS } from "../../data/faqData";
+
+import Breadcrumbs from "../Breadcrumbs";
 
 interface ServicePageProps {
   onNavigate: (path: string) => void;
@@ -32,21 +36,15 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <li>
-              <button onClick={() => onNavigate("/")} className="hover:text-white transition-colors">
-                Beranda
-              </button>
-            </li>
-            <li><ChevronRight className="w-3.5 h-3.5 text-slate-600" /></li>
-            <li>
-              <span className="text-slate-400">Layanan</span>
-            </li>
-            <li><ChevronRight className="w-3.5 h-3.5 text-slate-600" /></li>
-            <li className="text-bumn-gold font-semibold">ICOFR BUMN & SK-5</li>
-          </ol>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Layanan", path: "/#services" },
+              { label: "ICOFR BUMN & SK-5" }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Hero Section */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-16">
@@ -114,7 +112,7 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               {
                 step: "01",
@@ -143,6 +141,31 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
                 <p className="text-xs text-slate-400 leading-relaxed">{phase.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Architectural Callout: BPM Workflow Editor Integration */}
+          <div className="p-6 sm:p-8 rounded-xl bg-[#0d1527] border border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-blue-400 uppercase tracking-wider">
+                <Workflow className="w-4 h-4 text-blue-400" />
+                <span>Teknologi Dokumentasi Proses: Lampiran 3 SK-5</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                Modernisasi Dokumentasi SOP Eksisting: Hindari Menggambar Ulang dari Awal
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Organisasi Anda sudah memiliki ratusan file alur kerja format PDF, JPG, atau PNG? Fitur Smart Auto-Draw di <a href="/platform/bpm-workflow-editor" className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-4 decoration-blue-500/40">BPM Workflow Editor GRC Integra</a> merekonstruksi file eksisting menjadi kanvas diagram alir BPMN interaktif yang langsung terhubung ke matriks risiko dan titik kontrol (RCM).
+              </p>
+            </div>
+            <div className="shrink-0">
+              <a
+                href="/platform/bpm-workflow-editor"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm transition-colors shadow-lg shadow-blue-600/20"
+              >
+                <span>Lihat BPM Workflow Editor</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
 

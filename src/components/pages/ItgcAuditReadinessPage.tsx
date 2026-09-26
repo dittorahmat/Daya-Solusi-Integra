@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import GlossaryTooltip from "../GlossaryTooltip";
 
+import Breadcrumbs from "../Breadcrumbs";
+
 interface ServicePageProps {
   onNavigate: (path: string) => void;
   onOpenAdvisor: () => void;
@@ -29,21 +31,15 @@ export default function ItgcAuditReadinessPage({ onNavigate, onOpenAdvisor }: Se
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <li>
-              <button onClick={() => onNavigate("/")} className="hover:text-white transition-colors">
-                Beranda
-              </button>
-            </li>
-            <li><ChevronRight className="w-3.5 h-3.5 text-slate-600" /></li>
-            <li>
-              <span className="text-slate-400">Layanan</span>
-            </li>
-            <li><ChevronRight className="w-3.5 h-3.5 text-slate-600" /></li>
-            <li className="text-bumn-gold font-semibold">ITGC & Audit Readiness</li>
-          </ol>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Layanan", path: "/#services" },
+              { label: "ITGC & Audit Readiness" }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Hero Section */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-16">

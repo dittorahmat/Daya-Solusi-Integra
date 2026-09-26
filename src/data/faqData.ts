@@ -61,5 +61,27 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       question: "Apakah asersi manajemen yang diterbitkan GRC Integra dilengkapi fitur verifikasi keabsahan?",
       answer: "Ya. Dokumen asersi akhir dilengkapi tanda tangan digital dan QR Code verifikasi kriptografis yang membuktikan keaslian dokumen asersi Direksi saat diverifikasi oleh auditor eksternal (KAP) maupun BPK RI."
     }
+  ],
+  "/platform/bpm-workflow-editor": [
+    {
+      question: "Apakah fitur BPM Workflow Editor memerlukan lisensi desktop tambahan seperti Microsoft Visio?",
+      answer: "Tidak. BPM Workflow Editor adalah modul berbasis web murni yang terintegrasi langsung di platform GRC Integra. Tim Anda dapat merancang, mengedit, dan membagikan diagram alur proses bisnis secara kolaboratif melalui browser tanpa lisensi desktop pihak ketiga."
+    },
+    {
+      question: "Bagaimana cara kerja fitur auto-draw saat mengunggah file SOP lama (PDF, JPG, PNG)?",
+      answer: "Sistem cerdas kami memindai struktur dokumen atau gambar scan SOP yang diunggah, mengenali urutan langkah serta percabangan proses, lalu secara otomatis merekonstruksi dan menggambarnya kembali ke dalam kanvas digital interaktif. Anda dapat langsung mengedit teks, menggeser node, atau menyesuaikan swimlane."
+    },
+    {
+      question: "Apakah organisasi kami bisa menjadwalkan sesi demonstrasi secara tatap muka (offline)?",
+      answer: "Ya. Kami menyediakan layanan demo tatap muka langsung (offline) khusus untuk kantor pusat dan unit kerja di wilayah Jabodetabek. Untuk organisasi di luar wilayah Jabodetabek, kami menyediakan sesi demonstrasi interaktif secara daring (online) dengan pendampingan langsung oleh tim konsultan kami."
+    },
+    {
+      question: "Apakah format diagram yang dibuat mematuhi standar notasi BPMN internasional?",
+      answer: "Ya. BPM Workflow Editor mendukung standar elemen BPMN (Swimlane, Event, Activity/Task, Gateway keputusan, dan Data Store), sehingga hasil diagram siap digunakan baik untuk lampiran resmi dokumen SOP internal maupun keperluan pembuktian audit kepatuhan regulasi."
+    },
+    {
+      question: "Format ekspor apa saja yang didukung oleh editor alur proses ini?",
+      answer: "Diagram alur proses yang telah selesai dirancang dapat diekspor secara fleksibel ke berbagai format dokumen siap cetak maupun presentasi, termasuk PDF Vektor beresolusi tinggi, gambar PNG/JPG, serta file pertukaran data standar."
+    }
   ]
 };

@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Sat, 26 Sep 2026 02:24:03 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 05:24:09 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -56,6 +56,15 @@
       <category>Solusi Digital</category>
       <author>marketing@dsintegra.co.id (Tim Konsultan GRC &amp; Solusi Digital)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN Sesuai Mandat SK-5</title>
+      <link>https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn</guid>
+      <description>Pelajari cara menyusun diagram alir SOP dan flowchart proses bisnis BUMN berstandar BPMN 2.0 sesuai Lampiran 3 SK-5: dari pemilihan notasi baku, sinkronisasi RCM, hingga migrasi dokumen eksisting.</description>
+      <category>Tata Kelola &amp; Kepatuhan</category>
+      <author>marketing@dsintegra.co.id (Tim Konsultan GRC &amp; Solusi Digital)</author>
+      <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN</title>

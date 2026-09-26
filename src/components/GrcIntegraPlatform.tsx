@@ -47,8 +47,12 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
                 Visualisasi pemetaan proses bisnis dengan notasi resmi BUMN (Hexagon Risiko, Silinder Arsip, dan Aktivitas Kontrol) tersinkronisasi otomatis ke RCM.
               </p>
             </div>
-            <div className="pt-3 border-t border-slate-800/80 text-[11px] font-mono text-blue-400">
-              Sinkronisasi RCM Otomatis
+            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+              <span className="text-blue-400">Sinkronisasi RCM Otomatis</span>
+              <a href="/platform/bpm-workflow-editor" className="text-bumn-gold hover:text-amber-300 font-semibold inline-flex items-center gap-1 transition-colors">
+                <span>Detail Fitur</span>
+                <ChevronRight className="w-3 h-3" />
+              </a>
             </div>
           </div>
 

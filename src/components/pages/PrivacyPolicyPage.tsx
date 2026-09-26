@@ -1,6 +1,8 @@
 import React from "react";
 import { ShieldCheck, Lock, FileText, ChevronRight, CheckCircle2 } from "lucide-react";
 
+import Breadcrumbs from "../Breadcrumbs";
+
 interface PrivacyPolicyPageProps {
   onNavigate: (path: string) => void;
 }
@@ -11,16 +13,14 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
-          <button 
-            onClick={() => onNavigate("/")} 
-            className="hover:text-slate-200 transition-colors focus:outline-none"
-          >
-            Beranda
-          </button>
-          <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-blue-400 font-medium">Kebijakan Privasi</span>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Kebijakan Privasi" }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Editorial Header Section */}
         <div className="max-w-4xl mb-12">

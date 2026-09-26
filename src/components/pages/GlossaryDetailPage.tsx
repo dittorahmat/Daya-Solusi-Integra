@@ -11,6 +11,7 @@ import {
   Layers
 } from "lucide-react";
 import { GLOSSARY_ITEMS, GlossaryItem } from "../../data/glossaryData";
+import Breadcrumbs from "../Breadcrumbs";
 
 interface GlossaryDetailPageProps {
   slug: string;
@@ -121,25 +122,15 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb Hierarchy */}
-        <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
-          <button 
-            onClick={() => onNavigate("/")} 
-            className="hover:text-slate-200 transition-colors focus:outline-none"
-          >
-            Beranda
-          </button>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <button 
-            onClick={() => onNavigate("/glosarium")} 
-            className="hover:text-slate-200 transition-colors focus:outline-none"
-          >
-            Glosarium ICOFR BUMN
-          </button>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="text-blue-400 font-medium truncate max-w-[200px] sm:max-w-none">
-            {currentItem.term}
-          </span>
-        </nav>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Glosarium ICOFR BUMN", path: "/glosarium" },
+              { label: currentItem.term }
+            ]}
+            onNavigate={onNavigate}
+          />
+        </div>
 
         {/* Back Link */}
         <div className="mb-6">

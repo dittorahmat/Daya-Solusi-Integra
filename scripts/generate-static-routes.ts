@@ -268,6 +268,32 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "url": "https://dsintegra.co.id/"
       }
     });
+  } else if (routePath === "/platform/bpm-workflow-editor") {
+    graphs.push({
+      "@type": "SoftwareApplication",
+      "@id": "https://dsintegra.co.id/platform/bpm-workflow-editor#software",
+      "name": "BPM Workflow Editor: GRC Integra",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web-based",
+      "description": meta.description,
+      "featureList": [
+        "Visio-Style Web Canvas Diagramming",
+        "Auto-Draw Workflow from PDF, JPG, and PNG",
+        "BPMN 2.0 Standard Symbols and Swimlanes",
+        "Dokumentasi SOP dan Integrasi Pengendalian Internal"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "IDR",
+        "description": "Demonstrasi offline wilayah Jabodetabek dan sesi online interaktif nasional"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/"
+      }
+    });
   } else if (routePath === "/kalkulator-sampel-toe" || routePath === "/asesmen-maturitas") {
     graphs.push({
       "@type": "WebApplication",
@@ -394,6 +420,237 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
   return `<script type="application/ld+json">\n    ${JSON.stringify(jsonLdPayload, null, 2).split("\n").join("\n    ")}\n    </script>`;
 }
 
+/**
+ * Helper pembersih karakter em-dash / en-dash terlarang
+ */
+function cleanProhibitedDashes(text: string): string {
+  return text.replace(/[\u2014\u2013]/g, ":");
+}
+
+/**
+ * Membangun struktur HTML semantik (H1, Lead, Breadcrumb, FAQs, Content) untuk diinjeksi ke <div id="root">
+ * Memungkinkan web crawler & bot AI mengindeks konten teks lengkap secara langsung tanpa eksekusi JavaScript.
+ */
+function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): string {
+  const pageTitle = cleanProhibitedDashes(meta.title.split("|")[0].trim());
+  const pageDesc = cleanProhibitedDashes(meta.description || "");
+
+  // Susun Breadcrumb semantic
+  const segments = routePath.split("/").filter(Boolean);
+  let breadcrumbLinks = `<a href="/">Beranda</a>`;
+  let currentAccum = "";
+  segments.forEach((seg, idx) => {
+    currentAccum += `/${seg}`;
+    const isLast = idx === segments.length - 1;
+    const segName = cleanProhibitedDashes(seg.replace(/-/g, " "));
+    if (isLast) {
+      breadcrumbLinks += ` &gt; <span>${segName}</span>`;
+    } else {
+      breadcrumbLinks += ` &gt; <a href="${currentAccum}">${segName}</a>`;
+    }
+  });
+
+  let specificContent = "";
+
+  // 1. Konten spesifik artikel blog
+  if (routePath.startsWith("/blog/")) {
+    const slug = routePath.replace("/blog/", "");
+    const mdFile = path.join(blogContentDir, `${slug}.md`);
+    if (fs.existsSync(mdFile)) {
+      const rawMd = fs.readFileSync(mdFile, "utf-8");
+      const { data, body } = parseBlogFrontMatter(rawMd);
+      
+      // Sederhanakan markdown paragraphs ke tag HTML semantik
+      const paragraphs = body
+        .split("\n\n")
+        .map((p) => p.trim())
+        .filter((p) => p.length > 0 && !p.startsWith("#"))
+        .map((p) => `<p>${cleanProhibitedDashes(p).replace(/\n/g, " ")}</p>`)
+        .slice(0, 10) // Ambil 10 paragraf pertama untuk raw HTML snapshot
+        .join("\n      ");
+
+      specificContent = `
+      <article>
+        <header>
+          <p>Kategori: ${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</p>
+          <p>Penulis: ${cleanProhibitedDashes(data.author || "Daya Solusi Integra")} | Tanggal: ${data.date || "2026-09-25"}</p>
+        </header>
+        <section class="article-lead">
+          <p><strong>Ringkasan Eksekutif:</strong> ${cleanProhibitedDashes(data.excerpt || pageDesc)}</p>
+        </section>
+        <section class="article-body">
+          ${paragraphs}
+        </section>
+        <footer>
+          <p>Pelajari lebih lanjut implementasi tata kelola dan konsultasi melalui <a href="/layanan/icofr-bumn">Layanan Konsultan ICOFR BUMN</a> atau evaluasi otomatisasi dengan <a href="/platform/grc-integra">Software GRC Integra</a>.</p>
+        </footer>
+      </article>
+      `;
+    }
+  } else if (routePath === "/blog") {
+    specificContent = `
+    <section>
+      <h2>Katalog Wawasan & Panduan Regulasi BUMN</h2>
+      <p>Kumpulan panduan teknis, metodologi pengujian pengendalian internal, kepatuhan audit ITGC, dan asersi manajemen berbasis SK-5/DKU.MBU/11/2024.</p>
+      <ul>
+        <li><a href="/blog/panduan-sk5-icofr-grc-integra">Panduan Implementasi SK-5/DKU.MBU/11/2024 ICOFR BUMN</a></li>
+        <li><a href="/blog/manfaat-aplikasi-icofr-bumn">Manfaat Aplikasi ICOFR BUMN dalam Menghadapi Audit SPI dan Eksternal</a></li>
+        <li><a href="/blog/metodologi-sampling-tabel-22-sk5">Metodologi Sampling Pengujian Kontrol Sesuai Tabel 22 SK-5 BUMN</a></li>
+        <li><a href="/blog/peran-itgc-dalam-asersi-laporan-keuangan-bumn">Peran ITGC dalam Asersi Laporan Keuangan BUMN</a></li>
+        <li><a href="/blog/perbandingan-software-grc-lokal-vs-internasional">Perbandingan Software GRC Lokal vs Solusi Internasional untuk Kepatuhan BUMN</a></li>
+        <li><a href="/blog/studi-kasus-holding-bumn-benchmarks-icofr">Studi Kasus Holding BUMN: Benchmark Keberhasilan Implementasi ICOFR & GRC Integra</a></li>
+      </ul>
+    </section>
+    `;
+  } else if (routePath.startsWith("/glosarium/")) {
+    const slug = routePath.replace("/glosarium/", "");
+    const item = GLOSSARY_ITEMS.find((g) => g.id === slug);
+    if (item) {
+      const termTitle = item.acronym ? `${item.term} (${item.acronym})` : item.term;
+      specificContent = `
+      <section>
+        <h2>Definisi & Penjelasan Kepatuhan</h2>
+        <p>${cleanProhibitedDashes(item.definition)}</p>
+        <h3>Rujukan Regulasi Resmi</h3>
+        <p>${cleanProhibitedDashes(item.regulationRef)}</p>
+        <h3>Kategori Tata Kelola</h3>
+        <p>${cleanProhibitedDashes(item.category)}</p>
+        <p><a href="/glosarium">&larr; Kembali ke Glosarium Lengkap</a> | <a href="/layanan/icofr-bumn">Konsultasi Terkait ${cleanProhibitedDashes(termTitle)}</a></p>
+      </section>
+      `;
+    }
+  } else if (routePath === "/glosarium") {
+    const listTerms = GLOSSARY_ITEMS
+      .map((item) => `<li><a href="/glosarium/${item.id}"><strong>${cleanProhibitedDashes(item.term)}</strong>${item.acronym ? ` (${item.acronym})` : ""}</a>: ${cleanProhibitedDashes(item.definition.slice(0, 140))}...</li>`)
+      .join("\n        ");
+    specificContent = `
+    <section>
+      <h2>Daftar Istilah Pengendalian Internal & Regulasi BUMN</h2>
+      <p>Kamus terminologi standar kepatuhan pengendalian internal atas pelaporan keuangan (ICOFR), audit teknologi informasi (ITGC), dan kerangka COSO/ISO 31000.</p>
+      <ul>
+        ${listTerms}
+      </ul>
+    </section>
+    `;
+  } else if (routePath === "/kalkulator-sampel-toe") {
+    specificContent = `
+    <section>
+      <h2>Alat Bantu Penentuan Ukuran Sampel Uji Efektivitas Kontrol (TOE)</h2>
+      <p>Kalkulator normatif ukuran sampel pengujian kontrol berdasarkan Tabel 22 Surat Keputusan Menteri BUMN SK-5/DKU.MBU/11/2024.</p>
+      <table border="1" cellpadding="8" style="border-collapse: collapse; margin-top: 1rem; width: 100%;">
+        <thead>
+          <tr>
+            <th>Frekuensi Kontrol</th>
+            <th>Populasi Kejadian</th>
+            <th>Batas Sampel Minimum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tahunan (Annual)</td><td>1 kali/tahun</td><td>1 sampel</td></tr>
+          <tr><td>Triwulanan (Quarterly)</td><td>4 kali/tahun</td><td>2 sampel</td></tr>
+          <tr><td>Bulanan (Monthly)</td><td>12 kali/tahun</td><td>2 sampai 5 sampel</td></tr>
+          <tr><td>Mingguan (Weekly)</td><td>52 kali/tahun</td><td>5 sampai 15 sampel</td></tr>
+          <tr><td>Harian (Daily)</td><td>250 kali/tahun</td><td>20 sampai 40 sampel</td></tr>
+          <tr><td>Berkali-kali Sehari</td><td>&gt; 250 kali/tahun</td><td>25 sampai 60 sampel</td></tr>
+        </tbody>
+      </table>
+    </section>
+    `;
+  } else if (routePath === "/platform/grc-integra") {
+    specificContent = `
+    <section>
+      <h2>Kapabilitas Utama Platform GRC Integra</h2>
+      <ul>
+        <li><strong>Scoping & Akun Signifikan:</strong> Penentuan otomatis akun material dan asersi laporan keuangan.</li>
+        <li><strong>Risk and Control Matrix (RCM) Repository:</strong> Sentralisasi pengendalian proses bisnis Lini 1 dan Lini 2.</li>
+        <li><strong>Pengujian TOD & TOE:</strong> Dokumentasi kertas kerja audit, sampel acak Tabel 22, dan manajemen defisiensi.</li>
+        <li><strong>Pelaporan Asersi Manajemen:</strong> Dashboard kepatuhan Direksi dan asersi kepatuhan regulasi SK-5 BUMN.</li>
+      </ul>
+      <p>Pelajari lebih lanjut atau jadwalkan sesi demonstrasi langsung dengan konsultan kami di <a href="/#contact">Hubungi Tim GRC Integra</a>.</p>
+    </section>
+    `;
+  } else if (routePath === "/platform/bpm-workflow-editor") {
+    specificContent = `
+    <section>
+      <h2>BPM Workflow Editor: Solusi Pemetaan Alur Kerja Proses Bisnis Seandal Visio di Web</h2>
+      <p>BPM Workflow Editor pada GRC Integra menghadirkan kanvas pemetaan proses bisnis modern berbasis browser. Dirancang khusus untuk mempermudah tim Lini 1, Lini 2, dan auditor internal BUMN dalam memetakan standar operasional prosedur (SOP) secara visual, presisi, dan terstruktur.</p>
+      
+      <h3>Kapabilitas Utama Editor:</h3>
+      <ul>
+        <li><strong>Visio-Style Native Web Canvas:</strong> Antarmuka familiar dengan kemampuan drag-and-drop elemen BPMN (Swimlane, Event, Activity/Task, Gateway keputusan, Data Store) langsung di browser tanpa membutuhkan lisensi aplikasi desktop terpisah.</li>
+        <li><strong>Smart Auto-Draw dari Dokumen SOP Eksisting:</strong> Unggah file alur proses dalam format PDF, gambar scan JPG, atau PNG. Mesin cerdas merekonstruksi urutan alur secara instan menjadi diagram digital yang dapat diedit langsung di kanvas.</li>
+        <li><strong>Dokumentasi SOP Terstandarisasi:</strong> Ekspor hasil diagram ke format PDF vektor beresolusi tinggi, gambar, atau format data terstandar untuk lampiran dokumen kepatuhan korporasi.</li>
+      </ul>
+
+      <h3>Demonstrasi Langsung Bersama Konsultan:</h3>
+      <p>Kami melayani sesi demonstrasi produk secara langsung (tatap muka offline) untuk kantor pusat dan unit kerja di wilayah <strong>Jabodetabek</strong>, serta sesi demo daring interaktif (online) untuk korporasi di seluruh Indonesia.</p>
+      <p>Jadwalkan sesi konsultasi dan demo produk melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a> atau navigasikan ke formulir kontak kami.</p>
+    </section>
+    `;
+  } else if (routePath.startsWith("/layanan/")) {
+    specificContent = `
+    <section>
+      <h2>Ruang Lingkup & Metodologi Pendampingan</h2>
+      <p>Daya Solusi Integra mendampingi BUMN, holding klaster, dan lembaga jasa keuangan dalam menerapkan tata kelola yang teruji, memenuhi uji kepatuhan BPKP, BPK, dan auditor independen.</p>
+      <p>Konsultasikan kebutuhan implementasi, evaluasi kesiapan audit, atau integrasi sistem melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
+    `;
+  }
+
+  // Tambahkan FAQ bila tersedia
+  const faqs = ROUTE_FAQS[routePath];
+  let faqContent = "";
+  if (faqs && faqs.length > 0) {
+    const faqList = faqs
+      .map(
+        (f) => `
+        <details style="margin-bottom: 1rem;">
+          <summary><strong>${cleanProhibitedDashes(f.question)}</strong></summary>
+          <p>${cleanProhibitedDashes(f.answer)}</p>
+        </details>`
+      )
+      .join("\n");
+
+    faqContent = `
+    <section style="margin-top: 2rem;">
+      <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      ${faqList}
+    </section>
+    `;
+  }
+
+  return `
+    <header style="padding: 1.5rem; border-bottom: 1px solid #1e293b;">
+      <nav aria-label="Breadcrumb" style="font-size: 0.875rem; margin-bottom: 1rem;">
+        ${breadcrumbLinks}
+      </nav>
+      <div style="font-size: 0.75rem; text-transform: uppercase; color: #cca43b; font-weight: bold;">
+        PT Daya Solusi Integra : Solusi GRC &amp; Kepatuhan Regulasi BUMN
+      </div>
+    </header>
+
+    <main style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem;">
+      <h1>${pageTitle}</h1>
+      <p style="font-size: 1.125rem; line-height: 1.7; color: #94a3b8;">${pageDesc}</p>
+
+      ${specificContent}
+
+      ${faqContent}
+
+      <div style="margin-top: 3rem; padding: 1.5rem; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px;">
+        <h3>Konsultasi Kepatuhan &amp; Demo GRC Integra</h3>
+        <p>Hubungi konsultan senior Daya Solusi Integra untuk konsultasi implementasi ICOFR BUMN, audit ITGC, atau otomasi software GRC Integra.</p>
+        <p><strong>Surel:</strong> <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a> | <strong>Situs Resmi:</strong> <a href="https://dsintegra.co.id/">https://dsintegra.co.id</a></p>
+      </div>
+    </main>
+
+    <footer style="padding: 2rem 1.5rem; border-top: 1px solid #1e293b; text-align: center; font-size: 0.875rem; color: #64748b;">
+      <p>&copy; 2026 PT Daya Solusi Integra. Hak Cipta Dilindungi Undang-Undang.</p>
+      <p>Jakarta Selatan, DKI Jakarta, Indonesia | Domain Resmi: https://dsintegra.co.id</p>
+    </footer>
+  `;
+}
+
 let generatedCount = 0;
 
 // Kumpulkan semua rute: halaman statis utama + halaman glosarium dinamis
@@ -502,6 +759,13 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
   routeHtml = routeHtml.replace(
     /<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i,
     routeJsonLd
+  );
+
+  // Injeksi konten semantik HTML asli ke dalam <div id="root">
+  const semanticBodyHtml = buildSemanticBodyHtmlForRoute(routePath, meta);
+  routeHtml = routeHtml.replace(
+    /<div\s+id="root">\s*<\/div>/i,
+    `<div id="root">\n${semanticBodyHtml}\n    </div>`
   );
 
   fs.writeFileSync(targetFile, routeHtml, "utf-8");

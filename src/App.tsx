@@ -14,6 +14,7 @@ import IcofrBumnPage from "./components/pages/IcofrBumnPage";
 import ItgcAuditReadinessPage from "./components/pages/ItgcAuditReadinessPage";
 import EnterpriseGrcPage from "./components/pages/EnterpriseGrcPage";
 import PlatformProductPage from "./components/pages/PlatformProductPage";
+import BpmWorkflowEditorPage from "./components/pages/BpmWorkflowEditorPage";
 import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
 import GlossaryPage from "./components/pages/GlossaryPage";
 import GlossaryDetailPage from "./components/pages/GlossaryDetailPage";
@@ -85,6 +86,7 @@ export default function App() {
   const isItgcPage = currentPath === "/layanan/itgc-audit-readiness";
   const isGrcPage = currentPath === "/layanan/enterprise-grc";
   const isPlatformPage = currentPath === "/platform/grc-integra";
+  const isBpmEditorPage = currentPath === "/platform/bpm-workflow-editor";
   const isAssessmentPage = currentPath === "/asesmen-maturitas";
   const isGlossaryPage = currentPath === "/glosarium";
   const isGlossaryDetailPage = currentPath.startsWith("/glosarium/") && currentPath.length > "/glosarium/".length;
@@ -92,7 +94,7 @@ export default function App() {
   const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
   const isPrivacyPage = currentPath === "/kebijakan-privasi";
   const isIndependencePage = currentPath === "/pernyataan-independensi";
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -150,6 +152,15 @@ export default function App() {
             onNavigate={navigateTo} 
             onRequestDemo={() => {
               setAssessmentPrefill({ company: "", sector: "BUMN", service: "GRC Integra Demo" });
+              navigateTo("/#contact");
+            }} 
+          />
+        ) : isBpmEditorPage ? (
+          /* DEDICATED BPM WORKFLOW EDITOR ROUTE (/platform/bpm-workflow-editor) */
+          <BpmWorkflowEditorPage 
+            onNavigate={navigateTo} 
+            onRequestDemo={() => {
+              setAssessmentPrefill({ company: "", sector: "BUMN", service: "BPM Workflow Editor Demo" });
               navigateTo("/#contact");
             }} 
           />

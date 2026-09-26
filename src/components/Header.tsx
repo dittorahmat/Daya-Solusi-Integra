@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight, MessageSquareCode } from "lucide-react";
+import { Menu, X, ArrowRight, MessageSquareCode, ChevronDown, Workflow, Layers } from "lucide-react";
 import logoImg from "../../assets/dsi-logo-removebg-preview.png";
 
 interface HeaderProps {
@@ -11,6 +11,9 @@ interface HeaderProps {
 export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPlatformDropdownOpen, setIsPlatformDropdownOpen] = useState(false);
+  const [isMobilePlatformOpen, setIsMobilePlatformOpen] = useState(false);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const mobileDrawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -143,20 +146,107 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 bg-slate-900/50 border border-slate-800/80 px-2 py-1.5 rounded-full" id="desktop-navbar">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                id={`nav-${item.id}`}
-                onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
-                  activeTab === item.id
-                    ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800/40"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              if (item.id === "platform") {
+                return (
+                  <div
+                    key={item.id}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+                      setIsPlatformDropdownOpen(true);
+                    }}
+                    onMouseLeave={() => {
+                      dropdownTimeoutRef.current = setTimeout(() => {
+                        setIsPlatformDropdownOpen(false);
+                      }, 200);
+                    }}
+                  >
+                    <button
+                      id={`nav-${item.id}`}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
+                        activeTab === item.id
+                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
+                          : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isPlatformDropdownOpen ? "rotate-180 text-white" : "text-slate-400"}`} />
+                    </button>
+
+                    {/* Platform Dropdown Menu */}
+                    {isPlatformDropdownOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-72 rounded-xl bg-[#0f172a] border border-slate-800 shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                        <a
+                          href="/platform/grc-integra"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsPlatformDropdownOpen(false);
+                            window.history.pushState({}, '', '/platform/grc-integra');
+                            window.dispatchEvent(new PopStateEvent('popstate'));
+                          }}
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-800/80 transition-colors group"
+                        >
+                          <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
+                            <Layers className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                              Ringkasan Platform GRC Integra
+                            </div>
+                            <div className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                              Platform siklus hidup ICOFR BUMN berbasis SK-5
+                            </div>
+                          </div>
+                        </a>
+
+                        <a
+                          href="/platform/bpm-workflow-editor"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsPlatformDropdownOpen(false);
+                            window.history.pushState({}, '', '/platform/bpm-workflow-editor');
+                            window.dispatchEvent(new PopStateEvent('popstate'));
+                          }}
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-800/80 transition-colors group mt-1"
+                        >
+                          <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
+                            <Workflow className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center gap-1.5">
+                              <span>BPM Workflow Editor</span>
+                              <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-900/60 border border-blue-500/40 text-blue-300 font-mono">
+                                Baru
+                              </span>
+                            </div>
+                            <div className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                              Desain SOP native web rasa Visio & auto-draw file
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={item.id}
+                  id={`nav-${item.id}`}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
+                    activeTab === item.id
+                      ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
+                      : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Extra CTAs */}
@@ -201,20 +291,73 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
           id="mobile-drawer"
         >
           <div className="px-4 pt-3 pb-6 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                id={`mobile-nav-${item.id}`}
-                onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
-                  activeTab === item.id
-                    ? "bg-bumn-blue text-white font-semibold"
-                    : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              if (item.id === "platform") {
+                return (
+                  <div key={item.id} className="space-y-1">
+                    <button
+                      id={`mobile-nav-${item.id}`}
+                      onClick={() => setIsMobilePlatformOpen(!isMobilePlatformOpen)}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
+                        activeTab === item.id
+                          ? "bg-bumn-blue text-white font-semibold"
+                          : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobilePlatformOpen ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {isMobilePlatformOpen && (
+                      <div className="pl-4 pr-1 py-1 space-y-1">
+                        <button
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            window.history.pushState({}, '', '/platform/grc-integra');
+                            window.dispatchEvent(new PopStateEvent('popstate'));
+                          }}
+                          className="w-full text-left p-2.5 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300 hover:text-white flex items-center gap-2"
+                        >
+                          <Layers className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                          <span>Ringkasan Platform GRC Integra</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            window.history.pushState({}, '', '/platform/bpm-workflow-editor');
+                            window.dispatchEvent(new PopStateEvent('popstate'));
+                          }}
+                          className="w-full text-left p-2.5 rounded-lg bg-blue-950/40 border border-blue-500/30 text-xs text-blue-300 hover:text-white flex items-center justify-between"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Workflow className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                            <span>BPM Workflow Editor</span>
+                          </span>
+                          <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-900/80 text-blue-200 font-mono">
+                            Baru
+                          </span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={item.id}
+                  id={`mobile-nav-${item.id}`}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
+                    activeTab === item.id
+                      ? "bg-bumn-blue text-white font-semibold"
+                      : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
             <div className="pt-3 border-t border-slate-800/60 flex flex-col gap-2.5">
               <button
                 id="mobile-ai-chat-btn"

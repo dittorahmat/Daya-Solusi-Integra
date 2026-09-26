@@ -51,6 +51,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Platform Software GRC Integra | Solusi Digital ICOFR BUMN",
     ogDescription: "Tinggalkan kerumitan spreadsheet manual. Otomasi siklus hidup pengendalian internal BUMN dengan platform GRC Integra."
   },
+  "/platform/bpm-workflow-editor": {
+    title: "BPM Workflow Editor: Buat Diagram Alur Proses Bisnis & Auto-Draw dari SOP | Daya Solusi Integra",
+    description: "Software pemetaan diagram alur proses bisnis berbasis web sekelas Visio. Gambar manual dengan elemen BPMN atau unggah dokumen SOP (PDF, JPG, PNG) untuk auto-draw instan.",
+    canonical: "https://dsintegra.co.id/platform/bpm-workflow-editor",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "BPM Workflow Editor | Diagram Proses Bisnis & Auto-Draw Dokumen SOP",
+    ogDescription: "Solusi desain alur proses kerja korporasi modern. Gambar fleksibel seperti Visio di web atau unggah file PDF/JPG/PNG untuk direkonstruksi otomatis."
+  },
   "/asesmen-maturitas": {
     title: "Asesmen Mandiri Kematangan Pengendalian Internal COSO BUMN | Daya Solusi Integra",
     description: "Evaluasi instan tingkat maturitas pengendalian internal pelaporan keuangan organisasi Anda berdasarkan 5 pilar COSO dan dapatkan rekomendasi tindak lanjut.",
@@ -170,6 +178,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     ogTitle: "Software GRC BUMN vs Modul ERP Global | Daya Solusi Integra",
     ogDescription: "Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam memilih solusi kepatuhan ICOFR terbaik."
+  },
+  "/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn": {
+    title: "Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN SK-5 | Daya Solusi Integra",
+    description: "Cara menyusun flowchart proses bisnis BUMN standar BPMN 2.0 Lampiran 3 SK-5: notasi baku, pemetaan RCM, dan rekonstruksi otomatis alur SOP lama via web canvas.",
+    canonical: "https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn",
+    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
+    ogTitle: "Panduan Flowchart SOP & Pemetaan Proses Bisnis BUMN | Daya Solusi Integra",
+    ogDescription: "Standarisasi diagram alur SOP BUMN sesuai Lampiran 3 SK-5/2024 dan integrasi pengujian pengendalian internal."
   }
 };
 

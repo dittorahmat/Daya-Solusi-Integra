@@ -29,7 +29,8 @@ Berikut adalah 7 **fitur aplikasi ICOFR** terpenting yang wajib dimiliki sebuah 
 ## 1. Fitur Pemetaan Proses Bisnis (BPM) Berstandar Notasi Resmi
 
 Sebuah aplikasi ICOFR profesional tidak boleh menggunakan diagram alur sembarang. Regulasi Lampiran 3 SK-5 mewajibkan notasi visual baku:
-- **Bentuk Notasi Baku**: Oval untuk *Start/End*, Persegi Panjang untuk *Aktivitas Transaksi*, Hexagon untuk *Titik Risiko*, dan Belah Ketupat untuk *Kontrol Kunci*.
+- **Bentuk Notasi Baku**: Oval untuk *Start/End*, Persegi Panjang untuk *Aktivitas Transaksi*, Hexagon untuk *Titik Risiko*, dan Belah Ketupat untuk *Kontrol Kunci*. Kemudahan ini dapat diakses langsung melalui [kanvas BPM workflow editor native web](/platform/bpm-workflow-editor) dengan look & feel presisi sekelas Microsoft Visio.
+- **Smart Auto-Draw Dokumen SOP**: Kemampuan mengunggah alur proses bisnis lama format PDF, JPG, atau PNG dan secara otomatis merekonstruksinya menjadi diagram interaktif melalui [aplikasi pemetaan proses bisnis berbasis BPMN](/platform/bpm-workflow-editor).
 - **Auto-Sync BPM to RCM**: Setiap kali alur proses diperbarui, sistem wajib memperbarui *Risk and Control Matrix* (RCM) secara otomatis tanpa risiko desinkronisasi.
 - **Klaster Industri BUMN**: Ketersediaan pustaka risiko dan kontrol yang disesuaikan dengan sektor Industri Keuangan, Tambang, Energi, Manufaktur, dan Infrastruktur.
 

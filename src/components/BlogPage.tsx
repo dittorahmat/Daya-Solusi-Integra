@@ -10,11 +10,14 @@ import {
   Award, 
   ArrowLeft, 
   ShieldCheck, 
-  ChevronRight 
+  ChevronRight,
+  ExternalLink,
+  CheckCircle2
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
 import Breadcrumbs from "./Breadcrumbs";
+import { getAuthorProfile } from "../data/authors";
 
 export interface BlogPost {
   id: string;
@@ -113,14 +116,82 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
   const featuredPost = LOADED_BLOG_POSTS.find(p => p.featured) || LOADED_BLOG_POSTS[0];
   const activePost = currentSlug ? LOADED_BLOG_POSTS.find(p => p.slug === currentSlug) : null;
 
-  // Update page title for SEO
+  // Update page title and inject Article + Person Schema.org for SEO & E-E-A-T
   useEffect(() => {
+    const existingScript = document.getElementById("article-schema-ld");
+    if (existingScript) {
+      existingScript.remove();
+    }
+
     if (activePost) {
       document.title = `${activePost.title} | Daya Solusi Integra`;
+      const authorProfile = getAuthorProfile(activePost.author);
+
+      const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": `https://dsintegra.co.id/blog/${activePost.slug}#article`,
+        "headline": activePost.title,
+        "description": activePost.excerpt,
+        "image": activePost.coverImage,
+        "datePublished": activePost.date,
+        "dateModified": activePost.date,
+        "inLanguage": "id-ID",
+        "mainEntityOfPage": `https://dsintegra.co.id/blog/${activePost.slug}`,
+        "publisher": {
+          "@id": "https://dsintegra.co.id/#organization"
+        },
+        "author": {
+          "@type": "Person",
+          "@id": `https://dsintegra.co.id/#author-${authorProfile.id}`,
+          "name": authorProfile.fullNameWithCredentials,
+          "jobTitle": authorProfile.role,
+          "worksFor": {
+            "@id": "https://dsintegra.co.id/#organization"
+          },
+          "image": `https://dsintegra.co.id${authorProfile.avatar}`,
+          "description": authorProfile.headline,
+          "url": authorProfile.profileUrl,
+          "sameAs": authorProfile.sameAs,
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Universitas Padjadjaran"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Institut Teknologi Bandung"
+            }
+          ],
+          "knowsAbout": [
+            "Internal Control over Financial Reporting (ICOFR)",
+            "SK-5/DKU.MBU/11/2024",
+            "COSO Internal Control Integrated Framework",
+            "IT General Controls (ITGC)",
+            "Sarbanes-Oxley Act (SOX)",
+            "Enterprise Risk Management ISO 31000",
+            "Tata Kelola BUMN & Perbankan"
+          ]
+        },
+        "keywords": activePost.tags.join(", ")
+      };
+
+      const script = document.createElement("script");
+      script.id = "article-schema-ld";
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(articleSchema);
+      document.head.appendChild(script);
     } else {
       document.title = `Artikel & Insight GRC BUMN | Daya Solusi Integra`;
     }
     window.scrollTo(0, 0);
+
+    return () => {
+      const scriptOnCleanup = document.getElementById("article-schema-ld");
+      if (scriptOnCleanup) {
+        scriptOnCleanup.remove();
+      }
+    };
   }, [activePost]);
 
   return (
@@ -178,16 +249,59 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 {activePost.title}
               </h1>
 
-              {/* Author Badge */}
-              <div className="flex items-center gap-3 pt-2">
-                <div className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-bumn-gold font-semibold">
-                  <User className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-slate-200">{activePost.author}</div>
-                  <div className="text-xs text-slate-400">{activePost.authorRole}</div>
-                </div>
-              </div>
+              {/* High Authority E-E-A-T Author Byline */}
+              {(() => {
+                const authorInfo = getAuthorProfile(activePost.author);
+                return (
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#0f172a] border border-slate-800 text-left">
+                    <div className="flex items-center gap-3.5">
+                      <img
+                        src={authorInfo.avatar}
+                        alt={authorInfo.name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-bumn-blue/50 shrink-0 shadow-md"
+                        onError={(e) => {
+                          // Fallback if image fails
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-bold text-white tracking-tight">{authorInfo.name}</span>
+                          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-bumn-gold bg-bumn-gold/10 px-2 py-0.5 rounded border border-bumn-gold/30">
+                            <CheckCircle2 className="w-3 h-3 text-bumn-gold" />
+                            Verified GRC Expert
+                          </span>
+                        </div>
+                        <div className="text-xs text-slate-300 font-medium">{authorInfo.fullNameWithCredentials.replace(authorInfo.name + ", ", "")}</div>
+                        <div className="text-[11px] text-slate-400 mt-0.5">{authorInfo.role}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 self-start sm:self-center shrink-0">
+                      <a
+                        href={authorInfo.sameAs[0]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 transition-colors"
+                        title="Lihat Profil LinkedIn Humbul Kristiawan"
+                      >
+                        <span>LinkedIn</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400" />
+                      </a>
+                      <a
+                        href={authorInfo.profileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 transition-colors"
+                        title="Lihat Profil Lengkap & Rekam Jejak Konsultasi"
+                      >
+                        <span>Biografi</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400" />
+                      </a>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Cover Banner */}
@@ -373,6 +487,80 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                 </span>
               ))}
             </div>
+
+            {/* Author Authority Bio Card (E-E-A-T Trust Engine) */}
+            {(() => {
+              const authorProfile = getAuthorProfile(activePost.author);
+              return (
+                <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1527] border border-slate-800 mb-10 text-left relative overflow-hidden shadow-xl">
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    <img
+                      src={authorProfile.avatar}
+                      alt={authorProfile.name}
+                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-bumn-blue/60 shrink-0 shadow-lg"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                    <div className="space-y-3 flex-1">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="text-lg font-bold text-white font-display">{authorProfile.name}</span>
+                          <span className="text-xs font-mono text-bumn-gold bg-bumn-gold/10 px-2.5 py-0.5 rounded border border-bumn-gold/30">
+                            {authorProfile.role}
+                          </span>
+                        </div>
+                        <div className="text-xs text-slate-300 font-mono">
+                          {authorProfile.fullNameWithCredentials.replace(authorProfile.name + ", ", "")}
+                        </div>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {authorProfile.bioSummary}
+                      </p>
+
+                      {/* Key Track Records */}
+                      <div className="pt-2">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2 font-bold">
+                          Rekam Jejak Penugasan Strategis:
+                        </span>
+                        <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                          {authorProfile.trackRecordHighlights.slice(0, 4).map((highlight, idx) => (
+                            <li key={idx} className="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80">
+                              <ShieldCheck className="w-3.5 h-3.5 text-bumn-gold shrink-0 mt-0.5" />
+                              <span className="leading-snug">{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Outbound Verifications */}
+                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-800/80">
+                        <span className="text-xs text-slate-400">Verifikasi Profil Pakar:</span>
+                        <a
+                          href={authorProfile.sameAs[0]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-blue-400 hover:text-blue-300 border border-slate-700/80 transition-colors"
+                        >
+                          <span>LinkedIn Profil</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <a
+                          href={authorProfile.profileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 transition-colors"
+                        >
+                          <span>Biografi Lengkap & Riwayat Karir</span>
+                          <ExternalLink className="w-3 h-3 text-slate-400" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Contextual Related Entities & Interactive Tools Widget */}
             <RelatedEntitiesWidget

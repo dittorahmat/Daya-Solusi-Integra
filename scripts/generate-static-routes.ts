@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { ROUTE_FAQS } from "../src/data/faqData.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
+import { REGULATION_ITEMS } from "../src/data/regulationData.js";
+import { SECTOR_DATA_MAP } from "../src/data/sectorsData.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -219,7 +221,51 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
     "itemListElement": breadcrumbItems
   });
 
-  // 2. Skema khusus berdasarkan tipe halaman
+  // 2. SiteNavigationElement universal untuk struktur navigasi konsisten
+  graphs.push({
+    "@type": "SiteNavigationElement",
+    "@id": `${meta.canonical}#navigation`,
+    "name": "Navigasi Utama Daya Solusi Integra",
+    "hasPart": [
+      {
+        "@type": "WebPage",
+        "name": "Layanan Konsultasi ICOFR BUMN",
+        "url": "https://dsintegra.co.id/layanan/icofr-bumn"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Evaluasi & Audit Kesiapan ITGC",
+        "url": "https://dsintegra.co.id/layanan/itgc-audit-readiness"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Platform Software GRC Integra",
+        "url": "https://dsintegra.co.id/platform/grc-integra"
+      },
+      {
+        "@type": "WebPage",
+        "name": "BPM Workflow Editor",
+        "url": "https://dsintegra.co.id/platform/bpm-workflow-editor"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Kalkulator Sampel TOE (Tabel 22 SK-5)",
+        "url": "https://dsintegra.co.id/kalkulator-sampel-toe"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Glosarium Regulasi & Istilah ICOFR",
+        "url": "https://dsintegra.co.id/glosarium"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Wawasan & Panduan Regulasi BUMN",
+        "url": "https://dsintegra.co.id/blog"
+      }
+    ]
+  });
+
+  // 3. Skema khusus berdasarkan tipe halaman
   if (routePath.startsWith("/blog/")) {
     // Artikel blog: Gunakan TechArticle dengan metadata spesifik artikel
     graphs.push({
@@ -380,6 +426,24 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "url": meta.canonical
       });
     }
+  } else if (routePath === "/regulasi") {
+    REGULATION_ITEMS.forEach((reg) => {
+      graphs.push({
+        "@type": "Legislation",
+        "@id": `https://dsintegra.co.id/regulasi#${reg.id}`,
+        "name": reg.shortTitle,
+        "alternateName": reg.officialTitle,
+        "legislationIdentifier": reg.identifier,
+        "legislationType": reg.category,
+        "datePublished": reg.effectiveDate,
+        "publisher": {
+          "@type": "Organization",
+          "name": reg.issuingAuthority
+        },
+        "description": reg.summary,
+        "url": `https://dsintegra.co.id/regulasi#${reg.id}`
+      });
+    });
   } else if (routePath.startsWith("/layanan/")) {
     graphs.push({
       "@type": "Service",
@@ -393,6 +457,42 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
       "description": meta.description,
       "areaServed": "ID"
     });
+  } else if (routePath.startsWith("/sektor-bumn/")) {
+    const slug = routePath.replace("/sektor-bumn/", "");
+    const sector = SECTOR_DATA_MAP[slug];
+    if (sector) {
+      graphs.push({
+        "@type": "Service",
+        "@id": `${meta.canonical}#service`,
+        "name": `${sector.heroHeading} ${sector.heroHighlight}`,
+        "provider": {
+          "@type": "Organization",
+          "name": "Daya Solusi Integra",
+          "url": "https://dsintegra.co.id/"
+        },
+        "description": sector.heroDescription,
+        "areaServed": "ID",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": sector.targetEntities.join(", ")
+        }
+      });
+
+      if (sector.faqs && sector.faqs.length > 0) {
+        graphs.push({
+          "@type": "FAQPage",
+          "@id": `${meta.canonical}#faq`,
+          "mainEntity": sector.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.answer
+            }
+          }))
+        });
+      }
+    }
   }
 
   // 3. Skema FAQPage untuk rute yang memiliki kumpulan tanya-jawab resmi
@@ -587,6 +687,48 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Jadwalkan sesi konsultasi dan demo produk melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a> atau navigasikan ke formulir kontak kami.</p>
     </section>
     `;
+  } else if (routePath === "/regulasi") {
+    const regList = REGULATION_ITEMS.map((reg) => `
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 1.5rem;">
+        <h3>${cleanProhibitedDashes(reg.shortTitle)} (${cleanProhibitedDashes(reg.identifier)})</h3>
+        <p><strong>Judul Resmi:</strong> ${cleanProhibitedDashes(reg.officialTitle)}</p>
+        <p><strong>Otoritas Penerbit:</strong> ${cleanProhibitedDashes(reg.issuingAuthority)} | <strong>Berlaku:</strong> ${reg.effectiveDate}</p>
+        <p>${cleanProhibitedDashes(reg.summary)}</p>
+        <p><strong>Mandat Kunci:</strong> ${cleanProhibitedDashes(reg.primaryMandate)}</p>
+        <h4>Distribusi Tiga Lini (Three Lines Model):</h4>
+        <ul>
+          <li><strong>${cleanProhibitedDashes(reg.threeLinesRole.firstLine)}</strong></li>
+          <li><strong>${cleanProhibitedDashes(reg.threeLinesRole.secondLine)}</strong></li>
+          <li><strong>${cleanProhibitedDashes(reg.threeLinesRole.thirdLine)}</strong></li>
+        </ul>
+      </article>
+    `).join("\n");
+
+    specificContent = `
+    <section>
+      <h2>Pusat Regulasi & Landasan Hukum Pengendalian Internal BUMN</h2>
+      <p>Kompilasi direktori regulasi resmi yang mengatur kepatuhan pengendalian internal atas pelaporan keuangan (ICOFR), tata kelola korporasi, serta standar pemeriksaan BPK.</p>
+      ${regList}
+    </section>
+    `;
+  } else if (routePath.startsWith("/glosarium/")) {
+    const slug = routePath.replace("/glosarium/", "");
+    const item = GLOSSARY_ITEMS.find((g) => g.id === slug);
+    if (item) {
+      const termTitle = item.acronym ? `${item.term} (${item.acronym})` : item.term;
+      specificContent = `
+      <article>
+        <h2>${cleanProhibitedDashes(termTitle)}</h2>
+        <p><strong>Kategori:</strong> ${cleanProhibitedDashes(item.category)} | <strong>Rujukan Regulasi:</strong> ${cleanProhibitedDashes(item.regulationRef)}</p>
+        <h3>Definisi Kepatuhan:</h3>
+        <p>${cleanProhibitedDashes(item.definition)}</p>
+        <h3>Poin Kunci BUMN:</h3>
+        <p>${cleanProhibitedDashes(item.keyTakeaway)}</p>
+        ${item.practicalExample ? `<h3>Contoh Penerapan Praktis:</h3><p>${cleanProhibitedDashes(item.practicalExample)}</p>` : ""}
+        <p><a href="/glosarium">&larr; Kembali ke Direktori Glosarium ICOFR BUMN</a></p>
+      </article>
+      `;
+    }
   } else if (routePath.startsWith("/layanan/")) {
     specificContent = `
     <section>
@@ -595,6 +737,74 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Konsultasikan kebutuhan implementasi, evaluasi kesiapan audit, atau integrasi sistem melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
+  } else if (routePath.startsWith("/sektor-bumn/")) {
+    const slug = routePath.replace("/sektor-bumn/", "");
+    const sector = SECTOR_DATA_MAP[slug];
+    if (sector) {
+      const challengesHtml = sector.keyChallenges
+        .map(
+          (c, idx) => `
+        <article style="margin-bottom: 1.5rem;">
+          <h3>${idx + 1}. ${cleanProhibitedDashes(c.title)}</h3>
+          <p>${cleanProhibitedDashes(c.description)}</p>
+        </article>`
+        )
+        .join("\n");
+
+      const matrixRows = sector.regulatoryAlignment
+        .map(
+          (m) => `
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid #334155;"><strong>${cleanProhibitedDashes(m.sk5Requirement)}</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid #334155;">${cleanProhibitedDashes(m.sectorRegulation)}</td>
+          <td style="padding: 0.75rem; border: 1px solid #334155;">${cleanProhibitedDashes(m.challenge)}</td>
+          <td style="padding: 0.75rem; border: 1px solid #334155; color: #93c5fd;">${cleanProhibitedDashes(m.solutionByDsi)}</td>
+        </tr>`
+        )
+        .join("\n");
+
+      const rcmCards = sector.rcmBlueprints
+        .map(
+          (r, idx) => `
+        <div style="background: #0f172a; padding: 1.25rem; border: 1px solid #1e293b; border-radius: 8px; margin-bottom: 1rem;">
+          <h4>Blueprint #${idx + 1}: ${cleanProhibitedDashes(r.processName)} (Frekuensi: ${cleanProhibitedDashes(r.frequency)})</h4>
+          <p><strong>Risiko Finansial:</strong> ${cleanProhibitedDashes(r.financialRisk)}</p>
+          <p><strong>Aktivitas Kontrol:</strong> ${cleanProhibitedDashes(r.keyControl)}</p>
+          <p><strong>Metode Uji TOE:</strong> ${cleanProhibitedDashes(r.testingMethod)}</p>
+        </div>`
+        )
+        .join("\n");
+
+      specificContent = `
+      <section>
+        <h2>Ringkasan Eksekutif: Pengendalian Internal Sektor ${cleanProhibitedDashes(sector.shortTitle)}</h2>
+        <p>${cleanProhibitedDashes(sector.executiveSummary)}</p>
+        
+        <h2>Titik Kritis & Tantangan Kepatuhan</h2>
+        ${challengesHtml}
+
+        <h2>Matriks Harmonisasi SK-5 dan Regulasi Sektoral</h2>
+        <table border="1" cellpadding="8" style="border-collapse: collapse; margin-top: 1rem; width: 100%; border: 1px solid #334155;">
+          <thead>
+            <tr style="background: #1e293b;">
+              <th>Mandat SK-5 BUMN</th>
+              <th>Regulasi Sektor</th>
+              <th>Tantangan Lapangan</th>
+              <th>Solusi Daya Solusi Integra</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${matrixRows}
+          </tbody>
+        </table>
+
+        <h2 style="margin-top: 2rem;">Contoh Arsitektur RCM (Risk and Control Matrix)</h2>
+        ${rcmCards}
+
+        <p><a href="/kalkulator-sampel-toe">Gunakan Kalkulator Sampel TOE Tabel 22</a> | <a href="/regulasi">Pelajari Pusat Regulasi BUMN</a></p>
+      </section>
+      `;
+    }
   }
 
   // Tambahkan FAQ bila tersedia
@@ -776,3 +986,162 @@ console.log(`Successfully generated ${generatedCount} static prerendered HTML ro
 
 // Generate RSS 2.0 Feed untuk sindikasi konten blog
 generateRssFeed();
+
+/**
+ * Otomatisasi pembuatan berkas llms.txt dan llms-full.txt untuk AI context discovery
+ */
+function generateLlmsFiles() {
+  console.log("Generating automated llms.txt and llms-full.txt context files...");
+
+  const blogFiles = fs.existsSync(blogContentDir)
+    ? fs.readdirSync(blogContentDir).filter((file) => file.endsWith(".md"))
+    : [];
+
+  const blogEntries: Array<{
+    title: string;
+    slug: string;
+    excerpt: string;
+    category: string;
+  }> = [];
+
+  for (const file of blogFiles) {
+    const rawContent = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    const { data } = parseBlogFrontMatter(rawContent);
+    const slug = data.slug || file.replace(".md", "");
+    const title = cleanProhibitedDashes(data.title || "Artikel GRC BUMN");
+    const excerpt = cleanProhibitedDashes(data.excerpt || "Panduan kepatuhan dan tata kelola regulasi BUMN.");
+    const category = cleanProhibitedDashes(data.category || "Tata Kelola & GRC");
+    blogEntries.push({ title, slug, excerpt, category });
+  }
+
+  // 1. Susun llms.txt (Standard Context Index)
+  const llmsTxtContent = `# Daya Solusi Integra
+
+> Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan spesialis tata kelola korporasi, implementasi ICOFR (Internal Control over Financial Reporting), evaluasi ITGC, dan penyedia platform software GRC Integra untuk kepatuhan regulasi Kementerian BUMN di Indonesia.
+
+PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (kontak: marketing@dsintegra.co.id, +62-811-100-2442). Klien utama mencakup Badan Usaha Milik Negara (BUMN), Anak Perusahaan Holding BUMN, Perbankan, dan Lembaga Jasa Keuangan Teratur. Produk unggulan perusahaan adalah platform GRC Integra, solusi siklus hidup digital ICOFR terintegrasi pertama untuk BUMN sesuai mandat SK-5/DKU.MBU/11/2024.
+
+## Platform Produk
+- [GRC Integra Platform](https://dsintegra.co.id/platform/grc-integra): Perangkat lunak siklus hidup digital ICOFR BUMN terintegrasi dengan pemetaan BPMN, kalkulator sampel Tabel 22, validasi Lini 2, dan asersi digital ber-QR Code.
+- [BPM Workflow Editor](https://dsintegra.co.id/platform/bpm-workflow-editor): Modul pemetaan proses bisnis visual standar Visio di web, auto-draw diagram dari PDF/gambar, dan notasi BPMN 2.0 Lampiran 3 SK-5 BUMN.
+
+## Layanan Konsultasi & Kepatuhan
+- [Konsultasi Implementasi ICOFR BUMN](https://dsintegra.co.id/layanan/icofr-bumn): Pendampingan komprehensif penentuan akun material, penyusunan Risk and Control Matrix (RCM), walkthrough Lini 2, dan asersi Direksi sesuai SK-5/DKU.MBU/11/2024.
+- [Evaluasi & Audit Kesiapan ITGC](https://dsintegra.co.id/layanan/itgc-audit-readiness): Audit kontrol umum teknologi informasi (hak akses pengguna, change management, segregasi tugas) berbasis POJK No. 11/POJK.03/2022 dan ISO 27001.
+- [Enterprise GRC & Maturity Assessment](https://dsintegra.co.id/layanan/enterprise-grc): Penyelarasan kerangka tata kelola terpadu, pengukuran tingkat kematangan pengendalian internal 5 komponen dan 17 prinsip COSO Framework, serta manajemen risiko ISO 31000.
+
+## Fokus Sektor BUMN (Vertical Silos)
+- [Perbankan & Jasa Keuangan BUMN](https://dsintegra.co.id/sektor-bumn/perbankan): Solusi pengendalian internal perbankan Himbara & BPD, mitigasi CKPN PSAK 71, audit ITGC Core Banking, dan kepatuhan POJK Manajemen Risiko.
+- [Infrastruktur & Konstruksi Karya](https://dsintegra.co.id/sektor-bumn/infrastruktur-karya): Solusi tata kelola pengakuan pendapatan persentase penyelesaian PSAK 72, verifikasi tagihan vendor/subkontraktor, dan mitigasi over-invoicing proyek BUMN Karya.
+- [Energi, Migas & Holding Tambang](https://dsintegra.co.id/sektor-bumn/energi-tambang): Pengendalian internal holding BUMN terintegrasi, eliminasi intercompany balancing antar-anak usaha, audit cadangan eksplorasi, dan provisi reklamasi lingkungan.
+
+## Aset Interaktif & Alat Bantu Audit
+- [Pusat Regulasi BUMN](https://dsintegra.co.id/regulasi): Repositori direktori regulasi resmi SK-5/DKU.MBU/11/2024, PER-2/MBU/03/2023, POJK 17/2023, dan matriks tanggung jawab Tiga Lini.
+- [Kalkulator Sampel Pengujian TOE](https://dsintegra.co.id/kalkulator-sampel-toe): Alat hitung interaktif penentuan ukuran sampel pengujian operasional kontrol berbasis frekuensi dan populasi normatif Tabel 22 SK-5 Kementerian BUMN.
+- [Asesmen Mandiri Kematangan COSO](https://dsintegra.co.id/asesmen-maturitas): Evaluasi interaktif kesiapan sistem pengendalian internal organisasi berdasarkan 5 pilar COSO dalam 3 menit.
+- [Glosarium Regulasi & Istilah ICOFR](https://dsintegra.co.id/glosarium): Kamus komprehensif terminologi tata kelola, audit, dan regulasi BUMN beserta rute individual per istilah.
+
+## Panduan Teknis & Riset Regulasi (Knowledge Base)
+${blogEntries.map((b) => `- [${b.title}](https://dsintegra.co.id/blog/${b.slug}): ${b.excerpt}`).join("\n")}
+
+## Kebijakan & Integritas
+- [Kebijakan Privasi & Tata Kelola Data](https://dsintegra.co.id/kebijakan-privasi): Komitmen kepatuhan perlindungan data pribadi sesuai UU No. 27/2022 (UU PDP).
+- [Pernyataan Independensi Konsultan](https://dsintegra.co.id/pernyataan-independensi): Standar independensi profesional, mitigasi benturan kepentingan, dan etika audit.
+
+## Konteks Komprehensif
+- [Dokumentasi Lengkap LLM](https://dsintegra.co.id/llms-full.txt): Kumpulan data lengkap konteks korporasi, regulasi SK-5, dan matriks Tabel 22 dalam satu berkas teks terpadu.
+`;
+
+  // 2. Susun llms-full.txt (Comprehensive Knowledge Base Context)
+  const glossaryListFull = GLOSSARY_ITEMS.map(
+    (g) => `### ${g.term}${g.acronym ? ` (${g.acronym})` : ""}
+- Definisi: ${cleanProhibitedDashes(g.definition)}
+- Rujukan Regulasi: ${cleanProhibitedDashes(g.regulationRef)}
+- Kategori: ${cleanProhibitedDashes(g.category)}
+- Tautan: https://dsintegra.co.id/glosarium/${g.id}`
+  ).join("\n\n");
+
+  const blogListFull = blogEntries.map(
+    (b) => `### ${b.title}
+- Kategori: ${b.category}
+- Ringkasan: ${b.excerpt}
+- Tautan: https://dsintegra.co.id/blog/${b.slug}`
+  ).join("\n\n");
+
+  const regulationListFull = REGULATION_ITEMS.map(
+    (r) => `### ${r.shortTitle} (${r.identifier})
+- Judul Resmi: ${cleanProhibitedDashes(r.officialTitle)}
+- Otoritas Penerbit: ${cleanProhibitedDashes(r.issuingAuthority)}
+- Kategori: ${cleanProhibitedDashes(r.category)}
+- Berlaku Efektif: ${r.effectiveDate}
+- Ringkasan: ${cleanProhibitedDashes(r.summary)}
+- Mandat Kunci: ${cleanProhibitedDashes(r.primaryMandate)}
+- Peran Tiga Lini:
+  * ${cleanProhibitedDashes(r.threeLinesRole.firstLine)}
+  * ${cleanProhibitedDashes(r.threeLinesRole.secondLine)}
+  * ${cleanProhibitedDashes(r.threeLinesRole.thirdLine)}
+- Tautan: https://dsintegra.co.id/regulasi#${r.id}`
+  ).join("\n\n");
+
+  const llmsFullContent = `# Dokumentasi Komprehensif AI: Daya Solusi Integra & GRC Integra
+
+## Ringkasan Eksekutif
+Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan dan pengembang perangkat lunak tata kelola korporasi (GRC) asal Indonesia yang berfokus mendampingi Badan Usaha Milik Negara (BUMN) dalam memenuhi amanat regulasi Surat Keputusan Menteri BUMN Nomor SK-5/DKU.MBU/11/2024 tentang Penerapan Sistem Pengendalian Internal atas Pelaporan Keuangan (ICOFR).
+
+Perusahaan mengembangkan platform perangkat lunak khusus bernama "GRC Integra", yaitu platform siklus hidup digital ICOFR terintegrasi pertama di Indonesia yang mengotomasi pemetaan proses bisnis, kalkulasi sampel pengujian, penatausahaan kertas kerja walkthrough, dan penerbitan lembar asersi manajemen digital.
+
+## Landasan Regulasi & Kepatuhan BUMN
+${regulationListFull}
+
+## Lima Tahapan Siklus Hidup ICOFR BUMN
+GRC Integra dan metodologi konsultansi Daya Solusi Integra membagi implementasi ICOFR ke dalam 5 siklus berurutan:
+
+1. Tahap Scoping & Penentuan Akun Signifikan:
+   - Identifikasi akun material pada Laporan Posisi Keuangan dan Laporan Laba Rugi menggunakan ambang batas materialitas kuantitatif dan faktor risiko kualitatif.
+   - Pemetaan akun signifikan ke proses bisnis utama dan unit operasional entitas induk maupun anak perusahaan.
+
+2. Tahap Pemetaan Proses Bisnis & Walkthrough Lini 2:
+   - Dokumentasi narasi proses bisnis menggunakan notasi standar BPMN (Business Process Model and Notation) sesuai ketentuan Lampiran 3 regulasi SK-5.
+   - Penyusunan Risk and Control Matrix (RCM) yang menghubungkan risiko salah saji material dengan kontrol preventif maupun detektif.
+   - Pelaksanaan walkthrough oleh penjamin independen (Lini 2) untuk mengonfirmasi keabsahan rancangan kontrol.
+
+3. Tahap Pengujian Efektivitas Desain & Operasional (TOD & TOE):
+   - Test of Design (TOD): Memastikan bahwa rancangan kontrol, bila beroperasi secara efektif, mampu mencegah atau mendeteksi salah saji tepat waktu.
+   - Test of Operating Effectiveness (TOE): Menguji apakah kontrol beroperasi konsisten sepanjang periode pelaporan melalui pengujian sampel bukti kerja.
+
+4. Tahap Evaluasi Defisiensi & Remediasi:
+   - Klasifikasi temuan kontrol ke dalam tiga tingkatan: Control Deficiency, Significant Deficiency, dan Material Weakness.
+   - Penyusunan rencana aksi perbaikan (Corrective Action Plan / CAP) dengan target waktu penyelesaian sebelum penutupan tahun buku.
+
+5. Tahap Asersi Manajemen & Pelaporan Direksi:
+   - Penerbitan laporan efektivitas pengendalian internal pelaporan keuangan tahunan.
+   - Penandatanganan pernyataan tanggung jawab manajemen secara digital dengan verifikasi QR Code terenkripsi.
+
+## Standar Penentuan Sampel Pengujian TOE (Tabel 22 Regulasi BUMN)
+Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa deviasi yang dapat ditoleransi (tolerable deviation rate 0 persen), ukuran sampel minimum ditetapkan secara normatif:
+- Frekuensi Kontrol Tahunan (Annual): 1 sampel.
+- Frekuensi Kontrol Triwulanan (Quarterly): 2 sampel.
+- Frekuensi Kontrol Bulanan (Monthly): 2 sampai 5 sampel.
+- Frekuensi Kontrol Mingguan (Weekly): 5 sampai 15 sampel.
+- Frekuensi Kontrol Harian (Daily): 20 sampai 40 sampel.
+- Frekuensi Kontrol Berkali-kali Sehari: 25 sampai 60 sampel.
+
+## Direktori Glosarium Terminologi Kepatuhan & Regulasi
+${glossaryListFull}
+
+## Artikel Riset & Panduan Teknis Kepatuhan
+${blogListFull}
+`;
+
+  // Tulis berkas ke dist dan public
+  fs.writeFileSync(path.join(distDir, "llms.txt"), llmsTxtContent, "utf-8");
+  fs.writeFileSync(path.join(publicDir, "llms.txt"), llmsTxtContent, "utf-8");
+  fs.writeFileSync(path.join(distDir, "llms-full.txt"), llmsFullContent, "utf-8");
+  fs.writeFileSync(path.join(publicDir, "llms-full.txt"), llmsFullContent, "utf-8");
+
+  console.log("Successfully generated llms.txt and llms-full.txt at dist/ and public/.");
+}
+
+// Generate LLM Discovery Files
+generateLlmsFiles();
+

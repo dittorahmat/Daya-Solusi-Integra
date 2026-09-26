@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { 
   BookOpen, 
-  ChevronRight, 
+  ChevronLeft, 
   ShieldCheck, 
-  FileText, 
-  ArrowLeft, 
   ArrowUpRight, 
-  CheckCircle2,
+  FileText, 
+  CheckCircle2, 
   HelpCircle,
-  Layers
+  Tag,
+  ArrowRight
 } from "lucide-react";
 import { GLOSSARY_ITEMS, GlossaryItem } from "../../data/glossaryData";
 import Breadcrumbs from "../Breadcrumbs";
@@ -20,264 +20,179 @@ interface GlossaryDetailPageProps {
 }
 
 export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: GlossaryDetailPageProps) {
-  const currentItem = GLOSSARY_ITEMS.find((item) => item.id === slug);
+  const item: GlossaryItem | undefined = GLOSSARY_ITEMS.find((g) => g.id === slug);
 
-  // Istilah terkait dalam kategori yang sama (selain item aktif)
-  const relatedItems = React.useMemo(() => {
-    if (!currentItem) return [];
-    return GLOSSARY_ITEMS.filter(
-      (item) => item.category === currentItem.category && item.id !== currentItem.id
-    ).slice(0, 3);
-  }, [currentItem]);
-
-  // Dynamic Schema.org injection: DefinedTerm & BreadcrumbList
-  useEffect(() => {
-    if (!currentItem) return;
-
-    const schemaId = "glossary-defined-term-schema";
-    let script = document.getElementById(schemaId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = schemaId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-
-    const termJsonLd = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "DefinedTerm",
-          "@id": `https://dsintegra.co.id/glosarium/${currentItem.id}#term`,
-          "name": currentItem.acronym ? `${currentItem.term} (${currentItem.acronym})` : currentItem.term,
-          "description": currentItem.definition,
-          "inDefinedTermSet": "https://dsintegra.co.id/glosarium",
-          "url": `https://dsintegra.co.id/glosarium/${currentItem.id}`
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": `https://dsintegra.co.id/glosarium/${currentItem.id}#breadcrumb`,
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Beranda",
-              "item": "https://dsintegra.co.id/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Glosarium Kepatuhan ICOFR BUMN",
-              "item": "https://dsintegra.co.id/glosarium"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": currentItem.term,
-              "item": `https://dsintegra.co.id/glosarium/${currentItem.id}`
-            }
-          ]
-        }
-      ]
-    };
-
-    script.textContent = JSON.stringify(termJsonLd);
-
-    return () => {
-      const existingScript = document.getElementById(schemaId);
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, [currentItem]);
-
-  // Fallback 404 jika istilah tidak ditemukan
-  if (!currentItem) {
+  if (!item) {
     return (
       <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-20">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto mb-6">
-            <HelpCircle className="w-8 h-8 text-slate-500" />
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Istilah Glosarium Tidak Ditemukan
-          </h1>
-          <p className="text-slate-400 text-sm mb-8 leading-relaxed">
-            Istilah dengan rujukan URL tersebut tidak terdaftar di dalam kamus kepatuhan regulasi kami.
+        <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
+          <BookOpen className="w-12 h-12 text-slate-600 mx-auto" />
+          <h1 className="text-2xl font-bold text-white">Istilah Glosarium Tidak Ditemukan</h1>
+          <p className="text-sm text-slate-400">
+            Istilah dengan pengenal "{slug}" tidak ditemukan dalam direktori kamus kepatuhan ICOFR kami.
           </p>
           <button
             onClick={() => onNavigate("/glosarium")}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Kembali ke Daftar Glosarium
+            <ChevronLeft className="w-4 h-4" />
+            Kembali ke Katalog Glosarium
           </button>
         </div>
       </div>
     );
   }
 
+  // Find related terms
+  const relatedTerms = (item.relatedTermIds || [])
+    .map((termId) => GLOSSARY_ITEMS.find((g) => g.id === termId))
+    .filter((g): g is GlossaryItem => Boolean(g));
+
   return (
     <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Breadcrumb Hierarchy */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Breadcrumb Navigation */}
         <div className="mb-8">
           <Breadcrumbs
             items={[
               { label: "Glosarium ICOFR BUMN", path: "/glosarium" },
-              { label: currentItem.term }
+              { label: item.acronym ? `${item.term} (${item.acronym})` : item.term }
             ]}
             onNavigate={onNavigate}
           />
         </div>
 
         {/* Back Link */}
-        <div className="mb-6">
-          <button
-            onClick={() => onNavigate("/glosarium")}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Lihat Seluruh Direktori Glosarium
-          </button>
-        </div>
+        <button
+          onClick={() => onNavigate("/glosarium")}
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-blue-400 transition-colors mb-6"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Kembali ke Semua Istilah Glosarium
+        </button>
 
-        {/* Main Entity Header Card */}
-        <article className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-10 mb-10 shadow-sm">
-          
-          {/* Metadata badges */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-blue-950/70 text-blue-300 border border-blue-800/60">
-              <Layers className="w-3.5 h-3.5" />
-              {currentItem.category}
+        {/* Term Header Container */}
+        <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-10 mb-8">
+          <div className="flex flex-wrap items-center gap-2.5 mb-4">
+            <span className="px-2.5 py-1 rounded bg-blue-950 border border-blue-800 text-blue-300 text-xs font-medium inline-flex items-center gap-1">
+              <Tag className="w-3 h-3" />
+              {item.category}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-slate-900 text-[#cca43b] border border-amber-900/40">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#cca43b]" />
-              {currentItem.regulationRef}
-            </span>
-          </div>
-
-          {/* Heading Term */}
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-            {currentItem.term}
-            {currentItem.acronym && (
-              <span className="ml-3 inline-block text-xl sm:text-2xl font-bold text-[#cca43b] px-3 py-1 rounded-lg bg-amber-950/40 border border-amber-800/40 align-middle">
-                {currentItem.acronym}
+            {item.acronym && (
+              <span className="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-amber-300 font-mono text-xs font-bold">
+                {item.acronym}
               </span>
             )}
+            <span className="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 text-xs font-mono">
+              Rujukan: {item.regulationRef}
+            </span>
+          </div>
+
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6 leading-tight">
+            {item.term} {item.acronym ? `(${item.acronym})` : ""}
           </h1>
 
-          {/* Section: Definisi Resmi */}
-          <div className="mb-8">
-            <h2 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-blue-400" />
-              Definisi & Pengertian Regulasi
-            </h2>
-            <div className="bg-[#0b0f19] border border-slate-800/90 rounded-xl p-5 sm:p-7">
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
-                {currentItem.definition}
-              </p>
-            </div>
-          </div>
-
-          {/* Section: Amanat & Key Takeaway */}
-          <div className="mb-8">
-            <h2 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#cca43b]" />
-              Amanat Regulasi & Catatan Implementasi
-            </h2>
-            <div className="bg-amber-950/20 border border-amber-900/30 rounded-xl p-5 sm:p-7">
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                {currentItem.keyTakeaway}
-              </p>
-            </div>
-          </div>
-
-          {/* Solution & Implementation Link */}
-          {currentItem.relatedServiceUrl && (
-            <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <span className="text-xs text-slate-400 font-medium block">Solusi Terkait di Platform Kami:</span>
-                <span className="text-sm font-semibold text-white">{currentItem.relatedServiceLabel}</span>
-              </div>
-              <button
-                onClick={() => onNavigate(currentItem.relatedServiceUrl!)}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors shrink-0"
-              >
-                <span>Pelajari Solusi Terkait</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          )}
-
-        </article>
-
-        {/* Section: Istilah Terkait Lainnya (Internal Link Web) */}
-        {relatedItems.length > 0 && (
-          <section className="mb-14">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-blue-400" />
-                Istilah Terkait dalam Kategori: {currentItem.category}
+          <div className="space-y-6 pt-4 border-t border-slate-800/80">
+            <div>
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                Definisi Formal Kepatuhan
               </h2>
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+                {item.definition}
+              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {relatedItems.map((rel) => (
+
+            {/* Key Takeaway Box */}
+            <div className="p-5 rounded-lg bg-blue-950/30 border border-blue-900/50">
+              <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+                Poin Kunci untuk BUMN:
+              </span>
+              <p className="text-sm text-blue-100 leading-relaxed font-medium">
+                {item.keyTakeaway}
+              </p>
+            </div>
+
+            {/* Practical Example Box */}
+            {item.practicalExample && (
+              <div className="p-5 rounded-lg bg-[#0b0f19] border border-slate-800">
+                <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-amber-400" />
+                  Contoh Penerapan Praktis di Lapangan:
+                </span>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  {item.practicalExample}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Related Terms Matrix */}
+        {relatedTerms.length > 0 && (
+          <div className="mb-12">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+              Istilah Tata Kelola Terkait
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedTerms.map((rel) => (
                 <div
                   key={rel.id}
                   onClick={() => onNavigate(`/glosarium/${rel.id}`)}
-                  className="bg-[#0f172a] border border-slate-800 rounded-xl p-5 cursor-pointer hover:border-blue-500/60 transition-all flex flex-col justify-between group"
+                  className="p-4 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-blue-600/60 cursor-pointer transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <span className="text-[11px] text-slate-400 font-mono block mb-2">
-                      {rel.regulationRef}
-                    </span>
-                    <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors mb-2">
-                      {rel.term}
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-xs text-blue-400 font-mono font-medium">{rel.category}</span>
                       {rel.acronym && (
-                        <span className="ml-1.5 text-xs text-[#cca43b]">({rel.acronym})</span>
+                        <span className="text-xs font-mono font-bold text-amber-300 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">
+                          {rel.acronym}
+                        </span>
                       )}
-                    </h3>
-                    <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
+                    </div>
+                    <h4 className="text-sm font-bold text-white mb-2">{rel.term}</h4>
+                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
                       {rel.definition}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs text-blue-400 font-medium">
-                    <span>Baca Definisi</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <div className="mt-3 pt-2 border-t border-slate-800/60 flex items-center justify-end text-xs font-semibold text-blue-400">
+                    Pelajari Istilah
+                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
                   </div>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
         )}
 
-        {/* Bottom Conversion Box */}
-        <section className="bg-gradient-to-r from-blue-950/40 to-slate-900 border border-blue-900/40 rounded-2xl p-8 sm:p-10 text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">
-            Otomasi Kepatuhan Regulasi SK-5 BUMN Bersama GRC Integra
-          </h2>
-          <p className="text-sm text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Tinggalkan pengelolaan kertas kerja manual yang rentan kesalahan formula dan temuan auditor. GRC Integra mengintegrasikan alur walkthrough Lini 2, matriks RCM, dan asersi digital bersertifikasi.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => onNavigate("/platform/grc-integra")}
-              className="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors"
-            >
-              Lihat Demo Platform GRC Integra
-            </button>
-            {onOpenAdvisor && (
+        {/* Bottom CTA Card */}
+        <div className="p-8 rounded-xl bg-[#0f172a] border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="space-y-1">
+            <h3 className="text-lg font-bold text-white">Butuh Pendampingan Regulasi {item.acronym || item.term}?</h3>
+            <p className="text-xs text-slate-300">
+              Pelajari solusi implementasi teruji kami untuk memastikan kepatuhan penuh terhadap standar audit BUMN.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            {item.relatedServiceUrl && (
               <button
-                onClick={onOpenAdvisor}
-                className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-sm transition-colors"
+                onClick={() => onNavigate(item.relatedServiceUrl!)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
               >
-                Tanya Konsultan AI Kepatuhan
+                {item.relatedServiceLabel || "Lihat Layanan Terkait"}
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
             )}
+            <button
+              onClick={() => onNavigate("/regulasi")}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0b0f19] border border-slate-800 hover:border-slate-700 text-slate-300 text-xs font-semibold transition-colors"
+            >
+              Lihat Pusat Regulasi
+            </button>
           </div>
-        </section>
+        </div>
 
       </div>
     </div>

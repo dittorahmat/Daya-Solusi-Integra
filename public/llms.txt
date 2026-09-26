@@ -6,25 +6,37 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 
 ## Platform Produk
 - [GRC Integra Platform](https://dsintegra.co.id/platform/grc-integra): Perangkat lunak siklus hidup digital ICOFR BUMN terintegrasi dengan pemetaan BPMN, kalkulator sampel Tabel 22, validasi Lini 2, dan asersi digital ber-QR Code.
+- [BPM Workflow Editor](https://dsintegra.co.id/platform/bpm-workflow-editor): Modul pemetaan proses bisnis visual standar Visio di web, auto-draw diagram dari PDF/gambar, dan notasi BPMN 2.0 Lampiran 3 SK-5 BUMN.
 
 ## Layanan Konsultasi & Kepatuhan
 - [Konsultasi Implementasi ICOFR BUMN](https://dsintegra.co.id/layanan/icofr-bumn): Pendampingan komprehensif penentuan akun material, penyusunan Risk and Control Matrix (RCM), walkthrough Lini 2, dan asersi Direksi sesuai SK-5/DKU.MBU/11/2024.
 - [Evaluasi & Audit Kesiapan ITGC](https://dsintegra.co.id/layanan/itgc-audit-readiness): Audit kontrol umum teknologi informasi (hak akses pengguna, change management, segregasi tugas) berbasis POJK No. 11/POJK.03/2022 dan ISO 27001.
 - [Enterprise GRC & Maturity Assessment](https://dsintegra.co.id/layanan/enterprise-grc): Penyelarasan kerangka tata kelola terpadu, pengukuran tingkat kematangan pengendalian internal 5 komponen dan 17 prinsip COSO Framework, serta manajemen risiko ISO 31000.
 
+## Fokus Sektor BUMN (Vertical Silos)
+- [Perbankan & Jasa Keuangan BUMN](https://dsintegra.co.id/sektor-bumn/perbankan): Solusi pengendalian internal perbankan Himbara & BPD, mitigasi CKPN PSAK 71, audit ITGC Core Banking, dan kepatuhan POJK Manajemen Risiko.
+- [Infrastruktur & Konstruksi Karya](https://dsintegra.co.id/sektor-bumn/infrastruktur-karya): Solusi tata kelola pengakuan pendapatan persentase penyelesaian PSAK 72, verifikasi tagihan vendor/subkontraktor, dan mitigasi over-invoicing proyek BUMN Karya.
+- [Energi, Migas & Holding Tambang](https://dsintegra.co.id/sektor-bumn/energi-tambang): Pengendalian internal holding BUMN terintegrasi, eliminasi intercompany balancing antar-anak usaha, audit cadangan eksplorasi, dan provisi reklamasi lingkungan.
+
 ## Aset Interaktif & Alat Bantu Audit
+- [Pusat Regulasi BUMN](https://dsintegra.co.id/regulasi): Repositori direktori regulasi resmi SK-5/DKU.MBU/11/2024, PER-2/MBU/03/2023, POJK 17/2023, dan matriks tanggung jawab Tiga Lini.
 - [Kalkulator Sampel Pengujian TOE](https://dsintegra.co.id/kalkulator-sampel-toe): Alat hitung interaktif penentuan ukuran sampel pengujian operasional kontrol berbasis frekuensi dan populasi normatif Tabel 22 SK-5 Kementerian BUMN.
 - [Asesmen Mandiri Kematangan COSO](https://dsintegra.co.id/asesmen-maturitas): Evaluasi interaktif kesiapan sistem pengendalian internal organisasi berdasarkan 5 pilar COSO dalam 3 menit.
-- [Glosarium Regulasi & Istilah ICOFR](https://dsintegra.co.id/glosarium): Kamus komprehensif terminologi tata kelola, audit, dan regulasi BUMN.
+- [Glosarium Regulasi & Istilah ICOFR](https://dsintegra.co.id/glosarium): Kamus komprehensif terminologi tata kelola, audit, dan regulasi BUMN beserta rute individual per istilah.
 
-## Panduan Teknis & Riset Regulasi
-- [Apa Itu ICOFR BUMN & Regulasi SK-5](https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5): Panduan fundamental tata kelola, tujuan pengendalian internal, dan dasar hukum SK-5/DKU.MBU/11/2024.
-- [Panduan Sampel TOE Tabel 22 ICOFR BUMN](https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn): Metodologi audit sampling pengujian efektivitas pengendalian operasional.
-- [Manfaat Aplikasi ICOFR BUMN vs Spreadsheet](https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet): Analisis kelemahan spreadsheet manual dan keuntungan otomasi digital RCM.
-- [Panduan Kepatuhan SK-5 dan GRC Integra](https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra): Alur kerja digital siklus hidup kepatuhan asersi manajemen.
-- [Fitur Kunci Aplikasi ICOFR BUMN](https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn): Standar fungsional perangkat lunak audit internal BUMN.
-- [Efektivitas Pengendalian Internal ICOFR](https://dsintegra.co.id/blog/efektivitas-icofr-bumn): Tolok ukur keandalan pelaporan keuangan dan mitigasi salah saji material.
-- [Manajemen Risiko Terintegrasi ISO 31000 BUMN](https://dsintegra.co.id/blog/iso-31000-bumn): Harmonisasi manajemen risiko korporasi dengan pengendalian internal pelaporan keuangan.
+## Panduan Teknis & Riset Regulasi (Knowledge Base)
+- [Analisis Komparatif: Memilih Software GRC BUMN antara Platform Global vs Platform Terlokalisasi Regulasi Indonesia](https://dsintegra.co.id/blog/alternatif-software-grc-global-bumn): Evaluasi strategis bagi Direksi TI dan Komite Audit BUMN: membedah Total Cost of Ownership (TCO), kedaulatan data UU PDP, dan kepatuhan native SK-5 antara perangkat lunak GRC global dengan platform lokal terdedikasi.
+- [Apa Itu ICOFR BUMN? Panduan Lengkap Fungsi, Tujuan, dan Landasan Hukum SK-5](https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5): Pahami secara mendalam apa itu ICOFR BUMN, fungsi strategisnya untuk dewan direksi dan komite audit, serta landasan hukum penerbitan regulasi SK-5/DKU.MBU/11/2024 bagi akuntabilitas pelaporan keuangan.
+- [Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN](https://dsintegra.co.id/blog/efektivitas-icofr-mencegah-fraud-bumn): Bagaimana kerangka kerja COSO Internal Control membantu BUMN mendeteksi potensi penyimpangan laporan keuangan sejak dini.
+- [7 Fitur Kunci Aplikasi ICOFR Terbaik untuk Uji Pengendalian BUMN Sesuai Regulasi SK-5](https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn): Pelajari fitur aplikasi ICOFR yang wajib ada untuk mendukung uji pengendalian internal BUMN: dari pemetaan BPM Lampiran 3, validasi Lini 2, kalkulator sampel Tabel 22, hingga asersi digital QR Code.
+- [Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN](https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan): Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern.
+- [Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet untuk Efisiensi dan Akuntabilitas Audit BUMN](https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet): Ketahui 6 manfaat utama aplikasi ICOFR terintegrasi dibanding lembar kerja spreadsheet manual: efisiensi audit hingga 70 persen, eliminasi human error, kepatuhan regulasi SK-5, dan audit trail tak terbantahkan.
+- [Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN Sesuai Mandat SK-5](https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn): Pelajari cara menyusun diagram alir SOP dan flowchart proses bisnis BUMN berstandar BPMN 2.0 sesuai Lampiran 3 SK-5: dari pemilihan notasi baku, sinkronisasi RCM, hingga migrasi dokumen eksisting.
+- [Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN](https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn): Pelajari formula resmi penentuan ukuran sampel pengujian efektivitas operasi (Test of Operating Effectiveness / TOE) sesuai Tabel 22 Regulasi SK-5 BUMN, justifikasi batas bawah, dan dokumentasi audit SPKN.
+- [Panduan Lengkap Regulasi SK-5 BUMN: Mengapa Siklus ICOFR Butuh Platform Terintegrasi GRC Integra](https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra): Pelajari kewajiban regulasi SK-5/DKU.MBU/11/2024 bagi BUMN, dari pemetaan BPM Lampiran 3, validasi Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO & CFO.
+- [Perbandingan Software GRC: Platform Spesifik Regulasi BUMN SK-5 vs Modul GRC Tambahan ERP Global](https://dsintegra.co.id/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn): Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam mengevaluasi pemilihan perangkat lunak tata kelola: komparasi 5 dimensi antara platform GRC terdedikasi native SK-5 dengan modul tambahan ERP global.
+- [Risiko Audit Pengelolaan RCM Manual Berbasis Spreadsheet Excel vs Platform GRC Terdedikasi BUMN](https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn): Analisis kritis risiko kepatuhan pengelolaan Risk and Control Matrix (RCM) ICOFR menggunakan spreadsheet Excel di lingkungan BUMN: tantangan integritas data, ketiadaan jejak audit, dan solusi otomasi berbasis SK-5/2024.
+- [Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan](https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp): Pelajari bagaimana sebuah Holding BUMN dengan aset di atas Rp 50 Triliun mengeliminasi 42 defisiensi pengendalian intern, memangkas siklus pengujian TOE hingga 90 persen, dan mempertahankan opini WTP melalui implementasi metodologi SK-5/2024.
 
 ## Kebijakan & Integritas
 - [Kebijakan Privasi & Tata Kelola Data](https://dsintegra.co.id/kebijakan-privasi): Komitmen kepatuhan perlindungan data pribadi sesuai UU No. 27/2022 (UU PDP).

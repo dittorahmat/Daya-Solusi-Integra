@@ -6,6 +6,8 @@ export interface GlossaryItem {
   regulationRef: string;
   definition: string;
   keyTakeaway: string;
+  practicalExample?: string;
+  relatedTermIds?: string[];
   relatedServiceUrl?: string;
   relatedServiceLabel?: string;
 }
@@ -27,6 +29,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 & COSO Framework",
     definition: "Suatu proses yang dirancang dan dijalankan oleh Dewan Direksi, manajemen, dan personel entitas lainnya untuk memberikan keyakinan memadai mengenai keandalan pelaporan keuangan dan penyusunan laporan keuangan untuk pihak eksternal sesuai dengan prinsip akuntansi yang berlaku umum.",
     keyTakeaway: "Wajib diterapkan oleh seluruh BUMN dan anak perusahaannya di Indonesia dengan penandatanganan asersi manajemen tahunan oleh Direktur Utama dan Direktur Keuangan.",
+    practicalExample: "Penerapan matriks pemisahan tugas (Segregation of Duties) pada ERP SAP BUMN antara pembuat pesanan pembelian (purchase order) dan pihak yang menyetujui pembayaran (payment release).",
+    relatedTermIds: ["asersi-manajemen", "tod", "toe", "elc"],
     relatedServiceUrl: "/layanan/icofr-bumn",
     relatedServiceLabel: "Konsultasi Implementasi ICOFR"
   },
@@ -38,6 +42,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab IV Tahap Pengujian",
     definition: "Pengujian evaluasi untuk memastikan bahwa aktivitas pengendalian yang dirancang, jika dioperasikan sebagaimana mestinya oleh personel yang berwenang, mampu mencegah atau mendeteksi dan mengoreksi salah saji material pada pelaporan keuangan secara tepat waktu.",
     keyTakeaway: "Dilakukan sebelum pengujian efektivitas operasi (TOE). Jika rancangan kontrol dinyatakan tidak efektif (defisiensi desain), kontrol tersebut tidak dapat diuji efektivitas operasinya.",
+    practicalExample: "Evaluasi formulir Standard Operating Procedure (SOP) rekonsiliasi bank apakah telah mensyaratkan tanda tangan verifikasi dari Pejabat Lini 2 sebelum jurnal dicatat.",
+    relatedTermIds: ["toe", "walkthrough-lini-2", "defisiensi-kontrol"],
     relatedServiceUrl: "/platform/grc-integra",
     relatedServiceLabel: "Otomasi Pengujian TOD di GRC Integra"
   },
@@ -49,6 +55,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Tabel 22",
     definition: "Pengujian untuk mengumpulkan bukti audit yang cukup memadai mengenai apakah aktivitas pengendalian beroperasi secara efektif dan konsisten sepanjang periode yang dicakup dalam asersi manajemen, termasuk siapa yang menjalankannya dan bagaimana konsistensinya.",
     keyTakeaway: "Ukuran sampel pengujian TOE wajib mengacu secara normatif pada frekuensi pelaksanaan kontrol (Tabel 22 regulasi BUMN).",
+    practicalExample: "Menguji 25 dokumen tiket perubahan sistem ITGC secara acak sepanjang tahun buku untuk memastikan seluruhnya memiliki bukti otorisasi tertulis Kepala Divisi TI.",
+    relatedTermIds: ["tod", "tabel-22", "material-weakness"],
     relatedServiceUrl: "/blog/panduan-sampel-toe-tabel-22-icofr-bumn",
     relatedServiceLabel: "Panduan Sampel Tabel 22"
   },
@@ -59,6 +67,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Lampiran Pengujian Kontrol",
     definition: "Matriks panduan resmi Kementerian BUMN yang menetapkan rentang jumlah sampel minimum yang wajib diuji untuk kontrol manual dengan tingkat deviasi nol (zero tolerable deviation) berdasarkan frekuensi keterjadian kontrol.",
     keyTakeaway: "Tahunan: 1 sampel; Triwulanan: 2 sampel; Bulanan: 2 sampai 5 sampel; Mingguan: 5 sampai 15 sampel; Harian: 25 sampai 40 sampel; Berulang kali sehari: 25 sampai 60 sampel.",
+    practicalExample: "Kontrol rekonsiliasi kas bulanan wajib diuji dengan mengambil 2 hingga 5 bulan sampel acak tanpa boleh ditemukan satu pun deviasi.",
+    relatedTermIds: ["toe", "tod", "tlc"],
     relatedServiceUrl: "/platform/grc-integra",
     relatedServiceLabel: "Kalkulator Tabel 22 GRC Integra"
   },
@@ -69,6 +79,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Pedoman Tata Kerja Tiga Lini",
     definition: "Prosedur penelusuran transaksi dari awal terjadinya proses bisnis, pencatatan dalam sistem akuntansi, pemrosesan transaksi, hingga pelaporan dalam laporan keuangan untuk mengonfirmasi pemahaman alur kerja dan mengevaluasi rancangan kontrol.",
     keyTakeaway: "Regulasi Kementerian BUMN mewajibkan pelaksanaan walkthrough oleh pihak penjamin independen (Lini 2) untuk memastikan pemisahan tugas obyektif dari Lini 1.",
+    practicalExample: "Penelusuran satu transaksi klaim garansi dari penerimaan berkas di loket cabang hingga pencatatan liabilitas di neraca keuangan kantor pusat BUMN.",
+    relatedTermIds: ["tod", "tlc", "icofr"],
     relatedServiceUrl: "/blog/panduan-sk5-icofr-grc-integra",
     relatedServiceLabel: "Alur Walkthrough Lini 2"
   },
@@ -80,6 +92,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "COSO 17 Principles & SK-5 BUMN",
     definition: "Aktivitas pengendalian internal yang memiliki pengaruh pervasif atau melingkupi organisasi secara keseluruhan, mencakup lingkungan pengendalian, proses penilaian risiko korporat, kode etik, dan aktivitas pengawasan oleh Dewan Komisaris dan Komite Audit.",
     keyTakeaway: "ELC membentuk fondasi utama. Kelemahan pada tingkat ELC berpotensi menggagalkan efektivitas kontrol transaksional di tingkat operasional.",
+    practicalExample: "Penandatanganan pakta integritas dan komitmen anti benturan kepentingan oleh seluruh jajaran Direksi dan Dewan Komisaris BUMN.",
+    relatedTermIds: ["icofr", "tlc", "material-weakness"],
     relatedServiceUrl: "/layanan/enterprise-grc",
     relatedServiceLabel: "Evaluasi Maturitas ELC"
   },
@@ -91,6 +105,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "COSO Control Activities & SK-5 BUMN",
     definition: "Aktivitas pengendalian yang diterapkan pada proses bisnis spesifik (seperti siklus pendapatan, pengadaan barang dan jasa, penggajian, dan aset tetap) untuk memitigasi risiko salah saji pada asersi akun keuangan tertentu.",
     keyTakeaway: "TLC mencakup kontrol preventif (seperti otorisasi dual approval) dan kontrol detektif (seperti rekonsiliasi bulanan).",
+    practicalExample: "Pemeriksaan otomatis three-way matching pada sistem procurement antara Purchase Order, Goods Receipt, dan Vendor Invoice.",
+    relatedTermIds: ["elc", "itgc", "tod"],
     relatedServiceUrl: "/layanan/icofr-bumn",
     relatedServiceLabel: "Penyusunan RCM TLC"
   },
@@ -102,6 +118,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "POJK No. 11/POJK.03/2022 & COBIT",
     definition: "Kebijakan dan prosedur pengendalian umum yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk memastikan kelangsungan operasional dan integritas data keuangan.",
     keyTakeaway: "Mencakup 3 domain kritis: Manajemen Akses Logis (IAM/SoD), Manajemen Perubahan (Change Management), dan Operasi TI (Backup & Job Scheduling).",
+    practicalExample: "Pencabutan hak akses login ke basis data akuntansi maksimal 1x24 jam setelah status karyawan dinyatakan berhenti atau mutasi.",
+    relatedTermIds: ["tlc", "tod", "toe"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
     relatedServiceLabel: "Audit Kesiapan ITGC"
   },
@@ -113,6 +131,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi",
     definition: "Kondisi di mana rancangan atau pelaksanaan pengendalian tidak memungkinkan manajemen atau karyawan, dalam pelaksanaan fungsi normalnya, untuk mencegah atau mendeteksi salah saji pada laporan keuangan secara tepat waktu.",
     keyTakeaway: "Tingkat defisiensi paling ringan yang dapat diatasi melalui perbaikan operasional internal tanpa kewajiban modifikasi asersi publik.",
+    practicalExample: "Keterlambatan verifikasi rekonsiliasi aset tetap selama 2 hari dari tanggal cutoff yang tidak berdampak pada saldo material neraca.",
+    relatedTermIds: ["defisiensi-signifikan", "material-weakness", "tod"],
     relatedServiceUrl: "/layanan/icofr-bumn",
     relatedServiceLabel: "Konsultasi Remediasi Defisiensi"
   },
@@ -124,6 +144,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi",
     definition: "Suatu defisiensi, atau kombinasi dari beberapa defisiensi dalam pengendalian internal atas pelaporan keuangan, yang tingkat keparahannya lebih rendah daripada kelemahan material, namun cukup penting untuk diperhatikan oleh pihak yang bertanggung jawab atas tata kelola (Komite Audit).",
     keyTakeaway: "Wajib dilaporkan kepada Direksi dan Komite Audit untuk segera diformulasikan Corrective Action Plan (CAP).",
+    practicalExample: "Tidak dilakukannya review berkala terhadap akun pengguna istimewa (privileged user) pada server database pelaporan keuangan.",
+    relatedTermIds: ["defisiensi-kontrol", "material-weakness", "asersi-manajemen"],
     relatedServiceUrl: "/platform/grc-integra",
     relatedServiceLabel: "Pelacakan Temuan di GRC Integra"
   },
@@ -135,6 +157,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi",
     definition: "Suatu defisiensi, atau kombinasi defisiensi pengendalian internal, sedemikian rupa sehingga terdapat kemungkinan yang wajar bahwa salah saji material pada laporan keuangan tahunan atau interim entitas tidak akan dapat dicegah atau dideteksi secara tepat waktu.",
     keyTakeaway: "Jika terdapat satu saja kelemahan material yang belum diremediasi pada tanggal pelaporan, Direksi tidak dapat menyatakan bahwa pengendalian internal efektif.",
+    practicalExample: "Ketiadaan prosedur verifikasi pencadangan kerugian penurunan nilai piutang yang menyebabkan salah saji di atas batas materialitas perencanaan audit.",
+    relatedTermIds: ["defisiensi-signifikan", "asersi-manajemen", "icofr"],
     relatedServiceUrl: "/layanan/icofr-bumn",
     relatedServiceLabel: "Pendampingan Asersi Manajemen"
   },
@@ -145,6 +169,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Lampiran Pernyataan Direksi",
     definition: "Pernyataan formal tertulis yang ditandatangani oleh Direktur Utama dan Direktur Keuangan yang menyatakan tanggung jawab manajemen atas perancangan, penerapan, dan penilaian efektivitas sistem pengendalian internal atas pelaporan keuangan.",
     keyTakeaway: "Surat pernyataan asersi dilampirkan dalam Laporan Tahunan BUMN dan menjadi obyek verifikasi audit oleh Kantor Akuntan Publik (KAP) serta BPK.",
+    practicalExample: "Pernyataan eksplisit Direksi dalam Laporan Tahunan bahwa pengendalian internal entitas efektif berdasarkan evaluasi per 31 Desember tahun buku bersangkutan.",
+    relatedTermIds: ["icofr", "material-weakness", "elc"],
     relatedServiceUrl: "/platform/grc-integra",
     relatedServiceLabel: "Penerbitan Asersi Ber-QR Code"
   }

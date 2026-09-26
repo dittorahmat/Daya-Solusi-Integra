@@ -500,9 +500,9 @@ export const BpmWorkflowEditorPage: React.FC<BpmWorkflowEditorPageProps> = ({
       {/* FAQ Section */}
       <section className="border-t border-slate-800/80">
         <FaqSection
-          faqs={faqs}
+          items={faqs}
           title="Tanya Jawab Seputar BPM Workflow Editor"
-          description="Pertanyaan umum mengenai kanvas pembuatan alur proses bisnis, migrasi dokumen lama, dan penjadwalan sesi demo."
+          subtitle="Pertanyaan umum mengenai kanvas pembuatan alur proses bisnis, migrasi dokumen lama, dan penjadwalan sesi demo."
         />
       </section>
 

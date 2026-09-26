@@ -19,8 +19,10 @@ import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
 import GlossaryPage from "./components/pages/GlossaryPage";
 import GlossaryDetailPage from "./components/pages/GlossaryDetailPage";
 import ToeCalculatorPage from "./components/pages/ToeCalculatorPage";
+import RegulatoryHubPage from "./components/pages/RegulatoryHubPage";
 import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
+import SectorDetailPage from "./components/pages/SectorDetailPage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -91,22 +93,27 @@ export default function App() {
   const isGlossaryPage = currentPath === "/glosarium";
   const isGlossaryDetailPage = currentPath.startsWith("/glosarium/") && currentPath.length > "/glosarium/".length;
   const glossarySlug = isGlossaryDetailPage ? currentPath.replace("/glosarium/", "") : null;
+  const isRegulatoryPage = currentPath === "/regulasi";
   const isToeCalculatorPage = currentPath === "/kalkulator-sampel-toe";
   const isPrivacyPage = currentPath === "/kebijakan-privasi";
   const isIndependencePage = currentPath === "/pernyataan-independensi";
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage;
+  const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
+  const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
       
       {/* Corporate Header */}
       <Header 
-        activeTab={isBlogPage ? "blog" : isGlossaryPage ? "glosarium" : isToeCalculatorPage ? "kalkulator" : activeTab} 
+        activeTab={isBlogPage ? "blog" : isGlossaryPage || isGlossaryDetailPage ? "glosarium" : isRegulatoryPage ? "regulasi" : isToeCalculatorPage ? "kalkulator" : activeTab} 
         setActiveTab={(tab) => {
           if (tab === "blog") {
             navigateTo("/blog");
           } else if (tab === "glosarium") {
             navigateTo("/glosarium");
+          } else if (tab === "regulasi") {
+            navigateTo("/regulasi");
           } else if (tab === "kalkulator") {
             navigateTo("/kalkulator-sampel-toe");
           } else {
@@ -186,6 +193,12 @@ export default function App() {
             onNavigate={navigateTo} 
             onOpenAdvisor={() => setIsAdvisorOpen(true)} 
           />
+        ) : isRegulatoryPage ? (
+          /* DEDICATED REGULATORY HUB ROUTE (/regulasi) */
+          <RegulatoryHubPage 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
+          />
         ) : isToeCalculatorPage ? (
           /* DEDICATED TOE SAMPLE CALCULATOR ROUTE (/kalkulator-sampel-toe) */
           <ToeCalculatorPage 
@@ -204,6 +217,13 @@ export default function App() {
           /* DEDICATED INDEPENDENCE STATEMENT ROUTE (/pernyataan-independensi) */
           <IndependenceStatementPage 
             onNavigate={navigateTo} 
+          />
+        ) : isSectorPage && sectorSlug ? (
+          /* DEDICATED BUMN SECTOR ROUTE (/sektor-bumn/:slug) */
+          <SectorDetailPage 
+            slug={sectorSlug} 
+            onNavigate={navigateTo} 
+            onOpenAdvisor={() => setIsAdvisorOpen(true)} 
           />
         ) : (
           /* MAIN HOME LANDING PAGE ROUTE (/) */

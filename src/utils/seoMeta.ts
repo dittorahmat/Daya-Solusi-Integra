@@ -75,6 +75,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Glosarium Kepatuhan ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Kompilasi definisi resmi, singkatan istilah teknis, dan standar evaluasi pengendalian internal pelaporan keuangan BUMN."
   },
+  "/regulasi": {
+    title: "Pusat Regulasi Tata Kelola, ICOFR & Kepatuhan Audit BUMN | Daya Solusi Integra",
+    description: "Kompilasi direktori regulasi resmi Kementerian BUMN, OJK, dan SPKN BPK RI: SK-5/DKU.MBU/11/2024, PER-2/MBU/03/2023, POJK 17/2023, serta matriks tanggung jawab Tiga Lini.",
+    canonical: "https://dsintegra.co.id/regulasi",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Pusat Regulasi Pengendalian Internal & Tata Kelola BUMN | Daya Solusi Integra",
+    ogDescription: "Katalog hukum dan pedoman teknis kepatuhan pengendalian internal pelaporan keuangan BUMN Indonesia."
+  },
   "/kalkulator-sampel-toe": {
     title: "Kalkulator Ukuran Sampel TOE Tabel 22 Regulasi SK-5 BUMN | Daya Solusi Integra",
     description: "Hitung rekomendasi ukuran sampel pengujian kontrol manual (TOE) sesuai Tabel 22 regulasi SK-5/DKU.MBU/11/2024. Panduan normatif deviasi nol untuk auditor internal BUMN.",
@@ -98,6 +106,30 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "https://dsintegra.co.id/og-image.jpg",
     ogTitle: "Pernyataan Independensi & Integritas Konsultan | Daya Solusi Integra",
     ogDescription: "Transparansi dan standar integritas profesional konsultan independen dalam implementasi tata kelola ICOFR BUMN."
+  },
+  "/sektor-bumn/perbankan": {
+    title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
+    description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",
+    canonical: "https://dsintegra.co.id/sektor-bumn/perbankan",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
+    ogDescription: "Penyelarasan mandat SK-5 Kementerian BUMN dengan POJK Manajemen Risiko & SEOJK Tata Kelola TI Core Banking."
+  },
+  "/sektor-bumn/infrastruktur-karya": {
+    title: "Konsultan ICOFR BUMN Karya & Pengendalian Kepatuhan PSAK 72 | Daya Solusi Integra",
+    description: "Solusi implementasi ICOFR SK-5 khusus BUMN Karya, Tol, dan Pelabuhan: mitigasi risiko pengakuan pendapatan persentase penyelesaian PSAK 72 dan verifikasi subkontraktor.",
+    canonical: "https://dsintegra.co.id/sektor-bumn/infrastruktur-karya",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "ICOFR BUMN Karya & Pengendalian Proyek PSAK 72 | Daya Solusi Integra",
+    ogDescription: "Kawal akurasi pengakuan pendapatan kontrak konstruksi dan tertib verifikasi tagihan vendor/subkontraktor proyek infrastruktur."
+  },
+  "/sektor-bumn/energi-tambang": {
+    title: "Konsultan ICOFR Holding Energi & Tambang BUMN SK-5 | Daya Solusi Integra",
+    description: "Solusi tata kelola pengendalian internal pelaporan keuangan untuk holding BUMN migas, kelistrikan, dan mineral: eliminasi intercompany balancing dan audit cadangan aset.",
+    canonical: "https://dsintegra.co.id/sektor-bumn/energi-tambang",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "ICOFR Holding Energi & Tambang BUMN | Daya Solusi Integra",
+    ogDescription: "Otomasi rekonsiliasi transaksi antar-entitas anak holding, pengujian penurunan nilai aset eksplorasi, dan provisi reklamasi lingkungan."
   },
   "/blog": {
     title: "Artikel, Riset & Panduan Kepatuhan ICOFR BUMN | Daya Solusi Integra",
@@ -186,6 +218,22 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
     ogTitle: "Panduan Flowchart SOP & Pemetaan Proses Bisnis BUMN | Daya Solusi Integra",
     ogDescription: "Standarisasi diagram alur SOP BUMN sesuai Lampiran 3 SK-5/2024 dan integrasi pengujian pengendalian internal."
+  },
+  "/blog/risiko-rcm-excel-vs-software-grc-bumn": {
+    title: "Risiko RCM Excel vs Software GRC Terdedikasi BUMN | Daya Solusi Integra",
+    description: "Analisis kritis risiko audit pengelolaan RCM manual via spreadsheet Excel: integritas data, ketiadaan audit trail, risiko SOD, dan otomasi platform GRC Integra.",
+    canonical: "https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    ogTitle: "Risiko RCM Excel vs Platform GRC BUMN | Daya Solusi Integra",
+    ogDescription: "Kelemahan spreadsheet untuk audit kepatuhan BUMN SK-5 dan manfaat otomasi kertas kerja audit terintegrasi."
+  },
+  "/blog/alternatif-software-grc-global-bumn": {
+    title: "Evaluasi Software GRC: Platform Global vs Platform Native BUMN | Daya Solusi Integra",
+    description: "Analisis komparatif pengadaan software GRC BUMN: TCO lisensi rupiah vs valas USD, kedaulatan data UU PDP, serta kepatuhan native regulasi SK-5/2024.",
+    canonical: "https://dsintegra.co.id/blog/alternatif-software-grc-global-bumn",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    ogTitle: "Alternatif Software GRC Global untuk BUMN | Daya Solusi Integra",
+    ogDescription: "Panduan evaluasi pengadaan platform GRC enterprise bagi Direksi TI dan Komite Audit BUMN."
   }
 };
 

@@ -56,6 +56,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li><a href="/layanan/icofr-bumn" onClick={(e) => handleLinkClick(e, "/layanan/icofr-bumn")} className="hover:text-blue-400 transition-colors">Implementasi ICOFR BUMN</a></li>
               <li><a href="/layanan/itgc-audit-readiness" onClick={(e) => handleLinkClick(e, "/layanan/itgc-audit-readiness")} className="hover:text-blue-400 transition-colors">ITGC & Kesiapan Audit</a></li>
               <li><a href="/layanan/enterprise-grc" onClick={(e) => handleLinkClick(e, "/layanan/enterprise-grc")} className="hover:text-blue-400 transition-colors">Enterprise GRC Framework</a></li>
+              <li><a href="/regulasi" onClick={(e) => handleLinkClick(e, "/regulasi")} className="hover:text-blue-400 transition-colors">Pusat Regulasi BUMN</a></li>
               <li><a href="/glosarium" onClick={(e) => handleLinkClick(e, "/glosarium")} className="hover:text-blue-400 transition-colors">Glosarium ICOFR BUMN</a></li>
               <li><a href="/asesmen-maturitas" onClick={(e) => handleLinkClick(e, "/asesmen-maturitas")} className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
             </ul>
@@ -65,9 +66,9 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="md:col-span-2 space-y-4 text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Fokus Sektor</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#clients" className="hover:text-blue-400 transition-colors">BUMN / Holding</a></li>
-              <li><a href="#clients" className="hover:text-blue-400 transition-colors">Perbankan Jasa Keuangan</a></li>
-              <li><a href="#clients" className="hover:text-blue-400 transition-colors">Lembaga Keuangan Publik</a></li>
+              <li><a href="/sektor-bumn/perbankan" onClick={(e) => handleLinkClick(e, "/sektor-bumn/perbankan")} className="hover:text-blue-400 transition-colors">Bank BUMN &amp; Finansial</a></li>
+              <li><a href="/sektor-bumn/infrastruktur-karya" onClick={(e) => handleLinkClick(e, "/sektor-bumn/infrastruktur-karya")} className="hover:text-blue-400 transition-colors">Infrastruktur &amp; Karya</a></li>
+              <li><a href="/sektor-bumn/energi-tambang" onClick={(e) => handleLinkClick(e, "/sektor-bumn/energi-tambang")} className="hover:text-blue-400 transition-colors">Energi &amp; Holding Tambang</a></li>
               <li><a href="#clients" className="hover:text-blue-400 transition-colors">Auditor Eksternal KAP</a></li>
             </ul>
           </div>

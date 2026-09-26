@@ -69,6 +69,7 @@ Allow: /
 # Sitemaps & Machine-Readable Context Discovery
 # -------------------------------------------------------------
 Sitemap: https://dsintegra.co.id/sitemap.xml
+# IndexNow Key Verification: https://dsintegra.co.id/d51n739r4c01d1nd3xn0wk3y202609.txt
 # RSS 2.0 Syndication Feed: https://dsintegra.co.id/feed.xml
 # LLMs Context Standard: https://dsintegra.co.id/llms.txt
 # LLMs Full Context: https://dsintegra.co.id/llms-full.txt

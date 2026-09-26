@@ -5,19 +5,58 @@ Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan dan pengemb
 
 Perusahaan mengembangkan platform perangkat lunak khusus bernama "GRC Integra", yaitu platform siklus hidup digital ICOFR terintegrasi pertama di Indonesia yang mengotomasi pemetaan proses bisnis, kalkulasi sampel pengujian, penatausahaan kertas kerja walkthrough, dan penerbitan lembar asersi manajemen digital.
 
-## Landasan Regulasi & Kepatuhan
-1. SK-5/DKU.MBU/11/2024:
-   Regulasi resmi Kementerian BUMN yang mewajibkan seluruh BUMN dan anak perusahaan holding menerapkan kerangka kerja pengendalian internal pelaporan keuangan berbasis COSO (Committee of Sponsoring Organizations of the Treadway Commission). Regulasi ini menuntut penandatanganan surat asersi manajemen tahunan oleh Direktur Utama (CEO) dan Direktur Keuangan (CFO).
-2. POJK No. 11/POJK.03/2022:
-   Penyelenggaraan Teknologi Informasi oleh Bank Umum yang menjadi acuan pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem core banking dan perbankan digital.
-3. Kerangka Kerja COSO Internal Control Integrated Framework:
-   Meliputi 5 komponen utama:
-   - Lingkungan Pengendalian (Control Environment)
-   - Penilaian Risiko (Risk Assessment)
-   - Aktivitas Pengendalian (Control Activities)
-   - Informasi dan Komunikasi (Information and Communication)
-   - Aktivitas Pemantauan (Monitoring Activities)
-   serta 17 prinsip pengendalian internal terkait.
+## Landasan Regulasi & Kepatuhan BUMN
+### Petunjuk Teknis ICOFR BUMN (SK-5) (SK-5/DKU.MBU/11/2024)
+- Judul Resmi: Surat Keputusan Sekretaris Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024 tentang Petunjuk Teknis Penerapan dan Evaluasi Pengendalian Internal atas Pelaporan Keuangan (ICOFR) pada BUMN
+- Otoritas Penerbit: Kementerian Badan Usaha Milik Negara Republik Indonesia
+- Kategori: Keputusan Sekretaris Kementerian
+- Berlaku Efektif: 2024-11-20
+- Ringkasan: Regulasi rujukan utama yang mewajibkan seluruh BUMN dan anak perusahaannya menyusun kerangka pengendalian intern atas pelaporan keuangan (ICOFR) berbasis COSO 2013, melakukan pengujian efektivitas pengendalian, serta menandatangani asersi tahunan manajemen atas keandalan laporan keuangan.
+- Mandat Kunci: Wajib asersi manajemen formal yang ditandatangani oleh Direktur Utama dan Direktur Keuangan dalam Laporan Tahunan BUMN, serta kewajiban pengujian Test of Design (TOD) dan Test of Operating Effectiveness (TOE).
+- Peran Tiga Lini:
+  * Lini 1 (Pemilik Proses Bisnis): Bertanggung jawab menyusun Risk and Control Matrix (RCM), melaksanakan aktivitas kontrol harian/periodik, dan mendokumentasikan bukti operasional.
+  * Lini 2 (Manajemen Risiko & Kepatuhan): Bertanggung jawab merancang metodologi pengujian, memantau gap kepatuhan, serta mengoordinasikan evaluasi defisiensi dan rencana perbaikan.
+  * Lini 3 (Satuan Pengawas Intern / SPI): Melakukan evaluasi independen, pengujian sampel audit secara objektif, dan menyampaikan laporan efektivitas kepada Komite Audit dan Direksi.
+- Tautan: https://dsintegra.co.id/regulasi#sk-5-dku-mbu-11-2024
+
+### Pedoman Tata Kelola BUMN (PER-2) (PER-2/MBU/03/2023)
+- Judul Resmi: Peraturan Menteri Badan Usaha Milik Negara Nomor PER-2/MBU/03/2023 tentang Pedoman Tata Kelola dan Kegiatan Korporasi Signifikan Badan Usaha Milik Negara
+- Otoritas Penerbit: Kementerian Badan Usaha Milik Negara Republik Indonesia
+- Kategori: Peraturan Menteri
+- Berlaku Efektif: 2023-03-24
+- Ringkasan: Peraturan menteri payung tata kelola BUMN yang menyatukan regulasi Good Corporate Governance (GCG), manajemen risiko terintegrasi, fungsi pengawasan Dewan Komisaris, serta penguatan peran Satuan Pengawas Intern.
+- Mandat Kunci: Kewajiban implementasi tata kelola berbasis Three Lines Model, optimalisasi fungsi komite audit, dan integrasi manajemen risiko ke dalam setiap keputusan strategis korporasi.
+- Peran Tiga Lini:
+  * Lini 1: Mengelola risiko operasional harian dan memastikan kepatuhan prosedur internal di seluruh unit bisnis.
+  * Lini 2: Menetapkan arsitektur Enterprise Risk Management (ERM) dan mengawasi batas toleransi risiko korporasi.
+  * Lini 3: Memberikan assurance independen kepada Komite Audit dan Dewan Komisaris atas efektivitas tata kelola dan manajemen risiko.
+- Tautan: https://dsintegra.co.id/regulasi#per-2-mbu-03-2023
+
+### Tata Kelola Bank Umum (POJK 17/2023) (POJK No. 17/2023)
+- Judul Resmi: Peraturan Otoritas Jasa Keuangan Republik Indonesia Nomor 17 Tahun 2023 tentang Penerapan Tata Kelola bagi Bank Umum
+- Otoritas Penerbit: Otoritas Jasa Keuangan (OJK)
+- Kategori: Peraturan OJK
+- Berlaku Efektif: 2023-09-15
+- Ringkasan: Standar tata kelola sektor perbankan Indonesia yang mengatur komposisi dewan, penanganan benturan kepentingan, manajemen risiko teknologi informasi, serta penguatan pengendalian internal di lembaga perbankan.
+- Mandat Kunci: Bank umum termasuk bank BUMN (Himbara) wajib melakukan self-assessment tata kelola secara semesteran dan memelihara pengendalian internal yang komprehensif atas seluruh proses perbankan.
+- Peran Tiga Lini:
+  * Lini 1 (Business Unit / Branch): Melakukan verifikasi KYC, otorisasi kredit, dan penerapan dual control atas transaksi harian.
+  * Lini 2 (Risk Management & Compliance Directorate): Mengawasi profil risiko perbankan, kepatuhan regulasi OJK/BI, dan kecukupan modal.
+  * Lini 3 (Internal Audit Division): Menguji keandalan sistem perbankan inti (core banking) dan kepatuhan kebijakan perkreditan.
+- Tautan: https://dsintegra.co.id/regulasi#pojk-17-2023
+
+### Standar Pemeriksaan Keuangan Negara (SPKN) (SPKN BPK RI (Peraturan BPK No. 1/2017))
+- Judul Resmi: Peraturan Badan Pemeriksa Keuangan Republik Indonesia Nomor 1 Tahun 2017 tentang Standar Pemeriksaan Keuangan Negara (SPKN)
+- Otoritas Penerbit: Badan Pemeriksa Keuangan Republik Indonesia (BPK RI)
+- Kategori: Standar Pemeriksaan
+- Berlaku Efektif: 2017-01-06
+- Ringkasan: Standar acuan normatif yang digunakan oleh BPK RI dan auditor eksternal pemerintah dalam melakukan pemeriksaan keuangan, pemeriksaan kinerja, dan pemeriksaan dengan tujuan tertentu atas entitas pengelola keuangan negara, termasuk BUMN.
+- Mandat Kunci: Auditor eksternal BPK wajib menguji dan melaporkan efektivitas sistem pengendalian intern entitas serta kepatuhan terhadap peraturan perundang-undangan dalam setiap audit keuangan negara.
+- Peran Tiga Lini:
+  * Lini 1: Menyiapkan dokumentasi transaksi yang valid dan dapat ditelusuri (audit trail) untuk kepentingan pemeriksaan.
+  * Lini 2: Menjamin kepatuhan proses administrasi dan perpajakan terhadap regulasi keuangan negara yang berlaku.
+  * Lini 3: Mengoordinasikan penyerahan kertas kerja pemeriksaan dan menindaklanjuti rekomendasi hasil pemeriksaan BPK (TLHP).
+- Tautan: https://dsintegra.co.id/regulasi#spkn-bpk-ri
 
 ## Lima Tahapan Siklus Hidup ICOFR BUMN
 GRC Integra dan metodologi konsultansi Daya Solusi Integra membagi implementasi ICOFR ke dalam 5 siklus berurutan:
@@ -36,10 +75,7 @@ GRC Integra dan metodologi konsultansi Daya Solusi Integra membagi implementasi 
    - Test of Operating Effectiveness (TOE): Menguji apakah kontrol beroperasi konsisten sepanjang periode pelaporan melalui pengujian sampel bukti kerja.
 
 4. Tahap Evaluasi Defisiensi & Remediasi:
-   - Klasifikasi temuan kontrol ke dalam tiga tingkatan:
-     a. Control Deficiency (Defisiensi Kontrol)
-     b. Significant Deficiency (Defisiensi Signifikan)
-     c. Material Weakness (Kelemahan Material)
+   - Klasifikasi temuan kontrol ke dalam tiga tingkatan: Control Deficiency, Significant Deficiency, dan Material Weakness.
    - Penyusunan rencana aksi perbaikan (Corrective Action Plan / CAP) dengan target waktu penyelesaian sebelum penutupan tahun buku.
 
 5. Tahap Asersi Manajemen & Pelaporan Direksi:
@@ -48,29 +84,143 @@ GRC Integra dan metodologi konsultansi Daya Solusi Integra membagi implementasi 
 
 ## Standar Penentuan Sampel Pengujian TOE (Tabel 22 Regulasi BUMN)
 Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa deviasi yang dapat ditoleransi (tolerable deviation rate 0 persen), ukuran sampel minimum ditetapkan secara normatif:
+- Frekuensi Kontrol Tahunan (Annual): 1 sampel.
+- Frekuensi Kontrol Triwulanan (Quarterly): 2 sampel.
+- Frekuensi Kontrol Bulanan (Monthly): 2 sampai 5 sampel.
+- Frekuensi Kontrol Mingguan (Weekly): 5 sampai 15 sampel.
+- Frekuensi Kontrol Harian (Daily): 20 sampai 40 sampel.
+- Frekuensi Kontrol Berkali-kali Sehari: 25 sampai 60 sampel.
 
-- Frekuensi Kontrol Tahunan (Annual):
-  Jumlah Sampel Minimum: 1 sampel (mewakili pengujian penutupan akhir tahun).
-- Frekuensi Kontrol Triwulanan (Quarterly):
-  Jumlah Sampel Minimum: 2 sampel (minimal menguji 2 dari 4 kuartal).
-- Frekuensi Kontrol Bulanan (Monthly):
-  Jumlah Sampel Minimum: 2 sampai 5 sampel (mencakup sampel kuartal dan akhir tahun).
-- Frekuensi Kontrol Mingguan (Weekly):
-  Jumlah Sampel Minimum: 5 sampai 15 sampel (disebar sepanjang tahun).
-- Frekuensi Kontrol Harian (Daily):
-  Jumlah Sampel Minimum: 25 sampai 40 sampel (mewakili hari transaksi normal dan periode tutup buku).
-- Frekuensi Kontrol Berulang Kali Sehari (Multiple Times Daily):
-  Jumlah Sampel Minimum: 25 sampai 60 sampel (diambil acak dari populasi transaksi).
+## Direktori Glosarium Terminologi Kepatuhan & Regulasi
+### Internal Control over Financial Reporting (ICOFR)
+- Definisi: Suatu proses yang dirancang dan dijalankan oleh Dewan Direksi, manajemen, dan personel entitas lainnya untuk memberikan keyakinan memadai mengenai keandalan pelaporan keuangan dan penyusunan laporan keuangan untuk pihak eksternal sesuai dengan prinsip akuntansi yang berlaku umum.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 & COSO Framework
+- Kategori: Regulasi & Kerangka Kerja
+- Tautan: https://dsintegra.co.id/glosarium/icofr
 
-## Keunggulan GRC Integra Dibandingkan Spreadsheet Manual
-- Mengeliminasi risiko kesalahan rumus, manipulasi sel tersembunyi, dan inkonsistensi versi file antar divisi.
-- Memisahkan secara ketat izin akses pengujian Lini 1 (pemilik proses bisnis) dan validasi Lini 2 (manajemen risiko/kepatuhan).
-- Memberikan audit trail lengkap yang dapat diaudit secara transparan oleh auditor eksternal KAP dan BPK.
-- Memangkas waktu konsolidasi laporan ICOFR korporat dari 6 minggu menjadi beberapa jam.
+### Test of Design (TOD)
+- Definisi: Pengujian evaluasi untuk memastikan bahwa aktivitas pengendalian yang dirancang, jika dioperasikan sebagaimana mestinya oleh personel yang berwenang, mampu mencegah atau mendeteksi dan mengoreksi salah saji material pada pelaporan keuangan secara tepat waktu.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab IV Tahap Pengujian
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/tod
 
-## Saluran Komunikasi & Permintaan Demo
-- Website Resmi: https://dsintegra.co.id
-- Halaman Produk: https://dsintegra.co.id/platform/grc-integra
-- Konsultasi Layanan: https://dsintegra.co.id/layanan/icofr-bumn
-- Surel Tim Marketing: marketing@dsintegra.co.id
-- Nomor Telepon Resmi: +62-811-100-2442
+### Test of Operating Effectiveness (TOE)
+- Definisi: Pengujian untuk mengumpulkan bukti audit yang cukup memadai mengenai apakah aktivitas pengendalian beroperasi secara efektif dan konsisten sepanjang periode yang dicakup dalam asersi manajemen, termasuk siapa yang menjalankannya dan bagaimana konsistensinya.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Tabel 22
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/toe
+
+### Tabel 22 Ukuran Sampel Pengujian Kontrol Manual
+- Definisi: Matriks panduan resmi Kementerian BUMN yang menetapkan rentang jumlah sampel minimum yang wajib diuji untuk kontrol manual dengan tingkat deviasi nol (zero tolerable deviation) berdasarkan frekuensi keterjadian kontrol.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Lampiran Pengujian Kontrol
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/tabel-22
+
+### Walkthrough Pengendalian Internal
+- Definisi: Prosedur penelusuran transaksi dari awal terjadinya proses bisnis, pencatatan dalam sistem akuntansi, pemrosesan transaksi, hingga pelaporan dalam laporan keuangan untuk mengonfirmasi pemahaman alur kerja dan mengevaluasi rancangan kontrol.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Pedoman Tata Kerja Tiga Lini
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/walkthrough-lini-2
+
+### Entity-Level Controls (ELC)
+- Definisi: Aktivitas pengendalian internal yang memiliki pengaruh pervasif atau melingkupi organisasi secara keseluruhan, mencakup lingkungan pengendalian, proses penilaian risiko korporat, kode etik, dan aktivitas pengawasan oleh Dewan Komisaris dan Komite Audit.
+- Rujukan Regulasi: COSO 17 Principles & SK-5 BUMN
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/elc
+
+### Transaction-Level Controls (TLC)
+- Definisi: Aktivitas pengendalian yang diterapkan pada proses bisnis spesifik (seperti siklus pendapatan, pengadaan barang dan jasa, penggajian, dan aset tetap) untuk memitigasi risiko salah saji pada asersi akun keuangan tertentu.
+- Rujukan Regulasi: COSO Control Activities & SK-5 BUMN
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/tlc
+
+### Information Technology General Controls (ITGC)
+- Definisi: Kebijakan dan prosedur pengendalian umum yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk memastikan kelangsungan operasional dan integritas data keuangan.
+- Rujukan Regulasi: POJK No. 11/POJK.03/2022 & COBIT
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/itgc
+
+### Defisiensi Kontrol (Control Deficiency)
+- Definisi: Kondisi di mana rancangan atau pelaksanaan pengendalian tidak memungkinkan manajemen atau karyawan, dalam pelaksanaan fungsi normalnya, untuk mencegah atau mendeteksi salah saji pada laporan keuangan secara tepat waktu.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi
+- Kategori: Evaluasi Defisiensi
+- Tautan: https://dsintegra.co.id/glosarium/defisiensi-kontrol
+
+### Defisiensi Signifikan (Significant Deficiency)
+- Definisi: Suatu defisiensi, atau kombinasi dari beberapa defisiensi dalam pengendalian internal atas pelaporan keuangan, yang tingkat keparahannya lebih rendah daripada kelemahan material, namun cukup penting untuk diperhatikan oleh pihak yang bertanggung jawab atas tata kelola (Komite Audit).
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi
+- Kategori: Evaluasi Defisiensi
+- Tautan: https://dsintegra.co.id/glosarium/defisiensi-signifikan
+
+### Kelemahan Material (Material Weakness)
+- Definisi: Suatu defisiensi, atau kombinasi defisiensi pengendalian internal, sedemikian rupa sehingga terdapat kemungkinan yang wajar bahwa salah saji material pada laporan keuangan tahunan atau interim entitas tidak akan dapat dicegah atau dideteksi secara tepat waktu.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi
+- Kategori: Evaluasi Defisiensi
+- Tautan: https://dsintegra.co.id/glosarium/material-weakness
+
+### Asersi Manajemen Pelaporan Keuangan
+- Definisi: Pernyataan formal tertulis yang ditandatangani oleh Direktur Utama dan Direktur Keuangan yang menyatakan tanggung jawab manajemen atas perancangan, penerapan, dan penilaian efektivitas sistem pengendalian internal atas pelaporan keuangan.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Lampiran Pernyataan Direksi
+- Kategori: Regulasi & Kerangka Kerja
+- Tautan: https://dsintegra.co.id/glosarium/asersi-manajemen
+
+## Artikel Riset & Panduan Teknis Kepatuhan
+### Analisis Komparatif: Memilih Software GRC BUMN antara Platform Global vs Platform Terlokalisasi Regulasi Indonesia
+- Kategori: Solusi Digital
+- Ringkasan: Evaluasi strategis bagi Direksi TI dan Komite Audit BUMN: membedah Total Cost of Ownership (TCO), kedaulatan data UU PDP, dan kepatuhan native SK-5 antara perangkat lunak GRC global dengan platform lokal terdedikasi.
+- Tautan: https://dsintegra.co.id/blog/alternatif-software-grc-global-bumn
+
+### Apa Itu ICOFR BUMN? Panduan Lengkap Fungsi, Tujuan, dan Landasan Hukum SK-5
+- Kategori: Regulasi & Standar
+- Ringkasan: Pahami secara mendalam apa itu ICOFR BUMN, fungsi strategisnya untuk dewan direksi dan komite audit, serta landasan hukum penerbitan regulasi SK-5/DKU.MBU/11/2024 bagi akuntabilitas pelaporan keuangan.
+- Tautan: https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5
+
+### Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN
+- Kategori: Tata Kelola & GRC
+- Ringkasan: Bagaimana kerangka kerja COSO Internal Control membantu BUMN mendeteksi potensi penyimpangan laporan keuangan sejak dini.
+- Tautan: https://dsintegra.co.id/blog/efektivitas-icofr-mencegah-fraud-bumn
+
+### 7 Fitur Kunci Aplikasi ICOFR Terbaik untuk Uji Pengendalian BUMN Sesuai Regulasi SK-5
+- Kategori: Solusi Digital
+- Ringkasan: Pelajari fitur aplikasi ICOFR yang wajib ada untuk mendukung uji pengendalian internal BUMN: dari pemetaan BPM Lampiran 3, validasi Lini 2, kalkulator sampel Tabel 22, hingga asersi digital QR Code.
+- Tautan: https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn
+
+### Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN
+- Kategori: Manajemen Risiko (ISO 31000)
+- Ringkasan: Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern.
+- Tautan: https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan
+
+### Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet untuk Efisiensi dan Akuntabilitas Audit BUMN
+- Kategori: Solusi Digital
+- Ringkasan: Ketahui 6 manfaat utama aplikasi ICOFR terintegrasi dibanding lembar kerja spreadsheet manual: efisiensi audit hingga 70 persen, eliminasi human error, kepatuhan regulasi SK-5, dan audit trail tak terbantahkan.
+- Tautan: https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet
+
+### Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN Sesuai Mandat SK-5
+- Kategori: Tata Kelola & Kepatuhan
+- Ringkasan: Pelajari cara menyusun diagram alir SOP dan flowchart proses bisnis BUMN berstandar BPMN 2.0 sesuai Lampiran 3 SK-5: dari pemilihan notasi baku, sinkronisasi RCM, hingga migrasi dokumen eksisting.
+- Tautan: https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn
+
+### Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN
+- Kategori: Panduan Teknis
+- Ringkasan: Pelajari formula resmi penentuan ukuran sampel pengujian efektivitas operasi (Test of Operating Effectiveness / TOE) sesuai Tabel 22 Regulasi SK-5 BUMN, justifikasi batas bawah, dan dokumentasi audit SPKN.
+- Tautan: https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn
+
+### Panduan Lengkap Regulasi SK-5 BUMN: Mengapa Siklus ICOFR Butuh Platform Terintegrasi GRC Integra
+- Kategori: Regulasi & Standar
+- Ringkasan: Pelajari kewajiban regulasi SK-5/DKU.MBU/11/2024 bagi BUMN, dari pemetaan BPM Lampiran 3, validasi Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO & CFO.
+- Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
+
+### Perbandingan Software GRC: Platform Spesifik Regulasi BUMN SK-5 vs Modul GRC Tambahan ERP Global
+- Kategori: Solusi Digital
+- Ringkasan: Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam mengevaluasi pemilihan perangkat lunak tata kelola: komparasi 5 dimensi antara platform GRC terdedikasi native SK-5 dengan modul tambahan ERP global.
+- Tautan: https://dsintegra.co.id/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn
+
+### Risiko Audit Pengelolaan RCM Manual Berbasis Spreadsheet Excel vs Platform GRC Terdedikasi BUMN
+- Kategori: Solusi Digital
+- Ringkasan: Analisis kritis risiko kepatuhan pengelolaan Risk and Control Matrix (RCM) ICOFR menggunakan spreadsheet Excel di lingkungan BUMN: tantangan integritas data, ketiadaan jejak audit, dan solusi otomasi berbasis SK-5/2024.
+- Tautan: https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn
+
+### Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan
+- Kategori: Studi Kasus
+- Ringkasan: Pelajari bagaimana sebuah Holding BUMN dengan aset di atas Rp 50 Triliun mengeliminasi 42 defisiensi pengendalian intern, memangkas siklus pengujian TOE hingga 90 persen, dan mempertahankan opini WTP melalui implementasi metodologi SK-5/2024.
+- Tautan: https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp

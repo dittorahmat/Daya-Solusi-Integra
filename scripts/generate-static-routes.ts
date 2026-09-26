@@ -307,6 +307,32 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
       "dateModified": "2026-09-25",
       "proficiencyLevel": "Expert"
     });
+  } else if (routePath === "/penulis/humbul-kristiawan") {
+    graphs.push({
+      "@type": "ProfilePage",
+      "@id": "https://dsintegra.co.id/penulis/humbul-kristiawan#profile",
+      "name": "Profil Pakar & Penulis: Humbul Kristiawan",
+      "url": "https://dsintegra.co.id/penulis/humbul-kristiawan",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://dsintegra.co.id/#author-humbul-kristiawan",
+        "name": "Humbul Kristiawan",
+        "honorificSuffix": "SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP",
+        "jobTitle": "Principal Partner & Senior GRC Advisor",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "PT Daya Solusi Integra",
+          "url": "https://dsintegra.co.id"
+        },
+        "image": "https://dsintegra.co.id/images/authors/humbul-kristiawan.jpg",
+        "description": "Praktisi tata kelola korporasi, asersi pengendalian internal pelaporan keuangan (ICOFR), dan manajemen risiko terintegrasi dengan pengalaman lebih dari seperempat abad di sektor publik dan korporasi terkemuka Indonesia.",
+        "sameAs": [
+          "https://www.linkedin.com/in/humbul-kristiawan-b0621360/",
+          "https://humbulkristiawan.com/about-humbul/",
+          "https://humbulkristiawan.com/"
+        ]
+      }
+    });
   } else if (routePath === "/platform/grc-integra") {
     graphs.push({
       "@type": "SoftwareApplication",
@@ -666,6 +692,35 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       
       <p>Unduh profil perusahaan lengkap atau diskusikan draf KAK pengadaan melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
+    `;
+  } else if (routePath === "/penulis/humbul-kristiawan") {
+    specificContent = `
+    <article>
+      <h2>Profil Pakar &amp; Penulis: Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP</h2>
+      <p><strong>Jabatan:</strong> Principal Partner &amp; Senior GRC Advisor, PT Daya Solusi Integra</p>
+      <p>Mantan Equity Partner Deloitte South East Asia dan Partner RSM Indonesia dengan pengalaman lebih dari seperempat abad dalam tata kelola korporasi, implementasi ICOFR, dan manajemen risiko terintegrasi di BUMN dan perbankan.</p>
+      
+      <h3>Sertifikasi Profesional:</h3>
+      <ul>
+        <li>Chartered Accountant (CA)</li>
+        <li>Certified Internal Auditor (CIA)</li>
+        <li>Certified Internal Control Auditor (CICA)</li>
+        <li>Certified GRC Professional (GRCP)</li>
+        <li>Certified in Audit Committee Practices (CACP)</li>
+        <li>Register Akuntan Negara (Kemenkeu RI No. D-20.117)</li>
+      </ul>
+
+      <h3>Peran Komite Pengawasan Aktif:</h3>
+      <ul>
+        <li>Anggota Komite Pemantau Risiko PT Pegadaian</li>
+        <li>Anggota Komite Audit PT Bank UOB Indonesia</li>
+        <li>Anggota Komite Tata Kelola Terintegrasi Bank bjb</li>
+      </ul>
+
+      <h3>Katalog Publikasi Riset &amp; Artikel Tata Kelola BUMN:</h3>
+      <p>Penulis utama 12 kajian pilar kepatuhan SK-5/DKU.MBU/11/2024, evaluasi ITGC, dan metodologi audit pengendalian internal. <a href="/blog">Lihat seluruh publikasi artikel di Katalog Blog &amp; Wawasan</a>.</p>
+      <p>Profil profesional eksternal: <a href="https://www.linkedin.com/in/humbul-kristiawan-b0621360/" target="_blank" rel="noopener">LinkedIn Resmi</a> | <a href="https://humbulkristiawan.com/about-humbul/" target="_blank" rel="noopener">Biografi Eksekutif</a></p>
+    </article>
     `;
   } else if (routePath === "/kalkulator-sampel-toe") {
     specificContent = `

@@ -288,16 +288,14 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                         <span>LinkedIn</span>
                         <ExternalLink className="w-3 h-3 text-slate-400" />
                       </a>
-                      <a
-                        href={authorInfo.profileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 transition-colors"
+                      <button
+                        onClick={() => onNavigate(authorInfo.profileUrl)}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-800/80 transition-colors cursor-pointer"
                         title="Lihat Profil Lengkap & Rekam Jejak Konsultasi"
                       >
-                        <span>Biografi</span>
-                        <ExternalLink className="w-3 h-3 text-slate-400" />
-                      </a>
+                        <span>Profil Pakar</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-blue-400" />
+                      </button>
                     </div>
                   </div>
                 );
@@ -546,15 +544,13 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                           <span>LinkedIn Profil</span>
                           <ExternalLink className="w-3 h-3" />
                         </a>
-                        <a
-                          href={authorProfile.profileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 transition-colors"
+                        <button
+                          onClick={() => onNavigate(authorProfile.profileUrl)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-800/80 transition-colors cursor-pointer"
                         >
-                          <span>Biografi Lengkap & Riwayat Karir</span>
-                          <ExternalLink className="w-3 h-3 text-slate-400" />
-                        </a>
+                          <span>Biografi Lengkap &amp; Publikasi</span>
+                          <ChevronRight className="w-3.5 h-3.5 text-blue-400" />
+                        </button>
                       </div>
                     </div>
                   </div>

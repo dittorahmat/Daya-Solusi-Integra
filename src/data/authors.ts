@@ -60,7 +60,7 @@ export const HUMBUL_KRISTIAWAN: AuthorProfile = {
     "https://humbulkristiawan.com/about-humbul/",
     "https://humbulkristiawan.com/"
   ],
-  profileUrl: "https://humbulkristiawan.com/about-humbul/"
+  profileUrl: "/penulis/humbul-kristiawan"
 };
 
 export const AUTHORS_REGISTRY: Record<string, AuthorProfile> = {

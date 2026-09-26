@@ -115,6 +115,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Kualifikasi Vendor & Pengadaan GRC BUMN | Daya Solusi Integra",
     ogDescription: "Panduan pengadaan resmi sistem ICOFR BUMN: verifikasi KBLI, arsitektur data lokal on-premise, kualifikasi tenaga ahli CA/CIA, dan draf klausul KAK."
   },
+  "/penulis/humbul-kristiawan": {
+    title: "Humbul Kristiawan, CA, CIA, CICA, GRCP: Profil Pakar & Penulis | Daya Solusi Integra",
+    description: "Profil profesional Humbul Kristiawan: Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit BUMN & perbankan, dan penulis artikel kepatuhan ICOFR.",
+    canonical: "https://dsintegra.co.id/penulis/humbul-kristiawan",
+    image: "https://dsintegra.co.id/images/authors/humbul-kristiawan.jpg",
+    ogTitle: "Profil Pakar GRC: Humbul Kristiawan, CA, CIA, CICA | Daya Solusi Integra",
+    ogDescription: "Rekam jejak 25+ tahun di bidang tata kelola korporasi, asersi ICOFR BUMN, dan audit kepatuhan regulasi Kementerian BUMN."
+  },
   "/sektor-bumn/perbankan": {
     title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
     description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",

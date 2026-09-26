@@ -24,6 +24,7 @@ import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
 import SectorDetailPage from "./components/pages/SectorDetailPage";
 import BumnProcurementPage from "./components/pages/BumnProcurementPage";
+import AuthorProfilePage from "./components/pages/AuthorProfilePage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -99,9 +100,10 @@ export default function App() {
   const isPrivacyPage = currentPath === "/kebijakan-privasi";
   const isIndependencePage = currentPath === "/pernyataan-independensi";
   const isProcurementPage = currentPath === "/kualifikasi-vendor";
+  const isAuthorPage = currentPath === "/penulis/humbul-kristiawan" || currentPath === "/blog/penulis/humbul-kristiawan";
   const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -223,6 +225,11 @@ export default function App() {
         ) : isProcurementPage ? (
           /* DEDICATED BUMN PROCUREMENT & VENDOR READINESS ROUTE (/kualifikasi-vendor) */
           <BumnProcurementPage 
+            onNavigate={navigateTo} 
+          />
+        ) : isAuthorPage ? (
+          /* DEDICATED EEAT AUTHOR PROFILE ROUTE (/penulis/humbul-kristiawan) */
+          <AuthorProfilePage 
             onNavigate={navigateTo} 
           />
         ) : isSectorPage && sectorSlug ? (

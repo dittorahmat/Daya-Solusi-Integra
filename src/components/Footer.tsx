@@ -61,6 +61,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li><a href="/glosarium" onClick={(e) => handleLinkClick(e, "/glosarium")} className="hover:text-blue-400 transition-colors">Glosarium ICOFR BUMN</a></li>
               <li><a href="/asesmen-maturitas" onClick={(e) => handleLinkClick(e, "/asesmen-maturitas")} className="hover:text-blue-400 transition-colors">Asesmen Kematangan Mandiri</a></li>
               <li><a href="/kualifikasi-vendor" onClick={(e) => handleLinkClick(e, "/kualifikasi-vendor")} className="hover:text-blue-400 transition-colors">Kualifikasi Vendor &amp; Tender</a></li>
+              <li><a href="/panduan-kak-tor-icofr" onClick={(e) => handleLinkClick(e, "/panduan-kak-tor-icofr")} className="hover:text-blue-400 transition-colors">Panduan KAK &amp; TOR BUMN</a></li>
               <li><a href="/studi-kasus" onClick={(e) => handleLinkClick(e, "/studi-kasus")} className="hover:text-blue-400 transition-colors">Studi Kasus &amp; Benchmark</a></li>
               <li><a href="/temuan-audit-icofr" onClick={(e) => handleLinkClick(e, "/temuan-audit-icofr")} className="text-amber-400 hover:text-amber-300 font-medium transition-colors">Katalog Temuan Audit &amp; CAP</a></li>
             </ul>

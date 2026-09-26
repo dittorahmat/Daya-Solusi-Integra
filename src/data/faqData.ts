@@ -98,6 +98,20 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       answer: "Tantangan terbesar spreadsheet manual adalah tidak adanya jejak audit digital (audit trail), risiko benturan versi file antar-unit kerja (versioning failure), dan kerentanan rumus rusak saat konsolidasi di tingkat holding BUMN. Hal ini dapat diatasi secara permanen melalui platform GRC Integra."
     }
   ],
+  "/panduan-kak-tor-icofr": [
+    {
+      question: "Apakah draf KAK ini dapat langsung disesuaikan oleh Panitia Pengadaan BUMN?",
+      answer: "Ya. Draf Kerangka Acuan Kerja (KAK) dan spesifikasi teknis software yang kami sediakan berformat Word (.DOCX) terbuka dan dirancang modular, sehingga Pejabat Pembuat Komitmen (PPK) dapat dengan mudah menyesuaikan batasan anggaran, waktu pelaksanaan, dan struktur holding masing-masing BUMN."
+    },
+    {
+      question: "Mengapa spesifikasi teknis software GRC wajib mensyaratkan arsitektur on-premise atau private cloud?",
+      answer: "Kepatuhan terhadap UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP) dan regulasi BSSN mewajibkan data keuangan strategis BUMN tidak dialirkan ke server publik pihak ketiga atau multi-tenant luar negeri. Opsi on-premise menjamin kedaulatan data penuh berada di bawah kendali BUMN."
+    },
+    {
+      question: "Apakah Daya Solusi Integra dapat membantu penyusunan estimasi Harga Perkiraan Sendiri (HPS)?",
+      answer: "Ya. Tim tender dan kemitraan kami dapat memberikan telaah kewajaran anggaran (market sounding) dan perhitungan HPS berbasis standar remunerasi Ikatan Akuntan Publik Indonesia (IAPI) dan INKINDO untuk tenaga ahli bersertifikasi CRMA, CISA, dan CA."
+    }
+  ],
   "/studi-kasus": [
     {
       "question": "Mengapa studi kasus yang disajikan menggunakan format profil anonim?",

@@ -274,6 +274,11 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
       },
       {
         "@type": "WebPage",
+        "name": "Panduan KAK & TOR Pengadaan BUMN",
+        "url": "https://dsintegra.co.id/panduan-kak-tor-icofr"
+      },
+      {
+        "@type": "WebPage",
         "name": "Studi Kasus & Benchmark BUMN",
         "url": "https://dsintegra.co.id/studi-kasus"
       },
@@ -385,6 +390,51 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
         "name": "PT Daya Solusi Integra",
         "url": "https://dsintegra.co.id/"
       }
+    });
+  } else if (routePath === "/panduan-kak-tor-icofr") {
+    graphs.push({
+      "@type": "TechArticle",
+      "@id": "https://dsintegra.co.id/panduan-kak-tor-icofr#article",
+      "headline": "Panduan Penyusunan KAK dan TOR Pengadaan Konsultan ICOFR serta Software GRC BUMN",
+      "url": "https://dsintegra.co.id/panduan-kak-tor-icofr",
+      "description": meta.description,
+      "author": {
+        "@type": "Person",
+        "name": "Humbul Kristiawan",
+        "jobTitle": "Lead GRC & IT Governance Specialist",
+        "url": "https://dsintegra.co.id/penulis/humbul-kristiawan"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PT Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/"
+      }
+    });
+    graphs.push({
+      "@type": "HowTo",
+      "@id": "https://dsintegra.co.id/panduan-kak-tor-icofr#howto",
+      "name": "Cara Menyusun Dokumen KAK Pengadaan Pengendalian Internal BUMN",
+      "description": "Tahapan penyusunan Kerangka Acuan Kerja pengadaan pendampingan kepatuhan SK-5/DKU.MBU/11/2024 dan software GRC.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Penetapan Ruang Lingkup dan Batasan Materialitas Akun",
+          "text": "Menentukan cakupan entitas induk dan anak perusahaan serta akun laporan keuangan material."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Penyusunan Spesifikasi Teknis Perangkat Lunak GRC",
+          "text": "Menetapkan kriteria sistem otomasi mencakup visualisasi BPMN, kalkulator Tabel 22, dan modul asersi digital."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Penetapan Standar Kompetensi Tenaga Ahli",
+          "text": "Menyusun kriteria kualifikasi sertifikasi profesi tim pelaksana seperti CRMA, CISA, dan Akuntan Beregister."
+        }
+      ]
     });
   } else if (routePath === "/platform/grc-integra") {
     graphs.push({
@@ -792,6 +842,25 @@ function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta): stri
       <p>Pengelolaan manual rentan terhadap kegagalan kontrol versi (*versioning failure*), rumus rusak, dan ketiadaan jejak audit digital. Otomasi seluruh siklus ini dengan platform <a href="/platform/grc-integra">GRC Integra</a>.</p>
       
       <p>Permohonan paket lengkap file Excel resmi (XLSX) dapat diajukan melalui email resmi <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
+    `;
+  } else if (routePath === "/panduan-kak-tor-icofr") {
+    specificContent = `
+    <section>
+      <h2>Panduan Penyusunan KAK &amp; TOR Pengadaan Konsultan ICOFR &amp; Software GRC BUMN</h2>
+      <p>Standar acuan klausul Kerangka Acuan Kerja (KAK) resmi bagi Panitia Pengadaan, Pejabat Pembuat Komitmen (PPK), dan Satuan Pengawasan Intern (SPI) BUMN sesuai mandat SK-5/DKU.MBU/11/2024 dan PER-2/MBU/03/2023.</p>
+
+      <h3>3 Pilar Acuan Pengadaan:</h3>
+      <ul>
+        <li><strong>Ruang Lingkup Jasa Konsultan ICOFR:</strong> Klausul baku penetapan batasan materialitas akun, penyusunan RCM, walkthrough Lini 2 (TOD), pengujian efektivitas operasional TOE Tabel 22 nol deviasi, dan perumusan asersi Direksi Lampiran 11.</li>
+        <li><strong>Spesifikasi Teknis Perangkat Lunak GRC:</strong> Kriteria fungsional sistem mencakup arsitektur on-premise/private cloud kedaulatan data, visualisasi alur BPMN Lampiran 3, kalkulator sampel normatif Tabel 22, dan verifikasi asersi QR Code.</li>
+        <li><strong>Standar Kualifikasi Tenaga Ahli:</strong> Persyaratan kompetensi ketua tim dan auditor (CRMA, CISA, Akuntan Beregister CA/CPA) dengan rekam jejak BUMN.</li>
+      </ul>
+
+      <h3>Daftar Luaran Wajib (Mandatory Deliverables):</h3>
+      <p>Laporan Scoping Akun &amp; ELC COSO, Risk and Control Matrix (RCM) digital, Kertas Kerja Pengujian TOD/TOE, Deficiency Sheet &amp; CAP, serta Draf Final Surat Asersi Direksi.</p>
+
+      <p>Draf dokumen KAK format Word (.DOCX) dan telaah estimasi HPS dapat diajukan melalui formulir resmi atau email <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
   } else if (routePath === "/studi-kasus") {
@@ -1292,6 +1361,7 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 - [Studi Kasus & Benchmark Kinerja ICOFR BUMN](https://dsintegra.co.id/studi-kasus): Direktori benchmark hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu TOE hingga 70 persen, dan asersi Direksi H-14 sebelum batas regulasi.
 - [Katalog Temuan Defisiensi Audit ICOFR BUMN](https://dsintegra.co.id/temuan-audit-icofr): Direktori tipologi temuan audit pengendalian internal BUMN: risiko akun salah saji finansial, kelemahan ITGC/SoD, dan panduan Corrective Action Plan SK-5.
 - [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
+- [Panduan KAK & TOR Pengadaan BUMN](https://dsintegra.co.id/panduan-kak-tor-icofr): Rujukan klausul Kerangka Acuan Kerja (KAK) resmi konsultan ICOFR, spesifikasi teknis platform software GRC, kualifikasi tenaga ahli, dan permohonan draf dokumen Word.
 - [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 
 ## Panduan Teknis & Riset Regulasi (Knowledge Base)

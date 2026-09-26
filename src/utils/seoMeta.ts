@@ -131,6 +131,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Template Kertas Kerja Kepatuhan SK-5 BUMN | Daya Solusi Integra",
     ogDescription: "Pratinjau struktur kolom RCM, checklist evaluasi pengendalian tingkat entitas (ELC), dan format kertas kerja pengujian kepatuhan ICOFR BUMN."
   },
+  "/panduan-kak-tor-icofr": {
+    title: "Panduan Penyusunan KAK & TOR Pengadaan Konsultan ICOFR & Software GRC BUMN | Daya Solusi Integra",
+    description: "Contoh klausul KAK resmi pengadaan konsultan evaluasi pengendalian internal pelaporan keuangan SK-5 BUMN, spesifikasi teknis software GRC, kualifikasi tenaga ahli, dan draf Word.",
+    canonical: "https://dsintegra.co.id/panduan-kak-tor-icofr",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Panduan KAK & TOR Pengadaan Konsultan ICOFR & Software GRC BUMN | Daya Solusi Integra",
+    ogDescription: "Rujukan klausul Kerangka Acuan Kerja resmi tender konsultan ICOFR, spesifikasi teknis platform GRC SK-5, dan format draf DOCX untuk Panitia Pengadaan BUMN."
+  },
   "/studi-kasus": {
     title: "Studi Kasus & Benchmark Kinerja ICOFR BUMN | Daya Solusi Integra",
     description: "Hasil nyata implementasi ICOFR BUMN: eliminasi 42 defisiensi, efisiensi waktu pengujian TOE hingga 70%, dan 100% kepatuhan asersi SK-5/DKU.MBU/11/2024.",

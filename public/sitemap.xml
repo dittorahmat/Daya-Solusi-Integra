@@ -82,6 +82,14 @@
     <priority>0.92</priority>
   </url>
 
+  <!-- BUMN KAK / TOR & Software GRC Procurement Guide -->
+  <url>
+    <loc>https://dsintegra.co.id/panduan-kak-tor-icofr</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+
   <!-- Dedicated Case Studies & Benchmark Index Hub -->
   <url>
     <loc>https://dsintegra.co.id/studi-kasus</loc>

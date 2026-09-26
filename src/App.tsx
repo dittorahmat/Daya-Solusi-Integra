@@ -28,6 +28,7 @@ import AuthorProfilePage from "./components/pages/AuthorProfilePage";
 import RegulatoryToolkitPage from "./components/pages/RegulatoryToolkitPage";
 import CaseStudiesPage from "./components/pages/CaseStudiesPage";
 import AuditFindingsPage from "./components/pages/AuditFindingsPage";
+import KakTorProcurementPage from "./components/pages/KakTorProcurementPage";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -105,11 +106,12 @@ export default function App() {
   const isProcurementPage = currentPath === "/kualifikasi-vendor";
   const isAuthorPage = currentPath === "/penulis/humbul-kristiawan" || currentPath === "/blog/penulis/humbul-kristiawan";
   const isToolkitPage = currentPath === "/toolkit-regulasi";
+  const isKakPage = currentPath === "/panduan-kak-tor-icofr";
   const isCaseStudiesPage = currentPath === "/studi-kasus";
   const isAuditFindingsPage = currentPath === "/temuan-audit-icofr";
   const isSectorPage = currentPath.startsWith("/sektor-bumn/") && currentPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage ? currentPath.replace("/sektor-bumn/", "") : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -241,6 +243,11 @@ export default function App() {
         ) : isToolkitPage ? (
           /* DEDICATED REGULATORY TOOLKIT & TEMPLATES HUB ROUTE (/toolkit-regulasi) */
           <RegulatoryToolkitPage 
+            onNavigate={navigateTo} 
+          />
+        ) : isKakPage ? (
+          /* DEDICATED BUMN KAK / TOR PROCUREMENT GUIDE ROUTE (/panduan-kak-tor-icofr) */
+          <KakTorProcurementPage 
             onNavigate={navigateTo} 
           />
         ) : isCaseStudiesPage ? (

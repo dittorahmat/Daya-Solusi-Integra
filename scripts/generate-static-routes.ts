@@ -1371,6 +1371,8 @@ generateRssFeed();
  * Validasi silang slug artikel blog antara feed (front-matter markdown)
  * dan sitemap.xml. Kedua berkas WAJIB memakai slug yang sama; drift
  * dicetak eksplisit per slug dan menggagalkan build agar tidak lolos diam-diam.
+ * Cakupan yang sama berlaku untuk daftar gambar: setiap coverImage markdown
+ * WAJIB tercantum sebagai image:loc pada entri sitemap artikelnya.
  */
 function validateBlogSlugConsistency(): void {
   if (!fs.existsSync(blogContentDir)) {
@@ -1379,21 +1381,37 @@ function validateBlogSlugConsistency(): void {
   }
 
   const mdSlugs = new Set<string>();
+  const mdImages = new Map<string, string>();
   for (const file of fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"))) {
     const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
     const { data } = parseBlogFrontMatter(raw);
-    mdSlugs.add(data.slug || file.replace(".md", ""));
+    const slug = data.slug || file.replace(".md", "");
+    mdSlugs.add(slug);
+    if (data.coverImage) {
+      mdImages.set(slug, data.coverImage);
+    }
   }
 
   const sitemapPath = path.join(publicDir, "sitemap.xml");
   const sitemapSlugs = new Set<string>();
+  const sitemapImages = new Map<string, string>();
   if (fs.existsSync(sitemapPath)) {
     const sitemapRaw = fs.readFileSync(sitemapPath, "utf-8");
     const locMatches = sitemapRaw.matchAll(/<loc>https:\/\/dsintegra\.co\.id\/blog\/([^<]+)<\/loc>/g);
     for (const m of locMatches) {
       sitemapSlugs.add(m[1]);
     }
+    const urlBlocks = sitemapRaw.matchAll(/<url>([\s\S]*?)<\/url>/g);
+    for (const block of urlBlocks) {
+      const locMatch = block[1].match(/<loc>https:\/\/dsintegra\.co\.id\/blog\/([^<]+)<\/loc>/);
+      const imgMatch = block[1].match(/<image:loc>([^<]+)<\/image:loc>/);
+      if (locMatch && imgMatch) {
+        sitemapImages.set(locMatch[1], imgMatch[1].replace(/&amp;/g, "&"));
+      }
+    }
   }
+
+  let driftCount = 0;
 
   const missingInSitemap = [...mdSlugs].filter((s) => !sitemapSlugs.has(s));
   const missingInFeed = [...sitemapSlugs].filter((s) => !mdSlugs.has(s));
@@ -1404,12 +1422,24 @@ function validateBlogSlugConsistency(): void {
   for (const s of missingInFeed) {
     console.error(`[slug-drift] URL "/blog/${s}" ada di public/sitemap.xml tetapi TIDAK ADA artikel markdown-nya. Perbaiki slug atau hapus entri sitemap.`);
   }
+  driftCount += missingInSitemap.length + missingInFeed.length;
 
-  if (missingInSitemap.length > 0 || missingInFeed.length > 0) {
-    console.error(`[slug-drift] Terdeteksi ${missingInSitemap.length + missingInFeed.length} slug drift. Build digagalkan.`);
+  for (const [slug, coverImage] of mdImages) {
+    const sitemapImage = sitemapImages.get(slug);
+    if (!sitemapImage) {
+      console.error(`[image-drift] Artikel "/blog/${slug}" punya coverImage tetapi TIDAK ADA entri image:image di public/sitemap.xml.`);
+      driftCount++;
+    } else if (sitemapImage !== coverImage) {
+      console.error(`[image-drift] Cover "/blog/${slug}" tidak cocok: markdown memakai "${coverImage}" tetapi sitemap memakai "${sitemapImage}".`);
+      driftCount++;
+    }
+  }
+
+  if (driftCount > 0) {
+    console.error(`[slug-drift] Terdeteksi ${driftCount} drift slug/gambar. Build digagalkan.`);
     process.exitCode = 1;
   } else {
-    console.log(`Slug consistency check passed: ${mdSlugs.size} artikel blog sinkron antara feed dan sitemap.`);
+    console.log(`Slug consistency check passed: ${mdSlugs.size} artikel blog sinkron antara feed dan sitemap, ${mdImages.size} gambar sinkron.`);
   }
 }
 

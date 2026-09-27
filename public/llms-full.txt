@@ -185,15 +185,15 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pelajari fitur aplikasi ICOFR yang wajib ada untuk mendukung uji pengendalian internal BUMN: dari pemetaan BPM Lampiran 3, validasi Lini 2, kalkulator sampel Tabel 22, hingga asersi digital QR Code.
 - Tautan: https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn
 
-### Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN
-- Kategori: Manajemen Risiko (ISO 31000)
-- Ringkasan: Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern.
-- Tautan: https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan
-
 ### Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet untuk Efisiensi dan Akuntabilitas Audit BUMN
 - Kategori: Solusi Digital
 - Ringkasan: Ketahui 6 manfaat utama aplikasi ICOFR terintegrasi dibanding lembar kerja spreadsheet manual: efisiensi audit hingga 70 persen, eliminasi human error, kepatuhan regulasi SK-5, dan audit trail tak terbantahkan.
 - Tautan: https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet
+
+### Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN
+- Kategori: Manajemen Risiko (ISO 31000)
+- Ringkasan: Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern.
+- Tautan: https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan
 
 ### Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN Sesuai Mandat SK-5
 - Kategori: Tata Kelola & Kepatuhan

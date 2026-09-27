@@ -26,7 +26,6 @@ import RelatedEntitiesWidget from "./RelatedEntitiesWidget";
 import Breadcrumbs from "./Breadcrumbs";
 import { getAuthorProfile } from "../data/authors";
 import { ROUTE_FAQS } from "../data/faqData";
-import { ROUTE_HOWTO } from "../data/howtoData";
 
 export interface BlogPost {
   id: string;
@@ -203,143 +202,15 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
     };
   }, [activePost, tableOfContents]);
 
-  // Update page title and inject Article + Person Schema.org for SEO & E-E-A-T
+  // Update page title on navigation. Structured data (JSON-LD) is served
+  // solely from the prerendered HTML snapshot to avoid duplicate entities.
   useEffect(() => {
-    const existingScript = document.getElementById("article-schema-ld");
-    if (existingScript) {
-      existingScript.remove();
-    }
-
     if (activePost) {
       document.title = `${activePost.title} | Daya Solusi Integra`;
-      const authorProfile = getAuthorProfile(activePost.author);
-
-      const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "@id": `https://dsintegra.co.id/blog/${activePost.slug}#article`,
-        "headline": activePost.title,
-        "description": activePost.excerpt,
-        "image": activePost.coverImage,
-        "datePublished": activePost.date,
-        "dateModified": activePost.date,
-        "inLanguage": "id-ID",
-        "mainEntityOfPage": `https://dsintegra.co.id/blog/${activePost.slug}`,
-        "publisher": {
-          "@id": "https://dsintegra.co.id/#organization"
-        },
-        "author": {
-          "@type": "Person",
-          "@id": `https://dsintegra.co.id/#author-${authorProfile.id}`,
-          "name": authorProfile.fullNameWithCredentials,
-          "jobTitle": authorProfile.role,
-          "worksFor": {
-            "@id": "https://dsintegra.co.id/#organization"
-          },
-          "image": `https://dsintegra.co.id${authorProfile.avatar}`,
-          "description": authorProfile.headline,
-          "url": authorProfile.profileUrl,
-          "sameAs": authorProfile.sameAs,
-          "alumniOf": [
-            {
-              "@type": "EducationalOrganization",
-              "name": "Universitas Padjadjaran"
-            },
-            {
-              "@type": "EducationalOrganization",
-              "name": "Institut Teknologi Bandung"
-            }
-          ],
-          "knowsAbout": [
-            "Internal Control over Financial Reporting (ICOFR)",
-            "SK-5/DKU.MBU/11/2024",
-            "COSO Internal Control Integrated Framework",
-            "IT General Controls (ITGC)",
-            "Sarbanes-Oxley Act (SOX)",
-            "Enterprise Risk Management ISO 31000",
-            "Tata Kelola BUMN & Perbankan"
-          ]
-        },
-        "keywords": activePost.tags.join(", ")
-      };
-
-      // Injeksi skema FAQPage & HowTo bila artikel memiliki entri data terkait (Google Rich Results)
-      const postFaqs = ROUTE_FAQS[`/blog/${activePost.slug}`];
-      const postHowto = ROUTE_HOWTO[`/blog/${activePost.slug}`];
-      const graphs: any[] = [articleSchema];
-
-      if (postFaqs && postFaqs.length > 0) {
-        graphs.push({
-          "@type": "FAQPage",
-          "@id": `https://dsintegra.co.id/blog/${activePost.slug}#faq`,
-          "mainEntity": postFaqs.map((faq) => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": faq.answer
-            }
-          }))
-        });
-      }
-
-      if (postHowto) {
-        const howToGraph: Record<string, any> = {
-          "@type": "HowTo",
-          "@id": `https://dsintegra.co.id/blog/${activePost.slug}#howto`,
-          "name": postHowto.name,
-          "description": postHowto.description,
-          "step": postHowto.steps.map((st) => ({
-            "@type": "HowToStep",
-            "position": st.position,
-            "name": st.name,
-            "text": st.text,
-            "url": st.url || `https://dsintegra.co.id/blog/${activePost.slug}#step-${st.position}`
-          }))
-        };
-
-        if (postHowto.totalTime) {
-          howToGraph.totalTime = postHowto.totalTime;
-        }
-        if (postHowto.tool && postHowto.tool.length > 0) {
-          howToGraph.tool = postHowto.tool.map((t) => ({
-            "@type": "HowToTool",
-            "name": t
-          }));
-        }
-        if (postHowto.supply && postHowto.supply.length > 0) {
-          howToGraph.supply = postHowto.supply.map((s) => ({
-            "@type": "HowToSupply",
-            "name": s
-          }));
-        }
-
-        graphs.push(howToGraph);
-      }
-
-      const jsonLdPayload = graphs.length > 1
-        ? {
-            "@context": "https://schema.org",
-            "@graph": graphs
-          }
-        : articleSchema;
-
-      const script = document.createElement("script");
-      script.id = "article-schema-ld";
-      script.type = "application/ld+json";
-      script.text = JSON.stringify(jsonLdPayload);
-      document.head.appendChild(script);
     } else {
       document.title = `Artikel & Insight GRC BUMN | Daya Solusi Integra`;
     }
     window.scrollTo(0, 0);
-
-    return () => {
-      const scriptOnCleanup = document.getElementById("article-schema-ld");
-      if (scriptOnCleanup) {
-        scriptOnCleanup.remove();
-      }
-    };
   }, [activePost]);
 
   return (
@@ -406,6 +277,10 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                       <img
                         src={authorInfo.avatar}
                         alt={authorInfo.name}
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                        decoding="async"
                         className="w-12 h-12 rounded-full object-cover border-2 border-bumn-blue/50 shrink-0 shadow-md"
                         onError={(e) => {
                           // Fallback if image fails
@@ -455,6 +330,10 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               <img
                 src={activePost.coverImage}
                 alt={activePost.title}
+                width="1200"
+                height="675"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-40" />
@@ -735,10 +614,14 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
               return (
                 <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1527] border border-slate-800 mb-10 text-left relative overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row gap-6 items-start">
-                    <img
-                      src={authorProfile.avatar}
-                      alt={authorProfile.name}
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-bumn-blue/60 shrink-0 shadow-lg"
+                      <img
+                        src={authorProfile.avatar}
+                        alt={authorProfile.name}
+                        width="96"
+                        height="96"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-bumn-blue/60 shrink-0 shadow-lg"
                       onError={(e) => {
                         (e.target as HTMLElement).style.display = 'none';
                       }}
@@ -1177,6 +1060,10 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                     <img
                       src={featuredPost.coverImage}
                       alt={featuredPost.title}
+                      width="1200"
+                      height="675"
+                      fetchPriority="high"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -1200,6 +1087,10 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
                       <img
                         src={post.coverImage}
                         alt={post.title}
+                        width="1200"
+                        height="675"
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">

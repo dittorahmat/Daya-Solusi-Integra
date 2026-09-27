@@ -1368,6 +1368,54 @@ console.log(`Successfully generated ${generatedCount} static prerendered HTML ro
 generateRssFeed();
 
 /**
+ * Validasi silang slug artikel blog antara feed (front-matter markdown)
+ * dan sitemap.xml. Kedua berkas WAJIB memakai slug yang sama; drift
+ * dicetak eksplisit per slug dan menggagalkan build agar tidak lolos diam-diam.
+ */
+function validateBlogSlugConsistency(): void {
+  if (!fs.existsSync(blogContentDir)) {
+    console.warn("Blog content directory not found, skipping slug consistency check.");
+    return;
+  }
+
+  const mdSlugs = new Set<string>();
+  for (const file of fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"))) {
+    const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    const { data } = parseBlogFrontMatter(raw);
+    mdSlugs.add(data.slug || file.replace(".md", ""));
+  }
+
+  const sitemapPath = path.join(publicDir, "sitemap.xml");
+  const sitemapSlugs = new Set<string>();
+  if (fs.existsSync(sitemapPath)) {
+    const sitemapRaw = fs.readFileSync(sitemapPath, "utf-8");
+    const locMatches = sitemapRaw.matchAll(/<loc>https:\/\/dsintegra\.co\.id\/blog\/([^<]+)<\/loc>/g);
+    for (const m of locMatches) {
+      sitemapSlugs.add(m[1]);
+    }
+  }
+
+  const missingInSitemap = [...mdSlugs].filter((s) => !sitemapSlugs.has(s));
+  const missingInFeed = [...sitemapSlugs].filter((s) => !mdSlugs.has(s));
+
+  for (const s of missingInSitemap) {
+    console.error(`[slug-drift] Artikel "/blog/${s}" ada di markdown/feed tetapi MISSING dari public/sitemap.xml. Daftarkan URL tersebut sebelum rilis.`);
+  }
+  for (const s of missingInFeed) {
+    console.error(`[slug-drift] URL "/blog/${s}" ada di public/sitemap.xml tetapi TIDAK ADA artikel markdown-nya. Perbaiki slug atau hapus entri sitemap.`);
+  }
+
+  if (missingInSitemap.length > 0 || missingInFeed.length > 0) {
+    console.error(`[slug-drift] Terdeteksi ${missingInSitemap.length + missingInFeed.length} slug drift. Build digagalkan.`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Slug consistency check passed: ${mdSlugs.size} artikel blog sinkron antara feed dan sitemap.`);
+  }
+}
+
+validateBlogSlugConsistency();
+
+/**
  * Otomatisasi pembuatan berkas llms.txt dan llms-full.txt untuk AI context discovery
  */
 function generateLlmsFiles() {

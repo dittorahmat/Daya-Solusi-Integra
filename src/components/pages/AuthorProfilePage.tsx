@@ -25,50 +25,12 @@ export default function AuthorProfilePage({ onNavigate }: AuthorProfilePageProps
   const author = HUMBUL_KRISTIAWAN;
   const authorPosts = LOADED_BLOG_POSTS;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": "https://dsintegra.co.id/penulis/humbul-kristiawan#profile",
-        "name": `Profil Pakar & Penulis: ${author.name}`,
-        "url": "https://dsintegra.co.id/penulis/humbul-kristiawan",
-        "mainEntity": {
-          "@type": "Person",
-          "@id": "https://dsintegra.co.id/#author-humbul-kristiawan",
-          "name": author.name,
-          "honorificSuffix": "SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP",
-          "jobTitle": author.role,
-          "worksFor": {
-            "@type": "Organization",
-            "name": "PT Daya Solusi Integra",
-            "url": "https://dsintegra.co.id"
-          },
-          "image": `https://dsintegra.co.id${author.avatar}`,
-          "description": author.bioSummary,
-          "sameAs": author.sameAs,
-          "alumniOf": [
-            {
-              "@type": "EducationalOrganization",
-              "name": "Universitas Padjadjaran"
-            },
-            {
-              "@type": "EducationalOrganization",
-              "name": "Institut Teknologi Bandung (SBM ITB)"
-            }
-          ]
-        }
-      }
-    ]
-  };
+  // Structured data (JSON-LD) for this route is served solely from the
+  // prerendered HTML snapshot (ProfilePage #profile). No client injection
+  // to avoid duplicate entities.
 
   return (
     <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

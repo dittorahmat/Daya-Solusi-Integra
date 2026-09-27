@@ -30,43 +30,9 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "DataCatalog",
-        "@id": "https://dsintegra.co.id/toolkit-regulasi#catalog",
-        "name": "Katalog Toolkit & Kertas Kerja Regulasi SK-5 BUMN",
-        "url": "https://dsintegra.co.id/toolkit-regulasi",
-        "description": "Kumpulan template kertas kerja standar audit kepatuhan ICOFR SK-5/DKU.MBU/11/2024: Template Risk & Control Matrix (RCM), Checklist ELC COSO, dan Kertas Kerja Pengujian Efektivitas (TOE).",
-        "publisher": {
-          "@type": "Organization",
-          "name": "PT Daya Solusi Integra",
-          "url": "https://dsintegra.co.id"
-        },
-        "dataset": [
-          {
-            "@type": "Dataset",
-            "name": "Template Risk and Control Matrix (RCM) SK-5",
-            "description": "Matriks pemetaan risiko salah saji material, asersi manajemen, frekuensi kontrol, dan prosedur pengujian TOD/TOE.",
-            "fileFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          },
-          {
-            "@type": "Dataset",
-            "name": "Checklist Evaluasi Entity-Level Control (ELC) COSO",
-            "description": "Kertas kerja pengujian pengendalian tingkat entitas mencakup 5 komponen dan 17 prinsip COSO Framework.",
-            "fileFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          },
-          {
-            "@type": "Dataset",
-            "name": "Kertas Kerja Pengujian TOE Tabel 22 Kementerian BUMN",
-            "description": "Panduan penentuan batas minimum sampel acak dan evaluasi defisiensi kontrol nol toleransi penyimpangan.",
-            "fileFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          }
-        ]
-      }
-    ]
-  };
+  // Structured data (JSON-LD) for this route is served solely from the
+  // prerendered HTML snapshot (DataCatalog #catalog). No client injection
+  // to avoid duplicate entities.
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,11 +58,6 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
 
   return (
     <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}

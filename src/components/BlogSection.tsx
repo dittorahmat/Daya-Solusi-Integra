@@ -183,6 +183,10 @@ export default function BlogSection({ onSelectPost, onNavigateToContact }: BlogS
               <img
                 src={activePost.coverImage}
                 alt={activePost.title}
+                width="1200"
+                height="675"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-40" />
@@ -338,6 +342,10 @@ export default function BlogSection({ onSelectPost, onNavigateToContact }: BlogS
                     <img
                       src={featuredPost.coverImage}
                       alt={featuredPost.title}
+                      width="1200"
+                      height="675"
+                      fetchPriority="high"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -361,6 +369,10 @@ export default function BlogSection({ onSelectPost, onNavigateToContact }: BlogS
                       <img
                         src={post.coverImage}
                         alt={post.title}
+                        width="1200"
+                        height="675"
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">

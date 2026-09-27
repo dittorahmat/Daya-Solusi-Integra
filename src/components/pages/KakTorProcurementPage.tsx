@@ -34,55 +34,9 @@ export default function KakTorProcurementPage({ onNavigate }: KakTorProcurementP
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "TechArticle",
-        "@id": "https://dsintegra.co.id/panduan-kak-tor-icofr#article",
-        "headline": "Panduan Penyusunan KAK dan TOR Pengadaan Konsultan ICOFR serta Software GRC BUMN",
-        "url": "https://dsintegra.co.id/panduan-kak-tor-icofr",
-        "description": "Panduan klausul Kerangka Acuan Kerja (KAK / TOR) resmi untuk tender jasa konsultan evaluasi pengendalian internal pelaporan keuangan SK-5/DKU.MBU/11/2024 dan spesifikasi teknis software GRC BUMN.",
-        "author": {
-          "@type": "Person",
-          "name": "Humbul Kristiawan",
-          "jobTitle": "Lead GRC & IT Governance Specialist",
-          "url": "https://dsintegra.co.id/penulis/humbul-kristiawan"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "PT Daya Solusi Integra",
-          "url": "https://dsintegra.co.id"
-        }
-      },
-      {
-        "@type": "HowTo",
-        "@id": "https://dsintegra.co.id/panduan-kak-tor-icofr#howto",
-        "name": "Cara Menyusun KAK Pengadaan Kepatuhan ICOFR BUMN",
-        "description": "Tahapan penyusunan dokumen Kerangka Acuan Kerja pengadaan kepatuhan pengendalian internal BUMN sesuai regulasi SK-5.",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Penetapan Ruang Lingkup dan Batasan Materialitas Akun",
-            "text": "Menentukan cakupan entitas induk dan anak perusahaan serta akun laporan keuangan material."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Penyusunan Spesifikasi Teknis Perangkat Lunak GRC",
-            "text": "Menetapkan kriteria sistem otomasi mencakup visualisasi BPMN, kalkulator Tabel 22, dan modul asersi digital."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Penetapan Standar Kompetensi Tenaga Ahli",
-            "text": "Menyusun kriteria kualifikasi sertifikasi profesi tim pelaksana seperti CRMA, CISA, dan Akuntan Beregister."
-          }
-        ]
-      }
-    ]
-  };
+  // Structured data (JSON-LD) for this route is served solely from the
+  // prerendered HTML snapshot (TechArticle #article + HowTo #howto).
+  // No client injection to avoid duplicate entities.
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,11 +63,6 @@ export default function KakTorProcurementPage({ onNavigate }: KakTorProcurementP
 
   return (
     <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs
           items={[

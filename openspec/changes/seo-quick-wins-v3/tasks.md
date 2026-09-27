@@ -15,4 +15,4 @@
 ## 3. Verifikasi rilis
 
 - [x] 3.1 Jalankan `npm run build` dan `npm run lint` dan verifikasi keduanya hijau plus tidak ada em-dash pada file yang diubah
-- [ ] 3.2 Paksa re-scrape tiap silo di validator Facebook/LinkedIn dan verifikasi pratinjau menampilkan logo plus headline yang benar
+- [x] 3.2 Paksa re-scrape tiap silo di validator Facebook/LinkedIn dan verifikasi pratinjau menampilkan logo plus headline yang benar

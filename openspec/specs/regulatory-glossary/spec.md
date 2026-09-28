@@ -13,11 +13,15 @@ Sistem SHALL menyediakan halaman khusus `/glosarium` yang menampilkan daftar ist
 - **THEN** sistem merender antarmuka Glosarium Kepatuhan ICOFR BUMN dengan tata letak lapang, navigasi breadcrumb, dan katalog istilah terstruktur.
 
 ### Requirement: Filter dan Pencarian Istilah Cepat
-Sistem SHALL menyediakan mekanisme filter kategori (misal: "Semua", "Regulasi & Kerangka Kerja", "Metodologi Pengujian", "Klasifikasi Kontrol", "Evaluasi Defisiensi") serta kotak pencarian instan tanpa reload halaman.
+Sistem SHALL menyediakan mekanisme filter kategori (misal: "Semua", "Regulasi & Kerangka Kerja", "Metodologi Pengujian", "Klasifikasi Kontrol", "Evaluasi Defisiensi", "Pengadaan & Kualifikasi") serta kotak pencarian instan tanpa reload halaman.
 
 #### Scenario: Pengguna mencari istilah spesifik
 - **WHEN** pengguna mengetikkan kata kunci seperti "TOD", "Tabel 22", atau "Walkthrough" pada input pencarian
 - **THEN** sistem langsung menyaring dan menampilkan kartu definisi istilah yang cocok beserta rujukan klausul regulasi resminya.
+
+#### Scenario: Filter kategori pengadaan
+- **WHEN** pengguna memilih filter "Pengadaan & Kualifikasi"
+- **THEN** sistem menampilkan kedelapan istilah pengadaan (KAK, HPS, TOR, SPI, KAP, WTP, PSAK 71, PSAK 72) dan tidak menampilkan istilah kategori lain.
 
 ### Requirement: Tautan Internal Kontekstual ke Layanan & Platform
 Setiap kartu istilah SHALL menyertakan tag kategori, kutipan regulasi (seperti SK-5 atau COSO), dan tautan internal kontekstual ke halaman layanan terkait (`/layanan/icofr-bumn`, `/layanan/itgc-audit-readiness`) atau produk (`/platform/grc-integra`).

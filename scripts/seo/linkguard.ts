@@ -2,6 +2,31 @@ import fs from "fs";
 import path from "path";
 import { distDir, blogContentDir, publicDir } from "./paths.js";
 import { parseBlogFrontMatter } from "./frontmatter.js";
+import { GLOSSARY_ITEMS } from "../../src/data/glossaryData.js";
+
+/**
+ * Guard referensi glosarium: setiap relatedTermIds WAJIB menunjuk
+ * ke id yang ada di GLOSSARY_ITEMS. Mencegah kartu terkait mati
+ * di halaman detail glosarium.
+ */
+export function validateGlossaryRefs(): void {
+  const ids = new Set(GLOSSARY_ITEMS.map((g) => g.id));
+  let driftCount = 0;
+  for (const item of GLOSSARY_ITEMS) {
+    for (const ref of item.relatedTermIds || []) {
+      if (!ids.has(ref)) {
+        console.error(`[glossary-drift] Istilah "${item.id}" merujuk "${ref}" yang TIDAK ADA di glossaryData.`);
+        driftCount++;
+      }
+    }
+  }
+  if (driftCount > 0) {
+    console.error(`[glossary-drift] Terdeteksi ${driftCount} referensi glosarium mati. Build digagalkan.`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Glossary ref check passed: ${GLOSSARY_ITEMS.length} istilah, seluruh relatedTermIds valid.`);
+  }
+}
 
 /**
  * Guard gambar eksternal: tidak boleh ada referensi images.unsplash.com

@@ -290,6 +290,22 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "/images/blog/u-photo-1486406146926-c627a92ad1ab-1200.webp",
     ogTitle: "Alternatif Software GRC Global untuk BUMN | Daya Solusi Integra",
     ogDescription: "Panduan evaluasi pengadaan platform GRC enterprise bagi Direksi TI dan Komite Audit BUMN."
+  },
+  "/blog/panduan-hps-pengadaan-icofr-bumn": {
+    title: "Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN | Daya Solusi Integra",
+    description: "Metodologi estimasi HPS pengadaan ICOFR BUMN: komponen orang-bulan tenaga ahli, lisensi platform GRC, serta jebakan underpricing yang memicu gagal lelang.",
+    canonical: "https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn",
+    image: "/images/blog/u-photo-1551836022-d5d88e9218df-1200.webp",
+    ogTitle: "Panduan HPS Pengadaan ICOFR & GRC BUMN | Daya Solusi Integra",
+    ogDescription: "Cara menyusun Harga Perkiraan Sendiri berbasis komponen biaya yang bertahan saat diaudit SPI dan BPK."
+  },
+  "/blog/perbandingan-harga-software-grc-bumn": {
+    title: "Perbandingan Harga Software GRC BUMN: Komponen TCO Wajib Hitung | Daya Solusi Integra",
+    description: "Bedah total cost of ownership software GRC BUMN lima tahun: lisensi, implementasi, infrastruktur on-premise, dan biaya tersembunyi spreadsheet.",
+    canonical: "https://dsintegra.co.id/blog/perbandingan-harga-software-grc-bumn",
+    image: "/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp",
+    ogTitle: "Harga Software GRC BUMN vs TCO 5 Tahun | Daya Solusi Integra",
+    ogDescription: "Kerangka apel-ke-apel untuk panitia pengadaan: platform native, modul ERP global, dan spreadsheet."
   }
 };
 

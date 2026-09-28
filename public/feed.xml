@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Mon, 28 Sep 2026 11:58:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 12:10:32 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -58,6 +58,15 @@
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
+      <title>Panduan Menyusun HPS Pengadaan Konsultan ICOFR &amp; Software GRC BUMN</title>
+      <link>https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn</guid>
+      <description>Metodologi estimasi Harga Perkiraan Sendiri (HPS) untuk pengadaan pendampingan ICOFR dan software GRC BUMN: komponen orang-bulan tenaga ahli, lisensi platform, serta jebakan underpricing yang memicu gagal lelang.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Mon, 28 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN</title>
       <link>https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan</guid>
@@ -92,6 +101,15 @@
       <category>Regulasi &amp; Standar</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung</title>
+      <link>https://dsintegra.co.id/blog/perbandingan-harga-software-grc-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/perbandingan-harga-software-grc-bumn</guid>
+      <description>Membedah total cost of ownership software GRC untuk BUMN: lisensi, implementasi, infrastruktur on-premise, dan biaya tersembunyi spreadsheet — agar perbandingan harga apel-ke-apel sebelum tender.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Mon, 28 Sep 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Perbandingan Software GRC: Platform Spesifik Regulasi BUMN SK-5 vs Modul GRC Tambahan ERP Global</title>

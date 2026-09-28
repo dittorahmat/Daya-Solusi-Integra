@@ -213,5 +213,33 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       "question": "Bagaimana asersi digital ber-QR Code melindungi keabsahan dokumen pelaporan?",
       "answer": "QR Code terenkripsi memastikan dokumen laporan efektivitas ICOFR dan tanda tangan Direksi tidak dapat diubah (tamper-proof) dan dapat diverifikasi keasliannya secara langsung oleh regulator."
     }
+  ],
+  "/blog/panduan-hps-pengadaan-icofr-bumn": [
+    {
+      "question": "Apa komponen terbesar dalam HPS jasa konsultan ICOFR?",
+      "answer": "Personil kunci dalam satuan orang-bulan: team leader bersertifikat, auditor senior dan junior, serta tenaga ahli ITGC, dialokasikan per tahapan SK-5 dari scoping hingga asersi Direksi."
+    },
+    {
+      "question": "Mengapa HPS pengadaan ICOFR yang disalin dari tahun lalu berisiko gagal lelang?",
+      "answer": "Ruang lingkup berubah setiap tahun mengikuti scoping entitas, sistem baru, dan regulasi turunan; HPS warisan tidak mencerminkan kebutuhan berjalan sehingga tidak ada penyedia kompeten yang menawar atau pemenang memangkas metodologi."
+    },
+    {
+      "question": "Bagaimana menguji kewajaran HPS sebelum tender dibuka?",
+      "answer": "Minta penawaran indikatif (request for information) kepada minimal tiga penyedia; selisih lebih dari 20 persen antara HPS dan respons pasar menjadi sinyal untuk merevisi estimasi."
+    }
+  ],
+  "/blog/perbandingan-harga-software-grc-bumn": [
+    {
+      "question": "Apa itu total cost of ownership (TCO) software GRC?",
+      "answer": "Seluruh biaya lima tahun sejak kontrak hingga operasi stabil: lisensi, implementasi dan migrasi, infrastruktur on-premise atau cloud, serta biaya tersembunyi seperti jam kerja internal dan remediasi temuan audit."
+    },
+    {
+      "question": "Mengapa lisensi termurah belum tentu paling ekonomis?",
+      "answer": "Lisensi tahun pertama mengabaikan implementasi, change request, risiko kurs untuk lisensi valas, dan biaya temuan audit akibat kepatuhan SK-5 yang tidak native; TCO lima tahun sering membalikkan pemenang tender."
+    },
+    {
+      "question": "Bagaimana membandingkan platform native dengan modul ERP global secara adil?",
+      "answer": "Samakan metric pengguna, hitung implementasi per modul dengan change request yang termasuk versus terpisah, dan beri bobot pada kepatuhan native SK-5 (BPMN Lampiran 3, Tabel 22, asersi QR) dalam kriteria evaluasi KAK."
+    }
   ]
 };

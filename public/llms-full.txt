@@ -156,13 +156,109 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Definisi: Suatu defisiensi, atau kombinasi defisiensi pengendalian internal, sedemikian rupa sehingga terdapat kemungkinan yang wajar bahwa salah saji material pada laporan keuangan tahunan atau interim entitas tidak akan dapat dicegah atau dideteksi secara tepat waktu.
 - Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi
 - Kategori: Evaluasi Defisiensi
-- Tautan: https://dsintegra.co.id/glosarium/material-weakness
+- Tautan: https://dsintegra.co.id/glosarium/defisiensi-material
 
 ### Asersi Manajemen Pelaporan Keuangan
 - Definisi: Pernyataan formal tertulis yang ditandatangani oleh Direktur Utama dan Direktur Keuangan yang menyatakan tanggung jawab manajemen atas perancangan, penerapan, dan penilaian efektivitas sistem pengendalian internal atas pelaporan keuangan.
 - Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Lampiran Pernyataan Direksi
 - Kategori: Regulasi & Kerangka Kerja
 - Tautan: https://dsintegra.co.id/glosarium/asersi-manajemen
+
+### Risk and Control Matrix (RCM)
+- Definisi: Matriks kerja yang memetakan setiap risiko signifikan atas asersi laporan keuangan dengan aktivitas pengendalian yang dirancang untuk memitigasinya, mencakup pemilik kontrol, frekuensi pelaksanaan, tipe kontrol (manual, otomatis, atau campuran), serta prosedur pengujian yang akan diterapkan.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Tahap Dokumentasi Pengendalian
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/rcm
+
+### Scoping dan Materialitas
+- Definisi: Tahap awal siklus ICOFR untuk menentukan entitas, akun laporan keuangan, dan proses bisnis signifikan yang masuk dalam cakupan pengujian, berdasarkan ambang materialitas kuantitatif dan pertimbangan kualitatif seperti kompleksitas transaksi dan riwayat temuan audit.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Tahap Perencanaan & Standar Audit Keuangan
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/scoping-materialitas
+
+### Three Lines Model
+- Definisi: Model tata kelola yang membagi peran menjadi Lini 1 (manajemen operasional pemilik risiko dan kontrol), Lini 2 (fungsi kepatuhan, manajemen risiko, dan pengendalian yang memvalidasi), serta Lini 3 (audit internal independen yang memberikan asurans).
+- Rujukan Regulasi: Model Tiga Lini IIA 2020 & SK-5/DKU.MBU/11/2024
+- Kategori: Regulasi & Kerangka Kerja
+- Tautan: https://dsintegra.co.id/glosarium/three-lines-model
+
+### COSO Internal Control Framework (COSO)
+- Definisi: Kerangka kerja pengendalian internal yang diterbitkan Committee of Sponsoring Organizations of the Treadway Commission, terdiri dari 5 komponen (lingkungan pengendalian, penilaian risiko, aktivitas pengendalian, informasi dan komunikasi, pemantauan) dan 17 prinsip yang menjadi acuan SK-5 bagi BUMN.
+- Rujukan Regulasi: COSO 2013 & SK-5/DKU.MBU/11/2024
+- Kategori: Regulasi & Kerangka Kerja
+- Tautan: https://dsintegra.co.id/glosarium/coso-framework
+
+### Segregation of Duties (SoD)
+- Definisi: Prinsip pemisahan tugas yang memastikan tidak ada satu individu pun yang mengendalikan seluruh tahapan transaksi kritis (otorisasi, pencatatan, dan kustodi aset), sehingga kecurangan memerlukan kolusi dan lebih mudah terdeteksi.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Lampiran ITGC & POJK 11/2022
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/sod
+
+### Compensating Control (Kontrol Kompensasi)
+- Definisi: Aktivitas pengendalian pengganti yang dirancang untuk memitigasi risiko ketika kontrol utama tidak dapat diterapkan secara ideal, misalnya karena keterbatasan sistem atau struktur organisasi yang kecil, sepanjang efektivitasnya dapat dibuktikan melalui pengujian.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/compensating-control
+
+### Key Control (Kontrol Kunci)
+- Definisi: Aktivitas pengendalian yang secara utama diandalkan untuk mencegah atau mendeteksi salah saji material pada suatu asersi, sehingga menjadi fokus wajib pengujian TOD dan TOE serta penentu kesimpulan efektivitas pengendalian.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Tahap Identifikasi Kontrol
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/key-control
+
+### Remediasi Pengendalian (Remediation)
+- Definisi: Rangkaian tindakan perbaikan terstruktur (Corrective Action Plan) untuk menutup defisiensi pengendalian yang ditemukan, mencakup analisis akar masalah, perbaikan desain kontrol, pengujian ulang efektivitas, dan pemantauan keberlanjutan hingga defisiensi dinyatakan tuntas.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab Tindak Lanjut & CAP
+- Kategori: Evaluasi Defisiensi
+- Tautan: https://dsintegra.co.id/glosarium/remediasi-kontrol
+
+### Kerangka Acuan Kerja (KAK)
+- Definisi: Dokumen perencanaan pengadaan yang memuat latar belakang kebutuhan, maksud dan tujuan pekerjaan, ruang lingkup kegiatan, keluaran (deliverables) yang diharapkan, jangka waktu pelaksanaan, pagu anggaran berbasis HPS, kualifikasi penyedia dan tenaga ahli, serta kriteria evaluasi penawaran. Dalam pengadaan pendampingan ICOFR dan software GRC BUMN, KAK menjadi instrumen utama Panitia Pengadaan dan Pejabat Pembuat Komitmen untuk memastikan penawaran yang masuk sebanding dan dapat dievaluasi secara objektif. KAK yang baik merumuskan ruang lingkup berbasis tahapan SK-5 (scoping, RCM, walkthrough Lini 2, pengujian TOD/TOE Tabel 22, asersi Direksi), mensyaratkan sertifikasi tenaga ahli yang relevan (seperti CA, CIA, CISA, CRMA), menetapkan arsitektur data (on-premise atau private cloud sesuai UU PDP), serta mencantumkan SLA, ketentuan alih pengetahuan, dan denda keterlambatan secara eksplisit.
+- Rujukan Regulasi: Perpres 16/2018 jo. 12/2021 & Pedoman Pengadaan BUMN
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/kak
+
+### Harga Perkiraan Sendiri (HPS)
+- Definisi: Perkiraan biaya pekerjaan yang disusun oleh Panitia Pengadaan atau PPK berdasarkan survei harga pasar, kontrak sejenis sebelumnya, dan analisis komponen biaya (tenaga ahli per orang-bulan, lisensi perangkat lunak, perjalanan dinas, serta overhead dan margin wajar). HPS berfungsi sebagai pagu: penawaran yang melampaui HPS dinyatakan gugur, sedangkan HPS yang ditetapkan terlalu rendah berisiko gagal lelang karena tidak ada penyedia yang mampu memenuhi spesifikasi. Untuk jasa konsultan ICOFR, komponen HPS lazimnya meliputi tim inti (team leader, auditor senior/junior), durasi penugasan per tahapan SK-5, biaya lisensi atau langganan platform GRC bila dibundel, serta biaya penjaminan mutu independen. Penyusunan HPS wajib didokumentasikan sebagai bukti akuntabilitas dan dapat diaudit oleh SPI maupun auditor eksternal.
+- Rujukan Regulasi: Perpres 16/2018 jo. 12/2021 Pasal Estimasi Biaya
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/hps
+
+### Terms of Reference (TOR)
+- Definisi: Dokumen acuan penugasan jasa konsultan yang setara fungsi dengan KAK, lazim dipakai untuk pengadaan jasa konsultansi: memuat latar belakang, tujuan, ruang lingkup layanan, metodologi yang diharapkan, profil dan personil kunci beserta CV, jadwal pelaporan (inception, interim, final report), serta kriteria penilaian teknis dan biaya. Dalam konteks BUMN, TOR kerap dipakai bergantian dengan KAK untuk paket pendampingan implementasi ICOFR, maturity assessment COSO, maupun audit ITGC. TOR yang berkualitas menuntut penyedia menjelaskan pendekatan kerja per tahapan (misalnya strategi sampling TOE Tabel 22 dan rencana walkthrough Lini 2), sehingga panitia dapat menilai kompetensi substantif, bukan sekadar kelengkapan administratif. TOR juga menjadi lampiran kontrak yang mengikat sehingga deviasi pelaksanaan dapat diklaim sebagai wanprestasi.
+- Rujukan Regulasi: Praktik Pengadaan Jasa Konsultan & Perpres 16/2018
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/tor
+
+### Satuan Pengawasan Intern (SPI)
+- Definisi: Unit kerja independen di BUMN yang menjalankan fungsi audit internal (Lini 3): menyusun rencana audit tahunan berbasis risiko, menguji kecukupan dan efektivitas tata kelola, manajemen risiko, dan pengendalian internal, lalu melaporkan hasilnya langsung kepada Direktur Utama dengan tembusan kepada Dewan Komisaris dan Komite Audit. Dalam siklus ICOFR berbasis SK-5, SPI berperan ganda: sebagai pelaksana atau penguji independen atas efektivitas pengendalian sebelum asersi Direksi, sekaligus sebagai mitra Panitia Pengadaan dalam mereviu kewajaran HPS dan proses tender agar terhindar dari temuan BPK. Kualitas SPI diukur dari independensi organisasinya, kompetensi auditor (diutamakan bersertifikat CIA, CISA, atau CICA), serta tindak lanjut temuan yang terdokumentasi dalam sistem pemantauan. Penguatan kapabilitas SPI kerap menjadi rekomendasi utama Corrective Action Plan atas temuan defisiensi pemantauan.
+- Rujukan Regulasi: PER-2/MBU/03/2023 & Model Tiga Lini IIA
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/spi
+
+### Kantor Akuntan Publik (KAP)
+- Definisi: Firma jasa profesional berizin yang memberikan jasa asurans (audit atas laporan keuangan), reviu, dan jasa terkait lainnya sesuai Standar Profesional Akuntan Publik. Bagi BUMN, KAP ditunjuk melalui mekanisme pengadaan untuk mengaudit laporan keuangan tahunan, menguji efektivitas pengendalian internal yang diasersikan Direksi, dan menerbitkan opini audit (WTP hingga disclaimer). Independensi KAP dijaga melalui rotasi wajib setelah masa penugasan tertentu, larangan pemberian jasa non-asurans yang menimbulkan benturan kepentingan, serta pengawasan mutu oleh Pusat Pembinaan Profesi Keuangan. Temuan KAP atas defisiensi signifikan dan kelemahan material menjadi dasar utama Corrective Action Plan dan sering dirujuk BPK dalam pemeriksaan lanjutan. Pemilihan KAP mensyaratkan pengalaman audit BUMN sejenis, kecukupan partner dan manajer, serta metodologi audit berbasis risiko yang terdokumentasi.
+- Rujukan Regulasi: UU 5/2011 tentang Akuntan Publik & SPAP
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/kap
+
+### Wajar Tanpa Pengecualian (WTP)
+- Definisi: Opini audit tertinggi yang menyatakan bahwa laporan keuangan entitas menyajikan secara wajar dalam semua hal yang material sesuai kerangka pelaporan yang berlaku, tanpa pengecualian. Opini WTP atas laporan keuangan BUMN mensyaratkan tidak adanya salah saji material yang tidak dikoreksi dan tidak adanya kelemahan material pengendalian internal yang belum diremediasi pada tanggal pelaporan. Mempertahankan WTP dari tahun ke tahun menuntut disiplin siklus ICOFR penuh: scoping tepat, RCM mutakhir, pengujian TOD/TOE sesuai Tabel 22, remediasi tuntas, dan asersi Direksi yang didukung kertas kerja memadai. Kehilangan WTP berdampak reputasional serius: menurunkan kepercayaan Kementerian BUMN selaku pemegang saham, mempersulit pendanaan, dan memicu pemeriksaan khusus. Karena itu target WTP menjadi kompas seluruh program penguatan pengendalian internal BUMN.
+- Rujukan Regulasi: SPAP SA 700 & Opini Pemeriksaan BPK
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/wtp
+
+### PSAK 71 Instrumen Keuangan
+- Definisi: Pernyataan Standar Akuntansi Keuangan tentang instrumen keuangan yang mengatur klasifikasi dan pengukuran aset/liabilitas keuangan, penurunan nilai berbasis expected credit loss (ECL), serta akuntansi lindung nilai. Bagi perbankan BUMN dan BPD, PSAK 71 berdampak langsung pada perhitungan CKPN (cadangan kerugian penurunan nilai) yang menjadi akun paling material dan paling disorot auditor. Implementasi PSAK 71 menuntut pengendalian kunci atas kualitas data portofolio kredit, validasi model ECL dan parameter (probability of default, loss given default), serta rekonsiliasi antara core banking dan general ledger. Kegagalan kontrol di area ini hampir pasti berujung pada salah saji material dan temuan KAP. Karena itu RCM sektor perbankan selalu menempatkan proses CKPN sebagai proses signifikan dengan key control berlapis dan pengujian TOE berfrekuensi tinggi.
+- Rujukan Regulasi: PSAK 71 (adopsi IFRS 9) & POJK Manajemen Risiko
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/psak-71
+
+### PSAK 72 Pendapatan dari Kontrak
+- Definisi: Pernyataan Standar Akuntansi Keuangan tentang pengakuan pendapatan dari kontrak dengan pelanggan melalui model lima langkah: identifikasi kontrak, identifikasi kewajiban pelaksanaan, penetapan harga transaksi, alokasi harga, dan pengakuan saat kewajiban dipenuhi. Bagi BUMN karya, konstruksi, dan infrastruktur, PSAK 72 mengatur pengakuan pendapatan berbasis persentase penyelesaian (progress toward completion) yang sangat sensitif terhadap estimasi total biaya penyelesaian (EAC) dan validasi progres fisik lapangan. Manipulasi atau kelalaian estimasi EAC adalah sumber klasik salah saji material dan temuan BPK di sektor ini. Pengendalian kuncinya meliputi verifikasi tiga pihak atas berita acara progres (Project Manager, Finance Lini 2, konsultan pengawas), reviu kuartalan atas EAC, dan cut-off pencatatan yang disiplin. RCM BUMN karya selalu menempatkan siklus pendapatan sebagai proses signifikan prioritas tertinggi.
+- Rujukan Regulasi: PSAK 72 (adopsi IFRS 15)
+- Kategori: Pengadaan & Kualifikasi
+- Tautan: https://dsintegra.co.id/glosarium/psak-72
 
 ## Artikel Riset & Panduan Teknis Kepatuhan
 ### Analisis Komparatif: Memilih Software GRC BUMN antara Platform Global vs Platform Terlokalisasi Regulasi Indonesia
@@ -190,6 +286,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Ketahui 6 manfaat utama aplikasi ICOFR terintegrasi dibanding lembar kerja spreadsheet manual: efisiensi audit hingga 70 persen, eliminasi human error, kepatuhan regulasi SK-5, dan audit trail tak terbantahkan.
 - Tautan: https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet
 
+### Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN
+- Kategori: Pengadaan & Tender
+- Ringkasan: Metodologi estimasi Harga Perkiraan Sendiri (HPS) untuk pengadaan pendampingan ICOFR dan software GRC BUMN: komponen orang-bulan tenaga ahli, lisensi platform, serta jebakan underpricing yang memicu gagal lelang.
+- Tautan: https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn
+
 ### Panduan Penerapan Framework ISO 31000:2018 untuk Manajemen Risiko BUMN
 - Kategori: Manajemen Risiko (ISO 31000)
 - Ringkasan: Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern.
@@ -209,6 +310,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Regulasi & Standar
 - Ringkasan: Pelajari kewajiban regulasi SK-5/DKU.MBU/11/2024 bagi BUMN, dari pemetaan BPM Lampiran 3, validasi Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO & CFO.
 - Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
+
+### Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung
+- Kategori: Pengadaan & Tender
+- Ringkasan: Membedah total cost of ownership software GRC untuk BUMN: lisensi, implementasi, infrastruktur on-premise, dan biaya tersembunyi spreadsheet : agar perbandingan harga apel-ke-apel sebelum tender.
+- Tautan: https://dsintegra.co.id/blog/perbandingan-harga-software-grc-bumn
 
 ### Perbandingan Software GRC: Platform Spesifik Regulasi BUMN SK-5 vs Modul GRC Tambahan ERP Global
 - Kategori: Solusi Digital

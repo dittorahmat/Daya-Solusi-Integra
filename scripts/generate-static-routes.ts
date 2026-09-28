@@ -11,7 +11,7 @@ import { generateNotFoundSnapshot } from "./seo/notfound.js";
 import { enrichSitemap, validateBlogSlugConsistency } from "./seo/sitemap.js";
 import { generateRssFeed, generateLlmsFiles } from "./seo/feeds.js";
 import { submitToIndexNow } from "./seo/indexnow.js";
-import { validatePrerenderInternalLinks, validateNoExternalBlogImages } from "./seo/linkguard.js";
+import { validatePrerenderInternalLinks, validateNoExternalBlogImages, validateGlossaryRefs } from "./seo/linkguard.js";
 
 let generatedCount = 0;
 
@@ -199,6 +199,9 @@ validatePrerenderInternalLinks();
 
 // Guard pipeline gambar lokal (0 referensi Unsplash tersisa)
 validateNoExternalBlogImages();
+
+// Guard referensi silang glosarium (0 relatedTermIds mati)
+validateGlossaryRefs();
 
 // Generate LLM Discovery Files
 generateLlmsFiles();

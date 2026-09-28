@@ -30,7 +30,7 @@ import CaseStudiesPage from "./components/pages/CaseStudiesPage";
 import AuditFindingsPage from "./components/pages/AuditFindingsPage";
 import KakTorProcurementPage from "./components/pages/KakTorProcurementPage";
 import NotFoundPage from "./components/pages/NotFoundPage";
-import { LOADED_BLOG_POSTS } from "./components/BlogPage";
+import { LOADED_BLOG_POSTS } from "./components/blog/blogLoader";
 import { GLOSSARY_ITEMS } from "./data/glossaryData";
 import { SECTOR_DATA_MAP } from "./data/sectorsData";
 import { updateDocumentMeta } from "./utils/seoMeta";

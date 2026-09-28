@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Breadcrumbs from "../Breadcrumbs";
 import { HUMBUL_KRISTIAWAN } from "../../data/authors";
-import { LOADED_BLOG_POSTS } from "../BlogPage";
+import { LOADED_BLOG_POSTS } from "../blog/blogLoader";
 
 interface AuthorProfilePageProps {
   onNavigate: (path: string) => void;

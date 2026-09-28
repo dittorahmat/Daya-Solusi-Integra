@@ -1,6 +1,6 @@
 import React from "react";
 import { BookOpen, ArrowRight, Calendar, Clock, ChevronRight } from "lucide-react";
-import { LOADED_BLOG_POSTS } from "./BlogPage";
+import { LOADED_BLOG_POSTS } from "./blog/blogLoader";
 
 interface BlogPreviewSectionProps {
   onNavigateToBlog: (slug?: string) => void;

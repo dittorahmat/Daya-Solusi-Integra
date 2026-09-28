@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0b0f19"/>
+  <rect x="4" y="56" width="56" height="2" fill="#cca43b"/>
+  <text x="32" y="41" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">DSI</text>
+  <text x="32" y="52" font-family="Arial, Helvetica, sans-serif" font-size="7" fill="#cca43b" text-anchor="middle">GRC INTEGRA</text>
+</svg>

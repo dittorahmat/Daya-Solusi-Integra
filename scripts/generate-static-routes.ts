@@ -11,6 +11,7 @@ import { generateNotFoundSnapshot } from "./seo/notfound.js";
 import { enrichSitemap, validateBlogSlugConsistency } from "./seo/sitemap.js";
 import { generateRssFeed, generateLlmsFiles } from "./seo/feeds.js";
 import { submitToIndexNow } from "./seo/indexnow.js";
+import { validatePrerenderInternalLinks } from "./seo/linkguard.js";
 
 let generatedCount = 0;
 
@@ -121,6 +122,27 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
     /<meta\s+name="theme-color"\s+content=".*?"\s*\/?>/i,
     `<meta name="theme-color" content="#0b0f19" />`
   );
+  // Head hygiene v4.1: favicon set + manifest dipertahankan di semua snapshot
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<link\s+rel="icon"\s+type="image\/svg\+xml"[^>]*\/?>/i,
+    `<link rel="icon" type="image/svg+xml" href="/favicon.svg" />`
+  );
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<link\s+rel="icon"\s+type="image\/png"[^>]*\/?>/i,
+    `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />`
+  );
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<link\s+rel="apple-touch-icon"[^>]*\/?>/i,
+    `<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />`
+  );
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<link\s+rel="manifest"[^>]*\/?>/i,
+    `<link rel="manifest" href="/manifest.webmanifest" />`
+  );
   routeHtml = upsertHeadTag(
     routeHtml,
     /<meta\s+property="og:image:alt"\s+content=".*?"\s*\/?>/i,
@@ -171,6 +193,9 @@ generateRssFeed();
 enrichSitemap(allRoutes);
 
 validateBlogSlugConsistency();
+
+// Guard integritas internal link prerender (0 broken /blog/<slug>)
+validatePrerenderInternalLinks();
 
 // Generate LLM Discovery Files
 generateLlmsFiles();

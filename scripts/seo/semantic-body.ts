@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { RouteMeta } from "../../src/utils/seoMeta.js";
+import { RouteMeta, ROUTE_METADATA_MAP } from "../../src/utils/seoMeta.js";
 import { ROUTE_FAQS } from "../../src/data/faqData.js";
 import { GLOSSARY_ITEMS } from "../../src/data/glossaryData.js";
 import { REGULATION_ITEMS } from "../../src/data/regulationData.js";
@@ -27,8 +27,12 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
     const segName = cleanProhibitedDashes(seg.replace(/-/g, " "));
     if (isLast) {
       breadcrumbLinks += ` &gt; <span>${segName}</span>`;
-    } else {
+    } else if (ROUTE_METADATA_MAP[currentAccum]) {
       breadcrumbLinks += ` &gt; <a href="${currentAccum}">${segName}</a>`;
+    } else {
+      // Segmen perantara tanpa rute (mis. /blog/penulis, /layanan)
+      // dirender sebagai teks agar tidak menjadi broken internal link.
+      breadcrumbLinks += ` &gt; <span>${segName}</span>`;
     }
   });
 
@@ -76,11 +80,11 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
       <p>Kumpulan panduan teknis, metodologi pengujian pengendalian internal, kepatuhan audit ITGC, dan asersi manajemen berbasis SK-5/DKU.MBU/11/2024.</p>
       <ul>
         <li><a href="/blog/panduan-sk5-icofr-grc-integra">Panduan Implementasi SK-5/DKU.MBU/11/2024 ICOFR BUMN</a></li>
-        <li><a href="/blog/manfaat-aplikasi-icofr-bumn">Manfaat Aplikasi ICOFR BUMN dalam Menghadapi Audit SPI dan Eksternal</a></li>
-        <li><a href="/blog/metodologi-sampling-tabel-22-sk5">Metodologi Sampling Pengujian Kontrol Sesuai Tabel 22 SK-5 BUMN</a></li>
-        <li><a href="/blog/peran-itgc-dalam-asersi-laporan-keuangan-bumn">Peran ITGC dalam Asersi Laporan Keuangan BUMN</a></li>
-        <li><a href="/blog/perbandingan-software-grc-lokal-vs-internasional">Perbandingan Software GRC Lokal vs Solusi Internasional untuk Kepatuhan BUMN</a></li>
-        <li><a href="/blog/studi-kasus-holding-bumn-benchmarks-icofr">Studi Kasus Holding BUMN: Benchmark Keberhasilan Implementasi ICOFR & GRC Integra</a></li>
+        <li><a href="/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5">Apa Itu ICOFR BUMN: Fungsi, Tujuan, dan Landasan Hukum SK-5</a></li>
+        <li><a href="/blog/panduan-sampel-toe-tabel-22-icofr-bumn">Panduan Penentuan Sampel Pengujian TOE Berdasarkan Tabel 22</a></li>
+        <li><a href="/blog/studi-kasus-icofr-holding-bumn-wtp">Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Menuju Opini WTP</a></li>
+        <li><a href="/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn">Perbandingan Software GRC BUMN vs Modul ERP Global</a></li>
+        <li><a href="/blog/manfaat-aplikasi-icofr-bumn-spreadsheet">Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet Manual</a></li>
       </ul>
     </section>
     `;

@@ -6,6 +6,7 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import nodemailer from "nodemailer";
 import helmet from "helmet";
+import compression from "compression";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 
@@ -21,6 +22,12 @@ app.set('trust proxy', 1);
 app.use(helmet({
   contentSecurityPolicy: false, // Vite inline scripts/HMR compatibility in dev mode
   crossOriginEmbedderPolicy: false
+}));
+
+// Response compression (gzip/deflate untuk respons > 1KB)
+app.use(compression({
+  threshold: 1024,
+  level: 6,
 }));
 
 app.use(cors({
@@ -513,6 +520,12 @@ async function startServer() {
     });
 
     // Serve public static assets (CSS, JS bundles, images, etc.)
+    // Aset ber-hash Vite di /assets/* aman di-cache immutable 1 tahun.
+    // Dokumen HTML dan file root lain memakai default (no aggressive cache).
+    app.use("/assets", express.static(path.join(distPath, "assets"), {
+      maxAge: "1y",
+      immutable: true,
+    }));
     app.use(express.static(distPath));
 
     // Unknown paths: serve dedicated 404 snapshot with HTTP 404 status.

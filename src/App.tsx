@@ -29,6 +29,10 @@ import RegulatoryToolkitPage from "./components/pages/RegulatoryToolkitPage";
 import CaseStudiesPage from "./components/pages/CaseStudiesPage";
 import AuditFindingsPage from "./components/pages/AuditFindingsPage";
 import KakTorProcurementPage from "./components/pages/KakTorProcurementPage";
+import NotFoundPage from "./components/pages/NotFoundPage";
+import { LOADED_BLOG_POSTS } from "./components/BlogPage";
+import { GLOSSARY_ITEMS } from "./data/glossaryData";
+import { SECTOR_DATA_MAP } from "./data/sectorsData";
 import { updateDocumentMeta } from "./utils/seoMeta";
 
 export default function App() {
@@ -49,10 +53,10 @@ export default function App() {
   // Normalize path: strip trailing slashes except for root "/"
   const normalizedPath = currentPath.length > 1 ? currentPath.replace(/\/+$/, "") : currentPath;
 
-  // Synchronize document <title>, canonical, and meta tags with current route
-  useEffect(() => {
-    updateDocumentMeta(normalizedPath);
-  }, [normalizedPath]);
+  const isBlogPage = normalizedPath === "/blog" || normalizedPath.startsWith("/blog/");
+  const blogSlug = normalizedPath.startsWith("/blog/")
+    ? normalizedPath.replace(/^\/blog\//, "").replace(/\/+$/, "")
+    : null;
 
   // Global shortcut (Ctrl + /) for AI Advisor
   useEffect(() => {
@@ -91,10 +95,6 @@ export default function App() {
     }
   };
 
-  const isBlogPage = normalizedPath === "/blog" || normalizedPath.startsWith("/blog/");
-  const blogSlug = normalizedPath.startsWith("/blog/")
-    ? normalizedPath.replace(/^\/blog\//, "").replace(/\/+$/, "")
-    : null;
   const isIcofrPage = normalizedPath === "/layanan/icofr-bumn";
   const isItgcPage = normalizedPath === "/layanan/itgc-audit-readiness";
   const isGrcPage = normalizedPath === "/layanan/enterprise-grc";
@@ -121,6 +121,25 @@ export default function App() {
     ? normalizedPath.replace(/^\/sektor-bumn\//, "").replace(/\/+$/, "")
     : null;
   const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
+
+  // Hash anchors ("/#contact") belong to the home landing page, not 404.
+  const isHomeRoute = normalizedPath === "/" || normalizedPath.startsWith("/#");
+  const isUnknownPath = !isHomeRoute && !isSubPage;
+  const isInvalidBlogSlug = isBlogPage && blogSlug !== null && blogSlug.length > 0
+    && !LOADED_BLOG_POSTS.some((p) => p.slug === blogSlug);
+  const isInvalidGlossarySlug = isGlossaryDetailPage && glossarySlug !== null
+    && !GLOSSARY_ITEMS.some((g) => g.id.toLowerCase() === glossarySlug);
+  const isInvalidSectorSlug = isSectorPage && sectorSlug !== null
+    && !SECTOR_DATA_MAP[sectorSlug];
+  const isNotFound = isUnknownPath || isInvalidBlogSlug || isInvalidGlossarySlug || isInvalidSectorSlug;
+
+  // Synchronize document <title>, canonical, and meta tags with current route.
+  // Unknown paths are skipped: NotFoundPage manages its own noindex head tags.
+  useEffect(() => {
+    if (!isNotFound) {
+      updateDocumentMeta(normalizedPath);
+    }
+  }, [normalizedPath, isNotFound]);
 
   return (
     <div className="relative min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between" id="dsi-app-root">
@@ -150,7 +169,10 @@ export default function App() {
 
       {/* Main Sections */}
       <main className="flex-1 relative z-10">
-        {isBlogPage ? (
+        {isNotFound ? (
+          /* UNKNOWN PATH OR INVALID SLUG: dedicated 404 with noindex */
+          <NotFoundPage onNavigate={navigateTo} />
+        ) : isBlogPage ? (
           /* DEDICATED BLOG ROUTE (/blog or /blog/:slug) */
           <BlogPage 
             currentSlug={blogSlug} 

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f19" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Konsultan ICOFR BUMN & GRC Integra | Daya Solusi Integra</title>
@@ -49,7 +50,15 @@
           "publisher": {
             "@id": "https://dsintegra.co.id/#organization"
           },
-          "inLanguage": "id-ID"
+          "inLanguage": "id-ID",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://dsintegra.co.id/blog?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@type": "SiteNavigationElement",
@@ -98,6 +107,10 @@
           "@id": "https://dsintegra.co.id/#organization",
           "name": "Daya Solusi Integra",
           "image": "https://dsintegra.co.id/og-image.jpg",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://dsintegra.co.id/og-image.jpg"
+          },
           "url": "https://dsintegra.co.id/",
           "telephone": "+62-811-100-2442",
           "priceRange": "$$$$",

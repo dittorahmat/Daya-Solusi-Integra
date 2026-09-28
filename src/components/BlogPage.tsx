@@ -109,7 +109,11 @@ interface BlogPageProps {
 
 export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  // Nilai awal dari param ?q= agar target SearchAction (/blog?q=...) langsung terfilter
+  const [searchQuery, setSearchQuery] = useState<string>(() => {
+    if (typeof window === "undefined") return "";
+    return new URLSearchParams(window.location.search).get("q") || "";
+  });
 
   const categories = ["Semua", "Tata Kelola & GRC", "Manajemen Risiko (ISO 31000)", "Cybersecurity & IT Audit", "Compliance & BUMN"];
 
@@ -212,6 +216,24 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
     }
     window.scrollTo(0, 0);
   }, [activePost]);
+
+  // Tulis kembali ?q= ke URL pada tampilan daftar agar tautan hasil pencarian
+  // bisa dibagikan dan target SearchAction sitelinks benar-benar berfungsi.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (activePost) return;
+    const params = new URLSearchParams(window.location.search);
+    const current = params.get("q") || "";
+    if (current !== searchQuery) {
+      if (searchQuery) {
+        params.set("q", searchQuery);
+      } else {
+        params.delete("q");
+      }
+      const next = params.toString();
+      window.history.replaceState({}, "", next ? `/blog?${next}` : "/blog");
+    }
+  }, [searchQuery, activePost]);
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#0b0f19] text-slate-100 relative overflow-hidden">

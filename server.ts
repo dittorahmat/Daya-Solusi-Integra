@@ -515,10 +515,15 @@ async function startServer() {
     // Serve public static assets (CSS, JS bundles, images, etc.)
     app.use(express.static(distPath));
 
-    // Fallback to primary SPA index.html for client-side dynamic routes
+    // Unknown paths: serve dedicated 404 snapshot with HTTP 404 status.
+    // Valid prerendered routes are already handled by the interceptor above.
     app.get("*", (req, res) => {
+      const notFoundPath = path.join(distPath, "404", "index.html");
+      if (fs.existsSync(notFoundPath)) {
+        return res.status(404).sendFile(notFoundPath);
+      }
       const indexPath = path.join(distPath, "index.html");
-      res.sendFile(indexPath);
+      res.status(404).sendFile(indexPath);
     });
   }
 

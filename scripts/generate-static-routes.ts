@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execFileSync } from "child_process";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { ROUTE_FAQS } from "../src/data/faqData.js";
 import { ROUTE_HOWTO } from "../src/data/howtoData.js";
@@ -89,6 +90,99 @@ function formatRfc822Date(dateStr?: string): string {
   }
 
   return new Date("2026-09-25T00:00:00Z").toUTCString();
+}
+
+/**
+ * Konversi tanggal teks Indonesia/ISO ke format ISO yyyy-mm-dd untuk
+ * datePublished/dateModified JSON-LD dan lastmod sitemap.
+ */
+function toIsoDate(dateStr?: string): string {
+  const fallback = "2026-09-25";
+  if (!dateStr) return fallback;
+
+  const monthMap: Record<string, string> = {
+    januari: "01",
+    februari: "02",
+    maret: "03",
+    april: "04",
+    mei: "05",
+    juni: "06",
+    juli: "07",
+    agustus: "08",
+    september: "09",
+    oktober: "10",
+    november: "11",
+    desember: "12"
+  };
+
+  const idMatch = dateStr.trim().toLowerCase().match(/^(\d{1,2})\s+([a-z]+)\s+(\d{4})$/);
+  if (idMatch && monthMap[idMatch[2]]) {
+    return `${idMatch[3]}-${monthMap[idMatch[2]]}-${idMatch[1].padStart(2, "0")}`;
+  }
+
+  const parsed = new Date(dateStr);
+  if (!isNaN(parsed.getTime())) {
+    return parsed.toISOString().slice(0, 10);
+  }
+
+  return fallback;
+}
+
+/**
+ * Tanggal modifikasi berkas sebagai ISO yyyy-mm-dd. Sumber utama git log
+ * (stabil di CI), fallback ke mtime berkas bila git tidak tersedia.
+ */
+function getDateModifiedIso(filePath: string): string {
+  try {
+    const out = execFileSync("git", ["log", "-1", "--format=%cI", "--", filePath], {
+      encoding: "utf-8",
+      stdio: ["ignore", "pipe", "ignore"]
+    }).trim();
+    if (out.length >= 10) {
+      return out.slice(0, 10);
+    }
+  } catch {
+    // Lanjut ke fallback mtime di bawah
+  }
+  try {
+    const mtime = fs.statSync(filePath).mtime;
+    if (!isNaN(mtime.getTime())) {
+      return mtime.toISOString().slice(0, 10);
+    }
+  } catch {
+    // Pakai fallback tanggal bawaan
+  }
+  return "2026-09-25";
+}
+
+/**
+ * Meta artikel blog dari front-matter markdown: tanggal terbit, tanggal
+ * modifikasi (git log, fallback mtime), dan cover image. Null bila markdown
+ * tidak ada (misal alias non-artikel seperti /blog/penulis/...).
+ */
+function getBlogArticleMeta(slug: string): { published: string; modified: string; coverImage: string } | null {
+  const mdFile = path.join(blogContentDir, `${slug}.md`);
+  if (!fs.existsSync(mdFile)) return null;
+  const raw = fs.readFileSync(mdFile, "utf-8");
+  const { data } = parseBlogFrontMatter(raw);
+  const published = toIsoDate(data.date);
+  const modifiedRaw = getDateModifiedIso(mdFile);
+  return {
+    published,
+    modified: modifiedRaw > published ? modifiedRaw : published,
+    coverImage: data.coverImage ? String(data.coverImage) : "https://dsintegra.co.id/og-image.jpg"
+  };
+}
+
+/**
+ * Sisip-atau-ganti tag head: ganti bila pola cocok, sisipkan sebelum </head>
+ * bila template belum memilikinya (misal theme-color, og:image:alt, article:time).
+ */
+function upsertHeadTag(routeHtml: string, pattern: RegExp, tag: string): string {
+  if (pattern.test(routeHtml)) {
+    return routeHtml.replace(pattern, tag);
+  }
+  return routeHtml.replace(/<\/head>/i, `  ${tag}\n  </head>`);
 }
 
 /**
@@ -318,8 +412,12 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
 
   // 3. Skema khusus berdasarkan tipe halaman
   if (routePath.startsWith("/blog/")) {
-    // Artikel blog: Gunakan TechArticle dengan metadata spesifik artikel
-    graphs.push({
+    // Artikel blog: Gunakan TechArticle dengan tanggal dari front-matter dan git/mtime.
+    // Alias non-artikel (misal /blog/penulis/...) tidak punya markdown: lewati TechArticle.
+    const articleSlug = routePath.replace("/blog/", "");
+    const articleMeta = getBlogArticleMeta(articleSlug);
+    if (articleMeta) {
+      graphs.push({
       "@type": "TechArticle",
       "@id": `${meta.canonical}#article`,
       "headline": meta.title.split("|")[0].trim(),
@@ -349,10 +447,11 @@ function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string {
           "url": "https://dsintegra.co.id/og-image.jpg"
         }
       },
-      "datePublished": "2026-09-25",
-      "dateModified": "2026-09-25",
+      "datePublished": articleMeta.published,
+      "dateModified": articleMeta.modified,
       "proficiencyLevel": "Expert"
-    });
+      });
+    }
   } else if (routePath === "/penulis/humbul-kristiawan") {
     graphs.push({
       "@type": "ProfilePage",
@@ -1344,6 +1443,33 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
     `<meta property="twitter:image" content="${routeImage}" />`
   );
 
+  // Head hygiene v4: theme-color, og:image:alt, dan article times untuk rute artikel
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<meta\s+name="theme-color"\s+content=".*?"\s*\/?>/i,
+    `<meta name="theme-color" content="#0b0f19" />`
+  );
+  routeHtml = upsertHeadTag(
+    routeHtml,
+    /<meta\s+property="og:image:alt"\s+content=".*?"\s*\/?>/i,
+    `<meta property="og:image:alt" content="${meta.ogTitle || meta.title}" />`
+  );
+  if (routePath.startsWith("/blog/")) {
+    const headArticle = getBlogArticleMeta(routePath.replace("/blog/", ""));
+    if (headArticle) {
+      routeHtml = upsertHeadTag(
+        routeHtml,
+        /<meta\s+property="article:published_time"\s+content=".*?"\s*\/?>/i,
+        `<meta property="article:published_time" content="${headArticle.published}" />`
+      );
+      routeHtml = upsertHeadTag(
+        routeHtml,
+        /<meta\s+property="article:modified_time"\s+content=".*?"\s*\/?>/i,
+        `<meta property="article:modified_time" content="${headArticle.modified}" />`
+      );
+    }
+  }
+
   // Ganti skema JSON-LD monolitik dengan skema spesifik per rute yang bersih
   const routeJsonLd = buildJsonLdForRoute(routePath, meta);
   routeHtml = routeHtml.replace(
@@ -1364,8 +1490,146 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
 
 console.log(`Successfully generated ${generatedCount} static prerendered HTML routes with custom social cards and clean JSON-LD.`);
 
+/**
+ * Snapshot 404 khusus: disajikan server dengan status 404 untuk path tak dikenal.
+ * Sengaja TIDAK masuk allRoutes agar tidak ikut sitemap, feed, maupun IndexNow.
+ * Tanpa JSON-LD indexable dan memakai robots noindex.
+ */
+function generateNotFoundSnapshot(): void {
+  const notFoundMeta: RouteMeta = {
+    title: "Halaman Tidak Ditemukan | Daya Solusi Integra",
+    description: "Halaman yang Anda cari tidak tersedia di portal Daya Solusi Integra. Kembali ke beranda, glosarium regulasi, atau gunakan kalkulator TOE Tabel 22.",
+    canonical: "https://dsintegra.co.id/404",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Halaman Tidak Ditemukan | Daya Solusi Integra",
+    ogDescription: "Tautan yang Anda buka sudah dipindahkan atau tidak tersedia. Temukan kembali panduan ICOFR BUMN melalui beranda Daya Solusi Integra."
+  };
+
+  const targetDir = path.join(distDir, "404");
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+
+  let notFoundHtml = templateHtml;
+  notFoundHtml = notFoundHtml.replace(/<title>.*?<\/title>/i, `<title>${notFoundMeta.title}</title>`);
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="title"\s+content=".*?"\s*\/?>/i,
+    `<meta name="title" content="${notFoundMeta.title}" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="description"\s+content=".*?"\s*\/?>/i,
+    `<meta name="description" content="${notFoundMeta.description}" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="robots"\s+content=".*?"\s*\/?>/i,
+    `<meta name="robots" content="noindex, follow" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i,
+    `<link rel="canonical" href="${notFoundMeta.canonical}" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i,
+    `<meta property="og:title" content="${notFoundMeta.ogTitle}" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i,
+    `<meta property="og:description" content="${notFoundMeta.ogDescription}" />`
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i,
+    `<meta property="og:url" content="${notFoundMeta.canonical}" />`
+  );
+  notFoundHtml = upsertHeadTag(
+    notFoundHtml,
+    /<meta\s+name="theme-color"\s+content=".*?"\s*\/?>/i,
+    `<meta name="theme-color" content="#0b0f19" />`
+  );
+
+  // Hapus seluruh JSON-LD indexable dari snapshot 404
+  notFoundHtml = notFoundHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i, "");
+
+  const notFoundBody = `
+    <header style="padding: 1.5rem; border-bottom: 1px solid #1e293b;">
+      <nav aria-label="Breadcrumb" style="font-size: 0.875rem; margin-bottom: 1rem;">
+        <a href="/">Beranda</a> &gt; <span>Halaman Tidak Ditemukan</span>
+      </nav>
+    </header>
+    <main style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; text-align: center;">
+      <p>Kode Respons: 404</p>
+      <h1>Halaman Tidak Ditemukan</h1>
+      <p style="font-size: 1.125rem; line-height: 1.7; color: #94a3b8;">Tautan yang Anda buka sudah dipindahkan, salah ketik, atau tidak lagi tersedia di portal Daya Solusi Integra.</p>
+      <p><a href="/">Kembali ke Beranda</a> | <a href="/glosarium">Glosarium Regulasi</a> | <a href="/kalkulator-sampel-toe">Kalkulator Sampel TOE</a></p>
+    </main>
+  `;
+  notFoundHtml = notFoundHtml.replace(
+    /<div\s+id="root">\s*<\/div>/i,
+    `<div id="root">\n${notFoundBody}\n    </div>`
+  );
+
+  fs.writeFileSync(path.join(targetDir, "index.html"), notFoundHtml, "utf-8");
+  console.log("Generated dedicated 404 snapshot at dist/404/index.html (noindex, no JSON-LD).");
+}
+
+generateNotFoundSnapshot();
+
 // Generate RSS 2.0 Feed untuk sindikasi konten blog
 generateRssFeed();
+
+/**
+ * Pengayaan sitemap: lastmod artikel dari tanggal modifikasi aktual dan
+ * image:image untuk SELURUH URL (coverImage blog, OG per silo non-blog).
+ * Daftar URL, changefreq, dan priority milik berkas dipertahankan apa adanya.
+ * Hasil ditulis ke dist/sitemap.xml (deploy) dan public/sitemap.xml (repo).
+ */
+function enrichSitemap(): void {
+  const publicSitemapPath = path.join(publicDir, "sitemap.xml");
+  if (!fs.existsSync(publicSitemapPath)) {
+    console.warn("public/sitemap.xml not found, skipping sitemap enrichment.");
+    return;
+  }
+
+  const origin = "https://dsintegra.co.id";
+  let sitemapRaw = fs.readFileSync(publicSitemapPath, "utf-8");
+
+  sitemapRaw = sitemapRaw.replace(/<url>([\s\S]*?)<\/url>/g, (block) => {
+    const locMatch = block.match(/<loc>([^<]+)<\/loc>/);
+    if (!locMatch) return block;
+    const loc = locMatch[1].trim();
+    const routePath = loc.startsWith(origin) ? loc.slice(origin.length) || "/" : "/";
+
+    let imageUrl = "https://dsintegra.co.id/og-image.jpg";
+    if (routePath.startsWith("/blog/")) {
+      const article = getBlogArticleMeta(routePath.replace("/blog/", ""));
+      if (article) {
+        imageUrl = article.coverImage;
+        if (/<lastmod>[^<]*<\/lastmod>/.test(block)) {
+          block = block.replace(/<lastmod>[^<]*<\/lastmod>/, `<lastmod>${article.modified}</lastmod>`);
+        } else {
+          block = block.replace(/(<loc>[^<]+<\/loc>)/, `$1\n    <lastmod>${article.modified}</lastmod>`);
+        }
+      }
+    } else if (allRoutes[routePath] && allRoutes[routePath].image) {
+      imageUrl = allRoutes[routePath].image as string;
+    }
+
+    // Entri gambar yang sudah ada dipertahankan apa adanya agar validasi
+    // drift dapat menilai kebenarannya; hanya yang hilang yang dilengkapi.
+    if (!/<image:image>[\s\S]*?<\/image:image>/.test(block)) {
+      const imageBlock = `<image:image>\n      <image:loc>${escapeXml(imageUrl)}</image:loc>\n    </image:image>`;
+      if (/<priority>[^<]+<\/priority>/.test(block)) {
+        block = block.replace(/(<priority>[^<]+<\/priority>)/, `$1\n    ${imageBlock}`);
+      } else {
+        block = `${block}\n    ${imageBlock}\n  `;
+      }
+    }
+    return block;
+  });
+
+  fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemapRaw, "utf-8");
+  fs.writeFileSync(publicSitemapPath, sitemapRaw, "utf-8");
+  console.log("Enriched sitemap.xml with dynamic lastmod and full image coverage at dist/ and public/.");
+}
 
 /**
  * Validasi silang slug artikel blog antara feed (front-matter markdown)
@@ -1435,13 +1699,47 @@ function validateBlogSlugConsistency(): void {
     }
   }
 
+  // Cakupan gambar: SETIAP entri sitemap wajib punya image:image (blog maupun non-blog)
+  if (fs.existsSync(sitemapPath)) {
+    const coverageRaw = fs.readFileSync(sitemapPath, "utf-8");
+    const coverageBlocks = coverageRaw.matchAll(/<url>([\s\S]*?)<\/url>/g);
+    for (const block of coverageBlocks) {
+      const locMatch = block[1].match(/<loc>([^<]+)<\/loc>/);
+      const loc = locMatch ? locMatch[1].trim() : "(loc tidak terbaca)";
+      if (!/<image:loc>[^<]+<\/image:loc>/.test(block[1])) {
+        console.error(`[image-coverage] Entri "${loc}" TIDAK PUNYA image:image di public/sitemap.xml. Lengkapi sebelum rilis.`);
+        driftCount++;
+      }
+    }
+  }
+
+  // Kewarasan tanggal: lastmod artikel blog tidak boleh lebih tua dari tanggal terbitnya
+  if (fs.existsSync(sitemapPath)) {
+    const dateRaw = fs.readFileSync(sitemapPath, "utf-8");
+    const dateBlocks = dateRaw.matchAll(/<url>([\s\S]*?)<\/url>/g);
+    for (const block of dateBlocks) {
+      const locMatch = block[1].match(/<loc>https:\/\/dsintegra\.co\.id\/blog\/([^<]+)<\/loc>/);
+      const lastmodMatch = block[1].match(/<lastmod>([^<]+)<\/lastmod>/);
+      if (locMatch && lastmodMatch) {
+        const article = getBlogArticleMeta(locMatch[1]);
+        if (article && lastmodMatch[1].trim() < article.published) {
+          console.error(`[date-drift] Artikel "/blog/${locMatch[1]}" punya lastmod ${lastmodMatch[1].trim()} yang lebih tua dari tanggal terbit ${article.published}.`);
+          driftCount++;
+        }
+      }
+    }
+  }
+
   if (driftCount > 0) {
-    console.error(`[slug-drift] Terdeteksi ${driftCount} drift slug/gambar. Build digagalkan.`);
+    console.error(`[slug-drift] Terdeteksi ${driftCount} drift slug/gambar/tanggal. Build digagalkan.`);
     process.exitCode = 1;
   } else {
     console.log(`Slug consistency check passed: ${mdSlugs.size} artikel blog sinkron antara feed dan sitemap, ${mdImages.size} gambar sinkron.`);
   }
 }
+
+// Perkaya sitemap dahulu (lastmod dinamis + image penuh), baru validasi hasilnya
+enrichSitemap();
 
 validateBlogSlugConsistency();
 

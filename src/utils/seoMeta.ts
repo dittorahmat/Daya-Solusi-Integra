@@ -123,6 +123,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Profil Pakar GRC: Humbul Kristiawan, CA, CIA, CICA | Daya Solusi Integra",
     ogDescription: "Rekam jejak 25+ tahun di bidang tata kelola korporasi, asersi ICOFR BUMN, dan audit kepatuhan regulasi Kementerian BUMN."
   },
+  "/blog/penulis/humbul-kristiawan": {
+    title: "Humbul Kristiawan, CA, CIA, CICA, GRCP: Profil Pakar & Penulis | Daya Solusi Integra",
+    description: "Profil profesional Humbul Kristiawan: Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit BUMN & perbankan, dan penulis artikel kepatuhan ICOFR.",
+    canonical: "https://dsintegra.co.id/penulis/humbul-kristiawan",
+    image: "https://dsintegra.co.id/images/authors/humbul-kristiawan.jpg",
+    ogTitle: "Profil Pakar GRC: Humbul Kristiawan, CA, CIA, CICA | Daya Solusi Integra",
+    ogDescription: "Rekam jejak 25+ tahun di bidang tata kelola korporasi, asersi ICOFR BUMN, dan audit kepatuhan regulasi Kementerian BUMN."
+  },
   "/toolkit-regulasi": {
     title: "Template Kertas Kerja Kepatuhan ICOFR SK-5 BUMN & RCM Excel | Daya Solusi Integra",
     description: "Katalog berkas kerja dan template resmi kepatuhan SK-5 BUMN: Template Risk & Control Matrix (RCM), Checklist ELC COSO, dan Kertas Kerja Pengujian TOE Tabel 22.",
@@ -339,6 +347,7 @@ export function updateDocumentMeta(pathname: string): void {
 
   setMeta("name", "description", meta.description);
   setMeta("name", "title", meta.title);
+  setMeta("name", "theme-color", "#0b0f19");
   setCanonical(meta.canonical);
 
   // Open Graph
@@ -349,6 +358,7 @@ export function updateDocumentMeta(pathname: string): void {
 
   const imageUrl = meta.image || "https://dsintegra.co.id/og-image.jpg";
   setMeta("property", "og:image", imageUrl);
+  setMeta("property", "og:image:alt", meta.ogTitle || meta.title);
   setMeta("property", "og:image:width", "1200");
   setMeta("property", "og:image:height", "630");
 

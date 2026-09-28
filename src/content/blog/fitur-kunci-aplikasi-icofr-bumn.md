@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "25 September 2026"
 readTime: "6 menit"
-coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1460925895917-afdab827c52f-1200.webp"
 tags: ["Aplikasi ICOFR", "Fitur Aplikasi ICOFR", "GRC Integra", "SK-5 BUMN", "Pengendalian Internal", "Audit Trail"]
 featured: true
 ---

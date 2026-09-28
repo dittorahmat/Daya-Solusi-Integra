@@ -199,7 +199,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "5 Fitur Wajib Aplikasi ICOFR BUMN Sesuai Regulasi SK-5 | Daya Solusi Integra",
     description: "Ulasan fitur esensial perangkat lunak ICOFR BUMN: visualisasi BPMN Lampiran 3, kalkulator sampel Tabel 22, kertas kerja walkthrough Lini 2, dan asersi digital terverifikasi.",
     canonical: "https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1460925895917-afdab827c52f-1200.webp",
     ogTitle: "Fitur Wajib Software ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Pelajari kriteria teknis perangkat lunak ICOFR yang wajib dipenuhi BUMN untuk mematuhi regulasi SK-5."
   },
@@ -207,7 +207,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Panduan SK-5 ICOFR BUMN & GRC Integra | Daya Solusi Integra",
     description: "Panduan lengkap kepatuhan SK-5/DKU.MBU/11/2024: scoping, walkthrough Lini 2, pengujian TOD/TOE Tabel 22, hingga penerbitan asersi Direksi BUMN.",
     canonical: "https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp",
     ogTitle: "Panduan SK-5 ICOFR & Platform GRC Integra | Daya Solusi Integra",
     ogDescription: "Strategi praktis kepatuhan regulasi pengendalian internal pelaporan keuangan bagi BUMN dan anak perusahaan."
   },
@@ -215,7 +215,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Panduan Penentuan Sampel Pengujian TOE Berdasarkan Tabel 22 Regulasi BUMN | Daya Solusi Integra",
     description: "Standar normatif ukuran sampel pengujian efektivitas operasi kontrol (TOE) tanpa deviasi toleransi (zero deviation) berdasarkan frekuensi kontrol menurut regulasi Kementerian BUMN.",
     canonical: "https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1551288049-bebda4e38f71-1200.webp",
     ogTitle: "Panduan Sampel TOE Tabel 22 Regulasi BUMN | Daya Solusi Integra",
     ogDescription: "Matriks ukuran sampel resmi pengujian kontrol manual tahunan, bulanan, mingguan, hingga harian."
   },
@@ -223,7 +223,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Mengapa BUMN Perlu Beralih dari Spreadsheet ke Aplikasi ICOFR Terintegrasi | Daya Solusi Integra",
     description: "Analisis risiko penggunaan spreadsheet manual dalam pelaporan ICOFR: integritas formula, audit trail, segregasi tugas, dan efisiensi konsolidasi holding korporasi.",
     canonical: "https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1551836022-d5d88e9218df-1200.webp",
     ogTitle: "Aplikasi ICOFR vs Spreadsheet Manual | Daya Solusi Integra",
     ogDescription: "Bahaya laten mengelola kertas kerja ICOFR dengan spreadsheet manual dan solusi otomasi GRC Integra."
   },
@@ -231,7 +231,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Apa Itu ICOFR BUMN? Definisi, Fungsi, dan Landasan Regulasi SK-5 | Daya Solusi Integra",
     description: "Pahami esensi Internal Control over Financial Reporting (ICOFR) untuk BUMN Indonesia, peran strategis bagi Direksi, dan konsekuensi ketidakpatuhan regulasi.",
     canonical: "https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp",
     ogTitle: "Apa Itu ICOFR BUMN & Regulasi SK-5 | Daya Solusi Integra",
     ogDescription: "Panduan dasar komprehensif sistem pengendalian internal pelaporan keuangan untuk eksekutif BUMN."
   },
@@ -239,7 +239,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Mengukur Efektivitas Penerapan ICOFR di Lingkungan BUMN | Daya Solusi Integra",
     description: "Metrik dan indikator kunci keberhasilan penerapan sistem pengendalian internal pelaporan keuangan yang sehat dan tahan uji audit KAP maupun BPK.",
     canonical: "https://dsintegra.co.id/blog/efektivitas-icofr-mencegah-fraud-bumn",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1554224155-8d04cb21cd6c-1200.webp",
     ogTitle: "Efektivitas ICOFR di Lingkungan BUMN | Daya Solusi Integra",
     ogDescription: "Tolak ukur evaluasi dan monitoring keberlanjutan sistem pengendalian internal korporat."
   },
@@ -247,7 +247,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Integrasi Kerangka Kerja ISO 31000 dan ICOFR COSO di BUMN | Daya Solusi Integra",
     description: "Harmonisasi antara manajemen risiko berbasis ISO 31000 dan pengendalian internal pelaporan keuangan COSO untuk menciptakan tata kelola yang terpadu.",
     canonical: "https://dsintegra.co.id/blog/panduan-iso-31000-bumn-keuangan",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp",
     ogTitle: "Integrasi ISO 31000 & ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Strategi integrasi manajemen risiko dan pengendalian internal pelaporan keuangan."
   },
@@ -255,7 +255,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP | Daya Solusi Integra",
     description: "Transformasi tata kelola Holding BUMN dengan aset Rp 54T: eliminasi 42 defisiensi, akselerasi TOE 91%, kepatuhan ITGC SAP ERP, dan pencapaian opini WTP tanpa catatan.",
     canonical: "https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1486406146926-c627a92ad1ab-1200.webp",
     ogTitle: "Studi Kasus ICOFR BUMN Menuju Opini WTP | Daya Solusi Integra",
     ogDescription: "Studi kasus pembuktian empiris transformasi kepatuhan SK-5/2024 dan eliminasi temuan material audit."
   },
@@ -263,7 +263,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Perbandingan Software GRC: Platform SK-5 BUMN vs Modul ERP Global | Daya Solusi Integra",
     description: "Evaluasi 5 dimensi antara platform GRC native SK-5 (GRC Integra) dengan modul ERP global (SAP/Oracle): kepatuhan, TCO lisensi rupiah, time-to-value, dan kesiapan audit BPK.",
     canonical: "https://dsintegra.co.id/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp",
     ogTitle: "Software GRC BUMN vs Modul ERP Global | Daya Solusi Integra",
     ogDescription: "Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam memilih solusi kepatuhan ICOFR terbaik."
   },
@@ -271,7 +271,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Panduan Pemetaan Proses Bisnis dan Flowchart SOP BUMN SK-5 | Daya Solusi Integra",
     description: "Cara menyusun flowchart proses bisnis BUMN standar BPMN 2.0 Lampiran 3 SK-5: notasi baku, pemetaan RCM, dan rekonstruksi otomatis alur SOP lama via web canvas.",
     canonical: "https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn",
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1531403009284-440f080d1e12-1200.webp",
     ogTitle: "Panduan Flowchart SOP & Pemetaan Proses Bisnis BUMN | Daya Solusi Integra",
     ogDescription: "Standarisasi diagram alur SOP BUMN sesuai Lampiran 3 SK-5/2024 dan integrasi pengujian pengendalian internal."
   },
@@ -279,7 +279,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Risiko RCM Excel vs Software GRC Terdedikasi BUMN | Daya Solusi Integra",
     description: "Analisis kritis risiko audit pengelolaan RCM manual via spreadsheet Excel: integritas data, ketiadaan audit trail, risiko SOD, dan otomasi platform GRC Integra.",
     canonical: "https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1460925895917-afdab827c52f-1200.webp",
     ogTitle: "Risiko RCM Excel vs Platform GRC BUMN | Daya Solusi Integra",
     ogDescription: "Kelemahan spreadsheet untuk audit kepatuhan BUMN SK-5 dan manfaat otomasi kertas kerja audit terintegrasi."
   },
@@ -287,7 +287,7 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     title: "Evaluasi Software GRC: Platform Global vs Platform Native BUMN | Daya Solusi Integra",
     description: "Analisis komparatif pengadaan software GRC BUMN: TCO lisensi rupiah vs valas USD, kedaulatan data UU PDP, serta kepatuhan native regulasi SK-5/2024.",
     canonical: "https://dsintegra.co.id/blog/alternatif-software-grc-global-bumn",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/blog/u-photo-1486406146926-c627a92ad1ab-1200.webp",
     ogTitle: "Alternatif Software GRC Global untuk BUMN | Daya Solusi Integra",
     ogDescription: "Panduan evaluasi pengadaan platform GRC enterprise bagi Direksi TI dan Komite Audit BUMN."
   }

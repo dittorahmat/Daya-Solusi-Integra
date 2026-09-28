@@ -123,7 +123,7 @@ export function validateBlogSlugConsistency(): void {
     if (!sitemapImage) {
       console.error(`[image-drift] Artikel "/blog/${slug}" punya coverImage tetapi TIDAK ADA entri image:image di public/sitemap.xml.`);
       driftCount++;
-    } else if (sitemapImage !== coverImage) {
+    } else if (sitemapImage.replace(/^https:\/\/dsintegra\.co\.id/, "") !== coverImage) {
       console.error(`[image-drift] Cover "/blog/${slug}" tidak cocok: markdown memakai "${coverImage}" tetapi sitemap memakai "${sitemapImage}".`);
       driftCount++;
     }

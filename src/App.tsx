@@ -1,35 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import GrcIntegraPlatform from "./components/GrcIntegraPlatform";
 import Clients from "./components/Clients";
 import BlogPreviewSection from "./components/BlogPreviewSection";
-import BlogPage from "./components/BlogPage";
 import Assessment from "./components/Assessment";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AiAdvisor from "./components/AiAdvisor";
-import IcofrBumnPage from "./components/pages/IcofrBumnPage";
-import ItgcAuditReadinessPage from "./components/pages/ItgcAuditReadinessPage";
-import EnterpriseGrcPage from "./components/pages/EnterpriseGrcPage";
-import PlatformProductPage from "./components/pages/PlatformProductPage";
-import BpmWorkflowEditorPage from "./components/pages/BpmWorkflowEditorPage";
-import AssessmentLandingPage from "./components/pages/AssessmentLandingPage";
-import GlossaryPage from "./components/pages/GlossaryPage";
-import GlossaryDetailPage from "./components/pages/GlossaryDetailPage";
-import ToeCalculatorPage from "./components/pages/ToeCalculatorPage";
-import RegulatoryHubPage from "./components/pages/RegulatoryHubPage";
-import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
-import IndependenceStatementPage from "./components/pages/IndependenceStatementPage";
-import SectorDetailPage from "./components/pages/SectorDetailPage";
-import BumnProcurementPage from "./components/pages/BumnProcurementPage";
-import AuthorProfilePage from "./components/pages/AuthorProfilePage";
-import RegulatoryToolkitPage from "./components/pages/RegulatoryToolkitPage";
-import CaseStudiesPage from "./components/pages/CaseStudiesPage";
-import AuditFindingsPage from "./components/pages/AuditFindingsPage";
-import KakTorProcurementPage from "./components/pages/KakTorProcurementPage";
-import NotFoundPage from "./components/pages/NotFoundPage";
+// Route code-splitting: halaman rute dimuat malas per halaman agar chunk
+// awal tidak membawa kode rute yang tidak dibuka. Shell home tetap sinkron.
+const BlogPage = lazy(() => import("./components/BlogPage"));
+const IcofrBumnPage = lazy(() => import("./components/pages/IcofrBumnPage"));
+const ItgcAuditReadinessPage = lazy(() => import("./components/pages/ItgcAuditReadinessPage"));
+const EnterpriseGrcPage = lazy(() => import("./components/pages/EnterpriseGrcPage"));
+const PlatformProductPage = lazy(() => import("./components/pages/PlatformProductPage"));
+const BpmWorkflowEditorPage = lazy(() => import("./components/pages/BpmWorkflowEditorPage"));
+const AssessmentLandingPage = lazy(() => import("./components/pages/AssessmentLandingPage"));
+const GlossaryPage = lazy(() => import("./components/pages/GlossaryPage"));
+const GlossaryDetailPage = lazy(() => import("./components/pages/GlossaryDetailPage"));
+const ToeCalculatorPage = lazy(() => import("./components/pages/ToeCalculatorPage"));
+const RegulatoryHubPage = lazy(() => import("./components/pages/RegulatoryHubPage"));
+const PrivacyPolicyPage = lazy(() => import("./components/pages/PrivacyPolicyPage"));
+const IndependenceStatementPage = lazy(() => import("./components/pages/IndependenceStatementPage"));
+const SectorDetailPage = lazy(() => import("./components/pages/SectorDetailPage"));
+const BumnProcurementPage = lazy(() => import("./components/pages/BumnProcurementPage"));
+const AuthorProfilePage = lazy(() => import("./components/pages/AuthorProfilePage"));
+const RegulatoryToolkitPage = lazy(() => import("./components/pages/RegulatoryToolkitPage"));
+const CaseStudiesPage = lazy(() => import("./components/pages/CaseStudiesPage"));
+const AuditFindingsPage = lazy(() => import("./components/pages/AuditFindingsPage"));
+const KakTorProcurementPage = lazy(() => import("./components/pages/KakTorProcurementPage"));
+const NotFoundPage = lazy(() => import("./components/pages/NotFoundPage"));
+
+function RouteFallback() {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center" aria-hidden="true">
+      <div className="w-full max-w-3xl mx-auto px-6 py-16 space-y-4">
+        <div className="h-8 w-2/3 rounded bg-slate-800 animate-pulse" />
+        <div className="h-4 w-full rounded bg-slate-900 animate-pulse" />
+        <div className="h-4 w-5/6 rounded bg-slate-900 animate-pulse" />
+      </div>
+    </div>
+  );
+}
 import { LOADED_BLOG_POSTS } from "./components/blog/blogLoader";
 import { GLOSSARY_ITEMS } from "./data/glossaryData";
 import { SECTOR_DATA_MAP } from "./data/sectorsData";
@@ -169,6 +183,7 @@ export default function App() {
 
       {/* Main Sections */}
       <main className="flex-1 relative z-10">
+        <Suspense fallback={<RouteFallback />}>
         {isNotFound ? (
           /* UNKNOWN PATH OR INVALID SLUG: dedicated 404 with noindex */
           <NotFoundPage onNavigate={navigateTo} />
@@ -331,6 +346,7 @@ export default function App() {
             <Contact prefill={assessmentPrefill} />
           </>
         )}
+        </Suspense>
       </main>
 
       {/* Corporate Footer */}

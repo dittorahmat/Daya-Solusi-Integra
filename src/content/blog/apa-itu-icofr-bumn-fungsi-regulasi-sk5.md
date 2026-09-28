@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "25 September 2026"
 readTime: "8 menit"
-coverImage: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp"
 tags: ["Apa Itu ICOFR", "Fungsi ICOFR", "SK-5 BUMN", "Tata Kelola BUMN", "Pengendalian Internal", "Kementerian BUMN"]
 featured: false
 ---

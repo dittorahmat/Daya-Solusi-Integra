@@ -6,7 +6,7 @@ category: "Manajemen Risiko (ISO 31000)"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 readTime: "6 min read"
-coverImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp"
 excerpt: "Langkah taktis bagi direksi dan komite risiko BUMN dalam mengintegrasikan Risk Appetite Statement (RAS) dengan tata kelola teknologi informasi modern."
 tags: ["ISO 31000", "BUMN", "Risk Appetite", "Governance"]
 featured: true

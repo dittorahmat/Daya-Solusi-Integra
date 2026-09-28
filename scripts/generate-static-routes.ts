@@ -11,7 +11,7 @@ import { generateNotFoundSnapshot } from "./seo/notfound.js";
 import { enrichSitemap, validateBlogSlugConsistency } from "./seo/sitemap.js";
 import { generateRssFeed, generateLlmsFiles } from "./seo/feeds.js";
 import { submitToIndexNow } from "./seo/indexnow.js";
-import { validatePrerenderInternalLinks } from "./seo/linkguard.js";
+import { validatePrerenderInternalLinks, validateNoExternalBlogImages } from "./seo/linkguard.js";
 
 let generatedCount = 0;
 
@@ -196,6 +196,9 @@ validateBlogSlugConsistency();
 
 // Guard integritas internal link prerender (0 broken /blog/<slug>)
 validatePrerenderInternalLinks();
+
+// Guard pipeline gambar lokal (0 referensi Unsplash tersisa)
+validateNoExternalBlogImages();
 
 // Generate LLM Discovery Files
 generateLlmsFiles();

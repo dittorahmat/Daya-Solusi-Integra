@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Breadcrumbs from "../Breadcrumbs";
 import { useBlogSearch } from "./useBlogSearch";
+import BlogCoverImage from "./BlogCoverImage";
 
 interface BlogListProps {
   onNavigate: (path: string) => void;
@@ -134,13 +135,10 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                     onClick={() => onNavigate(`/blog/${featuredPost.slug}`)}
                     className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-800 aspect-video cursor-pointer"
                   >
-                    <img
+                    <BlogCoverImage
                       src={featuredPost.coverImage}
                       alt={featuredPost.title}
-                      width="1200"
-                      height="675"
-                      fetchPriority="high"
-                      decoding="async"
+                      eager
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -161,13 +159,9 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                       onClick={() => onNavigate(`/blog/${post.slug}`)}
                       className="relative aspect-video overflow-hidden cursor-pointer bg-slate-950"
                     >
-                      <img
+                      <BlogCoverImage
                         src={post.coverImage}
                         alt={post.title}
-                        width="1200"
-                        height="675"
-                        loading="lazy"
-                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">

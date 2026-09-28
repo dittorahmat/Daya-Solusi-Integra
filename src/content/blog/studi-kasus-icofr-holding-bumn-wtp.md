@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "26 September 2026"
 readTime: "8 menit"
-coverImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1486406146926-c627a92ad1ab-1200.webp"
 tags: ["Studi Kasus ICOFR", "Opini WTP", "Audit BPK", "SK-5 BUMN", "ITGC ERP", "Pengendalian Internal"]
 featured: true
 ---

@@ -1,7 +1,78 @@
 import fs from "fs";
 import path from "path";
-import { distDir, blogContentDir } from "./paths.js";
+import { distDir, blogContentDir, publicDir } from "./paths.js";
 import { parseBlogFrontMatter } from "./frontmatter.js";
+
+/**
+ * Guard gambar eksternal: tidak boleh ada referensi images.unsplash.com
+ * yang tersisa di konten (markdown), metadata (seoMeta), komponen gambar,
+ * maupun artefak build (sitemap, snapshot prerender). Semua cover artikel
+ * WAJIB memakai URL lokal /images/blog/* yang ada di dist/.
+ */
+export function validateNoExternalBlogImages(): void {
+  let driftCount = 0;
+
+  const mdSlugs: string[] = [];
+  for (const file of fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"))) {
+    const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    if (/images\.unsplash\.com/i.test(raw)) {
+      console.error(`[image-drift] "${file}" masih merujuk images.unsplash.com. Alihkan coverImage ke /images/blog/*.`);
+      driftCount++;
+    }
+    const { data } = parseBlogFrontMatter(raw);
+    const slug = data.slug || file.replace(".md", "");
+    mdSlugs.push(slug);
+    if (typeof data.coverImage === "string" && !data.coverImage.startsWith("/images/blog/")) {
+      console.error(`[image-drift] coverImage "/blog/${slug}" bukan URL lokal /images/blog/*.`);
+      driftCount++;
+    }
+  }
+
+  const localFiles = new Set(fs.readdirSync(path.join(publicDir, "images", "blog")));
+  for (const file of fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"))) {
+    const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    const { data } = parseBlogFrontMatter(raw);
+    if (typeof data.coverImage === "string" && data.coverImage.startsWith("/images/blog/")) {
+      const base = path.basename(data.coverImage);
+      const stem = base.replace(/-1200\.webp$/, "");
+      const expected = [640, 960, 1200].flatMap((w) => [`${stem}-${w}.webp`, `${stem}-${w}.jpg`]);
+      for (const f of expected) {
+        if (!localFiles.has(f)) {
+          console.error(`[image-drift] Varian "${f}" untuk "${file}" tidak ada di public/images/blog/. Jalankan fetch-images.ts.`);
+          driftCount++;
+        }
+      }
+    }
+  }
+
+  // Artefak build: sitemap + snapshot prerender tidak boleh memuat unsplash
+  const sitemapPath = path.join(publicDir, "sitemap.xml");
+  if (fs.existsSync(sitemapPath) && /images\.unsplash\.com/i.test(fs.readFileSync(sitemapPath, "utf-8"))) {
+    console.error("[image-drift] public/sitemap.xml masih memuat images.unsplash.com.");
+    driftCount++;
+  }
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(full);
+      } else if (entry.isFile() && entry.name === "index.html") {
+        if (/images\.unsplash\.com/i.test(fs.readFileSync(full, "utf-8"))) {
+          console.error(`[image-drift] Snapshot "${path.relative(distDir, full)}" masih memuat images.unsplash.com.`);
+          driftCount++;
+        }
+      }
+    }
+  };
+  walk(distDir);
+
+  if (driftCount > 0) {
+    console.error(`[image-drift] Terdeteksi ${driftCount} referensi gambar eksternal. Build digagalkan.`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Image pipeline check passed: ${mdSlugs.length} cover artikel lokal dan lengkap.`);
+  }
+}
 
 /**
  * Validasi integritas internal link pada snapshot prerender:

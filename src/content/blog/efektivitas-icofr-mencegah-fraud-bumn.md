@@ -6,7 +6,7 @@ category: "Tata Kelola & GRC"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 readTime: "4 min read"
-coverImage: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1554224155-8d04cb21cd6c-1200.webp"
 excerpt: "Bagaimana kerangka kerja COSO Internal Control membantu BUMN mendeteksi potensi penyimpangan laporan keuangan sejak dini."
 tags: ["ICOFR", "COSO", "Audit Keuangan", "Anti-Fraud"]
 featured: false

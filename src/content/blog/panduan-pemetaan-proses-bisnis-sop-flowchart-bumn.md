@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "26 September 2026"
 readTime: "8 menit"
-coverImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1531403009284-440f080d1e12-1200.webp"
 tags: ["Flowchart SOP BUMN", "Pemetaan Proses Bisnis", "BPMN 2.0", "BPM Workflow Editor", "SK-5 BUMN", "ICOFR"]
 featured: false
 ---

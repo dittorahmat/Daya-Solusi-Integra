@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "25 September 2026"
 readTime: "9 menit"
-coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1551288049-bebda4e38f71-1200.webp"
 tags: ["Tabel 22 Regulasi BUMN", "Sampel Pengujian TOE", "Aplikasi ICOFR", "Metodologi Audit", "SK-5 BUMN", "Test of Operating Effectiveness"]
 featured: false
 ---

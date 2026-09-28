@@ -24,6 +24,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import RelatedEntitiesWidget from "../RelatedEntitiesWidget";
 import Breadcrumbs from "../Breadcrumbs";
+import BlogCoverImage from "./BlogCoverImage";
 import { getAuthorProfile } from "../../data/authors";
 import { ROUTE_FAQS } from "../../data/faqData";
 import { BlogPost, LOADED_BLOG_POSTS } from "./blogLoader";
@@ -218,13 +219,10 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
 
             {/* Cover Banner */}
             <div className="relative rounded-2xl overflow-hidden mb-10 border border-slate-800 aspect-video shadow-2xl">
-              <img
+              <BlogCoverImage
                 src={activePost.coverImage}
                 alt={activePost.title}
-                width="1200"
-                height="675"
-                fetchPriority="high"
-                decoding="async"
+                eager
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-40" />

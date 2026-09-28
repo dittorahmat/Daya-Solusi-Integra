@@ -69,7 +69,7 @@ export const LOADED_BLOG_POSTS: BlogPost[] = Object.keys(markdownFiles).map((fil
     authorRole: data.authorRole || "Senior GRC Consultant",
     date: data.date || "2026-08-10",
     readTime: data.readTime || "5 min read",
-    coverImage: data.coverImage || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    coverImage: data.coverImage || "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp",
     tags: Array.isArray(data.tags) ? data.tags : ["GRC", "BUMN"],
     featured: Boolean(data.featured)
   };

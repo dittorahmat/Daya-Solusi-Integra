@@ -8,7 +8,7 @@ author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
 date: "26 September 2026"
 readTime: "9 menit"
-coverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp"
 tags: ["Perbandingan Software GRC", "Software GRC BUMN", "SAP GRC vs GRC Integra", "Regulasi SK-5", "Audit ITGC", "Three Lines Model"]
 featured: false
 ---

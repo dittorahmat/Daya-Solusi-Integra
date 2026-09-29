@@ -146,6 +146,7 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 - [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
 - [Panduan KAK & TOR Pengadaan BUMN](https://dsintegra.co.id/panduan-kak-tor-icofr): Rujukan klausul Kerangka Acuan Kerja (KAK) resmi konsultan ICOFR, spesifikasi teknis platform software GRC, kualifikasi tenaga ahli, dan permohonan draf dokumen Word.
 - [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
+- [Media Kit & Rujukan Pers](https://dsintegra.co.id/media-kit): Boilerplate perusahaan, paket logo resmi, statistik kinerja sitasi, dan kontak media.
 
 ## Panduan Teknis & Riset Regulasi (Knowledge Base)
 ${blogEntries.map((b) => `- [${b.title}](https://dsintegra.co.id/blog/${b.slug}): ${b.excerpt}`).join("\n")}

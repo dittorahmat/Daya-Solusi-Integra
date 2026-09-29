@@ -150,6 +150,11 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                   <Calendar className="w-3.5 h-3.5" />
                   {activePost.date}
                 </span>
+                {activePost.updated && activePost.updated !== activePost.date && (
+                  <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full font-medium">
+                    Diperbarui {activePost.updated}
+                  </span>
+                )}
                 <span className="flex items-center gap-1 text-slate-400">
                   <Clock className="w-3.5 h-3.5" />
                   {activePost.readTime}

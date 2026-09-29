@@ -291,6 +291,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Alternatif Software GRC Global untuk BUMN | Daya Solusi Integra",
     ogDescription: "Panduan evaluasi pengadaan platform GRC enterprise bagi Direksi TI dan Komite Audit BUMN."
   },
+  "/media-kit": {
+    title: "Media Kit: Boilerplate, Logo & Statistik Kinerja | Daya Solusi Integra",
+    description: "Rujukan pers Daya Solusi Integra: boilerplate perusahaan, paket logo resmi, statistik kinerja ICOFR BUMN yang dapat dikutip, dan kontak media.",
+    canonical: "https://dsintegra.co.id/media-kit",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Media Kit & Rujukan Pers | Daya Solusi Integra",
+    ogDescription: "Boilerplate, logo resmi, dan statistik sitasi untuk jurnalis dan peneliti."
+  },
   "/blog/panduan-hps-pengadaan-icofr-bumn": {
     title: "Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN | Daya Solusi Integra",
     description: "Metodologi estimasi HPS pengadaan ICOFR BUMN: komponen orang-bulan tenaga ahli, lisensi platform GRC, serta jebakan underpricing yang memicu gagal lelang.",

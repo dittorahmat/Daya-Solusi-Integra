@@ -10,6 +10,8 @@ export interface BlogPost {
   author: string;
   authorRole: string;
   date: string;
+  /** Tanggal revisi eksplisit (opsional). Badge tampil bila ada dan beda dari date. */
+  updated?: string;
   readTime: string;
   coverImage: string;
   tags: string[];
@@ -68,6 +70,7 @@ export const LOADED_BLOG_POSTS: BlogPost[] = Object.keys(markdownFiles).map((fil
     author: data.author || "Tim Konsultan Daya Solusi Integra",
     authorRole: data.authorRole || "Senior GRC Consultant",
     date: data.date || "2026-08-10",
+    updated: typeof data.updated === "string" && data.updated.trim().length > 0 ? data.updated : undefined,
     readTime: data.readTime || "5 min read",
     coverImage: data.coverImage || "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp",
     tags: Array.isArray(data.tags) ? data.tags : ["GRC", "BUMN"],

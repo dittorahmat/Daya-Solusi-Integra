@@ -445,6 +445,17 @@
     </image:image>
   </url>
 
+  <!-- PR Media Kit & Press Reference -->
+  <url>
+    <loc>https://dsintegra.co.id/media-kit</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+
   <!-- Interactive Regulatory Sampling Calculator (Table 22 SK-5 BUMN) -->
   <url>
     <loc>https://dsintegra.co.id/kalkulator-sampel-toe</loc>

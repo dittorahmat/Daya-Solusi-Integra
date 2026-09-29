@@ -6,7 +6,7 @@ import { GLOSSARY_ITEMS } from "../../src/data/glossaryData.js";
 import { REGULATION_ITEMS } from "../../src/data/regulationData.js";
 import { SECTOR_DATA_MAP } from "../../src/data/sectorsData.js";
 import { blogContentDir } from "./paths.js";
-import { parseBlogFrontMatter } from "./frontmatter.js";
+import { parseBlogFrontMatter, getBlogArticleMeta } from "./frontmatter.js";
 import { cleanProhibitedDashes } from "./xml.js";
 
 /**
@@ -45,6 +45,11 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
     if (fs.existsSync(mdFile)) {
       const rawMd = fs.readFileSync(mdFile, "utf-8");
       const { data, body } = parseBlogFrontMatter(rawMd);
+      // Badge pembaruan: tampil bila tanggal modifikasi (git/mtime) > terbit.
+      const articleMeta = getBlogArticleMeta(slug);
+      const updatedBadge = articleMeta && articleMeta.modified > articleMeta.published
+        ? ` | Diperbarui: <time itemprop="dateModified">${articleMeta.modified}</time>`
+        : "";
       
       // Sederhanakan markdown paragraphs ke tag HTML semantik
       const paragraphs = body
@@ -59,7 +64,7 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
       <article itemscope itemtype="https://schema.org/TechArticle">
         <header>
           <p>Kategori: <span itemprop="articleSection">${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</span></p>
-          <p>Penulis: <span itemprop="author">${cleanProhibitedDashes(data.author || "Daya Solusi Integra")}</span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time></p>
+          <p>Penulis: <span itemprop="author">${cleanProhibitedDashes(data.author || "Daya Solusi Integra")}</span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time>${updatedBadge}</p>
         </header>
         <section class="article-lead" itemprop="abstract">
           <p><strong>Ringkasan Eksekutif &amp; Jawaban Kunci:</strong> ${cleanProhibitedDashes(data.excerpt || pageDesc)}</p>
@@ -289,6 +294,23 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
       </article>
 
       <p>Konsultasikan penuntasan temuan audit defisiensi BUMN Anda dengan konsultan senior kami di <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
+    </section>
+    `;
+  } else if (routePath === "/media-kit") {
+    specificContent = `
+    <section>
+      <h2>Boilerplate Perusahaan Siap Kutip</h2>
+      <p>PT Daya Solusi Integra adalah firma konsultan spesialis tata kelola korporasi, implementasi ICOFR (Internal Control over Financial Reporting), evaluasi ITGC, dan penyedia platform software GRC Integra untuk kepatuhan regulasi SK-5/DKU.MBU/11/2024 Kementerian BUMN.</p>
+      <h2 id="statistik-kinerja">Statistik Kinerja yang Dapat Dikutip</h2>
+      <ul>
+        <li id="statistik-defisiensi"><strong>42 defisiensi</strong> pengendalian holding BUMN dieliminasi hingga tuntas menuju opini WTP tanpa catatan.</li>
+        <li id="statistik-efisiensi-toe"><strong>70 persen</strong> efisiensi waktu pengujian kontrol TOE Tabel 22 melalui kalkulator otomatis dan platform digital.</li>
+        <li id="statistik-asersi"><strong>H-14</strong> penyelesaian asersi Direksi sebelum batas akhir regulasi Kementerian BUMN.</li>
+        <li id="statistik-kepatuhan"><strong>100 persen</strong> Corrective Action Plan atas temuan signifikan auditor eksternal diselesaikan sebelum tutup buku.</li>
+      </ul>
+      <h2>Paket Logo Resmi</h2>
+      <p>Unduhan logo: <a href="/favicon.svg">logo utama SVG</a>, <a href="/og-logo-white.png">logo putih PNG</a>, <a href="/icon-512.png">ikon aplikasi 512</a>, <a href="/og-image.jpg">OG image 1200x630</a>.</p>
+      <p>Kontak media: <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>. Mohon sertakan atribusi tautan ke https://dsintegra.co.id pada setiap kutipan.</p>
     </section>
     `;
   } else if (routePath === "/kalkulator-sampel-toe") {

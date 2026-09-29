@@ -31,6 +31,7 @@ const RegulatoryToolkitPage = lazy(() => import("./components/pages/RegulatoryTo
 const CaseStudiesPage = lazy(() => import("./components/pages/CaseStudiesPage"));
 const AuditFindingsPage = lazy(() => import("./components/pages/AuditFindingsPage"));
 const KakTorProcurementPage = lazy(() => import("./components/pages/KakTorProcurementPage"));
+const MediaKitPage = lazy(() => import("./components/pages/MediaKitPage"));
 const NotFoundPage = lazy(() => import("./components/pages/NotFoundPage"));
 
 function RouteFallback() {
@@ -130,11 +131,12 @@ export default function App() {
   const isKakPage = normalizedPath === "/panduan-kak-tor-icofr";
   const isCaseStudiesPage = normalizedPath === "/studi-kasus";
   const isAuditFindingsPage = normalizedPath === "/temuan-audit-icofr";
+  const isMediaKitPage = normalizedPath === "/media-kit";
   const isSectorPage = normalizedPath.startsWith("/sektor-bumn/") && normalizedPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage
     ? normalizedPath.replace(/^\/sektor-bumn\//, "").replace(/\/+$/, "")
     : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isMediaKitPage || isSectorPage;
 
   // Hash anchors ("/#contact") belong to the home landing page, not 404.
   const isHomeRoute = normalizedPath === "/" || normalizedPath.startsWith("/#");
@@ -302,6 +304,9 @@ export default function App() {
         ) : isAuditFindingsPage ? (
           /* DEDICATED AUDIT FINDINGS & CAP REMEDIATION ROUTE (/temuan-audit-icofr) */
           <AuditFindingsPage onNavigate={navigateTo} />
+        ) : isMediaKitPage ? (
+          /* DEDICATED PR MEDIA KIT ROUTE (/media-kit) */
+          <MediaKitPage onNavigate={navigateTo} />
         ) : isSectorPage && sectorSlug ? (
           /* DEDICATED BUMN SECTOR ROUTE (/sektor-bumn/:slug) */
           <SectorDetailPage 

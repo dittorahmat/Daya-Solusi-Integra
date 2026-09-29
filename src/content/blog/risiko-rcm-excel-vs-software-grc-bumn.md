@@ -106,7 +106,7 @@ Platform GRC terstandarisasi memberikan visibilitas *real-time* kepada manajemen
 
 Mengganti spreadsheet yang sudah mengakar dalam kebiasaan kerja organisasi tidak harus menjadi proses yang rumit. [GRC Integra](/platform/grc-integra) dirancang dengan antarmuka yang intuitif dan fitur migrasi data cerdas:
 1. **Peta Kolom Fleksibel**: Memungkinkan impor RCM spreadsheet lama ke dalam struktur data terstandarisasi SK-5 hanya dalam hitungan jam.
-2. **Kalkulator Sampel Otomatis**: Menghitung secara otomatis kebutuhan sampel TOE sesuai frekuensi kontrol (tahunan, triwulanan, bulanan, mingguan, harian, atau multipel harian) menggunakan [Kalkulator Sampel TOE](/kalkulator-toe).
+2. **Kalkulator Sampel Otomatis**: Menghitung secara otomatis kebutuhan sampel TOE sesuai frekuensi kontrol (tahunan, triwulanan, bulanan, mingguan, harian, atau multipel harian) menggunakan [Kalkulator Sampel TOE](/kalkulator-sampel-toe).
 3. **Penyelarasan Regulasi BUMN**: Format pelaporan langsung sesuai dengan kertas kerja yang disyaratkan oleh Kementerian BUMN dan BPKP.
 
 Tinggalkan ketergantungan pada spreadsheet yang rentan dan tingkatkan wibawa tata kelola korporasi Anda ke standar tertinggi. Hubungi konsultan kami melalui halaman [Layanan Pendampingan ICOFR BUMN](/layanan/icofr-bumn) atau jadwalkan sesi demonstrasi sistem untuk unit kerja Anda.

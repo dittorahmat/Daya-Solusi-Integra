@@ -149,6 +149,17 @@
     </image:image>
   </url>
 
+  <!-- Dedicated Company Profile (About) Page -->
+  <url>
+    <loc>https://dsintegra.co.id/tentang-kami</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+
   <!-- Dedicated Vertical Industry Silo Pages -->
   <url>
     <loc>https://dsintegra.co.id/sektor-bumn/perbankan</loc>
@@ -455,6 +466,42 @@
       <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://dsintegra.co.id/glosarium/kertas-kerja-toe</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/glosarium/coso-17-prinsip</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/glosarium/substantive-testing</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/glosarium/itac</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/og-image.jpg</image:loc>
+    </image:image>
+  </url>
 
   <!-- Interactive Regulatory Sampling Calculator (Table 22 SK-5 BUMN) -->
   <url>
@@ -589,7 +636,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
@@ -599,7 +646,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <image:image>

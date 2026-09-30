@@ -296,6 +296,32 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
       <p>Konsultasikan penuntasan temuan audit defisiensi BUMN Anda dengan konsultan senior kami di <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a>.</p>
     </section>
     `;
+  } else if (routePath === "/tentang-kami") {
+    specificContent = `
+    <section>
+      <h2>Profil PT Daya Solusi Integra</h2>
+      <p>Konsultan teknologi informasi dan manajemen risiko independen untuk Badan Usaha Milik Negara (BUMN) dan industri perbankan: tata kelola TI, GRC (Governance, Risk, and Compliance) terintegrasi, serta implementasi ICOFR (Internal Control over Financial Reporting).</p>
+
+      <h3>Kantor Pusat &amp; Kanal Resmi</h3>
+      <p><strong>Alamat:</strong> Indonesia Stock Exchange Tower 1, Level 3 Unit 304, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan, DKI Jakarta 12910</p>
+      <p><strong>Telepon:</strong> +62 852 8599 5234 (Corporate Whatsapp) | <strong>Surel:</strong> <a href="mailto:marketing@dsintegra.co.id">marketing@dsintegra.co.id</a></p>
+      <p><strong>Jam Operasional:</strong> Senin sampai Jumat pukul 08:30 sampai 17:30 WIB. Sabtu, Minggu, dan Hari Libur Nasional tutup.</p>
+
+      <h3>Layanan Inti Perusahaan</h3>
+      <ul>
+        <li><strong>IT Advisory &amp; Governance (ITGC &amp; COBIT):</strong> Audit tata kelola TI, kebijakan keamanan, dan kesiapan audit. <a href="/layanan/itgc-audit-readiness">Layanan ITGC &amp; Kesiapan Audit</a>.</li>
+        <li><strong>Enterprise GRC Consulting:</strong> Framework manajemen risiko ISO 31000 dan GCG Scorecard. <a href="/layanan/enterprise-grc">Framework Enterprise GRC</a>.</li>
+        <li><strong>Implementasi &amp; Sertifikasi ICOFR:</strong> RCM, flowchart proses, dan pengujian efektivitas operasional. <a href="/layanan/icofr-bumn">Implementasi ICOFR BUMN</a>.</li>
+        <li><strong>Pre-Audit Readiness &amp; Remediation:</strong> Simulasi audit dan remediasi temuan menuju opini WTP. <a href="/asesmen-maturitas">Asesmen Kematangan Mandiri</a>.</li>
+      </ul>
+
+      <h3>Legalitas &amp; Kualifikasi Vendor</h3>
+      <p>Badan hukum berizin lengkap di Indonesia dengan NIB valid, NPWP badan usaha, dan kepatuhan perpajakan aktif untuk kelayakan administrasi tender BUMN. <a href="/kualifikasi-vendor">Kualifikasi Vendor &amp; Tender</a> dan <a href="/pernyataan-independensi">Pernyataan Independensi</a>.</p>
+
+      <h3>Kepemimpinan</h3>
+      <p>Dipimpin oleh Principal Partner Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP. <a href="/penulis/humbul-kristiawan">Profil lengkap &amp; rekam jejak</a>.</p>
+    </section>
+    `;
   } else if (routePath === "/media-kit") {
     specificContent = `
     <section>

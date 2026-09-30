@@ -378,5 +378,54 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedTermIds: ["key-control", "rcm", "defisiensi-signifikan"],
     relatedServiceUrl: "/sektor-bumn/infrastruktur-karya",
     relatedServiceLabel: "ICOFR BUMN Karya & PSAK 72"
+  },
+  {
+    id: "kertas-kerja-toe",
+    term: "Kertas Kerja Pengujian TOE",
+    category: "Metodologi Pengujian",
+    regulationRef: "SK-5/DKU.MBU/11/2024 Tabel 22",
+    definition: "Dokumentasi audit formal yang mencatat populasi transaksi, pemilihan sampel representatif sesuai formula Tabel 22 regulasi BUMN, atribut pengujian kontrol, tanggal pelaksanaan, bukti audit fisik/digital, serta kesimpulan ada atau tidaknya deviasi operasional.",
+    keyTakeaway: "Kertas kerja pengujian harus mematuhi standar pemeriksaan SPKN BPK: dapat ditelusuri ulang (reperformable) oleh auditor eksternal independen.",
+    practicalExample: "Lembar kerja spreadsheet atau modul digital yang mendokumentasikan 25 sampel nomor invoice beserta lampiran persetujuan berjenjang.",
+    relatedTermIds: ["toe", "tabel-22", "tod"],
+    relatedServiceUrl: "/toolkit-regulasi",
+    relatedServiceLabel: "Akses Format Kertas Kerja TOE"
+  },
+  {
+    id: "coso-17-prinsip",
+    term: "17 Prinsip Pengendalian Internal COSO",
+    category: "Regulasi & Kerangka Kerja",
+    regulationRef: "COSO Integrated Framework 2013 & SK-5 BUMN",
+    definition: "Tujuh belas prinsip normatif yang dijabarkan dari 5 komponen COSO (Control Environment, Risk Assessment, Control Activities, Information & Communication, Monitoring Activities) yang wajib dipenuhi agar sistem pengendalian internal dinyatakan efektif secara keseluruhan.",
+    keyTakeaway: "Jika salah satu dari 17 prinsip dinilai tidak hadir dan tidak berfungsi (not present and functioning), sistem pengendalian entitas memiliki defisiensi mayor.",
+    practicalExample: "Prinsip 1: Organisasi menunjukkan komitmen terhadap integritas dan nilai-nilai etika melalui penegakan whistleblower system (WBS).",
+    relatedTermIds: ["elc", "icofr", "defisiensi-material"],
+    relatedServiceUrl: "/asesmen-maturitas",
+    relatedServiceLabel: "Asesmen Mandiri 17 Prinsip COSO"
+  },
+  {
+    id: "substantive-testing",
+    term: "Pengujian Substantif",
+    category: "Metodologi Pengujian",
+    regulationRef: "SPKN BPK RI & Standar Audit SA 330",
+    definition: "Prosedur audit yang dirancang untuk mendeteksi salah saji material pada tingkat asersi akun laporan keuangan, mencakup pengujian rinci transaksi dan saldo akun serta prosedur analitis substantif.",
+    keyTakeaway: "Jika pengujian kontrol (TOE) menghasilkan kesimpulan bahwa kontrol internal tidak efektif, auditor wajib memperluas pengujian substantif secara signifikan.",
+    practicalExample: "Pengiriman surat konfirmasi saldo piutang langsung kepada 100% debitur terbesar BUMN untuk memverifikasi keakuratan saldo neraca.",
+    relatedTermIds: ["toe", "tod", "defisiensi-signifikan"],
+    relatedServiceUrl: "/layanan/icofr-bumn",
+    relatedServiceLabel: "Konsultasi Mitigasi Audit"
+  },
+  {
+    id: "itac",
+    term: "Information Technology Application Controls",
+    acronym: "ITAC",
+    category: "Klasifikasi Kontrol",
+    regulationRef: "POJK 11/POJK.03/2022 & Lampiran 6 SK-5 BUMN",
+    definition: "Aktivitas pengendalian otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis).",
+    keyTakeaway: "Pengujian ITAC dapat menggunakan pendekatan Test of One (cukup 1 sampel) dengan syarat utama IT General Controls (ITGC) yang menaungi sistem telah terbukti efektif.",
+    practicalExample: "Konfigurasi otomatis sistem ERP yang menolak pemrosesan pembayaran jika nomor rekening penerima tidak sesuai dengan master data vendor yang telah terverifikasi.",
+    relatedTermIds: ["itgc", "tlc", "tod"],
+    relatedServiceUrl: "/layanan/itgc-audit-readiness",
+    relatedServiceLabel: "Audit Konfigurasi ITAC ERP"
   }
 ];

@@ -163,6 +163,14 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Katalog Temuan Defisiensi Audit ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Panduan remediasi defisiensi audit BPKP/KAP untuk BUMN: telaah akar masalah intercompany, ITGC, PSAK 72, dan Corrective Action Plan sesuai regulasi SK-5."
   },
+  "/tentang-kami": {
+    title: "Profil PT Daya Solusi Integra: Konsultan ICOFR & GRC BUMN | Daya Solusi Integra",
+    description: "Profil perusahaan PT Daya Solusi Integra: konsultan TI dan manajemen risiko independen untuk BUMN dan perbankan. Alamat kantor Jakarta Selatan, kanal kontak resmi, legalitas, dan layanan ICOFR & GRC.",
+    canonical: "https://dsintegra.co.id/tentang-kami",
+    image: "https://dsintegra.co.id/og-image.jpg",
+    ogTitle: "Tentang Kami: PT Daya Solusi Integra | Konsultan ICOFR BUMN",
+    ogDescription: "Kenali Daya Solusi Integra: mitra penasihat independen tata kelola TI, GRC terintegrasi, dan implementasi ICOFR untuk BUMN dan sektor perbankan."
+  },
   "/sektor-bumn/perbankan": {
     title: "Konsultan ICOFR Perbankan BUMN & Evaluasi ITGC Core Banking | Daya Solusi Integra",
     description: "Solusi tata kelola pengendalian internal ICOFR SK-5 dan audit ITGC terintegrasi untuk Bank BUMN (Himbara) dan BPD: mitigasi CKPN PSAK 71, SoD, dan kepatuhan POJK.",

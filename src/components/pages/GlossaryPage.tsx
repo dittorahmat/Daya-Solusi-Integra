@@ -74,13 +74,14 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari istilah, akronim (TOD, TOE, ELC, TLC), atau regulasi..."
-                className="w-full bg-[#0b0f19] border border-slate-700/80 rounded-lg pl-11 pr-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+                placeholder="Cari istilah, akronim (RCM, SoD, TOE, ELC, ITAC), atau rujukan regulasi..."
+                className="w-full bg-[#0b0f19] border border-slate-700/80 rounded-lg pl-11 pr-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-bumn-blue transition-colors"
               />
               {searchQuery && (
                 <button
+                  type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800"
                 >
                   Reset
                 </button>

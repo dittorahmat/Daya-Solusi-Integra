@@ -2,7 +2,7 @@
 
 > Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan spesialis tata kelola korporasi, implementasi ICOFR (Internal Control over Financial Reporting), evaluasi ITGC, dan penyedia platform software GRC Integra untuk kepatuhan regulasi Kementerian BUMN di Indonesia.
 
-PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (kontak: marketing@dsintegra.co.id, +62-811-100-2442). Klien utama mencakup Badan Usaha Milik Negara (BUMN), Anak Perusahaan Holding BUMN, Perbankan, dan Lembaga Jasa Keuangan Teratur. Produk unggulan perusahaan adalah platform GRC Integra, solusi siklus hidup digital ICOFR terintegrasi pertama untuk BUMN sesuai mandat SK-5/DKU.MBU/11/2024.
+PT Daya Solusi Integra berdomisili di Indonesia Stock Exchange Tower 1, Level 3 Unit 304, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan, DKI Jakarta 12910, Indonesia (kontak: marketing@dsintegra.co.id, +62 852 8599 5234). Klien utama mencakup Badan Usaha Milik Negara (BUMN), Anak Perusahaan Holding BUMN, Perbankan, dan Lembaga Jasa Keuangan Teratur. Produk unggulan perusahaan adalah platform GRC Integra, solusi siklus hidup digital ICOFR terintegrasi pertama untuk BUMN sesuai mandat SK-5/DKU.MBU/11/2024.
 
 ## Platform Produk
 - [GRC Integra Platform](https://dsintegra.co.id/platform/grc-integra): Perangkat lunak siklus hidup digital ICOFR BUMN terintegrasi dengan pemetaan BPMN, kalkulator sampel Tabel 22, validasi Lini 2, dan asersi digital ber-QR Code.
@@ -30,6 +30,7 @@ PT Daya Solusi Integra berdomisili di Jakarta Selatan, DKI Jakarta, Indonesia (k
 - [Katalog Temuan Defisiensi Audit ICOFR BUMN](https://dsintegra.co.id/temuan-audit-icofr): Direktori tipologi temuan audit pengendalian internal BUMN: risiko akun salah saji finansial, kelemahan ITGC/SoD, dan panduan Corrective Action Plan SK-5.
 - [Kualifikasi Vendor & Kesiapan Tender BUMN](https://dsintegra.co.id/kualifikasi-vendor): Panduan resmi pengadaan sistem GRC BUMN: legalitas KBLI 70209 (Konsultasi Manajemen), KBLI 62019/62029 (Aktivitas Pemrograman & Konsultasi TI), arsitektur on-premise UU PDP, dan draf klausul KAK.
 - [Panduan KAK & TOR Pengadaan BUMN](https://dsintegra.co.id/panduan-kak-tor-icofr): Rujukan klausul Kerangka Acuan Kerja (KAK) resmi konsultan ICOFR, spesifikasi teknis platform software GRC, kualifikasi tenaga ahli, dan permohonan draf dokumen Word.
+- [Profil Perusahaan PT Daya Solusi Integra](https://dsintegra.co.id/tentang-kami): Identitas badan usaha, alamat kantor IDX Tower 1 Jakarta Selatan, kanal kontak resmi +62 852 8599 5234, legalitas, layanan inti, dan kepemimpinan.
 - [Profil Penulis & Pakar: Humbul Kristiawan](https://dsintegra.co.id/penulis/humbul-kristiawan): Profil Principal Partner Daya Solusi Integra, mantan Equity Partner Deloitte SEA, komite audit aktif BUMN/perbankan, berlisensi CA, CIA, CICA, GRCP.
 - [Media Kit & Rujukan Pers](https://dsintegra.co.id/media-kit): Boilerplate perusahaan, paket logo resmi, statistik kinerja sitasi, dan kontak media.
 

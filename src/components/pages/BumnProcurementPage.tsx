@@ -327,6 +327,12 @@ export default function BumnProcurementPage({ onNavigate }: BumnProcurementPageP
               <ArrowRight className="w-4 h-4 text-[#cca43b]" />
             </button>
           </div>
+          <button
+            onClick={() => onNavigate("/tentang-kami")}
+            className="mt-6 text-xs text-slate-400 hover:text-blue-300 transition-colors"
+          >
+            Lihat profil perusahaan PT Daya Solusi Integra →
+          </button>
         </div>
 
       </div>

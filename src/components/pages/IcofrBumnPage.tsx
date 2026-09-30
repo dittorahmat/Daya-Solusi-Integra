@@ -187,12 +187,20 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
               Jadwalkan sesi konsultasi awal dengan tim spesialis GRC & ICOFR Daya Solusi Integra atau diskusikan kebutuhan sistem Anda.
             </p>
           </div>
-          <button
-            onClick={() => onNavigate("/#contact")}
-            className="px-6 py-3.5 bg-bumn-blue hover:bg-blue-600 text-white font-semibold text-sm rounded-xl transition-all shadow-md shrink-0 cursor-pointer"
-          >
-            Hubungi Konsultan Kami
-          </button>
+          <div className="shrink-0 flex flex-col items-start md:items-end gap-3">
+            <button
+              onClick={() => onNavigate("/#contact")}
+              className="px-6 py-3.5 bg-bumn-blue hover:bg-blue-600 text-white font-semibold text-sm rounded-xl transition-all shadow-md cursor-pointer"
+            >
+              Hubungi Konsultan Kami
+            </button>
+            <button
+              onClick={() => onNavigate("/tentang-kami")}
+              className="text-xs text-slate-400 hover:text-blue-300 transition-colors"
+            >
+              Tentang pelaksana: profil PT Daya Solusi Integra →
+            </button>
+          </div>
         </div>
 
       </div>

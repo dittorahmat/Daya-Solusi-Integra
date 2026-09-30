@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import AiAdvisor from "./components/AiAdvisor";
 // Route code-splitting: halaman rute dimuat malas per halaman agar chunk
 // awal tidak membawa kode rute yang tidak dibuka. Shell home tetap sinkron.
+const AboutPage = lazy(() => import("./components/pages/AboutPage"));
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const IcofrBumnPage = lazy(() => import("./components/pages/IcofrBumnPage"));
 const ItgcAuditReadinessPage = lazy(() => import("./components/pages/ItgcAuditReadinessPage"));
@@ -130,13 +131,14 @@ export default function App() {
   const isToolkitPage = normalizedPath === "/toolkit-regulasi";
   const isKakPage = normalizedPath === "/panduan-kak-tor-icofr";
   const isCaseStudiesPage = normalizedPath === "/studi-kasus";
+  const isAboutPage = normalizedPath === "/tentang-kami";
   const isAuditFindingsPage = normalizedPath === "/temuan-audit-icofr";
   const isMediaKitPage = normalizedPath === "/media-kit";
   const isSectorPage = normalizedPath.startsWith("/sektor-bumn/") && normalizedPath.length > "/sektor-bumn/".length;
   const sectorSlug = isSectorPage
     ? normalizedPath.replace(/^\/sektor-bumn\//, "").replace(/\/+$/, "")
     : null;
-  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isMediaKitPage || isSectorPage;
+  const isSubPage = isBlogPage || isIcofrPage || isItgcPage || isGrcPage || isPlatformPage || isBpmEditorPage || isAssessmentPage || isGlossaryPage || isGlossaryDetailPage || isRegulatoryPage || isToeCalculatorPage || isPrivacyPage || isIndependencePage || isProcurementPage || isAuthorPage || isToolkitPage || isKakPage || isCaseStudiesPage || isAuditFindingsPage || isMediaKitPage || isAboutPage || isSectorPage;
 
   // Hash anchors ("/#contact") belong to the home landing page, not 404.
   const isHomeRoute = normalizedPath === "/" || normalizedPath.startsWith("/#");
@@ -301,6 +303,9 @@ export default function App() {
         ) : isCaseStudiesPage ? (
           /* DEDICATED CASE STUDIES & BENCHMARK INDEX ROUTE (/studi-kasus) */
           <CaseStudiesPage onNavigate={navigateTo} />
+        ) : isAboutPage ? (
+          /* DEDICATED COMPANY PROFILE ROUTE (/tentang-kami) */
+          <AboutPage onNavigate={navigateTo} />
         ) : isAuditFindingsPage ? (
           /* DEDICATED AUDIT FINDINGS & CAP REMEDIATION ROUTE (/temuan-audit-icofr) */
           <AuditFindingsPage onNavigate={navigateTo} />

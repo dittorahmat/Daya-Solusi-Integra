@@ -115,6 +115,11 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
         "@type": "WebPage",
         "name": "Katalog Temuan Audit & Defisiensi ICOFR",
         "url": "https://dsintegra.co.id/temuan-audit-icofr"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Profil Perusahaan Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/tentang-kami"
       }
     ]
   });
@@ -497,6 +502,45 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
         });
       }
     }
+  } else if (routePath === "/tentang-kami") {
+    graphs.push({
+      "@type": "AboutPage",
+      "@id": "https://dsintegra.co.id/tentang-kami#about",
+      "name": "Profil PT Daya Solusi Integra",
+      "url": "https://dsintegra.co.id/tentang-kami",
+      "description": meta.description,
+      "inLanguage": "id-ID",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://dsintegra.co.id/#website"
+      },
+      "mainEntity": {
+        "@type": "ProfessionalService",
+        "@id": "https://dsintegra.co.id/#organization",
+        "name": "Daya Solusi Integra",
+        "legalName": "PT Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/",
+        "telephone": "+62 852 8599 5234",
+        "email": "marketing@dsintegra.co.id",
+        "image": "https://dsintegra.co.id/dsi-logo.png",
+        "logo": "https://dsintegra.co.id/dsi-logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Indonesia Stock Exchange Tower 1, Level 3 Unit 304, Jl. Jend. Sudirman Kav. 52-53",
+          "addressLocality": "Jakarta Selatan",
+          "addressRegion": "DKI Jakarta",
+          "postalCode": "12910",
+          "addressCountry": "ID"
+        },
+        "founder": {
+          "@type": "Person",
+          "@id": "https://dsintegra.co.id/#author-humbul-kristiawan",
+          "name": "Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP",
+          "jobTitle": "Principal Partner & Senior GRC Advisor",
+          "url": "https://dsintegra.co.id/penulis/humbul-kristiawan"
+        }
+      }
+    });
   }
 
   // 3. Skema FAQPage untuk rute yang memiliki kumpulan tanya-jawab resmi

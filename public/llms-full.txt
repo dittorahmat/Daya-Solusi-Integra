@@ -260,6 +260,30 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Pengadaan & Kualifikasi
 - Tautan: https://dsintegra.co.id/glosarium/psak-72
 
+### Kertas Kerja Pengujian TOE
+- Definisi: Dokumentasi audit formal yang mencatat populasi transaksi, pemilihan sampel representatif sesuai formula Tabel 22 regulasi BUMN, atribut pengujian kontrol, tanggal pelaksanaan, bukti audit fisik/digital, serta kesimpulan ada atau tidaknya deviasi operasional.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Tabel 22
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/kertas-kerja-toe
+
+### 17 Prinsip Pengendalian Internal COSO
+- Definisi: Tujuh belas prinsip normatif yang dijabarkan dari 5 komponen COSO (Control Environment, Risk Assessment, Control Activities, Information & Communication, Monitoring Activities) yang wajib dipenuhi agar sistem pengendalian internal dinyatakan efektif secara keseluruhan.
+- Rujukan Regulasi: COSO Integrated Framework 2013 & SK-5 BUMN
+- Kategori: Regulasi & Kerangka Kerja
+- Tautan: https://dsintegra.co.id/glosarium/coso-17-prinsip
+
+### Pengujian Substantif
+- Definisi: Prosedur audit yang dirancang untuk mendeteksi salah saji material pada tingkat asersi akun laporan keuangan, mencakup pengujian rinci transaksi dan saldo akun serta prosedur analitis substantif.
+- Rujukan Regulasi: SPKN BPK RI & Standar Audit SA 330
+- Kategori: Metodologi Pengujian
+- Tautan: https://dsintegra.co.id/glosarium/substantive-testing
+
+### Information Technology Application Controls (ITAC)
+- Definisi: Aktivitas pengendalian otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis).
+- Rujukan Regulasi: POJK 11/POJK.03/2022 & Lampiran 6 SK-5 BUMN
+- Kategori: Klasifikasi Kontrol
+- Tautan: https://dsintegra.co.id/glosarium/itac
+
 ## Artikel Riset & Panduan Teknis Kepatuhan
 ### Analisis Komparatif: Memilih Software GRC BUMN antara Platform Global vs Platform Terlokalisasi Regulasi Indonesia
 - Kategori: Solusi Digital
@@ -345,6 +369,13 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Rekam Jejak: Mantan Equity Partner Deloitte South East Asia, 25+ tahun pengalaman dalam audit internal, implementasi SOX 404 / ICOFR, dan manajemen risiko terintegrasi.
 - Lisensi & Registrasi: Chartered Accountant (CA), Certified Internal Auditor (CIA), Certified Internal Control Auditor (CICA), Certified GRC Professional (GRCP), Register Akuntan Negara Kementerian Keuangan RI No. D-20.117.
 - Peran Komite Pengawasan Aktif: Anggota Komite Pemantau Risiko PT Pegadaian, Anggota Komite Audit PT Bank UOB Indonesia, Anggota Komite Tata Kelola Terintegrasi Bank bjb.
+
+## Profil Perusahaan PT Daya Solusi Integra
+- Halaman Resmi: https://dsintegra.co.id/tentang-kami
+- Kantor Pusat: Indonesia Stock Exchange Tower 1, Level 3 Unit 304, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan, DKI Jakarta 12910
+- Kontak Resmi: +62 852 8599 5234 (Corporate Whatsapp), marketing@dsintegra.co.id
+- Jam Operasional: Senin sampai Jumat 08:30 sampai 17:30 WIB
+- Layanan Inti: IT Advisory & Governance (ITGC & COBIT), Enterprise GRC Consulting, Implementasi & Sertifikasi ICOFR, Pre-Audit Readiness & Remediation.
 
 ## Toolkit & Template Kertas Kerja SK-5
 - Halaman Resmi: https://dsintegra.co.id/toolkit-regulasi

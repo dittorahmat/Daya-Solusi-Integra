@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import GlossaryTooltip from "./GlossaryTooltip";
+import { COMPANY_PROFILE } from "../data/company";
 
 export default function Contact({ prefill }: { prefill?: { company?: string; sector?: string; service?: string } | null }) {
   const [form, setForm] = useState<InquiryForm>({
@@ -225,7 +226,7 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
           {/* Info Column (5 cols) */}
           <div className="lg:col-span-5 space-y-8 text-left" id="contact-info-block">
             <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-display">PT Daya Solusi Integra</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white font-display">{COMPANY_PROFILE.legalName}</h3>
               <p className="text-slate-400 text-sm font-light leading-relaxed">
                 Mitra tepercaya BUMN dan industri perbankan dalam membangun integritas laporan keuangan, keandalan <GlossaryTooltip acronym="ITGC">ITGC</GlossaryTooltip>, dan sistem kepatuhan GRC terintegrasi.
               </p>
@@ -242,10 +243,12 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Kantor Pusat</h4>
                   <p className="text-sm text-slate-200 mt-1 leading-relaxed">
-                    Indonesia Stock Exchange Tower 1<br />
-                    Level 3. Unit 304
-                    Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan<br />
-                    DKI Jakarta 12910
+                    {COMPANY_PROFILE.addressLines.map((line, idx) => (
+                      <React.Fragment key={idx}>
+                        {line}
+                        {idx < COMPANY_PROFILE.addressLines.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -258,7 +261,7 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Telepon & Hubungan Klien</h4>
                   <p className="text-sm text-slate-200 mt-1">
-                    +62 852 8599 5234 (Corporate Whatsapp)
+                    {COMPANY_PROFILE.phoneCanonical} ({COMPANY_PROFILE.phoneNote})
                   </p>
                 </div>
               </div>
@@ -271,7 +274,7 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Surel Resmi</h4>
                   <p className="text-sm text-slate-200 mt-1 hover:text-blue-400 transition-colors">
-                    marketing@dsintegra.co.id
+                    {COMPANY_PROFILE.email}
                   </p>
                 </div>
               </div>
@@ -284,8 +287,8 @@ export default function Contact({ prefill }: { prefill?: { company?: string; sec
                 <div>
                   <h4 className="text-xs font-bold text-slate-400">Jam Operasional</h4>
                   <p className="text-sm text-slate-200 mt-1">
-                    Senin - Jumat: 08:30 - 17:30 WIB<br />
-                    Sabtu, Minggu & Hari Libur Nasional: Tutup
+                    {COMPANY_PROFILE.hoursPrimary}<br />
+                    {COMPANY_PROFILE.hoursSecondary}
                   </p>
                 </div>
               </div>

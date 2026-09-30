@@ -2,6 +2,7 @@ import React from "react";
 import { ShieldCheck, Lock, FileText, ChevronRight, CheckCircle2 } from "lucide-react";
 
 import Breadcrumbs from "../Breadcrumbs";
+import { COMPANY_PROFILE } from "../../data/company";
 
 interface PrivacyPolicyPageProps {
   onNavigate: (path: string) => void;
@@ -228,10 +229,10 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               Untuk mengajukan pertanyaan, permintaan pembaruan, atau permohonan penghapusan data, silakan hubungi unit tata kelola kepatuhan kami melalui kanal resmi berikut:
             </p>
             <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 text-sm space-y-1.5 font-mono text-slate-300">
-              <div>PT Daya Solusi Integra (Compliance & Legal Division)</div>
+              <div>{COMPANY_PROFILE.legalName} (Compliance & Legal Division)</div>
               <div>Surel Khusus: privacy@dsintegra.co.id / legal@dsintegra.co.id</div>
-              <div>Surel Umum: marketing@dsintegra.co.id</div>
-              <div>Alamat: Gedung Talavera Office Park, Lantai 28, TB Simatupang Kav. 22-26, Cilandak Barat, Jakarta Selatan 12430</div>
+              <div>Surel Umum: {COMPANY_PROFILE.email}</div>
+              <div>Alamat: {COMPANY_PROFILE.streetAddress}, {COMPANY_PROFILE.addressLocality} {COMPANY_PROFILE.postalCode}</div>
             </div>
           </section>
 

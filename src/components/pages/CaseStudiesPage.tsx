@@ -426,6 +426,12 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               Unduh Kertas Kerja SK-5
             </a>
           </div>
+          <button
+            onClick={() => onNavigate("/tentang-kami")}
+            className="mt-6 text-xs text-slate-400 hover:text-blue-300 transition-colors"
+          >
+            Kenali pelaksana di balik studi kasus ini: profil PT Daya Solusi Integra →
+          </button>
         </section>
       </div>
     </div>

@@ -295,6 +295,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pahami secara mendalam apa itu ICOFR BUMN, fungsi strategisnya untuk dewan direksi dan komite audit, serta landasan hukum penerbitan regulasi SK-5/DKU.MBU/11/2024 bagi akuntabilitas pelaporan keuangan.
 - Tautan: https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5
 
+### Contoh RCM Siklus Pengadaan BUMN untuk Uji TOD dan TOE: Risiko, Kontrol, dan Assertion
+- Kategori: Panduan Teknis
+- Ringkasan: Contoh Risk and Control Matrix siklus Purchase-to-Pay BUMN yang siap adaptasi: 8 risiko pengadaan, assertion COSO, kontrol preventif dan detektif, frekuensi, pemilik Lini 1, bukti, dan strategi uji TOD serta TOE.
+- Tautan: https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe
+
 ### Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN
 - Kategori: Tata Kelola & GRC
 - Ringkasan: Bagaimana kerangka kerja COSO Internal Control membantu BUMN mendeteksi potensi penyimpangan laporan keuangan sejak dini.
@@ -325,6 +330,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pelajari cara menyusun diagram alir SOP dan flowchart proses bisnis BUMN berstandar BPMN 2.0 sesuai Lampiran 3 SK-5: dari pemilihan notasi baku, sinkronisasi RCM, hingga migrasi dokumen eksisting.
 - Tautan: https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn
 
+### Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template
+- Kategori: Pengadaan & Tender
+- Ringkasan: Struktur Kerangka Acuan Kerja dan Term of Reference pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, tabel bobot penilaian teknis 70/30 dengan kriteria knockout, checklist lampiran, dan perbandingan bundel jasa plus software.
+- Tautan: https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025
+
 ### Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN
 - Kategori: Panduan Teknis
 - Ringkasan: Pelajari formula resmi penentuan ukuran sampel pengujian efektivitas operasi (Test of Operating Effectiveness / TOE) sesuai Tabel 22 Regulasi SK-5 BUMN, justifikasi batas bawah, dan dokumentasi audit SPKN.
@@ -349,6 +359,16 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Solusi Digital
 - Ringkasan: Analisis kritis risiko kepatuhan pengelolaan Risk and Control Matrix (RCM) ICOFR menggunakan spreadsheet Excel di lingkungan BUMN: tantangan integritas data, ketiadaan jejak audit, dan solusi otomasi berbasis SK-5/2024.
 - Tautan: https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn
+
+### Scoping Akun Signifikan dan Konsolidasi ICOFR Holding-Anak BUMN: Materialitas dan Eliminasi
+- Kategori: Tata Kelola & GRC
+- Ringkasan: Metode scoping top-down ICOFR untuk holding BUMN: kapan anak perusahaan wajib ikut SK-5, materialitas kuantitatif dan kualitatif, eliminasi antar perusahaan, serta model operasi Lini 1/2/3 holding versus anak.
+- Tautan: https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn
+
+### Significant Deficiency vs Material Weakness ICOFR: Cara Agregasi dan Remediasi SK-5
+- Kategori: Tata Kelola & GRC
+- Ringkasan: Bedakan control deficiency, significant deficiency, dan material weakness ICOFR menurut SK-5: matriks agregasi temuan, contoh ilustratif, timeline remediasi 30/60/90 hari dengan re-testing, dan contoh memo ke Komite Audit.
+- Tautan: https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi
 
 ### Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan
 - Kategori: Studi Kasus

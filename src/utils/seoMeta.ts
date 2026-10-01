@@ -322,6 +322,38 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     image: "/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp",
     ogTitle: "Harga Software GRC BUMN vs TCO 5 Tahun | Daya Solusi Integra",
     ogDescription: "Kerangka apel-ke-apel untuk panitia pengadaan: platform native, modul ERP global, dan spreadsheet."
+  },
+  "/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025": {
+    title: "Panduan KAK TOR Konsultan ICOFR BUMN 2026: Bobot Teknis & Template | Daya Solusi Integra",
+    description: "Struktur KAK/TOR pengadaan konsultan ICOFR BUMN sesuai SK-5: tabel bobot penilaian teknis 70/30, kriteria knockout, checklist lampiran, dan opsi bundel jasa plus software.",
+    canonical: "https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025",
+    image: "/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp",
+    ogTitle: "KAK TOR Konsultan ICOFR BUMN & Template 2026 | Daya Solusi Integra",
+    ogDescription: "Anatomi dokumen KAK/TOR yang mengikat metodologi SK-5 sebagai kewajiban kontrak pengadaan."
+  },
+  "/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe": {
+    title: "Contoh RCM Siklus Pengadaan BUMN untuk Uji TOD dan TOE | Daya Solusi Integra",
+    description: "Contoh Risk and Control Matrix Purchase-to-Pay BUMN: 8 risiko pengadaan, assertion COSO, kontrol preventif dan detektif, frekuensi, pemilik Lini 1, dan strategi uji TOD/TOE.",
+    canonical: "https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe",
+    image: "/images/blog/u-photo-1551288049-bebda4e38f71-1200.webp",
+    ogTitle: "Contoh RCM Pengadaan BUMN Siap Adaptasi | Daya Solusi Integra",
+    ogDescription: "Tabel RCM P2P lengkap dengan walkthrough satu transaksi dan checklist kesiapan sebelum TOD."
+  },
+  "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi": {
+    title: "Significant Deficiency vs Material Weakness ICOFR & Remediasi SK-5 | Daya Solusi Integra",
+    description: "Bedakan tiga tingkat defisiensi ICOFR menurut SK-5: matriks agregasi temuan, contoh ilustratif, timeline remediasi 30/60/90 hari dengan re-testing, dan memo Komite Audit.",
+    canonical: "https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi",
+    image: "/images/blog/u-photo-1554224155-8d04cb21cd6c-1200.webp",
+    ogTitle: "Agregasi & Remediasi Defisiensi ICOFR BUMN | Daya Solusi Integra",
+    ogDescription: "Cara menilai, mengagregasi, dan meremediasi temuan pengendalian hingga re-testing closed."
+  },
+  "/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn": {
+    title: "Scoping ICOFR Holding-Anak BUMN: Materialitas & Konsolidasi | Daya Solusi Integra",
+    description: "Metode scoping top-down ICOFR holding BUMN: kriteria anak wajib SK-5, materialitas kuantitatif dan kualitatif, eliminasi antar perusahaan, dan model Lini 1/2/3 grup.",
+    canonical: "https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn",
+    image: "/images/blog/u-photo-1531403009284-440f080d1e12-1200.webp",
+    ogTitle: "Scoping & Konsolidasi ICOFR Holding BUMN | Daya Solusi Integra",
+    ogDescription: "Dari matriks scoping akun signifikan hingga paket konsolidasi dan kalender reviu tahunan."
   }
 };
 

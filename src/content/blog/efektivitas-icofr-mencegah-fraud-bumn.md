@@ -23,4 +23,4 @@ Pengendalian Internal atas Pelaporan Keuangan (*Internal Control over Financial 
 4. **Informasi & Komunikasi (*Information & Communication*)**
 5. **Pemantauan (*Monitoring Activities*)**
 
-Dengan evaluasi berkala pada 5 komponen ini, celah *fraud* dapat ditekan secara signifikan.
+Dengan evaluasi berkala pada 5 komponen ini, celah *fraud* dapat ditekan secara signifikan. Bila evaluasi menemukan kelemahan, [klasifikasi dan remediasi defisiensinya](/blog/significant-deficiency-vs-material-weakness-icofr-remediasi) sebelum auditor eksternal tiba.

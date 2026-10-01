@@ -57,7 +57,7 @@ Jangan lupakan aspek non-biaya yang bernilai uang: sertifikasi keamanan yang dim
 | Biaya audit | Rendah (eviden terpusat) | Sedang | Tinggi (rekonsiliasi manual) |
 | Risiko utama | Kematangan vendor lokal | Biaya membengkak + kurs | Temuan BPK berulang |
 
-Tabel ini adalah titik awal diskusi, bukan vonis: bobot tiap dimensi berbeda antara holding multisektor, bank BUMN, dan BUMN karya. Gunakan pembobotan kriteria (misalnya kepatuhan 40 persen, TCO 30 persen, risiko 30 persen) agar evaluasi [KAK](/glosarium/kak) terdokumentasi dan dapat dipertahankan.
+Tabel ini adalah titik awal diskusi, bukan vonis: bobot tiap dimensi berbeda antara holding multisektor, bank BUMN, dan BUMN karya. Gunakan pembobotan kriteria (misalnya kepatuhan 40 persen, TCO 30 persen, risiko 30 persen) agar evaluasi [KAK](/glosarium/kak) terdokumentasi dan dapat dipertahankan. Acuan struktur dan bobot penilaiannya ada pada [panduan KAK TOR 2026](/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025).
 
 ## Simulasi TCO 5 Tahun: Contoh Perhitungan
 

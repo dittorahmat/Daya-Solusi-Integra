@@ -679,9 +679,49 @@
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://dsintegra.co.id/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp</image:loc>
-      <image:title>Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung</image:title>
-    </image:image>
-  </url>
-</urlset>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp</image:loc>
+        <image:title>Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025</loc>
+      <lastmod>2026-10-02</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp</image:loc>
+        <image:title>Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</loc>
+      <lastmod>2026-10-02</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1551288049-bebda4e38f71-1200.webp</image:loc>
+        <image:title>Contoh RCM Siklus Pengadaan BUMN untuk Uji TOD dan TOE: Risiko, Kontrol, dan Assertion</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi</loc>
+      <lastmod>2026-10-02</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1554224155-8d04cb21cd6c-1200.webp</image:loc>
+        <image:title>Significant Deficiency vs Material Weakness ICOFR: Cara Agregasi dan Remediasi SK-5</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn</loc>
+      <lastmod>2026-10-02</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1531403009284-440f080d1e12-1200.webp</image:loc>
+        <image:title>Scoping Akun Signifikan dan Konsolidasi ICOFR Holding-Anak BUMN: Materialitas dan Eliminasi</image:title>
+      </image:image>
+    </url>
+  </urlset>

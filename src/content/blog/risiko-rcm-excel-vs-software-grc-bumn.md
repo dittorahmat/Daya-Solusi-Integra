@@ -96,7 +96,7 @@ Semua berkas tersebut umumnya terserak di berbagai komputer kerja atau lampiran 
 
 ## 5. Kesulitan Konsolidasi Holding dan Anak Perusahaan Multi-Entitas
 
-Bagi Holding BUMN yang membawahi puluhan entitas anak usaha, mengonsolidasikan RCM dari format spreadsheet yang berbeda adalah mimpi buruk operasional. Setiap anak perusahaan memiliki modifikasi kolom tersendiri, sehingga holding membutuhkan waktu berminggu-minggu hanya untuk membersihkan format data sebelum dapat menyajikan potret maturitas pengendalian kepada Dewan Direksi.
+Bagi Holding BUMN yang membawahi puluhan entitas anak usaha, mengonsolidasikan RCM dari format spreadsheet yang berbeda adalah mimpi buruk operasional. Setiap anak perusahaan memiliki modifikasi kolom tersendiri, sehingga holding membutuhkan waktu berminggu-minggu hanya untuk membersihkan format data sebelum dapat menyajikan potret maturitas pengendalian kepada Dewan Direksi. Pola [scoping konsolidasi holding-anak](/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn) menentukan entitas mana yang wajib masuk sejak awal sehingga konsolidasi tidak dimulai dari format yang berantakan.
 
 Platform GRC terstandarisasi memberikan visibilitas *real-time* kepada manajemen puncak holding mengenai status pemenuhan kepatuhan di seluruh portofolio anak usaha melalui dasbor konsolidasi eksekutif.
 
@@ -109,4 +109,4 @@ Mengganti spreadsheet yang sudah mengakar dalam kebiasaan kerja organisasi tidak
 2. **Kalkulator Sampel Otomatis**: Menghitung secara otomatis kebutuhan sampel TOE sesuai frekuensi kontrol (tahunan, triwulanan, bulanan, mingguan, harian, atau multipel harian) menggunakan [Kalkulator Sampel TOE](/kalkulator-sampel-toe).
 3. **Penyelarasan Regulasi BUMN**: Format pelaporan langsung sesuai dengan kertas kerja yang disyaratkan oleh Kementerian BUMN dan BPKP.
 
-Tinggalkan ketergantungan pada spreadsheet yang rentan dan tingkatkan wibawa tata kelola korporasi Anda ke standar tertinggi. Hubungi konsultan kami melalui halaman [Layanan Pendampingan ICOFR BUMN](/layanan/icofr-bumn) atau jadwalkan sesi demonstrasi sistem untuk unit kerja Anda.
+Tinggalkan ketergantungan pada spreadsheet yang rentan dan tingkatkan wibawa tata kelola korporasi Anda ke standar tertinggi. Pola tabel yang benar dapat disalin dari [contoh RCM siklus pengadaan](/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe) sebelum dimigrasikan. Hubungi konsultan kami melalui halaman [Layanan Pendampingan ICOFR BUMN](/layanan/icofr-bumn) atau jadwalkan sesi demonstrasi sistem untuk unit kerja Anda.

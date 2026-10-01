@@ -95,7 +95,7 @@ Proses migrasi dilakukan melalui tiga langkah sederhana:
 
 Kekuatan utama dari pemetaan proses bisnis modern adalah keterpaduannya dengan pengujian kepatuhan. Di dalam sistem [GRC Integra](/platform/grc-integra), setiap aktivitas transaksi pada diagram alur dapat ditandai sebagai:
 - **Aktivitas Operasional Biasa**: Langkah rutin tanpa dampak signifikan terhadap asersi laporan keuangan.
-- **Key Control (Pengendalian Kunci)**: Titik pemeriksaan kritis yang wajib diuji rancangannya (*Test of Design*) dan diuji efektivitas operasinya (*Test of Operating Effectiveness*) menggunakan [Kalkulator Sampel Tabel 22](/kalkulator-sampel-toe).
+- **Key Control (Pengendalian Kunci)**: Titik pemeriksaan kritis yang wajib diuji rancangannya (*Test of Design*) dan diuji efektivitas operasinya (*Test of Operating Effectiveness*) menggunakan [Kalkulator Sampel Tabel 22](/kalkulator-sampel-toe). Contoh tabel yang dihasilkan pola ini ada pada [contoh RCM siklus pengadaan](/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe).
 
 Dengan keterpaduan ini, ketika auditor internal SPI atau auditor independen KAP mengklik suatu node kontrol pada diagram, sistem langsung menampilkan dokumen bukti transaksi (*evidence locker*), riwayat pengujian tahun berjalan, dan nama penanggung jawab validasi.
 

@@ -81,7 +81,7 @@ Perhatikan tiga hal dari simulasi ini. Pertama, porsi jasa versus platform terli
 
 ## Checklist Dokumen Pendukung HPS yang Tahan Audit
 
-HPS tanpa dokumen pendukung adalah angka tanpa pembelaan. Sebelum HPS ditetapkan, pastikan lima dokumen ini tersedia dan ditandatangani: (1) berita acara survei harga pasar dengan minimal tiga pembanding; (2) matriks asumsi volume (jumlah entitas, akun signifikan, estimasi sampel [TOE](/glosarium/toe) per frekuensi kontrol); (3) salinan kontrak sejenis tiga tahun terakhir sebagai pembanding historis; (4) notulen pembahasan HPS oleh panitia yang mencatat dissenting opinion bila ada; dan (5) persetujuan pagu dari pejabat berwenang sesuai batas kewenangan.
+HPS tanpa dokumen pendukung adalah angka tanpa pembelaan. Sebelum HPS ditetapkan, pastikan lima dokumen ini tersedia dan ditandatangani: (1) berita acara survei harga pasar dengan minimal tiga pembanding; (2) matriks asumsi volume (jumlah entitas, akun signifikan, estimasi sampel [TOE](/glosarium/toe) per frekuensi kontrol — lihat [metode scoping holding-anak](/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn) untuk menentukan volumenya); (3) salinan kontrak sejenis tiga tahun terakhir sebagai pembanding historis; (4) notulen pembahasan HPS oleh panitia yang mencatat dissenting opinion bila ada; dan (5) persetujuan pagu dari pejabat berwenang sesuai batas kewenangan.
 
 Kelima dokumen ini disimpan sebagai satu paket bersama [KAK](/glosarium/kak). Saat [SPI](/glosarium/spi) atau BPK menanyakan dasar angka HPS lima tahun kemudian, panitia tidak perlu merekonstruksi ingatan — jawabannya sudah terdokumentasi. BUMN yang tertib administrasi pada tahap ini menghemat waktu klarifikasi berlipat ganda pada tahap audit.
 
@@ -101,6 +101,6 @@ Struktur ini memberi tiga keuntungan. Pertama, panitia hanya bertender sekali un
 
 ## Dari HPS ke KAK yang Presisi
 
-HPS yang solid baru separuh pekerjaan; separuhnya lagi adalah menerjemahkannya menjadi [Kerangka Acuan Kerja](/panduan-kak-tor-icofr) yang mengikat metodologi tersebut sebagai kewajiban kontrak. Cantumkan tahapan SK-5 sebagai milestone pembayaran, syaratkan sertifikasi personil kunci, tetapkan format keluaran (RCM digital, kertas kerja TOE, deficiency sheet, draf asersi), dan kaitkan denda dengan keterlambatan deliverable — bukan sekadar kehadiran personil.
+HPS yang solid baru separuh pekerjaan; separuhnya lagi adalah menerjemahkannya menjadi [Kerangka Acuan Kerja](/panduan-kak-tor-icofr) yang mengikat metodologi tersebut sebagai kewajiban kontrak. Struktur, bobot teknis, dan template dokumennya diuraikan pada [panduan menyusun KAK dan TOR 2026](/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025). Cantumkan tahapan SK-5 sebagai milestone pembayaran, syaratkan sertifikasi personil kunci, tetapkan format keluaran (RCM digital, kertas kerja TOE, deficiency sheet, draf asersi), dan kaitkan denda dengan keterlambatan deliverable — bukan sekadar kehadiran personil.
 
 Bagi panitia yang membutuhkan titik awal, pelajari [kualifikasi vendor](/kualifikasi-vendor) yang mensyaratkan KBLI dan arsitektur data yang sesuai, lalu uji kewajaran sampel pengujian dengan [Kalkulator Sampel TOE](/kalkulator-sampel-toe) sebelum menetapkan volume pengujian di dokumen tender. HPS yang dapat dipertanggungjawabkan metodologinya adalah HPS yang membuat panitia tidur nyenyak saat audit tiba.

@@ -31,7 +31,7 @@ Untuk menjawab kebutuhan ini, **Daya Solusi Integra (DSI)** menghadirkan **GRC I
 Platform **GRC Integra** mendigitalisasi seluruh siklus hidup pengendalian internal BUMN secara *end-to-end*:
 
 ### 1. Perancangan (Scoping & BPMN Standar Lampiran 3)
-Berdasarkan juknis Kementerian BUMN, perancangan ICOFR mewajibkan pemetaan akun signifikan berdasarkan batas materialitas kuantitatif dan faktor kualitatif.
+Berdasarkan juknis Kementerian BUMN, perancangan ICOFR mewajibkan pemetaan akun signifikan berdasarkan batas materialitas kuantitatif dan faktor kualitatif. Metodenya diuraikan pada [panduan scoping holding-anak](/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn).
 - **Notasi Baku**: GRC Integra menyediakan *Business Process Mapping* (BPM) visual interaktif dengan notasi resmi sesuai Lampiran 3 (Oval untuk Start/End, Persegi untuk Aktivitas, Hexagon untuk Titik Risiko, dan Belah Ketupat untuk Kontrol Kunci).
 - **Pre-loaded 11 Klaster Industri**: Mengakomodasi karakteristik unik BUMN di sektor Energi, Pertambangan, Jasa Keuangan, Pangan, hingga Infrastruktur.
 

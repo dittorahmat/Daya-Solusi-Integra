@@ -96,6 +96,6 @@ Platform **GRC Integra** menghadirkan modul **Kalkulator Sampel Tabel 22 Terinte
 - **Pemilihan Frekuensi Otomatis**: Frekuensi kontrol yang dipilih langsung mengunci formula rentang sampel minimum.
 - **Formulir Justifikasi Homogenitas Mandatori**: Sistem secara otomatis mengunci opsi batas bawah dan mewajibkan penguji melampirkan alasan jika tidak menggunakan rentang penuh.
 - **Pengambilan Sampel Teracak Sistem**: Fitur generator sampel acak digital yang langsung menarik nomor referensi dokumen transaksi dari data ERP.
-- **Audit Trail Pengujian**: Kertas kerja tersimpan aman dengan enkripsi digital yang siap diekspor ke format standar pemeriksaan BPK/BPKP dalam satu klik.
+- **Audit Trail Pengujian**: Kertas kerja tersimpan aman dengan enkripsi digital yang siap diekspor ke format standar pemeriksaan BPK/BPKP dalam satu klik. Pola [RCM yang siap diuji](/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe) dan [klasifikasi defisiensi atas hasil ujinya](/blog/significant-deficiency-vs-material-weakness-icofr-remediasi) melengkapi siklus ini.
 
 Tingkatkan standar akuntabilitas pengendalian internal organisasi Anda. Pelajari modul [Platform GRC Integra](https://dsintegra.co.id/platform/grc-integra) atau konsultasikan kesiapan audit tim Anda bersama pakar kami di [Layanan Audit Readiness ICOFR](https://dsintegra.co.id/layanan/icofr-bumn).

@@ -241,5 +241,77 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       "question": "Bagaimana membandingkan platform native dengan modul ERP global secara adil?",
       "answer": "Samakan metric pengguna, hitung implementasi per modul dengan change request yang termasuk versus terpisah, dan beri bobot pada kepatuhan native SK-5 (BPMN Lampiran 3, Tabel 22, asersi QR) dalam kriteria evaluasi KAK."
     }
+  ],
+  "/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025": [
+    {
+      "question": "Apa struktur minimal KAK/TOR konsultan ICOFR BUMN?",
+      "answer": "Tujuh bagian: latar belakang dan dasar hukum SK-5, maksud dan tujuan terukur, ruang lingkup lima tahapan (scoping, RCM, TOD, TOE, remediasi-asersi), deliverable berformat baku, kualifikasi personil kunci, milestone pembayaran, dan kriteria evaluasi 70/30."
+    },
+    {
+      "question": "Mengapa evaluasi teknis ICOFR memakai bobot 70 dan passing grade?",
+      "answer": "Porsi teknis 70 dengan ambang kelulusan minimal 70 memastikan metodologi lebih menentukan daripada harga murah; penawar yang tidak lulus teknis tidak dibuka penawaran biayanya sehingga harga murah ber-metodologi lemah gugur sebelum menang."
+    },
+    {
+      "question": "Kriteria knockout apa yang wajib ada di KAK konsultan ICOFR?",
+      "answer": "Sertifikasi personil kunci (CA/CIA/CISA/CRMA), pengalaman penugasan ICOFR sejenis, ketersediaan tenaga ahli ITGC, komitmen alokasi orang-bulan dengan klausul substitusi, dan surat pernyataan independensi dari KAP pengaudit."
+    },
+    {
+      "question": "Lebih baik bundel jasa plus software atau dipisah dua lot?",
+      "answer": "Satu paket dengan dua sub-lot terukur memberi akuntabilitas tunggal tanpa kehilangan visibilitas harga: sub-pagu jasa dan lisensi dirinci terpisah, harga satuan lisensi dicantumkan untuk addendum, dan data RCM serta kertas kerja ditetapkan sebagai milik BUMN."
+    }
+  ],
+  "/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe": [
+    {
+      "question": "Apa saja kolom wajib tabel RCM siklus pengadaan BUMN?",
+      "answer": "Risiko, assertion COSO (keberadaan, kelengkapan, penilaian, hak, penyajian), kontrol preventif atau detektif, frekuensi, pemilik Lini 1 bernama jabatan, bukti spesifik, dan strategi uji TOD/TOE."
+    },
+    {
+      "question": "Bagaimana cara walkthrough satu transaksi pengadaan?",
+      "answer": "Telusuri satu PO nyata dari permintaan hingga pembayaran: verifikasi PR, dokumen pemilihan vendor dan scoring, approval PO dua level, berita acara penerimaan fisik, status three-way match di ERP, pemisahan verifikator bayar, dan jurnal cut-off untuk transaksi Desember."
+    },
+    {
+      "question": "Mengapa frekuensi kontrol menentukan biaya pengujian TOE?",
+      "answer": "Tabel 22 SK-5 menetapkan rentang sampel berbasis frekuensi dengan toleransi nol: kontrol harian menuntut 25-40 sampel sedangkan kontrol bulanan hanya 2-5, sehingga merancang ulang kontrol harian manual menjadi kontrol detektif mingguan memangkas biaya pengujian secara sah."
+    },
+    {
+      "question": "Kapan RCM dinyatakan siap diuji desain (TOD)?",
+      "answer": "Bila delapan gerbang mutu terpenuhi: assertion benar arah ujinya, label preventif/detektif jujur, frekuensi realistis, pemilik bernama jabatan, bukti spesifik, SoD dievaluasi, versi terkunci, dan kontrol kompensasi teridentifikasi."
+    }
+  ],
+  "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi": [
+    {
+      "question": "Apa beda control deficiency, significant deficiency, dan material weakness?",
+      "answer": "Control deficiency adalah kelemahan biasa yang diperbaiki pemilik proses; significant deficiency cukup penting untuk perhatian tata kelola dan wajib dilaporkan tertulis ke Komite Audit; material weakness menimbulkan kemungkinan wajar salah saji material tidak tercegah dan memengaruhi kesimpulan efektivitas ICOFR."
+    },
+    {
+      "question": "Bagaimana cara mengagregasi beberapa temuan kecil?",
+      "answer": "Nilai kombinasi berdasarkan kedekatan area, keterkaitan sebab akar, dan ada tidaknya kontrol kompensasi efektif; beberapa defisiensi kecil pada satu assertion tanpa kompensasi naik menjadi significant deficiency, dan pola sistemik pada satu komponen COSO naik menjadi material weakness."
+    },
+    {
+      "question": "Berapa lama timeline remediasi defisiensi ICOFR yang wajar?",
+      "answer": "Tiga jendela: hari 1-30 penahanan (cabut akses rangkap, tunjuk action owner), hari 31-60 perbaikan desain (revisi SOP dan konfigurasi), hari 61-90 re-testing dan penutupan dengan penguji independen yang berbeda dari pelaksana remediasi."
+    },
+    {
+      "question": "Apa dampak material weakness terhadap opini dan asersi Direksi?",
+      "answer": "Material weakness yang belum diremediasi pada tanggal neraca membuat kesimpulan efektivitas ICOFR tidak dapat dinyatakan efektif tanpa pengecualian, memaksa perluasan substantive testing auditor, dan meningkatkan risiko opini dengan pengecualian bila salah saji material tidak dikoreksi."
+    }
+  ],
+  "/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn": [
+    {
+      "question": "Kapan anak perusahaan BUMN wajib masuk scoping ICOFR?",
+      "answer": "Bila kontribusi kuantitatifnya melampaui ambang scoping konsolidasian, bila memiliki risiko kualitatif tinggi (fraud, akuisisi baru, perhatian regulator), atau bila menjadi simpul eliminasi material seperti pusat pengadaan grup dan entitas pembiayaan internal."
+    },
+    {
+      "question": "Bagaimana metode scoping top-down holding BUMN?",
+      "answer": "Tiga lapis: dari laporan konsolidasian ke akun signifikan, dari akun signifikan ke proses dan entitas yang melahirkannya, lalu tetapkan kedalaman full scope, focused scope key control, atau ELC-only per pasangan akun-proses-entitas."
+    },
+    {
+      "question": "Apa saja jurnal eliminasi yang wajib dikendalikan?",
+      "answer": "Eliminasi piutang-utang intra-grup dengan rekonsiliasi dua arah, eliminasi laba antar perusahaan belum direalisasi dengan template margin, dan eliminasi investasi terhadap ekuitas anak yang direkonsiliasi per aksi korporasi; seluruhnya full scope di fungsi akuntansi holding."
+    },
+    {
+      "question": "Bagaimana pembagian peran Lini 1/2/3 holding versus anak?",
+      "answer": "Lini 1 anak menyusun RCM dan menjalankan kontrol, Lini 1 holding menangani konsolidasi dan standar format; Lini 2 holding merancang metodologi grup dan walkthrough lintas entitas; SPI melaporkan ke Komite Audit holding dengan jalur eskalasi tanpa filter manajemen anak."
+    }
   ]
 };

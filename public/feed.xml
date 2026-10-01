@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Wed, 30 Sep 2026 23:40:43 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 03:49:47 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -29,6 +29,15 @@
       <category>Regulasi &amp; Standar</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Contoh RCM Siklus Pengadaan BUMN untuk Uji TOD dan TOE: Risiko, Kontrol, dan Assertion</title>
+      <link>https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</guid>
+      <description>Contoh Risk and Control Matrix siklus Purchase-to-Pay BUMN yang siap adaptasi: 8 risiko pengadaan, assertion COSO, kontrol preventif dan detektif, frekuensi, pemilik Lini 1, bukti, dan strategi uji TOD serta TOE.</description>
+      <category>Panduan Teknis</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN</title>
@@ -85,6 +94,15 @@
       <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
+      <title>Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template</title>
+      <link>https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025</guid>
+      <description>Struktur Kerangka Acuan Kerja dan Term of Reference pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, tabel bobot penilaian teknis 70/30 dengan kriteria knockout, checklist lampiran, dan perbandingan bundel jasa plus software.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN</title>
       <link>https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn</guid>
@@ -128,6 +146,24 @@
       <category>Solusi Digital</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Scoping Akun Signifikan dan Konsolidasi ICOFR Holding-Anak BUMN: Materialitas dan Eliminasi</title>
+      <link>https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn</guid>
+      <description>Metode scoping top-down ICOFR untuk holding BUMN: kapan anak perusahaan wajib ikut SK-5, materialitas kuantitatif dan kualitatif, eliminasi antar perusahaan, serta model operasi Lini 1/2/3 holding versus anak.</description>
+      <category>Tata Kelola &amp; GRC</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Significant Deficiency vs Material Weakness ICOFR: Cara Agregasi dan Remediasi SK-5</title>
+      <link>https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi</guid>
+      <description>Bedakan control deficiency, significant deficiency, dan material weakness ICOFR menurut SK-5: matriks agregasi temuan, contoh ilustratif, timeline remediasi 30/60/90 hari dengan re-testing, dan contoh memo ke Komite Audit.</description>
+      <category>Tata Kelola &amp; GRC</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan</title>

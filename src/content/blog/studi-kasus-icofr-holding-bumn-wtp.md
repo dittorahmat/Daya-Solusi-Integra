@@ -134,4 +134,5 @@ Studi kasus ini membuktikan bahwa keberhasilan penyelesaian audit bukan semata-m
 Bagi BUMN dan entitas anak perusahaan yang saat ini sedang mempersiapkan pelaporan keuangan tahun buku berjalan di bawah koridor regulasi SK-5/DKU.MBU/11/2024, langkah prioritas berikut patut segera diambil:
 - Lakukan asesmen diagnostik mandiri melalui [Asesmen Maturitas ICOFR](/asesmen-maturitas) untuk memetakan kesenjangan pengendalian sebelum auditor eksternal menerbitkan daftar temuan.
 - Tertibkan hak akses istimewa dan integritas ITGC pada sistem ERP finansial sejak dini guna mencegah temuan SoD berulang.
+- Pelajari [cara mengagregasi dan meremediasi temuan](/blog/significant-deficiency-vs-material-weakness-icofr-remediasi) serta [scoping konsolidasi holding-anak](/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn) agar puluhan defisiensi berikutnya tertangani sebelum menjadi temuan audit.
 - Tinggalkan pengelolaan matriks kontrol berbasis lembar kerja lepas dan beralihlah ke arsitektur kepatuhan terpadu melalui pendampingan [Layanan Konsultasi ICOFR BUMN](/layanan/icofr-bumn) profesional.

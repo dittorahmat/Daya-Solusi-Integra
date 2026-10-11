@@ -305,10 +305,20 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Bagaimana kerangka kerja COSO Internal Control membantu BUMN mendeteksi potensi penyimpangan laporan keuangan sejak dini.
 - Tautan: https://dsintegra.co.id/blog/efektivitas-icofr-mencegah-fraud-bumn
 
+### Evaluasi Penawaran Teknis ICOFR Bobot 70/30: Matriks Skor & Simulasi
+- Kategori: Pengadaan & Tender
+- Ringkasan: Cara menilai penawaran teknis konsultan ICOFR dengan QCBS 70/30: tabel kriteria dan bobot, formula konversi nilai biaya, simulasi tiga penawar, ambang kelulusan, dan lima kesalahan panitia yang memicu sanggahan.
+- Tautan: https://dsintegra.co.id/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30
+
 ### 7 Fitur Kunci Aplikasi ICOFR Terbaik untuk Uji Pengendalian BUMN Sesuai Regulasi SK-5
 - Kategori: Solusi Digital
 - Ringkasan: Pelajari fitur aplikasi ICOFR yang wajib ada untuk mendukung uji pengendalian internal BUMN: dari pemetaan BPM Lampiran 3, validasi Lini 2, kalkulator sampel Tabel 22, hingga asersi digital QR Code.
 - Tautan: https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn
+
+### Harga Jasa Implementasi ICOFR BUMN 2026: Breakdown Budget & Faktor Penentu
+- Kategori: Pengadaan & Tender
+- Ringkasan: Bedah komponen harga jasa konsultan ICOFR BUMN 2026: tarif orang-bulan per peran, lisensi platform GRC, simulasi budget satu tahun buku, lima faktor penentu harga, dan jebakan underpricing yang merusak kualitas pengujian.
+- Tautan: https://dsintegra.co.id/blog/harga-jasa-implementasi-icofr-bumn-2026
 
 ### Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet untuk Efisiensi dan Akuntabilitas Audit BUMN
 - Kategori: Solusi Digital
@@ -374,6 +384,16 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Studi Kasus
 - Ringkasan: Pelajari bagaimana sebuah Holding BUMN dengan aset di atas Rp 50 Triliun mengeliminasi 42 defisiensi pengendalian intern, memangkas siklus pengujian TOE hingga 90 persen, dan mempertahankan opini WTP melalui implementasi metodologi SK-5/2024.
 - Tautan: https://dsintegra.co.id/blog/studi-kasus-icofr-holding-bumn-wtp
+
+### Syarat Kualifikasi Vendor GRC BUMN: Checklist Dokumen & Pengalaman
+- Kategori: Pengadaan & Tender
+- Ringkasan: Checklist syarat kualifikasi vendor konsultan ICOFR dan software GRC BUMN: dokumen administratif, pengalaman sejenis, tenaga ahli kunci bersertifikat, dan tujuh jebakan diskualifikasi yang paling sering menggugurkan penawar.
+- Tautan: https://dsintegra.co.id/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman
+
+### Timeline Implementasi ICOFR BUMN: Roadmap 3, 6, dan 12 Bulan
+- Kategori: Pengadaan & Tender
+- Ringkasan: Roadmap implementasi ICOFR BUMN per fase 3, 6, dan 12 bulan: milestone scoping sampai asersi Direksi, tabel peran Lini 1/2/3 per triwulan, dependensi entitas anak, dan empat risiko keterlambatan yang menggagalkan cut-off audit.
+- Tautan: https://dsintegra.co.id/blog/timeline-implementasi-icofr-3-6-12-bulan
 
 ## Kualifikasi Pengadaan Vendor & Kesiapan Tender BUMN
 - Halaman Resmi: https://dsintegra.co.id/kualifikasi-vendor

@@ -313,5 +313,77 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
       "question": "Bagaimana pembagian peran Lini 1/2/3 holding versus anak?",
       "answer": "Lini 1 anak menyusun RCM dan menjalankan kontrol, Lini 1 holding menangani konsolidasi dan standar format; Lini 2 holding merancang metodologi grup dan walkthrough lintas entitas; SPI melaporkan ke Komite Audit holding dengan jalur eskalasi tanpa filter manajemen anak."
     }
+  ],
+  "/blog/harga-jasa-implementasi-icofr-bumn-2026": [
+    {
+      "question": "Berapa kisaran budget jasa implementasi ICOFR BUMN satu tahun buku?",
+      "answer": "Untuk BUMN menengah dengan dua anak usaha material, simulasi berbasis komponen menghasilkan orde Rp 1,5-2 miliar: personil kunci 4 peran dalam satuan orang-bulan, lisensi platform per pengguna, implementasi dan pelatihan, perjalanan dinas, QA independen, plus overhead dan pajak. Angka aktual wajib dihitung dari scoping dan survei pasar panitia."
+    },
+    {
+      "question": "Apa komponen terbesar dalam harga jasa konsultan ICOFR?",
+      "answer": "Personil kunci dalam satuan orang-bulan (55-70 persen total paket): team leader bersertifikat 4-6 OB, auditor senior 8-12 OB, auditor junior 10-16 OB, dan ahli ITGC 3-5 OB, dialokasikan per tahapan SK-5 dari scoping hingga asersi Direksi."
+    },
+    {
+      "question": "Faktor apa yang paling menentukan mahal murahnya paket ICOFR?",
+      "answer": "Jumlah dan sebaran entitas anak material, jumlah siklus proses dan key control, fragmentasi sistem informasi (satu ERP versus multi-sistem), kondisi awal pengendalian (tahun fondasi versus pemeliharaan), dan kualifikasi personil yang disyaratkan KAK."
+    },
+    {
+      "question": "Bagaimana mengenali penawaran underpricing yang merusak kualitas?",
+      "answer": "Tiga sinyal: asumsi sampel TOE seragam minimum tanpa justifikasi risiko, penggantian peran senior dengan junior tanpa klausul substitusi, dan penghapusan QA independen serta kunjungan entitas anak dari rincian budget. Minta rincian asumsi sampel per frekuensi kontrol dalam penawaran teknis."
+    }
+  ],
+  "/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30": [
+    {
+      "question": "Bagaimana cara kerja evaluasi QCBS 70/30 untuk konsultan ICOFR?",
+      "answer": "Penawaran teknis dinilai maksimal 70 poin (pengalaman 15, metodologi 25, team leader 15, tenaga ahli 10, rencana kerja 5) dengan passing grade minimal 70; penawar yang gugur tidak dibuka penawaran biayanya. Yang lulus dinilai biayanya maksimal 30 poin dengan formula pembobotan terbalik proporsional."
+    },
+    {
+      "question": "Apa formula konversi nilai biaya 30 poin yang defensibel?",
+      "answer": "Nilai biaya penawar sama dengan 30 dikali penawaran terendah di antara yang lulus teknis dibagi penawaran penawar yang dinilai. Pembaginya wajib penawaran terendah di antara yang lulus, bukan dari seluruh penawar termasuk yang gugur."
+    },
+    {
+      "question": "Mengapa passing grade teknis lebih penting daripada bobotnya?",
+      "answer": "Tanpa ambang kelulusan, harga sangat murah dapat mengkompensasi nilai teknis pas-pasan dan memenangkan tender dengan metodologi lemah. Passing grade memastikan harga murah yang menang berasal dari efisiensi di antara penawar yang semuanya kompeten."
+    },
+    {
+      "question": "Kesalahan evaluasi apa yang paling sering memicu sanggahan?",
+      "answer": "Kriteria kabur yang ditafsirkan saat evaluasi, penilaian tanpa lembar skor individual, membuka amplop biaya penawar yang gugur, mengabaikan uji konsistensi teknis versus biaya, dan berita acara tanpa justifikasi poin per unsur."
+    }
+  ],
+  "/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman": [
+    {
+      "question": "Dokumen apa saja yang wajib disiapkan untuk kualifikasi vendor ICOFR?",
+      "answer": "Dua belas kelompok: akta dan pengesahan, NIB dengan KBLI sesuai lingkup, NPWP dan bukti lunas pajak, laporan keuangan dua tahun, minimal dua referensi kontrak sejenis dengan BAST, CV dan sertifikat team leader serta ahli ITGC, surat komitmen spesifik paket, surat independensi dari KAP, jaminan penawaran, pakta integritas, dan surat kuasa bila dikuasakan."
+    },
+    {
+      "question": "Apa yang dimaksud pengalaman sejenis untuk tender ICOFR?",
+      "answer": "Kontrak pendampingan ICOFR, audit internal berbasis COSO, pengujian pengendalian internal, atau implementasi platform GRC pada BUMN, BUMD, lembaga keuangan, atau korporasi teregulasi dalam lima tahun terakhir, dibuktikan kontrak, berita acara serah terima, dan referensi pengguna jasa yang dapat dikonfirmasi."
+    },
+    {
+      "question": "Sertifikasi apa yang disyaratkan untuk team leader konsultan ICOFR?",
+      "answer": "Minimal satu sertifikasi profesi yang masih berlaku (CA, CIA, CISA, CRMA, atau setara) dengan pengalaman memimpin minimal dua penugasan ICOFR atau governansi sejenis, dibuktikan sertifikat, daftar riwayat penugasan, dan surat komitmen penugasan penuh."
+    },
+    {
+      "question": "Jebakan diskualifikasi apa yang paling sering menggugurkan penawar?",
+      "answer": "KBLI tidak sesuai lingkup, referensi tanpa berita acara serah terima, sertifikasi kedaluwarsa, surat komitmen generik tanpa nama paket, jaminan penawaran kedaluwarsa di tengah evaluasi, benturan kepentingan dengan KAP pengaudit, dan inkonsistensi antar dokumen penawaran."
+    }
+  ],
+  "/blog/timeline-implementasi-icofr-3-6-12-bulan": [
+    {
+      "question": "Berapa lama implementasi ICOFR BUMN satu siklus penuh?",
+      "answer": "Dua belas bulan mengikuti tahun buku: bulan 1-3 fondasi scoping dan RCM, bulan 4-6 walkthrough dan pengujian desain (TOD), bulan 7-12 pengujian efektivitas (TOE), remediasi dengan re-testing, dan asersi Direksi pada bulan ke-12."
+    },
+    {
+      "question": "Mengapa RCM harus dikunci sebelum pengujian desain dimulai?",
+      "answer": "Menguji kontrol yang definisinya masih berubah menghasilkan temuan TOD atas RCM versi lama yang menjadi sampah saat RCM direvisi, sehingga pengulangan pengujian memakan waktu yang justru ingin dihemat dengan paralelisasi."
+    },
+    {
+      "question": "Bagaimana pembagian kerja Lini 1, 2, dan 3 per triwulan?",
+      "answer": "Q1: Lini 1 menyusun RCM, Lini 2 mereviu dan mengunci, SPI menyetujui metodologi. Q2: walkthrough independen dan TOD oleh Lini 2. Q3: TOE berjalan dengan pemantauan sampling mingguan. Q4: remediasi, re-testing independen, agregasi defisiensi, draf asersi, dan evaluasi independen SPI ke Komite Audit."
+    },
+    {
+      "question": "Apa risiko keterlambatan terbesar dalam timeline ICOFR holding?",
+      "answer": "Scoping berubah akibat aksi korporasi, keterlambatan akses sistem dan data, pergantian personil kunci di tengah penugasan, dan penumpukan reviu Lini 2 di Q4. Pagarnya: klausul addendum harga satuan, kesiapan akses sebagai prasyarat termin pertama, klausul substitusi setara, dan SLA reviu mingguan sejak Q3."
+    }
   ]
 };

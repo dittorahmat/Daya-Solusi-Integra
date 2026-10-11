@@ -347,6 +347,38 @@ export const ROUTE_METADATA_MAP: Record<string, RouteMeta> = {
     ogTitle: "Agregasi & Remediasi Defisiensi ICOFR BUMN | Daya Solusi Integra",
     ogDescription: "Cara menilai, mengagregasi, dan meremediasi temuan pengendalian hingga re-testing closed."
   },
+  "/blog/harga-jasa-implementasi-icofr-bumn-2026": {
+    title: "Harga Jasa Implementasi ICOFR BUMN 2026: Breakdown Budget | Daya Solusi Integra",
+    description: "Bedah komponen harga jasa konsultan ICOFR BUMN: tarif orang-bulan tenaga ahli, lisensi platform GRC, simulasi budget satu tahun buku, faktor penentu, dan jebakan underpricing.",
+    canonical: "https://dsintegra.co.id/blog/harga-jasa-implementasi-icofr-bumn-2026",
+    image: "/images/blog/u-photo-1460925895917-afdab827c52f-1200.webp",
+    ogTitle: "Harga Jasa ICOFR BUMN & Simulasi Budget 2026 | Daya Solusi Integra",
+    ogDescription: "Cara menghitung budget implementasi ICOFR dari komponen biaya yang defensibel saat diaudit SPI dan BPK."
+  },
+  "/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30": {
+    title: "Evaluasi Penawaran Teknis ICOFR 70/30: Matriks & Simulasi | Daya Solusi Integra",
+    description: "Cara menilai penawaran teknis konsultan ICOFR dengan QCBS 70/30: tabel kriteria dan bobot, formula nilai biaya, simulasi tiga penawar, passing grade, dan kesalahan pemicu sanggahan.",
+    canonical: "https://dsintegra.co.id/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30",
+    image: "/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp",
+    ogTitle: "Evaluasi Teknis ICOFR Bobot 70/30 | Daya Solusi Integra",
+    ogDescription: "Matriks skor, formula konversi biaya, dan simulasi evaluasi tender konsultan ICOFR yang tahan sanggahan."
+  },
+  "/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman": {
+    title: "Syarat Kualifikasi Vendor GRC BUMN: Checklist & Pengalaman | Daya Solusi Integra",
+    description: "Checklist syarat kualifikasi vendor konsultan ICOFR dan software GRC BUMN: dokumen administratif, pengalaman sejenis, tenaga ahli kunci bersertifikat, dan jebakan diskualifikasi.",
+    canonical: "https://dsintegra.co.id/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman",
+    image: "/images/blog/u-photo-1486406146926-c627a92ad1ab-1200.webp",
+    ogTitle: "Kualifikasi Vendor GRC BUMN & Checklist Dokumen | Daya Solusi Integra",
+    ogDescription: "Dokumen administratif, bukti pengalaman sejenis, syarat tenaga ahli, dan jebakan gugur yang wajib dihindari."
+  },
+  "/blog/timeline-implementasi-icofr-3-6-12-bulan": {
+    title: "Timeline Implementasi ICOFR BUMN 3-12 Bulan: Roadmap & Milestone | Daya Solusi Integra",
+    description: "Roadmap implementasi ICOFR BUMN fase 3, 6, dan 12 bulan: milestone scoping sampai asersi Direksi, peran Lini 1/2/3 per triwulan, dependensi entitas anak, dan risiko keterlambatan.",
+    canonical: "https://dsintegra.co.id/blog/timeline-implementasi-icofr-3-6-12-bulan",
+    image: "/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp",
+    ogTitle: "Roadmap Implementasi ICOFR BUMN 12 Bulan | Daya Solusi Integra",
+    ogDescription: "Fase scoping-RCM, walkthrough-TOD, TOE-remediasi-asersi beserta termin kontrak berbasis milestone."
+  },
   "/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn": {
     title: "Scoping ICOFR Holding-Anak BUMN: Materialitas & Konsolidasi | Daya Solusi Integra",
     description: "Metode scoping top-down ICOFR holding BUMN: kriteria anak wajib SK-5, materialitas kuantitatif dan kualitatif, eliminasi antar perusahaan, dan model Lini 1/2/3 grup.",

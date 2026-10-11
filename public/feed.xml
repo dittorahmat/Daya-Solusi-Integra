@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Thu, 01 Oct 2026 03:49:47 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 22:04:12 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -49,6 +49,15 @@
       <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
+      <title>Evaluasi Penawaran Teknis ICOFR Bobot 70/30: Matriks Skor &amp; Simulasi</title>
+      <link>https://dsintegra.co.id/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30</guid>
+      <description>Cara menilai penawaran teknis konsultan ICOFR dengan QCBS 70/30: tabel kriteria dan bobot, formula konversi nilai biaya, simulasi tiga penawar, ambang kelulusan, dan lima kesalahan panitia yang memicu sanggahan.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>7 Fitur Kunci Aplikasi ICOFR Terbaik untuk Uji Pengendalian BUMN Sesuai Regulasi SK-5</title>
       <link>https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/fitur-kunci-aplikasi-icofr-bumn</guid>
@@ -56,6 +65,15 @@
       <category>Solusi Digital</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Harga Jasa Implementasi ICOFR BUMN 2026: Breakdown Budget &amp; Faktor Penentu</title>
+      <link>https://dsintegra.co.id/blog/harga-jasa-implementasi-icofr-bumn-2026</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/harga-jasa-implementasi-icofr-bumn-2026</guid>
+      <description>Bedah komponen harga jasa konsultan ICOFR BUMN 2026: tarif orang-bulan per peran, lisensi platform GRC, simulasi budget satu tahun buku, lima faktor penentu harga, dan jebakan underpricing yang merusak kualitas pengujian.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Manfaat Aplikasi ICOFR Dibandingkan Spreadsheet untuk Efisiensi dan Akuntabilitas Audit BUMN</title>
@@ -173,6 +191,24 @@
       <category>Studi Kasus</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Syarat Kualifikasi Vendor GRC BUMN: Checklist Dokumen &amp; Pengalaman</title>
+      <link>https://dsintegra.co.id/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman</guid>
+      <description>Checklist syarat kualifikasi vendor konsultan ICOFR dan software GRC BUMN: dokumen administratif, pengalaman sejenis, tenaga ahli kunci bersertifikat, dan tujuh jebakan diskualifikasi yang paling sering menggugurkan penawar.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Timeline Implementasi ICOFR BUMN: Roadmap 3, 6, dan 12 Bulan</title>
+      <link>https://dsintegra.co.id/blog/timeline-implementasi-icofr-3-6-12-bulan</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/timeline-implementasi-icofr-3-6-12-bulan</guid>
+      <description>Roadmap implementasi ICOFR BUMN per fase 3, 6, dan 12 bulan: milestone scoping sampai asersi Direksi, tabel peran Lini 1/2/3 per triwulan, dependensi entitas anak, dan empat risiko keterlambatan yang menggagalkan cut-off audit.</description>
+      <category>Pengadaan &amp; Tender</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

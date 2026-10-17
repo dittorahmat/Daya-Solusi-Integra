@@ -295,9 +295,9 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pahami secara mendalam apa itu ICOFR BUMN, fungsi strategisnya untuk dewan direksi dan komite audit, serta landasan hukum penerbitan regulasi SK-5/DKU.MBU/11/2024 bagi akuntabilitas pelaporan keuangan.
 - Tautan: https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5
 
-### Contoh RCM Siklus Pengadaan BUMN untuk Uji TOD dan TOE: Risiko, Kontrol, dan Assertion
+### Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE
 - Kategori: Panduan Teknis
-- Ringkasan: Contoh Risk and Control Matrix siklus Purchase-to-Pay BUMN yang siap adaptasi: 8 risiko pengadaan, assertion COSO, kontrol preventif dan detektif, frekuensi, pemilik Lini 1, bukti, dan strategi uji TOD serta TOE.
+- Ringkasan: Contoh Risk and Control Matrix (RCM) siklus pengadaan Purchase-to-Pay BUMN siap pakai: pemetaan 8 risiko pengadaan, assertion COSO, kontrol preventif, bukti audit, serta strategi uji TOD dan TOE.
 - Tautan: https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe
 
 ### Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN
@@ -350,9 +350,9 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pelajari formula resmi penentuan ukuran sampel pengujian efektivitas operasi (Test of Operating Effectiveness / TOE) sesuai Tabel 22 Regulasi SK-5 BUMN, justifikasi batas bawah, dan dokumentasi audit SPKN.
 - Tautan: https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn
 
-### Panduan Lengkap Regulasi SK-5 BUMN: Mengapa Siklus ICOFR Butuh Platform Terintegrasi GRC Integra
+### Panduan SK5 ICOFR BUMN: Kepatuhan Regulasi SK-5 dan Solusi Otomasi GRC Integra
 - Kategori: Regulasi & Standar
-- Ringkasan: Pelajari kewajiban regulasi SK-5/DKU.MBU/11/2024 bagi BUMN, dari pemetaan BPM Lampiran 3, validasi Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO & CFO.
+- Ringkasan: Panduan praktis kepatuhan regulasi SK-5/DKU.MBU/11/2024 bagi BUMN: tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
 - Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
 
 ### Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung

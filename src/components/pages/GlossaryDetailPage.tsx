@@ -127,6 +127,41 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
                 </p>
               </div>
             )}
+
+            {/* Commercial Solution Bridge Card */}
+            {item.commercialBridge && (
+              <div className="p-6 rounded-xl bg-gradient-to-r from-blue-950/40 to-slate-900 border border-blue-800/60 shadow-lg">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    Solusi Terkait
+                  </span>
+                  <h3 className="text-base font-bold text-white">
+                    {item.commercialBridge.title}
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                  {item.commercialBridge.description}
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => onNavigate(item.commercialBridge!.primaryUrl)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
+                  >
+                    {item.commercialBridge.primaryLabel}
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  {item.commercialBridge.secondaryUrl && (
+                    <button
+                      onClick={() => onNavigate(item.commercialBridge!.secondaryUrl!)}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold transition-colors"
+                    >
+                      {item.commercialBridge.secondaryLabel}
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

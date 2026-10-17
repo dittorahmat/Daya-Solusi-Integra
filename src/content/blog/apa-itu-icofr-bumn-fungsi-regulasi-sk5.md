@@ -13,6 +13,11 @@ tags: ["Apa Itu ICOFR", "Fungsi ICOFR", "SK-5 BUMN", "Tata Kelola BUMN", "Pengen
 featured: false
 ---
 
+> **Ringkasan Eksekutif (Key Takeaways):**
+> - **Definisi ICOFR**: Sistem pengendalian terstruktur untuk memberikan keyakinan memadai bahwa laporan keuangan bebas dari salah saji material dan fraud.
+> - **Landasan Regulasi**: Peraturan Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024 mewajibkan penerapan ICOFR berbasis COSO 2013 bagi seluruh holding dan anak BUMN.
+> - **Tanggung Jawab Direksi**: Direktur Utama dan Direktur Keuangan wajib menandatangani surat asersi formal atas efektivitas pengendalian internal dalam Laporan Tahunan.
+
 ## Daftar Isi
 - [Definisi: Apa Itu ICOFR?](#definisi-apa-itu-icofr)
 - [Landasan Hukum: Regulasi Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024](#landasan-hukum-regulasi-kementerian-bumn-nomor-sk-5dkumbu112024)

@@ -10,6 +10,14 @@ export interface GlossaryItem {
   relatedTermIds?: string[];
   relatedServiceUrl?: string;
   relatedServiceLabel?: string;
+  commercialBridge?: {
+    title: string;
+    description: string;
+    primaryUrl: string;
+    primaryLabel: string;
+    secondaryUrl?: string;
+    secondaryLabel?: string;
+  };
 }
 
 export const GLOSSARY_CATEGORIES = [
@@ -96,7 +104,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Penandatanganan pakta integritas dan komitmen anti benturan kepentingan oleh seluruh jajaran Direksi dan Dewan Komisaris BUMN.",
     relatedTermIds: ["icofr", "tlc", "defisiensi-material"],
     relatedServiceUrl: "/layanan/enterprise-grc",
-    relatedServiceLabel: "Evaluasi Maturitas ELC"
+    relatedServiceLabel: "Evaluasi Maturitas ELC",
+    commercialBridge: {
+      title: "Pendampingan Evaluasi Entity-Level Controls BUMN",
+      description: "Penguatan fondasi tata kelola korporat, tone at the top, dan pemenuhan 17 prinsip COSO sesuai arahan Kementerian BUMN.",
+      primaryUrl: "/layanan/icofr-bumn",
+      primaryLabel: "Layanan Konsultansi ICOFR",
+      secondaryUrl: "/asesmen-maturitas",
+      secondaryLabel: "Self-Assessment Maturitas"
+    }
   },
   {
     id: "tlc",
@@ -122,7 +138,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Pencabutan hak akses login ke basis data akuntansi maksimal 1x24 jam setelah status karyawan dinyatakan berhenti atau mutasi.",
     relatedTermIds: ["tlc", "tod", "toe"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
-    relatedServiceLabel: "Audit Kesiapan ITGC"
+    relatedServiceLabel: "Audit Kesiapan ITGC",
+    commercialBridge: {
+      title: "Kesiapan Audit ITGC & Keandalan Asersi Finansial",
+      description: "Asesmen kesiapan audit ITGC (Access Control, Change Management, IT Operations) untuk memenuhi standar audit BPK dan KAP.",
+      primaryUrl: "/layanan/itgc-audit-readiness",
+      primaryLabel: "Layanan ITGC Audit Readiness",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Otomasi ITGC di GRC Integra"
+    }
   },
   {
     id: "defisiensi-kontrol",
@@ -236,7 +260,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Pengguna yang dapat membuat purchase order tidak boleh sekaligus menyetujui pembayaran atas order tersebut di sistem ERP.",
     relatedTermIds: ["itgc", "tlc", "defisiensi-signifikan"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
-    relatedServiceLabel: "Audit SoD & ITGC"
+    relatedServiceLabel: "Audit SoD & ITGC",
+    commercialBridge: {
+      title: "Solusi Otomasi Matriks SoD & Audit Readiness",
+      description: "Pencegahan konflik kewenangan pada ERP SAP/Oracle BUMN dengan analisis otomatis aturan pemisahan tugas dan audit readiness Lini 2.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Fitur SoD di GRC Integra",
+      secondaryUrl: "/layanan/itgc-audit-readiness",
+      secondaryLabel: "Konsultansi Audit ITGC"
+    }
   },
   {
     id: "compensating-control",
@@ -249,7 +281,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Review bulanan independen atas seluruh jurnal manual oleh Kepala Akuntansi sebagai kompensasi atas ketiadaan pemisahan tugas pada staf yang sedikit.",
     relatedTermIds: ["key-control", "defisiensi-kontrol", "remediasi-kontrol"],
     relatedServiceUrl: "/temuan-audit-icofr",
-    relatedServiceLabel: "Katalog Temuan & CAP"
+    relatedServiceLabel: "Katalog Temuan & CAP",
+    commercialBridge: {
+      title: "Remediasi Celah Kontrol & Mitigasi Defisiensi",
+      description: "Dokumentasikan kontrol kompensasi yang valid dan teruji untuk mencegah temuan audit berulang BPK dan KAP eksternal.",
+      primaryUrl: "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi",
+      primaryLabel: "Panduan Remediasi Defisiensi",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Konsultasi Remediasi ICOFR"
+    }
   },
   {
     id: "key-control",
@@ -327,7 +367,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "SPI holding yang melakukan pengujian TOE independen atas 40 sampel kontrol harian sebelum KAP memulai audit akhir tahun.",
     relatedTermIds: ["three-lines-model", "toe", "kap"],
     relatedServiceUrl: "/layanan/enterprise-grc",
-    relatedServiceLabel: "Penguatan Kapabilitas SPI"
+    relatedServiceLabel: "Penguatan Kapabilitas SPI",
+    commercialBridge: {
+      title: "Pusat Toolkit & Regulasi Kepatuhan SPI BUMN",
+      description: "Akses kompilasi template kertas kerja audit, panduan KAK TOR pengadaan, dan framework pengujian SPI berbasis SK-5.",
+      primaryUrl: "/toolkit-regulasi",
+      primaryLabel: "Download Toolkit Regulasi",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Pendampingan Audit SPI"
+    }
   },
   {
     id: "kap",
@@ -426,6 +474,14 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Konfigurasi otomatis sistem ERP yang menolak pemrosesan pembayaran jika nomor rekening penerima tidak sesuai dengan master data vendor yang telah terverifikasi.",
     relatedTermIds: ["itgc", "tlc", "tod"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
-    relatedServiceLabel: "Audit Konfigurasi ITAC ERP"
+    relatedServiceLabel: "Audit Konfigurasi ITAC ERP",
+    commercialBridge: {
+      title: "Audit Konfigurasi Kontrol Otomatis ERP (ITAC)",
+      description: "Verifikasi efektivitas kontrol otomatis sistem ERP (three-way match, credit limit check, posting validation) dengan pendekatan Test of One.",
+      primaryUrl: "/layanan/itgc-audit-readiness",
+      primaryLabel: "Layanan Audit ITAC & ITGC",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Solusi GRC Integra"
+    }
   }
 ];

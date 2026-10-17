@@ -28,7 +28,7 @@ featured: false
 
 Dalam tata kelola korporasi Badan Usaha Milik Negara (BUMN), Standar Operasional Prosedur (SOP) bukan sekadar dokumen administratif pengisi lemari arsip. SOP adalah peta navigasi operasional yang menentukan bagaimana risiko operasional dimitigasi dan bagaimana transaksi keuangan dicatat secara akuntabel.
 
-Berdasarkan **Regulasi Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024**, setiap entitas BUMN diwajibkan mendokumentasikan proses bisnis utama dan proses pendukung ke dalam bentuk diagram alir (*flowchart*) yang terstandarisasi. Dokumen ini menjadi dasar mutlak bagi tim penguji pengendalian internal Lini 2 serta auditor eksternal (BPK RI, BPKP, dan Kantor Akuntan Publik) dalam melakukan evaluasi efektivitas rancangan kontrol (*Test of Design* / TOD).
+Berdasarkan **Regulasi Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024**, setiap entitas BUMN diwajibkan mendokumentasikan proses bisnis utama dan proses pendukung ke dalam bentuk diagram alir (*flowchart*) yang terstandarisasi. Dokumen ini menjadi dasar mutlak bagi tim penguji pengendalian internal Lini 2 serta auditor eksternal (BPK RI, BPKP, dan Kantor Akuntan Publik) dalam melakukan evaluasi efektivitas rancangan kontrol (*Test of Design* / TOD). Untuk memastikan metodologi pemetaan selaras dengan kriteria audit, perusahaan dapat memanfaatkan [pendampingan implementasi ICOFR BUMN](/layanan/icofr-bumn) yang komprehensif.
 
 Tanpa standarisasi diagram alur yang jelas, pengujian kepatuhan akan terhambat oleh inkonsistensi interpretasi antar departemen, hilangnya batas tanggung jawab (*swimlane*), serta tidak teridentifikasinya titik kontrol kunci secara tepat.
 

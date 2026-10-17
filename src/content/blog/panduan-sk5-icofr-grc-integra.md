@@ -1,8 +1,8 @@
 ---
 id: "panduan-sk5-icofr-grc-integra"
-title: "Panduan Lengkap Regulasi SK-5 BUMN: Mengapa Siklus ICOFR Butuh Platform Terintegrasi GRC Integra"
+title: "Panduan SK5 ICOFR BUMN: Kepatuhan Regulasi SK-5 dan Solusi Otomasi GRC Integra"
 slug: "panduan-sk5-icofr-grc-integra"
-excerpt: "Pelajari kewajiban regulasi SK-5/DKU.MBU/11/2024 bagi BUMN, dari pemetaan BPM Lampiran 3, validasi Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO & CFO."
+excerpt: "Panduan praktis kepatuhan regulasi SK-5/DKU.MBU/11/2024 bagi BUMN: tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO."
 category: "Regulasi & Standar"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
@@ -12,6 +12,11 @@ coverImage: "/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp"
 tags: ["ICOFR", "SK-5 BUMN", "GRC Integra", "Pengendalian Internal", "ITGC", "COSO"]
 featured: true
 ---
+
+> **Ringkasan Eksekutif (Key Takeaways):**
+> 1. **Mandat Regulasi**: SK-5/DKU.MBU/11/2024 mewajibkan seluruh BUMN mengimplementasikan pengendalian internal atas pelaporan keuangan (ICOFR) berbasis COSO Framework 2013.
+> 2. **Metodologi Pengujian**: Kewajiban validasi Lini 2 melalui *Test of One* (walkthrough rancangan) serta pengujian operasional (*Test of Operating Effectiveness* / TOE) dengan kalkulasi sampel Tabel 22.
+> 3. **Akuntabilitas Puncak**: Asersi formal ditandatangani secara digital oleh Direktur Utama dan Direktur Keuangan pada laporan tahunan korporasi.
 
 ## Urgensi Mandat SK-5/DKU.MBU/11/2024 bagi BUMN
 

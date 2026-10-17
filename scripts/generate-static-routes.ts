@@ -184,6 +184,36 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
 
 console.log(`Successfully generated ${generatedCount} static prerendered HTML routes with custom social cards and clean JSON-LD.`);
 
+// Legacy URL Redirect Snapshots for Static Hosting / CDN Compatibility
+const LEGACY_URL_REDIRECTS: Record<string, string> = {
+  "blog/efektivitas-icofr-bumn": "/blog/efektivitas-icofr-mencegah-fraud-bumn",
+  "blog/peran-itgc-dalam-asersi-laporan-keuangan-bumn": "/layanan/itgc-audit-readiness",
+  "blog/iso-31000-bumn": "/blog/panduan-iso-31000-bumn-keuangan",
+  "blog/manfaat-aplikasi-icofr-bumn": "/blog/manfaat-aplikasi-icofr-bumn-spreadsheet",
+  "glosarium/material-weakness": "/glosarium/defisiensi-material"
+};
+
+for (const [legacyPath, targetUrl] of Object.entries(LEGACY_URL_REDIRECTS)) {
+  const targetDir = path.join(distDir, legacyPath);
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+  const redirectHtml = `<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=${targetUrl}">
+  <link rel="canonical" href="https://dsintegra.co.id${targetUrl}">
+  <title>Pengalihan Halaman: Daya Solusi Integra</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding: 50px; background: #0b0f19; color: #f3f4f6;">
+  <p>Halaman telah dialihkan. Jika Anda tidak diarahkan secara otomatis, <a href="${targetUrl}" style="color: #60a5fa;">klik di sini</a>.</p>
+</body>
+</html>`;
+  fs.writeFileSync(path.join(targetDir, "index.html"), redirectHtml, "utf-8");
+}
+console.log(`Successfully generated ${Object.keys(LEGACY_URL_REDIRECTS).length} legacy redirect snapshots.`);
+
 generateNotFoundSnapshot();
 
 // Generate RSS 2.0 Feed untuk sindikasi konten blog

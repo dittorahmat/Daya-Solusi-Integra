@@ -484,6 +484,27 @@ app.use("/api", (req, res) => {
   res.status(404).json({ error: "Endpoint API tidak ditemukan." });
 });
 
+// 301 Permanent Redirects for Legacy URLs detected in GSC to preserve link equity and fix 404s
+const LEGACY_URL_REDIRECTS: Record<string, string> = {
+  "/blog/efektivitas-icofr-bumn": "/blog/efektivitas-icofr-mencegah-fraud-bumn",
+  "/blog/peran-itgc-dalam-asersi-laporan-keuangan-bumn": "/layanan/itgc-audit-readiness",
+  "/blog/iso-31000-bumn": "/blog/panduan-iso-31000-bumn-keuangan",
+  "/blog/manfaat-aplikasi-icofr-bumn": "/blog/manfaat-aplikasi-icofr-bumn-spreadsheet",
+  "/glosarium/material-weakness": "/glosarium/defisiensi-material"
+};
+
+app.use((req, res, next) => {
+  if (req.method === "GET") {
+    const cleanPath = req.path.replace(/\/+$/, "") || "/";
+    const target = LEGACY_URL_REDIRECTS[cleanPath];
+    if (target) {
+      const query = req.url.slice(req.path.length);
+      return res.redirect(301, target + query);
+    }
+  }
+  next();
+});
+
 // Trailing Slash 301 Permanent Redirect for SEO canonicalization
 app.use((req, res, next) => {
   if (req.method === "GET" && req.path.length > 1 && req.path.endsWith("/")) {

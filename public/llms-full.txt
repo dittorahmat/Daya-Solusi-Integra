@@ -295,6 +295,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pahami secara mendalam apa itu ICOFR BUMN, fungsi strategisnya untuk dewan direksi dan komite audit, serta landasan hukum penerbitan regulasi SK-5/DKU.MBU/11/2024 bagi akuntabilitas pelaporan keuangan.
 - Tautan: https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5
 
+### Bedah Juknis SK-5/DKU.MBU/11/2024: Penjelasan 11 Lampiran Wajib ICOFR BUMN dan Timeline Kepatuhan
+- Kategori: Regulasi & Standar
+- Ringkasan: Penjelasan lengkap petunjuk teknis Surat Keputusan Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024: rincian 11 lampiran wajib dari pemetaan BPM, matriks RCM, formula sampel Tabel 22, hingga format asersi direksi.
+- Tautan: https://dsintegra.co.id/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn
+
 ### Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE
 - Kategori: Panduan Teknis
 - Ringkasan: Contoh Risk and Control Matrix (RCM) siklus pengadaan Purchase-to-Pay BUMN siap pakai: pemetaan 8 risiko pengadaan, assertion COSO, kontrol preventif, bukti audit, serta strategi uji TOD dan TOE.
@@ -350,10 +355,20 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pelajari formula resmi penentuan ukuran sampel pengujian efektivitas operasi (Test of Operating Effectiveness / TOE) sesuai Tabel 22 Regulasi SK-5 BUMN, justifikasi batas bawah, dan dokumentasi audit SPKN.
 - Tautan: https://dsintegra.co.id/blog/panduan-sampel-toe-tabel-22-icofr-bumn
 
+### Panduan Segregation of Duties (SoD) BUMN: Matriks Konflik Kewenangan, Dampak Audit ITGC, dan Pencegahan Fraud
+- Kategori: Tata Kelola & Kepatuhan
+- Ringkasan: Panduan lengkap penerapan Segregation of Duties (SoD) di lingkungan BUMN: analisis matriks konflik kewenangan pada ERP SAP dan Oracle, pemisahan 3 fungsi kritis, kontrol kompensasi, dan mitigasi temuan audit ITGC.
+- Tautan: https://dsintegra.co.id/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp
+
 ### Panduan SK5 ICOFR BUMN: Kepatuhan Regulasi SK-5 dan Solusi Otomasi GRC Integra
 - Kategori: Regulasi & Standar
 - Ringkasan: Panduan praktis kepatuhan regulasi SK-5/DKU.MBU/11/2024 bagi BUMN: tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
 - Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
+
+### Peran Strategis Satuan Pengawasan Intern (SPI) BUMN dalam Siklus ICOFR dan Model Tiga Lini
+- Kategori: Tata Kelola & Kepatuhan
+- Ringkasan: Pahami peran krusial Satuan Pengawasan Intern (SPI) BUMN sebagai Lini 3 dalam siklus kepatuhan ICOFR SK-5: independensi audit internal, pengujian independen sebelum asersi direksi, reviu kewajaran HPS pengadaan, dan pemantauan Corrective Action Plan.
+- Tautan: https://dsintegra.co.id/blog/peran-spi-bumn-pengendalian-internal-icofr-tiga-lini
 
 ### Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung
 - Kategori: Pengadaan & Tender
@@ -364,6 +379,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Solusi Digital
 - Ringkasan: Panduan komprehensif bagi Komite Audit dan Divisi TI BUMN dalam mengevaluasi pemilihan perangkat lunak tata kelola: komparasi 5 dimensi antara platform GRC terdedikasi native SK-5 dengan modul tambahan ERP global.
 - Tautan: https://dsintegra.co.id/blog/perbandingan-software-grc-integra-vs-modul-erp-bumn
+
+### Prosedur Walkthrough Audit ICOFR BUMN: Pengujian Lini 2, Validasi Test of One, dan Kertas Kerja SPKN
+- Kategori: Metodologi Audit
+- Ringkasan: Panduan praktis pelaksanaan walkthrough audit ICOFR bagi Lini 2 BUMN: metodologi penelusuran satu transaksi, validasi efektivitas rancangan Test of One (TOD), standar bukti SPKN BPK, dan format kertas kerja baku.
+- Tautan: https://dsintegra.co.id/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2
 
 ### Risiko Audit Pengelolaan RCM Manual Berbasis Spreadsheet Excel vs Platform GRC Terdedikasi BUMN
 - Kategori: Solusi Digital

@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Sat, 17 Oct 2026 22:24:31 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 22:46:26 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -29,6 +29,15 @@
       <category>Regulasi &amp; Standar</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Bedah Juknis SK-5/DKU.MBU/11/2024: Penjelasan 11 Lampiran Wajib ICOFR BUMN dan Timeline Kepatuhan</title>
+      <link>https://dsintegra.co.id/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn</guid>
+      <description>Penjelasan lengkap petunjuk teknis Surat Keputusan Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024: rincian 11 lampiran wajib dari pemetaan BPM, matriks RCM, formula sampel Tabel 22, hingga format asersi direksi.</description>
+      <category>Regulasi &amp; Standar</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE</title>
@@ -130,6 +139,15 @@
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
+      <title>Panduan Segregation of Duties (SoD) BUMN: Matriks Konflik Kewenangan, Dampak Audit ITGC, dan Pencegahan Fraud</title>
+      <link>https://dsintegra.co.id/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp</guid>
+      <description>Panduan lengkap penerapan Segregation of Duties (SoD) di lingkungan BUMN: analisis matriks konflik kewenangan pada ERP SAP dan Oracle, pemisahan 3 fungsi kritis, kontrol kompensasi, dan mitigasi temuan audit ITGC.</description>
+      <category>Tata Kelola &amp; Kepatuhan</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Panduan SK5 ICOFR BUMN: Kepatuhan Regulasi SK-5 dan Solusi Otomasi GRC Integra</title>
       <link>https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra</guid>
@@ -137,6 +155,15 @@
       <category>Regulasi &amp; Standar</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Peran Strategis Satuan Pengawasan Intern (SPI) BUMN dalam Siklus ICOFR dan Model Tiga Lini</title>
+      <link>https://dsintegra.co.id/blog/peran-spi-bumn-pengendalian-internal-icofr-tiga-lini</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/peran-spi-bumn-pengendalian-internal-icofr-tiga-lini</guid>
+      <description>Pahami peran krusial Satuan Pengawasan Intern (SPI) BUMN sebagai Lini 3 dalam siklus kepatuhan ICOFR SK-5: independensi audit internal, pengujian independen sebelum asersi direksi, reviu kewajaran HPS pengadaan, dan pemantauan Corrective Action Plan.</description>
+      <category>Tata Kelola &amp; Kepatuhan</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung</title>
@@ -155,6 +182,15 @@
       <category>Solusi Digital</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Prosedur Walkthrough Audit ICOFR BUMN: Pengujian Lini 2, Validasi Test of One, dan Kertas Kerja SPKN</title>
+      <link>https://dsintegra.co.id/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2</guid>
+      <description>Panduan praktis pelaksanaan walkthrough audit ICOFR bagi Lini 2 BUMN: metodologi penelusuran satu transaksi, validasi efektivitas rancangan Test of One (TOD), standar bukti SPKN BPK, dan format kertas kerja baku.</description>
+      <category>Metodologi Audit</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Risiko Audit Pengelolaan RCM Manual Berbasis Spreadsheet Excel vs Platform GRC Terdedikasi BUMN</title>

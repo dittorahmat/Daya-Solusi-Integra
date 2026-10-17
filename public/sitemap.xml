@@ -556,7 +556,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -566,7 +566,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -576,7 +576,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -636,7 +636,7 @@
   </url>
   <url>
     <loc>https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
@@ -696,7 +696,7 @@
     </url>
     <url>
       <loc>https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</loc>
-      <lastmod>2026-10-02</lastmod>
+      <lastmod>2026-10-18</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.90</priority>
       <image:image>
@@ -764,4 +764,45 @@
         <image:title>Timeline Implementasi ICOFR BUMN: Roadmap 3, 6, dan 12 Bulan hingga Asersi</image:title>
       </image:image>
     </url>
+      <url>
+      <loc>https://dsintegra.co.id/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp</loc>
+      <lastmod>2026-10-18</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp</image:loc>
+        <image:title>Panduan Segregation of Duties (SoD) BUMN: Matriks Konflik Otorisasi ERP dan Remediasi</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2</loc>
+      <lastmod>2026-10-18</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1551288049-bebda4e38f71-1200.webp</image:loc>
+        <image:title>Prosedur Walkthrough Audit ICOFR BUMN Lini 2: Kertas Kerja dan Contoh Notulensi Wawancara</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/peran-spi-bumn-pengendalian-internal-icofr-tiga-lini</loc>
+      <lastmod>2026-10-18</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1542744173-8e7e53415bb0-1200.webp</image:loc>
+        <image:title>Peran SPI BUMN dalam Pengendalian Internal ICOFR: Independensi vs Kolaborasi Tiga Lini</image:title>
+      </image:image>
+    </url>
+    <url>
+      <loc>https://dsintegra.co.id/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn</loc>
+      <lastmod>2026-10-18</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+      <image:image>
+        <image:loc>https://dsintegra.co.id/images/blog/u-photo-1454165804606-c3d57bc86b40-1200.webp</image:loc>
+        <image:title>Bedah Juknis SK-5/DKU.MBU/11/2024 ICOFR BUMN: 5 Pilar Wajib dan Lampiran Teknis</image:title>
+      </image:image>
+    </url>
   </urlset>
+

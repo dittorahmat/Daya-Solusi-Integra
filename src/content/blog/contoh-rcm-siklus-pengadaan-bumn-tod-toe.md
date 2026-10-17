@@ -47,7 +47,7 @@ Setiap baris RCM berpangkal pada risiko salah saji yang dipetakan ke assertion C
 
 **R3 :  Three-way match tidak dilakukan sebelum pembayaran.** Assertion keberadaan dan penilaian. Invoice vendor dibayar tanpa mencocokkan purchase order, bukti penerimaan barang (goods receipt), dan invoice secara tiga arah :  membuka pintu pembayaran atas barang yang tidak diterima atau harga yang tidak sesuai kontrak.
 
-**R4 :  Segregation of duties dilanggar satu orang memegang ujung ke ujung.** Assertion keberadaan. Personil yang sama membuat permintaan, menyetujui PO, menerima barang, dan memverifikasi pembayaran. Tanpa pemisahan tugas, seluruh kontrol lain dapat dielakkan oleh satu orang.
+**R4 :  Segregation of duties dilanggar satu orang memegang ujung ke ujung.** Assertion keberadaan. Personil yang sama membuat permintaan, menyetujui PO, menerima barang, dan memverifikasi pembayaran. Tanpa [pemisahan tugas (SoD)](/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp) yang ketat, seluruh kontrol lain dapat dielakkan oleh satu orang.
 
 **R5 :  Penerimaan barang dicatat tanpa pemeriksaan fisik.** Assertion keberadaan dan penilaian. Goods receipt diterbitkan berdasarkan dokumen pengiriman tanpa opname, sehingga kuantitas dan kualitas yang dibayar tidak mencerminkan realita gudang.
 

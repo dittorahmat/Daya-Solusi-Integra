@@ -42,7 +42,7 @@ Berdasarkan juknis Kementerian BUMN, perancangan ICOFR mewajibkan pemetaan akun 
 
 ### 2. Implementasi & Uji Rancang Lini 2 (*Test of One*)
 Sesuai amanat Bab III.4, setiap rancangan kontrol tidak boleh hanya diasumsikan efektif di atas kertas.
-- **Walkthrough Wajib**: Tim Lini 2 (Risk Management/Compliance) wajib mengeksekusi pengujian *Test of One* untuk membuktikan bahwa kontrol benar-benar terpasang.
+- **Walkthrough Wajib**: Tim Lini 2 (Risk Management/Compliance) wajib mengeksekusi pengujian *Test of One* untuk membuktikan bahwa kontrol benar-benar terpasang. Panduan langkah pengujian lapangan diuraikan pada [prosedur walkthrough audit ICOFR Lini 2](/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2).
 - **Evidence-Lock**: GRC Integra mewajibkan pengunggahan berkas bukti autentik sebelum status kontrol dinyatakan valid.
 
 ### 3. Evaluasi Independen & Kalkulator Sampel Otomatis (Tabel 22)

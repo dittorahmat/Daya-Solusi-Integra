@@ -90,8 +90,16 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     keyTakeaway: "Regulasi Kementerian BUMN mewajibkan pelaksanaan walkthrough oleh pihak penjamin independen (Lini 2) untuk memastikan pemisahan tugas obyektif dari Lini 1.",
     practicalExample: "Penelusuran satu transaksi klaim garansi dari penerimaan berkas di loket cabang hingga pencatatan liabilitas di neraca keuangan kantor pusat BUMN.",
     relatedTermIds: ["tod", "tlc", "icofr"],
-    relatedServiceUrl: "/blog/panduan-sk5-icofr-grc-integra",
-    relatedServiceLabel: "Alur Walkthrough Lini 2"
+    relatedServiceUrl: "/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2",
+    relatedServiceLabel: "Panduan Walkthrough Lini 2",
+    commercialBridge: {
+      title: "Pedoman Teknis Walkthrough & Validasi Test of One",
+      description: "Pelajari checklist penelusuran transaksi nyata, standar dokumentasi SPKN BPK, dan format kertas kerja walkthrough Lini 2.",
+      primaryUrl: "/blog/prosedur-walkthrough-audit-icofr-bumn-lini-2",
+      primaryLabel: "Baca Prosedur Walkthrough",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Pendampingan Lini 2"
+    }
   },
   {
     id: "elc",
@@ -264,10 +272,10 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     commercialBridge: {
       title: "Solusi Otomasi Matriks SoD & Audit Readiness",
       description: "Pencegahan konflik kewenangan pada ERP SAP/Oracle BUMN dengan analisis otomatis aturan pemisahan tugas dan audit readiness Lini 2.",
-      primaryUrl: "/platform/grc-integra",
-      primaryLabel: "Fitur SoD di GRC Integra",
-      secondaryUrl: "/layanan/itgc-audit-readiness",
-      secondaryLabel: "Konsultansi Audit ITGC"
+      primaryUrl: "/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp",
+      primaryLabel: "Baca Panduan Matriks SoD",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Fitur SoD GRC Integra"
     }
   },
   {
@@ -369,12 +377,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/layanan/enterprise-grc",
     relatedServiceLabel: "Penguatan Kapabilitas SPI",
     commercialBridge: {
-      title: "Pusat Toolkit & Regulasi Kepatuhan SPI BUMN",
-      description: "Akses kompilasi template kertas kerja audit, panduan KAK TOR pengadaan, dan framework pengujian SPI berbasis SK-5.",
-      primaryUrl: "/toolkit-regulasi",
-      primaryLabel: "Download Toolkit Regulasi",
-      secondaryUrl: "/layanan/icofr-bumn",
-      secondaryLabel: "Pendampingan Audit SPI"
+      title: "Peran Strategis SPI & Toolkit Kepatuhan BUMN",
+      description: "Pelajari batas peran independensi SPI dalam Model Tiga Lini dan akses toolkit panduan reviu HPS KAK audit pengadaan.",
+      primaryUrl: "/blog/peran-spi-bumn-pengendalian-internal-icofr-tiga-lini",
+      primaryLabel: "Baca Peran SPI BUMN",
+      secondaryUrl: "/toolkit-regulasi",
+      secondaryLabel: "Download Toolkit Regulasi"
     }
   },
   {

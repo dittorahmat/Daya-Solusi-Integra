@@ -167,7 +167,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Keterlambatan verifikasi rekonsiliasi aset tetap selama 2 hari dari tanggal cutoff yang tidak berdampak pada saldo material neraca.",
     relatedTermIds: ["defisiensi-signifikan", "defisiensi-material", "tod"],
     relatedServiceUrl: "/layanan/icofr-bumn",
-    relatedServiceLabel: "Konsultasi Remediasi Defisiensi"
+    relatedServiceLabel: "Konsultasi Remediasi Defisiensi",
+    commercialBridge: {
+      title: "Klasifikasi dan Mitigasi Defisiensi Kontrol BUMN",
+      description: "DSI mendampingi BUMN dalam memetakan temuan audit, mengevaluasi signifikansi defisiensi, dan memformulasikan rencana perbaikan sebelum asersi Direksi.",
+      primaryUrl: "/temuan-audit-icofr",
+      primaryLabel: "Katalog Temuan Audit & CAP",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Konsultansi Remediasi ICOFR"
+    }
   },
   {
     id: "defisiensi-signifikan",
@@ -218,7 +226,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Baris RCM untuk siklus pengadaan: risiko mark-up harga vendor dimitigasi kontrol verifikasi tiga penawaran dan persetujuan berjenjang sesuai batas kewenangan.",
     relatedTermIds: ["tod", "toe", "walkthrough-lini-2"],
     relatedServiceUrl: "/toolkit-regulasi",
-    relatedServiceLabel: "Template RCM di Toolkit Regulasi"
+    relatedServiceLabel: "Template RCM di Toolkit Regulasi",
+    commercialBridge: {
+      title: "Digitalisasi RCM BUMN Bebas Risiko Spreadsheet",
+      description: "Tinggalkan pengelolaan RCM manual di Excel yang rentan korupsi formula. Kelola siklus RCM terintegrasi, TOD, dan TOE dalam satu platform terpusat.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Jelajahi Platform GRC Integra",
+      secondaryUrl: "/toolkit-regulasi",
+      secondaryLabel: "Unduh Template RCM Excel"
+    }
   },
   {
     id: "scoping-materialitas",
@@ -242,7 +258,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Staf akuntansi (Lini 1) menjalankan rekonsiliasi, Manajer Kepatuhan (Lini 2) memvalidasi kertas kerja, dan SPI (Lini 3) mengaudit keduanya.",
     relatedTermIds: ["walkthrough-lini-2", "elc", "icofr"],
     relatedServiceUrl: "/regulasi",
-    relatedServiceLabel: "Matriks Tiga Lini di Pusat Regulasi"
+    relatedServiceLabel: "Matriks Tiga Lini di Pusat Regulasi",
+    commercialBridge: {
+      title: "Harmonisasi Tiga Lini Pengendalian BUMN",
+      description: "Pastikan pemisahan tugas tegas antara Pemilik Kontrol (Lini 1), Tim Kepatuhan/Manajemen Risiko (Lini 2), dan SPI (Lini 3) sesuai mandat SK-5 BUMN.",
+      primaryUrl: "/layanan/icofr-bumn",
+      primaryLabel: "Konsultansi Pendampingan Tiga Lini",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Workflow Kolaborasi Tiga Lini"
+    }
   },
   {
     id: "coso-framework",
@@ -310,7 +334,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Rekonsiliasi bank bulanan yang ditandatangani Lini 2 ditetapkan sebagai key control atas asersi keberadaan dan kelengkapan akun kas.",
     relatedTermIds: ["rcm", "tod", "toe"],
     relatedServiceUrl: "/toolkit-regulasi",
-    relatedServiceLabel: "Identifikasi Key Control di RCM"
+    relatedServiceLabel: "Identifikasi Key Control di RCM",
+    commercialBridge: {
+      title: "Rasionalisasi dan Otomasi Kontrol Kunci BUMN",
+      description: "Kurangi beban audit berlebih dengan merasionalisasi daftar kontrol menjadi key controls yang berfokus langsung pada asersi laporan keuangan signifikan.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Otomasi Kontrol di GRC Integra",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Konsultansi RCM & Scoping"
+    }
   },
   {
     id: "remediasi-kontrol",
@@ -323,7 +355,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "CAP atas temuan SoD: pencabutan akses ganda, redesain matriks peran ERP, lalu pengujian ulang sampel transaksi selama satu kuartal.",
     relatedTermIds: ["defisiensi-signifikan", "defisiensi-material", "compensating-control"],
     relatedServiceUrl: "/temuan-audit-icofr",
-    relatedServiceLabel: "Panduan CAP per Tipologi Temuan"
+    relatedServiceLabel: "Panduan CAP per Tipologi Temuan",
+    commercialBridge: {
+      title: "Monitoring Real-Time Tindak Lanjut CAP",
+      description: "Pantau status penyelesaian temuan audit dan remedi kontrol secara akuntabel dengan dashboard analitik sebelum tenggat asersi tahunan BUMN.",
+      primaryUrl: "/temuan-audit-icofr",
+      primaryLabel: "Lihat Katalog Temuan & CAP",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Demo Pelacakan Temuan GRC"
+    }
   },
   {
     id: "kak",
@@ -457,7 +497,15 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     practicalExample: "Prinsip 1: Organisasi menunjukkan komitmen terhadap integritas dan nilai-nilai etika melalui penegakan whistleblower system (WBS).",
     relatedTermIds: ["elc", "icofr", "defisiensi-material"],
     relatedServiceUrl: "/asesmen-maturitas",
-    relatedServiceLabel: "Asesmen Mandiri 17 Prinsip COSO"
+    relatedServiceLabel: "Asesmen Mandiri 17 Prinsip COSO",
+    commercialBridge: {
+      title: "Ukur Kesiapan 17 Prinsip COSO Perusahaan Anda",
+      description: "Evaluasi kepatuhan 17 prinsip pengendalian internal dengan diagnostic tool interaktif DSI untuk mendeteksi celah sebelum evaluasi auditor eksternal.",
+      primaryUrl: "/asesmen-maturitas",
+      primaryLabel: "Mulai Asesmen Mandiri Interaktif",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Konsultansi Diagnostic COSO"
+    }
   },
   {
     id: "substantive-testing",

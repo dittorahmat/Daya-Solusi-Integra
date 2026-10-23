@@ -302,7 +302,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE
 - Kategori: Panduan Teknis
-- Ringkasan: Contoh Risk and Control Matrix (RCM) siklus pengadaan Purchase-to-Pay BUMN siap pakai: pemetaan 8 risiko pengadaan, assertion COSO, kontrol preventif, bukti audit, serta strategi uji TOD dan TOE.
+- Ringkasan: Contoh RCM pengadaan BUMN lengkap untuk uji TOD dan TOE. Pelajari perbedaan TOD dan TOE adalah pengujian desain vs efektivitas operasi, pemetaan risiko P2P, serta sampel Tabel 22.
 - Tautan: https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe
 
 ### Mengukur Efektivitas ICOFR dalam Mencegah Kecurangan Keuangan di BUMN
@@ -329,6 +329,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Solusi Digital
 - Ringkasan: Ketahui 6 manfaat utama aplikasi ICOFR terintegrasi dibanding lembar kerja spreadsheet manual: efisiensi audit hingga 70 persen, eliminasi human error, kepatuhan regulasi SK-5, dan audit trail tak terbantahkan.
 - Tautan: https://dsintegra.co.id/blog/manfaat-aplikasi-icofr-bumn-spreadsheet
+
+### Panduan Audit ITGC dan ITAC BUMN: Metodologi Pengujian ERP, Kontrol Otomatis, dan Kepatuhan SK-5
+- Kategori: Tata Kelola & Kepatuhan
+- Ringkasan: Panduan teknis pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem ERP BUMN: checklist pengujian akses logis, change management, three-way match, dan kepatuhan SK-5.
+- Tautan: https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5
 
 ### Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN
 - Kategori: Pengadaan & Tender

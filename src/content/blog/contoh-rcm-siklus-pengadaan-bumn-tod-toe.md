@@ -2,7 +2,7 @@
 id: "contoh-rcm-siklus-pengadaan-bumn-tod-toe"
 title: "Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE"
 slug: "contoh-rcm-siklus-pengadaan-bumn-tod-toe"
-excerpt: "Contoh Risk and Control Matrix (RCM) siklus pengadaan Purchase-to-Pay BUMN siap pakai: pemetaan 8 risiko pengadaan, assertion COSO, kontrol preventif, bukti audit, serta strategi uji TOD dan TOE."
+excerpt: "Contoh RCM pengadaan BUMN lengkap untuk uji TOD dan TOE. Pelajari perbedaan TOD dan TOE adalah pengujian desain vs efektivitas operasi, pemetaan risiko P2P, serta sampel Tabel 22."
 category: "Panduan Teknis"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
@@ -19,6 +19,7 @@ featured: false
 > - **Efisiensi Pengujian**: Kontrol otomatis berbasis ITGC (three-way matching) mereduksi beban sampel pengujian TOE dari 25-60 sampel menjadi pengujian tunggal.
 
 ## Daftar Isi
+- [Perbedaan TOD dan TOE: Pengujian Desain vs Efektivitas Operasi](#perbedaan-tod-dan-toe-pengujian-desain-vs-efektivitas-operasi)
 - [Mengapa siklus pengadaan paling rawan salah saji](#mengapa-siklus-pengadaan-paling-rawan-salah-saji)
 - [Delapan risiko Purchase-to-Pay dan assertion-nya](#delapan-risiko-purchase-to-pay-dan-assertion-nya)
 - [Tabel RCM contoh yang siap adaptasi](#tabel-rcm-contoh-yang-siap-adaptasi)
@@ -28,6 +29,15 @@ featured: false
 - [Frekuensi kontrol dan beban sampel TOE](#frekuensi-kontrol-dan-beban-sampel-toe)
 - [Checklist kesiapan RCM sebelum TOD](#checklist-kesiapan-rcm-sebelum-tod)
 - [Migrasi RCM ke platform GRC dan CTA demo](#migrasi-rcm-ke-platform-grc-dan-cta-demo)
+
+## Perbedaan TOD dan TOE: Pengujian Desain vs Efektivitas Operasi
+
+Banyak praktisi Lini 1 dan auditor pemula di lingkungan BUMN menanyakan apa perbedaan mendasar antara Test of Design (TOD) dan Test of Operating Effectiveness (TOE) dalam pengujian RCM:
+
+1. **Test of Design (TOD) adalah** pengujian untuk mengevaluasi apakah suatu aktivitas pengendalian, bila dioperasikan persis seperti yang dirancang, secara teoritis mampu mencegah atau mendeteksi dan mengoreksi salah saji material pada asersi laporan keuangan secara tepat waktu. Pada siklus pengadaan, TOD menguji apakah rancangan kontrol (misal aturan dual approval atau konfigurasi limit PO) sudah memadai secara logika dan kebijakan.
+2. **Test of Operating Effectiveness (TOE) adalah** pengujian untuk memastikan apakah pengendalian yang telah dirancang dengan baik tersebut benar-benar dilaksanakan secara konsisten oleh personil yang berwenang sepanjang periode pelaporan audit. TOE pada pengadaan dilakukan dengan mengambil sampel transaksi aktual (mengacu pada formula Tabel 22 SK-5 BUMN) untuk memverifikasi bukti pelaksanaan nyata.
+
+> **Aturan Emas Evaluasi SK-5 BUMN:** Pengendalian yang gagal pada tahap TOD (cacat rancangan) tidak boleh dilanjutkan ke tahap TOE. Pengujian TOE hanya dilakukan atas kontrol yang telah dinyatakan efektif secara desain pada tahap walkthrough dan TOD.
 
 ## Mengapa siklus pengadaan paling rawan salah saji
 

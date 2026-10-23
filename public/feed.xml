@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Sat, 17 Oct 2026 23:10:23 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 23:28:41 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -43,7 +43,7 @@
       <title>Contoh RCM Pengadaan BUMN: Matriks Risiko Kontrol untuk Uji TOD dan TOE</title>
       <link>https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe</guid>
-      <description>Contoh Risk and Control Matrix (RCM) siklus pengadaan Purchase-to-Pay BUMN siap pakai: pemetaan 8 risiko pengadaan, assertion COSO, kontrol preventif, bukti audit, serta strategi uji TOD dan TOE.</description>
+      <description>Contoh RCM pengadaan BUMN lengkap untuk uji TOD dan TOE. Pelajari perbedaan TOD dan TOE adalah pengujian desain vs efektivitas operasi, pemetaan risiko P2P, serta sampel Tabel 22.</description>
       <category>Panduan Teknis</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
@@ -92,6 +92,15 @@
       <category>Solusi Digital</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Panduan Audit ITGC dan ITAC BUMN: Metodologi Pengujian ERP, Kontrol Otomatis, dan Kepatuhan SK-5</title>
+      <link>https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5</guid>
+      <description>Panduan teknis pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem ERP BUMN: checklist pengujian akses logis, change management, three-way match, dan kepatuhan SK-5.</description>
+      <category>Tata Kelola &amp; Kepatuhan</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Panduan Menyusun HPS Pengadaan Konsultan ICOFR &amp; Software GRC BUMN</title>

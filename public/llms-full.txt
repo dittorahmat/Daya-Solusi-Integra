@@ -196,7 +196,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Compensating Control (Kontrol Kompensasi)
 - Definisi: Aktivitas pengendalian pengganti yang dirancang untuk memitigasi risiko ketika kontrol utama tidak dapat diterapkan secara ideal, misalnya karena keterbatasan sistem atau struktur organisasi yang kecil, sepanjang efektivitasnya dapat dibuktikan melalui pengujian.
-- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi & COSO Framework
 - Kategori: Klasifikasi Kontrol
 - Tautan: https://dsintegra.co.id/glosarium/compensating-control
 

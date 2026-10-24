@@ -1,3 +1,21 @@
+export interface GlossaryFaq {
+  question: string;
+  answer: string;
+}
+
+export interface GlossaryComparisonRow {
+  aspect: string;
+  primaryValue: string;
+  secondaryValue: string;
+  tertiaryValue?: string;
+}
+
+export interface GlossaryComparisonTable {
+  title: string;
+  headers: string[];
+  rows: GlossaryComparisonRow[];
+}
+
 export interface GlossaryItem {
   id: string;
   term: string;
@@ -6,6 +24,9 @@ export interface GlossaryItem {
   regulationRef: string;
   definition: string;
   keyTakeaway: string;
+  directAnswer?: string;
+  comparisonTable?: GlossaryComparisonTable;
+  faqList?: GlossaryFaq[];
   practicalExample?: string;
   relatedTermIds?: string[];
   relatedServiceUrl?: string;
@@ -109,6 +130,38 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "COSO 17 Principles & SK-5 BUMN",
     definition: "Aktivitas pengendalian internal yang memiliki pengaruh pervasif atau melingkupi organisasi secara keseluruhan, mencakup lingkungan pengendalian, proses penilaian risiko korporat, kode etik, dan aktivitas pengawasan oleh Dewan Komisaris dan Komite Audit.",
     keyTakeaway: "ELC membentuk fondasi utama. Kelemahan pada tingkat ELC berpotensi menggagalkan efektivitas kontrol transaksional di tingkat operasional.",
+    directAnswer: "Entity-Level Controls (ELC) adalah pengendalian tingkat entitas yang bersifat pervasif di seluruh organisasi, mencakup tone at the top, kode etik, penilaian risiko korporat, dan pengawasan Komite Audit guna memastikan integritas tata kelola BUMN.",
+    comparisonTable: {
+      title: "Diferensiasi Entity-Level Controls (ELC) vs Transaction-Level Controls (TLC)",
+      headers: ["Aspek Pembanding", "Entity-Level Controls (ELC)", "Transaction-Level Controls (TLC)"],
+      rows: [
+        {
+          aspect: "Cakupan Pengaruh",
+          primaryValue: "Pervasif, memayungi seluruh unit bisnis, direktorat, dan anak perusahaan BUMN.",
+          secondaryValue: "Spesifik pada siklus transaksi tertentu (seperti siklus pendapatan, kas, pengadaan aset)."
+        },
+        {
+          aspect: "Elemen Kerangka Kerja COSO",
+          primaryValue: "Dominan pada Control Environment, Risk Assessment, Information, dan Monitoring.",
+          secondaryValue: "Berfokus pada Control Activities (pemisahan tugas, otorisasi berjenjang, verifikasi faktur)."
+        },
+        {
+          aspect: "Dampak Kelemahan",
+          primaryValue: "Dapat merusak keandalan seluruh kontrol operasional di bawahnya secara sistemik.",
+          secondaryValue: "Berpotensi menimbulkan salah saji terlokalisir pada akun laporan keuangan tertentu."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Mengapa ELC wajib dievaluasi terlebih dahulu sebelum pengujian transaksi?",
+        answer: "Karena ELC mencerminkan komitmen tata kelola pimpinan (tone at the top). Jika lingkungan pengendalian di tingkat entitas rapuh, pengujian kontrol pada tingkat transaksi tidak akan memberikan keyakinan memadai."
+      },
+      {
+        question: "Siapa pihak yang bertanggung jawab atas efektivitas ELC di BUMN?",
+        answer: "Direksi BUMN bertanggung jawab langsung atas rancangan dan operasional ELC, dengan fungsi pengawasan independen dijalankan oleh Dewan Komisaris dan Komite Audit."
+      }
+    ],
     practicalExample: "Penandatanganan pakta integritas dan komitmen anti benturan kepentingan oleh seluruh jajaran Direksi dan Dewan Komisaris BUMN.",
     relatedTermIds: ["icofr", "tlc", "defisiensi-material"],
     relatedServiceUrl: "/layanan/enterprise-grc",
@@ -164,6 +217,41 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab V Evaluasi Defisiensi",
     definition: "Kondisi di mana rancangan atau pelaksanaan pengendalian tidak memungkinkan manajemen atau karyawan, dalam pelaksanaan fungsi normalnya, untuk mencegah atau mendeteksi salah saji pada laporan keuangan secara tepat waktu.",
     keyTakeaway: "Tingkat defisiensi paling ringan yang dapat diatasi melalui perbaikan operasional internal tanpa kewajiban modifikasi asersi publik.",
+    directAnswer: "Control deficiency adalah kelemahan pada rancangan atau operasi pengendalian yang gagal mencegah atau mendeteksi salah saji keuangan secara tepat waktu, tetapi tingkat keparahannya belum mencapai defisiensi signifikan maupun kelemahan material.",
+    comparisonTable: {
+      title: "Matriks Tingkatan Defisiensi Pengendalian Internal ICOFR BUMN",
+      headers: ["Parameter Klasifikasi", "Defisiensi Kontrol (Control Deficiency)", "Defisiensi Signifikan (Significant Deficiency)", "Kelemahan Material (Material Weakness)"],
+      rows: [
+        {
+          aspect: "Tingkat Keparahan",
+          primaryValue: "Rendah: tidak berpotensi menimbulkan salah saji material laporan keuangan.",
+          secondaryValue: "Menengah: patut mendapat perhatian pihak yang bertanggung jawab atas tata kelola.",
+          tertiaryValue: "Kritis: terdapat kemungkinan beralasan salah saji material tidak dicegah/dideteksi."
+        },
+        {
+          aspect: "Pihak yang Dilaporkan",
+          primaryValue: "Cukup dilaporkan kepada Manajemen Operasional dan Tim Lini 2 ICOFR.",
+          secondaryValue: "Wajib dilaporkan kepada Direksi, Komite Audit, dan Dewan Komisaris BUMN.",
+          tertiaryValue: "Wajib dilaporkan dalam Asersi Manajemen Tahunan dan diungkapkan ke Kementerian BUMN."
+        },
+        {
+          aspect: "Dampak Opini Auditor",
+          primaryValue: "Tidak memengaruhi opini wajar tanpa pengecualian (WTP).",
+          secondaryValue: "Menjadi perhatian dalam Management Letter auditor eksternal (KAP/BPK).",
+          tertiaryValue: "Berisiko memodifikasi opini audit efektivitas pengendalian internal pelaporan keuangan."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Apa perbedaan antara defisiensi desain dan defisiensi operasi?",
+        answer: "Defisiensi desain terjadi jika kontrol yang diperlukan tidak dirancang dengan benar untuk memenuhi tujuan pengendalian, sedangkan defisiensi operasi terjadi jika kontrol yang dirancang dengan baik tidak dijalankan sebagaimana mestinya atau oleh personel yang tidak memiliki otorisasi."
+      },
+      {
+        question: "Bagaimana mekanisme perbaikan defisiensi kontrol di BUMN?",
+        answer: "Perbaikan dilakukan melalui Corrective Action Plan (CAP) yang divalidasi Lini 2 dan SPI, mencakup pembaruan SOP, penataan hak akses ERP, atau pelatihan ulang personel pelaksana kontrol."
+      }
+    ],
     practicalExample: "Keterlambatan verifikasi rekonsiliasi aset tetap selama 2 hari dari tanggal cutoff yang tidak berdampak pada saldo material neraca.",
     relatedTermIds: ["defisiensi-signifikan", "defisiensi-material", "tod"],
     relatedServiceUrl: "/layanan/icofr-bumn",
@@ -307,9 +395,46 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "Compensating Control",
     acronym: "Kontrol Kompensasi",
     category: "Klasifikasi Kontrol",
-    regulationRef: "SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi",
+    regulationRef: "SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi & COSO Framework",
     definition: "Aktivitas pengendalian pengganti yang dirancang untuk memitigasi risiko ketika kontrol utama tidak dapat diterapkan secara ideal, misalnya karena keterbatasan sistem atau struktur organisasi yang kecil, sepanjang efektivitasnya dapat dibuktikan melalui pengujian.",
     keyTakeaway: "Kontrol kompensasi harus didokumentasikan dan diuji seperti kontrol utama; ia bukan alasan untuk membiarkan defisiensi desain.",
+    directAnswer: "Compensating control adalah kontrol pengganti yang dirancang untuk memitigasi risiko keuangan saat kontrol utama tidak dapat dijalankan secara optimal akibat kendala sistem atau keterbatasan SDM, dengan syarat harus teruji efektif sesuai standar SK-5 BUMN.",
+    comparisonTable: {
+      title: "Komparasi Kontrol Utama vs Kontrol Kompensasi (SK-5 BUMN)",
+      headers: ["Dimensi Evaluasi", "Kontrol Utama (Key Control)", "Kontrol Kompensasi (Compensating Control)"],
+      rows: [
+        {
+          aspect: "Tujuan Pengendalian",
+          primaryValue: "Mencegah atau mendeteksi risiko secara langsung pada lini transaksi utama.",
+          secondaryValue: "Memitigasi celah risiko akibat kontrol utama absen atau tidak dapat diterapkan."
+        },
+        {
+          aspect: "Pemicu Penerapan",
+          primaryValue: "Rancangan proses bisnis ideal sesuai RACI dan SOD standar.",
+          secondaryValue: "Keterbatasan ukuran tim (SDM terbatas) atau limitasi arsitektur sistem ERP."
+        },
+        {
+          aspect: "Kewajiban Pengujian (TOE)",
+          primaryValue: "Wajib diuji efektivitas operasinya dengan ukuran sampel normatif Tabel 22.",
+          secondaryValue: "Wajib diuji dengan kedalaman setara guna membuktikan mitigasi risiko berjalan."
+        },
+        {
+          aspect: "Dampak terhadap Asersi",
+          primaryValue: "Jika gagal, memicu evaluasi defisiensi kontrol secara berjenjang.",
+          secondaryValue: "Jika efektif, mencegah peningkatan defisiensi menjadi Defisiensi Signifikan."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Kapan BUMN diperbolehkan menggunakan compensating control?",
+        answer: "BUMN diperkenankan memakai compensating control ketika kontrol utama terhalang kendala struktural (seperti keterbatasan pemisahan tugas di unit kerja perintis) asalkan kontrol kompensasi tersebut memiliki presisi memadai dan terbukti efektif saat diuji Lini 2 atau KAP."
+      },
+      {
+        question: "Apakah compensating control menghapus status temuan audit?",
+        answer: "Tidak secara otomatis menghapus catatan observasi, tetapi keberadaan kontrol kompensasi yang efektif dapat menurunkan derajat keparahan temuan dari Material Weakness atau Significant Deficiency menjadi sebatas Control Deficiency operasional."
+      }
+    ],
     practicalExample: "Review bulanan independen atas seluruh jurnal manual oleh Kepala Akuntansi sebagai kompensasi atas ketiadaan pemisahan tugas pada staf yang sedikit.",
     relatedTermIds: ["key-control", "defisiensi-kontrol", "remediasi-kontrol"],
     relatedServiceUrl: "/temuan-audit-icofr",

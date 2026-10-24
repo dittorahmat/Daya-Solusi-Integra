@@ -8,7 +8,9 @@ import {
   CheckCircle2, 
   HelpCircle,
   Tag,
-  ArrowRight
+  ArrowRight,
+  Layers,
+  Award
 } from "lucide-react";
 import { GLOSSARY_ITEMS, GlossaryItem } from "../../data/glossaryData";
 import Breadcrumbs from "../Breadcrumbs";
@@ -49,8 +51,52 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
     .map((termId) => GLOSSARY_ITEMS.find((g) => g.id === termId))
     .filter((g): g is GlossaryItem => Boolean(g));
 
+  const canonicalUrl = `https://dsintegra.co.id/glosarium/${item.id}`;
+
+  // Structured Data: DefinedTerm Schema
+  const definedTermSchema = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "@id": `${canonicalUrl}#defined-term`,
+    "name": item.term,
+    "alternateName": item.acronym || undefined,
+    "description": item.directAnswer || item.definition,
+    "inDefinedTermSet": {
+      "@type": "DefinedTermSet",
+      "name": "Kamus Kepatuhan ICOFR BUMN & Tata Kelola Korporasi",
+      "url": "https://dsintegra.co.id/glosarium"
+    },
+    "url": canonicalUrl
+  };
+
+  // Structured Data: FAQPage Schema (jika ada FAQ)
+  const faqSchema = item.faqList && item.faqList.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": item.faqList.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+      {/* Structured Data Scripts */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -94,6 +140,19 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
             {item.term} {item.acronym ? `(${item.acronym})` : ""}
           </h1>
 
+          {/* Direct Answer Box (Inverted Pyramid for Featured Snippets & AI Engines) */}
+          {item.directAnswer && (
+            <div className="mb-8 p-5 sm:p-6 rounded-lg bg-blue-950/20 border border-blue-800/80">
+              <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">
+                <Award className="w-4 h-4 text-blue-400" />
+                <span>Ringkasan Regulasi (Direct Answer)</span>
+              </div>
+              <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed">
+                {item.directAnswer}
+              </p>
+            </div>
+          )}
+
           <div className="space-y-6 pt-4 border-t border-slate-800/80">
             <div>
               <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
@@ -125,6 +184,75 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
                 <p className="text-sm text-slate-300 leading-relaxed">
                   {item.practicalExample}
                 </p>
+              </div>
+            )}
+
+            {/* Comparison Table Section (High Information Gain) */}
+            {item.comparisonTable && (
+              <div className="pt-6 border-t border-slate-800/80">
+                <div className="flex items-center gap-2 mb-3">
+                  <Layers className="w-4 h-4 text-blue-400" />
+                  <h3 className="text-sm sm:text-base font-bold text-white">
+                    {item.comparisonTable.title}
+                  </h3>
+                </div>
+                <div className="overflow-x-auto rounded-lg border border-slate-800">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead className="bg-slate-900 text-slate-300 font-semibold border-b border-slate-800">
+                      <tr>
+                        {item.comparisonTable.headers.map((hdr, hIdx) => (
+                          <th key={hIdx} className="p-3.5 sm:p-4 font-mono text-xs">
+                            {hdr}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/70 bg-[#0b0f19]">
+                      {item.comparisonTable.rows.map((row, rIdx) => (
+                        <tr key={rIdx} className="hover:bg-slate-900/40 transition-colors">
+                          <td className="p-3.5 sm:p-4 font-semibold text-slate-200 align-top">
+                            {row.aspect}
+                          </td>
+                          <td className="p-3.5 sm:p-4 text-slate-300 align-top leading-relaxed">
+                            {row.primaryValue}
+                          </td>
+                          <td className="p-3.5 sm:p-4 text-slate-300 align-top leading-relaxed">
+                            {row.secondaryValue}
+                          </td>
+                          {row.tertiaryValue && (
+                            <td className="p-3.5 sm:p-4 text-slate-300 align-top leading-relaxed">
+                              {row.tertiaryValue}
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* FAQ Section */}
+            {item.faqList && item.faqList.length > 0 && (
+              <div className="pt-6 border-t border-slate-800/80 space-y-4">
+                <div className="flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4 text-blue-400" />
+                  <h3 className="text-sm sm:text-base font-bold text-white">
+                    Pertanyaan Lazim Seputar {item.acronym || item.term}
+                  </h3>
+                </div>
+                <div className="space-y-3">
+                  {item.faqList.map((faq, fIdx) => (
+                    <div key={fIdx} className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800">
+                      <h4 className="text-xs sm:text-sm font-semibold text-blue-300 mb-1.5">
+                        {faq.question}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 

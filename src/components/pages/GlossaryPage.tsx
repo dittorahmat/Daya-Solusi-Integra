@@ -137,12 +137,12 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
             {filteredItems.map((item) => (
               <article 
                 key={item.id} 
-                className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition-colors"
+                className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:border-slate-300 transition-colors"
               >
                 <div>
                   {/* Category Badge & Regulation Reference */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="inline-block px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-800 text-blue-300 border border-slate-700/60">
+                    <span className="inline-block px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-800 text-blue-300 border border-slate-300/60">
                       {item.category}
                     </span>
                     <span className="text-[11px] text-slate-500 flex items-center gap-1 font-mono">
@@ -196,7 +196,7 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
                   {item.relatedServiceUrl && (
                     <button
                       onClick={() => onNavigate(item.relatedServiceUrl!)}
-                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-200 transition-colors group"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors group"
                     >
                       <span>Solusi: {item.relatedServiceLabel}</span>
                       <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-slate-500" />
@@ -226,7 +226,7 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
             {onOpenAdvisor && (
               <button
                 onClick={onOpenAdvisor}
-                className="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-sm transition-colors"
+                className="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-800 border border-slate-300 font-medium text-sm transition-colors"
               >
                 Konsultasi AI Advisor
               </button>

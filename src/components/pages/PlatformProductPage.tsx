@@ -18,7 +18,7 @@ export default function PlatformProductPage({ onNavigate, onRequestDemo }: Platf
   }, []);
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#080d1a] text-slate-100">
+    <div className="min-h-screen pt-28 pb-20 bg-[#080d1a] text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         {/* Breadcrumb Navigation */}
         <div className="mb-4 text-left">

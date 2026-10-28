@@ -125,8 +125,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0b0f19]/80 backdrop-blur-md border-b border-slate-800 shadow-lg py-4"
-          : "bg-transparent py-6"
+          ? "bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm py-4"
+          : "bg-white/70 backdrop-blur-xs py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -173,7 +173,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                       }`}
                     >
                       <span>{item.label}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isPlatformDropdownOpen ? "rotate-180 text-white" : "text-slate-400"}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isPlatformDropdownOpen ? "rotate-180 text-white" : "text-slate-600"}`} />
                     </button>
 
                     {/* Platform Dropdown Menu */}
@@ -317,9 +317,9 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                             window.history.pushState({}, '', '/platform/grc-integra');
                             window.dispatchEvent(new PopStateEvent('popstate'));
                           }}
-                          className="w-full text-left p-2.5 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300 hover:text-white flex items-center gap-2"
+                          className="w-full text-left p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 hover:text-[#0b4596] flex items-center gap-2"
                         >
-                          <Layers className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                          <Layers className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                           <span>Ringkasan Platform GRC Integra</span>
                         </button>
                         <button
@@ -328,13 +328,13 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                             window.history.pushState({}, '', '/platform/bpm-workflow-editor');
                             window.dispatchEvent(new PopStateEvent('popstate'));
                           }}
-                          className="w-full text-left p-2.5 rounded-lg bg-blue-950/40 border border-blue-500/30 text-xs text-blue-300 hover:text-white flex items-center justify-between"
+                          className="w-full text-left p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900 hover:text-blue-700 flex items-center justify-between"
                         >
                           <span className="flex items-center gap-2">
-                            <Workflow className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                            <Workflow className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                             <span>BPM Workflow Editor</span>
                           </span>
-                          <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-900/80 text-blue-200 font-mono">
+                          <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 font-mono font-medium">
                             Baru
                           </span>
                         </button>
@@ -366,7 +366,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   setIsMobileMenuOpen(false);
                   onOpenAdvisor();
                 }}
-                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-blue-400 bg-blue-950/30 border border-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-[#0b4596] bg-blue-50 border border-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
               >
                 <MessageSquareCode className="w-4 h-4 shrink-0" />
                 AI IT & GRC Consultant

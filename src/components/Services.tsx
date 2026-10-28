@@ -83,13 +83,13 @@ export default function Services() {
 
                 {/* Column 2: Narrative & Scope Checklist */}
                 <div className="lg:col-span-5 space-y-4 text-left">
-                  <p className="text-sm text-slate-300 leading-[1.8] font-normal">
+                  <p className="text-sm text-slate-600 leading-[1.8] font-normal">
                     {service.longDesc}
                   </p>
                   <div className="grid sm:grid-cols-2 gap-2.5 pt-2">
                     {service.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-bumn-gold shrink-0 mt-0.5" />
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
                         <span className="leading-snug">{feature}</span>
                       </div>
                     ))}
@@ -97,30 +97,30 @@ export default function Services() {
                 </div>
 
                 {/* Column 3: Regulation, Deliverable & Silo Link */}
-                <div className="lg:col-span-3 space-y-4 text-left bg-slate-950/60 border border-slate-800/80 rounded-xl p-4">
+                <div className="lg:col-span-3 space-y-4 text-left bg-slate-50 border border-slate-200 rounded-xl p-4">
                   <div>
-                    <span className="text-[11px] font-mono text-slate-600 uppercase block">
+                    <span className="text-[11px] font-mono text-slate-500 uppercase block font-medium">
                       Rujukan Regulasi
                     </span>
-                    <span className="text-xs font-medium text-slate-200 mt-0.5 block">
+                    <span className="text-xs font-semibold text-slate-800 mt-0.5 block">
                       {meta.standard}
                     </span>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-800/80">
-                    <span className="text-[11px] font-mono text-slate-600 uppercase block">
+                  <div className="pt-2 border-t border-slate-200">
+                    <span className="text-[11px] font-mono text-slate-500 uppercase block font-medium">
                       Keluaran Resmi
                     </span>
-                    <span className="text-xs font-medium text-slate-300 mt-0.5 block leading-relaxed">
+                    <span className="text-xs font-medium text-slate-700 mt-0.5 block leading-relaxed">
                       {meta.output}
                     </span>
                   </div>
 
                   {subpage && (
-                    <div className="pt-3 border-t border-slate-800/80">
+                    <div className="pt-3 border-t border-slate-200">
                       <a
                         href={subpage.href}
-                        className="inline-flex items-center gap-1.5 text-xs text-bumn-gold hover:text-amber-300 font-semibold group"
+                        className="inline-flex items-center gap-1.5 text-xs text-[#0b4596] hover:text-blue-800 font-semibold group"
                       >
                         <span>{subpage.label}</span>
                         <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -135,7 +135,7 @@ export default function Services() {
         </div>
 
         {/* Global Consultation Pathway */}
-        <div className="mt-14 p-6 sm:p-8 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-left">
+        <div className="mt-14 p-6 sm:p-8 bg-blue-50/50 border border-blue-200/60 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-left">
           <div className="space-y-1 max-w-2xl">
             <h4 className="text-base font-semibold text-slate-900 tracking-tight">
               Butuh telaah awal terhadap kesiapan kepatuhan entitas Anda?

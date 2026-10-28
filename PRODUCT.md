@@ -30,8 +30,8 @@ Evaluated by BUMN Risk Committees, Audit Committees, and bank executives during 
 ## Brand Commitments
 
 - **Tone:** Sovereign, corporate-authoritative, trustworthy, tech-forward, and deeply professional.
-- **Palette:** BUMN Blue (`#0b4596`), BUMN Gold (`#cca43b`), Ink Navy (`#0b0f19`), Deep Navy (`#0d1e3d`), and Slate typography.
-- **Strict Visual Rules:** Strict 10% Accent Rule for BUMN Gold, no cream/sand backgrounds, no sketch/doodle SVGs, no side-stripe card borders, no cyberpunk/neon tones, and no unchosen kicker eyebrows.
+- **Palette:** BUMN Blue (`#0b4596`), Deep Amber Gold (`#9a7318` / `#b8860b`), White (`#ffffff`), Off-White Slate (`#f8fafc`), and High-Contrast Dark Slate (`#0f172a` / `#475569`) typography.
+- **Strict Visual Rules:** Strict 10% Accent Rule for BUMN Gold/Amber, high-contrast light corporate canvas, no sketch/doodle SVGs, no side-stripe card borders, no cyberpunk/neon tones, and no unchosen kicker eyebrows.
 
 ## Evidence on Hand
 
@@ -43,7 +43,7 @@ Evaluated by BUMN Risk Committees, Audit Committees, and bank executives during 
 
 1. **Sovereign Authority:** Build immediate trust with Indonesian state enterprises and financial institutions through authoritative, structured layouts that reflect deep regulatory expertise.
 2. **Interactive Value First:** Offer tangible utility through self-assessments and AI advisory before intake, leading naturally to high-converting consultation requests.
-3. **Restrained Modernity:** Embody a tech-forward dark interface with smooth micro-animations and ambient backlighting while maintaining corporate restraint.
+3. **Restrained Modernity:** Embody a clean, high-contrast light corporate interface with crisp typography and subtle elevated structures while maintaining sovereign authority.
 4. **Data Continuity & Utility:** Ensure seamlessly connected workflows (Assessment → AI Report → Contact Intake → Board Printout) with zero data loss or friction.
 
 ## Accessibility & Inclusion

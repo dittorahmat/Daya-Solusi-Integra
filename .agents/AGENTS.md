@@ -11,14 +11,14 @@ This project has been set up with the Impeccable design system. Future developme
   3. **Restrained Modernity:** Embody a tech-forward dark interface through smooth animations and subtle ambient backlighting while avoiding standard SaaS "warm cream" templates or "hacker" neon tones.
 - **Visual Palette:**
   - Primary Accent: BUMN Blue (`#0b4596`)
-  - Secondary Accent: BUMN Gold (`#cca43b`)
-  - Canvas / Background: Ink Navy (`#0b0f19`) and Deep Navy (`#0d1e3d`)
-  - Main Typography: Off-White Slate (`#f3f4f6`)
+  - Secondary Accent: BUMN Gold / Deep Amber (`#9a7318` / `#b8860b` / `#cca43b`)
+  - Canvas / Background: White (`#ffffff`) and Off-White Slate (`#f8fafc`)
+  - Main Typography: Dark Slate (`#0f172a` / `#1e293b`), Muted Body (`#475569`)
 - **Key Restrictions:**
-  - No cream/sand/beige backgrounds.
+  - High-contrast Light Corporate Theme: seluruh halaman publik menggunakan kanvas putih/terang dengan rasio kontras WCAG AA tajam (teks gelap di atas putih).
   - No sketchy, hand-drawn SVG illustrations or over-rounded card layouts.
   - Avoid cyberpunk/hacker themes with green or purple neon.
-  - Follow **The 10% Accent Rule** (BUMN Gold must cover <= 10% of any viewport).
+  - Follow **The 10% Accent Rule** (BUMN Gold/Amber must cover <= 10% of any viewport).
 
 ## Mandat Wajib Domain & Identitas Resmi (SEO & Brand)
 - **Domain Resmi Perusahaan:** `https://dsintegra.co.id` (Bukan `dayasolusiintegra.com` atau domain dummy lainnya).
@@ -35,8 +35,8 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
 
 2. **Prinsip Desain Simpel, Lapang & Tidak Sesak (Breathing Room Mandate):**
    - **Banned Visual Clutter & Clogged Layouts:** Dilarang menumpuk banyak informasi, badge ganda, atau sub-elemen mikro di dalam satu kartu/viewport. Berikan ruang bernapas yang cukup antar section (`py-24` sampai `py-32`) dan ruang antar elemen (`gap-8` sampai `gap-16`).
-   - **Banned Ambient Floating Glow / Blur Blobs:** Dilarang meletakkan lingkaran gradien kabur (`blur-[150px]`, `blur-[200px]`, dsb.) di latar belakang karena merupakan indikator template AI slop sintetis. Gunakan kanvas solid *Ink Navy* (`#0b0f19`) yang bersih.
-   - **Banned Fake Glassmorphism:** Dilarang menggunakan efek kaca buram `backdrop-blur` tebal pada card container. Gunakan permukaan arsitektural solid (`#0f172a` / `#0d1527`) dengan border tegas dan tipis (`border-slate-800`).
+   - **Banned Ambient Floating Glow / Blur Blobs:** Dilarang meletakkan lingkaran gradien kabur (`blur-[150px]`, `blur-[200px]`, dsb.) di latar belakang karena merupakan indikator template AI slop sintetis. Gunakan kanvas solid *Light Corporate Slate/White* (`#ffffff` / `#f8fafc`) yang bersih.
+   - **Banned Fake Glassmorphism:** Dilarang menggunakan efek kaca buram `backdrop-blur` tebal pada card container. Gunakan permukaan arsitektural solid (`#ffffff` / `#f8fafc`) dengan border tegas dan tipis (`border-slate-200`).
    - **Banned Hidden-by-Default Interactivity (No Unnecessary Tab Toggles):** Jangan menyembunyikan poin-poin kapabilitas utama di balik tab switcher yang rumit. Gunakan *Editorial Capability Ledger* atau grid datar (*flat architecture*) yang langsung dapat dibaca sekilas (*glanceable*).
    - **Single Surface Grouping:** Hindari pengelompokan berlapis (hindari cards-inside-cards bertingkat). Gunakan garis pemisah tipis (`divide-y divide-slate-800/80` atau `border-t`) untuk mengelompokkan data.
    - **Focused Action (1 Dominant CTA per Viewport):** Jangan membingungkan audiens eksekutif dengan terlalu banyak tombol aksi dengan niat sama (*no duplicate CTA intent*). Maksimal 1 aksi primer dan 1 aksi sekunder yang kontras dan jelas.

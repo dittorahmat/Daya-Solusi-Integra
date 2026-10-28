@@ -57,7 +57,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
   };
 
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -80,7 +80,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Template Kertas Kerja Kepatuhan ICOFR SK-5 BUMN
           </h1>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-light mb-6">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-6">
             Standar arsitektur kertas kerja bagi Satuan Pengawasan Intern (SPI), Manajemen Risiko, dan Tim Keuangan BUMN: struktur Risk &amp; Control Matrix (RCM), checklist Entity-Level Control (ELC), dan format pengujian TOE Tabel 22.
           </p>
           <div className="text-xs text-slate-500 font-mono">
@@ -94,8 +94,8 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("rcm")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "rcm" 
-                ? "bg-[#0f1d38] border-blue-500/80 shadow-lg shadow-blue-950/40" 
-                : "bg-[#0f172a] border-slate-800 hover:border-slate-700"
+                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
@@ -105,7 +105,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               <Table className="w-5 h-5 text-blue-400" />
             </div>
             <h3 className="text-base font-bold text-white mb-2">Template RCM Standar SK-5</h3>
-            <p className="text-xs text-slate-400 leading-relaxed font-light mb-4">
+            <p className="text-xs text-slate-600 leading-relaxed font-light mb-4">
               Matriks pemetaan risiko tingkat proses, asersi manajemen, tipe pengendalian (preventif/detektif), dan frekuensi uji.
             </p>
             <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
@@ -118,8 +118,8 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("elc")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "elc" 
-                ? "bg-[#0f1d38] border-blue-500/80 shadow-lg shadow-blue-950/40" 
-                : "bg-[#0f172a] border-slate-800 hover:border-slate-700"
+                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
@@ -129,7 +129,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               <Layers className="w-5 h-5 text-blue-400" />
             </div>
             <h3 className="text-base font-bold text-white mb-2">Checklist ELC 17 Prinsip COSO</h3>
-            <p className="text-xs text-slate-400 leading-relaxed font-light mb-4">
+            <p className="text-xs text-slate-600 leading-relaxed font-light mb-4">
               Kertas kerja evaluasi pengendalian tingkat entitas: lingkungan pengendalian, penilaian risiko, dan pemantauan Lini 2.
             </p>
             <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
@@ -142,8 +142,8 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("toe")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "toe" 
-                ? "bg-[#0f1d38] border-blue-500/80 shadow-lg shadow-blue-950/40" 
-                : "bg-[#0f172a] border-slate-800 hover:border-slate-700"
+                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
@@ -153,7 +153,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               <ShieldCheck className="w-5 h-5 text-blue-400" />
             </div>
             <h3 className="text-base font-bold text-white mb-2">Kertas Kerja TOE Tabel 22</h3>
-            <p className="text-xs text-slate-400 leading-relaxed font-light mb-4">
+            <p className="text-xs text-slate-600 leading-relaxed font-light mb-4">
               Format lembar pengujian efektivitas operasional, rentang sampel minimum SK-5, dan evaluasi defisiensi kontrol.
             </p>
             <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
@@ -164,8 +164,8 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
         </div>
 
         {/* Interactive Structure Preview Ledger */}
-        <section className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-8 mb-20 shadow-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+        <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-20 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-400 mb-1">
                 <span>Pratinjau Arsitektur Format Data:</span>
@@ -188,12 +188,12 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
 
           {activeTab === "rcm" && (
             <div className="space-y-6">
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 font-light leading-relaxed">
                 RCM adalah tulang punggung kepatuhan ICOFR yang mendokumentasikan kaitan antara akun laporan keuangan material, risiko salah saji, kontrol mitigasi, serta pembagian asersi manajemen.
               </p>
-              <div className="overflow-x-auto border border-slate-800 rounded-xl">
+              <div className="overflow-x-auto border border-slate-200 rounded-xl">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#0b1329] border-b border-slate-800 text-slate-300 font-mono">
+                  <thead className="bg-slate-100 border-b border-slate-200 text-slate-700 font-mono">
                     <tr>
                       <th className="py-3 px-4 font-semibold">Kode Kontrol</th>
                       <th className="py-3 px-4 font-semibold">Sub-Proses / Akun</th>
@@ -203,27 +203,27 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                       <th className="py-3 px-4 font-semibold">Metode Uji</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300 font-light">
-                    <tr className="hover:bg-slate-900/50">
+                  <tbody className="divide-y divide-slate-800 text-slate-700 font-light">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-mono text-[#cca43b] font-semibold whitespace-nowrap">CTL-REV-01</td>
                       <td className="py-3 px-4 font-medium text-white">Pendapatan &amp; Piutang</td>
-                      <td className="py-3 px-4 text-slate-400">Pencocokan tiga arah (Three-Way Matching) antara Surat Jalan, Faktur Penjualan, dan Berita Acara Serah Terima (BAST).</td>
+                      <td className="py-3 px-4 text-slate-600">Pencocokan tiga arah (Three-Way Matching) antara Surat Jalan, Faktur Penjualan, dan Berita Acara Serah Terima (BAST).</td>
                       <td className="py-3 px-4 font-mono text-blue-400">E, C, V</td>
                       <td className="py-3 px-4 whitespace-nowrap">Preventif | Harian</td>
                       <td className="py-3 px-4 whitespace-nowrap">Inspeksi &amp; Reperformance</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-mono text-[#cca43b] font-semibold whitespace-nowrap">CTL-FA-02</td>
                       <td className="py-3 px-4 font-medium text-white">Aset Tetap &amp; Properti</td>
-                      <td className="py-3 px-4 text-slate-400">Rekonsiliasi berkala antara register aktiva tetap fisik di lapangan dengan saldo buku besar umum (General Ledger).</td>
+                      <td className="py-3 px-4 text-slate-600">Rekonsiliasi berkala antara register aktiva tetap fisik di lapangan dengan saldo buku besar umum (General Ledger).</td>
                       <td className="py-3 px-4 font-mono text-blue-400">E, R, V</td>
                       <td className="py-3 px-4 whitespace-nowrap">Detektif | Bulanan</td>
                       <td className="py-3 px-4 whitespace-nowrap">Walkthrough &amp; Inspeksi Dokumen</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-mono text-[#cca43b] font-semibold whitespace-nowrap">CTL-ITGC-03</td>
                       <td className="py-3 px-4 font-medium text-white">Sistem IT / ERP Finansial</td>
-                      <td className="py-3 px-4 text-slate-400">Tinjauan segregasi tugas (Segregation of Duties) hak akses pengguna aplikasi pelaporan keuangan setiap akhir kuartal.</td>
+                      <td className="py-3 px-4 text-slate-600">Tinjauan segregasi tugas (Segregation of Duties) hak akses pengguna aplikasi pelaporan keuangan setiap akhir kuartal.</td>
                       <td className="py-3 px-4 font-mono text-blue-400">E, C</td>
                       <td className="py-3 px-4 whitespace-nowrap">Detektif | Triwulanan</td>
                       <td className="py-3 px-4 whitespace-nowrap">Pengujian Log Sistem (ITGC)</td>
@@ -231,7 +231,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 rounded-xl bg-blue-950/40 border border-blue-800/40 text-xs text-slate-300 font-light flex items-start gap-3">
+              <div className="p-4 rounded-xl bg-blue-950/40 border border-blue-800/40 text-xs text-slate-700 font-light flex items-start gap-3">
                 <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                 <span>
                   <strong>Catatan Asersi:</strong> E = Existence / Occurence, C = Completeness, V = Valuation / Allocation, R = Rights &amp; Obligations, P = Presentation &amp; Disclosure.
@@ -242,12 +242,12 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
 
           {activeTab === "elc" && (
             <div className="space-y-6">
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 font-light leading-relaxed">
                 Checklist ELC mengevaluasi iklim tata kelola dan integritas korporasi secara makro. Dalam SK-5 Kementerian BUMN, defisiensi pada level ELC dapat langsung membatalkan asersi efektivitas pengendalian secara keseluruhan.
               </p>
-              <div className="overflow-x-auto border border-slate-800 rounded-xl">
+              <div className="overflow-x-auto border border-slate-200 rounded-xl">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#0b1329] border-b border-slate-800 text-slate-300 font-mono">
+                  <thead className="bg-slate-100 border-b border-slate-200 text-slate-700 font-mono">
                     <tr>
                       <th className="py-3 px-4 font-semibold">Pilar Komponen COSO</th>
                       <th className="py-3 px-4 font-semibold">Prinsip Kunci SK-5</th>
@@ -255,23 +255,23 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                       <th className="py-3 px-4 font-semibold">Kriteria Efektivitas</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300 font-light">
-                    <tr className="hover:bg-slate-900/50">
+                  <tbody className="divide-y divide-slate-800 text-slate-700 font-light">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white whitespace-nowrap">Control Environment</td>
                       <td className="py-3 px-4 text-[#cca43b] font-mono">Prinsip 1 &amp; 2</td>
-                      <td className="py-3 px-4 text-slate-400">Pakta integritas Direksi/Dekom, piagam Komite Audit, dan sosialisasi whistleblowing system (WBS).</td>
+                      <td className="py-3 px-4 text-slate-600">Pakta integritas Direksi/Dekom, piagam Komite Audit, dan sosialisasi whistleblowing system (WBS).</td>
                       <td className="py-3 px-4 text-emerald-400 font-medium">Ada, Aktif &amp; Tersosialisasi</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white whitespace-nowrap">Risk Assessment</td>
                       <td className="py-3 px-4 text-[#cca43b] font-mono">Prinsip 6 &amp; 8</td>
-                      <td className="py-3 px-4 text-slate-400">Profil risiko salah saji material, penilaian risiko kecurangan (fraud risk assessment) tahun buku berjalan.</td>
+                      <td className="py-3 px-4 text-slate-600">Profil risiko salah saji material, penilaian risiko kecurangan (fraud risk assessment) tahun buku berjalan.</td>
                       <td className="py-3 px-4 text-emerald-400 font-medium">Dimutakhirkan Tahunan</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white whitespace-nowrap">Monitoring Activities</td>
                       <td className="py-3 px-4 text-[#cca43b] font-mono">Prinsip 16 &amp; 17</td>
-                      <td className="py-3 px-4 text-slate-400">Laporan evaluasi berkala Lini 2, charter audit SPI, serta pemantauan tindak lanjut rekomendasi audit KAP/BPK.</td>
+                      <td className="py-3 px-4 text-slate-600">Laporan evaluasi berkala Lini 2, charter audit SPI, serta pemantauan tindak lanjut rekomendasi audit KAP/BPK.</td>
                       <td className="py-3 px-4 text-emerald-400 font-medium">Tercatat &amp; Terlaporkan</td>
                     </tr>
                   </tbody>
@@ -282,12 +282,12 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
 
           {activeTab === "toe" && (
             <div className="space-y-6">
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 font-light leading-relaxed">
                 Kertas kerja TOE mendokumentasikan pengambilan sampel acak sesuai kaidah normatif Tabel 22 Kementerian BUMN dengan toleransi 0 deviasi (Zero Deviation Rule) untuk memastikan keterandalan asersi laporan keuangan.
               </p>
-              <div className="overflow-x-auto border border-slate-800 rounded-xl">
+              <div className="overflow-x-auto border border-slate-200 rounded-xl">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#0b1329] border-b border-slate-800 text-slate-300 font-mono">
+                  <thead className="bg-slate-100 border-b border-slate-200 text-slate-700 font-mono">
                     <tr>
                       <th className="py-3 px-4 font-semibold">Frekuensi Kontrol</th>
                       <th className="py-3 px-4 font-semibold">Populasi Tahunan</th>
@@ -296,27 +296,27 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                       <th className="py-3 px-4 font-semibold">Simpulan Hasil Audit</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300 font-light">
-                    <tr className="hover:bg-slate-900/50">
+                  <tbody className="divide-y divide-slate-800 text-slate-700 font-light">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white">Tahunan (Annual)</td>
-                      <td className="py-3 px-4 text-slate-400">1 kali</td>
+                      <td className="py-3 px-4 text-slate-600">1 kali</td>
                       <td className="py-3 px-4 font-mono text-[#cca43b]">1 sampel</td>
                       <td className="py-3 px-4 font-mono text-emerald-400">0 deviasi</td>
-                      <td className="py-3 px-4 text-slate-300">Efektif / Tidak Efektif</td>
+                      <td className="py-3 px-4 text-slate-700">Efektif / Tidak Efektif</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white">Bulanan (Monthly)</td>
-                      <td className="py-3 px-4 text-slate-400">12 kali</td>
+                      <td className="py-3 px-4 text-slate-600">12 kali</td>
                       <td className="py-3 px-4 font-mono text-[#cca43b]">2 s.d. 5 sampel</td>
                       <td className="py-3 px-4 font-mono text-emerald-400">0 deviasi</td>
-                      <td className="py-3 px-4 text-slate-300">Efektif / Tidak Efektif</td>
+                      <td className="py-3 px-4 text-slate-700">Efektif / Tidak Efektif</td>
                     </tr>
-                    <tr className="hover:bg-slate-900/50">
+                    <tr className="hover:bg-slate-50">
                       <td className="py-3 px-4 font-medium text-white">Harian (Daily)</td>
-                      <td className="py-3 px-4 text-slate-400">250 kali</td>
+                      <td className="py-3 px-4 text-slate-600">250 kali</td>
                       <td className="py-3 px-4 font-mono text-[#cca43b]">20 s.d. 40 sampel</td>
                       <td className="py-3 px-4 font-mono text-emerald-400">0 deviasi</td>
-                      <td className="py-3 px-4 text-slate-300">Efektif / Tidak Efektif</td>
+                      <td className="py-3 px-4 text-slate-700">Efektif / Tidak Efektif</td>
                     </tr>
                   </tbody>
                 </table>
@@ -326,7 +326,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
         </section>
 
         {/* Comparison: Spreadsheet Manual vs Platform GRC Integra */}
-        <div className="bg-[#0d1527] border border-amber-900/40 rounded-2xl p-6 sm:p-8 mb-20 shadow-xl">
+        <div className="bg-slate-50 border border-amber-900/40 rounded-2xl p-6 sm:p-8 mb-20 shadow-xl">
           <div className="flex items-start gap-4">
             <div className="p-3 rounded-xl bg-amber-950/80 border border-amber-800 text-[#cca43b] shrink-0">
               <AlertTriangle className="w-6 h-6" />
@@ -335,7 +335,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               <h3 className="text-lg font-bold text-white mb-2">
                 Mengapa Pengelolaan Spreadsheet Manual Berisiko Tinggi Saat Audit BUMN?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light mb-4">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-light mb-4">
                 Mengelola ratusan baris RCM di lembar kerja Excel rentan terhadap konflik versi dokumen (*version control failure*), rumus yang rusak, bukti uji yang terselip, dan minimnya jejak audit digital (*digital audit trail*). Platform <strong>GRC Integra</strong> mengotomasi seluruh siklus ini dengan repositori RCM terpusat, pengujian Lini 2 kolaboratif, dan asersi digital ber-QR Code yang terbukti lolos pemeriksaan KAP dan BPK.
               </p>
               <button
@@ -350,7 +350,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
         </div>
 
         {/* Lead Capture: Request Template Package Form */}
-        <section className="bg-[#0f172a] border border-blue-900/60 rounded-2xl p-8 sm:p-12 max-w-3xl mx-auto shadow-2xl">
+        <section className="bg-white border border-blue-900/60 rounded-2xl p-8 sm:p-12 max-w-3xl mx-auto shadow-2xl">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950 border border-blue-800 text-blue-400 text-xs font-mono uppercase tracking-wider mb-3">
               <Download className="w-3.5 h-3.5 text-[#cca43b]" />
@@ -359,7 +359,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
               Permohonan Paket Template Spreadsheet Resmi (XLSX)
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 font-light max-w-xl mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 font-light max-w-xl mx-auto leading-relaxed">
               Isi data di bawah ini untuk menerima paket file kerja terpadu (RCM SK-5, Checklist ELC COSO, dan Kertas Kerja TOE) langsung ke surel resmi instansi Anda.
             </p>
           </div>
@@ -368,7 +368,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             <div className="p-6 rounded-xl bg-blue-950/60 border border-blue-800 text-center space-y-3">
               <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
               <h3 className="text-base font-bold text-white">Permohonan Telah Disiapkan</h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 font-light leading-relaxed">
                 Klien email Anda akan otomatis terbuka dengan draf permohonan terstruktur menuju <strong>marketing@dsintegra.co.id</strong>. Tim konsultan kami akan memverifikasi dan mengirimkan paket spreadsheet ke surel Anda dalam 1x24 jam kerja.
               </p>
             </div>
@@ -376,59 +376,59 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5 font-mono">Nama Lengkap *</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1.5 font-mono">Nama Lengkap *</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Contoh: Budi Pratama, SE, Ak."
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5 font-mono">Nama Instansi / BUMN *</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1.5 font-mono">Nama Instansi / BUMN *</label>
                   <input
                     type="text"
                     required
                     value={formData.bumnName}
                     onChange={(e) => setFormData({ ...formData, bumnName: e.target.value })}
                     placeholder="Contoh: PT Kereta Api Indonesia (Persero)"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5 font-mono">Surel Perusahaan / BUMN *</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1.5 font-mono">Surel Perusahaan / BUMN *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="nama@perusahaan.co.id"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5 font-mono">Nomor WhatsApp / Kontak</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1.5 font-mono">Nomor WhatsApp / Kontak</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="0812-xxxx-xxxx"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5 font-mono">Peran / Unit Kerja</label>
+                <label className="block text-xs font-medium text-slate-700 mb-1.5 font-mono">Peran / Unit Kerja</label>
                 <select
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-slate-100 border border-slate-300 text-sm text-white focus:outline-none focus:border-blue-500"
                 >
                   <option value="SPI / Internal Audit">Satuan Pengawasan Intern (SPI / Internal Audit)</option>
                   <option value="Manajemen Risiko & Kepatuhan">Divisi Manajemen Risiko &amp; Kepatuhan (Lini 2)</option>
@@ -439,12 +439,12 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               </div>
 
               <div className="pt-2">
-                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-300">
+                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700">
                   <input
                     type="checkbox"
                     checked={formData.interestDemo}
                     onChange={(e) => setFormData({ ...formData, interestDemo: e.target.checked })}
-                    className="w-4 h-4 rounded border-slate-700 text-blue-600 focus:ring-blue-500"
+                    className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span>Saya juga tertarik dijadwalkan sesi demonstrasi langsung platform software GRC Integra</span>
                 </label>

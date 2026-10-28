@@ -102,7 +102,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
   const currentOption = FREQUENCY_OPTIONS.find((opt) => opt.id === selectedFreqId) || FREQUENCY_OPTIONS[2];
 
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -203,7 +203,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
           </div>
 
           {/* Right Column: Calculation Result Card (7 Cols) */}
-          <div className="lg:col-span-7 bg-[#0f172a] border border-slate-200 rounded-xl p-6 sm:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">
                 <div>
@@ -214,7 +214,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
                     {currentOption.name}
                   </h3>
                 </div>
-                <div className="px-3 py-1 rounded bg-slate-800 border border-slate-700 text-xs text-slate-600 font-mono">
+                <div className="px-3 py-1 rounded bg-slate-800 border border-slate-300 text-xs text-slate-600 font-mono">
                   Populasi: {currentOption.populationRange}
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
               ) : (
                 /* Manual Control Calculation Display */
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-[#0b0f19] border border-slate-200 rounded-lg p-5">
+                  <div className="bg-[#ffffff] border border-slate-200 rounded-lg p-5">
                     <div className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                       Rentang Sampel Normatif
                     </div>
@@ -249,7 +249,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
                     </p>
                   </div>
 
-                  <div className="bg-[#0b0f19] border border-slate-200 rounded-lg p-5">
+                  <div className="bg-[#ffffff] border border-slate-200 rounded-lg p-5">
                     <div className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                       Sampel Rekomendasi DSI
                     </div>
@@ -315,7 +315,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
         </div>
 
         {/* Full Table 22 Reference Section */}
-        <div className="bg-[#0f172a] border border-slate-200 rounded-xl p-6 sm:p-8 mb-16">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 mb-16">
           <div className="max-w-3xl mb-6">
             <h3 className="text-xl font-bold text-slate-900 mb-2">
               Matriks Lengkap Tabel 22 Regulasi SK-5/DKU.MBU/11/2024
@@ -328,7 +328,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 bg-[#0b0f19] text-slate-600 font-semibold">
+                <tr className="border-b border-slate-200 bg-[#ffffff] text-slate-600 font-semibold">
                   <th className="py-3 px-4">Frekuensi Kontrol</th>
                   <th className="py-3 px-4">Populasi Keterjadian</th>
                   <th className="py-3 px-4">Rentang Sampel Minimum</th>
@@ -360,7 +360,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
         />
 
         {/* Bottom Lead Banner */}
-        <div className="bg-[#0f172a] border border-slate-200 rounded-xl p-8 text-center max-w-3xl mx-auto">
+        <div className="bg-white border border-slate-200 rounded-xl p-8 text-center max-w-3xl mx-auto">
           <h3 className="text-xl font-bold text-slate-900 mb-2">
             Percepat Kepatuhan Audit ICOFR BUMN Bersama Kami
           </h3>
@@ -376,7 +376,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
             </button>
             <button
               onClick={() => onNavigate("/glosarium")}
-              className="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-sm transition-colors"
+              className="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-800 border border-slate-300 font-medium text-sm transition-colors"
             >
               Buka Glosarium Kepatuhan
             </button>

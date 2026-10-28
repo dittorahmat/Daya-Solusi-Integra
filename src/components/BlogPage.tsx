@@ -14,13 +14,7 @@ export default function BlogPage({ currentSlug, onNavigate }: BlogPageProps) {
 
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#0b0f19] text-slate-100 relative overflow-hidden">
-      {/* Ambient Lighting */}
-      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-bumn-blue/10 blur-[160px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[35vw] h-[35vw] bg-amber-500/10 blur-[140px]" />
-      </div>
-
+    <div className="min-h-screen pt-28 pb-20 bg-[#ffffff] text-slate-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* -------------------------------------------------------------

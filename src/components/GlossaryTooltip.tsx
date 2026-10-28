@@ -75,7 +75,7 @@ export default function GlossaryTooltip({ acronym, children }: GlossaryTooltipPr
     >
       <button
         type="button"
-        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-white font-semibold cursor-help transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-1 focus-visible:ring-offset-[#0b0f19] rounded px-0.5"
+        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-slate-900 font-semibold cursor-help transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-1 focus-visible:ring-offset-[#0b0f19] rounded px-0.5"
         onClick={() => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-expanded={isOpen}
@@ -90,15 +90,15 @@ export default function GlossaryTooltip({ acronym, children }: GlossaryTooltipPr
         <span 
           id={tooltipId}
           role="tooltip"
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 max-w-[85vw] p-3.5 z-50 rounded-xl bg-[#0d1e3d] border border-blue-900/60 shadow-2xl text-left pointer-events-none animate-in fade-in zoom-in-95 duration-150 flex flex-col gap-1 sm:max-w-xs"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 max-w-[85vw] p-3.5 z-50 rounded-xl bg-white border border-slate-300 shadow-xl shadow-2xl text-left pointer-events-none animate-in fade-in zoom-in-95 duration-150 flex flex-col gap-1 sm:max-w-xs"
         >
           <span className="text-xs font-bold text-bumn-gold font-sans leading-tight">
             {acronym}
           </span>
-          <span className="text-xs font-semibold text-white font-sans leading-tight">
+          <span className="text-xs font-semibold text-slate-900 font-sans leading-tight">
             {data.term}
           </span>
-          <span className="text-xs text-slate-300 font-sans leading-normal font-light mt-1">
+          <span className="text-xs text-slate-700 font-sans leading-normal font-light mt-1">
             {data.definition}
           </span>
           {/* Subtle triangle indicator */}

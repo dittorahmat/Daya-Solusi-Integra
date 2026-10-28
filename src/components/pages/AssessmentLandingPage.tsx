@@ -14,7 +14,7 @@ export default function AssessmentLandingPage({ onNavigate, onComplete }: Assess
   }, []);
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#0b0f19] text-slate-100">
+    <div className="min-h-screen pt-28 pb-20 bg-[#ffffff] text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         {/* Breadcrumb Navigation */}
         <div className="mb-4 text-left">

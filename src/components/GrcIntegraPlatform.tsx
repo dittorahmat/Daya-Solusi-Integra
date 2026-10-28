@@ -113,22 +113,22 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
         </div>
 
         {/* Executive Spec Bar & Direct Action */}
-        <div className="p-6 sm:p-8 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-left mb-14">
+        <div className="p-6 sm:p-8 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-left mb-14">
           <div className="space-y-1.5 max-w-3xl">
-            <span className="text-xs font-mono text-bumn-gold uppercase tracking-wider font-semibold">
+            <span className="text-xs font-mono text-amber-700 uppercase tracking-wider font-semibold">
               Kesiapan Implementasi BUMN
             </span>
-            <h4 className="text-lg font-bold text-white tracking-tight">
+            <h4 className="text-lg font-bold text-slate-900 tracking-tight">
               Pre-loaded 11 Klaster Industri BUMN & Portal Akses Auditor KAP
             </h4>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Dilengkapi ratusan pustaka risiko industri dan portal independen khusus KAP auditor eksternal untuk pengujian substantif yang transparan.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
               href="/platform/grc-integra"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs sm:text-sm transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-semibold text-xs sm:text-sm transition-all shadow-xs"
             >
               <span>Dokumentasi Platform</span>
               <ChevronRight className="w-4 h-4" />
@@ -144,26 +144,26 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
         </div>
 
         {/* 4 Value Pillars Precision Ledger */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4 border-t border-slate-100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4 border-t border-slate-200">
           <div className="text-left space-y-1">
             <div className="text-[#0b4596] font-bold text-2xl font-display tabular-nums">60%</div>
-            <strong className="text-white text-sm block">Efisiensi Siklus Audit</strong>
-            <p className="text-xs text-slate-500 leading-relaxed">Mengeliminasi pengumpulan kertas kerja manual antar divisi dan anak usaha.</p>
+            <strong className="text-slate-900 text-sm block">Efisiensi Siklus Audit</strong>
+            <p className="text-xs text-slate-600 leading-relaxed">Mengeliminasi pengumpulan kertas kerja manual antar divisi dan anak usaha.</p>
           </div>
           <div className="text-left space-y-1">
-            <div className="text-emerald-400 font-bold text-2xl font-display tabular-nums">100%</div>
-            <strong className="text-white text-sm block">Kepatuhan Mandat SK-5</strong>
-            <p className="text-xs text-slate-500 leading-relaxed">Formulir baku, penomoran kontrol, dan metodologi telah selaras juknis BUMN.</p>
+            <div className="text-emerald-600 font-bold text-2xl font-display tabular-nums">100%</div>
+            <strong className="text-slate-900 text-sm block">Kepatuhan Mandat SK-5</strong>
+            <p className="text-xs text-slate-600 leading-relaxed">Formulir baku, penomoran kontrol, dan metodologi telah selaras juknis BUMN.</p>
           </div>
           <div className="text-left space-y-1">
-            <div className="text-bumn-gold font-bold text-2xl font-display tabular-nums">11 Sektor</div>
-            <strong className="text-white text-sm block">Pustaka Risiko BUMN</strong>
-            <p className="text-xs text-slate-500 leading-relaxed">Database risiko bawaan lintas klaster untuk percepatan fase scoping.</p>
+            <div className="text-amber-700 font-bold text-2xl font-display tabular-nums">11 Sektor</div>
+            <strong className="text-slate-900 text-sm block">Pustaka Risiko BUMN</strong>
+            <p className="text-xs text-slate-600 leading-relaxed">Database risiko bawaan lintas klaster untuk percepatan fase scoping.</p>
           </div>
           <div className="text-left space-y-1">
             <div className="text-[#0b4596] font-bold text-2xl font-display tabular-nums">KAP-Ready</div>
-            <strong className="text-white text-sm block">Portal Auditor Eksternal</strong>
-            <p className="text-xs text-slate-500 leading-relaxed">Mendukung independensi KAP rekanan BUMN dalam pengujian dan pemberian opini.</p>
+            <strong className="text-slate-900 text-sm block">Portal Auditor Eksternal</strong>
+            <p className="text-xs text-slate-600 leading-relaxed">Mendukung independensi KAP rekanan BUMN dalam pengujian dan pemberian opini.</p>
           </div>
         </div>
 

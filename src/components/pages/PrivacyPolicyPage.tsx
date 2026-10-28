@@ -10,7 +10,7 @@ interface PrivacyPolicyPageProps {
 
 export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps) {
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Kebijakan Privasi & Tata Kelola Data Perusahaan
           </h1>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-light mb-4">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-4">
             PT Daya Solusi Integra berkomitmen menjaga kerahasiaan, integritas, dan ketersediaan data institusional serta data pribadi mitra korporasi kami sesuai amanat Undang-Undang Perlindungan Data Pribadi (UU No. 27 Tahun 2022).
           </p>
           <div className="text-xs text-slate-500 font-mono">
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
         </div>
 
         {/* Highlight Summary Card */}
-        <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8 mb-12 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 mb-12 shadow-sm">
           <div className="flex items-start gap-4">
             <div className="p-3 rounded-lg bg-blue-900/30 border border-blue-800/50 text-blue-400 shrink-0">
               <Lock className="w-6 h-6" />
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               <h2 className="text-lg font-bold text-white mb-2">
                 Prinsip Kerahasiaan Sektor Korporasi & BUMN
               </h2>
-              <p className="text-sm text-slate-300 leading-relaxed font-light">
+              <p className="text-sm text-slate-700 leading-relaxed font-light">
                 Seluruh informasi yang diproses melalui portal interaktif, formulir konsultasi, instrumen kalkulator, maupun komunikasi konsultansi internal diperlakukan sebagai informasi rahasia bernilai tinggi. Kami tidak memperjualbelikan, mendistribusikan, atau membagikan data apa pun kepada pihak ketiga tanpa persetujuan eksplisit tertulis dari pengendali data.
               </p>
             </div>
@@ -58,10 +58,10 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
         </div>
 
         {/* Policy Sections */}
-        <div className="space-y-10 text-slate-300 font-light leading-relaxed">
+        <div className="space-y-10 text-slate-700 font-light leading-relaxed">
           
           {/* Section 1 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 01
@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           </section>
 
           {/* Section 2 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 02
@@ -106,9 +106,9 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               Dalam operasional konsultasi dan interaksi web, data yang kami kelola terbagi dalam dua kategori utama:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
                 <h3 className="font-semibold text-white mb-2 text-base">A. Data Kontak & Profesional (Lead Intake)</h3>
-                <ul className="space-y-1.5 text-slate-300">
+                <ul className="space-y-1.5 text-slate-700">
                   <li>• Nama lengkap pejabat perwakilan atau auditor</li>
                   <li>• Alamat surat elektronik korporat (@company.co.id)</li>
                   <li>• Nomor kontak telepon operasional / WhatsApp dinas</li>
@@ -116,9 +116,9 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
                   <li>• Jabatan fungsional atau divisi kerja (Risk, Compliance, SPI)</li>
                 </ul>
               </div>
-              <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
                 <h3 className="font-semibold text-white mb-2 text-base">B. Data Telemetri & Input Simulasi</h3>
-                <ul className="space-y-1.5 text-slate-300">
+                <ul className="space-y-1.5 text-slate-700">
                   <li>• Parameter simulasi kalkulator sampel TOE (frekuensi kontrol)</li>
                   <li>• Skor agregat kuis kematangan pengendalian internal</li>
                   <li>• Metadata teknis peramban dan protokol keamanan jaringan</li>
@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           </section>
 
           {/* Section 3 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 03
@@ -160,7 +160,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           </section>
 
           {/* Section 4 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 04
@@ -171,23 +171,23 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               Kami menerapkan kontrol keamanan teknologi informasi yang ketat merujuk pada standar ISO/IEC 27001 dan POJK No. 11/POJK.03/2022:
             </p>
             <div className="space-y-3 text-sm">
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Enkripsi Data Transit & Data Rest</div>
-                <div className="text-slate-400">Seluruh lalu lintas transmisi data dilindungi enkripsi SSL/TLS 1.3 berkekuatan tinggi, dan data tersimpan diamankan dengan mekanisme kriptografi berstandar industri.</div>
+                <div className="text-slate-600">Seluruh lalu lintas transmisi data dilindungi enkripsi SSL/TLS 1.3 berkekuatan tinggi, dan data tersimpan diamankan dengan mekanisme kriptografi berstandar industri.</div>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Pemisahan Lingkungan Komputasi (Isolation)</div>
-                <div className="text-slate-400">Data hasil konsultansi klien tersimpan dalam basis data tertutup dengan autentikasi multifaktor (MFA) dan segregasi hak akses berjenjang.</div>
+                <div className="text-slate-600">Data hasil konsultansi klien tersimpan dalam basis data tertutup dengan autentikasi multifaktor (MFA) dan segregasi hak akses berjenjang.</div>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Retensi Data Proporsional</div>
-                <div className="text-slate-400">Data korespondensi lead disimpan selama maksimum 24 bulan sejak kontak terakhir atau dihapus lebih cepat atas permintaan resmi tertulis pengendali data.</div>
+                <div className="text-slate-600">Data korespondensi lead disimpan selama maksimum 24 bulan sejak kontak terakhir atau dihapus lebih cepat atas permintaan resmi tertulis pengendali data.</div>
               </div>
             </div>
           </section>
 
           {/* Section 5 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 05
@@ -218,7 +218,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           </section>
 
           {/* Section 6 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-blue-950 text-blue-400 text-xs font-mono font-bold border border-blue-800">
                 06
@@ -228,7 +228,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
             <p className="mb-4">
               Untuk mengajukan pertanyaan, permintaan pembaruan, atau permohonan penghapusan data, silakan hubungi unit tata kelola kepatuhan kami melalui kanal resmi berikut:
             </p>
-            <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 text-sm space-y-1.5 font-mono text-slate-300">
+            <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm space-y-1.5 font-mono text-slate-700">
               <div>{COMPANY_PROFILE.legalName} (Compliance & Legal Division)</div>
               <div>Surel Khusus: privacy@dsintegra.co.id / legal@dsintegra.co.id</div>
               <div>Surel Umum: {COMPANY_PROFILE.email}</div>
@@ -239,7 +239,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
         </div>
 
         {/* CTA Return */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
           <button
             onClick={() => onNavigate("/")}
             className="text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2"
@@ -249,7 +249,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           <div className="flex gap-4">
             <button
               onClick={() => onNavigate("/pernyataan-independensi")}
-              className="text-xs text-slate-400 hover:text-white transition-colors"
+              className="text-xs text-slate-600 hover:text-white transition-colors"
             >
               Baca Pernyataan Independensi Konsultan →
             </button>

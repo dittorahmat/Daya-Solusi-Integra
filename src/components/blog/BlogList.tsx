@@ -47,20 +47,20 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
             {/* Header Title */}
             <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bumn-blue/10 border border-bumn-blue/30 text-xs font-semibold text-blue-400 uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-[#0b4596] uppercase tracking-widest">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Pusat Informasi & Insight GRC</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-                Artikel, Edukasi & Regulasi <span className="text-bumn-gold">BUMN</span>
+              <h1 className="text-3xl sm:text-4xl font-bold font-display text-slate-900 tracking-tight">
+                Artikel, Edukasi & Regulasi <span className="text-amber-700">BUMN</span>
               </h1>
-              <p className="text-slate-400 text-base">
+              <p className="text-slate-600 text-base">
                 Kumpulan panduan teknis, analisis risiko, dan artikel tata kelola TI terkini yang ditulis oleh praktisi & konsultan ahli Daya Solusi Integra.
               </p>
             </div>
 
             {/* Filter & Search Bar */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-slate-800">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-slate-200">
               {/* Category Pills */}
               <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
                 {categories.map((cat) => (
@@ -70,7 +70,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                     className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-bumn-blue text-white shadow-md font-semibold"
-                        : "bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800"
+                        : "bg-slate-100 text-slate-600 hover:text-white hover:bg-slate-800 border border-slate-200"
                     }`}
                   >
                     {cat}
@@ -80,50 +80,50 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
               {/* Search Box */}
               <div className="relative w-full md:w-72">
-                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600" />
                 <input
                   type="text"
                   placeholder="Cari artikel / topik..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-bumn-blue transition-all"
+                  className="w-full bg-slate-100 border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:border-bumn-blue transition-all"
                 />
               </div>
             </div>
 
             {/* Featured Hero Article */}
             {selectedCategory === "Semua" && !searchQuery && featuredPost && (
-              <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all group relative overflow-hidden shadow-2xl">
+              <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-slate-700 transition-all group relative overflow-hidden shadow-2xl">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   <div className="lg:col-span-7 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 bg-amber-500/20 text-bumn-gold border border-amber-500/30 text-xs font-semibold rounded-full flex items-center gap-1">
-                        <Award className="w-3 h-3 text-bumn-gold" />
+                      <span className="px-3 py-1 bg-amber-500/20 text-amber-700 border border-amber-500/30 text-xs font-semibold rounded-full flex items-center gap-1">
+                        <Award className="w-3 h-3 text-amber-700" />
                         Artikel Utama
                       </span>
-                      <span className="text-xs text-slate-400">• {featuredPost.readTime}</span>
+                      <span className="text-xs text-slate-600">• {featuredPost.readTime}</span>
                     </div>
 
                     <h2 
                       onClick={() => onNavigate(`/blog/${featuredPost.slug}`)}
-                      className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-white group-hover:text-bumn-gold transition-colors cursor-pointer leading-snug"
+                      className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 group-hover:text-amber-700 transition-colors cursor-pointer leading-snug"
                     >
                       {featuredPost.title}
                     </h2>
 
-                    <p className="text-slate-300 text-sm line-clamp-3 leading-relaxed">
+                    <p className="text-slate-700 text-sm line-clamp-3 leading-relaxed">
                       {featuredPost.excerpt}
                     </p>
 
                     <div className="flex items-center justify-between pt-4">
-                      <div className="flex items-center gap-2 text-xs text-slate-400">
+                      <div className="flex items-center gap-2 text-xs text-slate-600">
                         <User className="w-3.5 h-3.5 text-bumn-blue" />
                         <span>{featuredPost.author}</span>
                       </div>
 
                       <button
                         onClick={() => onNavigate(`/blog/${featuredPost.slug}`)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 cursor-pointer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-[#0b4596] hover:text-blue-300 cursor-pointer"
                       >
                         <span>Baca Selengkapnya</span>
                         <ChevronRight className="w-4 h-4" />
@@ -133,7 +133,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
                   <div 
                     onClick={() => onNavigate(`/blog/${featuredPost.slug}`)}
-                    className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-800 aspect-video cursor-pointer"
+                    className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200 aspect-video cursor-pointer"
                   >
                     <BlogCoverImage
                       src={featuredPost.coverImage}
@@ -151,13 +151,13 @@ export default function BlogList({ onNavigate }: BlogListProps) {
               {filteredPosts.map((post) => (
                 <article
                   key={post.id}
-                  className="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 shadow-lg"
+                  className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 shadow-lg"
                 >
                   <div>
                     {/* Thumbnail */}
                     <div 
                       onClick={() => onNavigate(`/blog/${post.slug}`)}
-                      className="relative aspect-video overflow-hidden cursor-pointer bg-slate-950"
+                      className="relative aspect-video overflow-hidden cursor-pointer bg-slate-100"
                     >
                       <BlogCoverImage
                         src={post.coverImage}
@@ -165,7 +165,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-slate-950/80 backdrop-blur-md text-blue-400 border border-slate-800 text-[10px] font-semibold rounded-lg">
+                        <span className="px-2.5 py-1 bg-slate-100/80 backdrop-blur-md text-[#0b4596] border border-slate-200 text-[10px] font-semibold rounded-lg">
                           {post.category}
                         </span>
                       </div>
@@ -173,7 +173,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
                     {/* Content */}
                     <div className="p-6 space-y-3">
-                      <div className="flex items-center gap-3 text-xs text-slate-400">
+                      <div className="flex items-center gap-3 text-xs text-slate-600">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3 text-slate-500" />
                           {post.date}
@@ -187,25 +187,25 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
                       <h3
                         onClick={() => onNavigate(`/blog/${post.slug}`)}
-                        className="text-lg font-bold font-display text-white group-hover:text-blue-400 transition-colors cursor-pointer leading-snug line-clamp-2"
+                        className="text-lg font-bold font-display text-slate-900 group-hover:text-[#0b4596] transition-colors cursor-pointer leading-snug line-clamp-2"
                       >
                         {post.title}
                       </h3>
 
-                      <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+                      <p className="text-slate-600 text-xs line-clamp-3 leading-relaxed">
                         {post.excerpt}
                       </p>
                     </div>
                   </div>
 
                   {/* Footer Card */}
-                  <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-800/50 mt-4">
-                    <span className="text-xs text-slate-400 truncate max-w-[150px]">
+                  <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-200/50 mt-4">
+                    <span className="text-xs text-slate-600 truncate max-w-[150px]">
                       {post.author}
                     </span>
                     <button
                       onClick={() => onNavigate(`/blog/${post.slug}`)}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-bumn-gold hover:text-amber-300 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 hover:text-amber-300 transition-colors cursor-pointer"
                     >
                       <span>Baca</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -217,8 +217,8 @@ export default function BlogList({ onNavigate }: BlogListProps) {
 
             {/* Empty state */}
             {filteredPosts.length === 0 && (
-              <div className="text-center py-16 bg-slate-900/40 border border-slate-800 rounded-2xl">
-                <p className="text-slate-400 text-sm">Tidak ada artikel yang cocok dengan pencarian Anda.</p>
+              <div className="text-center py-16 bg-slate-50 border border-slate-200 rounded-2xl">
+                <p className="text-slate-600 text-sm">Tidak ada artikel yang cocok dengan pencarian Anda.</p>
               </div>
             )}
           </div>

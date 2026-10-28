@@ -9,7 +9,7 @@ interface IndependenceStatementPageProps {
 
 export default function IndependenceStatementPage({ onNavigate }: IndependenceStatementPageProps) {
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -31,7 +31,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Pernyataan Independensi & Integritas Konsultan
           </h1>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-light mb-4">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-4">
             Komitmen transparansi, pencegahan benturan kepentingan, dan pemisahan tegas peran advisor implementasi dengan fungsi audit independen dalam penugasan tata kelola ICOFR BUMN.
           </p>
           <div className="text-xs text-slate-500 font-mono">
@@ -40,7 +40,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
         </div>
 
         {/* Highlight Summary Card */}
-        <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8 mb-12 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 mb-12 shadow-sm">
           <div className="flex items-start gap-4">
             <div className="p-3 rounded-lg bg-amber-900/30 border border-amber-800/50 text-[#cca43b] shrink-0">
               <ShieldAlert className="w-6 h-6" />
@@ -49,7 +49,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
               <h2 className="text-lg font-bold text-white mb-2">
                 Pemisahan Peran Konsultan Pendamping vs Lembaga Audit Eksternal
               </h2>
-              <p className="text-sm text-slate-300 leading-relaxed font-light">
+              <p className="text-sm text-slate-700 leading-relaxed font-light">
                 PT Daya Solusi Integra beroperasi sebagai mitra penasihat strategis (consulting advisor) dan penyedia solusi teknologi GRC. Kami tidak memberikan opini audit keuangan independen atas laporan keuangan korporasi. Peran kami difokuskan penuh untuk membantu manajemen (Direksi) memenuhi kesiapan rancangan dan pengujian pengendalian internal sebelum diperiksa oleh Kantor Akuntan Publik (KAP) atau Badan Pemeriksa Keuangan (BPK).
               </p>
             </div>
@@ -57,10 +57,10 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
         </div>
 
         {/* Policy Sections */}
-        <div className="space-y-10 text-slate-300 font-light leading-relaxed">
+        <div className="space-y-10 text-slate-700 font-light leading-relaxed">
           
           {/* Section 1 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-amber-950 text-[#cca43b] text-xs font-mono font-bold border border-amber-800">
                 01
@@ -87,7 +87,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
           </section>
 
           {/* Section 2 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-amber-950 text-[#cca43b] text-xs font-mono font-bold border border-amber-800">
                 02
@@ -98,21 +98,21 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
               Penerapan regulasi SK-5/DKU.MBU/11/2024 dan kerangka COSO menuntut pembagian peran yang tegas pada setiap lini pertahanan:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
                 <h3 className="font-semibold text-white mb-2">Lini Pertama (Operasional)</h3>
-                <p className="text-slate-400 text-xs">
+                <p className="text-slate-600 text-xs">
                   Pemilik proses bisnis bertanggung jawab menjalankan aktivitas pengendalian harian dan memelihara bukti transaksi.
                 </p>
               </div>
-              <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
                 <h3 className="font-semibold text-[#cca43b] mb-2">Lini Kedua & Advisor (DSI)</h3>
-                <p className="text-slate-400 text-xs">
+                <p className="text-slate-600 text-xs">
                   Daya Solusi Integra mendampingi Lini 2 dalam metodologi scoping, penyusunan RCM, dan pengujian independen TOD dan TOE.
                 </p>
               </div>
-              <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
                 <h3 className="font-semibold text-blue-400 mb-2">Lini Ketiga & Eksternal</h3>
-                <p className="text-slate-400 text-xs">
+                <p className="text-slate-600 text-xs">
                   Satuan Pengawasan Intern (SPI), BPKP, KAP, dan BPK melaksanakan audit asurans independen atas efektivitas tata kelola.
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
           </section>
 
           {/* Section 3 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-amber-950 text-[#cca43b] text-xs font-mono font-bold border border-amber-800">
                 03
@@ -131,23 +131,23 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
               Perangkat lunak GRC Integra dibangun dengan prinsip auditabilitas netral dan dapat diverifikasi:
             </p>
             <div className="space-y-3 text-sm">
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Penerapan Audit Trail Kekal (Immutable Logging)</div>
-                <div className="text-slate-400">Setiap perubahan data RCM, kertas kerja walkthrough, dan hasil evaluasi sampel dicatat secara kronologis tanpa celah manipulasi rekaman.</div>
+                <div className="text-slate-600">Setiap perubahan data RCM, kertas kerja walkthrough, dan hasil evaluasi sampel dicatat secara kronologis tanpa celah manipulasi rekaman.</div>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Segregasi Akses Pengujian</div>
-                <div className="text-slate-400">Penguji Lini 1 tidak dapat merangkap menyetujui pengujian Lini 2, memastikan asersi Direksi mencerminkan kondisi pengendalian faktual di lapangan.</div>
+                <div className="text-slate-600">Penguji Lini 1 tidak dapat merangkap menyetujui pengujian Lini 2, memastikan asersi Direksi mencerminkan kondisi pengendalian faktual di lapangan.</div>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="font-semibold text-white mb-1">Keterbukaan Metodologi</div>
-                <div className="text-slate-400">Formula penentuan ukuran sampel merujuk secara transparan pada Tabel 22 regulasi SK-5 BUMN tanpa algoritma tersembunyi yang menguntungkan salah satu pihak.</div>
+                <div className="text-slate-600">Formula penentuan ukuran sampel merujuk secara transparan pada Tabel 22 regulasi SK-5 BUMN tanpa algoritma tersembunyi yang menguntungkan salah satu pihak.</div>
               </div>
             </div>
           </section>
 
           {/* Section 4 */}
-          <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
+          <section className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
               <span className="flex items-center justify-center w-7 h-7 rounded bg-amber-950 text-[#cca43b] text-xs font-mono font-bold border border-amber-800">
                 04
@@ -157,7 +157,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
             <p className="mb-4">
               Apabila ditemukan indikasi benturan kepentingan atau pelanggaran independensi oleh personel kami dalam penugasan konsultansi, klien dapat melaporkan secara rahasia melalui saluran dewan pengawas etik kami:
             </p>
-            <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 text-sm space-y-1.5 font-mono text-slate-300">
+            <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm space-y-1.5 font-mono text-slate-700">
               <div>Komite Etik & Tata Kelola PT Daya Solusi Integra</div>
               <div>Surel Saluran Rahasia: ethics@dsintegra.co.id / governance@dsintegra.co.id</div>
               <div>Laporan ditindaklanjuti secara langsung oleh Managing Partner dengan perlindungan kerahasiaan identitas pelapor.</div>
@@ -167,7 +167,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
         </div>
 
         {/* CTA Return */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
           <button
             onClick={() => onNavigate("/")}
             className="text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2"
@@ -177,7 +177,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
           <div className="flex gap-4">
             <button
               onClick={() => onNavigate("/kebijakan-privasi")}
-              className="text-xs text-slate-400 hover:text-white transition-colors"
+              className="text-xs text-slate-600 hover:text-white transition-colors"
             >
               Baca Kebijakan Privasi & Tata Kelola Data →
             </button>

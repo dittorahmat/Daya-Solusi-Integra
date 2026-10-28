@@ -79,14 +79,14 @@ export default function Clients() {
 
                   {/* Solutions List */}
                   <div className="space-y-3.5 text-left">
-                    <h4 className="text-xs font-mono uppercase tracking-wider font-semibold text-bumn-gold flex items-center gap-2">
+                    <h4 className="text-xs font-mono uppercase tracking-wider font-semibold text-amber-700 flex items-center gap-2">
                       <BadgeCheck className="w-3.5 h-3.5 shrink-0" />
                       Intervensi Konsultan
                     </h4>
                     <ul className="space-y-2.5">
                       {sector.solutions.map((sol, idx) => (
-                        <li key={idx} className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal flex items-start gap-2">
-                          <span className="text-bumn-gold font-bold shrink-0">✓</span>
+                        <li key={idx} className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal flex items-start gap-2">
+                          <span className="text-amber-600 font-bold shrink-0">✓</span>
                           <span>{sol}</span>
                         </li>
                       ))}
@@ -97,11 +97,11 @@ export default function Clients() {
               </div>
 
               {/* Bottom tag */}
-              <div className="pt-6 border-t border-slate-800/40 mt-6 flex justify-between items-center text-left">
+              <div className="pt-6 border-t border-slate-200 mt-6 flex justify-between items-center text-left">
                 <span className="text-xs font-mono text-slate-500">
                   Kesesuaian Regulasi Terjamin
                 </span>
-                <span className="text-xs font-bold text-blue-400 font-mono">
+                <span className="text-xs font-bold text-[#0b4596] font-mono">
                   {sector.sector === "BUMN" ? "Kementerian BUMN" : <><GlossaryTooltip acronym="OJK">OJK</GlossaryTooltip> & Bank Indonesia</>}
                 </span>
               </div>
@@ -110,14 +110,14 @@ export default function Clients() {
         </div>
 
         {/* Dynamic regulatory standards log strip */}
-        <div className="mt-16 bg-slate-950/40 rounded-2xl py-6 px-8 border border-slate-800/60 flex flex-wrap justify-center items-center gap-x-12 gap-y-4" id="regulatory-strip">
-          <span className="text-xs font-mono text-slate-500">Standar Pengendalian Eksternal:</span>
-          <div className="flex flex-wrap gap-6 sm:gap-10 text-xs text-slate-600 font-mono font-semibold">
-            <span className="hover:text-white transition-colors"><GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> INTERNAL CONTROL</span>
-            <span className="hover:text-white transition-colors">COBIT 2019</span>
-            <span className="hover:text-white transition-colors">ISO 31000 RISK MGT</span>
-            <span className="hover:text-white transition-colors">ISO 27001 SECURE</span>
-            <span className="hover:text-white transition-colors">SOX SECTION 404 (<GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>)</span>
+        <div className="mt-16 bg-slate-50 rounded-2xl py-6 px-8 border border-slate-200 flex flex-wrap justify-center items-center gap-x-12 gap-y-4" id="regulatory-strip">
+          <span className="text-xs font-mono text-slate-500 font-medium">Standar Pengendalian Eksternal:</span>
+          <div className="flex flex-wrap gap-6 sm:gap-10 text-xs text-slate-700 font-mono font-semibold">
+            <span className="hover:text-[#0b4596] transition-colors"><GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> INTERNAL CONTROL</span>
+            <span className="hover:text-[#0b4596] transition-colors">COBIT 2019</span>
+            <span className="hover:text-[#0b4596] transition-colors">ISO 31000 RISK MGT</span>
+            <span className="hover:text-[#0b4596] transition-colors">ISO 27001 SECURE</span>
+            <span className="hover:text-[#0b4596] transition-colors">SOX SECTION 404 (<GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>)</span>
           </div>
         </div>
 

@@ -218,11 +218,11 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="advisor-title"
-        className="relative w-full max-w-xl bg-[#0b0f19] border-l border-slate-800 h-full flex flex-col justify-between animate-in slide-in-from-right duration-300"
+        className="relative w-full max-w-xl bg-white border-l border-slate-200 h-full flex flex-col justify-between animate-in slide-in-from-right duration-300"
       >
         
         {/* Drawer Header */}
-        <div className="p-6 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between text-left">
+        <div className="p-6 border-b border-slate-200 bg-slate-50 flex items-center justify-between text-left">
           <div className="flex items-center gap-3">
             <div className="bg-bumn-blue p-2.5 rounded-xl border border-blue-400/30 text-white">
               <ShieldCheck className="w-5 h-5 text-bumn-gold" />
@@ -237,14 +237,14 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
             id="close-advisor-btn"
             onClick={onClose}
             aria-label="Tutup Konsultasi AI"
-            className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors"
+            className="p-2 text-slate-600 hover:text-white bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Sector context selector */}
-        <div className="px-6 py-3 bg-slate-950/20 border-b border-slate-800/60 flex items-center justify-between gap-4">
+        <div className="px-6 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-4">
           <span className="text-xs uppercase font-mono text-slate-500 font-bold">Fokus Kepatuhan:</span>
           <div className="flex gap-2" id="advisor-context-selector">
             {[
@@ -258,7 +258,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 className={`px-3.5 py-2 sm:py-1 text-xs font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 min-h-[44px] sm:min-h-0 flex items-center justify-center ${
                   selectedContext === ctx.id
                     ? "border-blue-500/50 bg-blue-950/40 text-blue-300"
-                    : "border-slate-800 bg-slate-900/30 text-slate-400 hover:border-slate-700"
+                    : "border-slate-200 bg-slate-100/30 text-slate-600 hover:border-slate-300"
                 }`}
               >
                 {ctx.label}
@@ -280,7 +280,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 <div className={`w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-bold ${
                   isBot 
                     ? "bg-blue-950 text-blue-400 border border-blue-500/20" 
-                    : "bg-slate-800 text-slate-300 border border-slate-700"
+                    : "bg-slate-800 text-slate-700 border border-slate-300"
                 }`}>
                   {isBot ? "DSI" : "User"}
                 </div>
@@ -288,14 +288,14 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 {/* Message Box */}
                 <div className={`max-w-[80%] rounded-2xl p-4 text-xs sm:text-sm leading-relaxed ${
                   isBot
-                    ? "bg-slate-900/40 border border-slate-800 text-slate-300"
+                    ? "bg-slate-100/40 border border-slate-200 text-slate-700"
                     : "bg-bumn-blue text-white font-medium"
                 }`}>
                   {/* Text Render - support basic bold markers inside mock or model returns */}
                   <div className="whitespace-pre-line prose prose-xs prose-invert">
                     {msg.text.split("**").map((part, index) => {
                       if (index % 2 === 1) {
-                        return <strong key={index} className={isBot ? "text-white font-bold" : "text-slate-100 font-extrabold"}>{part}</strong>;
+                        return <strong key={index} className={isBot ? "text-white font-bold" : "text-slate-900 font-extrabold"}>{part}</strong>;
                       }
                       return part;
                     })}
@@ -315,7 +315,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <div className="w-8 h-8 rounded-lg shrink-0 bg-blue-950 text-blue-400 border border-blue-500/20 flex items-center justify-center text-xs font-bold">
                 DSI
               </div>
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 flex items-center gap-2">
+              <div className="bg-slate-100/40 border border-slate-200 rounded-2xl p-4 flex items-center gap-2">
                 <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />
                 <span className="text-xs text-slate-500 font-mono italic">Advisor sedang memformulasikan saran...</span>
               </div>
@@ -327,7 +327,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
 
         {/* Suggested Starter Queries Panel (Show only if messages has only the first welcome msg) */}
         {messages.length === 1 && (
-          <div className="p-6 bg-slate-950/30 border-t border-slate-800/40 text-left space-y-3" id="starter-queries">
+          <div className="p-6 bg-slate-50 border-t border-slate-200 text-left space-y-3" id="starter-queries">
             <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1">
               <HelpCircle className="w-3.5 h-3.5" />
               Pertanyaan yang Sering Diajukan:
@@ -339,7 +339,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                   <button
                     key={index}
                     onClick={() => handleSendMessage(query.text)}
-                    className="w-full text-left p-3 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/20 hover:bg-slate-900/50 text-slate-300 hover:text-white transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-100/20 hover:bg-slate-100/50 text-slate-700 hover:text-white transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     <span className="flex items-center gap-2">
                       <Icon className="w-4 h-4 text-bumn-gold shrink-0" />
@@ -354,7 +354,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
         )}
 
         {/* Text Input area */}
-        <div className="p-4 sm:p-6 bg-slate-950/60 border-t border-slate-800 flex items-center gap-3">
+        <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex items-center gap-3">
           <input
             ref={inputRef}
             type="text"
@@ -365,7 +365,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               if (e.key === "Enter" && !isTyping) handleSendMessage();
             }}
             placeholder="Tulis pesan atau pertanyaan kepatuhan..."
-            className="flex-1 bg-slate-900 border border-slate-800 hover:border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors"
+            className="flex-1 bg-slate-100 border border-slate-200 hover:border-slate-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors"
             disabled={isTyping}
           />
           <button

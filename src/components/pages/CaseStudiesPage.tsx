@@ -150,7 +150,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
   };
 
   return (
-    <div className="bg-[#0b0f19] text-slate-100 min-h-screen">
+    <div className="bg-[#ffffff] text-slate-900 min-h-screen">
       {/* JSON-LD Injected */}
       <script
         type="application/ld+json"
@@ -169,15 +169,15 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Studi Kasus & Benchmark Kinerja ICOFR BUMN
           </h1>
-          <p className="text-lg text-slate-300 leading-relaxed mb-6">
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
             Pelajari bagaimana implementasi metodologi terstruktur SK-5/DKU.MBU/11/2024 dan platform GRC Integra membantu dewan direksi, komite audit, dan Satuan Pengawasan Intern (SPI) mentransformasi tata kelola pengendalian intern: dari remedi defisiensi temuan auditor hingga efisiensi operasional audit tahunan.
           </p>
-          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400 border-t border-slate-800 pt-6">
-            <span className="flex items-center gap-2 text-slate-300">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-600 border-t border-slate-200 pt-6">
+            <span className="flex items-center gap-2 text-slate-700">
               <Lock className="w-4 h-4 text-[#cca43b]" />
               Identitas Klien Dilindungi Ketentuan NDA
             </span>
-            <span className="flex items-center gap-2 text-slate-300">
+            <span className="flex items-center gap-2 text-slate-700">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               Sesuai Metodologi Standar BPKP & KAP
             </span>
@@ -186,14 +186,14 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
 
         {/* Aggregated Performance Scoreboard */}
         <section className="mb-20">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200">
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-[#cca43b]" />
                   Agregat Benchmark Dampak Implementasi
                 </h2>
-                <p className="text-sm text-slate-400 mt-1">
+                <p className="text-sm text-slate-600 mt-1">
                   Rata-rata peningkatan efisiensi dan kepatuhan dari entitas BUMN yang didampingi Daya Solusi Integra.
                 </p>
               </div>
@@ -203,50 +203,50 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800/80">
+              <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                 <div className="text-3xl sm:text-4xl font-black text-emerald-400 mb-1">
                   100%
                 </div>
-                <div className="text-sm font-semibold text-slate-200 mb-1">
+                <div className="text-sm font-semibold text-slate-800 mb-1">
                   Tuntas Defisiensi
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Seluruh temuan signifikan auditor eksternal terselesaikan sebelum periode tutup buku.
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800/80">
+              <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                 <div className="text-3xl sm:text-4xl font-black text-[#cca43b] mb-1">
                   -70%
                 </div>
-                <div className="text-sm font-semibold text-slate-200 mb-1">
+                <div className="text-sm font-semibold text-slate-800 mb-1">
                   Durasi Siklus TOE
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Penghematan waktu pengujian efektivitas kontrol Tabel 22 menggunakan kalkulator otomatis.
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800/80">
+              <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                 <div className="text-3xl sm:text-4xl font-black text-blue-400 mb-1">
                   H-14
                 </div>
-                <div className="text-sm font-semibold text-slate-200 mb-1">
+                <div className="text-sm font-semibold text-slate-800 mb-1">
                   Asersi Direksi
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Penyelesaian pernyataan efektivitas pengendalian sebelum batas akhir regulasi Kementerian BUMN.
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800/80">
+              <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                 <div className="text-3xl sm:text-4xl font-black text-white mb-1">
                   0 Sanksi
                 </div>
-                <div className="text-sm font-semibold text-slate-200 mb-1">
+                <div className="text-sm font-semibold text-slate-800 mb-1">
                   Keterlambatan Pelaporan
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Kepatuhan formal penuh terhadap Peraturan Menteri BUMN PER-2/MBU/03/2023.
                 </p>
               </div>
@@ -257,7 +257,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
         {/* Sectoral Filter */}
         <section className="mb-10">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider mr-2">
+            <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider mr-2">
               Filter Sektor:
             </span>
             <button
@@ -265,7 +265,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                 activeSector === 'all'
                   ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                  : 'bg-[#0f172a] text-slate-300 border border-slate-800 hover:border-slate-700'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
               }`}
             >
               Semua Sektor ({CASE_STUDIES.length})
@@ -275,7 +275,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                 activeSector === 'holding'
                   ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                  : 'bg-[#0f172a] text-slate-300 border border-slate-800 hover:border-slate-700'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
               }`}
             >
               Holding Multisektor
@@ -285,7 +285,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                 activeSector === 'perbankan'
                   ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                  : 'bg-[#0f172a] text-slate-300 border border-slate-800 hover:border-slate-700'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
               }`}
             >
               Perbankan & Keuangan
@@ -295,7 +295,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                 activeSector === 'infrastruktur'
                   ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                  : 'bg-[#0f172a] text-slate-300 border border-slate-800 hover:border-slate-700'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300'
               }`}
             >
               Infrastruktur & Karya
@@ -308,7 +308,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
           {filteredStudies.map((study) => (
             <article
               key={study.id}
-              className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-10 transition-all hover:border-slate-700"
+              className="bg-white border border-slate-200 rounded-xl p-6 sm:p-10 transition-all hover:border-slate-300"
             >
               {/* Header Badges */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
@@ -316,7 +316,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
                   <span className="px-2.5 py-1 text-xs font-semibold rounded bg-[#0b4596]/20 text-blue-300 border border-[#0b4596]/40">
                     {study.sectorLabel}
                   </span>
-                  <span className="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-700 border border-slate-300">
                     {study.clientBadge}
                   </span>
                 </div>
@@ -329,15 +329,15 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-snug">
                 {study.title}
               </h2>
-              <p className="text-slate-300 leading-relaxed mb-8">
+              <p className="text-slate-700 leading-relaxed mb-8">
                 {study.synopsis}
               </p>
 
               {/* Metrics Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 p-4 rounded-lg bg-[#0b0f19] border border-slate-800/80">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                 {study.metrics.map((m, mIdx) => (
                   <div key={mIdx} className="text-center sm:text-left">
-                    <div className="text-xs text-slate-400 font-medium mb-1">
+                    <div className="text-xs text-slate-600 font-medium mb-1">
                       {m.label}
                     </div>
                     <div className="text-2xl font-bold text-[#cca43b] mb-0.5">
@@ -351,13 +351,13 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
               </div>
 
               {/* Challenge vs Solution */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 pt-6 border-t border-slate-800/80">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 pt-6 border-t border-slate-200">
                 <div>
                   <h3 className="text-sm font-bold text-rose-400 uppercase tracking-wider mb-2 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-rose-400" />
                     Tantangan Pengendalian Awal
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-slate-700 leading-relaxed">
                     {study.challenge}
                   </p>
                 </div>
@@ -366,20 +366,20 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
                     <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     Solusi Metodologi & Platform GRC
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-slate-700 leading-relaxed">
                     {study.solution}
                   </p>
                 </div>
               </div>
 
               {/* Key Outcomes */}
-              <div className="mb-6 pt-6 border-t border-slate-800/80">
-                <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">
+              <div className="mb-6 pt-6 border-t border-slate-200">
+                <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-3">
                   Hasil & Dampak Audit Konkret:
                 </h3>
                 <ul className="space-y-2">
                   {study.keyOutcomes.map((outcome, oIdx) => (
-                    <li key={oIdx} className="flex items-start gap-2.5 text-sm text-slate-300">
+                    <li key={oIdx} className="flex items-start gap-2.5 text-sm text-slate-700">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{outcome}</span>
                     </li>
@@ -389,7 +389,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
 
               {/* Read Full Case Study Link (if exists) */}
               {study.featuredArticleUrl && (
-                <div className="pt-4 border-t border-slate-800 flex justify-end">
+                <div className="pt-4 border-t border-slate-200 flex justify-end">
                   <a
                     href={study.featuredArticleUrl}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#cca43b] hover:text-[#e5bf55] transition-colors"
@@ -409,7 +409,7 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Ingin Mengukur Kesiapan ICOFR Organisasi Anda?
           </h2>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
             Jadwalkan sesi evaluasi awal dengan konsultan Daya Solusi Integra untuk memetakan kesiapan kepatuhan SK-5/DKU.MBU/11/2024, mengkaji ulang Risk and Control Matrix (RCM), atau merencanakan otomasi siklus pengujian TOE.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -421,14 +421,14 @@ export default function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
             </a>
             <a
               href="/toolkit-regulasi"
-              className="w-full sm:w-auto px-6 py-3 rounded bg-[#0f172a] border border-slate-700 hover:border-slate-600 text-slate-200 font-semibold text-sm transition-colors text-center"
+              className="w-full sm:w-auto px-6 py-3 rounded bg-white border border-slate-300 hover:border-slate-600 text-slate-800 font-semibold text-sm transition-colors text-center"
             >
               Unduh Kertas Kerja SK-5
             </a>
           </div>
           <button
             onClick={() => onNavigate("/tentang-kami")}
-            className="mt-6 text-xs text-slate-400 hover:text-blue-300 transition-colors"
+            className="mt-6 text-xs text-slate-600 hover:text-blue-300 transition-colors"
           >
             Kenali pelaksana di balik studi kasus ini: profil PT Daya Solusi Integra →
           </button>

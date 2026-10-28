@@ -155,13 +155,13 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               {/* Substantive Bottom Meta */}
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
                 <span className="flex items-center gap-1.5 text-slate-700">
-                  <Lock className="w-3.5 h-3.5 text-slate-400" />
+                  <Lock className="w-3.5 h-3.5 text-slate-600" />
                   Sesuai SK-5 Kementerian BUMN
                 </span>
                 <button
                   type="button"
                   onClick={() => onScrollToSection("services")}
-                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+                  className="text-[#0b4596] hover:text-blue-800 font-semibold transition-colors flex items-center gap-1"
                 >
                   Lihat Detail →
                 </button>
@@ -173,7 +173,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
         </div>
 
         {/* Dynamic Statistics Strip - Clean Technical Precision */}
-        <div className="mt-16 border border-slate-800/80 bg-slate-900/30 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 divide-slate-800/80" id="hero-stats">
+        <div className="mt-16 border border-slate-200 bg-slate-50/70 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 divide-slate-200" id="hero-stats">
           {[
             { value: "100%", label: "Kepatuhan Regulasi", desc: "Kementerian BUMN, BPK & OJK" },
             { value: "WTP", label: "Target Pelaporan", desc: "Opini Wajar Tanpa Pengecualian" },
@@ -191,10 +191,10 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
                 id={`stat-card-${idx}`} 
                 className="flex items-start gap-4 text-left pt-4 sm:pt-0 first:pt-0"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-white font-display tabular-nums shrink-0">{getStyledValue(stat.value)}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-slate-900 font-display tabular-nums shrink-0">{getStyledValue(stat.value)}</div>
                 <div>
-                  <div className="text-xs font-semibold text-bumn-gold font-mono uppercase tracking-wider">{stat.label}</div>
-                  <div className="text-xs text-slate-400 mt-0.5 leading-normal">{stat.desc}</div>
+                  <div className="text-xs font-semibold text-amber-700 font-mono uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-xs text-slate-600 mt-0.5 leading-normal">{stat.desc}</div>
                 </div>
               </div>
             );

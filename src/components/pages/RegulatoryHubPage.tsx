@@ -51,7 +51,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
   }, [searchQuery, selectedCategory]);
 
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -73,23 +73,23 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Pusat Regulasi Pengendalian Internal & Tata Kelola BUMN
           </h1>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
             Kompilasi direktori regulasi resmi Kementerian BUMN, OJK, dan standar pengawasan eksternal BPK RI yang mengatur kewajiban pengendalian internal pelaporan keuangan (ICOFR), pembagian peran Tiga Lini, serta tata kelola korporasi terintegrasi.
           </p>
         </div>
 
         {/* Search & Category Filter Controls */}
-        <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-4 sm:p-6 mb-12 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 mb-12 shadow-sm">
           <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input
                 type="text"
                 placeholder="Cari regulasi, nomor surat keputusan, atau otoritas penerbit..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-600 transition-colors"
+                className="w-full bg-[#ffffff] border border-slate-200 rounded-lg pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-500 focus:outline-none focus:border-blue-600 transition-colors"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors border ${
                     selectedCategory === category
                       ? "bg-blue-900/80 border-blue-600 text-white"
-                      : "bg-[#0b0f19] border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                      : "bg-[#ffffff] border-slate-200 text-slate-600 hover:text-slate-800 hover:border-slate-300"
                   }`}
                 >
                   {category}
@@ -114,8 +114,8 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
 
         {/* Cross-Regulatory Comparison Matrix Section (Featured Snippets & Direct Answers) */}
         <section id="matriks-komparasi" className="mb-16 scroll-mt-24">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800/80">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-200">
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-2">
                   <ShieldCheck className="w-4 h-4 text-bumn-gold" />
@@ -124,7 +124,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   Perbandingan Mandat Regulasi Pengendalian Internal: BUMN vs OJK vs BPK RI
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-700 mt-1 max-w-3xl leading-relaxed">
                   Tabel pemetaan normatif kewajiban asersi direksi, standar ukuran sampel pengujian, dan implikasi audit bagi Holding BUMN, perbankan, dan anak perusahaan.
                 </p>
               </div>
@@ -138,7 +138,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border cursor-pointer ${
                       matrixFilter === f
                         ? "bg-bumn-blue/30 border-blue-500 text-blue-300"
-                        : "bg-[#0b0f19] border-slate-800 text-slate-400 hover:text-slate-200"
+                        : "bg-[#ffffff] border-slate-200 text-slate-600 hover:text-slate-800"
                     }`}
                   >
                     {f}
@@ -151,7 +151,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
             <div className="overflow-x-auto pb-4">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 bg-[#0b0f19]/80 text-slate-300 font-mono uppercase text-[11px] tracking-wider">
+                  <tr className="border-b border-slate-200 bg-[#ffffff]/80 text-slate-700 font-mono uppercase text-[11px] tracking-wider">
                     <th className="py-3.5 px-4 font-bold text-white min-w-[140px]">Regulasi</th>
                     <th className="py-3.5 px-4 font-bold min-w-[130px]">Penerbit</th>
                     <th className="py-3.5 px-4 font-bold min-w-[170px]">Subjek Entitas</th>
@@ -164,32 +164,32 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                 </thead>
                 <tbody className="divide-y divide-slate-800/60">
                   {filteredMatrix.map((row) => (
-                    <tr key={row.id} className="hover:bg-slate-900/50 transition-colors">
+                    <tr key={row.id} className="hover:bg-slate-50 transition-colors">
                       <td className="py-4 px-4 align-top">
                         <span className="font-bold text-white block">{row.shortCode}</span>
-                        <span className="text-[11px] font-mono text-slate-400 block mt-0.5">{row.regulationTitle}</span>
+                        <span className="text-[11px] font-mono text-slate-600 block mt-0.5">{row.regulationTitle}</span>
                         <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/80 text-blue-300 border border-blue-900/60">
                           {row.categoryTag}
                         </span>
                       </td>
-                      <td className="py-4 px-4 align-top font-semibold text-slate-200">
+                      <td className="py-4 px-4 align-top font-semibold text-slate-800">
                         {row.issuingBody}
                       </td>
-                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                      <td className="py-4 px-4 align-top text-slate-700 leading-relaxed">
                         {row.scopeEntities}
                       </td>
-                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed font-mono text-[11px]">
+                      <td className="py-4 px-4 align-top text-slate-700 leading-relaxed font-mono text-[11px]">
                         {row.framework}
                       </td>
-                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                      <td className="py-4 px-4 align-top text-slate-700 leading-relaxed">
                         <span className="text-bumn-gold font-semibold block mb-0.5">Kewajiban Formal:</span>
                         {row.directorAssertionMandate}
                       </td>
-                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
-                        <span className="text-slate-400 font-mono text-[11px] block mb-1">{row.testingFrequency}</span>
+                      <td className="py-4 px-4 align-top text-slate-700 leading-relaxed">
+                        <span className="text-slate-600 font-mono text-[11px] block mb-1">{row.testingFrequency}</span>
                         <span className="text-[11px] text-blue-400">{row.samplingStandard}</span>
                       </td>
-                      <td className="py-4 px-4 align-top text-slate-300 leading-relaxed">
+                      <td className="py-4 px-4 align-top text-slate-700 leading-relaxed">
                         {row.auditConsequence}
                       </td>
                       <td className="py-4 px-4 align-top text-right">
@@ -207,7 +207,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
               </table>
             </div>
 
-            <div className="pt-4 border-t border-slate-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-400">
+            <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-600">
               <span>* Geser horizontal untuk melihat seluruh parameter perbandingan.</span>
               <div className="flex items-center gap-2">
                 <span>Butuh kalkulasi sampel pengujian TOE normatif?</span>
@@ -225,9 +225,9 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
         {/* Regulation Directory Ledger */}
         <div className="space-y-12">
           {filteredRegulations.length === 0 ? (
-            <div className="text-center py-16 bg-[#0f172a] border border-slate-800 rounded-xl">
+            <div className="text-center py-16 bg-white border border-slate-200 rounded-xl">
               <FileText className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-              <p className="text-slate-300 text-base font-medium">Tidak ada regulasi yang sesuai dengan kriteria pencarian.</p>
+              <p className="text-slate-700 text-base font-medium">Tidak ada regulasi yang sesuai dengan kriteria pencarian.</p>
               <button
                 onClick={() => { setSearchQuery(""); setSelectedCategory("Semua"); }}
                 className="mt-4 text-xs font-semibold text-blue-400 hover:text-blue-300 underline"
@@ -240,38 +240,38 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
               <div 
                 key={reg.id}
                 id={reg.id}
-                className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8 hover:border-slate-700 transition-all scroll-mt-24"
+                className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 hover:border-slate-300 transition-all scroll-mt-24"
               >
                 {/* Header Information */}
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-slate-800/80">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-slate-200">
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center gap-2.5">
                       <span className="px-2.5 py-1 rounded bg-blue-950 border border-blue-800 text-blue-300 font-mono text-xs font-semibold">
                         {reg.identifier}
                       </span>
-                      <span className="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400 text-xs font-medium">
+                      <span className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-600 text-xs font-medium">
                         {reg.category}
                       </span>
                     </div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight pt-1">
                       {reg.shortTitle}
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-mono">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-mono">
                       {reg.officialTitle}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-3 text-xs text-slate-400 shrink-0 bg-[#0b0f19] px-3.5 py-2 rounded-lg border border-slate-800">
+                  <div className="flex items-center gap-3 text-xs text-slate-600 shrink-0 bg-[#ffffff] px-3.5 py-2 rounded-lg border border-slate-200">
                     <Calendar className="w-3.5 h-3.5 text-blue-400" />
                     <span>Berlaku Efektif: {reg.effectiveDate}</span>
                   </div>
                 </div>
 
                 {/* Summary & Primary Mandate */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-6 border-b border-slate-800/80">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-6 border-b border-slate-200">
                   <div className="lg:col-span-2 space-y-4">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">Ringkasan Eksekutif</h3>
-                    <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-600">Ringkasan Eksekutif</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed font-normal">
                       {reg.summary}
                     </p>
                     <div className="p-4 rounded-lg bg-blue-950/30 border border-blue-900/50">
@@ -282,48 +282,48 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                     </div>
                   </div>
 
-                  <div className="space-y-3 bg-[#0b0f19] p-4 rounded-lg border border-slate-800/80">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">Entitas & Target Sasaran:</span>
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                  <div className="space-y-3 bg-[#ffffff] p-4 rounded-lg border border-slate-200">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 block">Entitas & Target Sasaran:</span>
+                    <p className="text-xs text-slate-700 leading-relaxed">
                       {reg.targetAudience}
                     </p>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block pt-2">Otoritas Penerbit:</span>
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 block pt-2">Otoritas Penerbit:</span>
+                    <p className="text-xs text-slate-700 leading-relaxed">
                       {reg.issuingAuthority}
                     </p>
                   </div>
                 </div>
 
                 {/* Three Lines Model Matrix Table */}
-                <div className="py-6 border-b border-slate-800/80">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                <div className="py-6 border-b border-slate-200">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-600 mb-4">
                     Matriks Distribusi Tanggung Jawab Tiga Lini (Three Lines of Defense)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800">
+                    <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                       <div className="text-xs font-semibold text-emerald-400 mb-2 flex items-center gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Lini 1 (Operasional Bisnis)
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-slate-700 leading-relaxed">
                         {reg.threeLinesRole.firstLine}
                       </p>
                     </div>
-                    <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800">
+                    <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                       <div className="text-xs font-semibold text-blue-400 mb-2 flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5" />
                         Lini 2 (Risiko & Kepatuhan)
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-slate-700 leading-relaxed">
                         {reg.threeLinesRole.secondLine}
                       </p>
                     </div>
-                    <div className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800">
+                    <div className="p-4 rounded-lg bg-[#ffffff] border border-slate-200">
                       <div className="text-xs font-semibold text-amber-400 mb-2 flex items-center gap-1.5">
                         <Scale className="w-3.5 h-3.5" />
                         Lini 3 (Satuan Pengawas Intern)
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-slate-700 leading-relaxed">
                         {reg.threeLinesRole.thirdLine}
                       </p>
                     </div>
@@ -331,24 +331,24 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                 </div>
 
                 {/* Key Articles Grid */}
-                <div className="py-6 border-b border-slate-800/80">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                <div className="py-6 border-b border-slate-200">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-600 mb-4">
                     Pasal & Klausul Penting Pelaksanaan
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {reg.keyArticles.map((article, idx) => (
-                      <div key={idx} className="p-4 rounded-lg bg-[#0b0f19] border border-slate-800 flex flex-col justify-between">
+                      <div key={idx} className="p-4 rounded-lg bg-[#ffffff] border border-slate-200 flex flex-col justify-between">
                         <div>
                           <span className="text-xs font-mono font-semibold text-blue-400 block mb-1">
                             {article.article}
                           </span>
                           <h4 className="text-sm font-bold text-white mb-2">{article.title}</h4>
-                          <p className="text-xs text-slate-300 leading-relaxed mb-3">
+                          <p className="text-xs text-slate-700 leading-relaxed mb-3">
                             {article.summary}
                           </p>
                         </div>
-                        <div className="pt-2 border-t border-slate-800/60 text-xs text-slate-400 font-medium">
-                          <span className="text-slate-300 font-semibold">Implikasi Kepatuhan: </span>
+                        <div className="pt-2 border-t border-slate-200 text-xs text-slate-600 font-medium">
+                          <span className="text-slate-700 font-semibold">Implikasi Kepatuhan: </span>
                           {article.complianceImpact}
                         </div>
                       </div>
@@ -359,14 +359,14 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                 {/* FAQs & Related Solutions Footer */}
                 <div className="pt-6 flex flex-col lg:flex-row gap-6 justify-between items-start">
                   <div className="space-y-3 flex-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block">Pertanyaan Kunci:</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 block">Pertanyaan Kunci:</span>
                     {reg.faqs.map((faq, idx) => (
                       <div key={idx} className="text-xs space-y-1">
-                        <div className="font-semibold text-slate-200 flex items-center gap-1.5">
+                        <div className="font-semibold text-slate-800 flex items-center gap-1.5">
                           <HelpCircle className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                           {faq.question}
                         </div>
-                        <div className="text-slate-400 pl-5 leading-relaxed">
+                        <div className="text-slate-600 pl-5 leading-relaxed">
                           {faq.answer}
                         </div>
                       </div>
@@ -378,7 +378,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                       <button
                         key={idx}
                         onClick={() => onNavigate(sol.url)}
-                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#0b0f19] border border-slate-800 hover:border-blue-600 text-xs font-semibold text-blue-400 hover:text-white transition-colors"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffffff] border border-slate-200 hover:border-blue-600 text-xs font-semibold text-blue-400 hover:text-white transition-colors"
                       >
                         {sol.label}
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -396,7 +396,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
         <div className="mt-16 p-8 rounded-xl bg-gradient-to-r from-blue-950/40 to-[#0f172a] border border-blue-900/40 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-bold text-white mb-2">Ingin Menguji Kesiapan BUMN Anda Terhadap SK-5/2024?</h3>
-            <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+            <p className="text-sm text-slate-700 max-w-2xl leading-relaxed">
               Manfaatkan asesmen mandiri interaktif kami atau diskusikan kebutuhan penyusunan Risk and Control Matrix (RCM) bersama konsultan senior Daya Solusi Integra.
             </p>
           </div>
@@ -409,7 +409,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
             </button>
             <button
               onClick={() => onNavigate("/glosarium")}
-              className="px-5 py-2.5 rounded-lg bg-[#0b0f19] border border-slate-800 hover:border-slate-700 text-slate-300 text-xs font-semibold transition-colors"
+              className="px-5 py-2.5 rounded-lg bg-[#ffffff] border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold transition-colors"
             >
               Buka Glosarium Istilah
             </button>

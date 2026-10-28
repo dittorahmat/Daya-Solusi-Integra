@@ -178,7 +178,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
   };
 
   return (
-    <div className="bg-[#0b0f19] text-slate-100 min-h-screen">
+    <div className="bg-[#ffffff] text-slate-900 min-h-screen">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -197,15 +197,15 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Katalog Temuan Defisiensi Audit ICOFR BUMN &amp; Solusi CAP
           </h1>
-          <p className="text-lg text-slate-300 leading-relaxed mb-6">
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
             Panduan mitigasi dan Corrective Action Plan (CAP) resmi berbasis regulasi SK-5/DKU.MBU/11/2024 dan kerangka kerja COSO 2013: membedah akar masalah temuan auditor eksternal (BPK, BPKP, KAP), dampak salah saji laporan keuangan, dan rekomendasi perbaikan kontrol Lini 1 dan Lini 2.
           </p>
-          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400 border-t border-slate-800 pt-6">
-            <span className="flex items-center gap-2 text-slate-300">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-600 border-t border-slate-200 pt-6">
+            <span className="flex items-center gap-2 text-slate-700">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               Sesuai Standar Pemeriksaan SPKN &amp; IAPI
             </span>
-            <span className="flex items-center gap-2 text-slate-300">
+            <span className="flex items-center gap-2 text-slate-700">
               <BookOpen className="w-4 h-4 text-[#cca43b]" />
               Rujukan Mandat SK-5/DKU.MBU/11/2024
             </span>
@@ -213,7 +213,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
         </section>
 
         {/* Search & Filter Controls */}
-        <section className="mb-10 bg-[#0f172a] border border-slate-800 rounded-xl p-6">
+        <section className="mb-10 bg-white border border-slate-200 rounded-xl p-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             {/* Search Input */}
             <div className="relative flex-1">
@@ -223,7 +223,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                 placeholder="Cari kata kunci temuan (misal: intercompany, SoD, PSAK 72, sampel)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded bg-[#0b0f19] border border-slate-700 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-[#0b4596]"
+                className="w-full pl-10 pr-4 py-2.5 rounded bg-[#ffffff] border border-slate-300 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-[#0b4596]"
               />
             </div>
 
@@ -234,7 +234,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                 className={`px-3 py-2 text-xs font-medium rounded transition-colors ${
                   selectedCategory === 'all'
                     ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                    : 'bg-[#0b0f19] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-[#ffffff] text-slate-700 border border-slate-200 hover:border-slate-300'
                 }`}
               >
                 Semua ({AUDIT_FINDINGS_DATA.length})
@@ -244,7 +244,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                 className={`px-3 py-2 text-xs font-medium rounded transition-colors ${
                   selectedCategory === 'financial'
                     ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                    : 'bg-[#0b0f19] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-[#ffffff] text-slate-700 border border-slate-200 hover:border-slate-300'
                 }`}
               >
                 Finansial &amp; Akuntansi
@@ -254,7 +254,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                 className={`px-3 py-2 text-xs font-medium rounded transition-colors ${
                   selectedCategory === 'itgc'
                     ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                    : 'bg-[#0b0f19] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-[#ffffff] text-slate-700 border border-slate-200 hover:border-slate-300'
                 }`}
               >
                 ITGC &amp; ERP
@@ -264,7 +264,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                 className={`px-3 py-2 text-xs font-medium rounded transition-colors ${
                   selectedCategory === 'operational'
                     ? 'bg-[#0b4596] text-white border border-[#0b4596]'
-                    : 'bg-[#0b0f19] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-[#ffffff] text-slate-700 border border-slate-200 hover:border-slate-300'
                 }`}
               >
                 Operasional &amp; Tata Kelola
@@ -278,7 +278,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
           {filteredData.map((item, idx) => (
             <article
               key={item.id}
-              className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8 hover:border-slate-700 transition-colors"
+              className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 hover:border-slate-300 transition-colors"
             >
               {/* Header Badges */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
@@ -307,18 +307,18 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
               </h2>
 
               {/* Affected Accounts */}
-              <div className="mb-6 p-3 rounded bg-[#0b0f19] border border-slate-800 text-xs text-slate-300">
-                <strong className="text-slate-200">Akun Finansial Terkait:</strong> {item.affectedAccounts}
+              <div className="mb-6 p-3 rounded bg-[#ffffff] border border-slate-200 text-xs text-slate-700">
+                <strong className="text-slate-800">Akun Finansial Terkait:</strong> {item.affectedAccounts}
               </div>
 
               {/* Root Cause & Financial Risk Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pt-4 border-t border-slate-800/80">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pt-4 border-t border-slate-200">
                 <div>
                   <h3 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-amber-400" />
                     Akar Masalah Kontrol Internal
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-slate-700 leading-relaxed">
                     {item.rootCause}
                   </p>
                 </div>
@@ -327,7 +327,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                     <span className="w-2 h-2 rounded-full bg-rose-400" />
                     Dampak Risiko Salah Saji Keuangan
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-slate-700 leading-relaxed">
                     {item.financialRisk}
                   </p>
                 </div>
@@ -339,7 +339,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   Rekomendasi Corrective Action Plan (CAP) SK-5
                 </h3>
-                <p className="text-sm text-slate-200 leading-relaxed font-normal">
+                <p className="text-sm text-slate-800 leading-relaxed font-normal">
                   {item.correctiveActionPlan}
                 </p>
               </div>
@@ -353,7 +353,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Perlu Pendampingan Tindak Lanjut Temuan Audit BUMN?
           </h2>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
             Tim konsultan senior Daya Solusi Integra berpengalaman mendampingi penyusunan Corrective Action Plan (CAP), mediasi konfirmasi kertas kerja dengan KAP/BPKP, serta otomasi pengendalian pada platform GRC Integra.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -365,7 +365,7 @@ export default function AuditFindingsPage({ onNavigate }: AuditFindingsPageProps
             </a>
             <a
               href="/toolkit-regulasi"
-              className="w-full sm:w-auto px-6 py-3 rounded bg-[#0f172a] border border-slate-700 hover:border-slate-600 text-slate-200 font-semibold text-sm transition-colors text-center"
+              className="w-full sm:w-auto px-6 py-3 rounded bg-white border border-slate-300 hover:border-slate-600 text-slate-800 font-semibold text-sm transition-colors text-center"
             >
               Unduh Format RCM &amp; TOE
             </a>

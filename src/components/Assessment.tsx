@@ -257,36 +257,30 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
   const results = currentStep === totalQuestions ? calculateResults() : null;
 
   return (
-    <section id="assessment" className="py-24 relative bg-[#0d1220] border-t border-slate-900 overflow-hidden">
-      {/* Decorative gradients */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute -top-[10%] right-[10%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px]" />
-        <div className="absolute -bottom-[10%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue-600/5 blur-[150px]" />
-      </div>
-
+    <section id="assessment" className="py-24 relative bg-[#f8fafc] border-t border-slate-200 overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-display">
             GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> Maturity Self-Assessment
           </h2>
-          <p className="text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
             Evaluasi mandiri tingkat kematangan kontrol internal pelaporan keuangan Anda secara gratis. Dapatkan saran perbaikan instan berbasis AI.
           </p>
         </div>
 
         {/* Core Wizard Container */}
-        <div className="glass-panel rounded-2xl border border-slate-800/80 bg-slate-950/50 shadow-sm overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden min-h-[460px] flex flex-col justify-between" id="assessment-wizard">
           
           {/* STEP -1: Company Info Setup */}
           {currentStep === -1 && (
             <div className="p-6 sm:p-10 space-y-8 animate-in fade-in duration-300 text-left" id="step-info-form">
               <div className="space-y-3">
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                   Mulai Evaluasi Mandiri Organisasi Anda
                 </h3>
-                <p className="text-slate-400 font-light text-sm leading-relaxed max-w-xl">
+                <p className="text-slate-600 font-normal text-sm leading-relaxed max-w-xl">
                   Harap lengkapi identitas dasar di bawah ini untuk memulai evaluasi 10 indikator kontrol internal pelaporan keuangan (<GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>) berdasarkan <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> framework.
                 </p>
               </div>
@@ -294,7 +288,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               <form onSubmit={handleStart} className="space-y-6 max-w-xl">
                 {/* Company Name */}
                 <div className="space-y-2">
-                  <label htmlFor="comp-name" className="block text-xs font-semibold text-slate-300">
+                  <label htmlFor="comp-name" className="block text-xs font-semibold text-slate-700">
                     Nama Organisasi / Perusahaan BUMN / Bank
                   </label>
                   <input
@@ -309,7 +303,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       }
                     }}
                     placeholder="Contoh: PT Bank Pembangunan Daerah..."
-                    className="w-full bg-slate-900/80 border border-slate-800 hover:border-slate-700 focus:border-bumn-gold focus:ring-1 focus:ring-bumn-gold rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                    className="w-full bg-white border border-slate-300 hover:border-slate-400 focus:border-[#0b4596] focus:ring-1 focus:ring-[#0b4596] rounded-xl px-4 py-3 text-slate-900 text-sm outline-none transition-colors"
                   />
                   {validationError && (
                     <p className="text-xs text-rose-500 font-medium mt-1.5 animate-in fade-in duration-200" id="comp-name-error">
@@ -317,17 +311,17 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                     </p>
                   )}
                   <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-2 font-mono">
-                    <Shield className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
+                    <Shield className="w-3.5 h-3.5 text-amber-700 shrink-0" />
                     Data diproses secara aman dalam memori & dilindungi standar NDA
                   </p>
                 </div>
 
                 {/* Target Segment */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-semibold text-slate-300">
+                  <label className="block text-xs font-semibold text-slate-700">
                     Sektor Operasional Utama
                   </label>
-                  <div className="flex p-1 bg-slate-900/80 border border-slate-800 rounded-2xl max-w-md w-full" id="sector-segment-control">
+                  <div className="flex p-1 bg-slate-100 border border-slate-200 rounded-2xl max-w-md w-full" id="sector-segment-control">
                     <button
                       type="button"
                       id="sector-bumn-btn"
@@ -344,8 +338,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       }}
                       className={`flex-1 flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
                         sector === "BUMN"
-                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-bold"
-                          : "text-slate-400 hover:text-white hover:bg-slate-800/20"
+                          ? "bg-bumn-blue text-white shadow-xs font-bold"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
                       }`}
                     >
                       <Building2 className={`w-4 h-4 ${sector === "BUMN" ? "text-white" : "text-slate-500"}`} />
@@ -371,8 +365,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       }}
                       className={`flex-1 flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold/50 ${
                         sector === "Banking"
-                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-bold"
-                          : "text-slate-400 hover:text-white hover:bg-slate-800/20"
+                          ? "bg-bumn-blue text-white shadow-xs font-bold"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
                       }`}
                     >
                       <Landmark className={`w-4 h-4 ${sector === "Banking" ? "text-white" : "text-slate-500"}`} />
@@ -388,7 +382,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   <button
                     type="submit"
                     id="start-assessment-btn"
-                    className="flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto text-sm font-bold text-white bg-bumn-blue hover:bg-blue-600 rounded-xl transition-all shadow-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     Mulai Evaluasi Mandiri
                     <ArrowRight className="w-4 h-4" />
@@ -402,32 +396,32 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
           {currentStep >= 0 && currentStep < totalQuestions && (
             <div className="p-6 sm:p-10 space-y-6 flex flex-col justify-between h-full animate-in fade-in duration-300" id="step-question-form">
               {/* Top progress and category header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/60 pb-4 text-left">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4 text-left">
                 <div className="space-y-1">
-                  <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
+                  <span className="text-xs font-mono font-bold text-[#0b4596] uppercase tracking-widest bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-md inline-block">
                     {assessmentQuestions[currentStep].categoryIndo}
                   </span>
-                  <p className="text-xs text-slate-400 font-mono">
+                  <p className="text-xs text-slate-500 font-mono">
                     Dimensi {currentStep + 1} dari {totalQuestions}
                   </p>
                 </div>
                 
                 {/* Progress bar */}
                 <div className="flex items-center gap-2">
-                  <div className="w-32 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                  <div className="w-32 bg-slate-200 h-1.5 rounded-full overflow-hidden">
                     <div 
-                      className="bg-blue-500 h-full rounded-full transition-all duration-300" 
+                      className="bg-[#0b4596] h-full rounded-full transition-all duration-300" 
                       style={{ width: `${((currentStep + 1) / totalQuestions) * 100}%` }}
                     />
                   </div>
-                  <span className="text-xs font-mono text-slate-400 font-bold tabular-nums">
+                  <span className="text-xs font-mono text-slate-600 font-bold tabular-nums">
                     {Math.round(((currentStep + 1) / totalQuestions) * 100)}%
                   </span>
                 </div>
               </div>
 
               {/* Horizontal Question Step Navigation */}
-              <div className="flex flex-wrap gap-1.5 items-center justify-start py-2 border-b border-slate-800/40" id="wizard-step-nav" aria-label="Navigasi Pertanyaan Asesmen">
+              <div className="flex flex-wrap gap-1.5 items-center justify-start py-2 border-b border-slate-200" id="wizard-step-nav" aria-label="Navigasi Pertanyaan Asesmen">
                 {Array.from({ length: totalQuestions }).map((_, idx) => {
                   const isCompleted = answers[assessmentQuestions[idx].id] !== undefined;
                   const isActive = currentStep === idx;
@@ -439,12 +433,12 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       title={`Lompat ke Pertanyaan ${idx + 1}`}
                       aria-label={`Pertanyaan ${idx + 1}: ${isCompleted ? "Sudah diisi" : "Belum diisi"}${isActive ? " (Aktif)" : ""}`}
                       aria-current={isActive ? "step" : undefined}
-                      className={`w-8 h-8 sm:w-9 sm:h-9 min-w-[32px] min-h-[32px] rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1220] ${
+                      className={`w-8 h-8 sm:w-9 sm:h-9 min-w-[32px] min-h-[32px] rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
                         isActive
-                          ? "bg-bumn-blue text-white ring-2 ring-bumn-blue ring-offset-2 ring-offset-[#0d1220]"
+                          ? "bg-bumn-blue text-white ring-2 ring-bumn-blue ring-offset-2 ring-offset-white"
                           : isCompleted
-                          ? "bg-blue-950/30 text-blue-400 border border-blue-900/40 hover:bg-blue-900/30"
-                          : "bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-slate-300"
+                          ? "bg-blue-50 text-[#0b4596] border border-blue-200 hover:bg-blue-100"
+                          : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200 hover:text-slate-900"
                       }`}
                     >
                       {idx + 1}
@@ -455,13 +449,13 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
 
               {/* Question Text */}
               <div className="space-y-6 py-2 text-left">
-                <h3 id="current-question-title" className="text-lg sm:text-xl font-bold text-white tracking-tight leading-relaxed">
+                <h3 id="current-question-title" className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-relaxed">
                   {assessmentQuestions[currentStep].text}
                 </h3>
 
                  {/* Options list */}
                 <fieldset 
-                  className="divide-y divide-slate-800/60 border-y border-slate-800/60 text-left border-0 p-0 m-0" 
+                  className="divide-y divide-slate-100 border-y border-slate-200 text-left border-0 p-0 m-0" 
                   id="options-container"
                   role="radiogroup"
                   aria-labelledby="current-question-title"
@@ -493,21 +487,21 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         tabIndex={isFocusable ? 0 : -1}
                         onKeyDown={handleKeyDown}
                         onClick={() => handleSelectOption(assessmentQuestions[currentStep].id, opt.score)}
-                        className={`w-full py-4 px-3 text-left text-sm transition-all flex items-start gap-4 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1220] ${
+                        className={`w-full py-4 px-3 text-left text-sm transition-all flex items-start gap-4 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
                           isSelected
-                            ? "text-white font-medium bg-slate-900/40"
-                            : "text-slate-300 hover:text-white hover:bg-slate-900/20"
+                            ? "text-[#0b4596] font-semibold bg-blue-50/70 border border-blue-200"
+                            : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                         }`}
                       >
                         <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border text-xs font-bold ${
                           isSelected 
-                            ? "border-blue-400 bg-bumn-blue text-white" 
-                            : "border-slate-700 bg-slate-800 text-slate-400"
+                            ? "border-bumn-blue bg-bumn-blue text-white" 
+                            : "border-slate-300 bg-slate-100 text-slate-600"
                         }`}>
                           {opt.score}
                         </span>
                         <span className="leading-relaxed flex-1">{opt.text}</span>
-                        <span className="hidden sm:inline-block font-mono text-[10px] text-slate-500 bg-slate-900 border border-slate-800 px-1.5 py-0.5 rounded opacity-60 group-hover:opacity-100 transition-opacity">
+                        <span className="hidden sm:inline-block font-mono text-[10px] text-slate-500 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded opacity-70 group-hover:opacity-100 transition-opacity">
                           [{opt.score}]
                         </span>
                       </button>
@@ -517,12 +511,12 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               </div>
 
               {/* Bottom navigation buttons */}
-              <div className="flex flex-wrap gap-3 items-center justify-between pt-6 border-t border-slate-800/40">
+              <div className="flex flex-wrap gap-3 items-center justify-between pt-6 border-t border-slate-200">
                 <div className="flex items-center gap-3">
                   <button
                     id="prev-question-btn"
                     onClick={handlePrev}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     Kembali
@@ -542,7 +536,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       }
                     }}
                     title="Pertanyaan yang dilewati akan diberikan skor awal 1 (Initial / Ad-hoc)"
-                    className="text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900/60 hover:bg-slate-800/60 border border-slate-800/80 rounded-xl px-3.5 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl px-3.5 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     Lewati (Skor Awal 1)
                   </button>
@@ -552,13 +546,13 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                       setCurrentStep(totalQuestions);
                       onComplete?.(companyName, sector);
                     }}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-bumn-gold hover:text-white bg-slate-900 hover:bg-slate-800 border border-bumn-gold/30 hover:border-bumn-gold/60 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold/50"
+                    className="flex items-center gap-1.5 text-xs font-semibold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-300 rounded-xl px-4 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
                   >
                     Lihat Hasil Sekarang
                   </button>
                 </div>
                 
-                <span className="text-xs text-slate-400 font-mono">
+                <span className="text-xs text-slate-500 font-mono">
                   Sektor: {sector === "BUMN" ? "BUMN / BUMD" : "Perbankan / OJK"}
                 </span>
               </div>
@@ -592,34 +586,34 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               </div>
               
               {/* Header results */}
-              <div className="border-b border-slate-800/60 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">
+              <div className="border-b border-slate-200 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">
                 <div className="space-y-1">
-                  <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest bg-blue-950/40 border border-blue-500/20 px-2.5 py-1 rounded-md inline-block">
+                  <span className="text-xs font-mono font-bold text-[#0b4596] uppercase tracking-widest bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-md inline-block">
                     Hasil Analisis Kematangan
                   </span>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
                     {companyName}
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-600">
                     Sektor: {sector === "BUMN" ? "Badan Usaha Milik Negara" : "Perbankan & Lembaga Keuangan"}
                   </p>
                 </div>
 
                 <div className="flex gap-6 items-center py-2 px-4">
                   <div className="text-left md:text-right">
-                    <span className="text-xs text-slate-400 block uppercase font-mono tracking-wider">Skor Total</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-white font-display tabular-nums">{results.totalScore} <span className="text-sm font-normal text-slate-500">/ {results.maxScore}</span></span>
+                    <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Skor Total</span>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display tabular-nums">{results.totalScore} <span className="text-sm font-normal text-slate-500">/ {results.maxScore}</span></span>
                   </div>
-                  <div className="w-px h-10 bg-slate-800" />
+                  <div className="w-px h-10 bg-slate-200" />
                   <div className="text-left md:text-right">
-                    <span className="text-xs text-slate-400 block uppercase font-mono tracking-wider">Maturitas</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-bumn-gold font-display tabular-nums">{results.percentage}%</span>
+                    <span className="text-xs text-slate-500 block uppercase font-mono tracking-wider">Maturitas</span>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-amber-700 font-display tabular-nums">{results.percentage}%</span>
                   </div>
                 </div>
               </div>
 
               {/* Tabs Navigation */}
-              <div className="flex border-b border-slate-800/60" id="results-tab-nav" role="tablist" aria-label="Navigasi Hasil Evaluasi">
+              <div className="flex border-b border-slate-200" id="results-tab-nav" role="tablist" aria-label="Navigasi Hasil Evaluasi">
                 <button
                   type="button"
                   id="tab-summary"
@@ -629,8 +623,8 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   onClick={() => setActiveResultsTab("summary")}
                   className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue ${
                     activeResultsTab === "summary"
-                      ? "border-bumn-blue text-white"
-                      : "border-transparent text-slate-400 hover:text-slate-200"
+                      ? "border-bumn-blue text-slate-900"
+                      : "border-transparent text-slate-500 hover:text-slate-800"
                   }`}
                 >
                   Ringkasan Skor
@@ -643,21 +637,20 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   aria-controls="panel-report"
                   onClick={() => {
                     setActiveResultsTab("report");
-                    // Auto-generate if clicked and not yet generated/loading
                     if (!aiReport && !isLoadingAiReport) {
                       generateAiReport();
                     }
                   }}
                   className={`py-3 px-6 text-sm font-bold border-b-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue flex items-center gap-2 ${
                     activeResultsTab === "report"
-                      ? "border-bumn-blue text-white"
-                      : "border-transparent text-slate-400 hover:text-slate-200"
+                      ? "border-bumn-blue text-slate-900"
+                      : "border-transparent text-slate-500 hover:text-slate-800"
                   }`}
                 >
-                  <ShieldCheck className="w-4 h-4 text-bumn-gold" />
+                  <ShieldCheck className="w-4 h-4 text-amber-700" />
                   Laporan Rekomendasi GRC
                   {aiReport && (
-                    <span className="w-1.5 h-1.5 bg-bumn-gold rounded-full" />
+                    <span className="w-1.5 h-1.5 bg-amber-600 rounded-full" />
                   )}
                 </button>
               </div>
@@ -665,23 +658,22 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               {/* Tab 1: Summary */}
               {activeResultsTab === "summary" && (
                 <div id="panel-summary" role="tabpanel" aria-labelledby="tab-summary" className="space-y-8 animate-in fade-in duration-300">
-                  {/* Maturity Level Display (Uniform Border instead of Left Stripe Accent) */}
-                  <div className="border border-slate-800/80 rounded-2xl p-6 text-left bg-slate-900/30 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                    <div className="bg-blue-950/50 text-blue-400 shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-900/30">
+                  <div className="border border-slate-200 rounded-2xl p-6 text-left bg-slate-50/70 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                    <div className="bg-blue-100 text-[#0b4596] shrink-0 h-16 w-16 rounded-xl flex items-center justify-center text-2xl font-black border border-blue-200">
                       Lvl {results.level}
                     </div>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <h4 className="text-lg font-bold text-white">{results.levelLabel}</h4>
-                        <span className="text-xs uppercase font-mono bg-blue-950/40 border border-blue-500/30 text-blue-400 px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
+                        <h4 className="text-lg font-bold text-slate-900">{results.levelLabel}</h4>
+                        <span className="text-xs uppercase font-mono bg-blue-100 border border-blue-200 text-[#0b4596] px-2 py-0.5 rounded-full font-bold">COSO Framework</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">{results.levelDesc}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-2xl">{results.levelDesc}</p>
                     </div>
                   </div>
 
-                  {/* Category Scores breakdown (Flat list instead of Nested Cards) */}
+                  {/* Category Scores breakdown */}
                   <div className="space-y-6 text-left">
-                    <h4 className="text-xs font-bold text-slate-300">
+                    <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
                       Rincian Skor per Dimensi COSO Internal Control
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -698,13 +690,13 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                         return (
                           <div key={idx} className="space-y-2 py-2">
                             <div className="flex justify-between items-center gap-2">
-                              <div className="flex items-center gap-2 text-slate-400">
-                                <Icon className="w-4 h-4 text-bumn-gold" />
-                                <span className="text-xs text-slate-400 font-semibold uppercase font-mono tracking-wider">
+                              <div className="flex items-center gap-2 text-slate-600">
+                                <Icon className="w-4 h-4 text-amber-700" />
+                                <span className="text-xs text-slate-700 font-semibold uppercase font-mono tracking-wider">
                                   {dim.short}
                                 </span>
                               </div>
-                              <span className="text-xs font-mono font-bold text-white">
+                              <span className="text-xs font-mono font-bold text-slate-900">
                                 {score.toFixed(1)}/4.0
                               </span>
                             </div>
@@ -712,7 +704,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                               <span className="text-xs text-slate-500 font-medium block leading-tight truncate">
                                 {dim.label}
                               </span>
-                              <div className="w-full bg-slate-900 h-1 rounded-full overflow-hidden">
+                              <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                 <div 
                                   className="bg-bumn-blue h-full rounded-full transition-all" 
                                   style={{ width: `${pct}%` }}
@@ -732,13 +724,13 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                 <div id="panel-report" role="tabpanel" aria-labelledby="tab-report" className="space-y-6 animate-in fade-in duration-300 text-center">
                   {!aiReport && !isLoadingAiReport && (
                     <div className="max-w-xl mx-auto py-8 space-y-4">
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-slate-600 leading-relaxed font-normal">
                         Butuh rekomendasi formal komprehensif? Klik di bawah untuk meluncurkan analisis AI kustom yang diselaraskan dengan standar tata kelola Kementerian BUMN / Regulasi OJK Perbankan.
                       </p>
                       <button
                         id="assess-ai-generate-btn"
                         onClick={generateAiReport}
-                        className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-xl transition-all shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                        className="inline-flex items-center gap-2.5 px-6 py-4 text-sm font-bold text-white bg-bumn-blue hover:bg-blue-600 rounded-xl transition-all shadow-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                       >
                         <ShieldCheck className="w-4 h-4 text-white" />
                         Formulasikan Executive Report dengan Analisis GRC
@@ -749,12 +741,12 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                   {/* Loading state */}
                   {isLoadingAiReport && (
                     <div className="p-8 space-y-4 flex flex-col items-center justify-center" id="ai-loading-state">
-                      <Loader2 className="w-8 h-8 text-bumn-gold animate-spin" />
+                      <Loader2 className="w-8 h-8 text-amber-700 animate-spin" />
                       <div className="space-y-1">
-                        <p className="text-sm font-bold text-white font-mono">
+                        <p className="text-sm font-bold text-slate-900 font-mono">
                           Sedang Menganalisis...
                         </p>
-                        <p className="text-xs text-slate-500 font-light italic">
+                        <p className="text-xs text-slate-500 font-normal italic">
                           {reassuringMessage}
                         </p>
                       </div>
@@ -766,28 +758,28 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                     <div className="w-full text-left animate-in fade-in zoom-in-95 duration-500 relative" id="ai-report-display">
                       
                       {/* Header bar of report */}
-                      <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                        <div className="flex items-center gap-2 text-bumn-gold text-xs font-mono">
+                      <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+                        <div className="flex items-center gap-2 text-amber-800 text-xs font-mono font-semibold">
                           <FileText className="w-4 h-4" />
                           AI Generated Advisory Report
                         </div>
-                        <span className="text-xs text-slate-500 font-mono bg-slate-800 px-2 py-0.5 rounded">DSI Expert Suite</span>
+                        <span className="text-xs text-slate-600 font-mono bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">DSI Expert Suite</span>
                       </div>
 
                       {/* Markdown rendering */}
-                      <div className="prose prose-invert prose-blue max-w-none text-xs sm:text-sm text-slate-300 leading-relaxed font-light space-y-4">
+                      <div className="prose prose-blue max-w-none text-xs sm:text-sm text-slate-700 leading-relaxed font-normal space-y-4">
                         <Markdown>{aiReport}</Markdown>
                       </div>
 
                       {/* Report action footer */}
-                      <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap gap-4 justify-between items-center">
+                      <div className="mt-8 pt-6 border-t border-slate-200 flex flex-wrap gap-4 justify-between items-center">
                         <span className="text-xs text-slate-500 font-mono italic">
                           Didesain untuk kebutuhan Direksi & Komite Audit. PT Daya Solusi Integra.
                         </span>
                         <div className="flex gap-2.5">
                           <button
                             onClick={handleCopy}
-                            className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
+                            className="text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 px-4 py-2 rounded-xl transition-all shadow-xs"
                           >
                             {isCopied ? "Tersalin!" : "Salin Laporan"}
                           </button>
@@ -799,7 +791,7 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
                               }
                               window.print();
                             }}
-                            className="text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
+                            className="text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 px-4 py-2 rounded-xl transition-all shadow-xs"
                           >
                             Cetak Laporan
                           </button>
@@ -811,11 +803,11 @@ export default function Assessment({ onComplete }: { onComplete?: (company: stri
               )}
 
               {/* Restart option */}
-              <div className="pt-4 border-t border-slate-900 flex justify-center">
+              <div className="pt-4 border-t border-slate-200 flex justify-center">
                 <button
                   id="restart-assessment-btn"
                   onClick={handleReset}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                 >
                   <RotateCcw className="w-4.5 h-4.5" />
                   Reset & Ulangi Asesmen

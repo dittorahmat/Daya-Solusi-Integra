@@ -71,7 +71,7 @@ export default function NotFoundPage({ onNavigate }: NotFoundPageProps) {
   ];
 
   return (
-    <div className="w-full bg-[#0b0f19] min-h-screen text-slate-100 py-12 md:py-20">
+    <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-12 md:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb Navigation */}
@@ -94,7 +94,7 @@ export default function NotFoundPage({ onNavigate }: NotFoundPageProps) {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Halaman Tidak Ditemukan
           </h1>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-light mb-8">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-8">
             Tautan yang Anda buka sudah dipindahkan, salah ketik, atau tidak lagi tersedia
             di portal Daya Solusi Integra. Pilih salah satu pintu kembali di bawah ini.
           </p>
@@ -115,11 +115,11 @@ export default function NotFoundPage({ onNavigate }: NotFoundPageProps) {
               <button
                 key={link.path}
                 onClick={() => onNavigate(link.path)}
-                className="text-left bg-[#0f172a] border border-slate-800 rounded-xl p-6 hover:border-blue-700/60 hover:bg-slate-900/80 transition-colors group"
+                className="text-left bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-700/60 hover:bg-slate-50 transition-colors group"
               >
                 <Icon className="w-6 h-6 text-blue-400 mb-3 group-hover:text-blue-300" />
                 <div className="text-white font-semibold mb-1">{link.title}</div>
-                <p className="text-sm text-slate-400 leading-relaxed font-light">{link.desc}</p>
+                <p className="text-sm text-slate-600 leading-relaxed font-light">{link.desc}</p>
               </button>
             );
           })}

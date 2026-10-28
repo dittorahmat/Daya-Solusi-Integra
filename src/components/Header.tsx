@@ -141,12 +141,12 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <img 
               src={logoImg} 
               alt="Daya Solusi Integra" 
-              className="h-20 w-auto object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105"
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-900/50 border border-slate-800/80 px-2 py-1.5 rounded-full" id="desktop-navbar">
+          <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 border border-slate-200 px-2 py-1.5 rounded-full" id="desktop-navbar">
             {navItems.map((item) => {
               if (item.id === "platform") {
                 return (
@@ -169,7 +169,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
                         activeTab === item.id
                           ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
-                          : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
                       }`}
                     >
                       <span>{item.label}</span>
@@ -178,7 +178,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
 
                     {/* Platform Dropdown Menu */}
                     {isPlatformDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-72 rounded-xl bg-[#0f172a] border border-slate-800 shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                      <div className="absolute top-full left-0 mt-2 w-72 rounded-xl bg-white border border-slate-200 shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                         <a
                           href="/platform/grc-integra"
                           onClick={(e) => {
@@ -187,16 +187,16 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                             window.history.pushState({}, '', '/platform/grc-integra');
                             window.dispatchEvent(new PopStateEvent('popstate'));
                           }}
-                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-800/80 transition-colors group"
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group"
                         >
                           <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
                             <Layers className="w-4 h-4" />
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                            <div className="text-xs font-semibold text-slate-900 group-hover:text-[#0b4596] transition-colors">
                               Ringkasan Platform GRC Integra
                             </div>
-                            <div className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                            <div className="text-[11px] text-slate-500 leading-snug mt-0.5">
                               Platform siklus hidup ICOFR BUMN berbasis SK-5
                             </div>
                           </div>
@@ -210,19 +210,19 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                             window.history.pushState({}, '', '/platform/bpm-workflow-editor');
                             window.dispatchEvent(new PopStateEvent('popstate'));
                           }}
-                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-800/80 transition-colors group mt-1"
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group mt-1"
                         >
                           <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
                             <Workflow className="w-4 h-4" />
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center gap-1.5">
+                            <div className="text-xs font-semibold text-slate-900 group-hover:text-[#0b4596] transition-colors flex items-center gap-1.5">
                               <span>BPM Workflow Editor</span>
                               <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-900/60 border border-blue-500/40 text-blue-300 font-mono">
                                 Baru
                               </span>
                             </div>
-                            <div className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                            <div className="text-[11px] text-slate-500 leading-snug mt-0.5">
                               Desain SOP native web rasa Visio & auto-draw file
                             </div>
                           </div>
@@ -241,7 +241,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
                     activeTab === item.id
                       ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
                   }`}
                 >
                   {item.label}
@@ -255,16 +255,16 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="header-ai-chat-btn"
               onClick={onOpenAdvisor}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-400 hover:text-blue-300 border border-blue-500/30 hover:border-blue-500/60 bg-blue-950/20 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-[#0b4596] hover:text-blue-800 border border-blue-200 hover:border-blue-300 bg-blue-50/60 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
             >
               <MessageSquareCode className="w-4 h-4" />
               <span>AI IT & GRC Consultant</span>
-              <kbd className="inline-block font-mono text-xs bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-1">Ctrl+/</kbd>
+              <kbd className="inline-block font-mono text-xs bg-white text-slate-600 px-1.5 py-0.5 rounded border border-slate-200 ml-1">Ctrl+/</kbd>
             </button>
             <button
               id="header-cta-btn"
               onClick={() => handleNavClick("assessment")}
-              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-slate-950 bg-white hover:bg-bumn-gold rounded-xl transition-all duration-200 shadow-md shadow-blue-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
+              className="flex items-center gap-2 px-4.5 py-2 text-sm font-semibold text-white bg-[#0b4596] hover:bg-blue-800 rounded-xl transition-all duration-200 shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
             >
               Mulai Asesmen
               <ArrowRight className="w-4 h-4" />
@@ -276,7 +276,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19]"
+              className="p-2 text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -288,7 +288,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       {isMobileMenuOpen && (
         <div 
           ref={mobileDrawerRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-[#0d1322] border-b border-slate-800 shadow-2xl animate-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-80px)] overflow-y-auto" 
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 shadow-xl animate-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-80px)] overflow-y-auto" 
           id="mobile-drawer"
         >
           <div className="px-4 pt-3 pb-6 space-y-2">
@@ -302,7 +302,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                       className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
                         activeTab === item.id
                           ? "bg-bumn-blue text-white font-semibold"
-                          : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                       }`}
                     >
                       <span>{item.label}</span>
@@ -352,14 +352,14 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold ${
                     activeTab === item.id
                       ? "bg-bumn-blue text-white font-semibold"
-                      : "text-slate-300 hover:bg-slate-800/50 hover:text-white"
+                      : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                   }`}
                 >
                   {item.label}
                 </button>
               );
             })}
-            <div className="pt-3 border-t border-slate-800/60 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-slate-200 flex flex-col gap-2.5">
               <button
                 id="mobile-ai-chat-btn"
                 onClick={() => {
@@ -374,7 +374,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
               <button
                 id="mobile-assessment-btn"
                 onClick={() => handleNavClick("assessment")}
-                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-slate-950 bg-white hover:bg-bumn-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-gold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 px-3.5 rounded-xl text-xs font-semibold text-white bg-[#0b4596] hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
               >
                 Mulai Asesmen Mandiri
                 <ArrowRight className="w-4 h-4 shrink-0" />

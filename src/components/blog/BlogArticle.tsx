@@ -134,7 +134,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
             {/* Back Button */}
             <button
               onClick={() => onNavigate("/blog")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-800 rounded-xl transition-all mb-8 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100/80 hover:bg-slate-800 border border-slate-200 rounded-xl transition-all mb-8 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Kembali ke Katalog Blog</span>
@@ -146,7 +146,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                 <span className="px-3 py-1 bg-bumn-blue/20 text-blue-400 border border-bumn-blue/40 rounded-full font-medium">
                   {activePost.category}
                 </span>
-                <span className="flex items-center gap-1 text-slate-400">
+                <span className="flex items-center gap-1 text-slate-500">
                   <Calendar className="w-3.5 h-3.5" />
                   {activePost.date}
                 </span>
@@ -155,13 +155,13 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                     Diperbarui {activePost.updated}
                   </span>
                 )}
-                <span className="flex items-center gap-1 text-slate-400">
+                <span className="flex items-center gap-1 text-slate-500">
                   <Clock className="w-3.5 h-3.5" />
                   {activePost.readTime}
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-white leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-slate-900 leading-tight">
                 {activePost.title}
               </h1>
 
@@ -169,7 +169,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
               {(() => {
                 const authorInfo = getAuthorProfile(activePost.author);
                 return (
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#0f172a] border border-slate-800 text-left">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-white border border-slate-200 text-left">
                     <div className="flex items-center gap-3.5">
                       <img
                         src={authorInfo.avatar}
@@ -186,14 +186,14 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       />
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-white tracking-tight">{authorInfo.name}</span>
+                          <span className="text-sm font-bold text-slate-900 tracking-tight">{authorInfo.name}</span>
                           <span className="inline-flex items-center gap-1 text-[11px] font-mono text-bumn-gold bg-bumn-gold/10 px-2 py-0.5 rounded border border-bumn-gold/30">
                             <CheckCircle2 className="w-3 h-3 text-bumn-gold" />
                             Verified GRC Expert
                           </span>
                         </div>
-                        <div className="text-xs text-slate-300 font-medium">{authorInfo.fullNameWithCredentials.replace(authorInfo.name + ", ", "")}</div>
-                        <div className="text-[11px] text-slate-400 mt-0.5">{authorInfo.role}</div>
+                        <div className="text-xs text-slate-600 font-medium">{authorInfo.fullNameWithCredentials.replace(authorInfo.name + ", ", "")}</div>
+                        <div className="text-[11px] text-slate-500 mt-0.5">{authorInfo.role}</div>
                       </div>
                     </div>
 
@@ -202,15 +202,15 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                         href={authorInfo.sameAs[0]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-800 text-slate-600 hover:text-slate-900 border border-slate-700/80 transition-colors"
                         title="Lihat Profil LinkedIn Humbul Kristiawan"
                       >
                         <span>LinkedIn</span>
-                        <ExternalLink className="w-3 h-3 text-slate-400" />
+                        <ExternalLink className="w-3 h-3 text-slate-500" />
                       </a>
                       <button
                         onClick={() => onNavigate(authorInfo.profileUrl)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-800/80 transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-slate-900 border border-blue-800/80 transition-colors cursor-pointer"
                         title="Lihat Profil Lengkap & Rekam Jejak Konsultasi"
                       >
                         <span>Profil Pakar</span>
@@ -223,7 +223,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
             </div>
 
             {/* Cover Banner */}
-            <div className="relative rounded-2xl overflow-hidden mb-10 border border-slate-800 aspect-video shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden mb-10 border border-slate-200 aspect-video shadow-2xl">
               <BlogCoverImage
                 src={activePost.coverImage}
                 alt={activePost.title}
@@ -240,27 +240,27 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                 {/* Executive Takeaways & AI Direct Answer Callout */}
                 <div 
                   itemProp="abstract"
-                  className="mb-10 p-6 sm:p-7 rounded-2xl bg-[#0f172a] border border-slate-800 text-left relative overflow-hidden shadow-lg"
+                  className="mb-10 p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 text-left relative overflow-hidden shadow-lg"
                 >
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-3">
                     <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
                     <span>Ringkasan Eksekutif & Jawaban Kunci</span>
                   </div>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal mb-5">
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-5">
                     {activePost.excerpt}
                   </p>
-                  <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 text-xs">
-                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Rujukan Regulasi</span>
-                      <span className="font-semibold text-white">SK-5 BUMN / COSO 2013</span>
+                  <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/80 text-xs">
+                    <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block font-mono text-[10px] uppercase tracking-wider mb-1">Rujukan Regulasi</span>
+                      <span className="font-semibold text-slate-900">SK-5 BUMN / COSO 2013</span>
                     </div>
-                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Audiens Kunci</span>
-                      <span className="font-semibold text-white">Direksi, SPI & Lini 2</span>
+                    <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block font-mono text-[10px] uppercase tracking-wider mb-1">Audiens Kunci</span>
+                      <span className="font-semibold text-slate-900">Direksi, SPI & Lini 2</span>
                     </div>
-                    <div className="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase tracking-wider mb-1">Kesiapan Audit</span>
-                      <span className="font-semibold text-white">Standar BPKP, BPK & KAP</span>
+                    <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block font-mono text-[10px] uppercase tracking-wider mb-1">Kesiapan Audit</span>
+                      <span className="font-semibold text-slate-900">Standar BPKP, BPK & KAP</span>
                     </div>
                   </div>
                 </div>
@@ -274,12 +274,12 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       
                       if (isToc) {
                         return (
-                          <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#0d1627] border-2 border-bumn-blue/40 shadow-xl relative overflow-hidden lg:hidden">
+                          <div className="my-10 p-6 sm:p-7 rounded-2xl bg-slate-50 border-2 border-bumn-blue/40 shadow-xl relative overflow-hidden lg:hidden">
                             <div className="flex items-center gap-2.5 text-sm font-mono uppercase tracking-wider text-bumn-gold font-bold mb-1">
                               <BookOpen className="w-4 h-4 text-bumn-gold" />
                               <span>Daftar Isi Artikel</span>
                             </div>
-                            <p className="text-xs text-slate-400 mb-4">Klik judul di bawah untuk langsung menuju topik pembahasan:</p>
+                            <p className="text-xs text-slate-500 mb-4">Klik judul di bawah untuk langsung menuju topik pembahasan:</p>
                             <div className="h-px w-full bg-slate-800 mb-2" />
                           </div>
                         );
@@ -290,7 +290,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       return (
                         <h2 
                           id={id} 
-                          className="group text-2xl sm:text-3xl font-bold font-display text-white mt-14 mb-6 pb-3 border-b border-slate-800 tracking-tight flex items-center justify-between gap-3 scroll-mt-28" 
+                          className="group text-2xl sm:text-3xl font-bold font-display text-slate-900 mt-14 mb-6 pb-3 border-b border-slate-200 tracking-tight flex items-center justify-between gap-3 scroll-mt-28" 
                           {...props}
                         >
                           <span className="flex-1">{children}</span>
@@ -300,7 +300,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                             className={`p-1.5 rounded-lg border transition-all cursor-pointer shrink-0 ${
                               isCopied
                                 ? "bg-emerald-950/80 border-emerald-500/50 text-emerald-400 opacity-100"
-                                : "bg-slate-900/60 hover:bg-slate-800 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-bumn-gold opacity-0 group-hover:opacity-100 sm:opacity-50"
+                                : "bg-slate-100/60 hover:bg-slate-800 border-slate-200 hover:border-slate-700 text-slate-500 hover:text-bumn-gold opacity-0 group-hover:opacity-100 sm:opacity-50"
                             }`}
                             title={isCopied ? "Tautan bagian berhasil disalin!" : "Salin tautan ke bagian ini"}
                             aria-label="Salin tautan ke bagian ini"
@@ -320,17 +320,17 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       </h3>
                     ),
                     p: ({ children, ...props }) => (
-                      <p className="text-slate-300 text-base sm:text-lg leading-[1.9] mb-8 font-normal" {...props}>
+                      <p className="text-slate-600 text-base sm:text-lg leading-[1.9] mb-8 font-normal" {...props}>
                         {children}
                       </p>
                     ),
                     ul: ({ children, ...props }) => (
-                      <ul className="space-y-3.5 mb-8 pl-6 list-disc list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                      <ul className="space-y-3.5 mb-8 pl-6 list-disc list-outside text-slate-600 text-base sm:text-lg leading-[1.8]" {...props}>
                         {children}
                       </ul>
                     ),
                     ol: ({ children, ...props }) => (
-                      <ol className="space-y-3.5 mb-8 pl-6 list-decimal list-outside text-slate-300 text-base sm:text-lg leading-[1.8]" {...props}>
+                      <ol className="space-y-3.5 mb-8 pl-6 list-decimal list-outside text-slate-600 text-base sm:text-lg leading-[1.8]" {...props}>
                         {children}
                       </ol>
                     ),
@@ -345,7 +345,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                         return (
                           <a
                             href={href}
-                            className="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg bg-blue-950/40 hover:bg-blue-900/60 border border-blue-500/20 hover:border-blue-400/50 text-blue-300 hover:text-white text-sm font-semibold transition-all my-1 group"
+                            className="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg bg-blue-950/40 hover:bg-blue-900/60 border border-blue-500/20 hover:border-blue-400/50 text-blue-300 hover:text-slate-900 text-sm font-semibold transition-all my-1 group"
                             {...props}
                           >
                             <ChevronRight className="w-3.5 h-3.5 text-bumn-gold group-hover:translate-x-0.5 transition-transform shrink-0" />
@@ -364,25 +364,25 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       );
                     },
                     strong: ({ children, ...props }) => (
-                      <strong className="font-semibold text-white" {...props}>
+                      <strong className="font-semibold text-slate-900" {...props}>
                         {children}
                       </strong>
                     ),
-                    hr: () => <hr className="my-10 border-slate-800/80" />,
+                    hr: () => <hr className="my-10 border-slate-200/80" />,
                     blockquote: ({ children, ...props }) => (
-                      <blockquote className="my-6 border-l-4 border-bumn-blue bg-slate-900/60 p-4 sm:p-5 rounded-r-xl text-slate-300 italic" {...props}>
+                      <blockquote className="my-6 border-l-4 border-bumn-blue bg-slate-100/60 p-4 sm:p-5 rounded-r-xl text-slate-600 italic" {...props}>
                         {children}
                       </blockquote>
                     ),
                     table: ({ children, ...props }) => (
-                      <div className="overflow-x-auto my-8 rounded-xl border border-slate-800 shadow-xl bg-slate-950/60">
-                        <table className="w-full text-left text-sm text-slate-300 border-collapse" {...props}>
+                      <div className="overflow-x-auto my-8 rounded-xl border border-slate-200 shadow-xl bg-slate-100/60">
+                        <table className="w-full text-left text-sm text-slate-600 border-collapse" {...props}>
                           {children}
                         </table>
                       </div>
                     ),
                     thead: ({ children, ...props }) => (
-                      <thead className="bg-slate-900/90 text-white font-semibold border-b border-slate-800 text-xs uppercase tracking-wider font-mono" {...props}>
+                      <thead className="bg-slate-50 text-slate-900 font-semibold border-b border-slate-200 text-xs uppercase tracking-wider font-mono" {...props}>
                         {children}
                       </thead>
                     ),
@@ -392,7 +392,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       </tbody>
                     ),
                     tr: ({ children, ...props }) => (
-                      <tr className="hover:bg-slate-900/40 transition-colors" {...props}>
+                      <tr className="hover:bg-slate-100/40 transition-colors" {...props}>
                         {children}
                       </tr>
                     ),
@@ -407,7 +407,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       </td>
                     ),
                     pre: ({ children, ...props }) => (
-                      <div className="my-6 p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto text-xs font-mono text-slate-300">
+                      <div className="my-6 p-4 rounded-xl bg-slate-100 border border-slate-200 overflow-x-auto text-xs font-mono text-slate-600">
                         <pre {...props}>{children}</pre>
                       </div>
                     ),
@@ -422,33 +422,33 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                 </ReactMarkdown>
 
                 {/* Tags */}
-                <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-800 mt-8 mb-6">
-                  <Tag className="w-4 h-4 text-slate-400 mr-1" />
+                <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-200 mt-8 mb-6">
+                  <Tag className="w-4 h-4 text-slate-500 mr-1" />
                   {activePost.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-slate-900 text-slate-400 border border-slate-800 text-xs rounded-lg">
+                    <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-500 border border-slate-200 text-xs rounded-lg">
                       #{tag}
                     </span>
                   ))}
                 </div>
 
                 {/* Contextual Regulatory Toolkit & Working Paper Callout */}
-                <div className="p-6 rounded-2xl bg-[#0d1627] border border-blue-900/40 text-left my-8 shadow-xl relative overflow-hidden">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-blue-900/40 text-left my-8 shadow-xl relative overflow-hidden">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
                     <div className="space-y-2">
                       <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold">
                         <FileSpreadsheet className="w-4 h-4 text-bumn-gold" />
                         <span>Kertas Kerja &amp; Toolkit Kepatuhan Terkait</span>
                       </div>
-                      <h4 className="text-base font-bold text-white font-display">
+                      <h4 className="text-base font-bold text-slate-900 font-display">
                         Butuh Template Excel RCM, Kertas Kerja TOE, atau Draf KAK BUMN?
                       </h4>
-                      <p className="text-xs text-slate-300 leading-relaxed max-w-xl">
+                      <p className="text-xs text-slate-600 leading-relaxed max-w-xl">
                         Akses modul kertas kerja standar SK-5/DKU.MBU/11/2024, formula penentuan sampel Tabel 22, dan matriks kontrol risiko siap pakai untuk tim internal Anda.
                       </p>
                     </div>
                     <button
                       onClick={() => onNavigate("/toolkit-regulasi")}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-bumn-blue hover:bg-blue-600 text-white font-semibold text-xs transition-colors shrink-0 shadow-md cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-bumn-blue hover:bg-blue-600 text-slate-900 font-semibold text-xs transition-colors shrink-0 shadow-md cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>Akses Kertas Kerja</span>
@@ -460,8 +460,8 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
               {/* Right Column: Sticky Table of Contents (Desktop) */}
               <div className="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
                 {tableOfContents.length > 0 && (
-                  <div className="p-6 rounded-2xl bg-[#0f172a] border border-slate-800 shadow-xl">
-                    <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-4 pb-3 border-b border-slate-800">
+                  <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xl">
+                    <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-4 pb-3 border-b border-slate-200">
                       <BookOpen className="w-4 h-4 text-bumn-gold" />
                       <span>Daftar Isi Pembahasan</span>
                     </div>
@@ -474,11 +474,11 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                             href={`#${item.id}`}
                             className={`group flex items-start gap-2.5 py-2 px-3 rounded-lg text-xs transition-colors ${
                               isActive
-                                ? "bg-bumn-blue/20 text-white font-semibold border-l-2 border-bumn-gold"
-                                : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                                ? "bg-bumn-blue/20 text-slate-900 font-semibold border-l-2 border-bumn-gold"
+                                : "text-slate-500 hover:text-slate-700 hover:bg-slate-100/60"
                             }`}
                           >
-                            <span className="font-mono text-[10px] text-slate-500 group-hover:text-slate-400 mt-0.5">
+                            <span className="font-mono text-[10px] text-slate-500 group-hover:text-slate-500 mt-0.5">
                               0{idx + 1}.
                             </span>
                             <span className="leading-snug line-clamp-2">{item.text}</span>
@@ -490,8 +490,8 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                 )}
 
                 {/* Quick Regulatory Reference Badge */}
-                <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 space-y-2.5">
-                  <div className="flex items-center gap-2 text-white font-semibold">
+                <div className="p-5 rounded-2xl bg-slate-100/60 border border-slate-200 text-xs text-slate-500 space-y-2.5">
+                  <div className="flex items-center gap-2 text-slate-900 font-semibold">
                     <Award className="w-4 h-4 text-bumn-gold" />
                     <span>Rujukan Regulasi Resmi</span>
                   </div>
@@ -506,7 +506,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
             {(() => {
               const authorProfile = getAuthorProfile(activePost.author);
               return (
-                <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1527] border border-slate-800 mb-10 text-left relative overflow-hidden shadow-xl">
+                <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1527] border border-slate-200 mb-10 text-left relative overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row gap-6 items-start">
                       <img
                         src={authorProfile.avatar}
@@ -523,28 +523,28 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                     <div className="space-y-3 flex-1">
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <span className="text-lg font-bold text-white font-display">{authorProfile.name}</span>
+                          <span className="text-lg font-bold text-slate-900 font-display">{authorProfile.name}</span>
                           <span className="text-xs font-mono text-bumn-gold bg-bumn-gold/10 px-2.5 py-0.5 rounded border border-bumn-gold/30">
                             {authorProfile.role}
                           </span>
                         </div>
-                        <div className="text-xs text-slate-300 font-mono">
+                        <div className="text-xs text-slate-600 font-mono">
                           {authorProfile.fullNameWithCredentials.replace(authorProfile.name + ", ", "")}
                         </div>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {authorProfile.bioSummary}
                       </p>
 
                       {/* Key Track Records */}
                       <div className="pt-2">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2 font-bold">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 block mb-2 font-bold">
                           Rekam Jejak Penugasan Strategis:
                         </span>
-                        <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                        <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-600">
                           {authorProfile.trackRecordHighlights.slice(0, 4).map((highlight, idx) => (
-                            <li key={idx} className="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80">
+                            <li key={idx} className="flex items-start gap-2 bg-slate-100/60 p-2.5 rounded-lg border border-slate-200/80">
                               <ShieldCheck className="w-3.5 h-3.5 text-bumn-gold shrink-0 mt-0.5" />
                               <span className="leading-snug">{highlight}</span>
                             </li>
@@ -553,20 +553,20 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       </div>
 
                       {/* Outbound Verifications */}
-                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-800/80">
-                        <span className="text-xs text-slate-400">Verifikasi Profil Pakar:</span>
+                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200/80">
+                        <span className="text-xs text-slate-500">Verifikasi Profil Pakar:</span>
                         <a
                           href={authorProfile.sameAs[0]}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-blue-400 hover:text-blue-300 border border-slate-700/80 transition-colors"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-800 text-blue-400 hover:text-blue-300 border border-slate-700/80 transition-colors"
                         >
                           <span>LinkedIn Profil</span>
                           <ExternalLink className="w-3 h-3" />
                         </a>
                         <button
                           onClick={() => onNavigate(authorProfile.profileUrl)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-800/80 transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-slate-900 border border-blue-800/80 transition-colors cursor-pointer"
                         >
                           <span>Biografi Lengkap &amp; Publikasi</span>
                           <ChevronRight className="w-3.5 h-3.5 text-blue-400" />
@@ -604,51 +604,51 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                     {prevPost ? (
                       <button
                         onClick={() => onNavigate(`/blog/${prevPost.slug}`)}
-                        className="group flex flex-col items-start p-5 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all text-left cursor-pointer"
+                        className="group flex flex-col items-start p-5 rounded-xl bg-white hover:bg-[#131f38] border border-slate-200 hover:border-bumn-blue/50 transition-all text-left cursor-pointer"
                       >
-                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-blue-400 mb-2">
+                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-500 group-hover:text-blue-400 mb-2">
                           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
                           Artikel Sebelumnya
                         </span>
-                        <span className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2">
+                        <span className="text-sm font-semibold text-slate-900 group-hover:text-bumn-gold transition-colors line-clamp-2">
                           {prevPost.title}
                         </span>
                       </button>
                     ) : (
-                      <div className="p-5 rounded-xl bg-slate-900/30 border border-slate-800/40 text-left opacity-40">
+                      <div className="p-5 rounded-xl bg-slate-100/30 border border-slate-200/40 text-left opacity-40">
                         <span className="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-1">
                           Awal Katalog Artikel
                         </span>
-                        <span className="text-xs text-slate-400">Ini adalah artikel pertama dalam katalog</span>
+                        <span className="text-xs text-slate-500">Ini adalah artikel pertama dalam katalog</span>
                       </div>
                     )}
 
                     {nextPost ? (
                       <button
                         onClick={() => onNavigate(`/blog/${nextPost.slug}`)}
-                        className="group flex flex-col items-end p-5 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all text-right cursor-pointer"
+                        className="group flex flex-col items-end p-5 rounded-xl bg-white hover:bg-[#131f38] border border-slate-200 hover:border-bumn-blue/50 transition-all text-right cursor-pointer"
                       >
-                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-blue-400 mb-2">
+                        <span className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-500 group-hover:text-blue-400 mb-2">
                           Artikel Selanjutnya
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                         </span>
-                        <span className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2">
+                        <span className="text-sm font-semibold text-slate-900 group-hover:text-bumn-gold transition-colors line-clamp-2">
                           {nextPost.title}
                         </span>
                       </button>
                     ) : (
-                      <div className="p-5 rounded-xl bg-slate-900/30 border border-slate-800/40 text-right opacity-40">
+                      <div className="p-5 rounded-xl bg-slate-100/30 border border-slate-200/40 text-right opacity-40">
                         <span className="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-1">
                           Akhir Katalog Artikel
                         </span>
-                        <span className="text-xs text-slate-400">Ini adalah artikel penutup dalam katalog</span>
+                        <span className="text-xs text-slate-500">Ini adalah artikel penutup dalam katalog</span>
                       </div>
                     )}
                   </div>
 
                   {/* Related Cluster Articles Cards */}
                   {relatedClusterPosts.length > 0 && (
-                    <div className="p-6 sm:p-7 rounded-2xl bg-[#0d1627] border border-slate-800 text-left">
+                    <div className="p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200 text-left">
                       <div className="flex items-center justify-between mb-5">
                         <div className="flex items-center gap-2 text-xs font-semibold text-bumn-gold uppercase tracking-wider">
                           <BookOpen className="w-4 h-4 text-bumn-gold" />
@@ -656,7 +656,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                         </div>
                         <button
                           onClick={() => onNavigate("/blog")}
-                          className="text-xs text-blue-400 hover:text-white transition-colors cursor-pointer"
+                          className="text-xs text-blue-400 hover:text-slate-900 transition-colors cursor-pointer"
                         >
                           Lihat Semua Artikel
                         </button>
@@ -667,21 +667,21 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                           <div
                             key={related.slug}
                             onClick={() => onNavigate(`/blog/${related.slug}`)}
-                            className="group p-4 rounded-xl bg-[#0f172a] hover:bg-[#131f38] border border-slate-800 hover:border-bumn-blue/50 transition-all cursor-pointer flex flex-col justify-between"
+                            className="group p-4 rounded-xl bg-white hover:bg-[#131f38] border border-slate-200 hover:border-bumn-blue/50 transition-all cursor-pointer flex flex-col justify-between"
                           >
                             <div>
-                              <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                              <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2">
                                 <span className="text-blue-400 font-medium">{related.category}</span>
                                 <span>{related.readTime}</span>
                               </div>
-                              <h4 className="text-sm font-semibold text-white group-hover:text-bumn-gold transition-colors line-clamp-2 mb-2">
+                              <h4 className="text-sm font-semibold text-slate-900 group-hover:text-bumn-gold transition-colors line-clamp-2 mb-2">
                                 {related.title}
                               </h4>
-                              <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                              <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
                                 {related.excerpt}
                               </p>
                             </div>
-                            <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 group-hover:text-blue-300">
+                            <div className="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500 group-hover:text-blue-300">
                               <span>Baca Pembahasan Lengkap</span>
                               <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>
@@ -700,27 +700,27 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
               if (!faqs || faqs.length === 0) return null;
 
               return (
-                <section className="my-12 p-6 sm:p-8 rounded-2xl bg-[#0f172a] border border-slate-800">
+                <section className="my-12 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200">
                   <div className="flex items-center gap-2 text-xs font-semibold text-bumn-gold uppercase tracking-wider mb-2">
                     <HelpCircle className="w-4 h-4 text-bumn-gold" />
                     Tanya Jawab Regulasi &amp; Kepatuhan
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-6">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-6">
                     Pertanyaan yang Sering Diajukan Seputar Topik Ini
                   </h3>
                   <div className="space-y-4">
                     {faqs.map((faq, idx) => (
                       <details
                         key={idx}
-                        className="group bg-slate-900/80 border border-slate-800 rounded-xl p-4 sm:p-5 transition-all duration-200 open:border-bumn-blue/50 open:bg-slate-900"
+                        className="group bg-slate-100/80 border border-slate-200 rounded-xl p-4 sm:p-5 transition-all duration-200 open:border-bumn-blue/50 open:bg-slate-100"
                       >
-                        <summary className="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4 text-sm sm:text-base">
+                        <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-center justify-between gap-4 text-sm sm:text-base">
                           <span>{faq.question}</span>
-                          <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0">
+                          <span className="text-slate-500 group-open:rotate-180 transition-transform text-lg shrink-0">
                             ▾
                           </span>
                         </summary>
-                        <p className="mt-3.5 text-sm sm:text-base text-slate-300 leading-relaxed pt-3 border-t border-slate-800/80">
+                        <p className="mt-3.5 text-sm sm:text-base text-slate-600 leading-relaxed pt-3 border-t border-slate-200/80">
                           {faq.answer}
                         </p>
                       </details>
@@ -738,16 +738,16 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                     <ShieldCheck className="w-4 h-4" />
                     Konsultasi Ahli Daya Solusi Integra
                   </div>
-                  <h3 className="text-xl font-bold font-display text-white">
+                  <h3 className="text-xl font-bold font-display text-slate-900">
                     Ingin Memperkuat Sistem GRC & ICOFR di Perusahaan Anda?
                   </h3>
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-slate-600">
                     Tim konsultan berpengalaman kami siap memberikan pendampingan penyesuaian regulasi BUMN, audit risiko, dan implementasi ISO 31000.
                   </p>
                 </div>
                 <button
                   onClick={() => onNavigate("/#contact")}
-                  className="px-6 py-3 bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold text-sm rounded-xl transition-all shadow-lg hover:shadow-blue-500/20 shrink-0 cursor-pointer flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-bumn-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 text-slate-900 font-semibold text-sm rounded-xl transition-all shadow-lg hover:shadow-blue-500/20 shrink-0 cursor-pointer flex items-center gap-2"
                 >
                   <span>Diskusi dengan Tim Konsultan</span>
                   <ArrowRight className="w-4 h-4" />
@@ -763,7 +763,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                   <button
                     type="button"
                     onClick={() => setIsMobileTocOpen(true)}
-                    className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/95 hover:bg-slate-800 text-white border border-slate-700/80 shadow-2xl backdrop-blur-md transition-all active:scale-95 cursor-pointer group"
+                    className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-100/95 hover:bg-slate-800 text-slate-900 border border-slate-700/80 shadow-2xl backdrop-blur-md transition-all active:scale-95 cursor-pointer group"
                     aria-label="Buka Daftar Isi Artikel"
                   >
                     <ListOrdered className="w-4 h-4 text-bumn-gold shrink-0 group-hover:scale-110 transition-transform" />
@@ -777,7 +777,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                   <div className="lg:hidden fixed inset-0 z-50 flex flex-col justify-end">
                     {/* Backdrop click to dismiss */}
                     <div
-                      className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity"
+                      className="fixed inset-0 bg-slate-100/80 backdrop-blur-sm transition-opacity"
                       onClick={() => setIsMobileTocOpen(false)}
                       aria-hidden="true"
                     />
@@ -787,9 +787,9 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       role="dialog"
                       aria-modal="true"
                       aria-labelledby="mobile-toc-heading"
-                      className="relative z-10 w-full max-h-[75vh] bg-[#0f172a] border-t border-slate-800 rounded-t-2xl p-6 shadow-2xl overflow-y-auto animate-in slide-in-from-bottom duration-200"
+                      className="relative z-10 w-full max-h-[75vh] bg-white border-t border-slate-200 rounded-t-2xl p-6 shadow-2xl overflow-y-auto animate-in slide-in-from-bottom duration-200"
                     >
-                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
                         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold">
                           <BookOpen className="w-4 h-4 text-bumn-gold shrink-0" />
                           <span id="mobile-toc-heading">Daftar Isi Pembahasan</span>
@@ -797,7 +797,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                         <button
                           type="button"
                           onClick={() => setIsMobileTocOpen(false)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-800 transition-colors cursor-pointer"
                           aria-label="Tutup Daftar Isi"
                         >
                           <X className="w-5 h-5" />
@@ -821,8 +821,8 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                               }}
                               className={`w-full text-left flex items-start gap-3 py-2.5 px-3.5 rounded-xl text-xs transition-colors cursor-pointer ${
                                 isActive
-                                  ? "bg-bumn-blue/20 text-white font-semibold border-l-2 border-bumn-gold"
-                                  : "text-slate-300 hover:text-white hover:bg-slate-900/80"
+                                  ? "bg-bumn-blue/20 text-slate-900 font-semibold border-l-2 border-bumn-gold"
+                                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/80"
                               }`}
                             >
                               <span className="font-mono text-[10px] text-slate-500 mt-0.5 shrink-0">
@@ -835,7 +835,7 @@ export default function BlogArticle({ post: activePost, onNavigate }: BlogArticl
                       </nav>
 
                       {/* Regulatory Notice in Drawer */}
-                      <div className="pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center gap-2">
+                      <div className="pt-4 border-t border-slate-200/80 text-[11px] text-slate-500 flex items-center gap-2">
                         <Award className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
                         <span>Kepatuhan SK-5/DKU.MBU/11/2024 & COSO Framework</span>
                       </div>

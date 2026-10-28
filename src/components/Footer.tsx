@@ -22,11 +22,11 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-900 py-16 text-slate-400 relative">
+    <footer className="bg-[#0a1122] border-t border-slate-800 py-16 text-slate-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top footer row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-slate-900 pb-12" id="footer-top">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-slate-800/80 pb-12" id="footer-top">
           
           {/* Logo block */}
           <div className="md:col-span-5 space-y-4 text-left">
@@ -41,7 +41,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 className="h-20 w-auto object-contain brightness-0 invert transition-transform duration-300 hover:scale-105"
               />
             </button>
-            <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed max-w-sm">
               Konsultan TI dan manajemen risiko independen yang menyediakan solusi tata kelola TI, GRC (Governance, Risk, and Compliance), serta implementasi ICOFR untuk BUMN dan Sektor Perbankan.
             </p>
           </div>
@@ -92,32 +92,32 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
 
         {/* Bottom footer row */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600 text-left" id="footer-bottom">
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 text-left" id="footer-bottom">
           <div className="space-y-1">
             <p>© {new Date().getFullYear()} PT Daya Solusi Integra. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
-            <p className="font-light text-xs text-slate-700">
+            <p className="font-light text-xs text-slate-500">
               COSO®, COBIT®, ISO®, dan standar terkait adalah merek dagang dari masing-masing pemilik lisensi internasional.
             </p>
           </div>
-          <div className="flex flex-wrap gap-6 text-xs text-slate-500">
+          <div className="flex flex-wrap gap-6 text-xs text-slate-400">
             <a 
               href="/tentang-kami" 
               onClick={(e) => handleLinkClick(e, "/tentang-kami")}
-              className="hover:text-slate-300 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Tentang Kami
             </a>
             <a 
               href="/kebijakan-privasi" 
               onClick={(e) => handleLinkClick(e, "/kebijakan-privasi")}
-              className="hover:text-slate-300 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Kebijakan Privasi
             </a>
             <a 
               href="/pernyataan-independensi" 
               onClick={(e) => handleLinkClick(e, "/pernyataan-independensi")}
-              className="hover:text-slate-300 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Pernyataan Independensi
             </a>

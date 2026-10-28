@@ -28,17 +28,17 @@ export default function FaqSection({
   return (
     <section className="my-16 text-left" aria-labelledby="faq-section-title">
       <div className="space-y-3 mb-10 max-w-3xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-mono text-slate-600 uppercase tracking-wider">
           <HelpCircle className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
           <span>{badge}</span>
         </div>
         <h2
           id="faq-section-title"
-          className="text-2xl sm:text-3xl font-bold font-display text-white tracking-tight"
+          className="text-2xl sm:text-3xl font-bold font-display text-slate-900 tracking-tight"
         >
           {title}
         </h2>
-        <p className="text-sm sm:text-base text-slate-400 font-normal leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
           {subtitle}
         </p>
       </div>
@@ -52,7 +52,7 @@ export default function FaqSection({
           return (
             <div
               key={index}
-              className="bg-slate-900/60 border border-slate-800 rounded-xl transition-colors duration-150 overflow-hidden"
+              className="bg-slate-50/60 border border-slate-200 rounded-xl transition-colors duration-150 overflow-hidden"
             >
               <button
                 type="button"
@@ -60,13 +60,13 @@ export default function FaqSection({
                 aria-expanded={isOpen}
                 aria-controls={controlId}
                 onClick={() => toggleItem(index)}
-                className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-slate-900/90 transition-colors focus:outline-none focus:ring-1 focus:ring-bumn-blue/50"
+                className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-slate-50/90 transition-colors focus:outline-none focus:ring-1 focus:ring-bumn-blue/50"
               >
-                <span className="text-base sm:text-lg font-semibold text-white leading-snug">
+                <span className="text-base sm:text-lg font-semibold text-slate-900 leading-snug">
                   {item.question}
                 </span>
                 <span
-                  className={`mt-1 p-1 rounded-md text-slate-400 transition-transform duration-200 shrink-0 ${
+                  className={`mt-1 p-1 rounded-md text-slate-600 transition-transform duration-200 shrink-0 ${
                     isOpen ? "rotate-180 text-bumn-gold" : ""
                   }`}
                   aria-hidden="true"
@@ -80,7 +80,7 @@ export default function FaqSection({
                   id={controlId}
                   role="region"
                   aria-labelledby={buttonId}
-                  className="px-5 pb-6 sm:px-6 sm:pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4"
+                  className="px-5 pb-6 sm:px-6 sm:pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-200/80 pt-4"
                 >
                   <p>{item.answer}</p>
                 </div>

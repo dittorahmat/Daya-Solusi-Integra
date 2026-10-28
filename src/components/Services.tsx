@@ -30,21 +30,21 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-24 relative bg-[#080c15] border-t border-slate-900">
+    <section id="services" className="py-24 relative bg-[#f8fafc] border-t border-slate-200">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-left max-w-3xl mb-14 space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display [text-wrap:balance]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-display [text-wrap:balance]">
             Spesialisasi Teknis TI, GRC & <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip>
           </h2>
-          <p className="text-slate-300 font-normal leading-relaxed text-sm sm:text-base">
+          <p className="text-slate-600 font-normal leading-relaxed text-sm sm:text-base">
             Pendekatan berbasis bukti dan pengujian substantif untuk memenuhi standar audit negara dan regulator industri keuangan.
           </p>
         </div>
 
         {/* Executive Editorial Capability Ledger (All 4 Practices Visible & Clear) */}
-        <div className="border-t border-slate-800 divide-y divide-slate-800" id="services-ledger">
+        <div className="border-t border-slate-200 divide-y divide-slate-200" id="services-ledger">
           {servicesList.map((service, index) => {
             const meta = serviceFrameworks[service.id] || serviceFrameworks["icofr"];
             const subpageLinks: Record<string, { label: string; href: string }> = {
@@ -59,7 +59,7 @@ export default function Services() {
               <div 
                 key={service.id} 
                 id={`service-practice-${service.id}`}
-                className="py-10 grid lg:grid-cols-12 gap-8 items-start hover:bg-slate-900/20 transition-colors rounded-xl px-2 sm:px-4"
+                className="py-10 grid lg:grid-cols-12 gap-8 items-start hover:bg-white/80 bg-white/40 border border-transparent hover:border-slate-200 shadow-2xs transition-colors rounded-xl px-2 sm:px-4"
               >
                 {/* Column 1: Index & Title */}
                 <div className="lg:col-span-4 space-y-3 text-left">
@@ -67,15 +67,15 @@ export default function Services() {
                     <span className="font-mono text-xs font-bold text-bumn-gold">
                       0{index + 1}.
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-wider text-slate-400">
+                    <span className="font-mono text-xs uppercase tracking-wider text-slate-600">
                       Praktik Spesialisasi
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                     {service.title}
                   </h3>
                   <div className="pt-1">
-                    <span className="inline-block text-[11px] font-mono text-blue-400 bg-blue-950/50 border border-blue-800/40 px-2.5 py-1 rounded">
+                    <span className="inline-block text-[11px] font-mono text-[#0b4596] bg-blue-50 border border-blue-200 px-2.5 py-1 rounded">
                       {meta.framework}
                     </span>
                   </div>
@@ -99,7 +99,7 @@ export default function Services() {
                 {/* Column 3: Regulation, Deliverable & Silo Link */}
                 <div className="lg:col-span-3 space-y-4 text-left bg-slate-950/60 border border-slate-800/80 rounded-xl p-4">
                   <div>
-                    <span className="text-[11px] font-mono text-slate-400 uppercase block">
+                    <span className="text-[11px] font-mono text-slate-600 uppercase block">
                       Rujukan Regulasi
                     </span>
                     <span className="text-xs font-medium text-slate-200 mt-0.5 block">
@@ -108,7 +108,7 @@ export default function Services() {
                   </div>
 
                   <div className="pt-2 border-t border-slate-800/80">
-                    <span className="text-[11px] font-mono text-slate-400 uppercase block">
+                    <span className="text-[11px] font-mono text-slate-600 uppercase block">
                       Keluaran Resmi
                     </span>
                     <span className="text-xs font-medium text-slate-300 mt-0.5 block leading-relaxed">
@@ -137,10 +137,10 @@ export default function Services() {
         {/* Global Consultation Pathway */}
         <div className="mt-14 p-6 sm:p-8 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-left">
           <div className="space-y-1 max-w-2xl">
-            <h4 className="text-base font-semibold text-white tracking-tight">
+            <h4 className="text-base font-semibold text-slate-900 tracking-tight">
               Butuh telaah awal terhadap kesiapan kepatuhan entitas Anda?
             </h4>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Tim penasihat DSI siap melakukan evaluasi awal berbasis ketentuan Kementerian BUMN, BPK, dan OJK.
             </p>
           </div>

@@ -36,13 +36,13 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[100dvh] pt-32 pb-20 flex items-center bg-[#080c15] border-b border-slate-900"
+      className="relative min-h-[92dvh] pt-32 pb-20 flex items-center bg-[#ffffff] border-b border-slate-200"
     >
       {/* Subtle technical background grid */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03]" 
+        className="absolute inset-0 pointer-events-none opacity-[0.02]" 
         style={{
-          backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)",
           backgroundSize: "48px 48px"
         }}
       />
@@ -54,13 +54,13 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
           <div className="lg:col-span-7 space-y-8 text-left" id="hero-text-content">
             
             {/* Regulatory Scope Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-slate-900/90 border border-slate-800 text-slate-300 text-xs font-mono tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono tracking-wider uppercase">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
               <span>Praktik Independen Konsultasi TI & GRC Korporasi</span>
             </div>
 
             {/* Main Heading - Clean editorial authority */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.12] font-display">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-slate-900 leading-[1.12] font-display">
               Menyelaraskan Tata Kelola TI &{" "}
               <span className="text-bumn-gold">
                 Pengendalian Internal
@@ -69,7 +69,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             </h1>
 
             {/* Clear, natural, professional description without excessive bolding */}
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-[1.8] max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-600 font-normal leading-[1.8] max-w-2xl">
               Daya Solusi Integra mendampingi BUMN dan institusi jasa keuangan mengamankan infrastruktur TI, merancang kerangka <GlossaryTooltip acronym="ICOFR">ICOFR</GlossaryTooltip> berbasis standar COSO, serta memitigasi risiko kepatuhan untuk memastikan akuntabilitas operasional dan kesiapan audit menyeluruh.
             </p>
 
@@ -87,27 +87,27 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-secondary-cta"
                 onClick={onOpenAdvisor}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/90 hover:bg-slate-800 active:scale-[0.98] border border-slate-800 rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] border border-slate-200 rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
               >
                 <MessageSquare className="w-4 h-4 text-bumn-gold" />
                 <span>Konsultasi AI DSI</span>
-                <kbd className="font-mono text-[11px] bg-slate-950 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800 ml-1">Ctrl+/</kbd>
+                <kbd className="font-mono text-[11px] bg-white text-slate-600 px-1.5 py-0.5 rounded border border-slate-300 ml-1">Ctrl+/</kbd>
               </button>
             </div>
 
             {/* Authority Reference Matrix */}
-            <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-slate-400 text-xs sm:text-sm" id="hero-badges">
-              <div className="flex items-center gap-2 text-slate-300">
+            <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center gap-6 text-slate-600 text-xs sm:text-sm" id="hero-badges">
+              <div className="flex items-center gap-2 text-slate-700">
                 <Milestone className="w-4 h-4 text-blue-400 shrink-0" />
                 <span>Pedoman GCG Kementerian BUMN</span>
               </div>
-              <div className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="w-1 h-1 bg-slate-300 rounded-full hidden sm:block" />
+              <div className="flex items-center gap-2 text-slate-700">
                 <Landmark className="w-4 h-4 text-bumn-gold shrink-0" />
                 <span>Ketentuan <GlossaryTooltip acronym="OJK">POJK & SEOJK</GlossaryTooltip> Banking</span>
               </div>
-              <div className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="w-1 h-1 bg-slate-300 rounded-full hidden sm:block" />
+              <div className="flex items-center gap-2 text-slate-700">
                 <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
                 <span>Standar <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> & COBIT</span>
               </div>
@@ -116,36 +116,36 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
 
           {/* Clean Executive Governance Ledger */}
           <div className="lg:col-span-5" id="hero-visual-frame">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-7 text-left shadow-lg">
+            <div className="bg-white border border-slate-200 rounded-2xl p-7 text-left shadow-md">
               
               {/* Dossier Header */}
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
                 <div>
-                  <span className="text-[11px] font-mono tracking-wider text-slate-400 uppercase block">
+                  <span className="text-[11px] font-mono tracking-wider text-slate-500 uppercase block">
                     Matriks Pengawalan Tata Kelola
                   </span>
-                  <h3 className="text-base font-semibold text-white tracking-tight mt-0.5">
+                  <h3 className="text-base font-semibold text-slate-900 tracking-tight mt-0.5">
                     3 Pilar Strategis Terintegrasi
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-bumn-gold bg-slate-950 px-2.5 py-1 rounded border border-slate-800">
+                <span className="text-[11px] font-mono text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
                   Resmi Terverifikasi
                 </span>
               </div>
 
               {/* Three Clean Editorial Rows */}
-              <div className="divide-y divide-slate-800/80">
+              <div className="divide-y divide-slate-100">
                 {pillars.map((pillar, idx) => (
                   <div key={idx} className="py-4 first:pt-0 last:pb-0 space-y-1.5">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono font-bold text-blue-400">
+                      <span className="text-xs font-mono font-bold text-[#0b4596]">
                         {pillar.code} : {pillar.title}
                       </span>
-                      <span className="text-[11px] font-mono text-slate-400 bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800/70">
+                      <span className="text-[11px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                         {pillar.standard}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       {pillar.focus}
                     </p>
                   </div>
@@ -153,8 +153,8 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               </div>
 
               {/* Substantive Bottom Meta */}
-              <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-mono">
-                <span className="flex items-center gap-1.5 text-slate-300">
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
+                <span className="flex items-center gap-1.5 text-slate-700">
                   <Lock className="w-3.5 h-3.5 text-slate-400" />
                   Sesuai SK-5 Kementerian BUMN
                 </span>

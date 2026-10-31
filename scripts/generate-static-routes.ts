@@ -22,12 +22,12 @@ GLOSSARY_ITEMS.forEach((item) => {
   const routeKey = `/glosarium/${item.id}`;
   const termTitle = item.acronym ? `${item.term} (${item.acronym})` : item.term;
   allRoutes[routeKey] = {
-    title: `${termTitle}: Definisi & Kepatuhan Regulasi SK-5 BUMN | Daya Solusi Integra`,
-    description: `${item.definition} Pelajari amanat regulasi ${item.regulationRef} dan solusi kepatuhan pengendalian internal BUMN.`,
+    title: item.metaTitle || `${termTitle}: Definisi & Kepatuhan Regulasi SK-5 BUMN | Daya Solusi Integra`,
+    description: item.metaDescription || `${item.definition} Pelajari amanat regulasi ${item.regulationRef} dan solusi kepatuhan pengendalian internal BUMN.`,
     canonical: `https://dsintegra.co.id/glosarium/${item.id}`,
     image: "https://dsintegra.co.id/og-image.jpg",
-    ogTitle: `${termTitle} - Glosarium Kepatuhan ICOFR BUMN`,
-    ogDescription: item.definition
+    ogTitle: item.metaTitle || `${termTitle} - Glosarium Kepatuhan ICOFR BUMN`,
+    ogDescription: item.metaDescription || item.definition
   };
 });
 

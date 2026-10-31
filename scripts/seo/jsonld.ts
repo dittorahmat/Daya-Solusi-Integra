@@ -402,10 +402,30 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
         "@type": "DefinedTerm",
         "@id": `${meta.canonical}#term`,
         "name": item.acronym ? `${item.term} (${item.acronym})` : item.term,
-        "description": item.definition,
-        "inDefinedTermSet": "https://dsintegra.co.id/glosarium",
+        "alternateName": item.acronym || undefined,
+        "description": item.directAnswer || item.definition,
+        "inDefinedTermSet": {
+          "@type": "DefinedTermSet",
+          "name": "Kamus Kepatuhan ICOFR BUMN & Tata Kelola Korporasi",
+          "url": "https://dsintegra.co.id/glosarium"
+        },
         "url": meta.canonical
       });
+
+      if (item.faqList && item.faqList.length > 0) {
+        graphs.push({
+          "@type": "FAQPage",
+          "@id": `${meta.canonical}#faq`,
+          "mainEntity": item.faqList.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        });
+      }
     }
   } else if (routePath === "/regulasi") {
     REGULATION_ITEMS.forEach((reg) => {

@@ -170,13 +170,19 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
         "url": meta.canonical,
         "image": meta.image || articleMeta.coverImage || "https://dsintegra.co.id/og-image.jpg",
         "author": {
-          "@type": "Organization",
-          "name": "Daya Solusi Integra",
-          "url": "https://dsintegra.co.id/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://dsintegra.co.id/og-image.jpg"
-          }
+          "@type": "Person",
+          "name": "Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA",
+          "jobTitle": "Principal Partner & Senior GRC Advisor",
+          "url": "https://dsintegra.co.id/penulis/humbul-kristiawan",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Daya Solusi Integra",
+            "url": "https://dsintegra.co.id/"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/humbul-kristiawan-b0621360/",
+            "https://humbulkristiawan.com/"
+          ]
         },
         "publisher": {
           "@type": "Organization",

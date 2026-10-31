@@ -66,6 +66,11 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
    - Jalankan `npm run lint` (`tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts`) dan pastikan **lulus tanpa error (Exit Code 0)**. Skrip otomatis memblokir token terlarang (`Sparkles`, `animate-pulse`, `—`, `–`, `backdrop-blur`, `hover:bg-slate-800`, `hover:text-white`) serta memvalidasi integritas pendaftaran artikel dan metadata gambar di sitemap.
    - Jalankan `npm run build` dan pastikan **bundler berhasil (Exit Code 0)**.
 
+5. **Mandat Structured Data & Paritas SSR/Client (Anti-Drift):**
+   - **Paritas Skema Glosarium & FAQ**: Setiap penambahan structured data `FAQPage` atau `DefinedTerm` pada SSG prerender (`scripts/seo/jsonld.ts`) WAJIB memiliki implementasi yang ekuivalen pada runtime SPA client (`GlossaryDetailPage.tsx`), begitu pun sebaliknya, untuk mencegah inkonsistensi hidrasi.
+   - **Integritas Penulis & E-E-A-T Artikel Blog**: Skema `Article` pada blog wajib menyertakan entity `author` bertipe `Person` dengan nama pakar resmi (`Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA`), `jobTitle`, dan tautan profil `https://dsintegra.co.id/penulis/humbul-kristiawan`. Dilarang menurunkan derajat `author` artikel menjadi `Organization` generik tanpa profil penanggung jawab asersi.
+   - **Scope Discipline**: Perubahan yang didelegasikan dari sebuah tiket atau spec wajib dibatasi secara ketat pada cakupan tugas. Dilarang menambah artikel blog baru atau mengubah skema lintas modul kecuali jika secara eksplisit diminta dalam spec tiket.
+
 ## Mandat Wajib Konten Artikel / Blog (Image Relevan & Optimasi SEO)
 Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntingan artikel/blog** di repositori ini (`src/content/blog/*.md`) **WAJIB** mematuhi ketentuan editorial, visual, dan teknis SEO berikut:
 1. **Wajib Gambar Relevan & Berkualitas Tinggi (`coverImage`):**

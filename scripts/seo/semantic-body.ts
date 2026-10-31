@@ -64,7 +64,7 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
       <article itemscope itemtype="https://schema.org/Article">
         <header>
           <p>Kategori: <span itemprop="articleSection">${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</span></p>
-          <p>Penulis: <span itemprop="author">${cleanProhibitedDashes(data.author || "Daya Solusi Integra")}</span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time>${updatedBadge}</p>
+          <p>Penulis: <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">${cleanProhibitedDashes(data.author || "Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA")}</span></span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time>${updatedBadge}</p>
         </header>
         <section class="article-lead" itemprop="abstract">
           <p><strong>Ringkasan Eksekutif &amp; Jawaban Kunci:</strong> ${cleanProhibitedDashes(data.excerpt || pageDesc)}</p>

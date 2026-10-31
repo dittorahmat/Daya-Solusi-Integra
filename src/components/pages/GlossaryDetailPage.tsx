@@ -30,7 +30,7 @@ export default function GlossaryDetailPage({ slug, onNavigate, onOpenAdvisor }: 
       <div className="w-full bg-[#ffffff] min-h-screen text-slate-900 py-20">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
           <BookOpen className="w-12 h-12 text-slate-600 mx-auto" />
-          <h1 className="text-2xl font-bold text-white">Istilah Glosarium Tidak Ditemukan</h1>
+          <h1 className="text-2xl font-bold text-slate-900">Istilah Glosarium Tidak Ditemukan</h1>
           <p className="text-sm text-slate-600">
             Istilah dengan pengenal "{slug}" tidak ditemukan dalam direktori kamus kepatuhan ICOFR kami.
           </p>

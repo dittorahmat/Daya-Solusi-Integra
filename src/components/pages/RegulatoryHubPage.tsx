@@ -9,7 +9,12 @@ import {
   BookOpen,
   Calendar,
   CheckCircle2,
-  HelpCircle
+  HelpCircle,
+  FileSpreadsheet,
+  Download,
+  Server,
+  Layers,
+  ArrowRight
 } from "lucide-react";
 import { 
   REGULATION_ITEMS, 
@@ -65,18 +70,81 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
         </div>
 
         {/* Editorial Header Section */}
-        <div className="max-w-4xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-950/60 border border-blue-800/60 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <div className="max-w-4xl mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-50 border border-blue-200 text-bumn-blue text-xs font-semibold uppercase tracking-wider mb-4">
             <Scale className="w-3.5 h-3.5" />
-            Repositori Hukum & Kepatuhan Audit
+            Repositori Hukum &amp; Kepatuhan Audit
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
-            Pusat Regulasi Pengendalian Internal & Tata Kelola BUMN
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
+            Pusat Regulasi Pengendalian Internal &amp; Tata Kelola BUMN
           </h1>
           <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
             Kompilasi direktori regulasi resmi Kementerian BUMN, OJK, dan standar pengawasan eksternal BPK RI yang mengatur kewajiban pengendalian internal pelaporan keuangan (ICOFR), pembagian peran Tiga Lini, serta tata kelola korporasi terintegrasi.
           </p>
         </div>
+
+        {/* Callout Resmi SK-5/DKU.MBU/11/2024 & Toolkit Kepatuhan (Pillar Intent: sk 5 bumn, sk-5 bumn icofr pdf, itac) */}
+        <section aria-label="Navigasi Resmi SK-5 dan Toolkit Kepatuhan" className="mb-12">
+          <div className="bg-gradient-to-r from-blue-50/80 via-white to-amber-50/40 border border-blue-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div className="max-w-3xl space-y-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-100 text-bumn-blue font-mono text-xs font-bold border border-blue-200">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    Mandatori SK-5/DKU.MBU/11/2024
+                  </span>
+                  <span className="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-semibold border border-amber-200">
+                    Tabel 22 &amp; Pengujian ITAC
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  Matriks Kepatuhan SK-5 BUMN, Kertas Kerja TOE &amp; Panduan ITAC
+                </h2>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Menghadapi batas waktu asersi direksi tahunan: manfaatkan toolkit kertas kerja resmi (format RCM, checklist ELC 17 prinsip COSO, dan kaidah sampel pengujian manual Tabel 22 serta kontrol otomatis ITAC berbasis Test of One).
+                </p>
+                <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-slate-600 font-medium pt-1">
+                  <span className="flex items-center gap-1 text-slate-700 font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Zero Tolerable Deviation (Tabel 22)
+                  </span>
+                  <span className="flex items-center gap-1 text-slate-700 font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    IT Application Controls (ITAC ERP)
+                  </span>
+                  <span className="flex items-center gap-1 text-slate-700 font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Rujukan Surat Keputusan Resmi BUMN
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+                <button
+                  onClick={() => onNavigate("/toolkit-regulasi")}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-bumn-blue hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+                >
+                  <FileSpreadsheet className="w-4 h-4 text-amber-300" />
+                  <span>Buka Toolkit &amp; Kertas Kerja SK-5</span>
+                </button>
+                <button
+                  onClick={() => onNavigate("/layanan/icofr-bumn")}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  <Layers className="w-4 h-4 text-bumn-blue" />
+                  <span>Konsultasi Implementasi ICOFR</span>
+                </button>
+                <button
+                  onClick={() => onNavigate("/platform/grc-integra")}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  <Server className="w-4 h-4 text-amber-600" />
+                  <span>Platform GRC Integra Kepatuhan SK-5</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Search & Category Filter Controls */}
         <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 mb-12 shadow-sm">
@@ -114,14 +182,14 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
 
         {/* Cross-Regulatory Comparison Matrix Section (Featured Snippets & Direct Answers) */}
         <section id="matriks-komparasi" className="mb-16 scroll-mt-24">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-200">
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-2">
                   <ShieldCheck className="w-4 h-4 text-bumn-gold" />
                   <span>Matriks Komparasi Kepatuhan Lintas Regulator</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                   Perbandingan Mandat Regulasi Pengendalian Internal: BUMN vs OJK vs BPK RI
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-700 mt-1 max-w-3xl leading-relaxed">
@@ -137,7 +205,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                     onClick={() => setMatrixFilter(f)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border cursor-pointer ${
                       matrixFilter === f
-                        ? "bg-bumn-blue/30 border-blue-500 text-blue-300"
+                        ? "bg-bumn-blue text-white border-bumn-blue"
                         : "bg-[#ffffff] border-slate-200 text-slate-600 hover:text-slate-800"
                     }`}
                   >
@@ -151,8 +219,8 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
             <div className="overflow-x-auto pb-4">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-[#ffffff]/80 text-slate-700 font-mono uppercase text-[11px] tracking-wider">
-                    <th className="py-3.5 px-4 font-bold text-white min-w-[140px]">Regulasi</th>
+                  <tr className="border-b border-slate-200 bg-slate-50 text-slate-700 font-mono uppercase text-[11px] tracking-wider">
+                    <th className="py-3.5 px-4 font-bold text-slate-900 min-w-[140px]">Regulasi</th>
                     <th className="py-3.5 px-4 font-bold min-w-[130px]">Penerbit</th>
                     <th className="py-3.5 px-4 font-bold min-w-[170px]">Subjek Entitas</th>
                     <th className="py-3.5 px-4 font-bold min-w-[160px]">Kerangka Acuan</th>
@@ -162,13 +230,13 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                     <th className="py-3.5 px-4 font-bold min-w-[140px] text-right">Solusi Platform</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-slate-100">
                   {filteredMatrix.map((row) => (
                     <tr key={row.id} className="hover:bg-slate-50 transition-colors">
                       <td className="py-4 px-4 align-top">
-                        <span className="font-bold text-white block">{row.shortCode}</span>
+                        <span className="font-bold text-slate-900 block">{row.shortCode}</span>
                         <span className="text-[11px] font-mono text-slate-600 block mt-0.5">{row.regulationTitle}</span>
-                        <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/80 text-blue-300 border border-blue-900/60">
+                        <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono bg-blue-50 text-bumn-blue border border-blue-200 font-medium">
                           {row.categoryTag}
                         </span>
                       </td>
@@ -195,7 +263,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                       <td className="py-4 px-4 align-top text-right">
                         <button
                           onClick={() => onNavigate(row.recommendedSolutionUrl)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900 border border-blue-800/80 text-blue-300 hover:text-white text-xs font-semibold transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 border border-blue-200 text-bumn-blue hover:text-blue-700 text-xs font-semibold transition-colors cursor-pointer"
                         >
                           <span>{row.recommendedSolutionLabel}</span>
                           <ArrowUpRight className="w-3 h-3 shrink-0" />
@@ -253,7 +321,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                         {reg.category}
                       </span>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight pt-1">
+                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight pt-1">
                       {reg.shortTitle}
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-mono">
@@ -342,7 +410,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                           <span className="text-xs font-mono font-semibold text-blue-400 block mb-1">
                             {article.article}
                           </span>
-                          <h4 className="text-sm font-bold text-white mb-2">{article.title}</h4>
+                          <h4 className="text-sm font-bold text-slate-900 mb-2">{article.title}</h4>
                           <p className="text-xs text-slate-700 leading-relaxed mb-3">
                             {article.summary}
                           </p>
@@ -378,7 +446,7 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                       <button
                         key={idx}
                         onClick={() => onNavigate(sol.url)}
-                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffffff] border border-slate-200 hover:border-blue-600 text-xs font-semibold text-blue-400 hover:text-white transition-colors"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffffff] border border-slate-200 hover:border-bumn-blue text-xs font-semibold text-bumn-blue hover:text-blue-800 transition-colors"
                       >
                         {sol.label}
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -393,25 +461,35 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
         </div>
 
         {/* Bottom Banner Navigation */}
-        <div className="mt-16 p-8 rounded-xl bg-gradient-to-r from-blue-950/40 to-[#0f172a] border border-blue-900/40 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div>
-            <h3 className="text-xl font-bold text-white mb-2">Ingin Menguji Kesiapan BUMN Anda Terhadap SK-5/2024?</h3>
-            <p className="text-sm text-slate-700 max-w-2xl leading-relaxed">
-              Manfaatkan asesmen mandiri interaktif kami atau diskusikan kebutuhan penyusunan Risk and Control Matrix (RCM) bersama konsultan senior Daya Solusi Integra.
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-bumn-gold font-bold mb-2">
+              <ShieldCheck className="w-4 h-4 text-bumn-gold" />
+              <span>Kesiapan Audit Regulasi BUMN</span>
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Ingin Menguji Kesiapan BUMN Anda Terhadap SK-5/2024?</h3>
+            <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
+              Diskusikan kebutuhan penyusunan Risk and Control Matrix (RCM), pengujian kontrol otomatis ITAC, atau lakukan asesmen mandiri interaktif bersama konsultan senior Daya Solusi Integra.
             </p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
-              onClick={() => onNavigate("/asesmen-maturitas")}
-              className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
+              onClick={() => onNavigate("/layanan/icofr-bumn")}
+              className="px-5 py-2.5 rounded-lg bg-bumn-blue hover:bg-blue-700 text-white text-xs font-semibold transition-colors cursor-pointer"
             >
-              Mulai Asesmen Maturitas
+              Layanan Konsultasi ICOFR
             </button>
             <button
-              onClick={() => onNavigate("/glosarium")}
-              className="px-5 py-2.5 rounded-lg bg-[#ffffff] border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold transition-colors"
+              onClick={() => onNavigate("/platform/grc-integra")}
+              className="px-5 py-2.5 rounded-lg bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-xs font-semibold transition-colors cursor-pointer"
             >
-              Buka Glosarium Istilah
+              Demo Software GRC Integra
+            </button>
+            <button
+              onClick={() => onNavigate("/asesmen-maturitas")}
+              className="px-5 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
+            >
+              Asesmen Mandiri
             </button>
           </div>
         </div>

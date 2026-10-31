@@ -8,7 +8,8 @@
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && tsx scripts/generate-static-routes.ts",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts",
+    "lint": "tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts && tsx scripts/lint-schema.ts",
+    "lint:schema": "tsx scripts/lint-schema.ts",
     "lint:sitemap": "tsx scripts/lint-sitemap.ts",
     "seo:freshness": "tsx scripts/seo/freshness.ts",
     "lint:taste": "tsx scripts/lint-taste.ts"

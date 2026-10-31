@@ -4,6 +4,7 @@
 Repositori ini adalah Single Page Application (SPA) berbasis **Vite + React + Tailwind CSS** (bukan Next.js App Router).
 - **Halaman & Rute Aplikasi**: [`src/components/pages/`](file:///C:/backup/Daya-Solusi-Integra/src/components/pages/) (semua halaman pilar, kalkulator, dan katalog dimuat di sini).
 - **Glosarium & Defined Terms**: [`src/data/glossaryData.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/glossaryData.ts) (sumber data tunggal definisi, komparasi, FAQ, dan commercial bridges).
+- **Metadata & SEO Schema Engine**: [`scripts/seo/jsonld.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/jsonld.ts) dan [`scripts/seo/semantic-body.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/semantic-body.ts).
 - **Artikel Blog & Riset**: [`src/content/blog/*.md`](file:///C:/backup/Daya-Solusi-Integra/src/content/blog/) (koleksi file markdown frontmatter).
 - **Sitemap Resmi**: [`public/sitemap.xml`](file:///C:/backup/Daya-Solusi-Integra/public/sitemap.xml).
 
@@ -63,8 +64,8 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
 
 4. **Mandat Audit Pra-Penyelesaian (Pre-Flight Verification Checklist):**
    Sebelum menyatakan pekerjaan selesai dan sebelum melakukan commit:
-   - Jalankan `npm run lint` (`tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts`) dan pastikan **lulus tanpa error (Exit Code 0)**. Skrip otomatis memblokir token terlarang (`Sparkles`, `animate-pulse`, `—`, `–`, `backdrop-blur`, `hover:bg-slate-800`, `hover:text-white`) serta memvalidasi integritas pendaftaran artikel dan metadata gambar di sitemap.
-   - Jalankan `npm run build` dan pastikan **bundler berhasil (Exit Code 0)**.
+   - **Inner Loop (Iterasi Tiket Cepat):** Jalankan `npm run lint` (`tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts && tsx scripts/lint-schema.ts`) dan pastikan **lulus tanpa error (Exit Code 0)**. Skrip otomatis memblokir token terlarang, memvalidasi sitemap, serta mengunci integritas skema author E-E-A-T dan paritas FAQ glosarium.
+   - **Outer Loop (Finalisasi & Integrasi):** Jalankan `npm run build` sekali di tahap integrasi akhir untuk memverifikasi kesuksesan bundler dan 78+ snapshot HTML prerender SSG.
 
 5. **Mandat Structured Data & Paritas SSR/Client (Anti-Drift):**
    - **Paritas Skema Glosarium & FAQ**: Setiap penambahan structured data `FAQPage` atau `DefinedTerm` pada SSG prerender (`scripts/seo/jsonld.ts`) WAJIB memiliki implementasi yang ekuivalen pada runtime SPA client (`GlossaryDetailPage.tsx`), begitu pun sebaliknya, untuk mencegah inkonsistensi hidrasi.

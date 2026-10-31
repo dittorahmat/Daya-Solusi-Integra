@@ -90,6 +90,8 @@ Kewajiban regulasi SK-5 membawa konsekuensi langsung terhadap akuntabilitas korp
 
 ## Otomasi Pengelolaan Dokumen Regulasi Menggunakan GRC Integra
 
+Untuk memenuhi tuntutan kepatuhan 11 lampiran di atas secara efisien, implementasi [aplikasi ICOFR](/platform/grc-integra) menjadi kebutuhan mendesak. Pastikan sistem Anda dilengkapi 7 [fitur aplikasi ICOFR](/blog/fitur-kunci-aplikasi-icofr-bumn) utama yang telah disesuaikan dengan juknis kementerian.
+
 Menyusun dan mengelola 11 lampiran regulasi SK-5 secara manual melahirkan beban administrasi yang melelahkan bagi tim Manajemen Risiko dan Satuan Pengawasan Intern ([SPI BUMN](/glosarium/spi)).
 
 [Platform GRC Integra](/platform/grc-integra) dirancang khusus sebagai solusi perangkat lunak terintegrasi yang mengakomodasi seluruh persyaratan juknis SK-5:

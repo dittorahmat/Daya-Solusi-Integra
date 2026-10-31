@@ -1,5 +1,12 @@
 # Project Rules & Design Context
 
+## Arsitektur Repositori & Navigasi Cepat (Navigation Pointers)
+Repositori ini adalah Single Page Application (SPA) berbasis **Vite + React + Tailwind CSS** (bukan Next.js App Router).
+- **Halaman & Rute Aplikasi**: [`src/components/pages/`](file:///C:/backup/Daya-Solusi-Integra/src/components/pages/) (semua halaman pilar, kalkulator, dan katalog dimuat di sini).
+- **Glosarium & Defined Terms**: [`src/data/glossaryData.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/glossaryData.ts) (sumber data tunggal definisi, komparasi, FAQ, dan commercial bridges).
+- **Artikel Blog & Riset**: [`src/content/blog/*.md`](file:///C:/backup/Daya-Solusi-Integra/src/content/blog/) (koleksi file markdown frontmatter).
+- **Sitemap Resmi**: [`public/sitemap.xml`](file:///C:/backup/Daya-Solusi-Integra/public/sitemap.xml).
+
 ## Design Context
 
 This project has been set up with the Impeccable design system. Future development on this project must respect the following strategic and visual guidelines.
@@ -8,7 +15,7 @@ This project has been set up with the Impeccable design system. Future developme
 - **Strategic Principles:**
   1. **Professional Authority:** Build trust with Indonesian State-Owned Enterprises (BUMN) and financial institutions using solid, authoritative structures that convey governance and risk mitigation expertise.
   2. **Interactive Engagement:** Leverage the interactive self-assessment and AI advisor to offer real value first, leading naturally to conversion at the contact intake form.
-  3. **Restrained Modernity:** Embody a tech-forward dark interface through smooth animations and subtle ambient backlighting while avoiding standard SaaS "warm cream" templates or "hacker" neon tones.
+  3. **Restrained Modernity:** Embody a tech-forward high-contrast Light Corporate interface with clean, subtle borders and solid surfaces while avoiding standard SaaS "warm cream" templates or "hacker" neon tones.
 - **Visual Palette:**
   - Primary Accent: BUMN Blue (`#0b4596`)
   - Secondary Accent: BUMN Gold / Deep Amber (`#9a7318` / `#b8860b` / `#cca43b`)
@@ -19,6 +26,8 @@ This project has been set up with the Impeccable design system. Future developme
   - No sketchy, hand-drawn SVG illustrations or over-rounded card layouts.
   - Avoid cyberpunk/hacker themes with green or purple neon.
   - Follow **The 10% Accent Rule** (BUMN Gold/Amber must cover <= 10% of any viewport).
+  - Banned dark hover remnants: Dilarang menggunakan status hover gelap (`hover:bg-slate-800`, `hover:bg-slate-900`, `hover:text-white` di atas card/container putih) yang menimbulkan efek kontras hitam mendadak.
+  - Strict No Backdrop-Blur on Solid Components: Dilarang menggunakan `backdrop-blur` pada card, header bar, badge, atau overlay dialog; gunakan warna solid tegas (`bg-white`, `bg-slate-50`, `bg-slate-900/40`).
 
 ## Mandat Wajib Domain & Identitas Resmi (SEO & Brand)
 - **Domain Resmi Perusahaan:** `https://dsintegra.co.id` (Bukan `dayasolusiintegra.com` atau domain dummy lainnya).
@@ -54,8 +63,7 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
 
 4. **Mandat Audit Pra-Penyelesaian (Pre-Flight Verification Checklist):**
    Sebelum menyatakan pekerjaan selesai dan sebelum melakukan commit:
-   - Jalankan `Select-String -Path "src\**\*.tsx", "src\**\*.ts" -Pattern "Sparkles|animate-pulse|—|–"` dan pastikan **0 hasil**.
-   - Jalankan `npm run lint` (`tsc --noEmit`) dan pastikan **lulus tanpa error (Exit Code 0)**.
+   - Jalankan `npm run lint` (`tsc --noEmit && tsx scripts/lint-taste.ts && tsx scripts/lint-sitemap.ts`) dan pastikan **lulus tanpa error (Exit Code 0)**. Skrip otomatis memblokir token terlarang (`Sparkles`, `animate-pulse`, `—`, `–`, `backdrop-blur`, `hover:bg-slate-800`, `hover:text-white`) serta memvalidasi integritas pendaftaran artikel dan metadata gambar di sitemap.
    - Jalankan `npm run build` dan pastikan **bundler berhasil (Exit Code 0)**.
 
 ## Mandat Wajib Konten Artikel / Blog (Image Relevan & Optimasi SEO)
@@ -71,40 +79,9 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntin
    - **Internal Linking Otomatis:** Di bagian penutup artikel wajib disematkan tautan internal (*anchor text* bermakna) menuju halaman silo layanan (`/layanan/icofr-bumn`), platform produk (`/platform/grc-integra`), atau aset interaktif (`/asesmen-maturitas`).
 3. **Pendaftaran Wajib di Sitemap XML:**
    - Setiap artikel baru WAJIB langsung didaftarkan ke `public/sitemap.xml` dengan basis URL resmi `https://dsintegra.co.id/blog/<slug>`, `priority` minimal `0.9`, dan `changefreq` `weekly`.
+   - Node `<image:image>` di sitemap wajib menyertakan tag `<image:loc>` dan tag `<image:title>` yang sesuai dengan judul artikel guna memaksimalkan indexing Google Images.
 4. **Larangan Keras Gaya Bahasa Slop:**
    - Patuhi **Zero Em-Dash (`—` / `–`)**: Dilarang keras menggunakan tanda pisah em-dash atau en-dash di dalam berkas markdown artikel. Gunakan titik dua (`:`), tanda kurung, atau titik koma.
    - Gunakan terminologi regulasi resmi Kementerian BUMN (`SK-5/DKU.MBU/11/2024`, `COSO Framework`, `Lini 1`, `Lini 2`, `Test of Design`, `Test of Operating Effectiveness`, `SPKN`).
 
 For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) dan [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).
-
----
-
-# RTK - Rust Token Killer
-
-**Usage**: Token-optimized CLI proxy (60-90% savings on dev operations)
-
-## Meta Commands (always use rtk directly)
-
-```bash
-rtk gain              # Show token savings analytics
-rtk gain --history    # Show command usage history with savings
-rtk discover          # Analyze Claude Code history for missed opportunities
-rtk proxy <cmd>       # Execute raw command without filtering (for debugging)
-```
-
-## Installation Verification
-
-```bash
-rtk --version         # Should show: rtk X.Y.Z
-rtk gain              # Should work (not "command not found")
-which rtk             # Verify correct binary
-```
-
-⚠️ **Name collision**: If `rtk gain` fails, you may have reachingforthejack/rtk (Rust Type Kit) installed instead.
-
-## Hook-Based Usage
-
-All other commands are automatically rewritten by the Claude Code hook.
-Example: `git status` → `rtk git status` (transparent, 0 tokens overhead)
-
-Refer to CLAUDE.md for full command reference.

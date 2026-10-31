@@ -811,6 +811,17 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://dsintegra.co.id/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp</image:loc>
+      <image:title>Panduan Audit ITGC dan ITAC BUMN: Pengujian Pengendalian Umum dan Aplikasi ERP Sesuai SK-5</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dsintegra.co.id/blog/panduan-compensating-control-icofr-bumn</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://dsintegra.co.id/images/blog/u-photo-1451187580459-43490279c0fa-1200.webp</image:loc>
+      <image:title>Compensating Control Adalah: Panduan Mitigasi Defisiensi Kontrol dan Konflik SoD BUMN Sesuai SK-5</image:title>
     </image:image>
   </url>
 </urlset>

@@ -41,6 +41,7 @@ Hadirnya **Regulasi Kementerian BUMN Nomor SK-5/DKU.MBU/11/2024** menetapkan sta
 Adopsi [aplikasi ICOFR BUMN berbasis web](/platform/grc-integra) yang terintegrasi memberikan lompatan kapabilitas tata kelola bagi korporasi:
 
 ### 1. Peningkatan Efisiensi Pengujian Hingga 70 Persen
+Sebagai bagian penting dari [fitur aplikasi ICOFR](/blog/fitur-kunci-aplikasi-icofr-bumn) modern,
 Aplikasi mengotomatiskan alur kerja pengujian efektivitas rancangan (*Test of Design* / TOD) dan efektivitas operasi (*Test of Operating Effectiveness* / TOE). Pemilik kontrol di Lini 1 menerima notifikasi tenggat waktu pengujian secara terjadwal, mengisi asesmen mandiri, dan mengunggah dokumen bukti langsung ke sistem.
 
 ### 2. Eliminasi Kesalahan Manusia dalam Penentuan Sampel

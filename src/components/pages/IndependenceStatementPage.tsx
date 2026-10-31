@@ -177,7 +177,7 @@ export default function IndependenceStatementPage({ onNavigate }: IndependenceSt
           <div className="flex gap-4">
             <button
               onClick={() => onNavigate("/kebijakan-privasi")}
-              className="text-xs text-slate-600 hover:text-white transition-colors"
+              className="text-xs text-slate-600 hover:text-slate-900 transition-colors"
             >
               Baca Kebijakan Privasi & Tata Kelola Data →
             </button>

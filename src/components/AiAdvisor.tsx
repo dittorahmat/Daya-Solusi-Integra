@@ -209,7 +209,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
       {/* Backdrop overlay */}
       <div 
         onClick={onClose}
-        className="absolute inset-0 bg-[#02050c]/80 backdrop-blur-sm transition-opacity" 
+        className="absolute inset-0 bg-slate-900/40 transition-opacity" 
       />
 
       {/* Slide-over panel */}
@@ -228,7 +228,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               <ShieldCheck className="w-5 h-5 text-bumn-gold" />
             </div>
             <div>
-              <h3 id="advisor-title" className="font-bold text-lg text-white">DSI Advisory Intelligence</h3>
+              <h3 id="advisor-title" className="font-bold text-lg text-slate-900">DSI Advisory Intelligence</h3>
               <p className="text-xs text-bumn-gold font-mono tracking-widest uppercase">Konsultasi Tata Kelola TI & ICOFR</p>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
             id="close-advisor-btn"
             onClick={onClose}
             aria-label="Tutup Konsultasi AI"
-            className="p-2 text-slate-600 hover:text-white bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors"
+            className="p-2 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -257,8 +257,8 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 onClick={() => setSelectedContext(ctx.id as any)}
                 className={`px-3.5 py-2 sm:py-1 text-xs font-bold rounded-full border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 min-h-[44px] sm:min-h-0 flex items-center justify-center ${
                   selectedContext === ctx.id
-                    ? "border-blue-500/50 bg-blue-950/40 text-blue-300"
-                    : "border-slate-200 bg-slate-100/30 text-slate-600 hover:border-slate-300"
+                    ? "border-bumn-blue bg-blue-50 text-bumn-blue"
+                    : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900"
                 }`}
               >
                 {ctx.label}
@@ -279,8 +279,8 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 {/* Avatar */}
                 <div className={`w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-bold ${
                   isBot 
-                    ? "bg-blue-950 text-blue-400 border border-blue-500/20" 
-                    : "bg-slate-800 text-slate-700 border border-slate-300"
+                    ? "bg-blue-50 text-bumn-blue border border-blue-200" 
+                    : "bg-slate-100 text-slate-700 border border-slate-300"
                 }`}>
                   {isBot ? "DSI" : "User"}
                 </div>
@@ -288,14 +288,14 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                 {/* Message Box */}
                 <div className={`max-w-[80%] rounded-2xl p-4 text-xs sm:text-sm leading-relaxed ${
                   isBot
-                    ? "bg-slate-100/40 border border-slate-200 text-slate-700"
+                    ? "bg-slate-50 border border-slate-200 text-slate-800"
                     : "bg-bumn-blue text-white font-medium"
                 }`}>
                   {/* Text Render - support basic bold markers inside mock or model returns */}
-                  <div className="whitespace-pre-line prose prose-xs prose-invert">
+                  <div className="whitespace-pre-line">
                     {msg.text.split("**").map((part, index) => {
                       if (index % 2 === 1) {
-                        return <strong key={index} className={isBot ? "text-white font-bold" : "text-slate-900 font-extrabold"}>{part}</strong>;
+                        return <strong key={index} className={isBot ? "text-slate-900 font-bold" : "text-white font-extrabold"}>{part}</strong>;
                       }
                       return part;
                     })}
@@ -312,11 +312,11 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
           {/* Typing Indicator */}
           {isTyping && (
             <div className="flex gap-3 text-left">
-              <div className="w-8 h-8 rounded-lg shrink-0 bg-blue-950 text-blue-400 border border-blue-500/20 flex items-center justify-center text-xs font-bold">
+              <div className="w-8 h-8 rounded-lg shrink-0 bg-blue-50 text-bumn-blue border border-blue-200 flex items-center justify-center text-xs font-bold">
                 DSI
               </div>
-              <div className="bg-slate-100/40 border border-slate-200 rounded-2xl p-4 flex items-center gap-2">
-                <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center gap-2">
+                <Loader2 className="w-4 h-4 text-bumn-blue animate-spin" />
                 <span className="text-xs text-slate-500 font-mono italic">Advisor sedang memformulasikan saran...</span>
               </div>
             </div>
@@ -339,13 +339,13 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
                   <button
                     key={index}
                     onClick={() => handleSendMessage(query.text)}
-                    className="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-100/20 hover:bg-slate-100/50 text-slate-700 hover:text-white transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition-all flex items-center justify-between gap-3 text-xs sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     <span className="flex items-center gap-2">
                       <Icon className="w-4 h-4 text-bumn-gold shrink-0" />
                       <span>{query.label}</span>
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                   </button>
                 );
               })}
@@ -365,7 +365,7 @@ export default function AiAdvisor({ isOpen, onClose }: AiAdvisorProps) {
               if (e.key === "Enter" && !isTyping) handleSendMessage();
             }}
             placeholder="Tulis pesan atau pertanyaan kepatuhan..."
-            className="flex-1 bg-slate-100 border border-slate-200 hover:border-slate-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors"
+            className="flex-1 bg-white border border-slate-200 hover:border-slate-300 focus:border-bumn-blue focus:ring-1 focus:ring-bumn-blue rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
             disabled={isTyping}
           />
           <button

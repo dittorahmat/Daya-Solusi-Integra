@@ -32,7 +32,7 @@ body {
 
 .glass-panel-light {
   background: #f8fafc;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid #e2e8f0;
 }
 
 .glass-panel-hover:hover {

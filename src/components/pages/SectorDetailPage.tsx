@@ -88,7 +88,7 @@ export default function SectorDetailPage({ slug, onNavigate, onOpenAdvisor }: Se
               </button>
               <button
                 onClick={() => onNavigate("/platform/grc-integra")}
-                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-slate-800 hover:text-white bg-slate-100 border border-slate-200 rounded-xl transition-all hover:bg-slate-800"
+                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-slate-800 hover:text-slate-900 bg-white border border-slate-300 rounded-xl transition-all hover:bg-slate-100"
               >
                 Platform GRC Integra
               </button>
@@ -314,7 +314,7 @@ export default function SectorDetailPage({ slug, onNavigate, onOpenAdvisor }: Se
             </button>
             <button
               onClick={() => onNavigate("/asesmen-maturitas")}
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-800 hover:text-white bg-slate-100 border border-slate-300 rounded-xl transition-all hover:bg-slate-800"
+              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-800 hover:text-slate-900 bg-white border border-slate-300 rounded-xl transition-all hover:bg-slate-100"
             >
               Asesmen Maturitas Mandiri
             </button>

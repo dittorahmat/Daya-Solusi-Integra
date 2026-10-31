@@ -100,7 +100,7 @@ export default function GlossaryPage({ onNavigate, onOpenAdvisor }: GlossaryPage
                   className={`px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors ${
                     selectedCategory === cat
                       ? "bg-blue-600 text-slate-900"
-                      : "bg-white text-slate-600 hover:bg-slate-800 border border-slate-200"
+                      : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200"
                   }`}
                 >
                   {cat}

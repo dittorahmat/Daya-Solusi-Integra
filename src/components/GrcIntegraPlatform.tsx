@@ -94,7 +94,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
 
           <div className="p-6 rounded-xl bg-white border border-slate-200 text-left space-y-3 flex flex-col justify-between shadow-xs">
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-950/60 border border-blue-800/40 flex items-center justify-center text-bumn-gold">
+              <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-bumn-gold">
                 <QrCode className="w-5 h-5" />
               </div>
               <div>

@@ -70,7 +70,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                     className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-bumn-blue text-white shadow-md font-semibold"
-                        : "bg-slate-100 text-slate-600 hover:text-white hover:bg-slate-800 border border-slate-200"
+                        : "bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200 border border-slate-200"
                     }`}
                   >
                     {cat}
@@ -165,7 +165,7 @@ export default function BlogList({ onNavigate }: BlogListProps) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-slate-100/80 backdrop-blur-md text-[#0b4596] border border-slate-200 text-[10px] font-semibold rounded-lg">
+                        <span className="px-2.5 py-1 bg-white text-[#0b4596] border border-slate-200 text-[10px] font-semibold rounded-lg shadow-xs">
                           {post.category}
                         </span>
                       </div>

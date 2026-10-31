@@ -75,6 +75,8 @@ Berikut simulasi perbandingan TCO lima tahun untuk BUMN dengan 60 pengguna dan t
 
 Dua baris terakhir adalah kunci bacaan tabel ini. Spreadsheet tampak termurah hingga baris cadangan risiko dimasukkan — dan cadangan Rp 500 juta pun masih konservatif bila menghitung satu siklus remediasi darurat plus perpanjangan penugasan [KAP](/glosarium/kap). Sementara selisih Rp 1 miliar antara platform native dan modul global terutama berasal dari implementasi dan risiko kurs, dua pos yang sepenuhnya dapat diverifikasi melalui klarifikasi tertulis kepada vendor.
 
+Saat meninjau penawaran harga, pastikan Anda juga membedah kelengkapan teknis dalam panduan [fitur aplikasi ICOFR](/blog/fitur-kunci-aplikasi-icofr-bumn) agar tidak terjebak biaya kustomisasi tambahan untuk modul regulasi SK-5.
+
 ## Pertanyaan Wajib ke Vendor Saat Klarifikasi
 
 Jadwalkan sesi klarifikasi dengan setiap peserta yang lolos administrasi dan ajukan enam pertanyaan ini secara tertulis: (1) berapa kenaikan harga lisensi tahunan maksimum yang dijamin kontrak selama lima tahun; (2) change request apa saja yang termasuk dalam harga implementasi dan apa tarif per hari untuk yang tidak termasuk; (3) bagaimana akun auditor musiman dan lingkungan non-produktif dihitung dalam metric lisensi; (4) di yurisdiksi mana data disimpan dan direplikasi, serta sertifikasi keamanan apa yang dimiliki; (5) berapa lama hypercare pasca go-live dan apa SLA respons insiden dalam bahasa Indonesia; dan (6) tunjukkan dua referensi BUMN sejenis yang dapat dikunjungi untuk melihat sistem berjalan.

@@ -98,7 +98,7 @@ Siklus tahunan implementasi ICOFR yang wajib dijalankan oleh korporasi mencakup 
 
 ## Tantangan Utama dan Solusi Digitalisasi ICOFR
 
-Kendala terbesar yang dihadapi BUMN adalah koordinasi lintas departemen yang masif serta keterbatasan lembar kerja spreadsheet yang rawan kesalahan. 
+Kendala terbesar yang dihadapi BUMN adalah koordinasi lintas departemen yang masif serta keterbatasan lembar kerja spreadsheet yang rawan kesalahan. Untuk mengatasinya, organisasi membutuhkan [aplikasi ICOFR](/platform/grc-integra) yang andal. Pelajari selengkapnya mengenai 7 [fitur aplikasi ICOFR](/blog/fitur-kunci-aplikasi-icofr-bumn) yang wajib ada sesuai standar audit pemerintah. 
 
 Melalui platform **GRC Integra**, seluruh tahapan siklus hidup ini diotomatiskan dalam satu repositori terintegrasi:
 - Otomasi matriks RCM dan alur BPM interaktif.

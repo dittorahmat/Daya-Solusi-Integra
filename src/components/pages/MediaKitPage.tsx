@@ -68,7 +68,7 @@ export default function MediaKitPage({ onNavigate }: MediaKitPageProps) {
             Media Kit Daya Solusi Integra
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-4">
-            Boilerplate perusahaan, paket logo resmi, dan statistik kinerja yang dapat dikutip jurnalis, blogger, dan peneliti — dengan atribusi tautan ke dsintegra.co.id.
+            Boilerplate perusahaan, paket logo resmi, dan statistik kinerja yang dapat dikutip jurnalis, blogger, dan peneliti : dengan atribusi tautan ke dsintegra.co.id.
           </p>
         </div>
 

@@ -104,6 +104,8 @@ Platform GRC terstandarisasi memberikan visibilitas *real-time* kepada manajemen
 
 ## Langkah Transisi: Mengamankan Kepatuhan Melalui Platform GRC Integra
 
+Bagi BUMN yang ingin bertransisi dari spreadsheet manual ke [aplikasi ICOFR](/platform/grc-integra) terstruktur, memahami fungsionalitas otomasi sangat krusial. Tinjau panduan 7 [fitur aplikasi ICOFR](/blog/fitur-kunci-aplikasi-icofr-bumn) yang wajib tersedia sesuai regulasi SK-5.
+
 Mengganti spreadsheet yang sudah mengakar dalam kebiasaan kerja organisasi tidak harus menjadi proses yang rumit. [GRC Integra](/platform/grc-integra) dirancang dengan antarmuka yang intuitif dan fitur migrasi data cerdas:
 1. **Peta Kolom Fleksibel**: Memungkinkan impor RCM spreadsheet lama ke dalam struktur data terstandarisasi SK-5 hanya dalam hitungan jam.
 2. **Kalkulator Sampel Otomatis**: Menghitung secara otomatis kebutuhan sampel TOE sesuai frekuensi kontrol (tahunan, triwulanan, bulanan, mingguan, harian, atau multipel harian) menggunakan [Kalkulator Sampel TOE](/kalkulator-sampel-toe).

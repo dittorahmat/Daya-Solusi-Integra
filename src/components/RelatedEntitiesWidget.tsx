@@ -170,16 +170,16 @@ export default function RelatedEntitiesWidget({
         {/* Left Column: Interactive Tool Callout */}
         <div className="lg:col-span-7 flex flex-col justify-between h-full p-6 rounded-xl bg-white border border-slate-200">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/60 text-blue-300 text-xs font-medium">
-              <ToolIcon className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-bumn-blue text-xs font-semibold">
+              <ToolIcon className="w-3.5 h-3.5 text-bumn-blue" />
               <span>{tool.badge}</span>
             </div>
 
-            <h3 className="text-lg sm:text-xl font-bold font-display text-white leading-snug">
+            <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900 leading-snug">
               {tool.title}
             </h3>
 
-            <p className="text-slate-700 text-sm leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed">
               {tool.description}
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function RelatedEntitiesWidget({
           {/* Related Service / Platform Anchor */}
           <div className="pt-4 border-t border-slate-200">
             <span className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5 mb-2.5">
-              <Layers className="w-3.5 h-3.5 text-blue-400" />
+              <Layers className="w-3.5 h-3.5 text-bumn-blue" />
               Silo Terkait
             </span>
             <div
@@ -245,14 +245,14 @@ export default function RelatedEntitiesWidget({
               className="p-3.5 rounded-lg bg-white border border-slate-200 hover:border-bumn-blue/50 transition-all cursor-pointer group flex items-center justify-between"
             >
               <div>
-                <span className="text-[11px] font-medium text-blue-400 block">
+                <span className="text-[11px] font-medium text-bumn-blue block">
                   {relatedService.category}
                 </span>
-                <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-blue-300 transition-colors">
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-bumn-blue transition-colors">
                   {relatedService.title}
                 </span>
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-bumn-blue group-hover:translate-x-1 transition-all" />
             </div>
           </div>
         </div>

@@ -151,44 +151,44 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
 
   // 3. Skema khusus berdasarkan tipe halaman
   if (routePath.startsWith("/blog/")) {
-    // Artikel blog: Gunakan TechArticle dengan tanggal dari front-matter dan git/mtime.
+    // Artikel blog: Gunakan Article (atau TechArticle) dengan tanggal dari front-matter dan git/mtime.
     // Alias non-artikel (misal /blog/penulis/...) tidak punya markdown: lewati TechArticle.
     const articleSlug = routePath.replace("/blog/", "");
     const articleMeta = getBlogArticleMeta(articleSlug);
     if (articleMeta) {
       graphs.push({
-      "@type": "TechArticle",
-      "@id": `${meta.canonical}#article`,
-      "headline": meta.title.split("|")[0].trim(),
-      "description": meta.description,
-      "inLanguage": "id-ID",
-      "url": meta.canonical,
-      "image": meta.image || "https://dsintegra.co.id/og-image.jpg",
-      "author": {
-        "@type": "Person",
-        "@id": "https://dsintegra.co.id/#author-humbul-kristiawan",
-        "name": "Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA, GRCP, CACP",
-        "jobTitle": "Principal Partner & Senior GRC Advisor",
-        "image": "https://dsintegra.co.id/images/authors/humbul-kristiawan.jpg",
-        "url": "https://humbulkristiawan.com/about-humbul/",
-        "sameAs": [
-          "https://www.linkedin.com/in/humbul-kristiawan-b0621360/",
-          "https://humbulkristiawan.com/about-humbul/",
-          "https://humbulkristiawan.com/"
-        ]
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Daya Solusi Integra",
-        "url": "https://dsintegra.co.id/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://dsintegra.co.id/og-image.jpg"
-        }
-      },
-      "datePublished": articleMeta.published,
-      "dateModified": articleMeta.modified,
-      "proficiencyLevel": "Expert"
+        "@type": "Article",
+        "@id": `${meta.canonical}#article`,
+        "isPartOf": {
+          "@type": "WebPage",
+          "@id": `${meta.canonical}#webpage`
+        },
+        "headline": meta.title.split("|")[0].trim(),
+        "description": meta.description,
+        "inLanguage": "id-ID",
+        "mainEntityOfPage": meta.canonical,
+        "url": meta.canonical,
+        "image": meta.image || articleMeta.coverImage || "https://dsintegra.co.id/og-image.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Daya Solusi Integra",
+          "url": "https://dsintegra.co.id/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://dsintegra.co.id/og-image.jpg"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Daya Solusi Integra",
+          "url": "https://dsintegra.co.id/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://dsintegra.co.id/og-image.jpg"
+          }
+        },
+        "datePublished": articleMeta.published,
+        "dateModified": articleMeta.modified
       });
     }
   } else if (routePath === "/penulis/humbul-kristiawan") {
@@ -281,8 +281,18 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
       "@id": "https://dsintegra.co.id/platform/grc-integra#software",
       "name": "GRC Integra",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web-based, Cloud, On-Premise",
+      "operatingSystem": "Web, Cloud, On-Premise",
       "description": meta.description,
+      "url": "https://dsintegra.co.id/platform/grc-integra",
+      "image": "https://dsintegra.co.id/og-platform.jpg",
+      "screenshot": "https://dsintegra.co.id/og-platform.jpg",
+      "featureList": [
+        "Visualisasi Pemetaan Proses Bisnis Standar BPMN Lampiran 3 SK-5",
+        "Kalkulator Otomatis Penentuan Sampel Uji TOE Tabel 22",
+        "Walkthrough Pengendalian Lini 2 Independen dengan Digital Evidence Repository",
+        "Penerbitan Surat Asersi Direksi Digital Ber-QR Code Kriptografis Sesuai Lampiran 11",
+        "Integrasi Data ERP (SAP, Oracle) via Secure REST API Connector"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -293,6 +303,15 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
         "@type": "Organization",
         "name": "Daya Solusi Integra",
         "url": "https://dsintegra.co.id/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Daya Solusi Integra",
+        "url": "https://dsintegra.co.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dsintegra.co.id/og-image.jpg"
+        }
       }
     });
   } else if (routePath === "/platform/bpm-workflow-editor") {

@@ -61,7 +61,7 @@ export function buildSemanticBodyHtmlForRoute(routePath: string, meta: RouteMeta
         .join("\n      ");
 
       specificContent = `
-      <article itemscope itemtype="https://schema.org/TechArticle">
+      <article itemscope itemtype="https://schema.org/Article">
         <header>
           <p>Kategori: <span itemprop="articleSection">${cleanProhibitedDashes(data.category || "Tata Kelola & GRC")}</span></p>
           <p>Penulis: <span itemprop="author">${cleanProhibitedDashes(data.author || "Daya Solusi Integra")}</span> | Tanggal: <time itemprop="datePublished">${data.date || "2026-09-25"}</time>${updatedBadge}</p>

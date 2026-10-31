@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, MessageSquareCode, ChevronDown, Workflow, Layers } from "lucide-react";
 import logoImg from "../../assets/dsi-logo-removebg-preview.png";
+import { navigateTo } from "../utils/navigation";
 
 interface HeaderProps {
   activeTab: string;
@@ -125,8 +126,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm py-4"
-          : "bg-white/70 backdrop-blur-xs py-6"
+          ? "bg-white border-b border-slate-200 shadow-xs py-4"
+          : "bg-white/95 border-b border-slate-100 py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,7 +135,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
           {/* Logo & Brand */}
           <button 
             onClick={() => handleNavClick("hero")}
-            className="flex items-center cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] rounded-xl p-1"
+            className="flex items-center cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-xl p-1"
             id="dsi-logo-container"
             aria-label="Daya Solusi Integra - Beranda"
           >
@@ -166,7 +167,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                     <button
                       id={`nav-${item.id}`}
                       onClick={() => handleNavClick(item.id)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                         activeTab === item.id
                           ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
@@ -184,12 +185,11 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                           onClick={(e) => {
                             e.preventDefault();
                             setIsPlatformDropdownOpen(false);
-                            window.history.pushState({}, '', '/platform/grc-integra');
-                            window.dispatchEvent(new PopStateEvent('popstate'));
+                            navigateTo('/platform/grc-integra');
                           }}
                           className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group"
                         >
-                          <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
+                          <div className="p-2 rounded bg-blue-50 border border-blue-200 text-bumn-blue group-hover:text-blue-700 shrink-0">
                             <Layers className="w-4 h-4" />
                           </div>
                           <div>
@@ -207,18 +207,17 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                           onClick={(e) => {
                             e.preventDefault();
                             setIsPlatformDropdownOpen(false);
-                            window.history.pushState({}, '', '/platform/bpm-workflow-editor');
-                            window.dispatchEvent(new PopStateEvent('popstate'));
+                            navigateTo('/platform/bpm-workflow-editor');
                           }}
                           className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors group mt-1"
                         >
-                          <div className="p-2 rounded bg-blue-950/60 border border-blue-500/30 text-blue-400 group-hover:text-blue-300 shrink-0">
+                          <div className="p-2 rounded bg-blue-50 border border-blue-200 text-bumn-blue group-hover:text-blue-700 shrink-0">
                             <Workflow className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="text-xs font-semibold text-slate-900 group-hover:text-[#0b4596] transition-colors flex items-center gap-1.5">
                               <span>BPM Workflow Editor</span>
-                              <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-900/60 border border-blue-500/40 text-blue-300 font-mono">
+                              <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 border border-blue-300 text-bumn-blue font-mono">
                                 Baru
                               </span>
                             </div>
@@ -238,7 +237,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   key={item.id}
                   id={`nav-${item.id}`}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f19] ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     activeTab === item.id
                       ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
@@ -314,8 +313,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                         <button
                           onClick={() => {
                             setIsMobileMenuOpen(false);
-                            window.history.pushState({}, '', '/platform/grc-integra');
-                            window.dispatchEvent(new PopStateEvent('popstate'));
+                            navigateTo('/platform/grc-integra');
                           }}
                           className="w-full text-left p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 hover:text-[#0b4596] flex items-center gap-2"
                         >
@@ -325,8 +323,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                         <button
                           onClick={() => {
                             setIsMobileMenuOpen(false);
-                            window.history.pushState({}, '', '/platform/bpm-workflow-editor');
-                            window.dispatchEvent(new PopStateEvent('popstate'));
+                            navigateTo('/platform/bpm-workflow-editor');
                           }}
                           className="w-full text-left p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900 hover:text-blue-700 flex items-center justify-between"
                         >

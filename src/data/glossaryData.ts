@@ -25,6 +25,8 @@ export interface GlossaryItem {
   definition: string;
   keyTakeaway: string;
   directAnswer?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   comparisonTable?: GlossaryComparisonTable;
   faqList?: GlossaryFaq[];
   practicalExample?: string;
@@ -128,6 +130,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     acronym: "ELC",
     category: "Klasifikasi Kontrol",
     regulationRef: "COSO 17 Principles & SK-5 BUMN",
+    metaTitle: "ELC (Entity-Level Controls) BUMN: Definisi, 17 Prinsip COSO & Audit SK-5",
+    metaDescription: "Panduan lengkap Entity-Level Controls (ELC) BUMN sesuai kerangka COSO & SK-5. Pelajari evaluasi tone at the top, peran Komite Audit, dan mitigasi defisiensi.",
     definition: "Aktivitas pengendalian internal yang memiliki pengaruh pervasif atau melingkupi organisasi secara keseluruhan, mencakup lingkungan pengendalian, proses penilaian risiko korporat, kode etik, dan aktivitas pengawasan oleh Dewan Komisaris dan Komite Audit.",
     keyTakeaway: "ELC membentuk fondasi utama. Kelemahan pada tingkat ELC berpotensi menggagalkan efektivitas kontrol transaksional di tingkat operasional.",
     directAnswer: "Entity-Level Controls (ELC) adalah pengendalian tingkat entitas yang bersifat pervasif di seluruh organisasi, mencakup tone at the top, kode etik, penilaian risiko korporat, dan pengawasan Komite Audit guna memastikan integritas tata kelola BUMN.",
@@ -341,8 +345,49 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "Three Lines Model",
     category: "Regulasi & Kerangka Kerja",
     regulationRef: "Model Tiga Lini IIA 2020 & SK-5/DKU.MBU/11/2024",
+    metaTitle: "Three Lines Model IIA BUMN: Pembagian Peran Lini 1, 2, 3 Sesuai SK-5",
+    metaDescription: "Penerapan Three Lines Model IIA pada BUMN berbasis SK-5/DKU.MBU/11/2024: rincian peran Lini 1 operasional, Lini 2 manajemen risiko/kepatuhan, dan Lini 3 SPI.",
     definition: "Model tata kelola yang membagi peran menjadi Lini 1 (manajemen operasional pemilik risiko dan kontrol), Lini 2 (fungsi kepatuhan, manajemen risiko, dan pengendalian yang memvalidasi), serta Lini 3 (audit internal independen yang memberikan asurans).",
     keyTakeaway: "SK-5 menuntut pemisahan tegas peran Lini 1 dan Lini 2, termasuk walkthrough independen oleh Lini 2 sebelum pengujian efektivitas.",
+    directAnswer: "Three Lines Model adalah kerangka tata kelola BUMN yang memisahkan akuntabilitas operasional (Lini 1), fungsi kepatuhan dan manajemen risiko (Lini 2), serta asurans audit internal independen (Lini 3) guna menjamin keandalan pelaporan keuangan.",
+    comparisonTable: {
+      title: "Matriks Akuntabilitas Three Lines Model di Lingkungan BUMN (SK-5)",
+      headers: ["Aspek", "Lini 1: Operasional & Bisnis", "Lini 2: Manajemen Risiko & Kepatuhan", "Lini 3: Internal Audit (SPI)"],
+      rows: [
+        {
+          aspect: "Peran Utama",
+          primaryValue: "Eksekusi proses bisnis harian dan kepemilikan risiko/kontrol (control owner).",
+          secondaryValue: "Fasilitasi, pengawasan, monitoring, dan pengujian independen (walkthrough/TOD/TOE).",
+          tertiaryValue: "Asurans independen dan objektif kepada Direksi dan Dewan Komisaris/Komite Audit."
+        },
+        {
+          aspect: "Tanggung Jawab ICOFR",
+          primaryValue: "Menjalankan kontrol berkala dan menyusun dokumentasi bukti audit.",
+          secondaryValue: "Menyusun RCM, metodologi pengujian, dan menguji efektivitas desain serta operasi kontrol.",
+          tertiaryValue: "Mengevaluasi kecukupan seluruh kerangka ICOFR dan validitas asersi manajemen."
+        },
+        {
+          aspect: "Garis Pelaporan",
+          primaryValue: "Manajemen operasional dan Kepala Divisi / Unit Kerja.",
+          secondaryValue: "Direktur Keuangan / Direktur Manajemen Risiko.",
+          tertiaryValue: "Direktur Utama dan Komite Audit Dewan Komisaris."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Apa perbedaan mendasar peran Lini 1 dan Lini 2 dalam kepatuhan ICOFR BUMN?",
+        answer: "Lini 1 adalah pemilik kontrol yang menjalankan mitigasi risiko dalam aktivitas harian, sedangkan Lini 2 bertindak sebagai pengawas independen yang merancang RCM, memfasilitasi penilaian risiko, dan menguji efektivitas kontrol sebelum audit."
+      },
+      {
+        question: "Mengapa SPI di Lini 3 tidak boleh menyusun matriks RCM manajemen?",
+        answer: "Untuk menjaga independensi dan objektivitas audit. Jika SPI merancang atau mengoperasikan kontrol, objektivitas SPI saat mengaudit efektivitas pengendalian tersebut akan terganggu (self-review threat)."
+      },
+      {
+        question: "Bagaimana regulasi SK-5 BUMN mengatur kolaborasi ketiga lini?",
+        answer: "SK-5 mewajibkan pembagian peran tanpa tumpang tindih: Lini 1 mendokumentasikan proses, Lini 2 memvalidasi lewat walkthrough dan pengujian efektivitas, serta Lini 3 memberikan asurans berkala atas integritas sistem pengendalian."
+      }
+    ],
     practicalExample: "Staf akuntansi (Lini 1) menjalankan rekonsiliasi, Manajer Kepatuhan (Lini 2) memvalidasi kertas kerja, dan SPI (Lini 3) mengaudit keduanya.",
     relatedTermIds: ["walkthrough-lini-2", "elc", "icofr"],
     relatedServiceUrl: "/regulasi",

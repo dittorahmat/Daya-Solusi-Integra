@@ -78,7 +78,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-primary-cta"
                 onClick={() => onScrollToSection("assessment")}
-                className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-bumn-blue hover:bg-blue-600 active:scale-[0.98] rounded-xl transition-all cursor-pointer border border-blue-400/20 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#080c15]"
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-white bg-bumn-blue hover:bg-blue-600 active:scale-[0.98] rounded-xl transition-all cursor-pointer border border-blue-400/20 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Mulai Uji Maturitas Mandiri
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

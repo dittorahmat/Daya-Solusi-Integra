@@ -249,7 +249,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
           <div className="flex gap-4">
             <button
               onClick={() => onNavigate("/pernyataan-independensi")}
-              className="text-xs text-slate-600 hover:text-white transition-colors"
+              className="text-xs text-slate-600 hover:text-slate-900 transition-colors"
             >
               Baca Pernyataan Independensi Konsultan →
             </button>

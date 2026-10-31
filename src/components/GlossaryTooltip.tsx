@@ -75,7 +75,7 @@ export default function GlossaryTooltip({ acronym, children }: GlossaryTooltipPr
     >
       <button
         type="button"
-        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-slate-900 font-semibold cursor-help transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-1 focus-visible:ring-offset-[#0b0f19] rounded px-0.5"
+        className="underline decoration-dotted decoration-bumn-gold/80 hover:decoration-bumn-gold text-slate-900 font-semibold cursor-help transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-1 focus-visible:ring-offset-white rounded px-0.5"
         onClick={() => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-expanded={isOpen}

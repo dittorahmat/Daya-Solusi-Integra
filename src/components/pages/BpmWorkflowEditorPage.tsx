@@ -79,7 +79,7 @@ export const BpmWorkflowEditorPage: React.FC<BpmWorkflowEditorPageProps> = ({
             </button>
             <button
               onClick={() => onNavigate('/platform/grc-integra')}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded border border-slate-300 bg-slate-50 hover:bg-slate-800 text-slate-800 font-semibold text-sm transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors"
             >
               Kembali ke Platform Utama
             </button>
@@ -488,7 +488,7 @@ export const BpmWorkflowEditorPage: React.FC<BpmWorkflowEditorPageProps> = ({
 
             <button
               onClick={onRequestDemo}
-              className="w-full inline-flex items-center justify-center px-5 py-3 rounded border border-slate-300 bg-slate-100 hover:bg-slate-800 text-slate-800 font-semibold text-sm transition-colors"
+              className="w-full inline-flex items-center justify-center px-5 py-3 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors"
             >
               Ajukan Demo Daring (Online Nasional)
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -509,7 +509,7 @@ export const BpmWorkflowEditorPage: React.FC<BpmWorkflowEditorPageProps> = ({
       {/* Final Conversion Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center border-t border-slate-200">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-4">
             Siap Mentransformasi Dokumentasi Proses Bisnis Organisasi Anda?
           </h2>
           <p className="text-slate-600 text-sm mb-8 leading-relaxed">
@@ -518,14 +518,14 @@ export const BpmWorkflowEditorPage: React.FC<BpmWorkflowEditorPageProps> = ({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={onRequestDemo}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-colors shadow-lg shadow-blue-600/20"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded bg-bumn-blue hover:bg-blue-600 text-white font-semibold text-sm transition-colors shadow-sm"
             >
               Jadwalkan Sesi Presentasi & Demo
               <ArrowRight className="w-4 h-4 ml-2" />
             </button>
             <button
               onClick={() => onNavigate('/platform/grc-integra')}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded border border-slate-300 bg-slate-50 hover:bg-slate-800 text-slate-800 font-semibold text-sm transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-semibold text-sm transition-colors"
             >
               Jelajahi Modul Platform Lainnya
             </button>

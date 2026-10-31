@@ -336,9 +336,9 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
                   <th className="py-3 px-4">Tindakan Jika Ada 1 Deviasi</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-600">
+              <tbody className="divide-y divide-slate-200 text-slate-600">
                 {FREQUENCY_OPTIONS.map((row) => (
-                  <tr key={row.id} className="hover:bg-slate-800/40 transition-colors">
+                  <tr key={row.id} className="hover:bg-slate-50 transition-colors">
                     <td className="py-3 px-4 font-medium text-slate-900">{row.name}</td>
                     <td className="py-3 px-4 font-mono text-slate-600">{row.populationRange}</td>
                     <td className="py-3 px-4 font-mono font-bold text-[#0b4596]">{row.minSampleRange}</td>

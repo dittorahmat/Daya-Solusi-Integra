@@ -321,7 +321,7 @@ export default function BumnProcurementPage({ onNavigate }: BumnProcurementPageP
             </a>
             <button
               onClick={() => onNavigate("/asesmen-maturitas")}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-slate-100 hover:bg-slate-800 text-slate-800 border border-slate-300 font-medium text-sm transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-medium text-sm transition-colors w-full sm:w-auto"
             >
               <span>Uji Kematangan Kontrol Mandiri</span>
               <ArrowRight className="w-4 h-4 text-[#cca43b]" />

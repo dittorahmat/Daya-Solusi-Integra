@@ -32,7 +32,7 @@ export default function Breadcrumbs({ items, onNavigate, className = "" }: Bread
           <a
             href="/"
             onClick={(e) => handleClick(e, "/")}
-            className="flex items-center gap-1.5 text-slate-600 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
+            className="flex items-center gap-1.5 text-slate-600 hover:text-[#0b4596] transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
             title="Kembali ke Beranda"
           >
             <Home className="w-3.5 h-3.5 text-slate-600" />
@@ -60,7 +60,7 @@ export default function Breadcrumbs({ items, onNavigate, className = "" }: Bread
                 <a
                   href={item.path}
                   onClick={(e) => handleClick(e, item.path)}
-                  className="text-slate-600 hover:text-white transition-colors truncate max-w-[200px] focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
+                  className="text-slate-600 hover:text-[#0b4596] transition-colors truncate max-w-[200px] focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
                 >
                   {cleanLabel}
                 </a>

@@ -56,7 +56,7 @@ export default function BlogPreviewSection({ onNavigateToBlog }: BlogPreviewSect
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 bg-white/95 backdrop-blur-md text-[#0b4596] border border-slate-200 text-[10px] font-semibold rounded-lg shadow-xs">
+                    <span className="px-2.5 py-1 bg-white text-[#0b4596] border border-slate-200 text-[10px] font-semibold rounded-lg shadow-xs">
                       {post.category}
                     </span>
                   </div>

@@ -248,7 +248,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="flex gap-4">
             <button
               onClick={() => onNavigate("/asesmen-maturitas")}
-              className="text-xs text-slate-600 hover:text-white transition-colors"
+              className="text-xs text-slate-600 hover:text-slate-900 transition-colors"
             >
               Mulai Asesmen Mandiri →
             </button>

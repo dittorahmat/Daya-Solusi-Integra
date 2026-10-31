@@ -86,7 +86,7 @@ export default function AuthorProfilePage({ onNavigate }: AuthorProfilePageProps
                   href={author.sameAs[0]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-blue-950/80 hover:bg-blue-900 text-blue-300 hover:text-white border border-blue-800/80 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-bumn-blue hover:text-blue-700 border border-blue-200 transition-colors"
                 >
                   <span>LinkedIn Resmi</span>
                   <ExternalLink className="w-3 h-3 text-blue-400" />

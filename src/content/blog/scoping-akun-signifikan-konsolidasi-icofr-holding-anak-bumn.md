@@ -27,6 +27,10 @@ featured: false
 
 ## Mengapa scoping holding paling menentukan biaya ICOFR
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Scoping konsolidasi ICOFR holding BUMN adalah** proses penetapan materialitas kuantitatif (umumnya 5 persen laba sebelum pajak atau 0,5 persen aset) dan faktor risiko kualitatif untuk menentukan anak perusahaan serta akun signifikan yang wajib diuji sesuai mandat juknis SK-5/DKU.MBU/11/2024.
+
+
 Scoping adalah keputusan hulu yang mengunci seluruh biaya hilir: setiap entitas yang masuk scoping menuntut RCM, walkthrough, sampel TOE per Tabel 22, dan remediasi. Pengalaman pendampingan grup menunjukkan biaya pengujian tumbuh hampir linear dengan jumlah entitas full scope: setiap tambahan satu anak berarti satu paket RCM, puluhan sampel TOE, dan satu alur remediasi yang harus dipantau. Karena itu keputusan memasukkan atau mengecualikan satu entitas bernilai ratusan juta rupiah biaya pengujian, dan selayaknya diambil dengan matriks dan ambang yang terdokumentasi, bukan dengan intuisi rapat. Holding dengan 20 anak perusahaan yang memasukkan semuanya tanpa filter materialitas akan membayar pengujian atas entitas yang secara agregat tidak memengaruhi kewajaran laporan konsolidasian: sementara holding yang terlalu agresif mengecualikan justru mewariskan [material weakness](/blog/significant-deficiency-vs-material-weakness-icofr-remediasi) pada tanggal neraca. Matriks scoping yang terdokumentasi mengubah perdebatan cakupan dari adu opini menjadi verifikasi angka yang dapat diaudit.
 
 Praktik yang defensif mengikuti metode top-down: mulai dari laporan keuangan konsolidasian, turun ke akun signifikan, lalu ke proses dan entitas yang melahirkan risiko atas akun tersebut. Artikel ini memberi langkah, ambang ilustratif, dan pembagian peran holding-anak yang dapat langsung dipakai sebagai kerangka keputusan Komite Audit.

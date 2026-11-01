@@ -25,6 +25,10 @@ featured: false
 
 ## Mengapa harga jasa ICOFR sulit dibandingkan apel-ke-apel
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Harga jasa implementasi ICOFR BUMN 2026 adalah** berkisar antara Rp 900 juta hingga Rp 2,4 miliar per tahun buku tergantung kompleksitas holding dan jumlah entitas anak material. Struktur budget mencakup orang-bulan tenaga ahli berlisensi (CA, CIA, CICA di kisaran Rp 14-55 juta/OB), lisensi platform GRC, serta biaya pendampingan pengujian lapangan berbasis Tabel 22 SK-5.
+
+
 Pertanyaan yang paling sering masuk ke meja kami bukanlah pertanyaan metodologi, melainkan pertanyaan angka: berapa harga wajar jasa implementasi ICOFR untuk satu tahun buku? PPK membutuhkan pagu yang defensibel, direksi membutuhkan kepastian budget, dan panitia membutuhkan dasar menolak penawaran yang tidak wajar. Namun tiga penawaran yang masuk untuk paket yang seolah sama hampir selalu terpaut jauh - satu di bawah satu miliar, satu di kisaran dua miliar, satu menembus tiga miliar. Panitia lalu terjebak membandingkan tiga angka untuk tiga pekerjaan yang sebenarnya berbeda.
 
 Akar persoalannya adalah jasa ICOFR bukan barang katalog dengan spesifikasi tunggal. Beban kerja ditentukan oleh hasil scoping: berapa entitas anak yang material, berapa akun signifikan, berapa key control yang harus diuji, dan berapa sampel [pengujian TOE](/glosarium/toe) yang dituntut Tabel 22 untuk tiap frekuensi kontrol. Dua BUMN dengan aset sebanding dapat memiliki beban pengujian yang berbeda dua kali lipat bila yang satu memiliki lima anak usaha material dengan ERP terfragmentasi sementara yang lain terpusat pada satu sistem. Tanpa memecah harga menjadi komponen yang dapat dihitung, angka penawaran hanyalah tebakan yang dibungkus format resmi.

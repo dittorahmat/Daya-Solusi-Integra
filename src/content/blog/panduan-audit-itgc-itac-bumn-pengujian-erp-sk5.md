@@ -38,6 +38,10 @@ Auditor eksternal, baik Badan Pemeriksa Keuangan (BPK) maupun Kantor Akuntan Pub
 
 ## Perbedaan Mendasar ITGC vs ITAC: Konseptual dan Arsitektural
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Perbedaan ITGC dan ITAC adalah** fokus pengendaliannya: IT General Controls (ITGC) menguji keandalan infrastruktur dasar, tata kelola akses pengguna, mitigasi SoD, dan change management ERP, sedangkan IT Application Controls (ITAC) menguji konfigurasi kontrol otomatis dalam transaksi seperti three-way matching dan validasi input data.
+
+
 Meskipun saling melengkapi, ITGC dan ITAC beroperasi pada lapisan arsitektur yang berbeda:
 
 1. **IT General Controls (ITGC) adalah** payung pengendalian umum yang diterapkan pada seluruh infrastruktur teknologi informasi, sistem operasi, manajemen basis data (DBMS), jaringan, serta tata kelola departemen teknologi informasi. Tujuannya adalah memastikan lingkungan tempat aplikasi keuangan berjalan stabil, aman, dan terlindungi dari manipulasi data tidak sah.

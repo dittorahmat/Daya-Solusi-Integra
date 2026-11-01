@@ -28,6 +28,10 @@ featured: false
 
 ## Catatan framing ilustratif
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Perbedaan Significant Deficiency dan Material Weakness adalah** tingkat keparahan dampaknya: Significant Deficiency adalah kelemahan kontrol penting yang dilaporkan ke Komite Audit tanpa memicu salah saji material, sedangkan Material Weakness adalah kegagalan kontrol kritis berprobabilitas wajar menyebabkan salah saji material yang wajib diungkapkan dan menggugurkan asersi bersih Direksi.
+
+
 Seluruh contoh angka dan skenario dalam artikel ini bersifat ilustratif untuk keperluan pemahaman metodologi SK-5, bukan opini audit atas entitas mana pun. Penilaian akhir tingkat defisiensi selalu menjadi judgment profesional auditor independen dan Komite Audit berdasarkan bukti lengkap tahun buku berjalan.
 
 ## Tiga tingkat defisiensi menurut SK-5

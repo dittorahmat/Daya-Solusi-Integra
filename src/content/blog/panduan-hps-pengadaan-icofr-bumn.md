@@ -24,6 +24,10 @@ featured: false
 
 ## Mengapa HPS Pengadaan ICOFR Sering Meleset
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **HPS pengadaan konsultan ICOFR BUMN adalah** kalkulasi perkiraan biaya resmi yang disusun Pejabat Pembuat Komitmen (PPK) berdasarkan standar remunerasi tenaga ahli (orang-bulan), lisensi software GRC, serta biaya pengujian sesuai SK-5/DKU.MBU/11/2024. HPS berfungsi sebagai batas atas penawaran yang sah dan instrumen evaluasi kewajaran teknis dengan bobot seleksi QCBS 70/30.
+
+
 [Harga Perkiraan Sendiri (HPS)](/glosarium/hps) adalah dokumen yang paling sering diremehkan dalam pengadaan jasa konsultan pengendalian internal BUMN, sekaligus yang paling sering dipersoalkan auditor. Polanya berulang: Panitia Pengadaan menyalin nilai kontrak tahun lalu, menaikkan sepuluh persen untuk inflasi, lalu menetapkannya sebagai pagu. Ketika tidak ada penyedia yang menawar: atau yang menang justru penyedia yang memangkas metodologi: barulah disadari bahwa angka tersebut tidak berbasis komponen biaya nyata.
 
 Akar masalahnya adalah jasa ICOFR bukan barang katalog. Ruang lingkupnya ditentukan oleh hasil scoping: berapa entitas anak yang material, berapa akun signifikan, berapa key control yang harus diuji, dan berapa sampel [pengujian TOE](/glosarium/toe) yang dituntut Tabel 22 untuk tiap frekuensi kontrol. Tanpa memecah kebutuhan menjadi komponen yang dapat dihitung, HPS hanyalah tebakan yang dibungkus format resmi: dan tebakan semacam itu tidak bertahan saat [SPI](/glosarium/spi) atau BPK meminta pertanggungjawaban metodologi.

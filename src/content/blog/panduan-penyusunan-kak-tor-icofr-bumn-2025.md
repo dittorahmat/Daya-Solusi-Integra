@@ -32,6 +32,10 @@ Panduan ini diperbarui mengikuti praktik tender 2026: penegasan walkthrough inde
 
 ## Mengapa KAK TOR ICOFR BUMN sering gagal
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **KAK dan TOR konsultan ICOFR BUMN adalah** dokumen Kerangka Acuan Kerja pengadaan yang menetapkan ruang lingkup 11 lampiran juknis SK-5, komposisi tenaga ahli kunci (CA/CIA/CICA), dan kriteria penilaian teknis QCBS 70/30. KAK yang presisi memisahkan beban kerja jasa orang-bulan dari lisensi platform GRC guna mencegah sanggahan lelang dan kegagalan asersi Direksi.
+
+
 Kegagalan tender konsultan ICOFR jarang disebabkan pagu yang terlalu kecil. Penyebab paling umum adalah [KAK](/glosarium/kak) yang ditulis generik: ruang lingkup berbunyi "pendampingan implementasi pengendalian internal" tanpa merinci tahapan SK-5, tanpa menyebut walkthrough independen Lini 2, dan tanpa menetapkan volume pengujian TOE berbasis Tabel 22. Akibatnya tiga hal buruk terjadi sekaligus.
 
 Pertama, penyedia yang kompeten tidak menawar karena tidak dapat mengestimasi beban kerja secara wajar: berapa entitas anak yang masuk scoping, berapa key control yang harus diuji, berapa sampel per frekuensi kontrol. Kedua, penyedia yang menawar justru yang berniat memangkas metodologi: walkthrough dipercepat, sampel dikurangi, kertas kerja ditipiskan. Ketiga, [HPS](/glosarium/hps) yang disusun terpisah menjadi tidak sinkron dengan KAK, sehingga pagu tidak cukup menutup metodologi yang dituntut dokumen: pola yang kami bedah tuntas pada [panduan menyusun HPS pengadaan ICOFR](/blog/panduan-hps-pengadaan-icofr-bumn).

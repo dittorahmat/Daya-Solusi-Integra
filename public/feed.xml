@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Sat, 31 Oct 2026 08:18:53 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 10:16:32 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -110,6 +110,15 @@
       <category>Metodologi Audit</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 31 Oct 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Control Deficiency Adalah Celah Pengendalian Internal BUMN: Definisi, Tingkatan, dan Cara Remediasi SK-5</title>
+      <link>https://dsintegra.co.id/blog/panduan-control-deficiency-icofr-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-control-deficiency-icofr-bumn</guid>
+      <description>Pahami apa itu control deficiency dalam ICOFR BUMN: perbedaan mendasar dengan significant deficiency dan material weakness, matriks agregasi temuan, serta langkah remediasi sesuai juknis SK-5/DKU.MBU/11/2024.</description>
+      <category>Metodologi Audit</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Sun, 01 Nov 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Panduan Menyusun HPS Pengadaan Konsultan ICOFR &amp; Software GRC BUMN</title>

@@ -340,6 +340,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pahami apa itu compensating control, kapan kontrol kompensasi sah digunakan dalam audit ICOFR BUMN, serta contoh matriks mitigasi defisiensi kontrol dan konflik SoD ERP sesuai standar SK-5.
 - Tautan: https://dsintegra.co.id/blog/panduan-compensating-control-icofr-bumn
 
+### Control Deficiency Adalah Celah Pengendalian Internal BUMN: Definisi, Tingkatan, dan Cara Remediasi SK-5
+- Kategori: Metodologi Audit
+- Ringkasan: Pahami apa itu control deficiency dalam ICOFR BUMN: perbedaan mendasar dengan significant deficiency dan material weakness, matriks agregasi temuan, serta langkah remediasi sesuai juknis SK-5/DKU.MBU/11/2024.
+- Tautan: https://dsintegra.co.id/blog/panduan-control-deficiency-icofr-bumn
+
 ### Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN
 - Kategori: Pengadaan & Tender
 - Ringkasan: Metodologi estimasi Harga Perkiraan Sendiri (HPS) untuk pengadaan pendampingan ICOFR dan software GRC BUMN: komponen orang-bulan tenaga ahli, lisensi platform, serta jebakan underpricing yang memicu gagal lelang.

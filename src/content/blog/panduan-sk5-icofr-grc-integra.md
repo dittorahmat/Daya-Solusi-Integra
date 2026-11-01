@@ -13,6 +13,13 @@ tags: ["ICOFR", "SK-5 BUMN", "GRC Integra", "Pengendalian Internal", "ITGC", "CO
 featured: true
 ---
 
+## Daftar Isi
+- [Ringkasan Eksekutif (Key Takeaways)](#ringkasan-eksekutif-key-takeaways)
+- [Urgensi Mandat SK-5/DKU.MBU/11/2024 bagi BUMN](#urgensi-mandat-sk-5dkumbu112024-bagi-bumn)
+- [Download Rujukan Matriks SK-5 dan Juknis ICOFR BUMN](#download-rujukan-matriks-sk-5-dan-juknis-icofr-bumn)
+- [5 Tahapan Kunci Siklus ICOFR dalam GRC Integra](#5-tahapan-kunci-siklus-icofr-dalam-grc-integra)
+- [Kesimpulan: Beralih dari Spreadsheet ke Sistem Terstruktur](#kesimpulan-beralih-dari-spreadsheet-ke-sistem-terstruktur)
+
 > **Ringkasan Eksekutif (Key Takeaways):**
 > 1. **Mandat Regulasi**: SK-5/DKU.MBU/11/2024 mewajibkan seluruh BUMN mengimplementasikan pengendalian internal atas pelaporan keuangan (ICOFR) berbasis COSO Framework 2013.
 > 2. **Metodologi Pengujian**: Kewajiban validasi Lini 2 melalui *Test of One* (walkthrough rancangan) serta pengujian operasional (*Test of Operating Effectiveness* / TOE) dengan kalkulasi sampel Tabel 22.
@@ -28,6 +35,16 @@ Namun, di lapangan, tim Manajemen Risiko, Satuan Pengawas Intern (SPI), dan Akun
 - Keterlambatan asersi manajemen karena proses pengujian manual yang berlarut-larut menjelang penutupan buku tahunan.
 
 Untuk menjawab kebutuhan ini, **Daya Solusi Integra (DSI)** menghadirkan **GRC Integra**, platform digital terpadu yang dibangun dari nol mengacu langsung pada tiap bab dan lampiran juknis SK-5.
+
+---
+
+## Download Rujukan Matriks SK-5 dan Juknis ICOFR BUMN
+
+Bagi tim kepatuhan, manajemen risiko, dan SPI BUMN yang memerlukan ringkasan parameter regulasi dan instrumen kepatuhan SK-5:
+
+- **Rujukan Lengkap Regulasi & Matriks Lampiran**: Dapatkan kompilasi regulasi, template checklist 17 prinsip COSO, dan struktur notasi BPMN di halaman [Toolkit Regulasi ICOFR BUMN](/toolkit-regulasi).
+- **Simulasi Kesiapan Audit ICOFR**: Evaluasi kesiapan asersi dan maturitas tata kelola holding maupun anak perusahaan secara mandiri melalui [Asesmen Maturitas ICOFR BUMN](/asesmen-maturitas).
+- **Layanan Konsultansi & Pendampingan Implementasi**: Pelajari paket pendampingan penyusunan scoping, RCM, dan walkthrough Lini 2 di [Layanan ICOFR BUMN](/layanan/icofr-bumn).
 
 ---
 

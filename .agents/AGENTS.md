@@ -70,10 +70,12 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan, perbaikan, re
 5. **Mandat Structured Data & Paritas SSR/Client (Anti-Drift):**
    - **Paritas Skema Glosarium & FAQ**: Setiap penambahan structured data `FAQPage` atau `DefinedTerm` pada SSG prerender (`scripts/seo/jsonld.ts`) WAJIB memiliki implementasi yang ekuivalen pada runtime SPA client (`GlossaryDetailPage.tsx`), begitu pun sebaliknya, untuk mencegah inkonsistensi hidrasi.
    - **Integritas Penulis & E-E-A-T Artikel Blog**: Skema `Article` pada blog wajib menyertakan entity `author` bertipe `Person` dengan nama pakar resmi (`Humbul Kristiawan, SE, Ak., MBA, CA, CIA, CICA`), `jobTitle`, dan tautan profil `https://dsintegra.co.id/penulis/humbul-kristiawan`. Dilarang menurunkan derajat `author` artikel menjadi `Organization` generik tanpa profil penanggung jawab asersi.
-   - **Scope Discipline**: Perubahan yang didelegasikan dari sebuah tiket atau spec wajib dibatasi secara ketat pada cakupan tugas. Dilarang menambah artikel blog baru atau mengubah skema lintas modul kecuali jika secara eksplisit diminta dalam spec tiket.
+   - **Scope Discipline & Git Hygiene**: Perubahan yang didelegasikan dari sebuah tiket atau spec wajib dibatasi secara ketat pada cakupan tugas. Dilarang menambah artikel blog baru atau mengubah skema lintas modul kecuali jika secara eksplisit diminta dalam spec tiket. Dilarang meng-commit file lock eksternal agent (seperti `skills-lock.json`) yang tidak terkait langsung dengan implementasi produk.
+   - **Integritas Konten Eksisting**: Dilarang mengubah judul atau menimpa konten artikel blog yang sudah ada hanya untuk memenuhi target kueri tiket artikel baru; artikel baru wajib dibuat sebagai file markdown terpisah (`src/content/blog/<slug>.md`) dengan pendaftaran sitemap yang sah.
+   - **Shell Execution & Tool Economy (Lingkungan Windows)**: Repositori dijalankan pada OS Windows PowerShell. Hindari utilitas CLI Linux Unix seperti `grep`, `sed`, `awk`, atau bash script inline yang rentan syntax error. Gunakan perintah PowerShell (`Select-String`), skrip TypeScript (`tsx scripts/...`), atau tool manipulasi berkas bawaan (`read_file`, `edit_file`, `write_file`).
 
-## Mandat Wajib Konten Artikel / Blog (Image Relevan & Optimasi SEO)
-Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntingan artikel/blog** di repositori ini (`src/content/blog/*.md`) **WAJIB** mematuhi ketentuan editorial, visual, dan teknis SEO berikut:
+## Mandat Wajib Konten Artikel / Blog (Image Relevan, Anti-Slop & Skill Copywriting)
+Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntingan artikel/blog** di repositori ini (`src/content/blog/*.md`) **WAJIB** secara ketat memanggil dan menerapkan panduan skill [`copywriting`](file:///C:/backup/Daya-Solusi-Integra/.agents/skills/copywriting/SKILL.md) guna menjamin seluruh tulisan bebas dari AI slop, memiliki *voice* korporat yang berwibawa, serta mematuhi ketentuan editorial, visual, dan teknis SEO berikut:
 1. **Wajib Gambar Relevan & Berkualitas Tinggi (`coverImage`):**
    - Setiap artikel WAJIB memiliki properti `coverImage` pada frontmatter dengan gambar korporat beresolusi tinggi dan relevan langsung dengan tema artikel (misal: ruang dewan direksi, analitik data audit, pertemuan tata kelola B2B, atau ruang teknologi).
    - Format URL gambar Unsplash wajib menyertakan parameter kompresi web modern: `?auto=format&fit=crop&w=1200&q=80`.
@@ -86,8 +88,10 @@ Setiap agen, subagen, atau pengembang yang melakukan **penambahan atau penyuntin
 3. **Pendaftaran Wajib di Sitemap XML:**
    - Setiap artikel baru WAJIB langsung didaftarkan ke `public/sitemap.xml` dengan basis URL resmi `https://dsintegra.co.id/blog/<slug>`, `priority` minimal `0.9`, dan `changefreq` `weekly`.
    - Node `<image:image>` di sitemap wajib menyertakan tag `<image:loc>` dan tag `<image:title>` yang sesuai dengan judul artikel guna memaksimalkan indexing Google Images.
-4. **Larangan Keras Gaya Bahasa Slop:**
-   - Patuhi **Zero Em-Dash (`—` / `–`)**: Dilarang keras menggunakan tanda pisah em-dash atau en-dash di dalam berkas markdown artikel. Gunakan titik dua (`:`), tanda kurung, atau titik koma.
+4. **Larangan Keras Gaya Bahasa Slop & Penerapan Wajib Skill Copywriting:**
+   - **Wajib Skill `copywriting`**: Penulisan draf dan perbaikan teks wajib mengikuti protokol penulisan skill `copywriting` (Clear over Clever, Specific over Vague, Active over Passive, Direct Declarative tanpa formula sintetis).
+   - **Patuhi Zero Em-Dash (`—` / `–`)**: Dilarang keras menggunakan tanda pisah em-dash atau en-dash di dalam berkas markdown artikel. Gunakan titik dua (`:`), tanda kurung, atau titik koma.
+   - **Banned Contrast Reveals & Negation Lists**: Dilarang menggunakan pola pembuka klise AI seperti *"bukan sekadar X, melainkan Y"* (ganti dengan kalimat deklaratif lugas), daftar negasi berlebihan (*"tanpa X, tanpa Y, tanpa Z"*), atau stock openers (*"Di era digital yang pesat"*, *"Unlock the power"*, *"Game-changer"*).
    - Gunakan terminologi regulasi resmi Kementerian BUMN (`SK-5/DKU.MBU/11/2024`, `COSO Framework`, `Lini 1`, `Lini 2`, `Test of Design`, `Test of Operating Effectiveness`, `SPKN`).
 
 For detailed visual rules, typography scales, and interactive component definitions, refer to [DESIGN.md](file:///C:/backup/Daya-Solusi-Integra/DESIGN.md) dan [PRODUCT.md](file:///C:/backup/Daya-Solusi-Integra/PRODUCT.md).

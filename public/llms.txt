@@ -71,3 +71,4 @@ PT Daya Solusi Integra berdomisili di Indonesia Stock Exchange Tower 1, Level 3 
 
 ## Konteks Komprehensif
 - [Dokumentasi Lengkap LLM](https://dsintegra.co.id/llms-full.txt): Kumpulan data lengkap konteks korporasi, regulasi SK-5, dan matriks Tabel 22 dalam satu berkas teks terpadu.
+- [Skema Harga & Model Keterlibatan](https://dsintegra.co.id/pricing.md): Spesifikasi terstruktur tarif lisensi platform GRC Integra, paket konsultansi implementasi ICOFR, dan pedoman estimasi HPS pengadaan tender BUMN.

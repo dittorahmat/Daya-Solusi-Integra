@@ -32,6 +32,9 @@ featured: false
 
 ## Perbedaan TOD dan TOE: Pengujian Desain vs Efektivitas Operasi
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Perbedaan TOD dan TOE adalah** fokus pengujiannya: Test of Design (TOD) menguji kelayakan rancangan kontrol secara teoritis melalui prosedur *walkthrough* transaksi tunggal, sedangkan Test of Operating Effectiveness (TOE) menguji kepatuhan pelaksanaan kontrol secara konsisten sepanjang tahun buku menggunakan sampel representatif Tabel 22 Regulasi SK-5.
+
 Banyak praktisi Lini 1 dan auditor pemula di lingkungan BUMN menanyakan apa perbedaan mendasar antara Test of Design (TOD) dan Test of Operating Effectiveness (TOE) dalam pengujian RCM:
 
 1. **Test of Design (TOD) adalah** pengujian untuk mengevaluasi apakah suatu aktivitas pengendalian, bila dioperasikan persis seperti yang dirancang, secara teoritis mampu mencegah atau mendeteksi dan mengoreksi salah saji material pada asersi laporan keuangan secara tepat waktu. Pada siklus pengadaan, TOD menguji apakah rancangan kontrol (misal aturan dual approval atau konfigurasi limit PO) sudah memadai secara logika dan kebijakan.

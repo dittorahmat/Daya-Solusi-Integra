@@ -35,6 +35,9 @@ Guna menghadirkan kepastian hukum dan objektivitas di seluruh lingkungan Badan U
 
 ## Tabel 22: Matriks Resmi Penentuan Jumlah Sampel TOE BUMN
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **Formula sampel TOE Tabel 22 Regulasi SK-5 BUMN adalah** matriks penentuan ukuran sampel pengujian pengendalian internal berdasarkan frekuensi kontrol: Kontrol Otomatis (1 sampel dengan ITGC efektif), Beberapa Kali Sehari (25 hingga 40 sampel), Harian (20 hingga 40 sampel), Mingguan (5 hingga 10 sampel), Bulanan (2 hingga 4 sampel), Triwulanan (2 sampel), dan Tahunan (1 sampel / 100 persen populasi).
+
 Regulasi menetapkan bahwa ukuran sampel minimum wajib berkorelasi langsung dengan frekuensi eksekusi kontrol internal:
 
 | Frekuensi Pelaksanaan Kontrol | Estimasi Populasi Tahunan | Rentang Jumlah Sampel Minimum (Tabel 22) | Rekomendasi Standar Pengujian |

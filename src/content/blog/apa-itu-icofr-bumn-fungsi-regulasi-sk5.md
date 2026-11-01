@@ -30,6 +30,9 @@ featured: false
 
 ## Definisi: Apa Itu ICOFR?
 
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **ICOFR BUMN adalah** sistem pengendalian internal atas pelaporan keuangan (*Internal Control over Financial Reporting*) berbasis kerangka COSO 2013 yang wajib diterapkan oleh seluruh BUMN dan anak usahanya berdasarkan mandat SK-5/DKU.MBU/11/2024. Tujuannya adalah menjamin laporan keuangan bebas salah saji material, memitigasi risiko fraud, dan mendasari asersi formal Direktur Utama serta Direktur Keuangan.
+
 *Internal Control over Financial Reporting* (ICOFR) atau Pengendalian Internal atas Pelaporan Keuangan adalah suatu proses yang dirancang dan dijalankan oleh Dewan Direksi, manajemen, dan personel korporasi lainnya untuk memberikan keyakinan memadai (*reasonable assurance*) mengenai:
 1. **Keandalan Pelaporan Keuangan**: Angka-angka laporan keuangan disajikan secara wajar sesuai Standar Akuntansi Keuangan (SAK) yang berlaku.
 2. **Kepatuhan Terhadap Regulasi**: Pencegahan manipulasi pos keuangan, perlindungan aset perusahaan, serta keterbukaan informasi publik.

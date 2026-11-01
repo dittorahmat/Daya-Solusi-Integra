@@ -405,9 +405,9 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Metode scoping top-down ICOFR untuk holding BUMN: kapan anak perusahaan wajib ikut SK-5, materialitas kuantitatif dan kualitatif, eliminasi antar perusahaan, serta model operasi Lini 1/2/3 holding versus anak.
 - Tautan: https://dsintegra.co.id/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn
 
-### Significant Deficiency vs Material Weakness ICOFR: Cara Agregasi dan Remediasi SK-5
+### Control Deficiency Adalah Celah Pengendalian ICOFR BUMN: Klasifikasi dan Cara Remediasi SK-5
 - Kategori: Tata Kelola & GRC
-- Ringkasan: Bedakan control deficiency, significant deficiency, dan material weakness ICOFR menurut SK-5: matriks agregasi temuan, contoh ilustratif, timeline remediasi 30/60/90 hari dengan re-testing, dan contoh memo ke Komite Audit.
+- Ringkasan: Apa itu control deficiency dalam ICOFR BUMN? Bedakan control deficiency, significant deficiency, dan material weakness menurut SK-5: matriks agregasi temuan, contoh ilustratif, dan timeline remediasi 30/60/90 hari.
 - Tautan: https://dsintegra.co.id/blog/significant-deficiency-vs-material-weakness-icofr-remediasi
 
 ### Studi Kasus ICOFR BUMN: Eliminasi 42 Defisiensi Pengendalian Menuju Opini WTP Tanpa Catatan

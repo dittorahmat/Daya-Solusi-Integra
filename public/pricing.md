@@ -11,11 +11,11 @@
 
 Software license pricing for GRC Integra follows an annual subscription model (SaaS or On-Premise appliance) based on named user tiers (Lini 1 Control Owners, Lini 2 Risk & Compliance Testers, Lini 3 SPI Internal Audit, and Executive Viewers):
 
-| Tier Plan | Target Entity Scope | Named Users | Indicative Annual Fee (IDR) | Indicative Annual Fee (USD Equiv) | Key Capabilities Included |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| Tier Plan | Target Entity Scope | Named Users | Indicative Annual Fee (IDR) | Key Capabilities Included |
+| :--- | :--- | :--- | :--- | :--- |
 | **BUMN Anak Usaha / Standalone** | Single operating subsidiary or standalone BUMN | Up to 30 Users | IDR 120,000,000 - 180,000,000 / year | ~ $7,500 - $11,500 / year | RCM Repository, BPMN Flowchart Viewer, Table 22 TOE Calculator, QR-coded Management Assertion |
 | **BUMN Corporate Medium** | Mid-size BUMN with 1-2 material operating units | Up to 60 Users | IDR 180,000,000 - 275,000,000 / year | ~ $11,500 - $17,500 / year | Multi-unit consolidation, ITGC & SoD Matrix Analyzer, Walkthrough Lini 2 Tracker, Audit Trail Logging |
-| **BUMN Holding Enterprise** | Strategic Holding BUMN with multiple consolidated subsidiaries | 100+ Users (Custom) | Custom Enterprise Quote | Custom Enterprise Quote | Multi-subsidiary rollup, On-Premise air-gapped deployment (UU PDP compliance), ERP connectors (SAP/Oracle), custom SLA |
+| **BUMN Holding Enterprise** | Strategic Holding BUMN with multiple consolidated subsidiaries | 100+ Users (Custom) | Custom Enterprise Quote | Multi-subsidiary rollup, On-Premise air-gapped deployment (UU PDP compliance), ERP connectors (SAP/Oracle), custom SLA |
 
 *Note: Per-user expansion beyond package quotas is available at approximately IDR 2,500,000 to IDR 3,500,000 per user per year.*
 

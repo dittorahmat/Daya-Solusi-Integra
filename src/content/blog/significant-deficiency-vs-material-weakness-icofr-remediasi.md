@@ -1,8 +1,8 @@
 ---
 id: "significant-deficiency-vs-material-weakness-icofr-remediasi"
-title: "Control Deficiency Adalah Celah Pengendalian ICOFR BUMN: Klasifikasi dan Cara Remediasi SK-5"
+title: "Significant Deficiency vs Material Weakness ICOFR: Cara Agregasi dan Remediasi SK-5"
 slug: "significant-deficiency-vs-material-weakness-icofr-remediasi"
-excerpt: "Apa itu control deficiency dalam ICOFR BUMN? Bedakan control deficiency, significant deficiency, dan material weakness menurut SK-5: matriks agregasi temuan, contoh ilustratif, dan timeline remediasi 30/60/90 hari."
+excerpt: "Bedakan control deficiency, significant deficiency, dan material weakness ICOFR menurut SK-5: matriks agregasi temuan, contoh ilustratif, timeline remediasi 30/60/90 hari dengan re-testing, dan contoh memo ke Komite Audit."
 category: "Tata Kelola & GRC"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"

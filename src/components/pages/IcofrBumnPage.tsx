@@ -98,6 +98,28 @@ export default function IcofrBumnPage({ onNavigate, onOpenAdvisor }: ServicePage
                 <span><strong>COSO Internal Control 2013:</strong> Kerangka Terintegrasi 5 Komponen dan 17 Prinsip Pengendalian.</span>
               </li>
             </ul>
+
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold block">Instrumen Pendukung</span>
+              <div className="flex flex-col gap-1.5 text-xs">
+                <a
+                  href="/toolkit-regulasi"
+                  onClick={(e) => { e.preventDefault(); onNavigate("/toolkit-regulasi"); }}
+                  className="text-bumn-blue hover:text-blue-700 font-medium inline-flex items-center gap-1.5"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-bumn-gold" />
+                  <span>Download Rujukan Matriks SK-5 & Toolkit</span>
+                </a>
+                <a
+                  href="/asesmen-maturitas"
+                  onClick={(e) => { e.preventDefault(); onNavigate("/asesmen-maturitas"); }}
+                  className="text-bumn-blue hover:text-blue-700 font-medium inline-flex items-center gap-1.5"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-bumn-gold" />
+                  <span>Simulasi Kesiapan Audit ICOFR Mandiri</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -126,8 +126,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white border-b border-slate-200 shadow-xs py-4"
-          : "bg-white/95 border-b border-slate-100 py-6"
+          ? "bg-white/95 border-b border-slate-200 shadow-xs py-3"
+          : "bg-white border-b border-slate-100 py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -147,7 +147,7 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 border border-slate-200 px-2 py-1.5 rounded-full" id="desktop-navbar">
+          <nav className="hidden md:flex items-center gap-1 bg-white border border-slate-200 px-2 py-1.5 rounded-full shadow-2xs" id="desktop-navbar">
             {navItems.map((item) => {
               if (item.id === "platform") {
                 return (
@@ -169,12 +169,12 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                       onClick={() => handleNavClick(item.id)}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                         activeTab === item.id
-                          ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                          ? "bg-bumn-blue text-white shadow-xs font-semibold"
+                          : "text-slate-600 hover:text-bumn-blue hover:bg-blue-50/60"
                       }`}
                     >
                       <span>{item.label}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isPlatformDropdownOpen ? "rotate-180 text-white" : "text-slate-600"}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isPlatformDropdownOpen ? "rotate-180" : ""} ${activeTab === item.id ? "text-white" : "text-slate-500"}`} />
                     </button>
 
                     {/* Platform Dropdown Menu */}
@@ -239,8 +239,8 @@ export default function Header({ activeTab, setActiveTab, onOpenAdvisor }: Heade
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     activeTab === item.id
-                      ? "bg-gradient-to-r from-bumn-blue to-blue-700 text-white shadow-md font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                      ? "bg-bumn-blue text-white shadow-xs font-semibold"
+                      : "text-slate-600 hover:text-bumn-blue hover:bg-blue-50/60"
                   }`}
                 >
                   {item.label}

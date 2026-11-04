@@ -2,6 +2,7 @@
 
 ## Arsitektur Repositori & Navigasi Cepat (Navigation Pointers)
 Repositori ini adalah Single Page Application (SPA) berbasis **Vite + React + Tailwind CSS** (bukan Next.js App Router).
+- **Komponen Shell & Layout Global**: Header/Navbar di [`src/components/Header.tsx`](file:///C:/backup/Daya-Solusi-Integra/src/components/Header.tsx) dan Footer di [`src/components/Footer.tsx`](file:///C:/backup/Daya-Solusi-Integra/src/components/Footer.tsx).
 - **Halaman & Rute Aplikasi**: [`src/components/pages/`](file:///C:/backup/Daya-Solusi-Integra/src/components/pages/) (semua halaman pilar, kalkulator, dan katalog dimuat di sini).
 - **Glosarium & Defined Terms**: [`src/data/glossaryData.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/glossaryData.ts) (sumber data tunggal definisi, komparasi, FAQ, dan commercial bridges).
 - **Metadata & SEO Schema Engine**: [`scripts/seo/jsonld.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/jsonld.ts) dan [`scripts/seo/semantic-body.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/semantic-body.ts).

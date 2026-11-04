@@ -49,7 +49,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
             </div>
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
               <span className="text-bumn-blue">Sinkronisasi RCM Otomatis</span>
-              <a href="/platform/bpm-workflow-editor" className="text-bumn-blue hover:text-blue-800 font-semibold inline-flex items-center gap-1 transition-colors">
+              <a href="/platform/bpm-workflow-editor" className="text-bumn-gold hover:text-amber-800 font-semibold inline-flex items-center gap-1 transition-colors">
                 <span>Detail Fitur</span>
                 <ChevronRight className="w-3 h-3" />
               </a>

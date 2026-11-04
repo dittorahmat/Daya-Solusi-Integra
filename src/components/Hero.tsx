@@ -128,7 +128,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
                     3 Pilar Strategis Terintegrasi
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-bumn-blue bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                <span className="text-[11px] font-mono text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
                   Resmi Terverifikasi
                 </span>
               </div>

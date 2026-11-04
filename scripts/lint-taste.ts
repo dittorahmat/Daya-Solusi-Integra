@@ -3,6 +3,8 @@ import path from 'node:path';
 
 const SRC_DIR = path.resolve(process.cwd(), 'src');
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
+const INDEX_CSS = path.resolve(SRC_DIR, 'index.css');
+
 const BANNED_PATTERNS = [
   { name: 'Sparkles Icon / Gimmick', regex: /\bSparkles\b/ },
   { name: 'Cosmetic animate-pulse', regex: /\banimate-pulse\b/ },
@@ -10,6 +12,13 @@ const BANNED_PATTERNS = [
   { name: 'Fake Glassmorphism (backdrop-blur)', regex: /\bbackdrop-blur(?:-[a-z0-9]+)?\b/ },
   { name: 'Dark Hover on Light Canvas', regex: /\bhover:bg-slate-(?:800|850|900|950)\b/ },
   { name: 'White Text Hover on Light Canvas', regex: /\bhover:text-white\b/ }
+];
+
+const BANNED_CSS_PATTERNS = [
+  { 
+    name: 'Hardcoded BUMN Blue Hex in CSS (Gunakan var(--color-bumn-blue))', 
+    regex: /(?<!var\(--color-bumn-blue\)\s*)#0b4596\b/i 
+  }
 ];
 
 const BANNED_PUBLIC_PATTERNS = [
@@ -83,8 +92,32 @@ function runLintTaste() {
       });
     }
 
+    // Audit CSS rules (melarang penggunaan hardcoded hex di luar deklarasi @theme)
+    if (fs.existsSync(INDEX_CSS)) {
+      const cssContent = fs.readFileSync(INDEX_CSS, 'utf-8');
+      const lines = cssContent.split('\n');
+      let inThemeBlock = false;
+
+      lines.forEach((line, index) => {
+        if (line.includes('@theme')) inThemeBlock = true;
+        if (inThemeBlock && line.includes('}')) inThemeBlock = false;
+
+        if (!inThemeBlock) {
+          for (const pattern of BANNED_CSS_PATTERNS) {
+            if (pattern.regex.test(line)) {
+              if (line.includes('/* taste-ignore */')) return;
+              console.error(
+                `❌ [${pattern.name}] di src/index.css:${index + 1}\n   ${line.trim()}`
+              );
+              violationCount++;
+            }
+          }
+        }
+      });
+    }
+
     if (violationCount > 0) {
-      console.error(`\n❌ Ditemukan ${violationCount} pelanggaran aturan konten publik (Valuta Asing / Em-dash).`);
+      console.error(`\n❌ Ditemukan ${violationCount} pelanggaran aturan konten publik / CSS tokenization.`);
       process.exit(1);
     }
 

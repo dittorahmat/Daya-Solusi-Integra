@@ -54,8 +54,8 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
           <div className="lg:col-span-7 space-y-8 text-left" id="hero-text-content">
             
             {/* Regulatory Scope Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono tracking-wider uppercase">
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-blue-50 border border-blue-200 text-bumn-blue text-xs font-mono tracking-wider uppercase">
+              <ShieldCheck className="w-3.5 h-3.5 text-bumn-blue" />
               <span>Praktik Independen Konsultasi TI & GRC Korporasi</span>
             </div>
 
@@ -87,9 +87,9 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               <button
                 id="hero-secondary-cta"
                 onClick={onOpenAdvisor}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] border border-slate-200 rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-bumn-blue hover:text-blue-800 bg-blue-50/70 hover:bg-blue-100/80 active:scale-[0.98] border border-blue-200 rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-bumn-blue"
               >
-                <MessageSquare className="w-4 h-4 text-bumn-gold" />
+                <MessageSquare className="w-4 h-4 text-bumn-blue" />
                 <span>Konsultasi AI DSI</span>
                 <kbd className="font-mono text-[11px] bg-white text-slate-600 px-1.5 py-0.5 rounded border border-slate-300 ml-1">Ctrl+/</kbd>
               </button>
@@ -98,7 +98,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
             {/* Authority Reference Matrix */}
             <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center gap-6 text-slate-600 text-xs sm:text-sm" id="hero-badges">
               <div className="flex items-center gap-2 text-slate-700">
-                <Milestone className="w-4 h-4 text-blue-400 shrink-0" />
+                <Milestone className="w-4 h-4 text-bumn-blue shrink-0" />
                 <span>Pedoman GCG Kementerian BUMN</span>
               </div>
               <div className="w-1 h-1 bg-slate-300 rounded-full hidden sm:block" />
@@ -108,7 +108,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
               </div>
               <div className="w-1 h-1 bg-slate-300 rounded-full hidden sm:block" />
               <div className="flex items-center gap-2 text-slate-700">
-                <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-bumn-blue shrink-0" />
                 <span>Standar <GlossaryTooltip acronym="COSO">COSO</GlossaryTooltip> & COBIT</span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Hero({ onScrollToSection, onOpenAdvisor }: HeroProps) {
 
           {/* Clean Executive Governance Ledger */}
           <div className="lg:col-span-5" id="hero-visual-frame">
-            <div className="bg-white border border-slate-200 rounded-2xl p-7 text-left shadow-md">
+            <div className="bg-white border border-slate-200 rounded-2xl p-7 text-left shadow-xs">
               
               {/* Dossier Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">

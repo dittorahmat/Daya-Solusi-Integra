@@ -2,6 +2,7 @@
 
 ## Arsitektur Repositori & Navigasi Cepat (Navigation Pointers)
 Repositori ini adalah Single Page Application (SPA) berbasis **Vite + React + Tailwind CSS** (bukan Next.js App Router).
+- **Komponen Shell & Layout Global**: Header/Navbar di [`src/components/Header.tsx`](file:///C:/backup/Daya-Solusi-Integra/src/components/Header.tsx) dan Footer di [`src/components/Footer.tsx`](file:///C:/backup/Daya-Solusi-Integra/src/components/Footer.tsx).
 - **Halaman & Rute Aplikasi**: [`src/components/pages/`](file:///C:/backup/Daya-Solusi-Integra/src/components/pages/) (semua halaman pilar, kalkulator, dan katalog dimuat di sini).
 - **Glosarium & Defined Terms**: [`src/data/glossaryData.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/glossaryData.ts) (sumber data tunggal definisi, komparasi, FAQ, dan commercial bridges).
 - **Metadata & SEO Schema Engine**: [`scripts/seo/jsonld.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/jsonld.ts) dan [`scripts/seo/semantic-body.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/semantic-body.ts).
@@ -26,7 +27,8 @@ This project has been set up with the Impeccable design system. Future developme
   - High-contrast Light Corporate Theme: seluruh halaman publik menggunakan kanvas putih/terang dengan rasio kontras WCAG AA tajam (teks gelap di atas putih).
   - No sketchy, hand-drawn SVG illustrations or over-rounded card layouts.
   - Avoid cyberpunk/hacker themes with green or purple neon.
-  - Follow **The 10% Accent Rule** (BUMN Gold/Amber must cover <= 10% of any viewport).
+  - Follow **The 10% Accent Rule** (BUMN Gold/Amber must cover <= 10% of any viewport): Dilarang menghapus total aksen emas/amber menjadi monokrom biru dingin. Aksen emas/amber tetap wajib hadir secara selektif sebagai penanda sertifikasi, status kepatuhan (*Resmi Terverifikasi*), dan badge regulasi.
+  - Tokenization Mandate: Selalu gunakan custom properties CSS (`var(--color-bumn-blue)`, `var(--color-bumn-gold)`, `var(--color-border-thin)`) atau utility Tailwind resmi; dilarang menggunakan hardcoded hex (`#0b4596`) secara inline di file CSS.
   - Banned dark hover remnants: Dilarang menggunakan status hover gelap (`hover:bg-slate-800`, `hover:bg-slate-900`, `hover:text-white` di atas card/container putih) yang menimbulkan efek kontras hitam mendadak.
   - Strict No Backdrop-Blur on Solid Components: Dilarang menggunakan `backdrop-blur` pada card, header bar, badge, atau overlay dialog; gunakan warna solid tegas (`bg-white`, `bg-slate-50`, `bg-slate-900/40`).
 

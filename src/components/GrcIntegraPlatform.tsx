@@ -48,8 +48,8 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
               </p>
             </div>
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
-              <span className="text-[#0b4596]">Sinkronisasi RCM Otomatis</span>
-              <a href="/platform/bpm-workflow-editor" className="text-bumn-gold hover:text-amber-300 font-semibold inline-flex items-center gap-1 transition-colors">
+              <span className="text-bumn-blue">Sinkronisasi RCM Otomatis</span>
+              <a href="/platform/bpm-workflow-editor" className="text-bumn-gold hover:text-amber-800 font-semibold inline-flex items-center gap-1 transition-colors">
                 <span>Detail Fitur</span>
                 <ChevronRight className="w-3 h-3" />
               </a>
@@ -69,7 +69,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
                 Pemisahan peran pengisian Lini 1 dan validasi independen Lini 2. Uji Test of One dengan kewajiban upload bukti otentik tanpa celah audit.
               </p>
             </div>
-            <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-[#0b4596]">
+            <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-bumn-blue">
               Validasi Independen Lini 2
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function GrcIntegraPlatform({ onRequestDemo }: GrcIntegraPlatform
                 Penentuan ukuran sampel pengujian TOE otomatis berbasis frekuensi kontrol (Harian, Mingguan, Bulanan) lengkap dengan justifikasi homogenitas.
               </p>
             </div>
-            <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-[#0b4596]">
+            <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-bumn-blue">
               Kalkulasi Sampel Akurat
             </div>
           </div>

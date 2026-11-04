@@ -7,11 +7,11 @@ export default function Clients() {
   const renderIcon = (iconName: string) => {
     switch (iconName) {
       case "Building2":
-        return <Building2 className="w-8 h-8 text-blue-400" />;
+        return <Building2 className="w-8 h-8 text-bumn-blue" />;
       case "Landmark":
-        return <Landmark className="w-8 h-8 text-blue-400" />;
+        return <Landmark className="w-8 h-8 text-bumn-blue" />;
       default:
-        return <Building2 className="w-8 h-8 text-blue-400" />;
+        return <Building2 className="w-8 h-8 text-bumn-blue" />;
     }
   };
 

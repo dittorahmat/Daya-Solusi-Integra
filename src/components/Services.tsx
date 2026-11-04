@@ -64,7 +64,7 @@ export default function Services() {
                 {/* Column 1: Index & Title */}
                 <div className="lg:col-span-4 space-y-3 text-left">
                   <div className="flex items-center gap-2.5">
-                    <span className="font-mono text-xs font-bold text-bumn-gold">
+                    <span className="font-mono text-xs font-bold text-bumn-blue">
                       0{index + 1}.
                     </span>
                     <span className="font-mono text-xs uppercase tracking-wider text-slate-600">
@@ -89,7 +89,7 @@ export default function Services() {
                   <div className="grid sm:grid-cols-2 gap-2.5 pt-2">
                     {service.features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-bumn-blue shrink-0 mt-0.5" />
                         <span className="leading-snug">{feature}</span>
                       </div>
                     ))}

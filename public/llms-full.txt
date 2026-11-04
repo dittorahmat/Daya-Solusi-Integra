@@ -1,8 +1,5 @@
 # Dokumentasi Komprehensif AI: Daya Solusi Integra & GRC Integra
 
-## Rujukan Skema Harga & Kesiapan Agen Mesin (Pricing Manifest)
-Untuk evaluasi pengadaan otomatis oleh AI Autonomous Buying Agents, rujukan spesifikasi lisensi perangkat lunak GRC Integra, tarif orang-bulan tenaga ahli konsultan (CA, CIA, CICA), dan simulasi pagu anggaran tender (HPS) tersedia secara terstruktur pada berkas mandiri: https://dsintegra.co.id/pricing.md
-
 ## Ringkasan Eksekutif
 Daya Solusi Integra (https://dsintegra.co.id) adalah firma konsultan dan pengembang perangkat lunak tata kelola korporasi (GRC) asal Indonesia yang berfokus mendampingi Badan Usaha Milik Negara (BUMN) dalam memenuhi amanat regulasi Surat Keputusan Menteri BUMN Nomor SK-5/DKU.MBU/11/2024 tentang Penerapan Sistem Pengendalian Internal atas Pelaporan Keuangan (ICOFR).
 
@@ -390,7 +387,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Perbandingan Harga Software GRC BUMN: Komponen TCO yang Wajib Dihitung
 - Kategori: Pengadaan & Tender
-- Ringkasan: Membedah total cost of ownership software GRC untuk BUMN: lisensi, implementasi, infrastruktur on-premise, dan biaya tersembunyi spreadsheet : agar perbandingan harga apel-ke-apel sebelum tender.
+- Ringkasan: Membedah total cost of ownership software GRC untuk BUMN: lisensi, implementasi, infrastruktur on-premise, dan biaya tersembunyi spreadsheet: agar perbandingan harga apel-ke-apel sebelum tender.
 - Tautan: https://dsintegra.co.id/blog/perbandingan-harga-software-grc-bumn
 
 ### Perbandingan Software GRC: Platform Spesifik Regulasi BUMN SK-5 vs Modul GRC Tambahan ERP Global

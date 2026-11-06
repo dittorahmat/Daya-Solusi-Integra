@@ -42,6 +42,37 @@ function getAllFiles(dirPath: string, extensions: string[]): string[] {
   return files;
 }
 
+// Deteksi duplikasi intent CTA dalam satu container/section
+function checkDuplicateCtaIntents(filePath: string, content: string): number {
+  let violations = 0;
+  const relativePath = path.relative(process.cwd(), filePath);
+  
+  // Mencari blok section / container utama
+  const sectionRegex = /<(?:section|div)[^>]*>([\s\S]*?)<\/(?:section|div)>/g;
+  let match: RegExpExecArray | null;
+
+  // URL komersial yang tidak boleh diduplikasi dalam 1 container sempit
+  const trackedRoutes = ['/layanan/icofr-bumn', '/asesmen-maturitas', '/platform/grc-integra', '/toolkit-regulasi'];
+
+  while ((match = sectionRegex.exec(content)) !== null) {
+    const block = match[1];
+    // Batasi pengecekan pada blok yang relatif ringkas (hero/callout) agar tidak salah deteksi di footer/seluruh page
+    if (block.length > 3500) continue;
+
+    for (const route of trackedRoutes) {
+      const occurrences = (block.match(new RegExp(route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+      if (occurrences > 2) {
+        console.error(
+          `❌ [Duplicate CTA Intent] di ${relativePath}: Ditemukan ${occurrences} tombol/tautan menuju "${route}" dalam satu container. Maksimal 1-2 aksi per viewport.`
+        );
+        violations++;
+      }
+    }
+  }
+
+  return violations;
+}
+
 function runLintTaste() {
   const targetFiles = getAllFiles(SRC_DIR, ['.tsx', '.ts']);
   let violationCount = 0;
@@ -66,6 +97,10 @@ function runLintTaste() {
         }
       }
     });
+
+    if (filePath.endsWith('.tsx')) {
+      violationCount += checkDuplicateCtaIntents(filePath, content);
+    }
   }
 
   if (violationCount > 0) {

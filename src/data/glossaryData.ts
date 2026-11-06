@@ -171,12 +171,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/layanan/enterprise-grc",
     relatedServiceLabel: "Evaluasi Maturitas ELC",
     commercialBridge: {
-      title: "Pendampingan Evaluasi Entity-Level Controls BUMN",
-      description: "Penguatan fondasi tata kelola korporat, tone at the top, dan pemenuhan 17 prinsip COSO sesuai arahan Kementerian BUMN.",
+      title: "Evaluasi Komprehensif ELC: Penguatan Tone at the Top & Kesiapan Audit SK-5",
+      description: "Identifikasi celah pengendalian tingkat entitas, evaluasi 17 prinsip COSO, dan perkuat tone at the top untuk mencegah temuan kelemahan material asersi Direksi BUMN.",
       primaryUrl: "/layanan/icofr-bumn",
-      primaryLabel: "Layanan Konsultansi ICOFR",
+      primaryLabel: "Konsultasi Kesiapan ELC BUMN",
       secondaryUrl: "/asesmen-maturitas",
-      secondaryLabel: "Self-Assessment Maturitas"
+      secondaryLabel: "Asesmen Mandiri Maturitas ELC"
     }
   },
   {
@@ -208,12 +208,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
     relatedServiceLabel: "Audit Kesiapan ITGC",
     commercialBridge: {
-      title: "Kesiapan Audit ITGC & Keandalan Asersi Finansial",
-      description: "Asesmen kesiapan audit ITGC (Access Control, Change Management, IT Operations) untuk memenuhi standar audit BPK dan KAP.",
-      primaryUrl: "/layanan/itgc-audit-readiness",
-      primaryLabel: "Layanan ITGC Audit Readiness",
-      secondaryUrl: "/platform/grc-integra",
-      secondaryLabel: "Otomasi ITGC di GRC Integra"
+      title: "Otomasi Pengujian ITGC & Mitigasi Defisiensi Kontrol Sistem Finansial",
+      description: "Otomatiskan pengumpulan bukti audit kontrol IT, evaluasi hak akses logis, deteksi konflik matriks SoD ERP, dan lacak tindak lanjut defisiensi sistemik di platform GRC Integra.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Pelajari Platform GRC Integra",
+      secondaryUrl: "/layanan/itgc-audit-readiness",
+      secondaryLabel: "Asesmen Kesiapan Audit ITGC"
     }
   },
   {
@@ -396,12 +396,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/regulasi",
     relatedServiceLabel: "Matriks Tiga Lini di Pusat Regulasi",
     commercialBridge: {
-      title: "Harmonisasi Tiga Lini Pengendalian BUMN",
-      description: "Pastikan pemisahan tugas tegas antara Pemilik Kontrol (Lini 1), Tim Kepatuhan/Manajemen Risiko (Lini 2), dan SPI (Lini 3) sesuai mandat SK-5 BUMN.",
+      title: "Harmonisasi Peran Tiga Lini: Eliminasi Tumpang Tindih & Kesiapan Audit SK-5",
+      description: "Tegaskan batas akuntabilitas antara Lini 1 operasional, Lini 2 kepatuhan dan risiko, serta Lini 3 SPI agar kertas kerja walkthrough dan pengujian efektivitas terverifikasi tanpa friksi.",
       primaryUrl: "/layanan/icofr-bumn",
-      primaryLabel: "Konsultansi Pendampingan Tiga Lini",
-      secondaryUrl: "/platform/grc-integra",
-      secondaryLabel: "Workflow Kolaborasi Tiga Lini"
+      primaryLabel: "Konsultasi Kesiapan Tiga Lini",
+      secondaryUrl: "/asesmen-maturitas",
+      secondaryLabel: "Asesmen Mandiri Kesiapan Tata Kelola"
     }
   },
   {
@@ -493,12 +493,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/temuan-audit-icofr",
     relatedServiceLabel: "Katalog Temuan & CAP",
     commercialBridge: {
-      title: "Remediasi Celah Kontrol & Mitigasi Defisiensi",
-      description: "Dokumentasikan kontrol kompensasi yang valid dan teruji untuk mencegah temuan audit berulang BPK dan KAP eksternal.",
-      primaryUrl: "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi",
-      primaryLabel: "Panduan Remediasi Defisiensi",
-      secondaryUrl: "/layanan/icofr-bumn",
-      secondaryLabel: "Konsultasi Remediasi ICOFR"
+      title: "Otomasi Kontrol Kompensasi & Mitigasi Konflik Matriks SoD",
+      description: "Petakan kontrol kompensasi terverifikasi, mitigasi risiko ketiadaan pemisahan tugas pada ERP, dan kelola dokumen pembuktian audit TOE secara terpusat di platform GRC Integra.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Kelola Kontrol di GRC Integra",
+      secondaryUrl: "/layanan/itgc-audit-readiness",
+      secondaryLabel: "Konsultasi Mitigasi Celah Kontrol"
     }
   },
   {

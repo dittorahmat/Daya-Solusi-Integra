@@ -81,32 +81,6 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
           <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
             Kompilasi direktori regulasi resmi Kementerian BUMN, OJK, dan standar pengawasan eksternal BPK RI yang mengatur kewajiban pengendalian internal pelaporan keuangan (ICOFR), pembagian peran Tiga Lini, serta tata kelola korporasi terintegrasi.
           </p>
-
-          {/* Executive Above-the-Fold Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mt-8 pt-2">
-            <button
-              onClick={() => onNavigate("/layanan/icofr-bumn")}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-bumn-blue hover:bg-blue-700 text-white text-sm font-semibold shadow-sm transition-colors cursor-pointer whitespace-nowrap"
-            >
-              <Layers className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>Konsultasi Implementasi ICOFR</span>
-              <ArrowRight className="w-4 h-4 text-white/80 shrink-0" />
-            </button>
-            <button
-              onClick={() => onNavigate("/asesmen-maturitas")}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap shadow-xs"
-            >
-              <ShieldCheck className="w-4 h-4 text-bumn-gold shrink-0" />
-              <span>Asesmen Mandiri Maturitas SK-5</span>
-            </button>
-            <button
-              onClick={() => onNavigate("/toolkit-regulasi")}
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-600 hover:text-bumn-blue transition-colors cursor-pointer whitespace-nowrap"
-            >
-              <FileSpreadsheet className="w-3.5 h-3.5 text-bumn-gold shrink-0" />
-              <span>Toolkit &amp; Kertas Kerja SK-5</span>
-            </button>
-          </div>
         </div>
 
         {/* Callout Resmi SK-5/DKU.MBU/11/2024 & Toolkit Kepatuhan (Pillar Intent: sk 5 bumn, sk-5 bumn icofr pdf, itac) */}

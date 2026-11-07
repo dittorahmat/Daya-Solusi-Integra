@@ -96,6 +96,16 @@ export default function RegulatoryHubPage({ onNavigate, onOpenAdvisor }: Regulat
                   <span className="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-semibold border border-amber-200">
                     Tabel 22 &amp; Pengujian ITAC
                   </span>
+                  <a
+                    href="/docs/sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    download="sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold border border-slate-300 shadow-xs transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5 text-bumn-gold" />
+                    <span>Download SK-5 BUMN PDF</span>
+                  </a>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                   Matriks Kepatuhan SK-5 BUMN, Kertas Kerja TOE &amp; Panduan ITAC

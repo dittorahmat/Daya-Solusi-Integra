@@ -101,6 +101,16 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                   <span className="px-2.5 py-0.5 rounded bg-blue-100 text-bumn-blue text-xs font-bold font-mono border border-blue-200">
                     SK-5/DKU.MBU/11/2024 PDF &amp; Juknis
                   </span>
+                  <a
+                    href="/docs/sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    download="sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold border border-amber-300 transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5 text-amber-700" />
+                    <span>Unduh PDF Resmi SK-5</span>
+                  </a>
                   <span className="text-xs text-slate-500 font-medium">Kementerian BUMN RI</span>
                 </div>
                 <h2 className="text-lg sm:text-xl font-bold text-slate-900">

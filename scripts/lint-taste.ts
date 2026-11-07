@@ -42,6 +42,32 @@ function getAllFiles(dirPath: string, extensions: string[]): string[] {
   return files;
 }
 
+// Deteksi tombol/aksi interaktif yang keliru diletakkan di dalam baris tag/badge meta
+function checkActionInBadgeRows(filePath: string, content: string): number {
+  let violations = 0;
+  const relativePath = path.relative(process.cwd(), filePath);
+
+  // Cari container badge (biasanya memiliki class gap-2, items-center, dan berisi elemen badge rounded)
+  const badgeContainerRegex = /<div[^>]*className=["'][^"']*\b(?:gap-[123]|space-x-[123])\b[^"']*(?:items-center|flex-wrap)[^"']*["'][^>]*>([\s\S]*?)<\/div>/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = badgeContainerRegex.exec(content)) !== null) {
+    const block = match[1];
+    // Jika container berisi badge teks kecil / pill dan sekaligus memuat tag tautan download atau button interaktif
+    const hasBadgePill = /<span[^>]*className=["'][^"']*(?:rounded|bg-blue-100|bg-amber-100|font-mono)[^"']*["']/.test(block);
+    const hasDownloadOrButton = /<(?:a|button)[^>]*(?:download|onClick)[^>]*>[\s\S]*?<\/(?:a|button)>/.test(block);
+
+    if (hasBadgePill && hasDownloadOrButton) {
+      console.error(
+        `❌ [Action in Badge Row] di ${relativePath}: Ditemukan tombol interaktif/download di dalam kontainer baris badge meta. Pindahkan tombol aksi ke baris aksi (action row) terpisah di bawah deskripsi.`
+      );
+      violations++;
+    }
+  }
+
+  return violations;
+}
+
 // Deteksi duplikasi intent CTA dalam satu container/section
 function checkDuplicateCtaIntents(filePath: string, content: string): number {
   let violations = 0;
@@ -99,6 +125,7 @@ function runLintTaste() {
     });
 
     if (filePath.endsWith('.tsx')) {
+      violationCount += checkActionInBadgeRows(filePath, content);
       violationCount += checkDuplicateCtaIntents(filePath, content);
     }
   }

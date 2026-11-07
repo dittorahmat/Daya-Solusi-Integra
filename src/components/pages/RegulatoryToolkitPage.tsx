@@ -109,28 +109,40 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Gunakan template kertas kerja ini untuk penyusunan awal atau migrasikan langsung ke sistem <strong>GRC Integra</strong> untuk pengujian efektivitas pengendalian otomatis, pembagian peran Tiga Lini, dan pembuatan asersi direksi ber-QR Code.
                 </p>
+                <div className="pt-1">
+                  <a
+                    href="/docs/sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    download="sk-5-dku-mbu-11-2024-icofr-bumn.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-semibold border border-amber-300 transition-colors cursor-pointer"
+                  >
+                    <Download className="w-3.5 h-3.5 text-amber-700" />
+                    <span>Download Salinan Resmi SK-5/DKU.MBU/11/2024 (PDF)</span>
+                  </a>
+                </div>
               </div>
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
                 <button
                   onClick={() => onNavigate("/layanan/icofr-bumn")}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-bumn-blue hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-bumn-blue hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition-colors cursor-pointer whitespace-nowrap"
                 >
-                  <Layers className="w-3.5 h-3.5 text-amber-300" />
-                  <span>Layanan Konsultasi ICOFR</span>
+                  <Layers className="w-4 h-4 text-amber-300" />
+                  <span>Konsultasi Implementasi ICOFR</span>
+                </button>
+                <button
+                  onClick={() => onNavigate("/asesmen-maturitas")}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs sm:text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <ShieldCheck className="w-4 h-4 text-bumn-gold" />
+                  <span>Asesmen Mandiri Maturitas SK-5</span>
                 </button>
                 <button
                   onClick={() => onNavigate("/platform/grc-integra")}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-semibold transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap"
                 >
                   <Server className="w-3.5 h-3.5 text-bumn-blue" />
                   <span>Platform GRC Integra</span>
-                </button>
-                <button
-                  onClick={() => onNavigate("/regulasi")}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  <span>Pusat Regulasi</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -143,21 +155,21 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("rcm")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "rcm" 
-                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                ? "bg-blue-50 border-blue-500/80 shadow-md shadow-blue-900/10" 
                 : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono font-bold text-[#cca43b] px-2.5 py-1 rounded bg-amber-950/80 border border-amber-800/60">
+              <span className="text-xs font-mono font-bold text-bumn-gold px-2.5 py-1 rounded bg-amber-50 border border-amber-200">
                 Artefak 01
               </span>
-              <Table className="w-5 h-5 text-blue-400" />
+              <Table className="w-5 h-5 text-bumn-blue" />
             </div>
             <h3 className="text-base font-bold text-slate-900 mb-2">Template RCM Standar SK-5</h3>
             <p className="text-xs text-slate-600 leading-relaxed font-normal mb-4">
               Matriks pemetaan risiko tingkat proses, asersi manajemen, tipe pengendalian (preventif/detektif), dan frekuensi uji.
             </p>
-            <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
+            <div className="text-[11px] font-mono text-bumn-blue flex items-center gap-1 font-medium">
               <span>Lihat Struktur Kolom</span>
               <ArrowRight className="w-3 h-3" />
             </div>
@@ -167,21 +179,21 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("elc")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "elc" 
-                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                ? "bg-blue-50 border-blue-500/80 shadow-md shadow-blue-900/10" 
                 : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono font-bold text-[#cca43b] px-2.5 py-1 rounded bg-amber-950/80 border border-amber-800/60">
+              <span className="text-xs font-mono font-bold text-bumn-gold px-2.5 py-1 rounded bg-amber-50 border border-amber-200">
                 Artefak 02
               </span>
-              <Layers className="w-5 h-5 text-blue-400" />
+              <Layers className="w-5 h-5 text-bumn-blue" />
             </div>
             <h3 className="text-base font-bold text-slate-900 mb-2">Checklist ELC 17 Prinsip COSO</h3>
             <p className="text-xs text-slate-600 leading-relaxed font-normal mb-4">
               Kertas kerja evaluasi pengendalian tingkat entitas: lingkungan pengendalian, penilaian risiko, dan pemantauan Lini 2.
             </p>
-            <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
+            <div className="text-[11px] font-mono text-bumn-blue flex items-center gap-1 font-medium">
               <span>Lihat Struktur Kolom</span>
               <ArrowRight className="w-3 h-3" />
             </div>
@@ -191,21 +203,21 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
             onClick={() => setActiveTab("toe")}
             className={`cursor-pointer rounded-xl p-6 border transition-all ${
               activeTab === "toe" 
-                ? "bg-blue-50 border-blue-500/80 shadow-lg shadow-blue-950/40" 
+                ? "bg-blue-50 border-blue-500/80 shadow-md shadow-blue-900/10" 
                 : "bg-white border-slate-200 hover:border-slate-300"
             }`}
           >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono font-bold text-[#cca43b] px-2.5 py-1 rounded bg-amber-950/80 border border-amber-800/60">
+              <span className="text-xs font-mono font-bold text-bumn-gold px-2.5 py-1 rounded bg-amber-50 border border-amber-200">
                 Artefak 03
               </span>
-              <ShieldCheck className="w-5 h-5 text-blue-400" />
+              <ShieldCheck className="w-5 h-5 text-bumn-blue" />
             </div>
             <h3 className="text-base font-bold text-slate-900 mb-2">Kertas Kerja TOE Tabel 22</h3>
             <p className="text-xs text-slate-600 leading-relaxed font-normal mb-4">
               Format lembar pengujian efektivitas operasional, rentang sampel minimum SK-5, dan evaluasi defisiensi kontrol.
             </p>
-            <div className="text-[11px] font-mono text-blue-400 flex items-center gap-1 font-medium">
+            <div className="text-[11px] font-mono text-bumn-blue flex items-center gap-1 font-medium">
               <span>Lihat Struktur Kolom</span>
               <ArrowRight className="w-3 h-3" />
             </div>
@@ -454,7 +466,7 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
         </div>
 
         {/* Lead Capture: Request Template Package Form */}
-        <section className="bg-white border border-slate-200 rounded-2xl p-8 sm:p-12 max-w-3xl mx-auto shadow-sm">
+        <section id="permohonan-template" className="bg-white border border-slate-200 rounded-2xl p-8 sm:p-12 max-w-3xl mx-auto shadow-sm scroll-mt-24">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-bumn-blue text-xs font-mono uppercase tracking-wider mb-3 font-semibold">
               <Download className="w-3.5 h-3.5 text-bumn-gold" />

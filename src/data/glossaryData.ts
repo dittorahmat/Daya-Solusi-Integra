@@ -130,11 +130,11 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     acronym: "ELC",
     category: "Klasifikasi Kontrol",
     regulationRef: "COSO 17 Principles & SK-5 BUMN",
-    metaTitle: "ELC (Entity-Level Controls) BUMN: Definisi, 17 Prinsip COSO & Audit SK-5",
-    metaDescription: "Panduan lengkap Entity-Level Controls (ELC) BUMN sesuai kerangka COSO & SK-5. Pelajari evaluasi tone at the top, peran Komite Audit, dan mitigasi defisiensi.",
+    metaTitle: "ELC (Entity-Level Controls) Adalah: Definisi, 17 Prinsip COSO & Audit BUMN SK-5",
+    metaDescription: "Pelajari apa itu ELC (Entity-Level Controls) BUMN: definisi pervasif, 17 prinsip COSO, evaluasi tone at the top, dan checklist pengujian audit sesuai mandat SK-5.",
     definition: "Aktivitas pengendalian internal yang memiliki pengaruh pervasif atau melingkupi organisasi secara keseluruhan, mencakup lingkungan pengendalian, proses penilaian risiko korporat, kode etik, dan aktivitas pengawasan oleh Dewan Komisaris dan Komite Audit.",
     keyTakeaway: "ELC membentuk fondasi utama. Kelemahan pada tingkat ELC berpotensi menggagalkan efektivitas kontrol transaksional di tingkat operasional.",
-    directAnswer: "Entity-Level Controls (ELC) adalah pengendalian tingkat entitas yang bersifat pervasif di seluruh organisasi, mencakup tone at the top, kode etik, penilaian risiko korporat, dan pengawasan Komite Audit guna memastikan integritas tata kelola BUMN.",
+    directAnswer: "Entity-Level Controls (ELC) adalah pengendalian tingkat entitas yang bersifat pervasif berbasis 17 Prinsip COSO dan mandat SK-5 BUMN, mencakup tone at the top, kode etik, penilaian risiko korporat, dan pengawasan Komite Audit guna memastikan integritas tata kelola.",
     comparisonTable: {
       title: "Diferensiasi Entity-Level Controls (ELC) vs Transaction-Level Controls (TLC)",
       headers: ["Aspek Pembanding", "Entity-Level Controls (ELC)", "Transaction-Level Controls (TLC)"],
@@ -171,12 +171,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/layanan/enterprise-grc",
     relatedServiceLabel: "Evaluasi Maturitas ELC",
     commercialBridge: {
-      title: "Pendampingan Evaluasi Entity-Level Controls BUMN",
-      description: "Penguatan fondasi tata kelola korporat, tone at the top, dan pemenuhan 17 prinsip COSO sesuai arahan Kementerian BUMN.",
+      title: "Evaluasi Komprehensif ELC: Penguatan Tone at the Top & Kesiapan Audit SK-5",
+      description: "Identifikasi celah pengendalian tingkat entitas, evaluasi 17 prinsip COSO, dan perkuat tone at the top untuk mencegah temuan kelemahan material asersi Direksi BUMN.",
       primaryUrl: "/layanan/icofr-bumn",
-      primaryLabel: "Layanan Konsultansi ICOFR",
-      secondaryUrl: "/asesmen-maturitas",
-      secondaryLabel: "Self-Assessment Maturitas"
+      primaryLabel: "Konsultasi Kesiapan ELC BUMN",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Jelajahi Platform GRC Integra"
     }
   },
   {
@@ -199,21 +199,21 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     category: "Klasifikasi Kontrol",
     regulationRef: "POJK No. 11/POJK.03/2022 & COBIT",
     metaTitle: "ITGC BUMN: Definisi, Domain Pengendalian Umum TI & Audit Readiness",
-    metaDescription: "Apa itu ITGC dalam audit BUMN? Pelajari 3 domain utama: Access Control, Change Management, & IT Operations untuk keandalan asersi laporan keuangan.",
+    metaDescription: "Apa itu ITGC dalam audit BUMN? Pelajari standar SK-5/DKU.MBU/11/2024 dan COSO: Access Control, Change Management, dan IT Operations penopang asersi finansial.",
     definition: "Kebijakan dan prosedur pengendalian umum yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk memastikan kelangsungan operasional dan integritas data keuangan.",
-    directAnswer: "ITGC (Information Technology General Controls) adalah pengendalian umum TI yang menjaga keamanan akses logis, manajemen perubahan sistem, dan operasional infrastruktur agar laporan keuangan terbebas dari manipulasi data.",
+    directAnswer: "ITGC (Information Technology General Controls) adalah pengendalian umum TI berbasis SK-5 BUMN dan COSO yang mengamankan akses logis, manajemen perubahan, dan operasi infrastruktur agar laporan keuangan terbebas dari manipulasi data.",
     keyTakeaway: "Mencakup 3 domain kritis: Manajemen Akses Logis (IAM/SoD), Manajemen Perubahan (Change Management), dan Operasi TI (Backup & Job Scheduling).",
     practicalExample: "Pencabutan hak akses login ke basis data akuntansi maksimal 1x24 jam setelah status karyawan dinyatakan berhenti atau mutasi.",
     relatedTermIds: ["tlc", "tod", "toe"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
     relatedServiceLabel: "Audit Kesiapan ITGC",
     commercialBridge: {
-      title: "Kesiapan Audit ITGC & Keandalan Asersi Finansial",
-      description: "Asesmen kesiapan audit ITGC (Access Control, Change Management, IT Operations) untuk memenuhi standar audit BPK dan KAP.",
-      primaryUrl: "/layanan/itgc-audit-readiness",
-      primaryLabel: "Layanan ITGC Audit Readiness",
-      secondaryUrl: "/platform/grc-integra",
-      secondaryLabel: "Otomasi ITGC di GRC Integra"
+      title: "Otomasi Pengujian ITGC & Mitigasi Defisiensi Kontrol Sistem Finansial",
+      description: "Otomatiskan pengumpulan bukti audit kontrol IT, evaluasi hak akses logis, deteksi konflik matriks SoD ERP, dan lacak tindak lanjut defisiensi sistemik di platform GRC Integra.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Pelajari Platform GRC Integra",
+      secondaryUrl: "/layanan/icofr-bumn",
+      secondaryLabel: "Konsultasi Implementasi ICOFR & ITGC"
     }
   },
   {
@@ -348,11 +348,11 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "Three Lines Model",
     category: "Regulasi & Kerangka Kerja",
     regulationRef: "Model Tiga Lini IIA 2020 & SK-5/DKU.MBU/11/2024",
-    metaTitle: "Three Lines Model IIA BUMN: Pembagian Peran Lini 1, 2, 3 Sesuai SK-5",
-    metaDescription: "Penerapan Three Lines Model IIA pada BUMN berbasis SK-5/DKU.MBU/11/2024: rincian peran Lini 1 operasional, Lini 2 manajemen risiko/kepatuhan, dan Lini 3 SPI.",
+    metaTitle: "Three Lines Model Adalah: Arti, Pembagian Peran Lini 1, 2, 3 BUMN SK-5",
+    metaDescription: "Pelajari apa itu Three Lines Model di BUMN: pemisahan akuntabilitas Lini 1 operasional, Lini 2 kepatuhan risiko, dan Lini 3 SPI audit internal sesuai SK-5.",
     definition: "Model tata kelola yang membagi peran menjadi Lini 1 (manajemen operasional pemilik risiko dan kontrol), Lini 2 (fungsi kepatuhan, manajemen risiko, dan pengendalian yang memvalidasi), serta Lini 3 (audit internal independen yang memberikan asurans).",
     keyTakeaway: "SK-5 menuntut pemisahan tegas peran Lini 1 dan Lini 2, termasuk walkthrough independen oleh Lini 2 sebelum pengujian efektivitas.",
-    directAnswer: "Three Lines Model adalah kerangka tata kelola BUMN yang memisahkan akuntabilitas operasional (Lini 1), fungsi kepatuhan dan manajemen risiko (Lini 2), serta asurans audit internal independen (Lini 3) guna menjamin keandalan pelaporan keuangan.",
+    directAnswer: "Three Lines Model adalah kerangka tata kelola BUMN berbasis SK-5 dan COSO yang memisahkan akuntabilitas operasional (Lini 1), fungsi kepatuhan dan manajemen risiko (Lini 2), serta asurans audit internal independen (Lini 3) guna menjamin keandalan pelaporan keuangan.",
     comparisonTable: {
       title: "Matriks Akuntabilitas Three Lines Model di Lingkungan BUMN (SK-5)",
       headers: ["Aspek", "Lini 1: Operasional & Bisnis", "Lini 2: Manajemen Risiko & Kepatuhan", "Lini 3: Internal Audit (SPI)"],
@@ -396,12 +396,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/regulasi",
     relatedServiceLabel: "Matriks Tiga Lini di Pusat Regulasi",
     commercialBridge: {
-      title: "Harmonisasi Tiga Lini Pengendalian BUMN",
-      description: "Pastikan pemisahan tugas tegas antara Pemilik Kontrol (Lini 1), Tim Kepatuhan/Manajemen Risiko (Lini 2), dan SPI (Lini 3) sesuai mandat SK-5 BUMN.",
+      title: "Harmonisasi Peran Tiga Lini: Eliminasi Tumpang Tindih & Kesiapan Audit SK-5",
+      description: "Tegaskan batas akuntabilitas antara Lini 1 operasional, Lini 2 kepatuhan dan risiko, serta Lini 3 SPI agar kertas kerja walkthrough dan pengujian efektivitas terverifikasi tanpa friksi.",
       primaryUrl: "/layanan/icofr-bumn",
-      primaryLabel: "Konsultansi Pendampingan Tiga Lini",
+      primaryLabel: "Konsultasi Kesiapan Tiga Lini",
       secondaryUrl: "/platform/grc-integra",
-      secondaryLabel: "Workflow Kolaborasi Tiga Lini"
+      secondaryLabel: "Jelajahi Platform GRC Integra"
     }
   },
   {
@@ -447,9 +447,11 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     acronym: "Kontrol Kompensasi",
     category: "Klasifikasi Kontrol",
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab Evaluasi Defisiensi & COSO Framework",
+    metaTitle: "Compensating Control BUMN: Definisi, Kriteria SK-5 & Mitigasi Defisiensi",
+    metaDescription: "Apa itu compensating control dalam audit BUMN? Pelajari kriteria kontrol kompensasi sesuai SK-5/DKU.MBU/11/2024 dan COSO untuk mitigasi risiko salah saji material.",
     definition: "Aktivitas pengendalian pengganti yang dirancang untuk memitigasi risiko ketika kontrol utama tidak dapat diterapkan secara ideal, misalnya karena keterbatasan sistem atau struktur organisasi yang kecil, sepanjang efektivitasnya dapat dibuktikan melalui pengujian.",
     keyTakeaway: "Kontrol kompensasi harus didokumentasikan dan diuji seperti kontrol utama; ia bukan alasan untuk membiarkan defisiensi desain.",
-    directAnswer: "Compensating control adalah kontrol pengganti yang dirancang untuk memitigasi risiko keuangan saat kontrol utama tidak dapat dijalankan secara optimal akibat kendala sistem atau keterbatasan SDM, dengan syarat harus teruji efektif sesuai standar SK-5 BUMN.",
+    directAnswer: "Compensating control adalah kontrol pengganti yang dirancang untuk memitigasi risiko keuangan saat kontrol utama tidak dapat dijalankan optimal, dengan syarat wajib teruji efektif sesuai standar SK-5/DKU.MBU/11/2024 dan kerangka COSO.",
     comparisonTable: {
       title: "Komparasi Kontrol Utama vs Kontrol Kompensasi (SK-5 BUMN)",
       headers: ["Dimensi Evaluasi", "Kontrol Utama (Key Control)", "Kontrol Kompensasi (Compensating Control)"],
@@ -491,12 +493,12 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceUrl: "/temuan-audit-icofr",
     relatedServiceLabel: "Katalog Temuan & CAP",
     commercialBridge: {
-      title: "Remediasi Celah Kontrol & Mitigasi Defisiensi",
-      description: "Dokumentasikan kontrol kompensasi yang valid dan teruji untuk mencegah temuan audit berulang BPK dan KAP eksternal.",
-      primaryUrl: "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi",
-      primaryLabel: "Panduan Remediasi Defisiensi",
+      title: "Otomasi Kontrol Kompensasi & Mitigasi Konflik Matriks SoD",
+      description: "Petakan kontrol kompensasi terverifikasi, mitigasi risiko ketiadaan pemisahan tugas pada ERP, dan kelola dokumen pembuktian audit TOE secara terpusat di platform GRC Integra.",
+      primaryUrl: "/platform/grc-integra",
+      primaryLabel: "Kelola Kontrol di GRC Integra",
       secondaryUrl: "/layanan/icofr-bumn",
-      secondaryLabel: "Konsultasi Remediasi ICOFR"
+      secondaryLabel: "Konsultasi Pendampingan Kontrol"
     }
   },
   {

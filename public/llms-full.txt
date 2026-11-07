@@ -375,9 +375,9 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Panduan lengkap penerapan Segregation of Duties (SoD) di lingkungan BUMN: analisis matriks konflik kewenangan pada ERP SAP dan Oracle, pemisahan 3 fungsi kritis, kontrol kompensasi, dan mitigasi temuan audit ITGC.
 - Tautan: https://dsintegra.co.id/blog/panduan-segregation-of-duties-sod-bumn-matriks-konflik-erp
 
-### Panduan SK5 ICOFR BUMN: Kepatuhan Regulasi SK-5 dan Solusi Otomasi GRC Integra
+### Panduan Regulasi SK-5 BUMN ICOFR: Juknis Resmi, Matriks Pengujian, dan Otomasi GRC Integra
 - Kategori: Regulasi & Standar
-- Ringkasan: Panduan praktis kepatuhan regulasi SK-5/DKU.MBU/11/2024 bagi BUMN: tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
+- Ringkasan: Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF juknis resmi, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
 - Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
 
 ### Peran Strategis Satuan Pengawasan Intern (SPI) BUMN dalam Siklus ICOFR dan Model Tiga Lini

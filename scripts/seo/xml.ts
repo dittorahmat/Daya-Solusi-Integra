@@ -28,3 +28,14 @@ export function upsertHeadTag(routeHtml: string, pattern: RegExp, tag: string): 
   }
   return routeHtml.replace(/<\/head>/i, `  ${tag}\n  </head>`);
 }
+
+/**
+ * Sisipkan tag standar Google Site Name (og:site_name) secara konsisten
+ */
+export function applySiteNameHeadTag(html: string): string {
+  return upsertHeadTag(
+    html,
+    /<meta\s+property="og:site_name"\s+content=".*?"\s*\/?>/i,
+    `<meta property="og:site_name" content="Daya Solusi Integra" />`
+  );
+}

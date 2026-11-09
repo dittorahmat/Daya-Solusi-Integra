@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { RouteMeta } from "../../src/utils/seoMeta.js";
 import { distDir, templateHtml } from "./paths.js";
-import { upsertHeadTag } from "./xml.js";
+import { upsertHeadTag, applySiteNameHeadTag } from "./xml.js";
 
 /**
  * Snapshot 404 khusus: disajikan server dengan status 404 untuk path tak dikenal.
@@ -54,6 +54,7 @@ export function generateNotFoundSnapshot(): void {
     /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i,
     `<meta property="og:url" content="${notFoundMeta.canonical}" />`
   );
+  notFoundHtml = applySiteNameHeadTag(notFoundHtml);
   notFoundHtml = upsertHeadTag(
     notFoundHtml,
     /<meta\s+name="theme-color"\s+content=".*?"\s*\/?>/i,

@@ -6,6 +6,7 @@
 export interface CompanyProfile {
   legalName: string;
   shortName: string;
+  alternateNames: string[];
   tagline: string;
   addressLines: string[];
   streetAddress: string;
@@ -24,6 +25,7 @@ export interface CompanyProfile {
 export const COMPANY_PROFILE: CompanyProfile = {
   legalName: "PT Daya Solusi Integra",
   shortName: "Daya Solusi Integra",
+  alternateNames: ["DSI", "PT Daya Solusi Integra", "DSI Integra"],
   tagline:
     "Mitra tepercaya BUMN dan industri perbankan dalam membangun integritas laporan keuangan, keandalan ITGC, dan sistem kepatuhan GRC terintegrasi.",
   addressLines: [

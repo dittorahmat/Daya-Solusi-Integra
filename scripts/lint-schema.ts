@@ -4,6 +4,7 @@ import { buildJsonLdForRoute } from "./seo/jsonld.js";
 import { parseBlogFrontMatter } from "./seo/frontmatter.js";
 import { blogContentDir } from "./seo/paths.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
+import { COMPANY_PROFILE } from "../src/data/company.js";
 
 let exitCode = 0;
 
@@ -82,8 +83,42 @@ for (const item of termsWithFaq) {
   }
 }
 
+// 3. Audit Google Site Name & WebSite Entity Canon
+const testRouteMeta = {
+  title: "Test Page",
+  description: "Test Description",
+  canonical: "https://dsintegra.co.id/test"
+};
+try {
+  const jsonLdStr = buildJsonLdForRoute("/test", testRouteMeta);
+  const parsed = extractJsonFromScriptTag(jsonLdStr);
+  const webSiteGraph = (parsed["@graph"] || []).find((g: any) => g["@type"] === "WebSite");
+
+  if (!webSiteGraph) {
+    console.error("❌ [Schema Lint] Node @type: 'WebSite' wajib hadir di seluruh payload JSON-LD!");
+    exitCode = 1;
+  } else {
+    if (webSiteGraph.name !== COMPANY_PROFILE.shortName) {
+      console.error(`❌ [Schema Lint] WebSite.name tidak cocok dengan COMPANY_PROFILE.shortName ('${COMPANY_PROFILE.shortName}'). Ditemukan: '${webSiteGraph.name}'`);
+      exitCode = 1;
+    }
+    if (!Array.isArray(webSiteGraph.alternateName) || webSiteGraph.alternateName.length === 0) {
+      console.error("❌ [Schema Lint] WebSite.alternateName wajib berupa array terisi untuk Google Site Name!");
+      exitCode = 1;
+    }
+    const publisherId = webSiteGraph.publisher?.["@id"];
+    if (publisherId !== "https://dsintegra.co.id/#organization") {
+      console.error(`❌ [Schema Lint] WebSite.publisher wajib merujuk kanonikal '#organization'. Ditemukan:`, webSiteGraph.publisher);
+      exitCode = 1;
+    }
+  }
+} catch (err: any) {
+  console.error("❌ [Schema Lint] Gagal memvalidasi WebSite schema:", err.message);
+  exitCode = 1;
+}
+
 if (exitCode === 0) {
-  console.log("✅ Schema & E-E-A-T Linter lulus (Seluruh Article author Person terverifikasi, paritas FAQ glosarium valid).");
+  console.log("✅ Schema & E-E-A-T Linter lulus (Seluruh Article author Person terverifikasi, paritas FAQ glosarium valid, skema WebSite Google Site Name teruji).");
 } else {
   process.exit(exitCode);
 }

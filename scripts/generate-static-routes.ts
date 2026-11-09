@@ -4,7 +4,7 @@ import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
 import { distDir, templateHtml } from "./seo/paths.js";
 import { getBlogArticleMeta } from "./seo/frontmatter.js";
-import { upsertHeadTag } from "./seo/xml.js";
+import { upsertHeadTag, applySiteNameHeadTag } from "./seo/xml.js";
 import { buildJsonLdForRoute } from "./seo/jsonld.js";
 import { buildSemanticBodyHtmlForRoute } from "./seo/semantic-body.js";
 import { generateNotFoundSnapshot } from "./seo/notfound.js";
@@ -116,7 +116,8 @@ for (const [routePath, meta] of Object.entries(allRoutes)) {
     `<meta property="twitter:image" content="${routeImage}" />`
   );
 
-  // Head hygiene v4: theme-color, og:image:alt, dan article times untuk rute artikel
+  // Head hygiene v4: og:site_name, theme-color, og:image:alt, dan article times untuk rute artikel
+  routeHtml = applySiteNameHeadTag(routeHtml);
   routeHtml = upsertHeadTag(
     routeHtml,
     /<meta\s+name="theme-color"\s+content=".*?"\s*\/?>/i,

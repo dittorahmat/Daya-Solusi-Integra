@@ -8,6 +8,7 @@ import { REGULATION_ITEMS } from "../../src/data/regulationData.js";
 import { SECTOR_DATA_MAP } from "../../src/data/sectorsData.js";
 import { blogContentDir } from "./paths.js";
 import { parseBlogFrontMatter, getBlogArticleMeta } from "./frontmatter.js";
+import { COMPANY_PROFILE } from "../../src/data/company.js";
 
 /**
  * Membangun skema JSON-LD terisolasi dan spesifik per jenis rute
@@ -50,7 +51,21 @@ export function buildJsonLdForRoute(routePath: string, meta: RouteMeta): string 
     "itemListElement": breadcrumbItems
   });
 
-  // 2. SiteNavigationElement universal untuk struktur navigasi konsisten
+  // 2. WebSite schema definitif untuk Google Site Name di seluruh rute
+  graphs.push({
+    "@type": "WebSite",
+    "@id": "https://dsintegra.co.id/#website",
+    "url": "https://dsintegra.co.id/",
+    "name": COMPANY_PROFILE.shortName,
+    "alternateName": COMPANY_PROFILE.alternateNames,
+    "description": "Firma Konsultan ICOFR dan Penyedia Platform Software GRC Integra BUMN",
+    "publisher": {
+      "@id": "https://dsintegra.co.id/#organization"
+    },
+    "inLanguage": "id-ID"
+  });
+
+  // 3. SiteNavigationElement universal untuk struktur navigasi konsisten
   graphs.push({
     "@type": "SiteNavigationElement",
     "@id": `${meta.canonical}#navigation`,

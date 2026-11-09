@@ -17,6 +17,8 @@ import {
   Cpu
 } from "lucide-react";
 import Breadcrumbs from "../Breadcrumbs";
+import FaqSection from "../FaqSection";
+import { getFaqsByRoute } from "../../data/faqData";
 
 interface RegulatoryToolkitPageProps {
   onNavigate: (path: string) => void;
@@ -575,6 +577,15 @@ export default function RegulatoryToolkitPage({ onNavigate }: RegulatoryToolkitP
               </button>
             </form>
           )}
+        </section>
+
+        {/* FAQ Section - Kurasi Lampiran 12 SK-5 */}
+        <section className="mb-16">
+          <FaqSection
+            items={getFaqsByRoute("/toolkit-regulasi")}
+            title="Tanya Jawab Teknis Regulasi ICOFR (Lampiran 12 SK-5)"
+            subtitle="Pertanyaan dan jawaban resmi yang sering diajukan seputar tata kelola, metode sampling audit SA 530, migrasi sistem baru, laporan SOC vendor, dan asurans praktisi eksternal."
+          />
         </section>
 
       </div>

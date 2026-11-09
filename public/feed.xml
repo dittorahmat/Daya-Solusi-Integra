@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Mon, 09 Nov 2026 03:13:47 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 03:52:33 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -121,6 +121,15 @@
       <pubDate>Sun, 01 Nov 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
+      <title>Panduan Evaluasi Degree of Deficiency (DoD) ICOFR SK-5 BUMN: Matriks dan Kertas Kerja</title>
+      <link>https://dsintegra.co.id/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5</guid>
+      <description>Panduan lengkap penentuan Degree of Deficiency (DoD) ICOFR berdasarkan SK-5/DKU.MBU/11/2024: evaluasi Likelihood vs Magnitude, agregasi temuan, kertas kerja Lampiran 10, dan matriks pelaporan ke Direksi serta Komite Audit.</description>
+      <category>Tata Kelola &amp; GRC</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Mon, 09 Nov 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Panduan Menyusun HPS Pengadaan Konsultan ICOFR &amp; Software GRC BUMN</title>
       <link>https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-hps-pengadaan-icofr-bumn</guid>
@@ -146,6 +155,15 @@
       <category>Tata Kelola &amp; Kepatuhan</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Panduan Pengujian Pengendalian IPE dan MRC Sesuai Juknis SK-5 BUMN</title>
+      <link>https://dsintegra.co.id/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn</link>
+      <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn</guid>
+      <description>Panduan teknis pengujian Information Produced by Entity (IPE) dan Management Review Controls (MRC) berdasarkan SK-5/DKU.MBU/11/2024: validasi kelengkapan &amp; akurasi data ERP, spreadsheet EUC, serta reviu pertimbangan manajemen.</description>
+      <category>Tata Kelola &amp; GRC</category>
+      <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
+      <pubDate>Mon, 09 Nov 2026 07:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template</title>

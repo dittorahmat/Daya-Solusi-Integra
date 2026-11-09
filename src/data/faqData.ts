@@ -3,7 +3,39 @@ export interface FaqItem {
   answer: string;
 }
 
-export const ROUTE_FAQS: Record<string, FaqItem[]> = {
+export const FAQ_ROUTE_PATHS = [
+  "/layanan/icofr-bumn",
+  "/kalkulator-sampel-toe",
+  "/platform/grc-integra",
+  "/platform/bpm-workflow-editor",
+  "/toolkit-regulasi",
+  "/panduan-kak-tor-icofr",
+  "/studi-kasus",
+  "/temuan-audit-icofr",
+  "/blog/manfaat-aplikasi-icofr-bumn-spreadsheet",
+  "/blog/panduan-sk5-icofr-grc-integra",
+  "/blog/apa-itu-icofr-bumn-fungsi-regulasi-sk5",
+  "/blog/panduan-sampel-toe-tabel-22-icofr-bumn",
+  "/blog/fitur-kunci-aplikasi-icofr-bumn",
+  "/blog/panduan-hps-pengadaan-icofr-bumn",
+  "/blog/perbandingan-harga-software-grc-bumn",
+  "/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025",
+  "/blog/contoh-rcm-siklus-pengadaan-bumn-tod-toe",
+  "/blog/significant-deficiency-vs-material-weakness-icofr-remediasi",
+  "/blog/scoping-akun-signifikan-konsolidasi-icofr-holding-anak-bumn",
+  "/blog/harga-jasa-implementasi-icofr-bumn-2026",
+  "/blog/evaluasi-penawaran-teknis-icofr-bobot-70-30",
+  "/blog/syarat-kualifikasi-vendor-grc-bumn-pengalaman",
+  "/blog/timeline-implementasi-icofr-3-6-12-bulan"
+] as const;
+
+export type FaqRoutePath = typeof FAQ_ROUTE_PATHS[number];
+
+export const getFaqsByRoute = (route: string): FaqItem[] => {
+  return ROUTE_FAQS[route as FaqRoutePath] || [];
+};
+
+export const ROUTE_FAQS: Record<FaqRoutePath, FaqItem[]> = {
   "/layanan/icofr-bumn": [
     {
       question: "Apakah seluruh BUMN dan anak perusahaannya wajib menerapkan ICOFR berbasis SK-5?",
@@ -96,6 +128,34 @@ export const ROUTE_FAQS: Record<string, FaqItem[]> = {
     {
       question: "Apa risiko utama mengelola kertas kerja ICOFR secara manual menggunakan Excel?",
       answer: "Tantangan terbesar spreadsheet manual adalah tidak adanya jejak audit digital (audit trail), risiko benturan versi file antar-unit kerja (versioning failure), dan kerentanan rumus rusak saat konsolidasi di tingkat holding BUMN. Hal ini dapat diatasi secara permanen melalui platform GRC Integra."
+    },
+    {
+      question: "Apa saja tanggung jawab pokok perusahaan BUMN terkait implementasi ICOFR sesuai Lampiran 12 SK-5?",
+      answer: "Berdasarkan Lampiran 12 Pertanyaan 1 SK-5, tanggung jawab pokok manajemen mencakup: merancang dan mengawasi prosedur pengungkapan; mengevaluasi efektivitas pengendalian; menyusun rencana dan target remediasi defisiensi; mengungkapkan defisiensi signifikan atau kelemahan material beserta dampaknya; menyusun Laporan Asesmen Manajemen; serta memperoleh asurans dari Praktisi Eksternal independen."
+    },
+    {
+      question: "Metode sampling audit apa saja yang diperkenankan untuk pengujian Test of Operating Effectiveness (TOE)?",
+      answer: "Sesuai SA 530 dan Lampiran 12 Pertanyaan 2 SK-5, metode pemilihan sampel mencakup: pemilihan acak (menggunakan computerised random number generator atau random number tables), pemilihan sistematik (pembagian populasi dengan interval sampling terstruktur), Sampling Unit Moneter (Monetary Unit Sampling/MUS), dan pemilihan sembarang non-statistik yang objektif tanpa bias."
+    },
+    {
+      question: "Bagaimana pengujian pengendalian jika BUMN menerapkan sistem ERP baru di akhir tahun buku?",
+      answer: "Berdasarkan Lampiran 12 Pertanyaan 3 SK-5, jika sistem baru memengaruhi pemrosesan akun signifikan menjelang tanggal pelaporan, rancangan dan efektivitas pengendalian sistem baru wajib diuji. Selain itu, karena sebagian besar transaksi tahun berjalan masih diproses di sistem lama, manajemen tetap wajib menguji dan membuktikan bahwa pengendalian pada sistem lama beroperasi efektif sepanjang periode tersebut."
+    },
+    {
+      question: "Apakah seluruh temuan dalam pengujian pengendalian otomatis dikategorikan sebagai defisiensi?",
+      answer: "Ya. Berdasarkan Lampiran 12 Pertanyaan 10 SK-5, pengambilan sampel TOE menggunakan pendekatan toleransi nol (zero tolerance). Setiap deviasi yang belum diremediasi dan diuji ulang secara memadai pada saat tanggal evaluasi asersi dikategorikan sebagai defisiensi pengendalian."
+    },
+    {
+      question: "Laporan Service Organization Control (SOC) tipe apa yang wajib disyaratkan untuk penyedia jasa pihak ketiga (cloud/vendor)?",
+      answer: "Sesuai Lampiran 12 Pertanyaan 11 SK-5, laporan yang digunakan adalah SOC 1 Tipe 2 (ISAE 3402 / SSAE 18). Laporan ini membuktikan kesesuaian rancangan pengendalian sekaligus efektivitas operasional pengendalian vendor pihak ketiga sepanjang periode pelaporan yang relevan dengan laporan keuangan BUMN."
+    },
+    {
+      question: "Kapan kewajiban implementasi ICOFR berlaku bagi anak perusahaan BUMN yang baru diakuisisi?",
+      answer: "Berdasarkan Lampiran 12 Pertanyaan 13 SK-5, kewajiban evaluasi penuh berlaku mulai tahun buku berikutnya setelah tahun akuisisi. Namun pada tahun akuisisi, induk BUMN wajib mengungkapkan pengecualian cakupan tersebut beserta subtotal kunci laporan keuangan (total aset bersih, pendapatan, dan laba bersih) dari anak perusahaan yang belum dievaluasi."
+    },
+    {
+      question: "Apakah Laporan Asesmen Manajemen atas ICOFR wajib disertai laporan asurans praktisi eksternal di Laporan Tahunan?",
+      answer: "Ya. Berdasarkan Lampiran 12 Pertanyaan 14 SK-5, Kementerian BUMN mendorong perusahaan menyertakan Laporan Asesmen Manajemen tentang efektivitas ICOFR sekaligus Laporan Asurans dari Praktisi Eksternal (Kantor Akuntan Publik) dalam Laporan Tahunan (Annual Report) perusahaan."
     }
   ],
   "/panduan-kak-tor-icofr": [

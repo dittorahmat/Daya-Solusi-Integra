@@ -5,6 +5,7 @@ import { parseBlogFrontMatter } from "./seo/frontmatter.js";
 import { blogContentDir } from "./seo/paths.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
 import { COMPANY_PROFILE } from "../src/data/company.js";
+import { FAQ_ROUTE_PATHS, ROUTE_FAQS } from "../src/data/faqData.js";
 
 let exitCode = 0;
 
@@ -117,8 +118,29 @@ try {
   exitCode = 1;
 }
 
+// 4. Audit Paritas & Integritas FAQ Route Registry (Anti-Primitive Obsession & Silent Typos)
+const pagesDir = path.resolve("src/components/pages");
+const pageFiles = fs.readdirSync(pagesDir).filter(f => f.endsWith(".tsx"));
+for (const pFile of pageFiles) {
+  const pCode = fs.readFileSync(path.join(pagesDir, pFile), "utf-8");
+  // Periksa apakah halaman memanggil getFaqsByRoute
+  const matches = pCode.matchAll(/getFaqsByRoute\(["']([^"']+)["']\)/g);
+  for (const match of matches) {
+    const route = match[1];
+    if (!(FAQ_ROUTE_PATHS as readonly string[]).includes(route)) {
+      console.error(`❌ [Schema Lint] Rute '${route}' yang dipanggil di ${pFile} tidak terdaftar dalam FAQ_ROUTE_PATHS!`);
+      exitCode = 1;
+    }
+    const faqs = (ROUTE_FAQS as any)[route];
+    if (!faqs || faqs.length === 0) {
+      console.error(`❌ [Schema Lint] Rute '${route}' dipanggil di ${pFile} tetapi tidak memiliki entri data di ROUTE_FAQS!`);
+      exitCode = 1;
+    }
+  }
+}
+
 if (exitCode === 0) {
-  console.log("✅ Schema & E-E-A-T Linter lulus (Seluruh Article author Person terverifikasi, paritas FAQ glosarium valid, skema WebSite Google Site Name teruji).");
+  console.log("✅ Schema & E-E-A-T Linter lulus (Seluruh Article author Person terverifikasi, paritas FAQ glosarium valid, skema WebSite Google Site Name teruji, registry FAQ type-safe terverifikasi).");
 } else {
   process.exit(exitCode);
 }

@@ -345,6 +345,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Ringkasan: Pahami apa itu control deficiency dalam ICOFR BUMN: perbedaan mendasar dengan significant deficiency dan material weakness, matriks agregasi temuan, serta langkah remediasi sesuai juknis SK-5/DKU.MBU/11/2024.
 - Tautan: https://dsintegra.co.id/blog/panduan-control-deficiency-icofr-bumn
 
+### Panduan Evaluasi Degree of Deficiency (DoD) ICOFR SK-5 BUMN: Matriks dan Kertas Kerja
+- Kategori: Tata Kelola & GRC
+- Ringkasan: Panduan lengkap penentuan Degree of Deficiency (DoD) ICOFR berdasarkan SK-5/DKU.MBU/11/2024: evaluasi Likelihood vs Magnitude, agregasi temuan, kertas kerja Lampiran 10, dan matriks pelaporan ke Direksi serta Komite Audit.
+- Tautan: https://dsintegra.co.id/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5
+
 ### Panduan Menyusun HPS Pengadaan Konsultan ICOFR & Software GRC BUMN
 - Kategori: Pengadaan & Tender
 - Ringkasan: Metodologi estimasi Harga Perkiraan Sendiri (HPS) untuk pengadaan pendampingan ICOFR dan software GRC BUMN: komponen orang-bulan tenaga ahli, lisensi platform, serta jebakan underpricing yang memicu gagal lelang.
@@ -359,6 +364,11 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Kategori: Tata Kelola & Kepatuhan
 - Ringkasan: Pelajari cara menyusun diagram alir SOP dan flowchart proses bisnis BUMN berstandar BPMN 2.0 sesuai Lampiran 3 SK-5: dari pemilihan notasi baku, sinkronisasi RCM, hingga migrasi dokumen eksisting.
 - Tautan: https://dsintegra.co.id/blog/panduan-pemetaan-proses-bisnis-sop-flowchart-bumn
+
+### Panduan Pengujian Pengendalian IPE dan MRC Sesuai Juknis SK-5 BUMN
+- Kategori: Tata Kelola & GRC
+- Ringkasan: Panduan teknis pengujian Information Produced by Entity (IPE) dan Management Review Controls (MRC) berdasarkan SK-5/DKU.MBU/11/2024: validasi kelengkapan & akurasi data ERP, spreadsheet EUC, serta reviu pertimbangan manajemen.
+- Tautan: https://dsintegra.co.id/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn
 
 ### Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template
 - Kategori: Pengadaan & Tender

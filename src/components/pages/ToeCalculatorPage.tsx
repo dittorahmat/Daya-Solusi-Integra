@@ -12,7 +12,7 @@ import {
   Info
 } from "lucide-react";
 import FaqSection from "../FaqSection";
-import { ROUTE_FAQS } from "../../data/faqData";
+import { getFaqsByRoute } from "../../data/faqData";
 
 interface ToeCalculatorPageProps {
   onNavigate: (path: string) => void;
@@ -353,7 +353,7 @@ export default function ToeCalculatorPage({ onNavigate, onRequestDemo }: ToeCalc
 
         {/* FAQ Section */}
         <FaqSection
-          items={ROUTE_FAQS["/kalkulator-sampel-toe"]}
+          items={getFaqsByRoute("/kalkulator-sampel-toe")}
           badge="FAQ Sampling Audit & Tabel 22"
           title="Pertanyaan Seputar Pengujian Sampel TOE"
           subtitle="Panduan teknis bagi auditor internal dan konsultan mengenai ukuran sampel minimum, deviasi kontrol, dan pengujian sistem otomatis."

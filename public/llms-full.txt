@@ -135,8 +135,8 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Tautan: https://dsintegra.co.id/glosarium/tlc
 
 ### Information Technology General Controls (ITGC)
-- Definisi: Kebijakan dan prosedur pengendalian umum yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk memastikan kelangsungan operasional dan integritas data keuangan.
-- Rujukan Regulasi: POJK No. 11/POJK.03/2022 & COBIT
+- Definisi: Kebijakan, prosedur, dan kontrol teknis yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk menjamin integritas data, kelangsungan operasional, dan keamanan pemrosesan laporan keuangan.
+- Rujukan Regulasi: SK-5/DKU.MBU/11/2024, POJK No. 11/POJK.03/2022 & COBIT
 - Kategori: Klasifikasi Kontrol
 - Tautan: https://dsintegra.co.id/glosarium/itgc
 
@@ -279,8 +279,8 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 - Tautan: https://dsintegra.co.id/glosarium/substantive-testing
 
 ### Information Technology Application Controls (ITAC)
-- Definisi: Aktivitas pengendalian otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis).
-- Rujukan Regulasi: POJK 11/POJK.03/2022 & Lampiran 6 SK-5 BUMN
+- Definisi: Aktivitas pengendalian terprogram dan otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis) guna memastikan integritas pemrosesan transaksi.
+- Rujukan Regulasi: POJK No. 11/POJK.03/2022 & Lampiran 6 SK-5/DKU.MBU/11/2024
 - Kategori: Klasifikasi Kontrol
 - Tautan: https://dsintegra.co.id/glosarium/itac
 

@@ -7,6 +7,9 @@ description: SOP and strategic playbooks for analyzing Google Search Console (GS
 
 Panduan operasional untuk menganalisa data Google Search Console (`https://dsintegra.co.id/`) dan mengeksekusinya menjadi tindakan konkret pada repositori Daya Solusi Integra.
 
+> [!TIP]
+> **Efisiensi Tool MCP GSC**: Gunakan langsung target properti kanonikal `site_url: "https://dsintegra.co.id/"` pada setiap pemanggilan tool analitik GSC. Hindari memanggil `list_properties` terlebih dahulu kecuali jika terjadi kendala otentikasi.
+
 ## 1. Analisis Peluang Artikel Baru (Content Gap & High Impressions)
 Gunakan tool MCP GSC untuk kueri 30-90 hari terakhir:
 - **Kriteria:** Query pencarian dengan Impressions tinggi (>= 200) tetapi Clicks rendah dan Average Position > 15.

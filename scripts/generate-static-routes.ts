@@ -11,7 +11,12 @@ import { generateNotFoundSnapshot } from "./seo/notfound.js";
 import { enrichSitemap, validateBlogSlugConsistency } from "./seo/sitemap.js";
 import { generateRssFeed, generateLlmsFiles } from "./seo/feeds.js";
 import { submitToIndexNow } from "./seo/indexnow.js";
-import { validatePrerenderInternalLinks, validateNoExternalBlogImages, validateGlossaryRefs } from "./seo/linkguard.js";
+import {
+  validatePrerenderInternalLinks,
+  validateNoExternalBlogImages,
+  validateGlossaryRefs,
+  validateBlogPrerenderCompleteness
+} from "./seo/linkguard.js";
 
 let generatedCount = 0;
 
@@ -240,6 +245,9 @@ generateRssFeed();
 enrichSitemap(allRoutes);
 
 validateBlogSlugConsistency();
+
+// Guard kelengkapan snapshot prerender blog (0 missing dist/blog/<slug>/index.html)
+validateBlogPrerenderCompleteness();
 
 // Guard integritas internal link prerender (0 broken /blog/<slug>)
 validatePrerenderInternalLinks();

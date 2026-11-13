@@ -13,6 +13,8 @@ Repositori ini adalah Single Page Application (SPA) berbasis **Vite + React + Ta
 - **Glosarium & Defined Terms**: [`src/data/glossaryData.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/glossaryData.ts) (sumber data tunggal definisi, komparasi, FAQ, dan commercial bridges).
 - **Profil & Identitas Kontak Resmi**: [`src/data/company.ts`](file:///C:/backup/Daya-Solusi-Integra/src/data/company.ts) (sumber kebenaran tunggal nama legal, alternateNames brand, alamat KBLI/BEI, kontak, dan domain).
 - **Metadata & SEO Schema Engine**: [`scripts/seo/jsonld.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/jsonld.ts) dan [`scripts/seo/semantic-body.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/semantic-body.ts).
+- **Generator SSG Prerender**: [`scripts/generate-static-routes.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/generate-static-routes.ts) (menggunakan `getAllBlogRouteEntries()` dari `scripts/seo/frontmatter.ts` dan `GLOSSARY_ITEMS` dari `src/data/glossaryData.ts`).
+- **Guardrail Integritas Prerender & Gambar**: [`scripts/seo/linkguard.ts`](file:///C:/backup/Daya-Solusi-Integra/scripts/seo/linkguard.ts) (memverifikasi kelengkapan snapshot HTML artikel, keabsahan internal link, dan zero dead links).
 - **Artikel Blog & Riset**: [`src/content/blog/*.md`](file:///C:/backup/Daya-Solusi-Integra/src/content/blog/) (koleksi file markdown frontmatter).
 - **Sitemap Resmi**: [`public/sitemap.xml`](file:///C:/backup/Daya-Solusi-Integra/public/sitemap.xml).
 

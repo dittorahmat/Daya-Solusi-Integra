@@ -100,6 +100,36 @@ export function validateNoExternalBlogImages(): void {
 }
 
 /**
+ * Guard kelengkapan prerender artikel blog: setiap berkas markdown di
+ * src/content/blog/*.md WAJIB memiliki snapshot HTML yang sesuai di
+ * dist/blog/<slug>/index.html. Mencegah status 404 / 'Discovered - not indexed' di GSC.
+ */
+export function validateBlogPrerenderCompleteness(): void {
+  if (!fs.existsSync(blogContentDir)) return;
+  const mdFiles = fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"));
+  let missingCount = 0;
+
+  for (const file of mdFiles) {
+    const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    const { data } = parseBlogFrontMatter(raw);
+    const slug = data.slug || file.replace(".md", "");
+    const targetHtml = path.join(distDir, "blog", slug, "index.html");
+
+    if (!fs.existsSync(targetHtml)) {
+      console.error(`[prerender-drift] Artikel "${file}" (slug: "${slug}") TIDAK MEMILIKI snapshot di dist/blog/${slug}/index.html!`);
+      missingCount++;
+    }
+  }
+
+  if (missingCount > 0) {
+    console.error(`[prerender-drift] Terdeteksi ${missingCount} artikel blog tanpa snapshot prerender. Build digagalkan.`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Blog prerender completeness check passed: seluruh ${mdFiles.length} artikel blog memiliki snapshot HTML.`);
+  }
+}
+
+/**
  * Validasi integritas SEMUA internal link pada snapshot prerender:
  * setiap href="/..." atau src="/..." yang dirender ke dist/**\/index.html
  * WAJIB resolve ke berkas atau direktori snapshot yang ada di dist/

@@ -3,7 +3,7 @@ import path from "path";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
 import { distDir, templateHtml } from "./seo/paths.js";
-import { getBlogArticleMeta } from "./seo/frontmatter.js";
+import { getBlogArticleMeta, getAllBlogRouteEntries } from "./seo/frontmatter.js";
 import { upsertHeadTag, applySiteNameHeadTag } from "./seo/xml.js";
 import { buildJsonLdForRoute } from "./seo/jsonld.js";
 import { buildSemanticBodyHtmlForRoute } from "./seo/semantic-body.js";
@@ -11,7 +11,12 @@ import { generateNotFoundSnapshot } from "./seo/notfound.js";
 import { enrichSitemap, validateBlogSlugConsistency } from "./seo/sitemap.js";
 import { generateRssFeed, generateLlmsFiles } from "./seo/feeds.js";
 import { submitToIndexNow } from "./seo/indexnow.js";
-import { validatePrerenderInternalLinks, validateNoExternalBlogImages, validateGlossaryRefs } from "./seo/linkguard.js";
+import {
+  validatePrerenderInternalLinks,
+  validateNoExternalBlogImages,
+  validateGlossaryRefs,
+  validateBlogPrerenderCompleteness
+} from "./seo/linkguard.js";
 
 let generatedCount = 0;
 
@@ -30,6 +35,22 @@ GLOSSARY_ITEMS.forEach((item) => {
     ogDescription: item.metaDescription || item.definition
   };
 });
+
+// Daftarkan seluruh artikel blog dinamis dari helper frontmatter agar tidak ada artikel yang tertinggal
+const blogEntries = getAllBlogRouteEntries();
+for (const entry of blogEntries) {
+  if (!allRoutes[entry.routeKey]) {
+    allRoutes[entry.routeKey] = {
+      title: entry.title,
+      description: entry.description,
+      canonical: entry.canonical,
+      image: entry.image,
+      ogTitle: entry.ogTitle,
+      ogDescription: entry.ogDescription,
+      ogType: entry.ogType
+    };
+  }
+}
 
 for (const [routePath, meta] of Object.entries(allRoutes)) {
   // Homepage sudah ditangani oleh dist/index.html bawaan
@@ -224,6 +245,9 @@ generateRssFeed();
 enrichSitemap(allRoutes);
 
 validateBlogSlugConsistency();
+
+// Guard kelengkapan snapshot prerender blog (0 missing dist/blog/<slug>/index.html)
+validateBlogPrerenderCompleteness();
 
 // Guard integritas internal link prerender (0 broken /blog/<slug>)
 validatePrerenderInternalLinks();

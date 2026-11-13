@@ -42,7 +42,7 @@ Regulasi menetapkan bahwa ukuran sampel minimum wajib berkorelasi langsung denga
 
 | Frekuensi Pelaksanaan Kontrol | Estimasi Populasi Tahunan | Rentang Jumlah Sampel Minimum (Tabel 22) | Rekomendasi Standar Pengujian |
 | :--- | :--- | :--- | :--- |
-| **Kontinu / Otomatis Sistem** | Ribuan / Jutaan transaksi | 1 sampel (jika ITGC efektif) | 1 transaksi riil via uji IT General Controls |
+| **Kontinu / Otomatis Sistem** | Ribuan / Jutaan transaksi | 1 sampel (jika ITGC efektif) | 1 transaksi riil via uji IT General Controls (pelajari [panduan audit ITGC dan ITAC ERP](/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5)) |
 | **Beberapa Kali Sehari** | > 250 transaksi | 25 hingga 40 sampel | 25 sampel (homogen) / 40 sampel (populasi variatif) |
 | **Harian (*Daily*)** | ~ 250 transaksi kerja | 20 hingga 40 sampel | 25 sampel acak sepanjang tahun buku |
 | **Mingguan (*Weekly*)** | ~ 52 transaksi | 5 hingga 10 sampel | 5 sampel (homogen) / 10 sampel jika personel berganti |
@@ -83,17 +83,17 @@ Populasi dipisahkan menjadi beberapa tingkatan (*strata*), misalnya transaksi be
 ## Dokumentasi Kertas Kerja Pengujian untuk Standar BPK dan KAP Tier-1
 
 Pemeriksa dari BPK RI, BPKP, maupun Kantor Akuntan Publik (KAP) Tier-1 mewajibkan kelengkapan kertas kerja pengujian (*working papers*) yang memuat 5 elemen pembuktian:
-- **Identifikasi Kontrol dan Atribut Pengujian**: Uraian spesifik mengenai apa yang diuji (misal: verifikasi kelengkapan dokumen 3-way matching dan tanggal persetujuan berwenang).
+- **Identifikasi Kontrol dan Atribut Pengujian**: Uraian spesifik mengenai apa yang diuji (misal: verifikasi kelengkapan dokumen 3-way matching dan tanggal persetujuan berwenang). Jika laporan yang diuji merupakan data keluaran sistem atau spreadsheet, terapkan pengujian keandalan data sesuai [panduan pengujian pengendalian IPE dan MRC](/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn).
 - **Daftar Lengkap Populasi (*Population Completeness*)**: Rekonsiliasi antara total populasi transaksi di sistem ERP dengan total buku besar.
 - **Tautan Bukti Riil (*Evidence Attachments*)**: Lampiran dokumen pendukung untuk setiap nomor sampel terpilih.
 - **Catatan Deviasi**: Penjelasan mendalam jika ditemukan 1 transaksi yang tidak memenuhi atribut pengendalian, termasuk analisis akar penyebab (*root-cause analysis*).
-- **Kesimpulan Pengujian**: Pernyataan tegas apakah kontrol beroperasi secara efektif (*Operating Effectively*) atau mengalami defisiensi (*Deficient*).
+- **Kesimpulan Pengujian**: Pernyataan tegas apakah kontrol beroperasi secara efektif (*Operating Effectively*) atau mengalami defisiensi (*Deficient*). Jika ditemukan deviasi yang tidak dapat dikompensasi, lakukan pemetaan tingkat keparahan dengan mengacu pada [panduan evaluasi Degree of Deficiency (DoD)](/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5).
 
 ---
 
 ## Otomasi Pengujian Sampel Melalui Aplikasi GRC Integra
 
-Menghitung dan memvalidasi sampel secara manual pada ribuan kartu kontrol di ratusan unit kerja BUMN sangat rentan terhadap kekeliruan administratif.
+Menghitung dan memvalidasi sampel secara manual pada ribuan kartu kontrol di ratusan unit kerja BUMN sangat rentan terhadap kekeliruan administratif. Anda dapat menghitung kebutuhan sampel secara cepat melalui [Kalkulator Sampel TOE SK-5](/kalkulator-sampel-toe) interaktif kami.
 
 Platform **GRC Integra** menghadirkan modul **Kalkulator Sampel Tabel 22 Terintegrasi**:
 - **Pemilihan Frekuensi Otomatis**: Frekuensi kontrol yang dipilih langsung mengunci formula rentang sampel minimum.

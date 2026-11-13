@@ -197,14 +197,49 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "Information Technology General Controls",
     acronym: "ITGC",
     category: "Klasifikasi Kontrol",
-    regulationRef: "POJK No. 11/POJK.03/2022 & COBIT",
-    metaTitle: "ITGC BUMN: Definisi, Domain Pengendalian Umum TI & Audit Readiness",
-    metaDescription: "Apa itu ITGC dalam audit BUMN? Pelajari standar SK-5/DKU.MBU/11/2024 dan COSO: Access Control, Change Management, dan IT Operations penopang asersi finansial.",
-    definition: "Kebijakan dan prosedur pengendalian umum yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk memastikan kelangsungan operasional dan integritas data keuangan.",
-    directAnswer: "ITGC (Information Technology General Controls) adalah pengendalian umum TI berbasis SK-5 BUMN dan COSO yang mengamankan akses logis, manajemen perubahan, dan operasi infrastruktur agar laporan keuangan terbebas dari manipulasi data.",
-    keyTakeaway: "Mencakup 3 domain kritis: Manajemen Akses Logis (IAM/SoD), Manajemen Perubahan (Change Management), dan Operasi TI (Backup & Job Scheduling).",
+    regulationRef: "SK-5/DKU.MBU/11/2024, POJK No. 11/POJK.03/2022 & COBIT",
+    metaTitle: "ITGC Adalah: Definisi, 3 Domain Kontrol TI BUMN & Panduan Audit",
+    metaDescription: "Apa itu ITGC dalam audit BUMN? Pelajari definisi IT General Controls, 3 domain utama (Akses Logis, Perubahan Program, Operasi TI), serta regulasi SK-5 dan POJK 11.",
+    definition: "Kebijakan, prosedur, dan kontrol teknis yang diterapkan pada infrastruktur teknologi informasi, sistem operasi, basis data, dan aplikasi keuangan untuk menjamin integritas data, kelangsungan operasional, dan keamanan pemrosesan laporan keuangan.",
+    directAnswer: "ITGC adalah pengendalian umum teknologi informasi yang mengamankan fondasi infrastruktur, sistem operasi, basis data, dan jaringan pendukung aplikasi finansial di lingkungan BUMN sesuai mandat SK-5/DKU.MBU/11/2024, POJK 11/POJK.03/2022, dan COBIT guna memastikan data laporan keuangan tidak dimanipulasi tanpa otorisasi.",
+    keyTakeaway: "ITGC menopang seluruh keandalan kontrol aplikasi (ITAC). Tiga domain inti ITGC wajib diuji efektivitasnya: Manajemen Akses Logis (IAM/SoD), Manajemen Perubahan Program (Change Management), dan Operasi TI (Backup & Job Scheduling). Jika ITGC gagal, pengujian ITAC tidak dapat mengandalkan metode Test of One.",
+    comparisonTable: {
+      title: "3 Domain Inti Pengendalian Umum TI (ITGC) Sesuai Standar SK-5 & COBIT",
+      headers: ["Domain ITGC", "Fokus Pengendalian & Mitigasi Risiko", "Contoh Prosedur Pengujian Audit (TOE)"],
+      rows: [
+        {
+          aspect: "Manajemen Akses Logis (IAM & SoD)",
+          primaryValue: "Pencegahan akses tanpa otorisasi pada server, basis data, dan modul finansial ERP; penegakan matriks Segregation of Duties serta pengelolaan privileged account (administrator).",
+          secondaryValue: "Uji pencabutan akun pengguna non-aktif dalam waktu maksimal 1x24 jam, reviu berkala hak akses superuser, dan analisis ketiadaan konflik peran sensitif pada ERP."
+        },
+        {
+          aspect: "Manajemen Perubahan (Change Management)",
+          primaryValue: "Pengendalian siklus modifikasi perangkat lunak, patch sistem, dan konfigurasi database mulai dari pengajuan tiket perbaikan, pengujian di staging/UAT, hingga rilis ke sistem produksi.",
+          secondaryValue: "Uji dokumentasi persetujuan perubahan program (RFC), pemisahan hak akses developer agar tidak memiliki izin rilis langsung ke production, dan audit trail deployment."
+        },
+        {
+          aspect: "Operasi TI & Backup (IT Operations)",
+          primaryValue: "Penjaminan kelangsungan layanan sistem pelaporan keuangan, keandalan eksekusi batch job terjadwal, dan ketersediaan cadangan data finansial yang dapat dipulihkan sewaktu-waktu.",
+          secondaryValue: "Uji log pemantauan kegagalan batch job akhir hari (EOD), reviu bukti uji coba restorasi data backup secara berkala, dan verifikasi prosedur penanganan insiden sistem."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Apa itu ITGC dan mengapa wajib diterapkan di BUMN?",
+        answer: "ITGC (Information Technology General Controls) adalah kerangka kontrol umum TI yang wajib diimplementasikan BUMN berdasarkan SK-5/DKU.MBU/11/2024 dan regulasi POJK 11/2022 guna memastikan infrastruktur, database, dan aplikasi akuntansi terlindungi dari celah manipulasi data sebelum asersi Direksi diterbitkan."
+      },
+      {
+        question: "Apa saja 3 domain utama dalam pengujian ITGC audit BUMN?",
+        answer: "Tiga domain utama ITGC meliputi: (1) Manajemen Akses Logis (IAM dan pemisahan tugas SoD), (2) Manajemen Perubahan Sistem dan Program (Change Management), serta (3) Operasi TI (pemantauan batch job, prosedur backup, dan Disaster Recovery)."
+      },
+      {
+        question: "Bagaimana hubungan antara efektivitas ITGC dengan pengujian ITAC?",
+        answer: "ITGC bertindak sebagai fondasi payung bagi ITAC. Apabila pengujian ITGC terbukti efektif, auditor eksternal dan Lini 2 diperbolehkan menguji kontrol otomatis aplikasi (ITAC) menggunakan metode Test of One (cukup 1 sampel transaksi). Sebaliknya, jika ITGC dinilai defisien, efektivitas seluruh kontrol otomatis gugur dan pengujian substantif manual wajib diperluas."
+      }
+    ],
     practicalExample: "Pencabutan hak akses login ke basis data akuntansi maksimal 1x24 jam setelah status karyawan dinyatakan berhenti atau mutasi.",
-    relatedTermIds: ["tlc", "tod", "toe"],
+    relatedTermIds: ["itac", "sod", "tlc", "tod", "toe"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
     relatedServiceLabel: "Audit Kesiapan ITGC",
     commercialBridge: {
@@ -702,11 +737,54 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "Information Technology Application Controls",
     acronym: "ITAC",
     category: "Klasifikasi Kontrol",
-    regulationRef: "POJK 11/POJK.03/2022 & Lampiran 6 SK-5 BUMN",
-    definition: "Aktivitas pengendalian otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis).",
-    keyTakeaway: "Pengujian ITAC dapat menggunakan pendekatan Test of One (cukup 1 sampel) dengan syarat utama IT General Controls (ITGC) yang menaungi sistem telah terbukti efektif.",
-    practicalExample: "Konfigurasi otomatis sistem ERP yang menolak pemrosesan pembayaran jika nomor rekening penerima tidak sesuai dengan master data vendor yang telah terverifikasi.",
-    relatedTermIds: ["itgc", "tlc", "tod"],
+    regulationRef: "POJK No. 11/POJK.03/2022 & Lampiran 6 SK-5/DKU.MBU/11/2024",
+    metaTitle: "ITAC Adalah: Pengendalian Aplikasi ERP, Audit & Metode Test of One",
+    metaDescription: "Apa itu ITAC dalam audit sistem keuangan? Pelajari definisi IT Application Controls, validasi input ERP SAP/Oracle, automated 3-way matching, dan Test of One.",
+    definition: "Aktivitas pengendalian terprogram dan otomatis yang terkonfigurasi langsung di dalam sistem perangkat lunak akuntansi dan aplikasi transaksi keuangan (seperti pengecekan batas input numerik, validasi format field, pemeriksaan duplikasi data, dan posting jurnal otomatis) guna memastikan integritas pemrosesan transaksi.",
+    directAnswer: "ITAC adalah pengendalian aplikasi teknologi informasi otomatis yang tertanam di dalam sistem ERP seperti SAP atau Oracle (misalnya three-way matching otomatis, validasi batas toleransi input, dan otorisasi limit) yang dirancang untuk mencegah dan mendeteksi kesalahan transaksi secara real-time.",
+    keyTakeaway: "Pengujian efektivitas operasional ITAC dapat menggunakan metodologi Test of One (cukup menguji 1 sampel konfigurasi sistem) dengan syarat mutlak IT General Controls (ITGC) yang menaungi aplikasi terbukti efektif sepanjang periode pelaporan.",
+    comparisonTable: {
+      title: "Perbandingan Pengendalian Umum (ITGC) vs Pengendalian Aplikasi (ITAC)",
+      headers: ["Dimensi Evaluasi", "ITGC (General Controls)", "ITAC (Application Controls)"],
+      rows: [
+        {
+          aspect: "Cakupan Pengendalian",
+          primaryValue: "Pervasif melingkupi infrastruktur sistemik: server, database, jaringan, dan prosedur rilis program.",
+          secondaryValue: "Spesifik tertanam pada modul transaksi aplikasi bisnis (seperti SAP FI, MM, SD, atau Oracle Financials)."
+        },
+        {
+          aspect: "Bentuk Pelaksanaan Kontrol",
+          primaryValue: "Kombinasi prosedur manual dan konfigurasi keamanan administratif (kebijakan IAM, change approval, backup).",
+          secondaryValue: "Sepenuhnya otomatis dijalankan oleh logika program (three-way matching, field validation, posting rules)."
+        },
+        {
+          aspect: "Metodologi Pengujian Audit (TOE)",
+          primaryValue: "Pengujian sampel berkala normatif (misal: 25-40 sampel penambahan user, seluruh rilis program RFC).",
+          secondaryValue: "Metode Test of One (cukup 1 sampel transaksi/screenshot konfigurasi) jika ITGC terbukti efektif."
+        },
+        {
+          aspect: "Dampak Kegagalan Kontrol",
+          primaryValue: "Menggugurkan keandalan seluruh kontrol otomatis di atasnya sehingga metodologi Test of One tidak berlaku.",
+          secondaryValue: "Menimbulkan defisiensi terlokalisir pada asersi akun transaksi tertentu dalam siklus laporan keuangan."
+        }
+      ]
+    },
+    faqList: [
+      {
+        question: "Apa itu ITAC dalam audit sistem informasi keuangan?",
+        answer: "ITAC (Information Technology Application Controls) adalah kontrol internal otomatis yang terprogram langsung di dalam modul sistem akuntansi/ERP untuk memastikan keakuratan, kelengkapan, otorisasi, dan validitas setiap data transaksi yang diinput serta diproses."
+      },
+      {
+        question: "Mengapa pengujian ITAC dapat menggunakan metode Test of One?",
+        answer: "Karena logika pemrograman perangkat lunak bersifat deterministik; jika konfigurasi kode atau aturan sistem tidak diubah, program akan mengeksekusi kontrol secara seragam pada setiap transaksi. Syaratnya, kepastian bahwa program tidak diubah tanpa izin dijamin oleh efektivitas ITGC (khususnya Change Management dan Access Control)."
+      },
+      {
+        question: "Apa contoh implementasi ITAC yang lazim pada ERP BUMN?",
+        answer: "Contoh umum meliputi automated three-way matching antara Purchase Order (PO), Goods Receipt (GR), dan Vendor Invoice; pengecekan duplikasi nomor faktur pajak; serta pemblokiran otomatis atas pesanan penjualan yang melebihi batas kredit pelanggan (credit limit check)."
+      }
+    ],
+    practicalExample: "Pemeriksaan otomatis three-way matching pada sistem ERP SAP antara Purchase Order, Goods Receipt, dan Vendor Invoice dengan penolakan sistemik jika selisih harga melebihi batas toleransi 0 persen.",
+    relatedTermIds: ["itgc", "tlc", "tod", "toe"],
     relatedServiceUrl: "/layanan/itgc-audit-readiness",
     relatedServiceLabel: "Audit Konfigurasi ITAC ERP",
     commercialBridge: {

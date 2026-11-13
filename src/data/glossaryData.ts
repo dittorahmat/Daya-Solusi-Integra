@@ -713,11 +713,11 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceLabel: "Asesmen Mandiri 17 Prinsip COSO",
     commercialBridge: {
       title: "Ukur Kesiapan 17 Prinsip COSO Perusahaan Anda",
-      description: "Evaluasi kepatuhan 17 prinsip pengendalian internal dengan diagnostic tool interaktif DSI untuk mendeteksi celah sebelum evaluasi auditor eksternal.",
-      primaryUrl: "/asesmen-maturitas",
-      primaryLabel: "Mulai Asesmen Mandiri Interaktif",
-      secondaryUrl: "/layanan/icofr-bumn",
-      secondaryLabel: "Konsultansi Diagnostic COSO"
+      description: "Evaluasi kepatuhan 17 prinsip pengendalian internal dengan diagnostic tool interaktif DSI dan konsultansi ahli guna mengamankan kepatuhan menyeluruh sebelum evaluasi auditor eksternal.",
+      primaryUrl: "/layanan/icofr-bumn",
+      primaryLabel: "Konsultansi Penerapan ICOFR & COSO",
+      secondaryUrl: "/platform/grc-integra",
+      secondaryLabel: "Otomasi Matriks COSO di GRC Integra"
     }
   },
   {
@@ -789,11 +789,11 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     relatedServiceLabel: "Audit Konfigurasi ITAC ERP",
     commercialBridge: {
       title: "Audit Konfigurasi Kontrol Otomatis ERP (ITAC)",
-      description: "Verifikasi efektivitas kontrol otomatis sistem ERP (three-way match, credit limit check, posting validation) dengan pendekatan Test of One.",
-      primaryUrl: "/layanan/itgc-audit-readiness",
-      primaryLabel: "Layanan Audit ITAC & ITGC",
+      description: "Verifikasi efektivitas kontrol otomatis sistem ERP (three-way match, credit limit check, posting validation) dengan pendekatan Test of One didukung konsultansi pakar dan platform GRC.",
+      primaryUrl: "/layanan/icofr-bumn",
+      primaryLabel: "Konsultansi Audit ITAC & ICOFR",
       secondaryUrl: "/platform/grc-integra",
-      secondaryLabel: "Solusi GRC Integra"
+      secondaryLabel: "Otomasi Pengujian ITAC di GRC Integra"
     }
   }
 ];

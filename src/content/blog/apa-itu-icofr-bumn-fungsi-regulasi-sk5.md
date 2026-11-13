@@ -48,8 +48,8 @@ Pada November 2024, Kementerian BUMN resmi mengundangkan **Regulasi Nomor SK-5/D
 
 Beberapa poin penegasan krusial dalam regulasi ini antara lain:
 - **Wajib Diterapkan Seluruh Entitas**: Berlaku bagi seluruh BUMN induk, anak perusahaan strategis, serta perusahaan afiliasi yang dikonsolidasikan.
-- **Standarisasi Notasi Proses Bisnis (Lampiran 3)**: Penggambaran seluruh alur operasional keuangan wajib menggunakan diagram alur proses bisnis (*Business Process Mapping* / BPM) dengan simbol baku yang seragam.
-- **Pengujian Efektivitas Operasi (Tabel 22)**: Standarisasi formula batas sampel pengujian (*Test of Operating Effectiveness* / TOE) agar seragam di seluruh klaster BUMN.
+- **Standarisasi Notasi Proses Bisnis (Lampiran 3)**: Penggambaran seluruh alur operasional keuangan wajib menggunakan diagram alur proses bisnis (*Business Process Mapping* / BPM) dengan simbol baku yang seragam, sebagaimana diulas lengkap pada [Bedah Juknis SK-5/DKU.MBU/11/2024](/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn).
+- **Pengujian Efektivitas Operasi (Tabel 22)**: Standarisasi formula batas sampel pengujian (*Test of Operating Effectiveness* / TOE) agar seragam di seluruh klaster BUMN, yang dapat disimulasikan menggunakan [Kalkulator Sampel TOE SK-5](/kalkulator-sampel-toe).
 - **Asersi Resmi Manajemen (Lampiran 11)**: Direktur Utama dan Direktur Keuangan wajib menandatangani surat pernyataan formal mengenai rancangan dan efektivitas pengendalian internal perusahaan yang dilampirkan pada Laporan Tahunan (*Annual Report*).
 
 ---
@@ -78,8 +78,8 @@ Sesuai kerangka kerja terintegrasi *Committee of Sponsoring Organizations of the
 
 1. **Lingkungan Pengendalian (*Control Environment*)**: Integritas, nilai etika, struktur organisasi, dan pendelegasian wewenang manajemen puncak.
 2. **Penilaian Risiko (*Risk Assessment*)**: Identifikasi titik-titik risiko yang berpotensi menyebabkan salah saji material pada akun laporan keuangan signifikan.
-3. **Aktivitas Pengendalian (*Control Activities*)**: Kebijakan dan prosedur tindakan mitigasi, seperti otorisasi berjenjang, pemisahan tugas (*segregation of duties*), rekonsiliasi berkala, dan pengendalian umum teknologi informasi (*Information Technology General Controls* / ITGC).
-4. **Informasi dan Komunikasi (*Information & Communication*)**: Arus informasi relevan yang mengalir ke atas, ke bawah, dan melintasi seluruh fungsi operasional dan pelaporan.
+3. **Aktivitas Pengendalian (*Control Activities*)**: Kebijakan dan prosedur tindakan mitigasi, seperti otorisasi berjenjang, pemisahan tugas (*segregation of duties*), rekonsiliasi berkala, pengendalian otomatis aplikasi, dan pengendalian umum teknologi informasi (*Information Technology General Controls* / ITGC). Pelajari metodologinya pada [panduan audit ITGC dan ITAC BUMN](/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5).
+4. **Informasi dan Komunikasi (*Information & Communication*)**: Arus informasi relevan yang mengalir ke atas, ke bawah, dan melintasi seluruh fungsi operasional dan pelaporan, termasuk validasi data laporan keuangan sesuai [panduan pengujian pengendalian IPE dan MRC](/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn).
 5. **Aktivitas Pemantauan (*Monitoring Activities*)**: Evaluasi berkelanjutan melalui pengujian berkala Lini 2, audit internal (Lini 3), serta tindak lanjut temuan defisiensi.
 
 ---
@@ -95,7 +95,7 @@ Siklus tahunan implementasi ICOFR yang wajib dijalankan oleh korporasi mencakup 
 1. **Penentuan Ruang Lingkup (*Scoping*)**: Menentukan akun material, entitas signifikan, serta proses bisnis utama yang berdampak pada pelaporan keuangan.
 2. **Pengujian Efektivitas Rancangan (*Test of Design* / TOD)**: Menguji apakah kontrol yang ada telah dirancang secara memadai melalui pelaksanaan *walkthrough* transaksi riil.
 3. **Pengujian Efektivitas Operasi (*Test of Operating Effectiveness* / TOE)**: Mengambil sampel transaksi aktual sepanjang tahun buku sesuai formula frekuensi Tabel 22 untuk menguji konsistensi eksekusi kontrol.
-4. **Evaluasi Defisiensi dan Asersi Manajemen**: Mengklasifikasikan temuan (*Control Deficiency*, *Significant Deficiency*, atau *Material Weakness*) dan menyusun rencana remediasi sebelum penerbitan asersi resmi.
+4. **Evaluasi Defisiensi dan Asersi Manajemen**: Mengklasifikasikan temuan (*Control Deficiency*, *Significant Deficiency*, atau *Material Weakness*) melalui metodologi [evaluasi Degree of Deficiency (DoD)](/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5) dan menyusun rencana remediasi sebelum penerbitan asersi resmi.
 
 ---
 

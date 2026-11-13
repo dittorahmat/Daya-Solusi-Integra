@@ -60,8 +60,8 @@ Amanat Bab III.4 menegaskan bahwa efektivitas rancangan kontrol (*Test of Design
 ## 3. Fitur Aplikasi ICOFR: Kalkulator Sampel Otomatis Tabel 22
 
 Salah satu kelemahan terbesar pengelolaan manual adalah penentuan jumlah sampel pengujian efektivitas operasi (*Test of Operating Effectiveness* / TOE) yang rawan bias auditor:
-- **Kalkulasi Otomatis Berbasis Frekuensi**: Aplikasi ICOFR wajib menghitung ukuran sampel minimum berdasarkan frekuensi kontrol (kontinu, beberapa kali sehari, harian, mingguan, bulanan, triwulanan, atau tahunan) sesuai **Tabel 22 Regulasi BUMN**.
-- **Homogeneity Justification**: Sistem harus mewajibkan pengisian formulir justifikasi homogenitas populasi jika auditor memilih rentang sampel batas bawah, guna memenuhi standar pembuktian audit SPKN dan ISA.
+- **Kalkulasi Otomatis Berbasis Frekuensi**: Aplikasi ICOFR wajib menghitung ukuran sampel minimum berdasarkan frekuensi kontrol (kontinu, beberapa kali sehari, harian, mingguan, bulanan, triwulanan, atau tahunan) sesuai **Tabel 22 Regulasi BUMN**. Anda dapat mencoba langsung kalkulasi interaktif melalui [Kalkulator Sampel TOE](/kalkulator-sampel-toe).
+- **Homogeneity Justification**: Sistem harus mewajibkan pengisian formulir justifikasi homogenitas populasi jika auditor memilih rentang sampel batas bawah, guna memenuhi standar pembuktian audit SPKN dan ISA. Untuk kontrol otomatis aplikasi, modul ini terintegrasi dengan kriteria pengujian pada [panduan audit ITGC dan ITAC BUMN](/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5).
 
 ---
 
@@ -76,8 +76,8 @@ Bukti pengujian adalah tulang punggung akuntabilitas audit:
 ## 5. Fitur Aplikasi ICOFR: Analisis Dampak Agregat dan Monitoring Remediasi Celah
 
 Ketika ditemukan kontrol yang tidak efektif (*control deficiency*), aplikasi ICOFR harus memiliki kapabilitas analitik:
-- **Klasifikasi Tingkat Celah**: Pemilahan otomatis apakah temuan berstatus *Deficiency*, *Significant Deficiency*, atau *Material Weakness* berdasarkan potensi salah saji material terhadap saldo akun keuangan.
-- **Tracking Action Plan**: Pemantauan jadwal remediasi penutupan celah secara *real-time* sebelum penutupan buku tahun berjalan.
+- **Klasifikasi Tingkat Celah**: Pemilahan otomatis apakah temuan berstatus *Deficiency*, *Significant Deficiency*, atau *Material Weakness* berdasarkan potensi salah saji material terhadap saldo akun keuangan sesuai metodologi pada [panduan evaluasi Degree of Deficiency (DoD)](/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5).
+- **Tracking Action Plan**: Pemantauan jadwal remediasi penutupan celah secara *real-time* sebelum penutupan buku tahun berjalan. Validasi bukti pengujian juga mencakup keandalan data laporan dan kontrol reviu manajemen seperti diuraikan dalam [panduan pengujian pengendalian IPE dan MRC](/blog/panduan-pengujian-pengendalian-ipe-mrc-icofr-bumn).
 
 ---
 
@@ -126,4 +126,4 @@ Ya, [GRC Integra](/platform/grc-integra) dirancang khusus sebagai solusi siklus 
 
 Memilih aplikasi ICOFR bukan sekadar mendigitalkan kertas kerja, melainkan membangun benteng pertahanan tata kelola korporasi yang kokoh. Platform **GRC Integra** dari Daya Solusi Integra dirancang khusus untuk memenuhi seluruh 7 fitur kunci di atas, mendampingi BUMN mengamankan asersi manajemen dengan reputasi tanpa cela.
 
-Ingin melihat langsung bagaimana modul BPM, kalkulator sampel Tabel 22, dan alur asersi bekerja? [Jadwalkan Live Demo GRC Integra](/platform/grc-integra) bersama tim konsultan kami atau [Hubungi Konsultan Kami](/#contact) untuk evaluasi kesiapan kepatuhan organisasi Anda.
+Ingin melihat langsung bagaimana modul BPM, kalkulator sampel Tabel 22, dan alur asersi bekerja? [Jadwalkan Live Demo GRC Integra](/platform/grc-integra) bersama tim konsultan kami atau hubungi kami di [Layanan Konsultansi ICOFR BUMN](/layanan/icofr-bumn) untuk pendampingan implementasi dan evaluasi kesiapan kepatuhan organisasi Anda.

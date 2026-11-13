@@ -47,7 +47,7 @@ Untuk menjawab kebutuhan ini, **Daya Solusi Integra (DSI)** menghadirkan **GRC I
 
 Bagi tim kepatuhan, manajemen risiko, dan SPI BUMN yang memerlukan ringkasan parameter regulasi dan instrumen kepatuhan SK-5:
 
-- **Download Berkas PDF Resmi SK-5 BUMN**: Unduh langsung salinan asli Surat Keputusan [PDF SK-5/DKU.MBU/11/2024](/docs/sk-5-dku-mbu-11-2024-icofr-bumn.pdf) untuk mempelajari lampiran juknis ICOFR secara menyeluruh.
+- **Download Berkas PDF Resmi SK-5 BUMN**: Unduh langsung salinan asli Surat Keputusan [PDF SK-5/DKU.MBU/11/2024](/docs/sk-5-dku-mbu-11-2024-icofr-bumn.pdf) untuk mempelajari lampiran juknis ICOFR secara menyeluruh, atau baca ulasan mendalam pada [Bedah Juknis SK-5/DKU.MBU/11/2024](/blog/bedah-juknis-sk5-dku-mbu-11-2024-icofr-bumn) yang merinci 11 lampiran wajib.
 - **Rujukan Lengkap Regulasi & Matriks Lampiran**: Dapatkan kompilasi regulasi, template checklist 17 prinsip COSO, dan struktur notasi BPMN di halaman [Toolkit Regulasi ICOFR BUMN](/toolkit-regulasi).
 - **Simulasi Kesiapan Audit ICOFR**: Evaluasi kesiapan asersi dan maturitas tata kelola holding maupun anak perusahaan secara mandiri melalui [Asesmen Maturitas ICOFR BUMN](/asesmen-maturitas).
 - **Layanan Konsultansi & Pendampingan Implementasi**: Pelajari paket pendampingan penyusunan scoping, RCM, dan walkthrough Lini 2 di [Layanan ICOFR BUMN](/layanan/icofr-bumn).
@@ -70,11 +70,11 @@ Sesuai amanat Bab III.4, setiap rancangan kontrol tidak boleh hanya diasumsikan 
 
 ### 3. Evaluasi Independen & Kalkulator Sampel Otomatis (Tabel 22)
 Bab V.1.3 menetapkan pedoman ketat penentuan jumlah sampel pengujian efektivitas operasi (*Test of Operating Effectiveness* / TOE).
-- **Kalkulator Tabel 22**: GRC Integra secara otomatis menghitung rentang sampel pengujian berdasarkan frekuensi kontrol (kontinu, harian, mingguan, bulanan, triwulanan).
+- **Kalkulator Tabel 22**: GRC Integra secara otomatis menghitung rentang sampel pengujian berdasarkan frekuensi kontrol (kontinu, harian, mingguan, bulanan, triwulanan). Anda juga dapat mencoba simulasi interaktif langsung melalui [Kalkulator Sampel TOE](/kalkulator-sampel-toe) atau membaca [panduan audit ITGC dan ITAC BUMN](/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5) untuk strategi pengujian kontrol otomatis sistem ERP.
 - **Homogeneity Justification**: Jika auditor memilih batas sampel terendah, sistem mewajibkan pengisian formulir justifikasi homogenitas transaksi guna memenuhi kriteria audit eksternal KAP dan BPK.
 
 ### 4. Remediasi Defisiensi & Analisis Dampak Agregat
-Ketika ditemukan celah kontrol (*deficiency*), platform secara cerdas mengkategorikan apakah temuan tersebut masuk kategori *Deficiency*, *Significant Deficiency*, atau *Material Weakness* melalui analisis dampak agregat terhadap saldo akun material. Action plan remediasi dapat dipantau *real-time* oleh komite audit.
+Ketika ditemukan celah kontrol (*deficiency*), platform secara cerdas mengkategorikan apakah temuan tersebut masuk kategori *Deficiency*, *Significant Deficiency*, atau *Material Weakness* melalui analisis dampak agregat terhadap saldo akun material sesuai [panduan evaluasi Degree of Deficiency (DoD)](/blog/panduan-evaluasi-degree-of-deficiency-dod-icofr-sk5). Action plan remediasi dapat dipantau *real-time* oleh komite audit.
 
 ### 5. Pelaporan & Digital Sign-off CEO/CFO Berbasis QR Code
 Puncak dari siklus ICOFR adalah asersi resmi Direktur Utama dan Direktur Keuangan sebagaimana diatur pada Lampiran 11 regulasi SK-5.
@@ -91,4 +91,4 @@ Regulasi SK-5 Kementerian BUMN menuntut transparansi dan kecepatan rekonsiliasi 
 Melalui sinergi keahlian konsultan senior **Daya Solusi Integra** dan kecanggihan teknologi **GRC Integra**, BUMN Anda dapat menghemat hingga 60% waktu siklus evaluasi pengendalian internal sekaligus mengamankan opini Wajar Tanpa Pengecualian (WTP).
 
 > **Tertarik melihat langsung alur kerja GRC Integra?**  
-> Ajukan [jadwal demo platform interaktif](#contact) bersama tim konsultan kami atau gunakan fitur konsultasi langsung di website Daya Solusi Integra.
+> Pelajari kapabilitas lengkap pada [Platform GRC Integra](/platform/grc-integra), jadwalkan demo sistem interaktif, atau konsultasikan kebutuhan implementasi Anda melalui [Layanan Konsultansi ICOFR BUMN](/layanan/icofr-bumn) bersama tim konsultan Daya Solusi Integra.

@@ -151,3 +151,52 @@ export function getBlogArticleMeta(slug: string): { published: string; modified:
     coverImage: data.coverImage ? String(data.coverImage) : "https://dsintegra.co.id/og-image.jpg"
   };
 }
+
+export interface BlogRouteEntry {
+  routeKey: string;
+  slug: string;
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogType: string;
+}
+
+/**
+ * Mengambil daftar seluruh rute blog secara dinamis dari berkas markdown di src/content/blog
+ */
+export function getAllBlogRouteEntries(): BlogRouteEntry[] {
+  if (!fs.existsSync(blogContentDir)) return [];
+  const entries: BlogRouteEntry[] = [];
+  const files = fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"));
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
+    const { data } = parseBlogFrontMatter(raw);
+    const slug = data.slug || file.replace(".md", "");
+    const routeKey = `/blog/${slug}`;
+    const title = data.title
+      ? `${data.title} | Daya Solusi Integra`
+      : "Artikel ICOFR & Tata Kelola BUMN | Daya Solusi Integra";
+    const description =
+      data.excerpt ||
+      "Panduan tata kelola, manajemen risiko, dan pengendalian internal pelaporan keuangan (ICOFR) BUMN.";
+    const image = data.coverImage ? String(data.coverImage) : "https://dsintegra.co.id/og-image.jpg";
+
+    entries.push({
+      routeKey,
+      slug,
+      title,
+      description,
+      canonical: `https://dsintegra.co.id${routeKey}`,
+      image,
+      ogTitle: data.title || title,
+      ogDescription: description,
+      ogType: "article"
+    });
+  }
+
+  return entries;
+}

@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 import { ROUTE_METADATA_MAP, RouteMeta } from "../src/utils/seoMeta.js";
 import { GLOSSARY_ITEMS } from "../src/data/glossaryData.js";
-import { distDir, templateHtml, blogContentDir } from "./seo/paths.js";
-import { getBlogArticleMeta, parseBlogFrontMatter } from "./seo/frontmatter.js";
+import { distDir, templateHtml } from "./seo/paths.js";
+import { getBlogArticleMeta, getAllBlogRouteEntries } from "./seo/frontmatter.js";
 import { upsertHeadTag, applySiteNameHeadTag } from "./seo/xml.js";
 import { buildJsonLdForRoute } from "./seo/jsonld.js";
 import { buildSemanticBodyHtmlForRoute } from "./seo/semantic-body.js";
@@ -31,29 +31,19 @@ GLOSSARY_ITEMS.forEach((item) => {
   };
 });
 
-// Daftarkan seluruh artikel blog dinamis dari folder src/content/blog agar tidak ada artikel yang tertinggal
-if (fs.existsSync(blogContentDir)) {
-  const blogFiles = fs.readdirSync(blogContentDir).filter((f) => f.endsWith(".md"));
-  for (const file of blogFiles) {
-    const rawContent = fs.readFileSync(path.join(blogContentDir, file), "utf-8");
-    const { data } = parseBlogFrontMatter(rawContent);
-    const slug = data.slug || file.replace(".md", "");
-    const routeKey = `/blog/${slug}`;
-
-    if (!allRoutes[routeKey]) {
-      const title = data.title ? `${data.title} | Daya Solusi Integra` : "Artikel ICOFR & Tata Kelola BUMN | Daya Solusi Integra";
-      const description = data.excerpt || "Panduan tata kelola, manajemen risiko, dan pengendalian internal pelaporan keuangan (ICOFR) BUMN.";
-      const image = data.coverImage || "https://dsintegra.co.id/og-image.jpg";
-      allRoutes[routeKey] = {
-        title,
-        description,
-        canonical: `https://dsintegra.co.id${routeKey}`,
-        image,
-        ogTitle: data.title || title,
-        ogDescription: description,
-        ogType: "article"
-      };
-    }
+// Daftarkan seluruh artikel blog dinamis dari helper frontmatter agar tidak ada artikel yang tertinggal
+const blogEntries = getAllBlogRouteEntries();
+for (const entry of blogEntries) {
+  if (!allRoutes[entry.routeKey]) {
+    allRoutes[entry.routeKey] = {
+      title: entry.title,
+      description: entry.description,
+      canonical: entry.canonical,
+      image: entry.image,
+      ogTitle: entry.ogTitle,
+      ogDescription: entry.ogDescription,
+      ogType: entry.ogType
+    };
   }
 }
 

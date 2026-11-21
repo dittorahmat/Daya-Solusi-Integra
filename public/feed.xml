@@ -5,7 +5,7 @@
     <link>https://dsintegra.co.id/blog</link>
     <description>Artikel otoritatif tata kelola, audit ITGC, metodologi sampling TOE SK-5, dan platform software GRC Integra untuk BUMN Indonesia.</description>
     <language>id-ID</language>
-    <lastBuildDate>Fri, 13 Nov 2026 03:07:48 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 05:23:38 GMT</lastBuildDate>
     <atom:link href="https://dsintegra.co.id/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://dsintegra.co.id/og-image.jpg</url>
@@ -97,7 +97,7 @@
       <title>Panduan Audit ITGC dan ITAC BUMN: Metodologi Pengujian ERP, Kontrol Otomatis, dan Kepatuhan SK-5</title>
       <link>https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5</guid>
-      <description>Panduan teknis pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem ERP BUMN: checklist pengujian akses logis, change management, three-way match, dan kepatuhan SK-5.</description>
+      <description>Apa itu ITGC dan ITAC dalam audit BUMN? Panduan teknis pengujian IT General Controls dan IT Application Controls pada ERP SAP/Oracle: checklist 4 domain, mitigasi SoD, 3-way matching, dan kepatuhan SK-5.</description>
       <category>Tata Kelola &amp; Kepatuhan</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
@@ -169,7 +169,7 @@
       <title>Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template</title>
       <link>https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025</guid>
-      <description>Struktur Kerangka Acuan Kerja dan Term of Reference pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, tabel bobot penilaian teknis 70/30 dengan kriteria knockout, checklist lampiran, dan perbandingan bundel jasa plus software.</description>
+      <description>Struktur Kerangka Acuan Kerja (KAK) dan Term of Reference (TOR) pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, bobot teknis 70/30, kriteria knockout, estimasi HPS, dan bundel software GRC.</description>
       <category>Pengadaan &amp; Tender</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 02 Oct 2026 07:00:00 GMT</pubDate>
@@ -196,7 +196,7 @@
       <title>Panduan Regulasi SK-5 BUMN ICOFR: Juknis Resmi, Matriks Pengujian, dan Otomasi GRC Integra</title>
       <link>https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra</link>
       <guid isPermaLink="true">https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra</guid>
-      <description>Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF juknis resmi, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.</description>
+      <description>Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF resmi juknis SK-5, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.</description>
       <category>Regulasi &amp; Standar</category>
       <author>marketing@dsintegra.co.id (Humbul Kristiawan)</author>
       <pubDate>Fri, 25 Sep 2026 07:00:00 GMT</pubDate>

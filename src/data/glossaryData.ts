@@ -705,6 +705,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     term: "17 Prinsip Pengendalian Internal COSO",
     category: "Regulasi & Kerangka Kerja",
     regulationRef: "COSO Integrated Framework 2013 & SK-5 BUMN",
+    metaTitle: "17 Prinsip COSO Pengendalian Internal: Komponen, Evaluasi & Mandat SK-5 BUMN",
+    metaDescription: "Pelajari 17 prinsip COSO pengendalian internal BUMN: integrasi 5 komponen, evaluasi present and functioning, serta kaitannya dengan ELC dan audit BPK SK-5.",
     definition: "Tujuh belas prinsip normatif yang dijabarkan dari 5 komponen COSO (Control Environment, Risk Assessment, Control Activities, Information & Communication, Monitoring Activities) yang wajib dipenuhi agar sistem pengendalian internal dinyatakan efektif secara keseluruhan.",
     keyTakeaway: "Jika salah satu dari 17 prinsip dinilai tidak hadir dan tidak berfungsi (not present and functioning), sistem pengendalian entitas memiliki defisiensi mayor.",
     practicalExample: "Prinsip 1: Organisasi menunjukkan komitmen terhadap integritas dan nilai-nilai etika melalui penegakan whistleblower system (WBS).",

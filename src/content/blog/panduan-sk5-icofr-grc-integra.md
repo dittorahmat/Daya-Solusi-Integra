@@ -2,7 +2,7 @@
 id: "panduan-sk5-icofr-grc-integra"
 title: "Panduan Regulasi SK-5 BUMN ICOFR: Juknis Resmi, Matriks Pengujian, dan Otomasi GRC Integra"
 slug: "panduan-sk5-icofr-grc-integra"
-excerpt: "Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF juknis resmi, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO."
+excerpt: "Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF resmi juknis SK-5, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO."
 category: "Regulasi & Standar"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"

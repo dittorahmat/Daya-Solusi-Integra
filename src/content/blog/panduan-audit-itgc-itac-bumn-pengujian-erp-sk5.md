@@ -2,7 +2,7 @@
 id: "panduan-audit-itgc-itac-bumn-pengujian-erp-sk5"
 title: "Panduan Audit ITGC dan ITAC BUMN: Metodologi Pengujian ERP, Kontrol Otomatis, dan Kepatuhan SK-5"
 slug: "panduan-audit-itgc-itac-bumn-pengujian-erp-sk5"
-excerpt: "Panduan teknis pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem ERP BUMN: checklist pengujian akses logis, change management, three-way match, dan kepatuhan SK-5."
+excerpt: "Apa itu ITGC dan ITAC dalam audit BUMN? Panduan teknis pengujian IT General Controls dan IT Application Controls pada ERP SAP/Oracle: checklist 4 domain, mitigasi SoD, 3-way matching, dan kepatuhan SK-5."
 category: "Tata Kelola & Kepatuhan"
 author: "Humbul Kristiawan"
 authorRole: "Principal Partner & Senior GRC Advisor"
@@ -19,6 +19,7 @@ featured: false
 > 3. **Efisiensi Beban Sampel**: Dengan ITGC yang efektif dan teruji, pengujian TOE atas kontrol otomatis cukup menggunakan strategi *test-of-one*, mereduksi puluhan sampel pengujian manual yang membebani tim kepatuhan.
 
 ## Daftar Isi
+- [Pengertian ITGC: Apa Itu ITGC dalam Audit Sistem Keuangan BUMN](#pengertian-itgc-apa-itu-itgc-dalam-audit-sistem-keuangan-bumn)
 - [Urgensi Audit ITGC dan ITAC dalam Kepatuhan Regulasi SK-5 BUMN](#urgensi-audit-itgc-dan-itac-dalam-kepatuhan-regulasi-sk-5-bumn)
 - [Perbedaan Mendasar ITGC vs ITAC: Konseptual dan Arsitektural](#perbedaan-mendasar-itgc-vs-itac-konseptual-dan-arsitektural)
 - [Empat Domain Kunci Pengujian ITGC pada Lingkungan ERP BUMN](#empat-domain-kunci-pengujian-itgc-pada-lingkungan-erp-bumn)
@@ -27,6 +28,13 @@ featured: false
 - [Panduan Langkah Demi Langkah Pengujian ITGC dan ITAC](#panduan-langkah-demi-langkah-pengujian-itgc-dan-itac)
 - [Dampak Kegagalan ITGC terhadap Asersi Direksi dan Opini Audit BPK](#dampak-kegagalan-itgc-terhadap-asersi-direksi-dan-opini-audit-bpk)
 - [Otomasi Pengujian dan Dokumentasi Kertas Kerja di GRC Integra](#otomasi-pengujian-dan-dokumentasi-kertas-kerja-di-grc-integra)
+
+## Pengertian ITGC: Apa Itu ITGC dalam Audit Sistem Keuangan BUMN
+
+> **Jawaban Ringkas (AI Overview Capsule):**
+> **ITGC adalah** singkatan dari *Information Technology General Controls*, yaitu payung kebijakan, prosedur pengamanan teknis, dan pengendalian umum yang diterapkan pada infrastruktur TI entitas (sistem operasi server, basis data, jaringan, dan tata kelola perubahan kode) guna memastikan seluruh aplikasi finansial seperti SAP S/4HANA atau Oracle ERP beroperasi secara andal, aman, dan data transaksinya tidak dimanipulasi tanpa otorisasi.
+
+Dalam arsitektur tata kelola teknologi informasi korporasi BUMN, ITGC merupakan pilar penyangga paling dasar. Tanpa ITGC yang efektif, pengendalian internal atas pelaporan keuangan ([ICOFR](/glosarium/icofr)) kehilangan integritasnya karena data akuntansi di level basis data rentan diubah secara langsung tanpa jejak audit (*audit trail*). ITGC diatur secara eksplisit dalam juknis **SK-5/DKU.MBU/11/2024**, **POJK No. 11/POJK.03/2022**, dan kerangka kerja internasional **COBIT 2019**.
 
 ## Urgensi Audit ITGC dan ITAC dalam Kepatuhan Regulasi SK-5 BUMN
 

@@ -332,7 +332,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Panduan Audit ITGC dan ITAC BUMN: Metodologi Pengujian ERP, Kontrol Otomatis, dan Kepatuhan SK-5
 - Kategori: Tata Kelola & Kepatuhan
-- Ringkasan: Panduan teknis pengujian IT General Controls (ITGC) dan IT Application Controls (ITAC) pada sistem ERP BUMN: checklist pengujian akses logis, change management, three-way match, dan kepatuhan SK-5.
+- Ringkasan: Apa itu ITGC dan ITAC dalam audit BUMN? Panduan teknis pengujian IT General Controls dan IT Application Controls pada ERP SAP/Oracle: checklist 4 domain, mitigasi SoD, 3-way matching, dan kepatuhan SK-5.
 - Tautan: https://dsintegra.co.id/blog/panduan-audit-itgc-itac-bumn-pengujian-erp-sk5
 
 ### Compensating Control Adalah: Panduan Mitigasi Defisiensi Kontrol dan Konflik SoD BUMN Sesuai SK-5
@@ -372,7 +372,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template
 - Kategori: Pengadaan & Tender
-- Ringkasan: Struktur Kerangka Acuan Kerja dan Term of Reference pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, tabel bobot penilaian teknis 70/30 dengan kriteria knockout, checklist lampiran, dan perbandingan bundel jasa plus software.
+- Ringkasan: Struktur Kerangka Acuan Kerja (KAK) dan Term of Reference (TOR) pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, bobot teknis 70/30, kriteria knockout, estimasi HPS, dan bundel software GRC.
 - Tautan: https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025
 
 ### Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN
@@ -387,7 +387,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Panduan Regulasi SK-5 BUMN ICOFR: Juknis Resmi, Matriks Pengujian, dan Otomasi GRC Integra
 - Kategori: Regulasi & Standar
-- Ringkasan: Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF juknis resmi, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
+- Ringkasan: Panduan lengkap regulasi SK-5/DKU.MBU/11/2024 ICOFR BUMN: download PDF resmi juknis SK-5, tahapan scoping akun signifikan, pengujian Lini 2 Test of One, perhitungan sampel Tabel 22, hingga asersi digital CEO dan CFO.
 - Tautan: https://dsintegra.co.id/blog/panduan-sk5-icofr-grc-integra
 
 ### Peran Strategis Satuan Pengawasan Intern (SPI) BUMN dalam Siklus ICOFR dan Model Tiga Lini

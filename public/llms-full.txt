@@ -372,7 +372,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Panduan Menyusun KAK dan TOR Konsultan ICOFR BUMN 2026: Struktur, Bobot Teknis, dan Template
 - Kategori: Pengadaan & Tender
-- Ringkasan: Struktur Kerangka Acuan Kerja (KAK) dan Term of Reference (TOR) pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, bobot teknis 70/30, kriteria knockout, estimasi HPS, dan bundel software GRC.
+- Ringkasan: Struktur Kerangka Acuan Kerja dan Term of Reference pengadaan konsultan ICOFR BUMN sesuai SK-5: anatomi dokumen, tabel bobot penilaian teknis 70/30 dengan kriteria knockout, checklist lampiran, dan perbandingan bundel jasa plus software.
 - Tautan: https://dsintegra.co.id/blog/panduan-penyusunan-kak-tor-icofr-bumn-2025
 
 ### Panduan Penentuan Sampel Pengujian TOE ICOFR Berdasarkan Tabel 22 Regulasi BUMN
@@ -412,7 +412,7 @@ Dalam melakukan Test of Operating Effectiveness (TOE) untuk kontrol manual tanpa
 
 ### Risiko Audit Pengelolaan RCM Manual Berbasis Spreadsheet Excel vs Platform GRC Terdedikasi BUMN
 - Kategori: Solusi Digital
-- Ringkasan: Analisis kritis risiko kepatuhan pengelolaan Risk and Control Matrix (RCM) ICOFR menggunakan spreadsheet Excel di lingkungan BUMN: tantangan integritas data, ketiadaan jejak audit, dan solusi otomasi berbasis SK-5/2024.
+- Ringkasan: Apa itu RCM (Risk and Control Matrix) dalam audit BUMN? Analisis kritis risiko kepatuhan RCM manual berbasis spreadsheet Excel vs platform GRC terdedikasi sesuai SK-5/2024.
 - Tautan: https://dsintegra.co.id/blog/risiko-rcm-excel-vs-software-grc-bumn
 
 ### Scoping Akun Signifikan dan Konsolidasi ICOFR Holding-Anak BUMN: Materialitas dan Eliminasi

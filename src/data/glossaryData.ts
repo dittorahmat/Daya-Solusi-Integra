@@ -563,6 +563,8 @@ export const GLOSSARY_ITEMS: GlossaryItem[] = [
     acronym: "Remediation",
     category: "Evaluasi Defisiensi",
     regulationRef: "SK-5/DKU.MBU/11/2024 Bab Tindak Lanjut & CAP",
+    metaTitle: "Arti Remediation dalam Audit: Pengertian, Remediasi Kontrol & CAP BUMN",
+    metaDescription: "Apa arti remediation dalam audit ICOFR BUMN? Pelajari pengertian remedi kontrol, penyusunan Corrective Action Plan (CAP), dan pengujian ulang sesuai SK-5.",
     definition: "Rangkaian tindakan perbaikan terstruktur (Corrective Action Plan) untuk menutup defisiensi pengendalian yang ditemukan, mencakup analisis akar masalah, perbaikan desain kontrol, pengujian ulang efektivitas, dan pemantauan keberlanjutan hingga defisiensi dinyatakan tuntas.",
     keyTakeaway: "Defisiensi dinyatakan tuntas hanya setelah kontrol perbaikan diuji efektif selama periode yang memadai, bukan sekadar setelah dokumen diperbaiki.",
     practicalExample: "CAP atas temuan SoD: pencabutan akses ganda, redesain matriks peran ERP, lalu pengujian ulang sampel transaksi selama satu kuartal.",
